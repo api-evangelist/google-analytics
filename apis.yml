@@ -1,0 +1,110 @@
+name: Google Analytics API
+description: Google Analytics provides data and insights about website and app usage, enabling businesses to understand their audience and optimize their digital properties.
+image: https://www.google.com/analytics/images/google-analytics-logo.png
+url: https://analytics.google.com
+created: '2024-01-01'
+modified: '2024-01-01'
+tags:
+- Analytics
+- Metrics
+- Web Analytics
+- Data
+- Reporting
+- Google
+apis:
+- name: Google Analytics Data API (GA4)
+  description: The Google Analytics Data API provides programmatic access to Google Analytics 4 (GA4) report data.
+  image: https://www.google.com/analytics/images/google-analytics-logo.png
+  humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
+  baseURL: https://analyticsdata.googleapis.com
+  properties:
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1
+  - type: OpenAPI
+    url: https://analyticsdata.googleapis.com/$discovery/rest?version=v1beta
+  - type: Authentication
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries
+  - type: Pricing
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/quotas
+  tags:
+  - Analytics
+  - Reporting
+  - GA4
+  - Data API
+- name: Google Analytics Admin API
+  description: The Analytics Admin API allows programmatic access to configuration data for Google Analytics 4 properties.
+  image: https://www.google.com/analytics/images/google-analytics-logo.png
+  humanURL: https://developers.google.com/analytics/devguides/config/admin/v1
+  baseURL: https://analyticsadmin.googleapis.com
+  properties:
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/config/admin/v1
+  - type: OpenAPI
+    url: https://analyticsadmin.googleapis.com/$discovery/rest?version=v1beta
+  - type: Reference
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/rest
+  - type: Quickstart
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/quickstart-client-libraries
+  tags:
+  - Admin
+  - Configuration
+  - Management
+  - GA4
+- name: Google Analytics Reporting API v4 (Universal Analytics)
+  description: The Analytics Reporting API v4 provides programmatic access to Universal Analytics report data (note Universal Analytics sunset July 1, 2023).
+  image: https://www.google.com/analytics/images/google-analytics-logo.png
+  humanURL: https://developers.google.com/analytics/devguides/reporting/core/v4
+  baseURL: https://analyticsreporting.googleapis.com
+  properties:
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/reporting/core/v4
+  - type: OpenAPI
+    url: https://analyticsreporting.googleapis.com/$discovery/rest?version=v4
+  - type: Migration Guide
+    url: https://developers.google.com/analytics/devguides/migration/api/reporting-ua-to-ga4
+  - type: Deprecation Notice
+    url: https://support.google.com/analytics/answer/11583528
+  tags:
+  - Analytics
+  - Reporting
+  - Universal Analytics
+  - Legacy
+  - Deprecated
+- name: Google Analytics Management API v3
+  description: The Analytics Management API allows access to configuration data for Universal Analytics accounts, properties, and views.
+  image: https://www.google.com/analytics/images/google-analytics-logo.png
+  humanURL: https://developers.google.com/analytics/devguides/config/mgmt/v3
+  baseURL: https://www.googleapis.com/analytics/v3
+  properties:
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/config/mgmt/v3
+  - type: Reference
+    url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
+  - type: Deprecation Notice
+    url: https://support.google.com/analytics/answer/11583528
+  tags:
+  - Management
+  - Configuration
+  - Universal Analytics
+  - Legacy
+common:
+- type: Getting Started
+  url: https://developers.google.com/analytics/get-started
+- type: Terms of Service
+  url: https://developers.google.com/analytics/terms
+- type: Console
+  url: https://console.cloud.google.com/apis/library/analytics.googleapis.com
+- type: Support
+  url: https://developers.google.com/analytics/support
+- type: Blog
+  url: https://analytics.googleblog.com/
+- type: Status
+  url: https://status.cloud.google.com/
+maintainers:
+- name: Google
+  email: analytics-api-support@google.com
+  url: https://developers.google.com/analytics
+contact:
+- name: Google Analytics API Support
+  url: https://developers.google.com/analytics/support
+  email: analytics-api-support@google.com

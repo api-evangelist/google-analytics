@@ -1,5 +1,5 @@
 aid: google-analytics
-name: Google Analytics API
+name: Google Analytics
 description: Google Analytics provides data and insights about website and app usage, enabling businesses to understand their audience and optimize their digital properties.
 type: Index
 image: https://www.google.com/analytics/images/google-analytics-logo.png

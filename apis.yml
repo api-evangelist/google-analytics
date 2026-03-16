@@ -1,9 +1,12 @@
+aid: google-analytics
 name: Google Analytics API
 description: Google Analytics provides data and insights about website and app usage, enabling businesses to understand their audience and optimize their digital properties.
+type: Index
 image: https://www.google.com/analytics/images/google-analytics-logo.png
-url: https://analytics.google.com
+url: https://raw.githubusercontent.com/api-evangelist/google-analytics/refs/heads/main/apis.yml
 created: '2024-01-01'
-modified: '2024-01-01'
+modified: '2026-03-16'
+specificationVersion: '0.19'
 tags:
 - Analytics
 - Metrics
@@ -12,7 +15,8 @@ tags:
 - Reporting
 - Google
 apis:
-- name: Google Analytics Data API (GA4)
+- aid: google-analytics:google-analytics-data-api-ga4
+  name: Google Analytics Data API (GA4)
   description: The Google Analytics Data API provides programmatic access to Google Analytics 4 (GA4) report data.
   image: https://www.google.com/analytics/images/google-analytics-logo.png
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
@@ -31,7 +35,8 @@ apis:
   - Reporting
   - GA4
   - Data API
-- name: Google Analytics Admin API
+- aid: google-analytics:google-analytics-admin-api
+  name: Google Analytics Admin API
   description: The Analytics Admin API allows programmatic access to configuration data for Google Analytics 4 properties.
   image: https://www.google.com/analytics/images/google-analytics-logo.png
   humanURL: https://developers.google.com/analytics/devguides/config/admin/v1
@@ -50,7 +55,8 @@ apis:
   - Configuration
   - Management
   - GA4
-- name: Google Analytics Reporting API v4 (Universal Analytics)
+- aid: google-analytics:google-analytics-reporting-api-v4
+  name: Google Analytics Reporting API v4 (Universal Analytics)
   description: The Analytics Reporting API v4 provides programmatic access to Universal Analytics report data (note Universal Analytics sunset July 1, 2023).
   image: https://www.google.com/analytics/images/google-analytics-logo.png
   humanURL: https://developers.google.com/analytics/devguides/reporting/core/v4
@@ -70,7 +76,8 @@ apis:
   - Universal Analytics
   - Legacy
   - Deprecated
-- name: Google Analytics Management API v3
+- aid: google-analytics:google-analytics-management-api-v3
+  name: Google Analytics Management API v3
   description: The Analytics Management API allows access to configuration data for Universal Analytics accounts, properties, and views.
   image: https://www.google.com/analytics/images/google-analytics-logo.png
   humanURL: https://developers.google.com/analytics/devguides/config/mgmt/v3
@@ -101,10 +108,5 @@ common:
 - type: Status
   url: https://status.cloud.google.com/
 maintainers:
-- name: Google
-  email: analytics-api-support@google.com
-  url: https://developers.google.com/analytics
-contact:
-- name: Google Analytics API Support
-  url: https://developers.google.com/analytics/support
-  email: analytics-api-support@google.com
+- FN: Kin Lane
+  email: kin@apievangelist.com

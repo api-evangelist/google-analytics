@@ -28,11 +28,23 @@ The Google Analytics Data API provides programmatic access to Google Analytics 4
 #### Properties
 
 - [Documentation](https://developers.google.com/analytics/devguides/reporting/data/v1)
-- [OpenAPI](https://analyticsdata.googleapis.com/$discovery/rest?version=v1beta)
+- [OpenAPI](openapi/google-analytics-data-api.yaml)
 - [API Reference](https://developers.google.com/analytics/devguides/reporting/data/v1/rest)
 - [Quickstart](https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart)
 - [Authentication](https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries)
 - [Rate Limits](https://developers.google.com/analytics/devguides/reporting/data/v1/quotas)
+- [Python SDK](https://pypi.org/project/google-analytics-data/)
+- [Node.js SDK](https://www.npmjs.com/package/@google-analytics/data)
+- [Java SDK](https://central.sonatype.com/artifact/com.google.analytics/google-analytics-data)
+- [.NET SDK](https://www.nuget.org/packages/Google.Analytics.Data.V1Beta)
+- [PHP SDK](https://packagist.org/packages/google/analytics-data)
+- [Python Samples](https://github.com/googleanalytics/python-docs-samples)
+- [Java Samples](https://github.com/googleanalytics/java-docs-samples)
+- [Node.js Samples](https://github.com/googleanalytics/nodejs-docs-samples)
+- [.NET Samples](https://github.com/googleanalytics/dotnet-docs-samples)
+- [PHP Samples](https://github.com/googleanalytics/php-docs-samples)
+- [Curl Examples](https://github.com/googleanalytics/analytics-data-curl-examples)
+- [JavaScript Examples](https://github.com/googleanalytics/analytics-data-javascript-examples)
 
 ### Google Analytics Admin API
 The Analytics Admin API allows programmatic access to configuration data for Google Analytics 4 properties including account management, data streams, custom dimensions, key events, user permissions, and integration linking.
@@ -46,10 +58,21 @@ The Analytics Admin API allows programmatic access to configuration data for Goo
 #### Properties
 
 - [Documentation](https://developers.google.com/analytics/devguides/config/admin/v1)
-- [OpenAPI](https://analyticsadmin.googleapis.com/$discovery/rest?version=v1beta)
+- [OpenAPI](openapi/google-analytics-admin-api.yaml)
 - [API Reference](https://developers.google.com/analytics/devguides/config/admin/v1/rest)
 - [Quickstart](https://developers.google.com/analytics/devguides/config/admin/v1/quickstart)
 - [SDK](https://developers.google.com/analytics/devguides/config/admin/v1/client-libraries)
+- [Python SDK](https://pypi.org/project/google-analytics-admin/)
+- [Node.js SDK](https://www.npmjs.com/package/@google-analytics/admin)
+- [Java SDK](https://central.sonatype.com/artifact/com.google.analytics/google-analytics-admin)
+- [.NET SDK](https://www.nuget.org/packages/Google.Analytics.Admin.V1Beta)
+- [PHP SDK](https://packagist.org/packages/google/analytics-admin)
+- [Python Samples](https://github.com/googleanalytics/python-docs-samples)
+- [Java Samples](https://github.com/googleanalytics/java-docs-samples)
+- [Node.js Samples](https://github.com/googleanalytics/nodejs-docs-samples)
+- [.NET Samples](https://github.com/googleanalytics/dotnet-docs-samples)
+- [PHP Samples](https://github.com/googleanalytics/php-docs-samples)
+- [Configuration Samples](https://github.com/googleanalytics/analytics-samples-config)
 
 ### Google Analytics Measurement Protocol (GA4)
 The Measurement Protocol lets you send events directly to Google Analytics servers via HTTP requests to augment existing GA4 data with server-to-server and offline interactions.
@@ -94,7 +117,7 @@ The Analytics Reporting API v4 provides programmatic access to Universal Analyti
 #### Properties
 
 - [Documentation](https://developers.google.com/analytics/devguides/reporting/core/v4)
-- [OpenAPI](https://analyticsreporting.googleapis.com/$discovery/rest?version=v4)
+- [OpenAPI](openapi/google-analytics-reporting-api-v4.yaml)
 - [Getting Started](https://developers.google.com/analytics/devguides/migration/api/reporting-ua-to-ga4)
 
 ### Google Analytics Management API v3
@@ -119,7 +142,11 @@ The Analytics Management API allows access to configuration data for Universal A
 - [Sign Up](https://analytics.google.com/analytics/)
 - [Authentication](https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries)
 - [SDK](https://developers.google.com/analytics/devguides/config/admin/v1/client-libraries)
-- [CLI](https://github.com/googleanalytics/google-analytics-mcp)
+- [MCP Server](https://github.com/googleanalytics/google-analytics-mcp)
+- [GA Dev Tools](https://ga-dev-tools.google/ga4/)
+- [E-commerce Migration Helper](https://github.com/googleanalytics/ecommerce-migration-helper)
+- [GA4 Tutorials](https://github.com/googleanalytics/ga4-tutorials)
+- [Consent Mode Examples](https://github.com/googleanalytics/gtm-consent-mode-examples)
 - [Pricing](https://marketingplatform.google.com/about/analytics/)
 - [Terms of Service](https://developers.google.com/analytics/terms)
 - [Privacy Policy](https://developers.google.com/analytics/devguides/collection/protocol/ga4/policy)

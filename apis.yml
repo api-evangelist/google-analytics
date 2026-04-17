@@ -36,6 +36,42 @@ apis:
         url: https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries
       - type: RateLimits
         url: https://developers.google.com/analytics/devguides/reporting/data/v1/quotas
+      - type: SDK
+        url: https://pypi.org/project/google-analytics-data/
+        title: Python SDK
+      - type: SDK
+        url: https://www.npmjs.com/package/@google-analytics/data
+        title: Node.js SDK
+      - type: SDK
+        url: https://central.sonatype.com/artifact/com.google.analytics/google-analytics-data
+        title: Java SDK
+      - type: SDK
+        url: https://www.nuget.org/packages/Google.Analytics.Data.V1Beta
+        title: .NET SDK
+      - type: SDK
+        url: https://packagist.org/packages/google/analytics-data
+        title: PHP SDK
+      - type: CodeExamples
+        url: https://github.com/googleanalytics/python-docs-samples
+        title: Python Samples
+      - type: CodeExamples
+        url: https://github.com/googleanalytics/java-docs-samples
+        title: Java Samples
+      - type: CodeExamples
+        url: https://github.com/googleanalytics/nodejs-docs-samples
+        title: Node.js Samples
+      - type: CodeExamples
+        url: https://github.com/googleanalytics/dotnet-docs-samples
+        title: .NET Samples
+      - type: CodeExamples
+        url: https://github.com/googleanalytics/php-docs-samples
+        title: PHP Samples
+      - type: CodeExamples
+        url: https://github.com/googleanalytics/analytics-data-curl-examples
+        title: Curl Examples
+      - type: CodeExamples
+        url: https://github.com/googleanalytics/analytics-data-javascript-examples
+        title: JavaScript Examples
     tags:
       - Analytics
       - Data API
@@ -60,6 +96,39 @@ apis:
         url: https://developers.google.com/analytics/devguides/config/admin/v1/quickstart
       - type: SDK
         url: https://developers.google.com/analytics/devguides/config/admin/v1/client-libraries
+      - type: SDK
+        url: https://pypi.org/project/google-analytics-admin/
+        title: Python SDK
+      - type: SDK
+        url: https://www.npmjs.com/package/@google-analytics/admin
+        title: Node.js SDK
+      - type: SDK
+        url: https://central.sonatype.com/artifact/com.google.analytics/google-analytics-admin
+        title: Java SDK
+      - type: SDK
+        url: https://www.nuget.org/packages/Google.Analytics.Admin.V1Beta
+        title: .NET SDK
+      - type: SDK
+        url: https://packagist.org/packages/google/analytics-admin
+        title: PHP SDK
+      - type: CodeExamples
+        url: https://github.com/googleanalytics/python-docs-samples
+        title: Python Samples
+      - type: CodeExamples
+        url: https://github.com/googleanalytics/java-docs-samples
+        title: Java Samples
+      - type: CodeExamples
+        url: https://github.com/googleanalytics/nodejs-docs-samples
+        title: Node.js Samples
+      - type: CodeExamples
+        url: https://github.com/googleanalytics/dotnet-docs-samples
+        title: .NET Samples
+      - type: CodeExamples
+        url: https://github.com/googleanalytics/php-docs-samples
+        title: PHP Samples
+      - type: CodeExamples
+        url: https://github.com/googleanalytics/analytics-samples-config
+        title: Configuration Samples
     tags:
       - Admin
       - Configuration
@@ -159,8 +228,21 @@ common:
     url: https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries
   - type: SDK
     url: https://developers.google.com/analytics/devguides/config/admin/v1/client-libraries
-  - type: CLI
+  - type: Tools
     url: https://github.com/googleanalytics/google-analytics-mcp
+    title: MCP Server
+  - type: Tools
+    url: https://ga-dev-tools.google/ga4/
+    title: GA Dev Tools
+  - type: Tools
+    url: https://github.com/googleanalytics/ecommerce-migration-helper
+    title: E-commerce Migration Helper
+  - type: Tutorials
+    url: https://github.com/googleanalytics/ga4-tutorials
+    title: GA4 Tutorials
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/gtm-consent-mode-examples
+    title: Consent Mode Examples
   - type: Pricing
     url: https://marketingplatform.google.com/about/analytics/
   - type: TermsOfService

@@ -1,0 +1,630 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: Google Analytics
+  description: >-
+    Vocabulary and taxonomy for the Google Analytics API ecosystem, capturing the
+    operational dimension (OpenAPI resources, actions, schemas) and capability
+    dimension (Naftiko workflows, tools, personas) to provide a unified view of
+    what this API offers and how it can be used.
+  created: "2026-04-17"
+  modified: "2026-04-17"
+
+# ============================================================
+# OPERATIONAL DIMENSION (from OpenAPI)
+# What the API exposes at the protocol level
+# ============================================================
+
+operational:
+
+  apis:
+    - name: Google Analytics Data API (GA4)
+      namespace: ga-data-api
+      version: v1beta
+      baseUrl: https://analyticsdata.googleapis.com
+      status: active
+    - name: Google Analytics Admin API
+      namespace: ga-admin-api
+      version: v1beta
+      baseUrl: https://analyticsadmin.googleapis.com
+      status: active
+    - name: Google Analytics Measurement Protocol (GA4)
+      namespace: ga-measurement-protocol
+      version: "1.0"
+      baseUrl: https://www.google-analytics.com/mp
+      status: active
+    - name: Google Analytics User Deletion API
+      namespace: ga-user-deletion-api
+      version: v3
+      baseUrl: https://www.googleapis.com/analytics/v3
+      status: active
+    - name: Google Analytics Reporting API v4
+      namespace: ga-reporting-api-v4
+      version: v4
+      baseUrl: https://analyticsreporting.googleapis.com
+      status: deprecated
+    - name: Google Analytics Management API v3
+      namespace: ga-management-api-v3
+      version: v3
+      baseUrl: https://www.googleapis.com/analytics/v3
+      status: deprecated
+
+  resources:
+    - name: reports
+      description: Standard, pivot, realtime, batch, and access reports for GA4 event data.
+      apis: [ga-data-api, ga-admin-api]
+      actions: [run, batch-run, check-compatibility]
+    - name: audience-exports
+      description: Audience snapshots exported from GA4 properties for analysis and activation.
+      apis: [ga-data-api]
+      actions: [create, get, list, query]
+    - name: accounts
+      description: Google Analytics accounts that contain properties and data streams.
+      apis: [ga-admin-api]
+      actions: [list, provision, search-change-history]
+    - name: account-summaries
+      description: Lightweight summaries of accounts and their properties.
+      apis: [ga-admin-api]
+      actions: [list]
+    - name: properties
+      description: GA4 properties that collect and organize analytics data.
+      apis: [ga-admin-api]
+      actions: [list, create, acknowledge-user-data-collection, run-access-report]
+    - name: conversion-events
+      description: Events marked as conversions for tracking business outcomes.
+      apis: [ga-admin-api]
+      actions: [list, create]
+    - name: custom-dimensions
+      description: User-defined dimensions for capturing custom data attributes.
+      apis: [ga-admin-api]
+      actions: [list, create]
+    - name: custom-metrics
+      description: User-defined metrics for capturing custom measurement values.
+      apis: [ga-admin-api]
+      actions: [list, create, archive]
+    - name: data-streams
+      description: Web, iOS, and Android data streams that feed data into properties.
+      apis: [ga-admin-api]
+      actions: [list, create]
+    - name: firebase-links
+      description: Links connecting GA4 properties to Firebase projects.
+      apis: [ga-admin-api]
+      actions: [list, create]
+    - name: google-ads-links
+      description: Links connecting GA4 properties to Google Ads accounts.
+      apis: [ga-admin-api]
+      actions: [list, create, update, delete]
+    - name: measurement-protocol-secrets
+      description: API secrets for authenticating Measurement Protocol requests.
+      apis: [ga-admin-api]
+      actions: [list, create, get]
+    - name: events
+      description: User interaction events sent via the Measurement Protocol.
+      apis: [ga-measurement-protocol]
+      actions: [send, validate]
+    - name: user-deletion-requests
+      description: Requests to delete user data for privacy compliance.
+      apis: [ga-user-deletion-api]
+      actions: [upsert]
+
+  actions:
+    - name: run
+      verb: POST
+      pattern: query/read
+      description: Execute a report or query and return results.
+    - name: batch-run
+      verb: POST
+      pattern: query/read
+      description: Execute multiple reports in a single request.
+    - name: list
+      verb: GET
+      pattern: read
+      description: Retrieve a paginated list of resources.
+    - name: get
+      verb: GET
+      pattern: read
+      description: Retrieve a single resource by identifier.
+    - name: create
+      verb: POST
+      pattern: write
+      description: Create a new resource.
+    - name: update
+      verb: PATCH
+      pattern: write
+      description: Update an existing resource.
+    - name: delete
+      verb: DELETE
+      pattern: destructive
+      description: Remove a resource.
+    - name: archive
+      verb: POST
+      pattern: destructive
+      description: Soft-delete a resource by archiving it.
+    - name: query
+      verb: POST
+      pattern: query/read
+      description: Retrieve data from a previously created export.
+    - name: send
+      verb: POST
+      pattern: write
+      description: Submit data to be ingested.
+    - name: validate
+      verb: POST
+      pattern: read
+      description: Check data for correctness without submitting.
+    - name: upsert
+      verb: POST
+      pattern: write
+      description: Insert or update a resource.
+    - name: search
+      verb: POST
+      pattern: query/read
+      description: Search through historical records with filters.
+    - name: provision
+      verb: POST
+      pattern: write
+      description: Request creation of a new top-level entity.
+    - name: acknowledge
+      verb: POST
+      pattern: write
+      description: Accept terms or conditions for a resource.
+    - name: check-compatibility
+      verb: POST
+      pattern: read
+      description: Verify that dimensions and metrics can be combined.
+
+  schemas:
+    core:
+      - name: Dimension
+        description: A data attribute used to segment and organize report data.
+        properties: [name, dimensionExpression]
+      - name: Metric
+        description: A quantitative measurement in report data.
+        properties: [name, expression, invisible]
+      - name: DateRange
+        description: A contiguous set of days for report data.
+        properties: [startDate, endDate, name]
+      - name: FilterExpression
+        description: A logical expression for filtering report dimensions or metrics.
+        properties: [andGroup, orGroup, notExpression, filter]
+      - name: OrderBy
+        description: Sorting specification for report rows.
+        properties: [desc, dimension, metric, pivot]
+      - name: Row
+        description: A single row of report data with dimension and metric values.
+        properties: [dimensionValues, metricValues]
+      - name: Pivot
+        description: Cross-tabulation specification for pivot reports.
+        properties: [fieldNames, limit, offset, orderBys, metricAggregations]
+    reporting:
+      - name: RunReportRequest
+        description: Request to run a standard GA4 report.
+      - name: RunReportResponse
+        description: Response containing report rows, headers, and metadata.
+      - name: RunRealtimeReportRequest
+        description: Request to run a realtime report (last 30 minutes).
+      - name: RunRealtimeReportResponse
+        description: Response containing realtime report data.
+      - name: RunPivotReportRequest
+        description: Request to run a pivot table report.
+      - name: RunPivotReportResponse
+        description: Response containing pivot report data.
+      - name: BatchRunReportsRequest
+        description: Request to run up to 5 reports in a batch.
+      - name: BatchRunReportsResponse
+        description: Response containing multiple report results.
+      - name: CheckCompatibilityRequest
+        description: Request to verify dimension/metric compatibility.
+      - name: CheckCompatibilityResponse
+        description: Response indicating compatibility of each dimension and metric.
+    audiences:
+      - name: AudienceExport
+        description: A snapshot of users in a GA4 audience.
+        properties: [audience, audienceDisplayName, dimensions, state, rowCount, percentageCompleted]
+      - name: QueryAudienceExportRequest
+        description: Request to retrieve users from an audience export.
+      - name: QueryAudienceExportResponse
+        description: Response containing audience user rows.
+    admin:
+      - name: Account
+        description: A Google Analytics account containing properties.
+        properties: [name, displayName, regionCode, createTime, updateTime]
+      - name: Property
+        description: A GA4 property that collects analytics data.
+        properties: [name, displayName, timeZone, currencyCode, industryCategory, propertyType, serviceLevel, account]
+      - name: DataStream
+        description: A data collection stream (web, iOS, or Android).
+        properties: [name, type, displayName, webStreamData, androidAppStreamData, iosAppStreamData, measurementId]
+      - name: ConversionEvent
+        description: An event designated as a conversion.
+        properties: [name, eventName, countingMethod, custom, deletable]
+      - name: CustomDimension
+        description: A user-defined dimension for custom data attributes.
+        properties: [name, displayName, parameterName, scope, description]
+      - name: CustomMetric
+        description: A user-defined metric for custom measurements.
+        properties: [name, displayName, parameterName, measurementUnit, scope]
+      - name: FirebaseLink
+        description: A link between a GA4 property and a Firebase project.
+        properties: [name, project, createTime]
+      - name: GoogleAdsLink
+        description: A link between a GA4 property and a Google Ads account.
+        properties: [name, customerId, adsPersonalizationEnabled, canManageClients]
+      - name: MeasurementProtocolSecret
+        description: An API secret for authenticating Measurement Protocol requests.
+        properties: [name, displayName, secretValue]
+    events:
+      - name: MeasurementPayload
+        description: Payload for sending events via the Measurement Protocol.
+        properties: [client_id, user_id, events, user_properties, consent, timestamp_micros, device, user_location]
+      - name: Event
+        description: A single user interaction event.
+        properties: [name, params]
+      - name: ValidationResponse
+        description: Response from the debug endpoint with validation messages.
+        properties: [validationMessages]
+    compliance:
+      - name: UserDeletionRequest
+        description: A request to delete user data for privacy compliance.
+        properties: [id, propertyId, webPropertyId, firebaseProjectId, deletionRequestTime]
+      - name: UserDeletionId
+        description: Identifier for the user whose data should be deleted.
+        properties: [type, userId]
+
+  parameters:
+    pagination:
+      - name: pageSize
+        description: Maximum number of results per page.
+      - name: pageToken
+        description: Token for retrieving the next page of results.
+      - name: limit
+        description: Maximum number of rows to return (used in query request bodies).
+      - name: offset
+        description: Number of rows to skip before returning results.
+    identifiers:
+      - name: property
+        description: GA4 property identifier (e.g., properties/1234).
+      - name: parent
+        description: Parent resource identifier for child resource operations.
+      - name: name
+        description: Full resource name for single-resource operations.
+      - name: account
+        description: Account identifier (e.g., accounts/100).
+      - name: entity
+        description: Entity identifier for access reports (property or account).
+    filters:
+      - name: filter
+        description: Expression for filtering list results.
+      - name: showDeleted
+        description: Whether to include soft-deleted resources.
+      - name: updateMask
+        description: Fields to update in a patch operation.
+    measurement:
+      - name: api_secret
+        description: Measurement Protocol API secret for authentication.
+      - name: measurement_id
+        description: Measurement ID for web data streams.
+      - name: firebase_app_id
+        description: Firebase App ID for app data streams.
+
+  enums:
+    states:
+      - CREATING
+      - ACTIVE
+      - FAILED
+    compatibility:
+      - COMPATIBLE
+      - INCOMPATIBLE
+    scopes:
+      - EVENT
+      - USER
+      - ITEM
+    data-stream-types:
+      - WEB_DATA_STREAM
+      - ANDROID_APP_DATA_STREAM
+      - IOS_APP_DATA_STREAM
+    property-types:
+      - PROPERTY_TYPE_ORDINARY
+      - PROPERTY_TYPE_SUBPROPERTY
+      - PROPERTY_TYPE_ROLLUP
+    service-levels:
+      - GOOGLE_ANALYTICS_STANDARD
+      - GOOGLE_ANALYTICS_360
+    measurement-units:
+      - STANDARD
+      - CURRENCY
+      - FEET
+      - METERS
+      - KILOMETERS
+      - MILES
+      - MILLISECONDS
+      - SECONDS
+      - MINUTES
+      - HOURS
+    conversion-counting:
+      - ONCE_PER_EVENT
+      - ONCE_PER_SESSION
+    consent:
+      - GRANTED
+      - DENIED
+    user-id-types:
+      - CLIENT_ID
+      - USER_ID
+      - APP_INSTANCE_ID
+    change-actions:
+      - CREATED
+      - UPDATED
+      - DELETED
+    metric-aggregations:
+      - TOTAL
+      - MINIMUM
+      - MAXIMUM
+      - COUNT
+    validation-codes:
+      - VALUE_INVALID
+      - VALUE_REQUIRED
+      - NAME_INVALID
+      - NAME_RESERVED
+      - VALUE_OUT_OF_BOUNDS
+      - EXCEEDED_MAX_ENTITIES
+      - NAME_DUPLICATED
+
+  authentication:
+    schemes:
+      - type: oauth2
+        flows: [implicit, authorization_code]
+        scopes:
+          - name: analytics
+            url: https://www.googleapis.com/auth/analytics
+            access: read-write
+            apis: [ga-data-api, ga-reporting-api-v4, ga-management-api-v3]
+          - name: analytics.readonly
+            url: https://www.googleapis.com/auth/analytics.readonly
+            access: read-only
+            apis: [ga-data-api, ga-admin-api, ga-reporting-api-v4, ga-management-api-v3]
+          - name: analytics.edit
+            url: https://www.googleapis.com/auth/analytics.edit
+            access: read-write
+            apis: [ga-admin-api, ga-management-api-v3]
+          - name: analytics.user.deletion
+            url: https://www.googleapis.com/auth/analytics.user.deletion
+            access: write
+            apis: [ga-user-deletion-api]
+      - type: apikey
+        parameter: api_secret
+        placement: query
+        apis: [ga-measurement-protocol]
+
+# ============================================================
+# CAPABILITY DIMENSION (from Naftiko)
+# How the API is composed into customer-facing workflows
+# ============================================================
+
+capability:
+
+  workflows:
+    - name: Reporting and Insights
+      file: capabilities/reporting-and-insights.yaml
+      description: Run standard, realtime, pivot, and batch reports with data access auditing.
+      apis: [ga-data-api, ga-admin-api]
+      tools: 7
+      personas: [data-analyst, marketing-team, bi-engineer]
+      domains: [reports, compatibility, access-reports]
+    - name: Configuration Management
+      file: capabilities/configuration-management.yaml
+      description: Manage accounts, properties, data streams, custom dimensions/metrics, and conversion events.
+      apis: [ga-admin-api]
+      tools: 16
+      personas: [analytics-administrator, platform-engineer]
+      domains: [accounts, properties, data-streams, custom-dimensions, custom-metrics, conversion-events, change-history]
+    - name: Integrations and Linking
+      file: capabilities/integrations-and-linking.yaml
+      description: Connect GA4 with Firebase, Google Ads, and manage measurement protocol secrets.
+      apis: [ga-admin-api]
+      tools: 9
+      personas: [platform-engineer, marketing-ops]
+      domains: [firebase-links, google-ads-links, measurement-protocol-secrets]
+    - name: Event Collection
+      file: capabilities/event-collection.yaml
+      description: Server-side event tracking with data stream and secret management.
+      apis: [ga-measurement-protocol, ga-admin-api]
+      tools: 7
+      personas: [backend-engineer, marketing-ops]
+      domains: [events, data-streams, measurement-protocol-secrets]
+    - name: Audience Management
+      file: capabilities/audience-management.yaml
+      description: Create, export, and query GA4 audience segments.
+      apis: [ga-data-api, ga-admin-api]
+      tools: 5
+      personas: [marketing-team, data-analyst]
+      domains: [audience-exports, properties]
+    - name: Compliance and Privacy
+      file: capabilities/compliance.yaml
+      description: User data deletion, access auditing, and data collection acknowledgement.
+      apis: [ga-user-deletion-api, ga-admin-api]
+      tools: 4
+      personas: [privacy-officer, compliance-team, data-protection-engineer]
+      domains: [user-deletion-requests, access-reports, change-history]
+
+  personas:
+    - id: data-analyst
+      name: Data Analyst
+      description: Extracts insights from GA4 data through reports and explorations.
+      workflows: [Reporting and Insights, Audience Management]
+    - id: marketing-team
+      name: Marketing Team
+      description: Measures campaign performance, segments audiences, and tracks conversions.
+      workflows: [Reporting and Insights, Audience Management]
+    - id: bi-engineer
+      name: BI Engineer
+      description: Builds automated reporting pipelines and dashboards from GA4 data.
+      workflows: [Reporting and Insights]
+    - id: analytics-administrator
+      name: Analytics Administrator
+      description: Sets up and maintains GA4 accounts, properties, and configurations.
+      workflows: [Configuration Management]
+    - id: platform-engineer
+      name: Platform Engineer
+      description: Integrates GA4 with other platforms and manages infrastructure.
+      workflows: [Configuration Management, Integrations and Linking]
+    - id: marketing-ops
+      name: Marketing Operations
+      description: Connects advertising platforms and implements server-side tracking.
+      workflows: [Integrations and Linking, Event Collection]
+    - id: backend-engineer
+      name: Backend Engineer
+      description: Implements server-side event tracking and offline data collection.
+      workflows: [Event Collection]
+    - id: privacy-officer
+      name: Privacy Officer
+      description: Manages data privacy compliance including GDPR deletion requests.
+      workflows: [Compliance and Privacy]
+    - id: compliance-team
+      name: Compliance Team
+      description: Audits data access and monitors configuration changes.
+      workflows: [Compliance and Privacy]
+    - id: data-protection-engineer
+      name: Data Protection Engineer
+      description: Implements privacy-compliant data handling and deletion workflows.
+      workflows: [Compliance and Privacy]
+
+  domains:
+    - name: reports
+      description: Querying and analyzing GA4 event data through various report types.
+      resources: [reports, audience-exports]
+      workflows: [Reporting and Insights]
+    - name: configuration
+      description: Setting up and maintaining GA4 account and property structure.
+      resources: [accounts, account-summaries, properties, data-streams, custom-dimensions, custom-metrics, conversion-events]
+      workflows: [Configuration Management]
+    - name: integrations
+      description: Connecting GA4 with advertising, app, and measurement platforms.
+      resources: [firebase-links, google-ads-links, measurement-protocol-secrets]
+      workflows: [Integrations and Linking]
+    - name: collection
+      description: Ingesting events from servers, apps, and offline sources.
+      resources: [events, data-streams, measurement-protocol-secrets]
+      workflows: [Event Collection]
+    - name: audiences
+      description: Segmenting and exporting user populations for analysis and activation.
+      resources: [audience-exports, properties]
+      workflows: [Audience Management]
+    - name: compliance
+      description: Managing data privacy, deletion, and access auditing.
+      resources: [user-deletion-requests]
+      workflows: [Compliance and Privacy]
+
+  namespaces:
+    consumed:
+      - ga-data-api
+      - ga-admin-api
+      - ga-measurement-protocol
+      - ga-user-deletion-api
+    rest:
+      - namespace: ga-reporting-api
+        port: 8080
+        workflow: Reporting and Insights
+      - namespace: ga-config-api
+        port: 8081
+        workflow: Configuration Management
+      - namespace: ga-integrations-api
+        port: 8082
+        workflow: Integrations and Linking
+      - namespace: ga-collection-api
+        port: 8083
+        workflow: Event Collection
+      - namespace: ga-audience-api
+        port: 8084
+        workflow: Audience Management
+      - namespace: ga-compliance-api
+        port: 8085
+        workflow: Compliance and Privacy
+    mcp:
+      - namespace: ga-reporting-mcp
+        port: 9080
+        workflow: Reporting and Insights
+      - namespace: ga-config-mcp
+        port: 9081
+        workflow: Configuration Management
+      - namespace: ga-integrations-mcp
+        port: 9082
+        workflow: Integrations and Linking
+      - namespace: ga-collection-mcp
+        port: 9083
+        workflow: Event Collection
+      - namespace: ga-audience-mcp
+        port: 9084
+        workflow: Audience Management
+      - namespace: ga-compliance-mcp
+        port: 9085
+        workflow: Compliance and Privacy
+
+  binds:
+    - name: GOOGLE_ANALYTICS_ACCESS_TOKEN
+      description: OAuth 2.0 access token for Admin, Data, and User Deletion APIs.
+      workflows: [Reporting and Insights, Configuration Management, Integrations and Linking, Event Collection, Audience Management, Compliance and Privacy]
+    - name: GOOGLE_ANALYTICS_API_SECRET
+      description: Measurement Protocol API secret for event collection.
+      workflows: [Event Collection]
+    - name: GOOGLE_ANALYTICS_MEASUREMENT_ID
+      description: Measurement ID for web data stream event collection.
+      workflows: [Event Collection]
+
+# ============================================================
+# CROSS-REFERENCE
+# Maps operational resources to capability workflows
+# ============================================================
+
+crossReference:
+  - resource: reports
+    operations: [run-report, run-realtime-report, run-pivot-report, batch-run-reports, batch-run-pivot-reports, check-compatibility]
+    workflows: [Reporting and Insights]
+    personas: [data-analyst, marketing-team, bi-engineer]
+  - resource: audience-exports
+    operations: [create-audience-export, get-audience-export, list-audience-exports, query-audience-export]
+    workflows: [Audience Management]
+    personas: [marketing-team, data-analyst]
+  - resource: accounts
+    operations: [list-accounts, list-account-summaries, provision-account-ticket, search-change-history-events]
+    workflows: [Configuration Management, Compliance and Privacy]
+    personas: [analytics-administrator, compliance-team]
+  - resource: properties
+    operations: [list-properties, create-property, run-access-report, acknowledge-user-data-collection]
+    workflows: [Configuration Management, Audience Management, Compliance and Privacy, Event Collection]
+    personas: [analytics-administrator, platform-engineer, privacy-officer]
+  - resource: conversion-events
+    operations: [list-conversion-events, create-conversion-event]
+    workflows: [Configuration Management]
+    personas: [analytics-administrator]
+  - resource: custom-dimensions
+    operations: [list-custom-dimensions, create-custom-dimension]
+    workflows: [Configuration Management]
+    personas: [analytics-administrator]
+  - resource: custom-metrics
+    operations: [list-custom-metrics, create-custom-metric, archive-custom-metric]
+    workflows: [Configuration Management]
+    personas: [analytics-administrator]
+  - resource: data-streams
+    operations: [list-data-streams, create-data-stream]
+    workflows: [Configuration Management, Event Collection]
+    personas: [analytics-administrator, backend-engineer]
+  - resource: firebase-links
+    operations: [list-firebase-links, create-firebase-link]
+    workflows: [Integrations and Linking]
+    personas: [platform-engineer]
+  - resource: google-ads-links
+    operations: [list-google-ads-links, create-google-ads-link, update-google-ads-link, delete-google-ads-link]
+    workflows: [Integrations and Linking]
+    personas: [platform-engineer, marketing-ops]
+  - resource: measurement-protocol-secrets
+    operations: [list-measurement-protocol-secrets, create-measurement-protocol-secret, get-measurement-protocol-secret]
+    workflows: [Integrations and Linking, Event Collection]
+    personas: [platform-engineer, backend-engineer]
+  - resource: events
+    operations: [send-events, validate-events]
+    workflows: [Event Collection]
+    personas: [backend-engineer, marketing-ops]
+  - resource: user-deletion-requests
+    operations: [upsert-user-deletion-request]
+    workflows: [Compliance and Privacy]
+    personas: [privacy-officer, data-protection-engineer]

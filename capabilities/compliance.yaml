@@ -1,0 +1,140 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Google Analytics Compliance and Privacy"
+  description: "Unified workflow for managing data privacy and compliance across Google Analytics. Combines the User Deletion API for GDPR/privacy compliance with the Admin API for data access auditing and user data collection acknowledgement. Used by privacy officers, compliance teams, and data protection engineers."
+  tags:
+    - Google Analytics
+    - Compliance
+    - Privacy
+    - GDPR
+    - Data Protection
+  created: "2026-04-17"
+  modified: "2026-04-17"
+
+binds:
+  - namespace: env
+    keys:
+      GOOGLE_ANALYTICS_ACCESS_TOKEN: GOOGLE_ANALYTICS_ACCESS_TOKEN
+
+capability:
+  consumes:
+    - import: ga-user-deletion-api
+      location: ./shared/user-deletion-api.yaml
+    - import: ga-admin-api
+      location: ./shared/admin-api.yaml
+
+  exposes:
+    - type: rest
+      port: 8085
+      namespace: ga-compliance-api
+      description: "Unified REST API for Google Analytics compliance and privacy management."
+      resources:
+        - path: /v1/user-deletion-requests
+          name: user-deletion-requests
+          description: "Manage user data deletion requests"
+          operations:
+            - method: POST
+              name: upsert-user-deletion-request
+              description: "Submit a user data deletion request"
+              call: "ga-user-deletion-api.upsert-user-deletion-request"
+              with:
+                id_type: "rest.id_type"
+                user_id: "rest.user_id"
+                property_id: "rest.property_id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/access-reports
+          name: access-reports
+          description: "Audit data access"
+          operations:
+            - method: POST
+              name: run-access-report
+              description: "Report on who accessed GA4 reporting data"
+              call: "ga-admin-api.run-access-report"
+              with:
+                entity: "rest.entity"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/change-history
+          name: change-history
+          description: "Audit configuration changes"
+          operations:
+            - method: POST
+              name: search-change-history-events
+              description: "Search through account configuration changes"
+              call: "ga-admin-api.search-change-history-events"
+              with:
+                account: "rest.account"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/data-collection-acknowledgement
+          name: data-collection
+          description: "Manage user data collection acknowledgement"
+          operations:
+            - method: POST
+              name: acknowledge-user-data-collection
+              description: "Acknowledge user data collection terms"
+              call: "ga-admin-api.acknowledge-user-data-collection"
+              with:
+                property: "rest.property"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9085
+      namespace: ga-compliance-mcp
+      transport: http
+      description: "MCP server for AI-assisted Google Analytics compliance and privacy management."
+      tools:
+        - name: upsert-user-deletion-request
+          description: "Submit a user data deletion request for GDPR/privacy compliance"
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "ga-user-deletion-api.upsert-user-deletion-request"
+          with:
+            id_type: "tools.id_type"
+            user_id: "tools.user_id"
+            property_id: "tools.property_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: run-access-report
+          description: "Audit who accessed Google Analytics reporting data and when"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "ga-admin-api.run-access-report"
+          with:
+            entity: "tools.entity"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: search-change-history-events
+          description: "Audit all configuration changes to an account for compliance tracking"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "ga-admin-api.search-change-history-events"
+          with:
+            account: "tools.account"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: acknowledge-user-data-collection
+          description: "Acknowledge terms of user data collection for a GA4 property"
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "ga-admin-api.acknowledge-user-data-collection"
+          with:
+            property: "tools.property"
+          outputParameters:
+            - type: object
+              mapping: "$."

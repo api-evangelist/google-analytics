@@ -1,0 +1,151 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Google Analytics Audience Management"
+  description: "Unified workflow for creating, exporting, and analyzing GA4 audiences. Combines the Data API audience export capabilities with Admin API property configuration. Used by marketing teams and data analysts for audience segmentation, export, and activation."
+  tags:
+    - Google Analytics
+    - Audiences
+    - Segmentation
+    - Export
+    - Marketing
+  created: "2026-04-17"
+  modified: "2026-04-17"
+
+binds:
+  - namespace: env
+    keys:
+      GOOGLE_ANALYTICS_ACCESS_TOKEN: GOOGLE_ANALYTICS_ACCESS_TOKEN
+
+capability:
+  consumes:
+    - import: ga-data-api
+      location: ./shared/data-api.yaml
+    - import: ga-admin-api
+      location: ./shared/admin-api.yaml
+
+  exposes:
+    - type: rest
+      port: 8084
+      namespace: ga-audience-api
+      description: "Unified REST API for Google Analytics audience management."
+      resources:
+        - path: /v1/audience-exports
+          name: audience-exports
+          description: "Create and list audience exports"
+          operations:
+            - method: POST
+              name: create-audience-export
+              description: "Create an audience export"
+              call: "ga-data-api.create-audience-export"
+              with:
+                parent: "rest.parent"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: GET
+              name: list-audience-exports
+              description: "List audience exports"
+              call: "ga-data-api.list-audience-exports"
+              with:
+                parent: "rest.parent"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/audience-exports/{id}
+          name: audience-export
+          description: "Get a specific audience export"
+          operations:
+            - method: GET
+              name: get-audience-export
+              description: "Get audience export details"
+              call: "ga-data-api.get-audience-export"
+              with:
+                name: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/audience-exports/{id}/users
+          name: audience-export-users
+          description: "Retrieve users from an audience export"
+          operations:
+            - method: POST
+              name: query-audience-export
+              description: "Query users from an audience export"
+              call: "ga-data-api.query-audience-export"
+              with:
+                name: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/properties
+          name: properties
+          description: "List properties for audience context"
+          operations:
+            - method: GET
+              name: list-properties
+              description: "List GA4 properties"
+              call: "ga-admin-api.list-properties"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9084
+      namespace: ga-audience-mcp
+      transport: http
+      description: "MCP server for AI-assisted Google Analytics audience management."
+      tools:
+        - name: create-audience-export
+          description: "Create an audience export for a GA4 property"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "ga-data-api.create-audience-export"
+          with:
+            parent: "tools.parent"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-audience-export
+          description: "Get metadata about a specific audience export"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "ga-data-api.get-audience-export"
+          with:
+            name: "tools.name"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-audience-exports
+          description: "List all audience exports for a property"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "ga-data-api.list-audience-exports"
+          with:
+            parent: "tools.parent"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: query-audience-export
+          description: "Retrieve users from a completed audience export"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "ga-data-api.query-audience-export"
+          with:
+            name: "tools.name"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-properties
+          description: "List GA4 properties to identify available audiences"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "ga-admin-api.list-properties"
+          outputParameters:
+            - type: object
+              mapping: "$."

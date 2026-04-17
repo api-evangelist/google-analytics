@@ -1,0 +1,122 @@
+openapi: 3.0.3
+info:
+  title: Google Analytics User Deletion API
+  description: >-
+    The Google Analytics User Deletion API enables removal of data linked to
+    specific user identifiers, supporting compliance with data protection and
+    privacy requirements such as GDPR. Supports deletion by CLIENT_ID, USER_ID,
+    and APP_INSTANCE_ID. Data appears in Individual User Reports within 72
+    hours and complete deletion occurs during bimonthly processes.
+  version: v3
+  contact:
+    name: Google Analytics
+    url: https://developers.google.com/analytics
+  license:
+    name: Google APIs Terms of Service
+    url: https://developers.google.com/analytics/terms
+  x-logo:
+    url: https://www.google.com/analytics/images/google-analytics-logo.png
+externalDocs:
+  description: User Deletion API documentation
+  url: https://developers.google.com/analytics/devguides/config/userdeletion/v3
+servers:
+  - url: https://www.googleapis.com/analytics/v3
+    description: Google Analytics API v3
+paths:
+  /userDeletion/userDeletionRequests:upsert:
+    post:
+      operationId: upsertUserDeletionRequest
+      summary: Insert or update a user deletion request
+      description: >-
+        Inserts or updates a user deletion request. Submitting a deletion
+        request for a user that already has a pending request will update the
+        existing request. The User Deletion API does not remove data from
+        reports based on previously aggregated data or exported datasets like
+        BigQuery.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDeletionRequest'
+      responses:
+        '200':
+          description: Successful user deletion request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDeletionRequest'
+        '400':
+          description: Invalid request - malformed body or invalid ID type
+        '401':
+          description: Authentication required
+        '403':
+          description: Insufficient permissions - missing required OAuth scope
+      security:
+        - oauth2:
+            - https://www.googleapis.com/auth/analytics.user.deletion
+      tags:
+        - User Deletion
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/analytics.user.deletion: >-
+              Delete user data from Google Analytics
+  schemas:
+    UserDeletionRequest:
+      type: object
+      required:
+        - id
+      properties:
+        kind:
+          type: string
+          description: Resource type identifier.
+          default: analytics#userDeletionRequest
+          readOnly: true
+        id:
+          $ref: '#/components/schemas/UserDeletionId'
+        webPropertyId:
+          type: string
+          description: >-
+            The Web Property ID for a Universal Analytics property. Required
+            for Universal Analytics properties.
+        firebaseProjectId:
+          type: string
+          description: >-
+            The Firebase Project ID. Required for app streams using
+            APP_INSTANCE_ID.
+        propertyId:
+          type: string
+          description: The GA4 property ID.
+        deletionRequestTime:
+          type: string
+          format: date-time
+          description: >-
+            The time when the deletion request was submitted. Set by the
+            server.
+          readOnly: true
+    UserDeletionId:
+      type: object
+      required:
+        - type
+        - userId
+      properties:
+        type:
+          type: string
+          description: The type of user identifier.
+          enum:
+            - CLIENT_ID
+            - USER_ID
+            - APP_INSTANCE_ID
+        userId:
+          type: string
+          description: >-
+            The actual user identifier value corresponding to the specified
+            type.

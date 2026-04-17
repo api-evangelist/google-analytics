@@ -1,0 +1,92 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Google Analytics User Deletion API"
+  description: "Remove data linked to specific user identifiers in Google Analytics for GDPR and data privacy compliance."
+  tags:
+    - Google Analytics
+    - User Deletion
+    - Privacy
+    - GDPR
+    - Compliance
+  created: "2026-04-17"
+  modified: "2026-04-17"
+
+binds:
+  - namespace: env
+    keys:
+      GOOGLE_ANALYTICS_ACCESS_TOKEN: GOOGLE_ANALYTICS_ACCESS_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: ga-user-deletion-api
+      baseUri: https://www.googleapis.com/analytics/v3
+      description: "User Deletion API for removing user data from Google Analytics."
+      authentication:
+        type: bearer
+        token: "{{GOOGLE_ANALYTICS_ACCESS_TOKEN}}"
+      resources:
+        - name: user-deletion
+          path: /
+          description: "Manage user data deletion requests."
+          operations:
+            - name: upsert-user-deletion-request
+              method: POST
+              path: /userDeletion/userDeletionRequests:upsert
+              description: "Insert or update a user deletion request."
+              body:
+                type: json
+                data:
+                  id:
+                    type: "{{tools.id_type}}"
+                    userId: "{{tools.user_id}}"
+                  webPropertyId: "{{tools.web_property_id}}"
+                  firebaseProjectId: "{{tools.firebase_project_id}}"
+                  propertyId: "{{tools.property_id}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8103
+      namespace: ga-user-deletion-rest
+      resources:
+        - path: /v1/user-deletion-requests
+          name: user-deletion-requests
+          description: "Manage user data deletion requests"
+          operations:
+            - method: POST
+              name: upsert-user-deletion-request
+              description: "Create or update a user deletion request"
+              call: "ga-user-deletion-api.upsert-user-deletion-request"
+              with:
+                id_type: "rest.id_type"
+                user_id: "rest.user_id"
+                property_id: "rest.property_id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9103
+      namespace: ga-user-deletion-mcp
+      transport: http
+      tools:
+        - name: upsert-user-deletion-request
+          description: "Submit a user data deletion request for GDPR/privacy compliance"
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "ga-user-deletion-api.upsert-user-deletion-request"
+          with:
+            id_type: "tools.id_type"
+            user_id: "tools.user_id"
+            property_id: "tools.property_id"
+          outputParameters:
+            - type: object
+              mapping: "$."

@@ -1,0 +1,238 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Google Analytics Integrations and Linking"
+  description: "Unified workflow for managing GA4 integration links with Firebase, Google Ads, and measurement protocol secrets. Used by platform engineers and marketing ops teams to connect GA4 with advertising and app platforms."
+  tags:
+    - Google Analytics
+    - Integrations
+    - Firebase
+    - Google Ads
+    - Linking
+  created: "2026-04-17"
+  modified: "2026-04-17"
+
+binds:
+  - namespace: env
+    keys:
+      GOOGLE_ANALYTICS_ACCESS_TOKEN: GOOGLE_ANALYTICS_ACCESS_TOKEN
+
+capability:
+  consumes:
+    - import: ga-admin-api
+      location: ./shared/admin-api.yaml
+
+  exposes:
+    - type: rest
+      port: 8082
+      namespace: ga-integrations-api
+      description: "Unified REST API for Google Analytics integration management."
+      resources:
+        - path: /v1/firebase-links
+          name: firebase-links
+          description: "Manage Firebase integration links"
+          operations:
+            - method: GET
+              name: list-firebase-links
+              description: "List Firebase links on a property"
+              call: "ga-admin-api.list-firebase-links"
+              with:
+                parent: "rest.parent"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-firebase-link
+              description: "Create a Firebase link"
+              call: "ga-admin-api.create-firebase-link"
+              with:
+                parent: "rest.parent"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/google-ads-links
+          name: google-ads-links
+          description: "Manage Google Ads integration links"
+          operations:
+            - method: GET
+              name: list-google-ads-links
+              description: "List Google Ads links on a property"
+              call: "ga-admin-api.list-google-ads-links"
+              with:
+                parent: "rest.parent"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-google-ads-link
+              description: "Create a Google Ads link"
+              call: "ga-admin-api.create-google-ads-link"
+              with:
+                parent: "rest.parent"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/google-ads-links/{id}
+          name: google-ads-link
+          description: "Manage a specific Google Ads link"
+          operations:
+            - method: PATCH
+              name: update-google-ads-link
+              description: "Update a Google Ads link"
+              call: "ga-admin-api.update-google-ads-link"
+              with:
+                name: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: delete-google-ads-link
+              description: "Delete a Google Ads link"
+              call: "ga-admin-api.delete-google-ads-link"
+              with:
+                name: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/measurement-protocol-secrets
+          name: measurement-protocol-secrets
+          description: "Manage measurement protocol secrets"
+          operations:
+            - method: GET
+              name: list-measurement-protocol-secrets
+              description: "List measurement protocol secrets"
+              call: "ga-admin-api.list-measurement-protocol-secrets"
+              with:
+                parent: "rest.parent"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-measurement-protocol-secret
+              description: "Create a measurement protocol secret"
+              call: "ga-admin-api.create-measurement-protocol-secret"
+              with:
+                parent: "rest.parent"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/measurement-protocol-secrets/{id}
+          name: measurement-protocol-secret
+          description: "Get a specific measurement protocol secret"
+          operations:
+            - method: GET
+              name: get-measurement-protocol-secret
+              description: "Get a measurement protocol secret"
+              call: "ga-admin-api.get-measurement-protocol-secret"
+              with:
+                name: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9082
+      namespace: ga-integrations-mcp
+      transport: http
+      description: "MCP server for AI-assisted Google Analytics integration management."
+      tools:
+        - name: list-firebase-links
+          description: "List Firebase links on a GA4 property"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "ga-admin-api.list-firebase-links"
+          with:
+            parent: "tools.parent"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-firebase-link
+          description: "Create a Firebase integration link on a GA4 property"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "ga-admin-api.create-firebase-link"
+          with:
+            parent: "tools.parent"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-google-ads-links
+          description: "List Google Ads links on a GA4 property"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "ga-admin-api.list-google-ads-links"
+          with:
+            parent: "tools.parent"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-google-ads-link
+          description: "Create a Google Ads integration link on a GA4 property"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "ga-admin-api.create-google-ads-link"
+          with:
+            parent: "tools.parent"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: update-google-ads-link
+          description: "Update a Google Ads link configuration"
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "ga-admin-api.update-google-ads-link"
+          with:
+            name: "tools.name"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: delete-google-ads-link
+          description: "Delete a Google Ads integration link"
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "ga-admin-api.delete-google-ads-link"
+          with:
+            name: "tools.name"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-measurement-protocol-secrets
+          description: "List measurement protocol secrets for a data stream"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "ga-admin-api.list-measurement-protocol-secrets"
+          with:
+            parent: "tools.parent"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-measurement-protocol-secret
+          description: "Create a measurement protocol secret for server-side tracking"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "ga-admin-api.create-measurement-protocol-secret"
+          with:
+            parent: "tools.parent"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-measurement-protocol-secret
+          description: "Get details of a specific measurement protocol secret"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "ga-admin-api.get-measurement-protocol-secret"
+          with:
+            name: "tools.name"
+          outputParameters:
+            - type: object
+              mapping: "$."

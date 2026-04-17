@@ -1,0 +1,345 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Google Analytics Configuration Management"
+  description: "Unified workflow for managing GA4 property configuration including accounts, properties, data streams, custom dimensions and metrics, conversion events, and integration links. Used by analytics administrators and platform engineers to set up and maintain GA4 properties."
+  tags:
+    - Google Analytics
+    - Configuration
+    - Admin
+    - Management
+    - GA4
+  created: "2026-04-17"
+  modified: "2026-04-17"
+
+binds:
+  - namespace: env
+    keys:
+      GOOGLE_ANALYTICS_ACCESS_TOKEN: GOOGLE_ANALYTICS_ACCESS_TOKEN
+
+capability:
+  consumes:
+    - import: ga-admin-api
+      location: ./shared/admin-api.yaml
+
+  exposes:
+    - type: rest
+      port: 8081
+      namespace: ga-config-api
+      description: "Unified REST API for Google Analytics configuration management."
+      resources:
+        - path: /v1/accounts
+          name: accounts
+          description: "Manage GA4 accounts"
+          operations:
+            - method: GET
+              name: list-accounts
+              description: "List all accessible accounts"
+              call: "ga-admin-api.list-accounts"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/account-summaries
+          name: account-summaries
+          description: "View account summaries"
+          operations:
+            - method: GET
+              name: list-account-summaries
+              description: "List summaries of all accessible accounts"
+              call: "ga-admin-api.list-account-summaries"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/properties
+          name: properties
+          description: "Manage GA4 properties"
+          operations:
+            - method: GET
+              name: list-properties
+              description: "List GA4 properties"
+              call: "ga-admin-api.list-properties"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-property
+              description: "Create a GA4 property"
+              call: "ga-admin-api.create-property"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/data-streams
+          name: data-streams
+          description: "Manage data streams"
+          operations:
+            - method: GET
+              name: list-data-streams
+              description: "List data streams on a property"
+              call: "ga-admin-api.list-data-streams"
+              with:
+                parent: "rest.parent"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-data-stream
+              description: "Create a data stream"
+              call: "ga-admin-api.create-data-stream"
+              with:
+                parent: "rest.parent"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/custom-dimensions
+          name: custom-dimensions
+          description: "Manage custom dimensions"
+          operations:
+            - method: GET
+              name: list-custom-dimensions
+              description: "List custom dimensions"
+              call: "ga-admin-api.list-custom-dimensions"
+              with:
+                parent: "rest.parent"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-custom-dimension
+              description: "Create a custom dimension"
+              call: "ga-admin-api.create-custom-dimension"
+              with:
+                parent: "rest.parent"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/custom-metrics
+          name: custom-metrics
+          description: "Manage custom metrics"
+          operations:
+            - method: GET
+              name: list-custom-metrics
+              description: "List custom metrics"
+              call: "ga-admin-api.list-custom-metrics"
+              with:
+                parent: "rest.parent"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-custom-metric
+              description: "Create a custom metric"
+              call: "ga-admin-api.create-custom-metric"
+              with:
+                parent: "rest.parent"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/conversion-events
+          name: conversion-events
+          description: "Manage conversion events"
+          operations:
+            - method: GET
+              name: list-conversion-events
+              description: "List conversion events"
+              call: "ga-admin-api.list-conversion-events"
+              with:
+                parent: "rest.parent"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-conversion-event
+              description: "Create a conversion event"
+              call: "ga-admin-api.create-conversion-event"
+              with:
+                parent: "rest.parent"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/change-history
+          name: change-history
+          description: "Search change history"
+          operations:
+            - method: POST
+              name: search-change-history-events
+              description: "Search through account changes"
+              call: "ga-admin-api.search-change-history-events"
+              with:
+                account: "rest.account"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9081
+      namespace: ga-config-mcp
+      transport: http
+      description: "MCP server for AI-assisted Google Analytics configuration management."
+      tools:
+        - name: list-accounts
+          description: "List all accessible Google Analytics accounts"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "ga-admin-api.list-accounts"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-account-summaries
+          description: "List summaries of all accessible accounts with their properties"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "ga-admin-api.list-account-summaries"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: provision-account-ticket
+          description: "Request a ticket for creating a new account"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "ga-admin-api.provision-account-ticket"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-properties
+          description: "List GA4 properties for an account"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "ga-admin-api.list-properties"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-property
+          description: "Create a new GA4 property"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "ga-admin-api.create-property"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-data-streams
+          description: "List data streams on a property"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "ga-admin-api.list-data-streams"
+          with:
+            parent: "tools.parent"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-data-stream
+          description: "Create a new data stream on a property"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "ga-admin-api.create-data-stream"
+          with:
+            parent: "tools.parent"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-custom-dimensions
+          description: "List custom dimensions on a property"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "ga-admin-api.list-custom-dimensions"
+          with:
+            parent: "tools.parent"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-custom-dimension
+          description: "Create a custom dimension on a property"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "ga-admin-api.create-custom-dimension"
+          with:
+            parent: "tools.parent"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-custom-metrics
+          description: "List custom metrics on a property"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "ga-admin-api.list-custom-metrics"
+          with:
+            parent: "tools.parent"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-custom-metric
+          description: "Create a custom metric on a property"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "ga-admin-api.create-custom-metric"
+          with:
+            parent: "tools.parent"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: archive-custom-metric
+          description: "Archive a custom metric on a property"
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "ga-admin-api.archive-custom-metric"
+          with:
+            name: "tools.name"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-conversion-events
+          description: "List conversion events on a property"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "ga-admin-api.list-conversion-events"
+          with:
+            parent: "tools.parent"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-conversion-event
+          description: "Create a conversion event on a property"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "ga-admin-api.create-conversion-event"
+          with:
+            parent: "tools.parent"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: search-change-history-events
+          description: "Search through all changes to an account or its children"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "ga-admin-api.search-change-history-events"
+          with:
+            account: "tools.account"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: acknowledge-user-data-collection
+          description: "Acknowledge terms of user data collection for a property"
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "ga-admin-api.acknowledge-user-data-collection"
+          with:
+            property: "tools.property"
+          outputParameters:
+            - type: object
+              mapping: "$."

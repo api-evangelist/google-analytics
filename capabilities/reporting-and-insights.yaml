@@ -1,0 +1,207 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Google Analytics Reporting and Insights"
+  description: "Unified reporting workflow combining the Data API for running standard, realtime, and pivot reports with the Admin API for accessing data access audit reports. Used by data analysts, marketing teams, and BI engineers to extract insights from GA4 properties."
+  tags:
+    - Google Analytics
+    - Reporting
+    - Analytics
+    - Insights
+    - GA4
+  created: "2026-04-17"
+  modified: "2026-04-17"
+
+binds:
+  - namespace: env
+    keys:
+      GOOGLE_ANALYTICS_ACCESS_TOKEN: GOOGLE_ANALYTICS_ACCESS_TOKEN
+
+capability:
+  consumes:
+    - import: ga-data-api
+      location: ./shared/data-api.yaml
+    - import: ga-admin-api
+      location: ./shared/admin-api.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: ga-reporting-api
+      description: "Unified REST API for Google Analytics reporting and insights."
+      resources:
+        - path: /v1/reports
+          name: standard-reports
+          description: "Run standard GA4 reports"
+          operations:
+            - method: POST
+              name: run-report
+              description: "Run a customized report of GA4 event data"
+              call: "ga-data-api.run-report"
+              with:
+                property: "rest.property"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/reports/realtime
+          name: realtime-reports
+          description: "Run realtime GA4 reports"
+          operations:
+            - method: POST
+              name: run-realtime-report
+              description: "Run a realtime report showing events from the last 30 minutes"
+              call: "ga-data-api.run-realtime-report"
+              with:
+                property: "rest.property"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/reports/pivot
+          name: pivot-reports
+          description: "Run pivot reports for cross-tabulation analysis"
+          operations:
+            - method: POST
+              name: run-pivot-report
+              description: "Run a customized pivot report"
+              call: "ga-data-api.run-pivot-report"
+              with:
+                property: "rest.property"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/reports/batch
+          name: batch-reports
+          description: "Run multiple reports in a single batch request"
+          operations:
+            - method: POST
+              name: batch-run-reports
+              description: "Run up to 5 reports in a batch"
+              call: "ga-data-api.batch-run-reports"
+              with:
+                property: "rest.property"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/reports/pivot/batch
+          name: batch-pivot-reports
+          description: "Run multiple pivot reports in a single batch"
+          operations:
+            - method: POST
+              name: batch-run-pivot-reports
+              description: "Run up to 5 pivot reports in a batch"
+              call: "ga-data-api.batch-run-pivot-reports"
+              with:
+                property: "rest.property"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/compatibility
+          name: compatibility
+          description: "Check dimension and metric compatibility"
+          operations:
+            - method: POST
+              name: check-compatibility
+              description: "Verify dimensions and metrics can be used together"
+              call: "ga-data-api.check-compatibility"
+              with:
+                property: "rest.property"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/access-reports
+          name: access-reports
+          description: "Run data access audit reports"
+          operations:
+            - method: POST
+              name: run-access-report
+              description: "Report on who accessed GA4 reporting data"
+              call: "ga-admin-api.run-access-report"
+              with:
+                entity: "rest.entity"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9080
+      namespace: ga-reporting-mcp
+      transport: http
+      description: "MCP server for AI-assisted Google Analytics reporting and insights."
+      tools:
+        - name: run-report
+          description: "Run a standard GA4 report with dimensions, metrics, and date ranges"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "ga-data-api.run-report"
+          with:
+            property: "tools.property"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: run-realtime-report
+          description: "Run a realtime report showing events from the last 30 minutes"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "ga-data-api.run-realtime-report"
+          with:
+            property: "tools.property"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: run-pivot-report
+          description: "Run an advanced pivot table report for cross-tabulation analysis"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "ga-data-api.run-pivot-report"
+          with:
+            property: "tools.property"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: batch-run-reports
+          description: "Run up to 5 standard reports in a single batch request"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "ga-data-api.batch-run-reports"
+          with:
+            property: "tools.property"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: batch-run-pivot-reports
+          description: "Run up to 5 pivot reports in a single batch request"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "ga-data-api.batch-run-pivot-reports"
+          with:
+            property: "tools.property"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: check-compatibility
+          description: "Check if dimensions and metrics are compatible for a report"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "ga-data-api.check-compatibility"
+          with:
+            property: "tools.property"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: run-access-report
+          description: "Report on who accessed GA4 reporting data and when"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "ga-admin-api.run-access-report"
+          with:
+            entity: "tools.entity"
+          outputParameters:
+            - type: object
+              mapping: "$."

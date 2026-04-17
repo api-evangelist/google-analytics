@@ -1,0 +1,192 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Google Analytics Event Collection"
+  description: "Unified workflow for server-side event tracking combining the Measurement Protocol for sending events with the Admin API for managing measurement protocol secrets and data streams. Used by backend engineers and marketing ops teams to implement server-side tracking and offline event collection."
+  tags:
+    - Google Analytics
+    - Measurement Protocol
+    - Events
+    - Server Side
+    - Tracking
+  created: "2026-04-17"
+  modified: "2026-04-17"
+
+binds:
+  - namespace: env
+    keys:
+      GOOGLE_ANALYTICS_ACCESS_TOKEN: GOOGLE_ANALYTICS_ACCESS_TOKEN
+      GOOGLE_ANALYTICS_API_SECRET: GOOGLE_ANALYTICS_API_SECRET
+      GOOGLE_ANALYTICS_MEASUREMENT_ID: GOOGLE_ANALYTICS_MEASUREMENT_ID
+
+capability:
+  consumes:
+    - import: ga-measurement-protocol
+      location: ./shared/measurement-protocol.yaml
+    - import: ga-admin-api
+      location: ./shared/admin-api.yaml
+
+  exposes:
+    - type: rest
+      port: 8083
+      namespace: ga-collection-api
+      description: "Unified REST API for Google Analytics event collection and validation."
+      resources:
+        - path: /v1/events
+          name: events
+          description: "Send events to Google Analytics"
+          operations:
+            - method: POST
+              name: send-events
+              description: "Send events via Measurement Protocol"
+              call: "ga-measurement-protocol.send-events"
+              with:
+                api_secret: "rest.api_secret"
+                measurement_id: "rest.measurement_id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/events/validate
+          name: validate-events
+          description: "Validate events without sending"
+          operations:
+            - method: POST
+              name: validate-events
+              description: "Validate event payloads"
+              call: "ga-measurement-protocol.validate-events"
+              with:
+                api_secret: "rest.api_secret"
+                measurement_id: "rest.measurement_id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/data-streams
+          name: data-streams
+          description: "Manage data streams for event collection"
+          operations:
+            - method: GET
+              name: list-data-streams
+              description: "List data streams"
+              call: "ga-admin-api.list-data-streams"
+              with:
+                parent: "rest.parent"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-data-stream
+              description: "Create a data stream"
+              call: "ga-admin-api.create-data-stream"
+              with:
+                parent: "rest.parent"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/secrets
+          name: measurement-protocol-secrets
+          description: "Manage API secrets for Measurement Protocol"
+          operations:
+            - method: GET
+              name: list-measurement-protocol-secrets
+              description: "List measurement protocol secrets"
+              call: "ga-admin-api.list-measurement-protocol-secrets"
+              with:
+                parent: "rest.parent"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-measurement-protocol-secret
+              description: "Create a measurement protocol secret"
+              call: "ga-admin-api.create-measurement-protocol-secret"
+              with:
+                parent: "rest.parent"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9083
+      namespace: ga-collection-mcp
+      transport: http
+      description: "MCP server for AI-assisted Google Analytics event collection."
+      tools:
+        - name: send-events
+          description: "Send events to Google Analytics via Measurement Protocol"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "ga-measurement-protocol.send-events"
+          with:
+            api_secret: "tools.api_secret"
+            measurement_id: "tools.measurement_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: validate-events
+          description: "Validate event payloads without sending to Google Analytics"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "ga-measurement-protocol.validate-events"
+          with:
+            api_secret: "tools.api_secret"
+            measurement_id: "tools.measurement_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-data-streams
+          description: "List data streams for configuring event collection"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "ga-admin-api.list-data-streams"
+          with:
+            parent: "tools.parent"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-data-stream
+          description: "Create a new data stream for event collection"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "ga-admin-api.create-data-stream"
+          with:
+            parent: "tools.parent"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-measurement-protocol-secrets
+          description: "List API secrets for Measurement Protocol authentication"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "ga-admin-api.list-measurement-protocol-secrets"
+          with:
+            parent: "tools.parent"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-measurement-protocol-secret
+          description: "Create an API secret for Measurement Protocol authentication"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "ga-admin-api.create-measurement-protocol-secret"
+          with:
+            parent: "tools.parent"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: acknowledge-user-data-collection
+          description: "Acknowledge user data collection terms (required before creating secrets)"
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "ga-admin-api.acknowledge-user-data-collection"
+          with:
+            property: "tools.property"
+          outputParameters:
+            - type: object
+              mapping: "$."

@@ -1,0 +1,213 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "ga": "https://developers.google.com/analytics/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Account": "ga:Account",
+    "ChangeHistoryEvent": "ga:ChangeHistoryEvent",
+    "ConversionEvent": "ga:ConversionEvent",
+    "CustomDimension": "ga:CustomDimension",
+    "CustomMetric": "ga:CustomMetric",
+    "DataStream": "ga:DataStream",
+    "FirebaseLink": "ga:FirebaseLink",
+    "GoogleAdsLink": "ga:GoogleAdsLink",
+    "MeasurementProtocolSecret": "ga:MeasurementProtocolSecret",
+    "Property": "ga:Property",
+    "account": {
+      "@id": "ga:account",
+      "@type": "xsd:string"
+    },
+    "actorType": {
+      "@id": "ga:actorType",
+      "@type": "xsd:string"
+    },
+    "adsPersonalizationEnabled": {
+      "@id": "ga:adsPersonalizationEnabled",
+      "@type": "xsd:boolean"
+    },
+    "androidAppStreamData": {
+      "@id": "ga:androidAppStreamData",
+      "@type": "@id"
+    },
+    "bundleId": {
+      "@id": "ga:bundleId",
+      "@type": "xsd:string"
+    },
+    "canManageClients": {
+      "@id": "ga:canManageClients",
+      "@type": "xsd:boolean"
+    },
+    "changeTime": {
+      "@id": "ga:changeTime",
+      "@type": "xsd:dateTime"
+    },
+    "changes": {
+      "@id": "ga:changes",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "changesFiltered": {
+      "@id": "ga:changesFiltered",
+      "@type": "xsd:boolean"
+    },
+    "countingMethod": {
+      "@id": "ga:countingMethod",
+      "@type": "xsd:string"
+    },
+    "createTime": {
+      "@id": "ga:createTime",
+      "@type": "xsd:dateTime"
+    },
+    "creatorEmailAddress": {
+      "@id": "ga:creatorEmailAddress",
+      "@type": "xsd:string"
+    },
+    "currencyCode": {
+      "@id": "ga:currencyCode",
+      "@type": "xsd:string"
+    },
+    "custom": {
+      "@id": "ga:custom",
+      "@type": "xsd:boolean"
+    },
+    "customerId": {
+      "@id": "ga:customerId",
+      "@type": "xsd:string"
+    },
+    "defaultConversionValue": {
+      "@id": "ga:defaultConversionValue",
+      "@type": "@id"
+    },
+    "defaultUri": {
+      "@id": "ga:defaultUri",
+      "@type": "xsd:string"
+    },
+    "deletable": {
+      "@id": "ga:deletable",
+      "@type": "xsd:boolean"
+    },
+    "deleteTime": {
+      "@id": "ga:deleteTime",
+      "@type": "xsd:dateTime"
+    },
+    "deleted": {
+      "@id": "ga:deleted",
+      "@type": "xsd:boolean"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "disallowAdsPersonalization": {
+      "@id": "ga:disallowAdsPersonalization",
+      "@type": "xsd:boolean"
+    },
+    "displayName": {
+      "@id": "ga:displayName",
+      "@type": "xsd:string"
+    },
+    "eventName": {
+      "@id": "ga:eventName",
+      "@type": "xsd:string"
+    },
+    "expireTime": {
+      "@id": "ga:expireTime",
+      "@type": "xsd:dateTime"
+    },
+    "firebaseAppId": {
+      "@id": "ga:firebaseAppId",
+      "@type": "xsd:string"
+    },
+    "id": {
+      "@id": "ga:id",
+      "@type": "xsd:string"
+    },
+    "industryCategory": {
+      "@id": "ga:industryCategory",
+      "@type": "xsd:string"
+    },
+    "iosAppStreamData": {
+      "@id": "ga:iosAppStreamData",
+      "@type": "@id"
+    },
+    "measurementId": {
+      "@id": "ga:measurementId",
+      "@type": "xsd:string"
+    },
+    "measurementUnit": {
+      "@id": "ga:measurementUnit",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "packageName": {
+      "@id": "ga:packageName",
+      "@type": "xsd:string"
+    },
+    "parameterName": {
+      "@id": "ga:parameterName",
+      "@type": "xsd:string"
+    },
+    "parent": {
+      "@id": "ga:parent",
+      "@type": "xsd:string"
+    },
+    "project": {
+      "@id": "ga:project",
+      "@type": "xsd:string"
+    },
+    "propertyType": {
+      "@id": "ga:propertyType",
+      "@type": "xsd:string"
+    },
+    "regionCode": {
+      "@id": "ga:regionCode",
+      "@type": "xsd:string"
+    },
+    "restrictedMetricType": {
+      "@id": "ga:restrictedMetricType",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "scope": {
+      "@id": "ga:scope",
+      "@type": "xsd:string"
+    },
+    "secretValue": {
+      "@id": "ga:secretValue",
+      "@type": "xsd:string"
+    },
+    "serviceLevel": {
+      "@id": "ga:serviceLevel",
+      "@type": "xsd:string"
+    },
+    "timeZone": {
+      "@id": "ga:timeZone",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "ga:type",
+      "@type": "xsd:string"
+    },
+    "updateTime": {
+      "@id": "ga:updateTime",
+      "@type": "xsd:dateTime"
+    },
+    "userActorEmail": {
+      "@id": "ga:userActorEmail",
+      "@type": "xsd:string"
+    },
+    "value": {
+      "@id": "ga:value",
+      "@type": "xsd:double"
+    },
+    "webStreamData": {
+      "@id": "ga:webStreamData",
+      "@type": "@id"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "category": "example_value",
+  "language": "example_value",
+  "screen_resolution": "example_value",
+  "operating_system": "example_value",
+  "operating_system_version": "example_value",
+  "model": "example_value",
+  "brand": "example_value",
+  "browser": "example_value",
+  "browser_version": "example_value"
+}

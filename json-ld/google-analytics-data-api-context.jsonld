@@ -1,0 +1,408 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "ga": "https://developers.google.com/analytics/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "AudienceExport": "ga:AudienceExport",
+    "DateRange": "ga:DateRange",
+    "Dimension": "ga:Dimension",
+    "FilterExpression": "ga:FilterExpression",
+    "Metric": "ga:Metric",
+    "OrderBy": "ga:OrderBy",
+    "Pivot": "ga:Pivot",
+    "Row": "ga:Row",
+    "RunReportRequest": "ga:RunReportRequest",
+    "RunReportResponse": "ga:RunReportResponse",
+    "accumulate": {
+      "@id": "ga:accumulate",
+      "@type": "xsd:boolean"
+    },
+    "activeMetricRestrictions": {
+      "@id": "ga:activeMetricRestrictions",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "andGroup": {
+      "@id": "ga:andGroup",
+      "@type": "xsd:string"
+    },
+    "audience": {
+      "@id": "ga:audience",
+      "@type": "xsd:string"
+    },
+    "audienceDisplayName": {
+      "@id": "ga:audienceDisplayName",
+      "@type": "xsd:string"
+    },
+    "beginCreatingTime": {
+      "@id": "ga:beginCreatingTime",
+      "@type": "xsd:dateTime"
+    },
+    "betweenFilter": {
+      "@id": "ga:betweenFilter",
+      "@type": "xsd:string"
+    },
+    "caseSensitive": {
+      "@id": "ga:caseSensitive",
+      "@type": "xsd:boolean"
+    },
+    "cohortReportSettings": {
+      "@id": "ga:cohortReportSettings",
+      "@type": "@id"
+    },
+    "cohortSpec": {
+      "@id": "ga:cohortSpec",
+      "@type": "@id"
+    },
+    "cohorts": {
+      "@id": "ga:cohorts",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "cohortsRange": {
+      "@id": "ga:cohortsRange",
+      "@type": "@id"
+    },
+    "concatenate": {
+      "@id": "ga:concatenate",
+      "@type": "@id"
+    },
+    "concurrentRequests": {
+      "@id": "ga:concurrentRequests",
+      "@type": "@id"
+    },
+    "consumed": {
+      "@id": "ga:consumed",
+      "@type": "xsd:integer"
+    },
+    "creationQuotaTokensCharged": {
+      "@id": "ga:creationQuotaTokensCharged",
+      "@type": "xsd:integer"
+    },
+    "currencyCode": {
+      "@id": "ga:currencyCode",
+      "@type": "xsd:string"
+    },
+    "dataLossFromOtherRow": {
+      "@id": "ga:dataLossFromOtherRow",
+      "@type": "xsd:boolean"
+    },
+    "dateRanges": {
+      "@id": "ga:dateRanges",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "delimiter": {
+      "@id": "ga:delimiter",
+      "@type": "xsd:string"
+    },
+    "desc": {
+      "@id": "ga:desc",
+      "@type": "xsd:boolean"
+    },
+    "dimension": {
+      "@id": "ga:dimension",
+      "@type": "@id"
+    },
+    "dimensionExpression": {
+      "@id": "ga:dimensionExpression",
+      "@type": "@id"
+    },
+    "dimensionFilter": {
+      "@id": "ga:dimensionFilter",
+      "@type": "@id"
+    },
+    "dimensionHeaders": {
+      "@id": "ga:dimensionHeaders",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "dimensionName": {
+      "@id": "ga:dimensionName",
+      "@type": "xsd:string"
+    },
+    "dimensionNames": {
+      "@id": "ga:dimensionNames",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "dimensionValues": {
+      "@id": "ga:dimensionValues",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "dimensions": {
+      "@id": "ga:dimensions",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "emptyReason": {
+      "@id": "ga:emptyReason",
+      "@type": "xsd:string"
+    },
+    "endDate": {
+      "@id": "ga:endDate",
+      "@type": "xsd:string"
+    },
+    "endOffset": {
+      "@id": "ga:endOffset",
+      "@type": "xsd:integer"
+    },
+    "errorMessage": {
+      "@id": "ga:errorMessage",
+      "@type": "xsd:string"
+    },
+    "expression": {
+      "@id": "ga:expression",
+      "@type": "xsd:string"
+    },
+    "expressions": {
+      "@id": "ga:expressions",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "fieldName": {
+      "@id": "ga:fieldName",
+      "@type": "xsd:string"
+    },
+    "fieldNames": {
+      "@id": "ga:fieldNames",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "filter": {
+      "@id": "ga:filter",
+      "@type": "xsd:string"
+    },
+    "fromValue": {
+      "@id": "ga:fromValue",
+      "@type": "xsd:string"
+    },
+    "granularity": {
+      "@id": "ga:granularity",
+      "@type": "xsd:string"
+    },
+    "inListFilter": {
+      "@id": "ga:inListFilter",
+      "@type": "xsd:string"
+    },
+    "invisible": {
+      "@id": "ga:invisible",
+      "@type": "xsd:boolean"
+    },
+    "keepEmptyRows": {
+      "@id": "ga:keepEmptyRows",
+      "@type": "xsd:boolean"
+    },
+    "kind": {
+      "@id": "ga:kind",
+      "@type": "xsd:string"
+    },
+    "limit": {
+      "@id": "ga:limit",
+      "@type": "xsd:string"
+    },
+    "lowerCase": {
+      "@id": "ga:lowerCase",
+      "@type": "@id"
+    },
+    "matchType": {
+      "@id": "ga:matchType",
+      "@type": "xsd:string"
+    },
+    "maximums": {
+      "@id": "ga:maximums",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "metadata": {
+      "@id": "ga:metadata",
+      "@type": "@id"
+    },
+    "metric": {
+      "@id": "ga:metric",
+      "@type": "@id"
+    },
+    "metricAggregations": {
+      "@id": "ga:metricAggregations",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "metricFilter": {
+      "@id": "ga:metricFilter",
+      "@type": "@id"
+    },
+    "metricHeaders": {
+      "@id": "ga:metricHeaders",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "metricName": {
+      "@id": "ga:metricName",
+      "@type": "xsd:string"
+    },
+    "metricValues": {
+      "@id": "ga:metricValues",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "metrics": {
+      "@id": "ga:metrics",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "minimums": {
+      "@id": "ga:minimums",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "notExpression": {
+      "@id": "ga:notExpression",
+      "@type": "xsd:string"
+    },
+    "numericFilter": {
+      "@id": "ga:numericFilter",
+      "@type": "xsd:string"
+    },
+    "offset": {
+      "@id": "ga:offset",
+      "@type": "xsd:string"
+    },
+    "operation": {
+      "@id": "ga:operation",
+      "@type": "xsd:string"
+    },
+    "orGroup": {
+      "@id": "ga:orGroup",
+      "@type": "@id"
+    },
+    "orderBys": {
+      "@id": "ga:orderBys",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "orderType": {
+      "@id": "ga:orderType",
+      "@type": "xsd:string"
+    },
+    "percentageCompleted": {
+      "@id": "ga:percentageCompleted",
+      "@type": "xsd:double"
+    },
+    "pivot": {
+      "@id": "ga:pivot",
+      "@type": "@id"
+    },
+    "pivotSelections": {
+      "@id": "ga:pivotSelections",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "potentiallyThresholdedRequestsPerHour": {
+      "@id": "ga:potentiallyThresholdedRequestsPerHour",
+      "@type": "@id"
+    },
+    "property": {
+      "@id": "ga:property",
+      "@type": "xsd:string"
+    },
+    "propertyQuota": {
+      "@id": "ga:propertyQuota",
+      "@type": "@id"
+    },
+    "remaining": {
+      "@id": "ga:remaining",
+      "@type": "xsd:integer"
+    },
+    "returnPropertyQuota": {
+      "@id": "ga:returnPropertyQuota",
+      "@type": "xsd:boolean"
+    },
+    "rowCount": {
+      "@id": "ga:rowCount",
+      "@type": "xsd:integer"
+    },
+    "rows": {
+      "@id": "ga:rows",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "samplingMetadatas": {
+      "@id": "ga:samplingMetadatas",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "schemaRestrictionResponse": {
+      "@id": "ga:schemaRestrictionResponse",
+      "@type": "@id"
+    },
+    "serverErrorsPerProjectPerHour": {
+      "@id": "ga:serverErrorsPerProjectPerHour",
+      "@type": "@id"
+    },
+    "startDate": {
+      "@id": "ga:startDate",
+      "@type": "xsd:string"
+    },
+    "startOffset": {
+      "@id": "ga:startOffset",
+      "@type": "xsd:integer"
+    },
+    "state": {
+      "@id": "ga:state",
+      "@type": "xsd:string"
+    },
+    "stringFilter": {
+      "@id": "ga:stringFilter",
+      "@type": "xsd:string"
+    },
+    "subjectToThresholding": {
+      "@id": "ga:subjectToThresholding",
+      "@type": "xsd:boolean"
+    },
+    "timeZone": {
+      "@id": "ga:timeZone",
+      "@type": "xsd:string"
+    },
+    "toValue": {
+      "@id": "ga:toValue",
+      "@type": "xsd:string"
+    },
+    "tokensPerDay": {
+      "@id": "ga:tokensPerDay",
+      "@type": "@id"
+    },
+    "tokensPerHour": {
+      "@id": "ga:tokensPerHour",
+      "@type": "@id"
+    },
+    "tokensPerProjectPerHour": {
+      "@id": "ga:tokensPerProjectPerHour",
+      "@type": "@id"
+    },
+    "totals": {
+      "@id": "ga:totals",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "upperCase": {
+      "@id": "ga:upperCase",
+      "@type": "@id"
+    },
+    "value": {
+      "@id": "ga:value",
+      "@type": "xsd:string"
+    },
+    "values": {
+      "@id": "ga:values",
+      "@container": "@set",
+      "@type": "xsd:string"
+    }
+  }
+}

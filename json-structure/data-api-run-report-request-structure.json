@@ -1,0 +1,354 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/google-analytics/refs/heads/main/json-structure/data-api-run-report-request-structure.json",
+  "name": "RunReportRequest",
+  "description": "The request to generate a report.",
+  "type": "object",
+  "properties": {
+    "cohortSpec": {
+      "description": "The specification of cohorts for a cohort report. Cohort reports create a time series of user retention for the cohort. For example, you could select the cohort of users that were acquired in the first week of September and follow that cohort for the next six weeks. Selecting the users acquired in the first week of September cohort is specified in the `cohort` object. Following that cohort for the next six weeks is specified in the `cohortsRange` object. For examples, see [Cohort Report Examples](https://developers.google.com/analytics/devguides/reporting/data/v1/advanced#cohort_report_examples). The report response could show a weekly time series where say your app has retained 60% of this cohort after three weeks and 25% of this cohort after six weeks. These two percentages can be calculated by the metric `cohortActiveUsers/cohortTotalUsers` and will be separate rows in the report.",
+      "properties": {
+        "cohortReportSettings": {
+          "description": "Optional settings of a cohort report.",
+          "properties": {
+            "accumulate": {
+              "description": "If true, accumulates the result from first touch day to the end day. Not supported in `RunReportRequest`.",
+              "type": "boolean",
+              "example": true
+            }
+          },
+          "type": "object"
+        },
+        "cohorts": {
+          "description": "Defines the selection criteria to group users into cohorts. Most cohort reports define only a single cohort. If multiple cohorts are specified, each cohort can be recognized in the report by their name.",
+          "items": {
+            "$ref": "#/components/schemas/Cohort"
+          },
+          "type": "array"
+        },
+        "cohortsRange": {
+          "description": "Configures the extended reporting date range for a cohort report. Specifies an offset duration to follow the cohorts over.",
+          "properties": {
+            "endOffset": {
+              "description": "Required. `endOffset` specifies the end date of the extended reporting date range for a cohort report. `endOffset` can be any positive integer but is commonly set to 5 to 10 so that reports contain data on the cohort for the next several granularity time periods. If `granularity` is `DAILY`, the `endDate` of the extended reporting date range is `endDate` of the cohort plus `endOffset` days. If `granularity` is `WEEKLY`, the `endDate` of the extended reporting date range is `endDate` of the cohort plus `endOffset * 7` days. If `granularity` is `MONTHLY`, the `endDate` of the extended reporting date range is `endDate` of the cohort plus `endOffset * 30` days.",
+              "type": "int32",
+              "example": 0
+            },
+            "granularity": {
+              "description": "Required. The granularity used to interpret the `startOffset` and `endOffset` for the extended reporting date range for a cohort report.",
+              "enum": [
+                "GRANULARITY_UNSPECIFIED",
+                "DAILY",
+                "WEEKLY",
+                "MONTHLY"
+              ],
+              "type": "string",
+              "example": "GRANULARITY_UNSPECIFIED"
+            },
+            "startOffset": {
+              "description": "`startOffset` specifies the start date of the extended reporting date range for a cohort report. `startOffset` is commonly set to 0 so that reports contain data from the acquisition of the cohort forward. If `granularity` is `DAILY`, the `startDate` of the extended reporting date range is `startDate` of the cohort plus `startOffset` days. If `granularity` is `WEEKLY`, the `startDate` of the extended reporting date range is `startDate` of the cohort plus `startOffset * 7` days. If `granularity` is `MONTHLY`, the `startDate` of the extended reporting date range is `startDate` of the cohort plus `startOffset * 30` days.",
+              "type": "int32",
+              "example": 0
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "currencyCode": {
+      "description": "A currency code in ISO4217 format, such as \"AED\", \"USD\", \"JPY\". If the field is empty, the report uses the property's default currency.",
+      "type": "string"
+    },
+    "dateRanges": {
+      "description": "Date ranges of data to read. If multiple date ranges are requested, each response row will contain a zero based date range index. If two date ranges overlap, the event data for the overlapping days is included in the response rows for both date ranges. In a cohort request, this `dateRanges` must be unspecified.",
+      "items": {
+        "description": "A contiguous set of days: `startDate`, `startDate + 1`, ..., `endDate`. Requests are allowed up to 4 date ranges.",
+        "properties": {
+          "endDate": {
+            "description": "The inclusive end date for the query in the format `YYYY-MM-DD`. Cannot be before `start_date`. The format `NdaysAgo`, `yesterday`, or `today` is also accepted, and in that case, the date is inferred based on the property's reporting time zone.",
+            "type": "string",
+            "example": "2026-04-17"
+          },
+          "name": {
+            "description": "Assigns a name to this date range. The dimension `dateRange` is valued to this name in a report response. If set, cannot begin with `date_range_` or `RESERVED_`. If not set, date ranges are named by their zero based index in the request: `date_range_0`, `date_range_1`, etc.",
+            "type": "string",
+            "example": "Example Name"
+          },
+          "startDate": {
+            "description": "The inclusive start date for the query in the format `YYYY-MM-DD`. Cannot be after `end_date`. The format `NdaysAgo`, `yesterday`, or `today` is also accepted, and in that case, the date is inferred based on the property's reporting time zone.",
+            "type": "string",
+            "example": "2026-04-17"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "dimensionFilter": {
+      "description": "To express dimension or metric filters. The fields in the same FilterExpression need to be either all dimensions or all metrics.",
+      "properties": {
+        "andGroup": {
+          "description": "A list of filter expressions.",
+          "properties": {
+            "expressions": {
+              "description": "A list of filter expressions.",
+              "items": {
+                "$ref": "#/components/schemas/FilterExpression"
+              },
+              "type": "array"
+            }
+          },
+          "type": "object"
+        },
+        "filter": {
+          "description": "An expression to filter dimension or metric values.",
+          "properties": {
+            "betweenFilter": {
+              "$ref": "#/components/schemas/BetweenFilter",
+              "description": "A filter for two values."
+            },
+            "fieldName": {
+              "description": "The dimension name or metric name. In most methods, dimensions & metrics can be used for the first time in this field. However in a RunPivotReportRequest, this field must be additionally specified by name in the RunPivotReportRequest's dimensions or metrics.",
+              "type": "string",
+              "example": "Example Name"
+            },
+            "inListFilter": {
+              "$ref": "#/components/schemas/InListFilter",
+              "description": "A filter for in list values."
+            },
+            "numericFilter": {
+              "$ref": "#/components/schemas/NumericFilter",
+              "description": "A filter for numeric or date values."
+            },
+            "stringFilter": {
+              "$ref": "#/components/schemas/StringFilter",
+              "description": "Strings related filter."
+            }
+          },
+          "type": "object"
+        },
+        "notExpression": {
+          "description": "To express dimension or metric filters. The fields in the same FilterExpression need to be either all dimensions or all metrics.",
+          "properties": {
+            "andGroup": {
+              "$ref": "#/components/schemas/FilterExpressionList",
+              "description": "The FilterExpressions in and_group have an AND relationship."
+            },
+            "filter": {
+              "$ref": "#/components/schemas/Filter",
+              "description": "A primitive filter. In the same FilterExpression, all of the filter's field names need to be either all dimensions or all metrics."
+            },
+            "notExpression": {
+              "$ref": "#/components/schemas/FilterExpression",
+              "description": "The FilterExpression is NOT of not_expression."
+            },
+            "orGroup": {
+              "$ref": "#/components/schemas/FilterExpressionList",
+              "description": "The FilterExpressions in or_group have an OR relationship."
+            }
+          },
+          "type": "object"
+        },
+        "orGroup": {
+          "description": "A list of filter expressions.",
+          "properties": {
+            "expressions": {
+              "description": "A list of filter expressions.",
+              "items": {
+                "$ref": "#/components/schemas/FilterExpression"
+              },
+              "type": "array"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "dimensions": {
+      "description": "The dimensions requested and displayed.",
+      "items": {
+        "description": "Dimensions are attributes of your data. For example, the dimension city indicates the city from which an event originates. Dimension values in report responses are strings; for example, the city could be \"Paris\" or \"New York\". Requests are allowed up to 9 dimensions.",
+        "properties": {
+          "dimensionExpression": {
+            "$ref": "#/components/schemas/DimensionExpression",
+            "description": "One dimension can be the result of an expression of multiple dimensions. For example, dimension \"country, city\": concatenate(country, \", \", city)."
+          },
+          "name": {
+            "description": "The name of the dimension. See the [API Dimensions](https://developers.google.com/analytics/devguides/reporting/data/v1/api-schema#dimensions) for the list of dimension names supported by core reporting methods such as `runReport` and `batchRunReports`. See [Realtime Dimensions](https://developers.google.com/analytics/devguides/reporting/data/v1/realtime-api-schema#dimensions) for the list of dimension names supported by the `runRealtimeReport` method. See [Funnel Dimensions](https://developers.google.com/analytics/devguides/reporting/data/v1/exploration-api-schema#dimensions) for the list of dimension names supported by the `runFunnelReport` method. If `dimensionExpression` is specified, `name` can be any string that you would like within the allowed character set. For example if a `dimensionExpression` concatenates `country` and `city`, you could call that dimension `countryAndCity`. Dimension names that you choose must match the regular expression `^[a-zA-Z0-9_]$`. Dimensions are referenced by `name` in `dimensionFilter`, `orderBys`, `dimensionExpression`, and `pivots`.",
+            "type": "string",
+            "example": "Example Name"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "keepEmptyRows": {
+      "description": "If false or unspecified, each row with all metrics equal to 0 will not be returned. If true, these rows will be returned if they are not separately removed by a filter. Regardless of this `keep_empty_rows` setting, only data recorded by the Google Analytics (GA4) property can be displayed in a report. For example if a property never logs a `purchase` event, then a query for the `eventName` dimension and `eventCount` metric will not have a row eventName: \"purchase\" and eventCount: 0.",
+      "type": "boolean"
+    },
+    "limit": {
+      "description": "The number of rows to return. If unspecified, 10,000 rows are returned. The API returns a maximum of 250,000 rows per request, no matter how many you ask for. `limit` must be positive. The API can also return fewer rows than the requested `limit`, if there aren't as many dimension values as the `limit`. For instance, there are fewer than 300 possible values for the dimension `country`, so when reporting on only `country`, you can't get more than 300 rows, even if you set `limit` to a higher value. To learn more about this pagination parameter, see [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination).",
+      "format": "int64",
+      "type": "string"
+    },
+    "metricAggregations": {
+      "description": "Aggregation of metrics. Aggregated metric values will be shown in rows where the dimension_values are set to \"RESERVED_(MetricAggregation)\".",
+      "items": {
+        "enum": [
+          "METRIC_AGGREGATION_UNSPECIFIED",
+          "TOTAL",
+          "MINIMUM",
+          "MAXIMUM",
+          "COUNT"
+        ],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "metricFilter": {
+      "description": "To express dimension or metric filters. The fields in the same FilterExpression need to be either all dimensions or all metrics.",
+      "properties": {
+        "andGroup": {
+          "description": "A list of filter expressions.",
+          "properties": {
+            "expressions": {
+              "description": "A list of filter expressions.",
+              "items": {
+                "$ref": "#/components/schemas/FilterExpression"
+              },
+              "type": "array"
+            }
+          },
+          "type": "object"
+        },
+        "filter": {
+          "description": "An expression to filter dimension or metric values.",
+          "properties": {
+            "betweenFilter": {
+              "$ref": "#/components/schemas/BetweenFilter",
+              "description": "A filter for two values."
+            },
+            "fieldName": {
+              "description": "The dimension name or metric name. In most methods, dimensions & metrics can be used for the first time in this field. However in a RunPivotReportRequest, this field must be additionally specified by name in the RunPivotReportRequest's dimensions or metrics.",
+              "type": "string",
+              "example": "Example Name"
+            },
+            "inListFilter": {
+              "$ref": "#/components/schemas/InListFilter",
+              "description": "A filter for in list values."
+            },
+            "numericFilter": {
+              "$ref": "#/components/schemas/NumericFilter",
+              "description": "A filter for numeric or date values."
+            },
+            "stringFilter": {
+              "$ref": "#/components/schemas/StringFilter",
+              "description": "Strings related filter."
+            }
+          },
+          "type": "object"
+        },
+        "notExpression": {
+          "description": "To express dimension or metric filters. The fields in the same FilterExpression need to be either all dimensions or all metrics.",
+          "properties": {
+            "andGroup": {
+              "$ref": "#/components/schemas/FilterExpressionList",
+              "description": "The FilterExpressions in and_group have an AND relationship."
+            },
+            "filter": {
+              "$ref": "#/components/schemas/Filter",
+              "description": "A primitive filter. In the same FilterExpression, all of the filter's field names need to be either all dimensions or all metrics."
+            },
+            "notExpression": {
+              "$ref": "#/components/schemas/FilterExpression",
+              "description": "The FilterExpression is NOT of not_expression."
+            },
+            "orGroup": {
+              "$ref": "#/components/schemas/FilterExpressionList",
+              "description": "The FilterExpressions in or_group have an OR relationship."
+            }
+          },
+          "type": "object"
+        },
+        "orGroup": {
+          "description": "A list of filter expressions.",
+          "properties": {
+            "expressions": {
+              "description": "A list of filter expressions.",
+              "items": {
+                "$ref": "#/components/schemas/FilterExpression"
+              },
+              "type": "array"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "metrics": {
+      "description": "The metrics requested and displayed.",
+      "items": {
+        "description": "The quantitative measurements of a report. For example, the metric `eventCount` is the total number of events. Requests are allowed up to 10 metrics.",
+        "properties": {
+          "expression": {
+            "description": "A mathematical expression for derived metrics. For example, the metric Event count per user is `eventCount/totalUsers`.",
+            "type": "string"
+          },
+          "invisible": {
+            "description": "Indicates if a metric is invisible in the report response. If a metric is invisible, the metric will not produce a column in the response, but can be used in `metricFilter`, `orderBys`, or a metric `expression`.",
+            "type": "boolean"
+          },
+          "name": {
+            "description": "The name of the metric. See the [API Metrics](https://developers.google.com/analytics/devguides/reporting/data/v1/api-schema#metrics) for the list of metric names supported by core reporting methods such as `runReport` and `batchRunReports`. See [Realtime Metrics](https://developers.google.com/analytics/devguides/reporting/data/v1/realtime-api-schema#metrics) for the list of metric names supported by the `runRealtimeReport` method. See [Funnel Metrics](https://developers.google.com/analytics/devguides/reporting/data/v1/exploration-api-schema#metrics) for the list of metric names supported by the `runFunnelReport` method. If `expression` is specified, `name` can be any string that you would like within the allowed character set. For example if `expression` is `screenPageViews/sessions`, you could call that metric's name = `viewsPerSession`. Metric names that you choose must match the regular expression `^[a-zA-Z0-9_]$`. Metrics are referenced by `name` in `metricFilter`, `orderBys`, and metric `expression`.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "offset": {
+      "description": "The row count of the start row. The first row is counted as row 0. When paging, the first request does not specify offset; or equivalently, sets offset to 0; the first request returns the first `limit` of rows. The second request sets offset to the `limit` of the first request; the second request returns the second `limit` of rows. To learn more about this pagination parameter, see [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination).",
+      "format": "int64",
+      "type": "string"
+    },
+    "orderBys": {
+      "description": "Specifies how rows are ordered in the response.",
+      "items": {
+        "description": "Order bys define how rows will be sorted in the response. For example, ordering rows by descending event count is one ordering, and ordering rows by the event name string is a different ordering.",
+        "properties": {
+          "desc": {
+            "description": "If true, sorts by descending order.",
+            "type": "boolean"
+          },
+          "dimension": {
+            "$ref": "#/components/schemas/DimensionOrderBy",
+            "description": "Sorts results by a dimension's values."
+          },
+          "metric": {
+            "$ref": "#/components/schemas/MetricOrderBy",
+            "description": "Sorts results by a metric's values."
+          },
+          "pivot": {
+            "$ref": "#/components/schemas/PivotOrderBy",
+            "description": "Sorts results by a metric's values within a pivot column group."
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "property": {
+      "description": "A Google Analytics GA4 property identifier whose events are tracked. Specified in the URL path and not the body. To learn more, see [where to find your Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). Within a batch request, this property should either be unspecified or consistent with the batch-level property. Example: properties/1234",
+      "type": "string"
+    },
+    "returnPropertyQuota": {
+      "description": "Toggles whether to return the current state of this Analytics Property's quota. Quota is returned in [PropertyQuota](#PropertyQuota).",
+      "type": "boolean"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "audience": "example_value",
+  "audienceDisplayName": "Example Name",
+  "beginCreatingTime": "2026-04-17T12:00:00Z",
+  "creationQuotaTokensCharged": 42,
+  "dimensions": [
+    {
+      "dimensionName": "Example Analytics Property"
+    }
+  ],
+  "errorMessage": "example_value",
+  "name": "Example Name",
+  "percentageCompleted": 75.5,
+  "rowCount": 10,
+  "state": "STATE_UNSPECIFIED"
+}

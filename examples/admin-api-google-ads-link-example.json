@@ -1,0 +1,9 @@
+{
+  "adsPersonalizationEnabled": true,
+  "canManageClients": true,
+  "createTime": "2026-04-17T12:00:00Z",
+  "creatorEmailAddress": "analyst@example.com",
+  "customerId": "500123",
+  "name": "Example Analytics Property",
+  "updateTime": "2026-04-17T12:00:00Z"
+}

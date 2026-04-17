@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/google-analytics/refs/heads/main/json-schema/user-deletion-api-user-deletion-request-schema.json",
+  "title": "UserDeletionRequest",
+  "description": "UserDeletionRequest schema from Google Analytics API",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "type": "string",
+      "description": "Resource type identifier.",
+      "default": "analytics#userDeletionRequest",
+      "readOnly": true,
+      "example": "example_value"
+    },
+    "id": {
+      "type": "object",
+      "required": [
+        "type",
+        "userId"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The type of user identifier.",
+          "enum": [
+            "CLIENT_ID",
+            "USER_ID",
+            "APP_INSTANCE_ID"
+          ],
+          "example": "CLIENT_ID"
+        },
+        "userId": {
+          "type": "string",
+          "description": "The actual user identifier value corresponding to the specified type.",
+          "example": "123456"
+        }
+      }
+    },
+    "webPropertyId": {
+      "type": "string",
+      "description": "The Web Property ID for a Universal Analytics property. Required for Universal Analytics properties.",
+      "example": "123456"
+    },
+    "firebaseProjectId": {
+      "type": "string",
+      "description": "The Firebase Project ID. Required for app streams using APP_INSTANCE_ID.",
+      "example": "123456"
+    },
+    "propertyId": {
+      "type": "string",
+      "description": "The GA4 property ID.",
+      "example": "123456"
+    },
+    "deletionRequestTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The time when the deletion request was submitted. Set by the server.",
+      "readOnly": true,
+      "example": "2026-04-17T12:00:00Z"
+    }
+  },
+  "required": [
+    "id"
+  ]
+}

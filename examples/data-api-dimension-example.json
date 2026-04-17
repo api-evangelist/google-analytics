@@ -1,0 +1,17 @@
+{
+  "dimensionExpression": {
+    "concatenate": {
+      "delimiter": "example_value",
+      "dimensionNames": [
+        {}
+      ]
+    },
+    "lowerCase": {
+      "dimensionName": "Example Name"
+    },
+    "upperCase": {
+      "dimensionName": "Example Name"
+    }
+  },
+  "name": "Example Name"
+}

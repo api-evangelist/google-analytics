@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/google-analytics/refs/heads/main/json-schema/measurement-protocol-validation-message-schema.json",
+  "title": "ValidationMessage",
+  "description": "ValidationMessage schema from Google Analytics API",
+  "type": "object",
+  "properties": {
+    "fieldPath": {
+      "type": "string",
+      "description": "Path to the field that caused the validation error.",
+      "example": "/example/path"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the validation error.",
+      "example": "Example description"
+    },
+    "validationCode": {
+      "type": "string",
+      "description": "A code identifying the type of validation error.",
+      "enum": [
+        "VALUE_INVALID",
+        "VALUE_REQUIRED",
+        "NAME_INVALID",
+        "NAME_RESERVED",
+        "VALUE_OUT_OF_BOUNDS",
+        "EXCEEDED_MAX_ENTITIES",
+        "NAME_DUPLICATED"
+      ],
+      "example": "VALUE_INVALID"
+    }
+  }
+}

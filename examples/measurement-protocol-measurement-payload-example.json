@@ -1,0 +1,21 @@
+{
+  "client_id": "123456789.1234567890",
+  "app_instance_id": "123456",
+  "user_id": "123456",
+  "timestamp_micros": 1713355200000000,
+  "user_properties": {},
+  "user_data": {},
+  "consent": {
+    "ad_user_data": "GRANTED",
+    "ad_personalization": "GRANTED"
+  },
+  "non_personalized_ads": true,
+  "user_location": {
+    "city": "example_value",
+    "region_id": "123456",
+    "country_id": "123456",
+    "subcontinent_id": "123456",
+    "continent_id": "123456"
+  },
+  "ip_override": "123456"
+}

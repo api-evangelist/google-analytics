@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/google-analytics/refs/heads/main/json-schema/measurement-protocol-consent-schema.json",
+  "title": "Consent",
+  "description": "Consent schema from Google Analytics API",
+  "type": "object",
+  "properties": {
+    "ad_user_data": {
+      "type": "string",
+      "description": "Consent for using user data in advertising.",
+      "enum": [
+        "GRANTED",
+        "DENIED"
+      ],
+      "example": "GRANTED"
+    },
+    "ad_personalization": {
+      "type": "string",
+      "description": "Consent for ad personalization.",
+      "enum": [
+        "GRANTED",
+        "DENIED"
+      ],
+      "example": "GRANTED"
+    }
+  }
+}

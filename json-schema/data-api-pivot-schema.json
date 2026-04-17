@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/google-analytics/refs/heads/main/json-schema/data-api-pivot-schema.json",
+  "title": "Pivot",
+  "description": "Describes the visible dimension columns and rows in the report response.",
+  "type": "object",
+  "properties": {
+    "fieldNames": {
+      "description": "Dimension names for visible columns in the report response. Including \"dateRange\" produces a date range column; for each row in the response, dimension values in the date range column will indicate the corresponding date range from the request.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "limit": {
+      "description": "The number of unique combinations of dimension values to return in this pivot. The `limit` parameter is required. A `limit` of 10,000 is common for single pivot requests. The product of the `limit` for each `pivot` in a `RunPivotReportRequest` must not exceed 250,000. For example, a two pivot request with `limit: 1000` in each pivot will fail because the product is `1,000,000`.",
+      "format": "int64",
+      "type": "string"
+    },
+    "metricAggregations": {
+      "description": "Aggregate the metrics by dimensions in this pivot using the specified metric_aggregations.",
+      "items": {
+        "enum": [
+          "METRIC_AGGREGATION_UNSPECIFIED",
+          "TOTAL",
+          "MINIMUM",
+          "MAXIMUM",
+          "COUNT"
+        ],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "offset": {
+      "description": "The row count of the start row. The first row is counted as row 0.",
+      "format": "int64",
+      "type": "string"
+    },
+    "orderBys": {
+      "description": "Specifies how dimensions are ordered in the pivot. In the first Pivot, the OrderBys determine Row and PivotDimensionHeader ordering; in subsequent Pivots, the OrderBys determine only PivotDimensionHeader ordering. Dimensions specified in these OrderBys must be a subset of Pivot.field_names.",
+      "items": {
+        "description": "Order bys define how rows will be sorted in the response. For example, ordering rows by descending event count is one ordering, and ordering rows by the event name string is a different ordering.",
+        "properties": {
+          "desc": {
+            "description": "If true, sorts by descending order.",
+            "type": "boolean"
+          },
+          "dimension": {
+            "$ref": "#/components/schemas/DimensionOrderBy",
+            "description": "Sorts results by a dimension's values."
+          },
+          "metric": {
+            "$ref": "#/components/schemas/MetricOrderBy",
+            "description": "Sorts results by a metric's values."
+          },
+          "pivot": {
+            "$ref": "#/components/schemas/PivotOrderBy",
+            "description": "Sorts results by a metric's values within a pivot column group."
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    }
+  }
+}

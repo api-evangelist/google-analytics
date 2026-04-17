@@ -1,0 +1,5 @@
+{
+  "fieldPath": "/example/path",
+  "description": "Example description",
+  "validationCode": "VALUE_INVALID"
+}

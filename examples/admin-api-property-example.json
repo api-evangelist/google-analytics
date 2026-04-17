@@ -1,0 +1,12 @@
+{
+  "account": "example_value",
+  "createTime": "2026-04-17T12:00:00Z",
+  "currencyCode": "USD",
+  "deleteTime": "2026-04-17T12:00:00Z",
+  "displayName": "Example Analytics Property",
+  "expireTime": "2026-04-17T12:00:00Z",
+  "industryCategory": "ONLINE_COMMUNITIES",
+  "name": "Example Analytics Property",
+  "parent": "example_value",
+  "propertyType": "PROPERTY_TYPE_SUBPROPERTY"
+}

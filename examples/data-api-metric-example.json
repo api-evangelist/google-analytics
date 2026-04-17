@@ -1,0 +1,5 @@
+{
+  "expression": "ga:sessions",
+  "invisible": true,
+  "name": "Example Analytics Property"
+}

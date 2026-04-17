@@ -1,0 +1,8 @@
+{
+  "description": "An example resource for demonstration purposes.",
+  "disallowAdsPersonalization": true,
+  "displayName": "Example Analytics Property",
+  "name": "Example Analytics Property",
+  "parameterName": "Example Analytics Property",
+  "scope": "ITEM"
+}

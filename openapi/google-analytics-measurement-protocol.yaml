@@ -18,43 +18,46 @@ externalDocs:
   description: Measurement Protocol documentation
   url: https://developers.google.com/analytics/devguides/collection/protocol/ga4
 servers:
-  - url: https://www.google-analytics.com/mp
-    description: Global endpoint
-  - url: https://region1.google-analytics.com/mp
-    description: EU endpoint
+- url: https://www.google-analytics.com/mp
+  description: Global endpoint
+- url: https://region1.google-analytics.com/mp
+  description: EU endpoint
 paths:
   /collect:
     post:
       operationId: collectEvents
-      summary: Send events to Google Analytics
+      summary: Google Analytics Send Events to Google Analytics
       description: >-
         Sends one or more events to Google Analytics for processing. Up to 25
         events can be sent per request. Events can be backdated up to 72 hours.
       parameters:
-        - name: api_secret
-          in: query
-          required: true
-          description: >-
-            The API Secret generated in the Google Analytics UI. Found under
-            Admin > Data Streams > Choose your stream > Measurement Protocol > Create.
-          schema:
-            type: string
-        - name: measurement_id
-          in: query
-          required: false
-          description: >-
-            The Measurement ID for a web data stream. Required for web streams.
-            Found in the Google Analytics UI under Admin > Data Streams.
-          schema:
-            type: string
-        - name: firebase_app_id
-          in: query
-          required: false
-          description: >-
-            The Firebase App ID for an app data stream. Required for app streams.
-            Found in the Firebase console under Project Settings.
-          schema:
-            type: string
+      - name: api_secret
+        in: query
+        required: true
+        description: >-
+          The API Secret generated in the Google Analytics UI. Found under
+          Admin > Data Streams > Choose your stream > Measurement Protocol > Create.
+        schema:
+          type: string
+        example: secret_abc123
+      - name: measurement_id
+        in: query
+        required: false
+        description: >-
+          The Measurement ID for a web data stream. Required for web streams.
+          Found in the Google Analytics UI under Admin > Data Streams.
+        schema:
+          type: string
+        example: '123456'
+      - name: firebase_app_id
+        in: query
+        required: false
+        description: >-
+          The Firebase App ID for an app data stream. Required for app streams.
+          Found in the Firebase console under Project Settings.
+        schema:
+          type: string
+        example: '123456'
       requestBody:
         required: true
         content:
@@ -72,34 +75,40 @@ paths:
         '403':
           description: Invalid api_secret
       tags:
-        - Events
+      - Events
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /collect/debug:
     post:
       operationId: validateEvents
-      summary: Validate events without sending to Google Analytics
+      summary: Google Analytics Validate Events Without Sending to Google Analytics
       description: >-
         Validates the event payload and returns validation messages without
         actually sending the events to Google Analytics. Use this endpoint
         during development to verify your implementation.
       parameters:
-        - name: api_secret
-          in: query
-          required: true
-          description: The API Secret generated in the Google Analytics UI.
-          schema:
-            type: string
-        - name: measurement_id
-          in: query
-          required: false
-          description: The Measurement ID for a web data stream. Required for web streams.
-          schema:
-            type: string
-        - name: firebase_app_id
-          in: query
-          required: false
-          description: The Firebase App ID for an app data stream. Required for app streams.
-          schema:
-            type: string
+      - name: api_secret
+        in: query
+        required: true
+        description: The API Secret generated in the Google Analytics UI.
+        schema:
+          type: string
+        example: secret_abc123
+      - name: measurement_id
+        in: query
+        required: false
+        description: The Measurement ID for a web data stream. Required for web streams.
+        schema:
+          type: string
+        example: '123456'
+      - name: firebase_app_id
+        in: query
+        required: false
+        description: The Firebase App ID for an app data stream. Required for app streams.
+        schema:
+          type: string
+        example: '123456'
       requestBody:
         required: true
         content:
@@ -114,35 +123,42 @@ paths:
               schema:
                 $ref: '#/components/schemas/ValidationResponse'
       tags:
-        - Validation
+      - Validation
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   schemas:
     MeasurementPayload:
       type: object
       required:
-        - events
+      - events
       properties:
         client_id:
           type: string
           description: >-
             Uniquely identifies a user instance of a web client. Required for
             web streams.
+          example: '123456789.1234567890'
         app_instance_id:
           type: string
           description: >-
             Uniquely identifies a user instance of an app. Required for app
             streams.
+          example: '123456'
         user_id:
           type: string
           description: >-
             A unique identifier for a user. Enables cross-platform analysis.
             Must contain only UTF-8 characters.
+          example: '123456'
         timestamp_micros:
           type: integer
           format: int64
           description: >-
             Unix timestamp in microseconds for the request. Used to backdate
             events up to 72 hours.
+          example: 1713355200000000
         user_properties:
           type: object
           description: User-scoped properties for the measurement.
@@ -157,11 +173,13 @@ components:
           type: boolean
           description: Deprecated. Use consent.ad_personalization instead.
           deprecated: true
+          example: true
         user_location:
           $ref: '#/components/schemas/UserLocation'
         ip_override:
           type: string
           description: IP address used to derive geographic information.
+          example: '123456'
         device:
           $ref: '#/components/schemas/Device'
         validation_behavior:
@@ -171,9 +189,10 @@ components:
             requests. ENFORCE_RECOMMENDATIONS also rejects invalid types and
             exceeded limits.
           enum:
-            - RELAXED
-            - ENFORCE_RECOMMENDATIONS
+          - RELAXED
+          - ENFORCE_RECOMMENDATIONS
           default: RELAXED
+          example: RELAXED
         events:
           type: array
           description: Array of event objects. Maximum 25 events per request.
@@ -183,7 +202,7 @@ components:
     Event:
       type: object
       required:
-        - name
+      - name
       properties:
         name:
           type: string
@@ -191,6 +210,7 @@ components:
             The name of the event. Must not use reserved names (ad_click,
             app_exception, error, session_start, etc.) or reserved prefixes
             (_, firebase_, ga_, google_, gtag.).
+          example: Example Name
         params:
           type: object
           description: >-
@@ -213,10 +233,11 @@ components:
       properties:
         value:
           oneOf:
-            - type: string
-            - type: number
-            - type: boolean
+          - type: string
+          - type: number
+          - type: boolean
           description: The value of the user property.
+          example: example_value
     Consent:
       type: object
       properties:
@@ -224,62 +245,78 @@ components:
           type: string
           description: Consent for using user data in advertising.
           enum:
-            - GRANTED
-            - DENIED
+          - GRANTED
+          - DENIED
+          example: GRANTED
         ad_personalization:
           type: string
           description: Consent for ad personalization.
           enum:
-            - GRANTED
-            - DENIED
+          - GRANTED
+          - DENIED
+          example: GRANTED
     UserLocation:
       type: object
       properties:
         city:
           type: string
           description: City name.
+          example: example_value
         region_id:
           type: string
           description: Region identifier.
+          example: '123456'
         country_id:
           type: string
           description: Country identifier.
+          example: '123456'
         subcontinent_id:
           type: string
           description: Subcontinent identifier.
+          example: '123456'
         continent_id:
           type: string
           description: Continent identifier.
+          example: '123456'
     Device:
       type: object
       properties:
         category:
           type: string
           description: Device category (e.g., mobile, tablet, desktop).
+          example: example_value
         language:
           type: string
           description: Device language setting.
+          example: example_value
         screen_resolution:
           type: string
           description: Screen resolution (e.g., 1920x1080).
+          example: example_value
         operating_system:
           type: string
           description: Operating system name.
+          example: example_value
         operating_system_version:
           type: string
           description: Operating system version.
+          example: example_value
         model:
           type: string
           description: Device model.
+          example: example_value
         brand:
           type: string
           description: Device brand.
+          example: example_value
         browser:
           type: string
           description: Browser name.
+          example: example_value
         browser_version:
           type: string
           description: Browser version.
+          example: example_value
     ValidationResponse:
       type: object
       properties:
@@ -293,17 +330,20 @@ components:
         fieldPath:
           type: string
           description: Path to the field that caused the validation error.
+          example: /example/path
         description:
           type: string
           description: Description of the validation error.
+          example: Example description
         validationCode:
           type: string
           description: A code identifying the type of validation error.
           enum:
-            - VALUE_INVALID
-            - VALUE_REQUIRED
-            - NAME_INVALID
-            - NAME_RESERVED
-            - VALUE_OUT_OF_BOUNDS
-            - EXCEEDED_MAX_ENTITIES
-            - NAME_DUPLICATED
+          - VALUE_INVALID
+          - VALUE_REQUIRED
+          - NAME_INVALID
+          - NAME_RESERVED
+          - VALUE_OUT_OF_BOUNDS
+          - EXCEEDED_MAX_ENTITIES
+          - NAME_DUPLICATED
+          example: VALUE_INVALID

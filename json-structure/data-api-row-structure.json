@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/google-analytics/refs/heads/main/json-structure/data-api-row-structure.json",
+  "name": "Row",
+  "description": "Report data for each row. For example if RunReportRequest contains: ```none \"dimensions\": [ { \"name\": \"eventName\" }, { \"name\": \"countryId\" } ], \"metrics\": [ { \"name\": \"eventCount\" } ] ``` One row with 'in_app_purchase' as the eventName, 'JP' as the countryId, and 15 as the eventCount, would be: ```none \"dimensionValues\": [ { \"value\": \"in_app_purchase\" }, { \"value\": \"JP\" } ], \"metricValues\": [ { \"value\": \"15\" } ] ```",
+  "type": "object",
+  "properties": {
+    "dimensionValues": {
+      "description": "List of requested dimension values. In a PivotReport, dimension_values are only listed for dimensions included in a pivot.",
+      "items": {
+        "description": "The value of a dimension.",
+        "properties": {
+          "value": {
+            "description": "Value as a string if the dimension type is a string.",
+            "type": "string",
+            "example": "example_value"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "metricValues": {
+      "description": "List of requested visible metric values.",
+      "items": {
+        "description": "The value of a metric.",
+        "properties": {
+          "value": {
+            "description": "Measurement value. See MetricHeader for type.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    }
+  }
+}

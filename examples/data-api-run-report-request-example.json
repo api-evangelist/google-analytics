@@ -1,0 +1,91 @@
+{
+  "cohortSpec": {
+    "cohortReportSettings": {
+      "accumulate": true
+    },
+    "cohorts": [
+      "example_value"
+    ],
+    "cohortsRange": {
+      "endOffset": 0,
+      "granularity": "GRANULARITY_UNSPECIFIED",
+      "startOffset": 0
+    }
+  },
+  "currencyCode": "USD",
+  "dateRanges": [
+    {
+      "endDate": "2026-04-17",
+      "name": "Example Name",
+      "startDate": "2026-04-17"
+    }
+  ],
+  "dimensionFilter": {
+    "andGroup": {
+      "expressions": [
+        {}
+      ]
+    },
+    "filter": {
+      "betweenFilter": "example_value",
+      "fieldName": "Example Name",
+      "inListFilter": "example_value",
+      "numericFilter": "example_value",
+      "stringFilter": "example_value"
+    },
+    "notExpression": {
+      "andGroup": "example_value",
+      "filter": "example_value",
+      "notExpression": "ga:sessions",
+      "orGroup": "example_value"
+    },
+    "orGroup": {
+      "expressions": [
+        {}
+      ]
+    }
+  },
+  "dimensions": [
+    {
+      "dimensionExpression": "ga:sessions",
+      "name": "Example Name"
+    }
+  ],
+  "keepEmptyRows": true,
+  "limit": "example_value",
+  "metricAggregations": [
+    "TOTAL"
+  ],
+  "metricFilter": {
+    "andGroup": {
+      "expressions": [
+        {}
+      ]
+    },
+    "filter": {
+      "betweenFilter": "example_value",
+      "fieldName": "Example Name",
+      "inListFilter": "example_value",
+      "numericFilter": "example_value",
+      "stringFilter": "example_value"
+    },
+    "notExpression": {
+      "andGroup": "example_value",
+      "filter": "example_value",
+      "notExpression": "ga:sessions",
+      "orGroup": "example_value"
+    },
+    "orGroup": {
+      "expressions": [
+        {}
+      ]
+    }
+  },
+  "metrics": [
+    {
+      "expression": "ga:sessions",
+      "invisible": true,
+      "name": "Example Analytics Property"
+    }
+  ]
+}

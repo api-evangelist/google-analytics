@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/google-analytics/refs/heads/main/json-structure/measurement-protocol-event-structure.json",
+  "name": "Event",
+  "description": "Event schema from Google Analytics API",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the event. Must not use reserved names (ad_click, app_exception, error, session_start, etc.) or reserved prefixes (_, firebase_, ga_, google_, gtag.).",
+      "example": "Example Name"
+    },
+    "params": {
+      "type": "object",
+      "description": "Event parameters as key-value pairs. Common parameters include session_id, engagement_time_msec, and timestamp_micros.",
+      "additionalProperties": true,
+      "properties": {
+        "session_id": {
+          "type": "string",
+          "description": "Session identifier for accurate session metrics."
+        },
+        "engagement_time_msec": {
+          "type": "int32",
+          "description": "User engagement duration in milliseconds."
+        },
+        "timestamp_micros": {
+          "type": "int64",
+          "description": "Unix epoch time in microseconds to override event timestamp."
+        }
+      }
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

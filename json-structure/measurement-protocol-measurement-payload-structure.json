@@ -1,0 +1,204 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/google-analytics/refs/heads/main/json-structure/measurement-protocol-measurement-payload-structure.json",
+  "name": "MeasurementPayload",
+  "description": "MeasurementPayload schema from Google Analytics API",
+  "type": "object",
+  "properties": {
+    "client_id": {
+      "type": "string",
+      "description": "Uniquely identifies a user instance of a web client. Required for web streams.",
+      "example": "123456789.1234567890"
+    },
+    "app_instance_id": {
+      "type": "string",
+      "description": "Uniquely identifies a user instance of an app. Required for app streams.",
+      "example": "123456"
+    },
+    "user_id": {
+      "type": "string",
+      "description": "A unique identifier for a user. Enables cross-platform analysis. Must contain only UTF-8 characters.",
+      "example": "123456"
+    },
+    "timestamp_micros": {
+      "type": "int64",
+      "description": "Unix timestamp in microseconds for the request. Used to backdate events up to 72 hours.",
+      "example": 1713355200000000
+    },
+    "user_properties": {
+      "type": "object",
+      "description": "User-scoped properties for the measurement.",
+      "additionalProperties": {
+        "$ref": "#/components/schemas/UserPropertyValue"
+      }
+    },
+    "user_data": {
+      "type": "object",
+      "description": "User-provided data for enhanced measurement."
+    },
+    "consent": {
+      "type": "object",
+      "properties": {
+        "ad_user_data": {
+          "type": "string",
+          "description": "Consent for using user data in advertising.",
+          "enum": [
+            "GRANTED",
+            "DENIED"
+          ],
+          "example": "GRANTED"
+        },
+        "ad_personalization": {
+          "type": "string",
+          "description": "Consent for ad personalization.",
+          "enum": [
+            "GRANTED",
+            "DENIED"
+          ],
+          "example": "GRANTED"
+        }
+      }
+    },
+    "non_personalized_ads": {
+      "type": "boolean",
+      "description": "Deprecated. Use consent.ad_personalization instead.",
+      "deprecated": true,
+      "example": true
+    },
+    "user_location": {
+      "type": "object",
+      "properties": {
+        "city": {
+          "type": "string",
+          "description": "City name.",
+          "example": "example_value"
+        },
+        "region_id": {
+          "type": "string",
+          "description": "Region identifier.",
+          "example": "123456"
+        },
+        "country_id": {
+          "type": "string",
+          "description": "Country identifier.",
+          "example": "123456"
+        },
+        "subcontinent_id": {
+          "type": "string",
+          "description": "Subcontinent identifier.",
+          "example": "123456"
+        },
+        "continent_id": {
+          "type": "string",
+          "description": "Continent identifier.",
+          "example": "123456"
+        }
+      }
+    },
+    "ip_override": {
+      "type": "string",
+      "description": "IP address used to derive geographic information.",
+      "example": "123456"
+    },
+    "device": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "type": "string",
+          "description": "Device category (e.g., mobile, tablet, desktop).",
+          "example": "example_value"
+        },
+        "language": {
+          "type": "string",
+          "description": "Device language setting.",
+          "example": "example_value"
+        },
+        "screen_resolution": {
+          "type": "string",
+          "description": "Screen resolution (e.g., 1920x1080).",
+          "example": "example_value"
+        },
+        "operating_system": {
+          "type": "string",
+          "description": "Operating system name.",
+          "example": "example_value"
+        },
+        "operating_system_version": {
+          "type": "string",
+          "description": "Operating system version.",
+          "example": "example_value"
+        },
+        "model": {
+          "type": "string",
+          "description": "Device model.",
+          "example": "example_value"
+        },
+        "brand": {
+          "type": "string",
+          "description": "Device brand.",
+          "example": "example_value"
+        },
+        "browser": {
+          "type": "string",
+          "description": "Browser name.",
+          "example": "example_value"
+        },
+        "browser_version": {
+          "type": "string",
+          "description": "Browser version.",
+          "example": "example_value"
+        }
+      }
+    },
+    "validation_behavior": {
+      "type": "string",
+      "description": "Controls validation strictness. RELAXED only rejects malformed requests. ENFORCE_RECOMMENDATIONS also rejects invalid types and exceeded limits.",
+      "enum": [
+        "RELAXED",
+        "ENFORCE_RECOMMENDATIONS"
+      ],
+      "default": "RELAXED",
+      "example": "RELAXED"
+    },
+    "events": {
+      "type": "array",
+      "description": "Array of event objects. Maximum 25 events per request.",
+      "maxItems": 25,
+      "items": {
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the event. Must not use reserved names (ad_click, app_exception, error, session_start, etc.) or reserved prefixes (_, firebase_, ga_, google_, gtag.).",
+            "example": "Example Name"
+          },
+          "params": {
+            "type": "object",
+            "description": "Event parameters as key-value pairs. Common parameters include session_id, engagement_time_msec, and timestamp_micros.",
+            "additionalProperties": true,
+            "properties": {
+              "session_id": {
+                "type": "string",
+                "description": "Session identifier for accurate session metrics."
+              },
+              "engagement_time_msec": {
+                "type": "int32",
+                "description": "User engagement duration in milliseconds."
+              },
+              "timestamp_micros": {
+                "type": "int64",
+                "description": "Unix epoch time in microseconds to override event timestamp."
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "events"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/google-analytics/refs/heads/main/json-structure/admin-api-firebase-link-structure.json",
+  "name": "FirebaseLink",
+  "description": "A link between a GA4 property and a Firebase project.",
+  "type": "object",
+  "properties": {
+    "createTime": {
+      "description": "Output only. Time when this FirebaseLink was originally created.",
+      "readOnly": true,
+      "type": "datetime"
+    },
+    "name": {
+      "description": "Output only. Example format: properties/1234/firebaseLinks/5678",
+      "readOnly": true,
+      "type": "string"
+    },
+    "project": {
+      "description": "Immutable. Firebase project resource name. When creating a FirebaseLink, you may provide this resource name using either a project number or project ID. Once this resource has been created, returned FirebaseLinks will always have a project_name that contains a project number. Format: 'projects/{project number}' Example: 'projects/1234'",
+      "type": "string"
+    }
+  }
+}

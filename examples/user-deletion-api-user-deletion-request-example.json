@@ -1,0 +1,11 @@
+{
+  "kind": "example_value",
+  "id": {
+    "type": "CLIENT_ID",
+    "userId": "123456"
+  },
+  "webPropertyId": "123456",
+  "firebaseProjectId": "123456",
+  "propertyId": "123456",
+  "deletionRequestTime": "2026-04-17T12:00:00Z"
+}

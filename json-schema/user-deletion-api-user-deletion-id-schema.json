@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/google-analytics/refs/heads/main/json-schema/user-deletion-api-user-deletion-id-schema.json",
+  "title": "UserDeletionId",
+  "description": "UserDeletionId schema from Google Analytics API",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "The type of user identifier.",
+      "enum": [
+        "CLIENT_ID",
+        "USER_ID",
+        "APP_INSTANCE_ID"
+      ],
+      "example": "CLIENT_ID"
+    },
+    "userId": {
+      "type": "string",
+      "description": "The actual user identifier value corresponding to the specified type.",
+      "example": "123456"
+    }
+  },
+  "required": [
+    "type",
+    "userId"
+  ]
+}

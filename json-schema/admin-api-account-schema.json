@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/google-analytics/refs/heads/main/json-schema/admin-api-account-schema.json",
+  "title": "Account",
+  "description": "A resource message representing a Google Analytics account.",
+  "type": "object",
+  "properties": {
+    "createTime": {
+      "description": "Output only. Time when this account was originally created.",
+      "format": "google-datetime",
+      "readOnly": true,
+      "type": "string",
+      "example": "2026-04-17T12:00:00Z"
+    },
+    "deleted": {
+      "description": "Output only. Indicates whether this Account is soft-deleted or not. Deleted accounts are excluded from List results unless specifically requested.",
+      "readOnly": true,
+      "type": "boolean",
+      "example": true
+    },
+    "displayName": {
+      "description": "Required. Human-readable display name for this account.",
+      "type": "string",
+      "example": "Example Name"
+    },
+    "name": {
+      "description": "Output only. Resource name of this account. Format: accounts/{account} Example: \"accounts/100\"",
+      "readOnly": true,
+      "type": "string",
+      "example": "Example Name"
+    },
+    "regionCode": {
+      "description": "Country of business. Must be a Unicode CLDR region code.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "updateTime": {
+      "description": "Output only. Time when account payload fields were last updated.",
+      "format": "google-datetime",
+      "readOnly": true,
+      "type": "string",
+      "example": "2026-04-17T12:00:00Z"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "description": "An example resource for demonstration purposes.",
+  "displayName": "Example Analytics Property",
+  "measurementUnit": "HOURS",
+  "name": "Example Analytics Property",
+  "parameterName": "Example Analytics Property",
+  "restrictedMetricType": [
+    "COST_DATA"
+  ],
+  "scope": "METRIC_SCOPE_UNSPECIFIED"
+}

@@ -1,0 +1,96 @@
+{
+  "dimensionHeaders": [
+    {
+      "name": "Example Name"
+    }
+  ],
+  "kind": "example_value",
+  "maximums": [
+    {
+      "dimensionValues": [
+        {}
+      ],
+      "metricValues": [
+        {}
+      ]
+    }
+  ],
+  "metadata": {
+    "currencyCode": "USD",
+    "dataLossFromOtherRow": true,
+    "emptyReason": "example_value",
+    "samplingMetadatas": [
+      "example_value"
+    ],
+    "schemaRestrictionResponse": {
+      "activeMetricRestrictions": [
+        {}
+      ]
+    },
+    "subjectToThresholding": true,
+    "timeZone": "America/Los_Angeles"
+  },
+  "metricHeaders": [
+    {
+      "name": "Example Analytics Property",
+      "type": "TYPE_MILLISECONDS"
+    }
+  ],
+  "minimums": [
+    {
+      "dimensionValues": [
+        {}
+      ],
+      "metricValues": [
+        {}
+      ]
+    }
+  ],
+  "propertyQuota": {
+    "concurrentRequests": {
+      "consumed": 42,
+      "remaining": 42
+    },
+    "potentiallyThresholdedRequestsPerHour": {
+      "consumed": 42,
+      "remaining": 42
+    },
+    "serverErrorsPerProjectPerHour": {
+      "consumed": 42,
+      "remaining": 42
+    },
+    "tokensPerDay": {
+      "consumed": 42,
+      "remaining": 42
+    },
+    "tokensPerHour": {
+      "consumed": 42,
+      "remaining": 42
+    },
+    "tokensPerProjectPerHour": {
+      "consumed": 42,
+      "remaining": 42
+    }
+  },
+  "rowCount": 25,
+  "rows": [
+    {
+      "dimensionValues": [
+        {}
+      ],
+      "metricValues": [
+        {}
+      ]
+    }
+  ],
+  "totals": [
+    {
+      "dimensionValues": [
+        {}
+      ],
+      "metricValues": [
+        {}
+      ]
+    }
+  ]
+}

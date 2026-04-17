@@ -1,0 +1,8 @@
+{
+  "name": "Example Name",
+  "params": {
+    "session_id": "500123",
+    "engagement_time_msec": 1500,
+    "timestamp_micros": 1713355200000000
+  }
+}

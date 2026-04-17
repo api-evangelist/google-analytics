@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/google-analytics/refs/heads/main/json-structure/measurement-protocol-user-location-structure.json",
+  "name": "UserLocation",
+  "description": "UserLocation schema from Google Analytics API",
+  "type": "object",
+  "properties": {
+    "city": {
+      "type": "string",
+      "description": "City name.",
+      "example": "example_value"
+    },
+    "region_id": {
+      "type": "string",
+      "description": "Region identifier.",
+      "example": "123456"
+    },
+    "country_id": {
+      "type": "string",
+      "description": "Country identifier.",
+      "example": "123456"
+    },
+    "subcontinent_id": {
+      "type": "string",
+      "description": "Subcontinent identifier.",
+      "example": "123456"
+    },
+    "continent_id": {
+      "type": "string",
+      "description": "Continent identifier.",
+      "example": "123456"
+    }
+  }
+}

@@ -1,0 +1,208 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/google-analytics/refs/heads/main/json-schema/data-api-filter-expression-schema.json",
+  "title": "FilterExpression",
+  "description": "To express dimension or metric filters. The fields in the same FilterExpression need to be either all dimensions or all metrics.",
+  "type": "object",
+  "properties": {
+    "andGroup": {
+      "description": "A list of filter expressions.",
+      "properties": {
+        "expressions": {
+          "description": "A list of filter expressions.",
+          "items": {
+            "$ref": "#/components/schemas/FilterExpression"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "filter": {
+      "description": "An expression to filter dimension or metric values.",
+      "properties": {
+        "betweenFilter": {
+          "description": "To express that the result needs to be between two numbers (inclusive).",
+          "properties": {
+            "fromValue": {
+              "$ref": "#/components/schemas/NumericValue",
+              "description": "Begins with this number."
+            },
+            "toValue": {
+              "$ref": "#/components/schemas/NumericValue",
+              "description": "Ends with this number."
+            }
+          },
+          "type": "object"
+        },
+        "fieldName": {
+          "description": "The dimension name or metric name. In most methods, dimensions & metrics can be used for the first time in this field. However in a RunPivotReportRequest, this field must be additionally specified by name in the RunPivotReportRequest's dimensions or metrics.",
+          "type": "string",
+          "example": "Example Name"
+        },
+        "inListFilter": {
+          "description": "The result needs to be in a list of string values.",
+          "properties": {
+            "caseSensitive": {
+              "description": "If true, the string value is case sensitive.",
+              "type": "boolean",
+              "example": true
+            },
+            "values": {
+              "description": "The list of string values. Must be non-empty.",
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "type": "object"
+        },
+        "numericFilter": {
+          "description": "Filters for numeric or date values.",
+          "properties": {
+            "operation": {
+              "description": "The operation type for this filter.",
+              "enum": [
+                "OPERATION_UNSPECIFIED",
+                "EQUAL",
+                "LESS_THAN",
+                "LESS_THAN_OR_EQUAL",
+                "GREATER_THAN",
+                "GREATER_THAN_OR_EQUAL"
+              ],
+              "type": "string"
+            },
+            "value": {
+              "$ref": "#/components/schemas/NumericValue",
+              "description": "A numeric value or a date value."
+            }
+          },
+          "type": "object"
+        },
+        "stringFilter": {
+          "description": "The filter for string",
+          "properties": {
+            "caseSensitive": {
+              "description": "If true, the string value is case sensitive.",
+              "type": "boolean"
+            },
+            "matchType": {
+              "description": "The match type for this filter.",
+              "enum": [
+                "MATCH_TYPE_UNSPECIFIED",
+                "EXACT",
+                "BEGINS_WITH",
+                "ENDS_WITH",
+                "CONTAINS",
+                "FULL_REGEXP",
+                "PARTIAL_REGEXP"
+              ],
+              "type": "string"
+            },
+            "value": {
+              "description": "The string value used for the matching.",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "notExpression": {
+      "description": "To express dimension or metric filters. The fields in the same FilterExpression need to be either all dimensions or all metrics.",
+      "properties": {
+        "andGroup": {
+          "description": "A list of filter expressions.",
+          "properties": {
+            "expressions": {
+              "description": "A list of filter expressions.",
+              "items": {
+                "$ref": "#/components/schemas/FilterExpression"
+              },
+              "type": "array"
+            }
+          },
+          "type": "object"
+        },
+        "filter": {
+          "description": "An expression to filter dimension or metric values.",
+          "properties": {
+            "betweenFilter": {
+              "$ref": "#/components/schemas/BetweenFilter",
+              "description": "A filter for two values."
+            },
+            "fieldName": {
+              "description": "The dimension name or metric name. In most methods, dimensions & metrics can be used for the first time in this field. However in a RunPivotReportRequest, this field must be additionally specified by name in the RunPivotReportRequest's dimensions or metrics.",
+              "type": "string",
+              "example": "Example Name"
+            },
+            "inListFilter": {
+              "$ref": "#/components/schemas/InListFilter",
+              "description": "A filter for in list values."
+            },
+            "numericFilter": {
+              "$ref": "#/components/schemas/NumericFilter",
+              "description": "A filter for numeric or date values."
+            },
+            "stringFilter": {
+              "$ref": "#/components/schemas/StringFilter",
+              "description": "Strings related filter."
+            }
+          },
+          "type": "object"
+        },
+        "notExpression": {
+          "description": "To express dimension or metric filters. The fields in the same FilterExpression need to be either all dimensions or all metrics.",
+          "properties": {
+            "andGroup": {
+              "$ref": "#/components/schemas/FilterExpressionList",
+              "description": "The FilterExpressions in and_group have an AND relationship."
+            },
+            "filter": {
+              "$ref": "#/components/schemas/Filter",
+              "description": "A primitive filter. In the same FilterExpression, all of the filter's field names need to be either all dimensions or all metrics."
+            },
+            "notExpression": {
+              "$ref": "#/components/schemas/FilterExpression",
+              "description": "The FilterExpression is NOT of not_expression."
+            },
+            "orGroup": {
+              "$ref": "#/components/schemas/FilterExpressionList",
+              "description": "The FilterExpressions in or_group have an OR relationship."
+            }
+          },
+          "type": "object"
+        },
+        "orGroup": {
+          "description": "A list of filter expressions.",
+          "properties": {
+            "expressions": {
+              "description": "A list of filter expressions.",
+              "items": {
+                "$ref": "#/components/schemas/FilterExpression"
+              },
+              "type": "array"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "orGroup": {
+      "description": "A list of filter expressions.",
+      "properties": {
+        "expressions": {
+          "description": "A list of filter expressions.",
+          "items": {
+            "$ref": "#/components/schemas/FilterExpression"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

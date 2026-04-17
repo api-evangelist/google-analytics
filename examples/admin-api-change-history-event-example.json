@@ -1,0 +1,15 @@
+{
+  "actorType": "ACTOR_TYPE_UNSPECIFIED",
+  "changeTime": "2026-04-17T12:00:00Z",
+  "changes": [
+    {
+      "action": "ACTION_TYPE_UNSPECIFIED",
+      "resource": "example_value",
+      "resourceAfterChange": "example_value",
+      "resourceBeforeChange": "example_value"
+    }
+  ],
+  "changesFiltered": true,
+  "id": "123456",
+  "userActorEmail": "user@example.com"
+}

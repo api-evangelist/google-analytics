@@ -1,0 +1,16 @@
+{
+  "desc": true,
+  "dimension": {
+    "dimensionName": "Example Name",
+    "orderType": "ORDER_TYPE_UNSPECIFIED"
+  },
+  "metric": {
+    "metricName": "Example Analytics Property"
+  },
+  "pivot": {
+    "metricName": "Example Analytics Property",
+    "pivotSelections": [
+      "example_value"
+    ]
+  }
+}

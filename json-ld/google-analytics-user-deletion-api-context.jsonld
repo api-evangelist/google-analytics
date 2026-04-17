@@ -1,0 +1,43 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "ga": "https://developers.google.com/analytics/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "UserDeletionId": "ga:UserDeletionId",
+    "UserDeletionRequest": "ga:UserDeletionRequest",
+    "deletionRequestTime": {
+      "@id": "ga:deletionRequestTime",
+      "@type": "xsd:dateTime"
+    },
+    "firebaseProjectId": {
+      "@id": "ga:firebaseProjectId",
+      "@type": "xsd:string"
+    },
+    "id": {
+      "@id": "ga:id",
+      "@type": "@id"
+    },
+    "kind": {
+      "@id": "ga:kind",
+      "@type": "xsd:string"
+    },
+    "propertyId": {
+      "@id": "ga:propertyId",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "ga:type",
+      "@type": "xsd:string"
+    },
+    "userId": {
+      "@id": "ga:userId",
+      "@type": "xsd:string"
+    },
+    "webPropertyId": {
+      "@id": "ga:webPropertyId",
+      "@type": "xsd:string"
+    }
+  }
+}

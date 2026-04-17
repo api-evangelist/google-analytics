@@ -1,0 +1,166 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "ga": "https://developers.google.com/analytics/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Consent": "ga:Consent",
+    "Device": "ga:Device",
+    "Event": "ga:Event",
+    "MeasurementPayload": "ga:MeasurementPayload",
+    "UserLocation": "ga:UserLocation",
+    "ValidationMessage": "ga:ValidationMessage",
+    "ValidationResponse": "ga:ValidationResponse",
+    "adPersonalization": {
+      "@id": "ga:ad_personalization",
+      "@type": "xsd:string"
+    },
+    "adUserData": {
+      "@id": "ga:ad_user_data",
+      "@type": "xsd:string"
+    },
+    "appInstanceId": {
+      "@id": "ga:app_instance_id",
+      "@type": "xsd:string"
+    },
+    "brand": {
+      "@id": "ga:brand",
+      "@type": "xsd:string"
+    },
+    "browser": {
+      "@id": "ga:browser",
+      "@type": "xsd:string"
+    },
+    "browserVersion": {
+      "@id": "ga:browser_version",
+      "@type": "xsd:string"
+    },
+    "category": {
+      "@id": "ga:category",
+      "@type": "xsd:string"
+    },
+    "city": {
+      "@id": "ga:city",
+      "@type": "xsd:string"
+    },
+    "clientId": {
+      "@id": "ga:client_id",
+      "@type": "xsd:string"
+    },
+    "consent": {
+      "@id": "ga:consent",
+      "@type": "@id"
+    },
+    "continentId": {
+      "@id": "ga:continent_id",
+      "@type": "xsd:string"
+    },
+    "countryId": {
+      "@id": "ga:country_id",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "device": {
+      "@id": "ga:device",
+      "@type": "@id"
+    },
+    "engagementTimeMsec": {
+      "@id": "ga:engagement_time_msec",
+      "@type": "xsd:integer"
+    },
+    "events": {
+      "@id": "ga:events",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "fieldPath": {
+      "@id": "ga:fieldPath",
+      "@type": "xsd:string"
+    },
+    "ipOverride": {
+      "@id": "ga:ip_override",
+      "@type": "xsd:string"
+    },
+    "language": {
+      "@id": "ga:language",
+      "@type": "xsd:string"
+    },
+    "model": {
+      "@id": "ga:model",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "nonPersonalizedAds": {
+      "@id": "ga:non_personalized_ads",
+      "@type": "xsd:boolean"
+    },
+    "operatingSystem": {
+      "@id": "ga:operating_system",
+      "@type": "xsd:string"
+    },
+    "operatingSystemVersion": {
+      "@id": "ga:operating_system_version",
+      "@type": "xsd:string"
+    },
+    "params": {
+      "@id": "ga:params",
+      "@type": "@id"
+    },
+    "regionId": {
+      "@id": "ga:region_id",
+      "@type": "xsd:string"
+    },
+    "screenResolution": {
+      "@id": "ga:screen_resolution",
+      "@type": "xsd:string"
+    },
+    "sessionId": {
+      "@id": "ga:session_id",
+      "@type": "xsd:string"
+    },
+    "subcontinentId": {
+      "@id": "ga:subcontinent_id",
+      "@type": "xsd:string"
+    },
+    "timestampMicros": {
+      "@id": "ga:timestamp_micros",
+      "@type": "xsd:integer"
+    },
+    "userData": {
+      "@id": "ga:user_data",
+      "@type": "@id"
+    },
+    "userId": {
+      "@id": "ga:user_id",
+      "@type": "xsd:string"
+    },
+    "userLocation": {
+      "@id": "ga:user_location",
+      "@type": "@id"
+    },
+    "userProperties": {
+      "@id": "ga:user_properties",
+      "@type": "@id"
+    },
+    "validationCode": {
+      "@id": "ga:validationCode",
+      "@type": "xsd:string"
+    },
+    "validationMessages": {
+      "@id": "ga:validationMessages",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "validationBehavior": {
+      "@id": "ga:validation_behavior",
+      "@type": "xsd:string"
+    }
+  }
+}

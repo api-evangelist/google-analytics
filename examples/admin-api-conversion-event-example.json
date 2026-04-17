@@ -1,0 +1,12 @@
+{
+  "countingMethod": "CONVERSION_COUNTING_METHOD_UNSPECIFIED",
+  "createTime": "2026-04-17T12:00:00Z",
+  "custom": true,
+  "defaultConversionValue": {
+    "currencyCode": "USD",
+    "value": 149.99
+  },
+  "deletable": true,
+  "eventName": "Example Name",
+  "name": "Example Name"
+}

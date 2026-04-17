@@ -236,6 +236,25 @@ Machine-readable API specifications organized by format.
 - [Google Analytics Admin API](discovery/google-analytics-admin-api.json)
 - [Google Analytics Management API v3](discovery/google-analytics-management-api-v3.json)
 
+### JSON Schema
+
+29 standalone JSON Schema files extracted from OpenAPI specs in [json-schema/](json-schema/).
+
+### JSON Structure
+
+29 JSON Structure files converted from JSON Schema in [json-structure/](json-structure/).
+
+### JSON-LD
+
+- [Data API Context](json-ld/google-analytics-data-api-context.jsonld) — 10 types, 92 properties
+- [Admin API Context](json-ld/google-analytics-admin-api-context.jsonld) — 10 types, 48 properties
+- [Measurement Protocol Context](json-ld/google-analytics-measurement-protocol-context.jsonld) — 7 types, 37 properties
+- [User Deletion API Context](json-ld/google-analytics-user-deletion-api-context.jsonld) — 2 types, 8 properties
+
+### Examples
+
+29 realistic example JSON files generated from JSON Schema in [examples/](examples/).
+
 ## Capabilities
 
 Naftiko capabilities organized as shared per-API definitions composed into customer-facing workflows.

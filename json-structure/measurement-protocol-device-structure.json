@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/google-analytics/refs/heads/main/json-structure/measurement-protocol-device-structure.json",
+  "name": "Device",
+  "description": "Device schema from Google Analytics API",
+  "type": "object",
+  "properties": {
+    "category": {
+      "type": "string",
+      "description": "Device category (e.g., mobile, tablet, desktop).",
+      "example": "example_value"
+    },
+    "language": {
+      "type": "string",
+      "description": "Device language setting.",
+      "example": "example_value"
+    },
+    "screen_resolution": {
+      "type": "string",
+      "description": "Screen resolution (e.g., 1920x1080).",
+      "example": "example_value"
+    },
+    "operating_system": {
+      "type": "string",
+      "description": "Operating system name.",
+      "example": "example_value"
+    },
+    "operating_system_version": {
+      "type": "string",
+      "description": "Operating system version.",
+      "example": "example_value"
+    },
+    "model": {
+      "type": "string",
+      "description": "Device model.",
+      "example": "example_value"
+    },
+    "brand": {
+      "type": "string",
+      "description": "Device brand.",
+      "example": "example_value"
+    },
+    "browser": {
+      "type": "string",
+      "description": "Browser name.",
+      "example": "example_value"
+    },
+    "browser_version": {
+      "type": "string",
+      "description": "Browser version.",
+      "example": "example_value"
+    }
+  }
+}

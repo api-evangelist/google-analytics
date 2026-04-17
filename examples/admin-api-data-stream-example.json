@@ -1,0 +1,20 @@
+{
+  "androidAppStreamData": {
+    "firebaseAppId": "500123",
+    "packageName": "Example Analytics Property"
+  },
+  "createTime": "2026-04-17T12:00:00Z",
+  "displayName": "Example Analytics Property",
+  "iosAppStreamData": {
+    "bundleId": "500123",
+    "firebaseAppId": "500123"
+  },
+  "name": "Example Analytics Property",
+  "type": "ANDROID_APP_DATA_STREAM",
+  "updateTime": "2026-04-17T12:00:00Z",
+  "webStreamData": {
+    "defaultUri": "https://example.com/analytics",
+    "firebaseAppId": "500123",
+    "measurementId": "500123"
+  }
+}

@@ -20,13 +20,13 @@ externalDocs:
   description: User Deletion API documentation
   url: https://developers.google.com/analytics/devguides/config/userdeletion/v3
 servers:
-  - url: https://www.googleapis.com/analytics/v3
-    description: Google Analytics API v3
+- url: https://www.googleapis.com/analytics/v3
+  description: Google Analytics API v3
 paths:
   /userDeletion/userDeletionRequests:upsert:
     post:
       operationId: upsertUserDeletionRequest
-      summary: Insert or update a user deletion request
+      summary: Google Analytics Insert or Update a User Deletion Request
       description: >-
         Inserts or updates a user deletion request. Submitting a deletion
         request for a user that already has a pending request will update the
@@ -53,10 +53,13 @@ paths:
         '403':
           description: Insufficient permissions - missing required OAuth scope
       security:
-        - oauth2:
-            - https://www.googleapis.com/auth/analytics.user.deletion
+      - oauth2:
+        - https://www.googleapis.com/auth/analytics.user.deletion
       tags:
-        - User Deletion
+      - User Deletion
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     oauth2:
@@ -73,13 +76,14 @@ components:
     UserDeletionRequest:
       type: object
       required:
-        - id
+      - id
       properties:
         kind:
           type: string
           description: Resource type identifier.
           default: analytics#userDeletionRequest
           readOnly: true
+          example: example_value
         id:
           $ref: '#/components/schemas/UserDeletionId'
         webPropertyId:
@@ -87,14 +91,17 @@ components:
           description: >-
             The Web Property ID for a Universal Analytics property. Required
             for Universal Analytics properties.
+          example: '123456'
         firebaseProjectId:
           type: string
           description: >-
             The Firebase Project ID. Required for app streams using
             APP_INSTANCE_ID.
+          example: '123456'
         propertyId:
           type: string
           description: The GA4 property ID.
+          example: '123456'
         deletionRequestTime:
           type: string
           format: date-time
@@ -102,21 +109,24 @@ components:
             The time when the deletion request was submitted. Set by the
             server.
           readOnly: true
+          example: '2026-04-17T12:00:00Z'
     UserDeletionId:
       type: object
       required:
-        - type
-        - userId
+      - type
+      - userId
       properties:
         type:
           type: string
           description: The type of user identifier.
           enum:
-            - CLIENT_ID
-            - USER_ID
-            - APP_INSTANCE_ID
+          - CLIENT_ID
+          - USER_ID
+          - APP_INSTANCE_ID
+          example: CLIENT_ID
         userId:
           type: string
           description: >-
             The actual user identifier value corresponding to the specified
             type.
+          example: '123456'

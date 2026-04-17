@@ -1,0 +1,18 @@
+{
+  "fieldNames": [
+    "Example Analytics Property"
+  ],
+  "limit": "example_value",
+  "metricAggregations": [
+    "MAXIMUM"
+  ],
+  "offset": "example_value",
+  "orderBys": [
+    {
+      "desc": true,
+      "dimension": "example_value",
+      "metric": "example_value",
+      "pivot": "example_value"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/google-analytics/refs/heads/main/json-schema/admin-api-change-history-event-schema.json",
+  "title": "ChangeHistoryEvent",
+  "description": "A set of changes within a Google Analytics account or its child properties that resulted from the same cause. Common causes would be updates made in the Google Analytics UI, changes from customer support, or automatic Google Analytics system changes.",
+  "type": "object",
+  "properties": {
+    "actorType": {
+      "description": "The type of actor that made this change.",
+      "enum": [
+        "ACTOR_TYPE_UNSPECIFIED",
+        "USER",
+        "SYSTEM",
+        "SUPPORT"
+      ],
+      "type": "string",
+      "example": "ACTOR_TYPE_UNSPECIFIED"
+    },
+    "changeTime": {
+      "description": "Time when change was made.",
+      "format": "google-datetime",
+      "type": "string",
+      "example": "2026-04-17T12:00:00Z"
+    },
+    "changes": {
+      "description": "A list of changes made in this change history event that fit the filters specified in SearchChangeHistoryEventsRequest.",
+      "items": {
+        "description": "A description of a change to a single Google Analytics resource.",
+        "properties": {
+          "action": {
+            "description": "The type of action that changed this resource.",
+            "enum": [
+              "ACTION_TYPE_UNSPECIFIED",
+              "CREATED",
+              "UPDATED",
+              "DELETED"
+            ],
+            "type": "string",
+            "example": "ACTION_TYPE_UNSPECIFIED"
+          },
+          "resource": {
+            "description": "Resource name of the resource whose changes are described by this entry.",
+            "type": "string",
+            "example": "example_value"
+          },
+          "resourceAfterChange": {
+            "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource",
+            "description": "Resource contents from after the change was made. If this resource was deleted in this change, this field will be missing."
+          },
+          "resourceBeforeChange": {
+            "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource",
+            "description": "Resource contents from before the change was made. If this resource was created in this change, this field will be missing."
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "changesFiltered": {
+      "description": "If true, then the list of changes returned was filtered, and does not represent all changes that occurred in this event.",
+      "type": "boolean",
+      "example": true
+    },
+    "id": {
+      "description": "ID of this change history event. This ID is unique across Google Analytics.",
+      "type": "string",
+      "example": "123456"
+    },
+    "userActorEmail": {
+      "description": "Email address of the Google account that made the change. This will be a valid email address if the actor field is set to USER, and empty otherwise. Google accounts that have been deleted will cause an error.",
+      "type": "string",
+      "example": "user@example.com"
+    }
+  }
+}

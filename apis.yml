@@ -5,7 +5,7 @@ type: Index
 image: https://www.google.com/analytics/images/google-analytics-logo.png
 url: https://raw.githubusercontent.com/api-evangelist/google-analytics/refs/heads/main/apis.yml
 created: '2024-01-01'
-modified: '2026-04-17'
+modified: '2026-05-19'
 specificationVersion: '0.19'
 tags:
   - Analytics
@@ -429,6 +429,9 @@ common:
         description: Enterprise-grade analytics with advanced features including intraday data, sub-properties, roll-up reporting, and higher limits.
       - name: Google Marketing Platform
         description: Integrated advertising and analytics platform combining Analytics 360 with advertising products for enterprise marketing.
+  - name: MCP Server
+    url: https://github.com/googleanalytics/google-analytics-mcp
+    type: MCPServer
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

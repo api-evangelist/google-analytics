@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Analytics Reporting API — reports
+  description: 'Analytics Reporting API — reports. 1 operations. Lead operation: reports. Self-contained Naftiko capability
+    covering one Google Analytics business surface.'
+  tags:
+  - Google Analytics
+  - reports
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_ANALYTICS_API_KEY: GOOGLE_ANALYTICS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: reporting-api-v4-reports
+    baseUri: https://analyticsreporting.googleapis.com
+    description: Analytics Reporting API — reports business capability. Self-contained, no shared references.
+    resources:
+    - name: v4-reports:batchGet
+      path: /v4/reports:batchGet
+      operations:
+      - name: analyticsreportingreportsbatchget
+        method: POST
+        description: Returns the Analytics data.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.GOOGLE_ANALYTICS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: reporting-api-v4-reports-rest
+    port: 8080
+    description: REST adapter for Analytics Reporting API — reports. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v4/reports-batchget
+      name: v4-reports-batchget
+      description: REST surface for v4-reports:batchGet.
+      operations:
+      - method: POST
+        name: analyticsreportingreportsbatchget
+        description: Returns the Analytics data.
+        call: reporting-api-v4-reports.analyticsreportingreportsbatchget
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: reporting-api-v4-reports-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Analytics Reporting API — reports. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: returns-analytics-data
+      description: Returns the Analytics data.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: reporting-api-v4-reports.analyticsreportingreportsbatchget
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

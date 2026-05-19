@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Analytics Reporting API — userActivity
+  description: 'Analytics Reporting API — userActivity. 1 operations. Lead operation: userActivity. Self-contained Naftiko
+    capability covering one Google Analytics business surface.'
+  tags:
+  - Google Analytics
+  - userActivity
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_ANALYTICS_API_KEY: GOOGLE_ANALYTICS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: reporting-api-v4-useractivity
+    baseUri: https://analyticsreporting.googleapis.com
+    description: Analytics Reporting API — userActivity business capability. Self-contained, no shared references.
+    resources:
+    - name: v4-userActivity:search
+      path: /v4/userActivity:search
+      operations:
+      - name: analyticsreportinguseractivitysearch
+        method: POST
+        description: Returns User Activity data.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.GOOGLE_ANALYTICS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: reporting-api-v4-useractivity-rest
+    port: 8080
+    description: REST adapter for Analytics Reporting API — userActivity. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v4/useractivity-search
+      name: v4-useractivity-search
+      description: REST surface for v4-userActivity:search.
+      operations:
+      - method: POST
+        name: analyticsreportinguseractivitysearch
+        description: Returns User Activity data.
+        call: reporting-api-v4-useractivity.analyticsreportinguseractivitysearch
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: reporting-api-v4-useractivity-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Analytics Reporting API — userActivity. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: returns-user-activity-data
+      description: Returns User Activity data.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: reporting-api-v4-useractivity.analyticsreportinguseractivitysearch
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

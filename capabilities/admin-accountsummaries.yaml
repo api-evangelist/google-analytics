@@ -1,0 +1,87 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Analytics Admin API — accountSummaries
+  description: 'Google Analytics Admin API — accountSummaries. 1 operations. Lead operation: accountSummaries. Self-contained
+    Naftiko capability covering one Google Analytics business surface.'
+  tags:
+  - Google Analytics
+  - accountSummaries
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_ANALYTICS_API_KEY: GOOGLE_ANALYTICS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: admin-accountsummaries
+    baseUri: https://analyticsadmin.googleapis.com
+    description: Google Analytics Admin API — accountSummaries business capability. Self-contained, no shared references.
+    resources:
+    - name: v1beta-accountSummaries
+      path: /v1beta/accountSummaries
+      operations:
+      - name: analyticsadminaccountsummarieslist
+        method: GET
+        description: Returns summaries of all accounts accessible by the caller.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: pageSize
+          in: query
+          type: integer
+          description: The maximum number of AccountSummary resources to return. The service may return fewer than this value,
+            even if there are additional pages. If unspecified, at m
+        - name: pageToken
+          in: query
+          type: string
+          description: A page token, received from a previous `ListAccountSummaries` call. Provide this to retrieve the subsequent
+            page. When paginating, all other parameters provided
+    authentication:
+      type: bearer
+      token: '{{env.GOOGLE_ANALYTICS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: admin-accountsummaries-rest
+    port: 8080
+    description: REST adapter for Google Analytics Admin API — accountSummaries. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/v1beta/accountsummaries
+      name: v1beta-accountsummaries
+      description: REST surface for v1beta-accountSummaries.
+      operations:
+      - method: GET
+        name: analyticsadminaccountsummarieslist
+        description: Returns summaries of all accounts accessible by the caller.
+        call: admin-accountsummaries.analyticsadminaccountsummarieslist
+        with:
+          pageSize: rest.pageSize
+          pageToken: rest.pageToken
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: admin-accountsummaries-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google Analytics Admin API — accountSummaries. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: returns-summaries-all-accounts-accessible
+      description: Returns summaries of all accounts accessible by the caller.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: admin-accountsummaries.analyticsadminaccountsummarieslist
+      with:
+        pageSize: tools.pageSize
+        pageToken: tools.pageToken
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,4622 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Analytics API — management
+  description: 'Google Analytics API — management. 81 operations. Lead operation: management. Self-contained Naftiko capability
+    covering one Google Analytics business surface.'
+  tags:
+  - Google Analytics
+  - management
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_ANALYTICS_API_KEY: GOOGLE_ANALYTICS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: management-api-v3-management
+    baseUri: https://analytics.googleapis.com/analytics/v3
+    description: Google Analytics API — management business capability. Self-contained, no shared references.
+    resources:
+    - name: management-accountSummaries
+      path: /management/accountSummaries
+      operations:
+      - name: analyticsmanagementaccountsummarieslist
+        method: GET
+        description: Lists account summaries (lightweight tree comprised of accounts/properties/profiles) to which the user
+          has access.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: max-results
+          in: query
+          type: integer
+          description: The maximum number of account summaries to include in this response, where the largest acceptable value
+            is 1000.
+        - name: start-index
+          in: query
+          type: integer
+          description: An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the
+            max-results parameter.
+    - name: management-accounts
+      path: /management/accounts
+      operations:
+      - name: analyticsmanagementaccountslist
+        method: GET
+        description: Lists all accounts to which the user has access.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: max-results
+          in: query
+          type: integer
+          description: The maximum number of accounts to include in this response.
+        - name: start-index
+          in: query
+          type: integer
+          description: An index of the first account to retrieve. Use this parameter as a pagination mechanism along with
+            the max-results parameter.
+    - name: management-accounts-accountId-entityUserLinks
+      path: /management/accounts/{accountId}/entityUserLinks
+      operations:
+      - name: analyticsmanagementaccountuserlinkslist
+        method: GET
+        description: Lists account-user links for a given account.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to retrieve the user links for.
+          required: true
+        - name: max-results
+          in: query
+          type: integer
+          description: The maximum number of account-user links to include in this response.
+        - name: start-index
+          in: query
+          type: integer
+          description: An index of the first account-user link to retrieve. Use this parameter as a pagination mechanism along
+            with the max-results parameter.
+      - name: analyticsmanagementaccountuserlinksinsert
+        method: POST
+        description: Adds a new user to the given account.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to create the user link for.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: management-accounts-accountId-entityUserLinks-linkId
+      path: /management/accounts/{accountId}/entityUserLinks/{linkId}
+      operations:
+      - name: analyticsmanagementaccountuserlinksdelete
+        method: DELETE
+        description: Removes a user from the given account.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to delete the user link for.
+          required: true
+        - name: linkId
+          in: path
+          type: string
+          description: Link ID to delete the user link for.
+          required: true
+      - name: analyticsmanagementaccountuserlinksupdate
+        method: PUT
+        description: Updates permissions for an existing user on the given account.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to update the account-user link for.
+          required: true
+        - name: linkId
+          in: path
+          type: string
+          description: Link ID to update the account-user link for.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: management-accounts-accountId-filters
+      path: /management/accounts/{accountId}/filters
+      operations:
+      - name: analyticsmanagementfilterslist
+        method: GET
+        description: Lists all filters for an account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to retrieve filters for.
+          required: true
+        - name: max-results
+          in: query
+          type: integer
+          description: The maximum number of filters to include in this response.
+        - name: start-index
+          in: query
+          type: integer
+          description: An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the
+            max-results parameter.
+      - name: analyticsmanagementfiltersinsert
+        method: POST
+        description: Create a new filter.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to create filter for.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: management-accounts-accountId-filters-filterId
+      path: /management/accounts/{accountId}/filters/{filterId}
+      operations:
+      - name: analyticsmanagementfiltersdelete
+        method: DELETE
+        description: Delete a filter.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to delete the filter for.
+          required: true
+        - name: filterId
+          in: path
+          type: string
+          description: ID of the filter to be deleted.
+          required: true
+      - name: analyticsmanagementfiltersget
+        method: GET
+        description: Returns filters to which the user has access.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to retrieve filters for.
+          required: true
+        - name: filterId
+          in: path
+          type: string
+          description: Filter ID to retrieve filters for.
+          required: true
+      - name: analyticsmanagementfilterspatch
+        method: PATCH
+        description: Updates an existing filter. This method supports patch semantics.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to which the filter belongs.
+          required: true
+        - name: filterId
+          in: path
+          type: string
+          description: ID of the filter to be updated.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: analyticsmanagementfiltersupdate
+        method: PUT
+        description: Updates an existing filter.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to which the filter belongs.
+          required: true
+        - name: filterId
+          in: path
+          type: string
+          description: ID of the filter to be updated.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: management-accounts-accountId-webproperties
+      path: /management/accounts/{accountId}/webproperties
+      operations:
+      - name: analyticsmanagementwebpropertieslist
+        method: GET
+        description: Lists web properties to which the user has access.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to retrieve web properties for. Can either be a specific account ID or '~all', which refers
+            to all the accounts that user has access to.
+          required: true
+        - name: max-results
+          in: query
+          type: integer
+          description: The maximum number of web properties to include in this response.
+        - name: start-index
+          in: query
+          type: integer
+          description: An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the
+            max-results parameter.
+      - name: analyticsmanagementwebpropertiesinsert
+        method: POST
+        description: Create a new property if the account has fewer than 20 properties. Web properties are visible in the
+          Google Analytics interface only if they have at least one profile.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to create the web property for.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: management-accounts-accountId-webproperties-webPropertyId
+      path: /management/accounts/{accountId}/webproperties/{webPropertyId}
+      operations:
+      - name: analyticsmanagementwebpropertiesget
+        method: GET
+        description: Gets a web property to which the user has access.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to retrieve the web property for.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: ID to retrieve the web property for.
+          required: true
+      - name: analyticsmanagementwebpropertiespatch
+        method: PATCH
+        description: Updates an existing web property. This method supports patch semantics.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to which the web property belongs
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: analyticsmanagementwebpropertiesupdate
+        method: PUT
+        description: Updates an existing web property.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to which the web property belongs
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: management-accounts-accountId-webproperties-webPropertyId-customDataSources
+      path: /management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources
+      operations:
+      - name: analyticsmanagementcustomdatasourceslist
+        method: GET
+        description: List custom data sources to which the user has access.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account Id for the custom data sources to retrieve.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property Id for the custom data sources to retrieve.
+          required: true
+        - name: max-results
+          in: query
+          type: integer
+          description: The maximum number of custom data sources to include in this response.
+        - name: start-index
+          in: query
+          type: integer
+          description: A 1-based index of the first custom data source to retrieve. Use this parameter as a pagination mechanism
+            along with the max-results parameter.
+    - name: management-accounts-accountId-webproperties-webPropertyId-customDataSources-cust
+      path: /management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/deleteUploadData
+      operations:
+      - name: analyticsmanagementuploadsdeleteuploaddata
+        method: POST
+        description: Delete data associated with a previous upload.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account Id for the uploads to be deleted.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property Id for the uploads to be deleted.
+          required: true
+        - name: customDataSourceId
+          in: path
+          type: string
+          description: Custom data source Id for the uploads to be deleted.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: management-accounts-accountId-webproperties-webPropertyId-customDataSources-cust
+      path: /management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/uploads
+      operations:
+      - name: analyticsmanagementuploadslist
+        method: GET
+        description: List uploads to which the user has access.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account Id for the uploads to retrieve.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property Id for the uploads to retrieve.
+          required: true
+        - name: customDataSourceId
+          in: path
+          type: string
+          description: Custom data source Id for uploads to retrieve.
+          required: true
+        - name: max-results
+          in: query
+          type: integer
+          description: The maximum number of uploads to include in this response.
+        - name: start-index
+          in: query
+          type: integer
+          description: A 1-based index of the first upload to retrieve. Use this parameter as a pagination mechanism along
+            with the max-results parameter.
+      - name: analyticsmanagementuploadsuploaddata
+        method: POST
+        description: Upload data for a custom data source.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account Id associated with the upload.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property UA-string associated with the upload.
+          required: true
+        - name: customDataSourceId
+          in: path
+          type: string
+          description: Custom data source Id to which the data being uploaded belongs.
+          required: true
+    - name: management-accounts-accountId-webproperties-webPropertyId-customDataSources-cust
+      path: /management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/uploads/{uploadId}
+      operations:
+      - name: analyticsmanagementuploadsget
+        method: GET
+        description: List uploads to which the user has access.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account Id for the upload to retrieve.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property Id for the upload to retrieve.
+          required: true
+        - name: customDataSourceId
+          in: path
+          type: string
+          description: Custom data source Id for upload to retrieve.
+          required: true
+        - name: uploadId
+          in: path
+          type: string
+          description: Upload Id to retrieve.
+          required: true
+    - name: management-accounts-accountId-webproperties-webPropertyId-customDimensions
+      path: /management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions
+      operations:
+      - name: analyticsmanagementcustomdimensionslist
+        method: GET
+        description: Lists custom dimensions to which the user has access.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID for the custom dimensions to retrieve.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID for the custom dimensions to retrieve.
+          required: true
+        - name: max-results
+          in: query
+          type: integer
+          description: The maximum number of custom dimensions to include in this response.
+        - name: start-index
+          in: query
+          type: integer
+          description: An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the
+            max-results parameter.
+      - name: analyticsmanagementcustomdimensionsinsert
+        method: POST
+        description: Create a new custom dimension.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID for the custom dimension to create.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID for the custom dimension to create.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: management-accounts-accountId-webproperties-webPropertyId-customDimensions-custo
+      path: /management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions/{customDimensionId}
+      operations:
+      - name: analyticsmanagementcustomdimensionsget
+        method: GET
+        description: Get a custom dimension to which the user has access.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID for the custom dimension to retrieve.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID for the custom dimension to retrieve.
+          required: true
+        - name: customDimensionId
+          in: path
+          type: string
+          description: The ID of the custom dimension to retrieve.
+          required: true
+      - name: analyticsmanagementcustomdimensionspatch
+        method: PATCH
+        description: Updates an existing custom dimension. This method supports patch semantics.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID for the custom dimension to update.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID for the custom dimension to update.
+          required: true
+        - name: customDimensionId
+          in: path
+          type: string
+          description: Custom dimension ID for the custom dimension to update.
+          required: true
+        - name: ignoreCustomDataSourceLinks
+          in: query
+          type: boolean
+          description: Force the update and ignore any warnings related to the custom dimension being linked to a custom data
+            source / data set.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: analyticsmanagementcustomdimensionsupdate
+        method: PUT
+        description: Updates an existing custom dimension.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID for the custom dimension to update.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID for the custom dimension to update.
+          required: true
+        - name: customDimensionId
+          in: path
+          type: string
+          description: Custom dimension ID for the custom dimension to update.
+          required: true
+        - name: ignoreCustomDataSourceLinks
+          in: query
+          type: boolean
+          description: Force the update and ignore any warnings related to the custom dimension being linked to a custom data
+            source / data set.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: management-accounts-accountId-webproperties-webPropertyId-customMetrics
+      path: /management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics
+      operations:
+      - name: analyticsmanagementcustommetricslist
+        method: GET
+        description: Lists custom metrics to which the user has access.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID for the custom metrics to retrieve.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID for the custom metrics to retrieve.
+          required: true
+        - name: max-results
+          in: query
+          type: integer
+          description: The maximum number of custom metrics to include in this response.
+        - name: start-index
+          in: query
+          type: integer
+          description: An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the
+            max-results parameter.
+      - name: analyticsmanagementcustommetricsinsert
+        method: POST
+        description: Create a new custom metric.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID for the custom metric to create.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID for the custom dimension to create.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: management-accounts-accountId-webproperties-webPropertyId-customMetrics-customMe
+      path: /management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics/{customMetricId}
+      operations:
+      - name: analyticsmanagementcustommetricsget
+        method: GET
+        description: Get a custom metric to which the user has access.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID for the custom metric to retrieve.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID for the custom metric to retrieve.
+          required: true
+        - name: customMetricId
+          in: path
+          type: string
+          description: The ID of the custom metric to retrieve.
+          required: true
+      - name: analyticsmanagementcustommetricspatch
+        method: PATCH
+        description: Updates an existing custom metric. This method supports patch semantics.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID for the custom metric to update.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID for the custom metric to update.
+          required: true
+        - name: customMetricId
+          in: path
+          type: string
+          description: Custom metric ID for the custom metric to update.
+          required: true
+        - name: ignoreCustomDataSourceLinks
+          in: query
+          type: boolean
+          description: Force the update and ignore any warnings related to the custom metric being linked to a custom data
+            source / data set.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: analyticsmanagementcustommetricsupdate
+        method: PUT
+        description: Updates an existing custom metric.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID for the custom metric to update.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID for the custom metric to update.
+          required: true
+        - name: customMetricId
+          in: path
+          type: string
+          description: Custom metric ID for the custom metric to update.
+          required: true
+        - name: ignoreCustomDataSourceLinks
+          in: query
+          type: boolean
+          description: Force the update and ignore any warnings related to the custom metric being linked to a custom data
+            source / data set.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: management-accounts-accountId-webproperties-webPropertyId-entityAdWordsLinks
+      path: /management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks
+      operations:
+      - name: analyticsmanagementwebpropertyadwordslinkslist
+        method: GET
+        description: Lists webProperty-Google Ads links for a given web property.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: ID of the account which the given web property belongs to.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID to retrieve the Google Ads links for.
+          required: true
+        - name: max-results
+          in: query
+          type: integer
+          description: The maximum number of webProperty-Google Ads links to include in this response.
+        - name: start-index
+          in: query
+          type: integer
+          description: An index of the first webProperty-Google Ads link to retrieve. Use this parameter as a pagination mechanism
+            along with the max-results parameter.
+      - name: analyticsmanagementwebpropertyadwordslinksinsert
+        method: POST
+        description: Creates a webProperty-Google Ads link.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: ID of the Google Analytics account to create the link for.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID to create the link for.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: management-accounts-accountId-webproperties-webPropertyId-entityAdWordsLinks-web
+      path: /management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks/{webPropertyAdWordsLinkId}
+      operations:
+      - name: analyticsmanagementwebpropertyadwordslinksdelete
+        method: DELETE
+        description: Deletes a web property-Google Ads link.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: ID of the account which the given web property belongs to.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID to delete the Google Ads link for.
+          required: true
+        - name: webPropertyAdWordsLinkId
+          in: path
+          type: string
+          description: Web property Google Ads link ID.
+          required: true
+      - name: analyticsmanagementwebpropertyadwordslinksget
+        method: GET
+        description: Returns a web property-Google Ads link to which the user has access.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: ID of the account which the given web property belongs to.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID to retrieve the Google Ads link for.
+          required: true
+        - name: webPropertyAdWordsLinkId
+          in: path
+          type: string
+          description: Web property-Google Ads link ID.
+          required: true
+      - name: analyticsmanagementwebpropertyadwordslinkspatch
+        method: PATCH
+        description: Updates an existing webProperty-Google Ads link. This method supports patch semantics.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: ID of the account which the given web property belongs to.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID to retrieve the Google Ads link for.
+          required: true
+        - name: webPropertyAdWordsLinkId
+          in: path
+          type: string
+          description: Web property-Google Ads link ID.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: analyticsmanagementwebpropertyadwordslinksupdate
+        method: PUT
+        description: Updates an existing webProperty-Google Ads link.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: ID of the account which the given web property belongs to.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID to retrieve the Google Ads link for.
+          required: true
+        - name: webPropertyAdWordsLinkId
+          in: path
+          type: string
+          description: Web property-Google Ads link ID.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: management-accounts-accountId-webproperties-webPropertyId-entityUserLinks
+      path: /management/accounts/{accountId}/webproperties/{webPropertyId}/entityUserLinks
+      operations:
+      - name: analyticsmanagementwebpropertyuserlinkslist
+        method: GET
+        description: Lists webProperty-user links for a given web property.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID which the given web property belongs to.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web Property ID for the webProperty-user links to retrieve. Can either be a specific web property ID
+            or '~all', which refers to all the web properties that user
+          required: true
+        - name: max-results
+          in: query
+          type: integer
+          description: The maximum number of webProperty-user Links to include in this response.
+        - name: start-index
+          in: query
+          type: integer
+          description: An index of the first webProperty-user link to retrieve. Use this parameter as a pagination mechanism
+            along with the max-results parameter.
+      - name: analyticsmanagementwebpropertyuserlinksinsert
+        method: POST
+        description: Adds a new user to the given web property.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to create the user link for.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web Property ID to create the user link for.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: management-accounts-accountId-webproperties-webPropertyId-entityUserLinks-linkId
+      path: /management/accounts/{accountId}/webproperties/{webPropertyId}/entityUserLinks/{linkId}
+      operations:
+      - name: analyticsmanagementwebpropertyuserlinksdelete
+        method: DELETE
+        description: Removes a user from the given web property.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to delete the user link for.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web Property ID to delete the user link for.
+          required: true
+        - name: linkId
+          in: path
+          type: string
+          description: Link ID to delete the user link for.
+          required: true
+      - name: analyticsmanagementwebpropertyuserlinksupdate
+        method: PUT
+        description: Updates permissions for an existing user on the given web property.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to update the account-user link for.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID to update the account-user link for.
+          required: true
+        - name: linkId
+          in: path
+          type: string
+          description: Link ID to update the account-user link for.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: management-accounts-accountId-webproperties-webPropertyId-profiles
+      path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles
+      operations:
+      - name: analyticsmanagementprofileslist
+        method: GET
+        description: Lists views (profiles) to which the user has access.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID for the view (profiles) to retrieve. Can either be a specific account ID or '~all', which
+            refers to all the accounts to which the user has access.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID for the views (profiles) to retrieve. Can either be a specific web property ID or '~all',
+            which refers to all the web properties to which the us
+          required: true
+        - name: max-results
+          in: query
+          type: integer
+          description: The maximum number of views (profiles) to include in this response.
+        - name: start-index
+          in: query
+          type: integer
+          description: An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the
+            max-results parameter.
+      - name: analyticsmanagementprofilesinsert
+        method: POST
+        description: Create a new view (profile).
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to create the view (profile) for.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID to create the view (profile) for.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: management-accounts-accountId-webproperties-webPropertyId-profiles-profileId
+      path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}
+      operations:
+      - name: analyticsmanagementprofilesdelete
+        method: DELETE
+        description: Deletes a view (profile).
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to delete the view (profile) for.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID to delete the view (profile) for.
+          required: true
+        - name: profileId
+          in: path
+          type: string
+          description: ID of the view (profile) to be deleted.
+          required: true
+      - name: analyticsmanagementprofilesget
+        method: GET
+        description: Gets a view (profile) to which the user has access.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to retrieve the view (profile) for.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID to retrieve the view (profile) for.
+          required: true
+        - name: profileId
+          in: path
+          type: string
+          description: View (Profile) ID to retrieve the view (profile) for.
+          required: true
+      - name: analyticsmanagementprofilespatch
+        method: PATCH
+        description: Updates an existing view (profile). This method supports patch semantics.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to which the view (profile) belongs
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID to which the view (profile) belongs
+          required: true
+        - name: profileId
+          in: path
+          type: string
+          description: ID of the view (profile) to be updated.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: analyticsmanagementprofilesupdate
+        method: PUT
+        description: Updates an existing view (profile).
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to which the view (profile) belongs
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID to which the view (profile) belongs
+          required: true
+        - name: profileId
+          in: path
+          type: string
+          description: ID of the view (profile) to be updated.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: management-accounts-accountId-webproperties-webPropertyId-profiles-profileId-ent
+      path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/entityUserLinks
+      operations:
+      - name: analyticsmanagementprofileuserlinkslist
+        method: GET
+        description: Lists profile-user links for a given view (profile).
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID which the given view (profile) belongs to.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: 'Web Property ID which the given view (profile) belongs to. Can either be a specific web property ID
+            or ''~all'', which refers to all the web properties that user '
+          required: true
+        - name: profileId
+          in: path
+          type: string
+          description: View (Profile) ID to retrieve the profile-user links for. Can either be a specific profile ID or '~all',
+            which refers to all the profiles that user has access t
+          required: true
+        - name: max-results
+          in: query
+          type: integer
+          description: The maximum number of profile-user links to include in this response.
+        - name: start-index
+          in: query
+          type: integer
+          description: An index of the first profile-user link to retrieve. Use this parameter as a pagination mechanism along
+            with the max-results parameter.
+      - name: analyticsmanagementprofileuserlinksinsert
+        method: POST
+        description: Adds a new user to the given view (profile).
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to create the user link for.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web Property ID to create the user link for.
+          required: true
+        - name: profileId
+          in: path
+          type: string
+          description: View (Profile) ID to create the user link for.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: management-accounts-accountId-webproperties-webPropertyId-profiles-profileId-ent
+      path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/entityUserLinks/{linkId}
+      operations:
+      - name: analyticsmanagementprofileuserlinksdelete
+        method: DELETE
+        description: Removes a user from the given view (profile).
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to delete the user link for.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web Property ID to delete the user link for.
+          required: true
+        - name: profileId
+          in: path
+          type: string
+          description: View (Profile) ID to delete the user link for.
+          required: true
+        - name: linkId
+          in: path
+          type: string
+          description: Link ID to delete the user link for.
+          required: true
+      - name: analyticsmanagementprofileuserlinksupdate
+        method: PUT
+        description: Updates permissions for an existing user on the given view (profile).
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to update the user link for.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web Property ID to update the user link for.
+          required: true
+        - name: profileId
+          in: path
+          type: string
+          description: View (Profile ID) to update the user link for.
+          required: true
+        - name: linkId
+          in: path
+          type: string
+          description: Link ID to update the user link for.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: management-accounts-accountId-webproperties-webPropertyId-profiles-profileId-exp
+      path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments
+      operations:
+      - name: analyticsmanagementexperimentslist
+        method: GET
+        description: Lists experiments to which the user has access.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to retrieve experiments for.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID to retrieve experiments for.
+          required: true
+        - name: profileId
+          in: path
+          type: string
+          description: View (Profile) ID to retrieve experiments for.
+          required: true
+        - name: max-results
+          in: query
+          type: integer
+          description: The maximum number of experiments to include in this response.
+        - name: start-index
+          in: query
+          type: integer
+          description: An index of the first experiment to retrieve. Use this parameter as a pagination mechanism along with
+            the max-results parameter.
+      - name: analyticsmanagementexperimentsinsert
+        method: POST
+        description: Create a new experiment.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to create the experiment for.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID to create the experiment for.
+          required: true
+        - name: profileId
+          in: path
+          type: string
+          description: View (Profile) ID to create the experiment for.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: management-accounts-accountId-webproperties-webPropertyId-profiles-profileId-exp
+      path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments/{experimentId}
+      operations:
+      - name: analyticsmanagementexperimentsdelete
+        method: DELETE
+        description: Delete an experiment.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to which the experiment belongs
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID to which the experiment belongs
+          required: true
+        - name: profileId
+          in: path
+          type: string
+          description: View (Profile) ID to which the experiment belongs
+          required: true
+        - name: experimentId
+          in: path
+          type: string
+          description: ID of the experiment to delete
+          required: true
+      - name: analyticsmanagementexperimentsget
+        method: GET
+        description: Returns an experiment to which the user has access.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to retrieve the experiment for.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID to retrieve the experiment for.
+          required: true
+        - name: profileId
+          in: path
+          type: string
+          description: View (Profile) ID to retrieve the experiment for.
+          required: true
+        - name: experimentId
+          in: path
+          type: string
+          description: Experiment ID to retrieve the experiment for.
+          required: true
+      - name: analyticsmanagementexperimentspatch
+        method: PATCH
+        description: Update an existing experiment. This method supports patch semantics.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID of the experiment to update.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID of the experiment to update.
+          required: true
+        - name: profileId
+          in: path
+          type: string
+          description: View (Profile) ID of the experiment to update.
+          required: true
+        - name: experimentId
+          in: path
+          type: string
+          description: Experiment ID of the experiment to update.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: analyticsmanagementexperimentsupdate
+        method: PUT
+        description: Update an existing experiment.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID of the experiment to update.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID of the experiment to update.
+          required: true
+        - name: profileId
+          in: path
+          type: string
+          description: View (Profile) ID of the experiment to update.
+          required: true
+        - name: experimentId
+          in: path
+          type: string
+          description: Experiment ID of the experiment to update.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: management-accounts-accountId-webproperties-webPropertyId-profiles-profileId-goa
+      path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals
+      operations:
+      - name: analyticsmanagementgoalslist
+        method: GET
+        description: Lists goals to which the user has access.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to retrieve goals for. Can either be a specific account ID or '~all', which refers to all
+            the accounts that user has access to.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID to retrieve goals for. Can either be a specific web property ID or '~all', which refers
+            to all the web properties that user has access to.
+          required: true
+        - name: profileId
+          in: path
+          type: string
+          description: View (Profile) ID to retrieve goals for. Can either be a specific view (profile) ID or '~all', which
+            refers to all the views (profiles) that user has access to.
+          required: true
+        - name: max-results
+          in: query
+          type: integer
+          description: The maximum number of goals to include in this response.
+        - name: start-index
+          in: query
+          type: integer
+          description: An index of the first goal to retrieve. Use this parameter as a pagination mechanism along with the
+            max-results parameter.
+      - name: analyticsmanagementgoalsinsert
+        method: POST
+        description: Create a new goal.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to create the goal for.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID to create the goal for.
+          required: true
+        - name: profileId
+          in: path
+          type: string
+          description: View (Profile) ID to create the goal for.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: management-accounts-accountId-webproperties-webPropertyId-profiles-profileId-goa
+      path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals/{goalId}
+      operations:
+      - name: analyticsmanagementgoalsget
+        method: GET
+        description: Gets a goal to which the user has access.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to retrieve the goal for.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID to retrieve the goal for.
+          required: true
+        - name: profileId
+          in: path
+          type: string
+          description: View (Profile) ID to retrieve the goal for.
+          required: true
+        - name: goalId
+          in: path
+          type: string
+          description: Goal ID to retrieve the goal for.
+          required: true
+      - name: analyticsmanagementgoalspatch
+        method: PATCH
+        description: Updates an existing goal. This method supports patch semantics.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to update the goal.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID to update the goal.
+          required: true
+        - name: profileId
+          in: path
+          type: string
+          description: View (Profile) ID to update the goal.
+          required: true
+        - name: goalId
+          in: path
+          type: string
+          description: Index of the goal to be updated.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: analyticsmanagementgoalsupdate
+        method: PUT
+        description: Updates an existing goal.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to update the goal.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID to update the goal.
+          required: true
+        - name: profileId
+          in: path
+          type: string
+          description: View (Profile) ID to update the goal.
+          required: true
+        - name: goalId
+          in: path
+          type: string
+          description: Index of the goal to be updated.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: management-accounts-accountId-webproperties-webPropertyId-profiles-profileId-pro
+      path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks
+      operations:
+      - name: analyticsmanagementprofilefilterlinkslist
+        method: GET
+        description: Lists all profile filter links for a profile.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to retrieve profile filter links for.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property Id for profile filter links for. Can either be a specific web property ID or '~all', which
+            refers to all the web properties that user has access to
+          required: true
+        - name: profileId
+          in: path
+          type: string
+          description: Profile ID to retrieve filter links for. Can either be a specific profile ID or '~all', which refers
+            to all the profiles that user has access to.
+          required: true
+        - name: max-results
+          in: query
+          type: integer
+          description: The maximum number of profile filter links to include in this response.
+        - name: start-index
+          in: query
+          type: integer
+          description: An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the
+            max-results parameter.
+      - name: analyticsmanagementprofilefilterlinksinsert
+        method: POST
+        description: Create a new profile filter link.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to create profile filter link for.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property Id to create profile filter link for.
+          required: true
+        - name: profileId
+          in: path
+          type: string
+          description: Profile ID to create filter link for.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: management-accounts-accountId-webproperties-webPropertyId-profiles-profileId-pro
+      path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks/{linkId}
+      operations:
+      - name: analyticsmanagementprofilefilterlinksdelete
+        method: DELETE
+        description: Delete a profile filter link.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to which the profile filter link belongs.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property Id to which the profile filter link belongs.
+          required: true
+        - name: profileId
+          in: path
+          type: string
+          description: Profile ID to which the filter link belongs.
+          required: true
+        - name: linkId
+          in: path
+          type: string
+          description: ID of the profile filter link to delete.
+          required: true
+      - name: analyticsmanagementprofilefilterlinksget
+        method: GET
+        description: Returns a single profile filter link.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to retrieve profile filter link for.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property Id to retrieve profile filter link for.
+          required: true
+        - name: profileId
+          in: path
+          type: string
+          description: Profile ID to retrieve filter link for.
+          required: true
+        - name: linkId
+          in: path
+          type: string
+          description: ID of the profile filter link.
+          required: true
+      - name: analyticsmanagementprofilefilterlinkspatch
+        method: PATCH
+        description: Update an existing profile filter link. This method supports patch semantics.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to which profile filter link belongs.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property Id to which profile filter link belongs
+          required: true
+        - name: profileId
+          in: path
+          type: string
+          description: Profile ID to which filter link belongs
+          required: true
+        - name: linkId
+          in: path
+          type: string
+          description: ID of the profile filter link to be updated.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: analyticsmanagementprofilefilterlinksupdate
+        method: PUT
+        description: Update an existing profile filter link.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to which profile filter link belongs.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property Id to which profile filter link belongs
+          required: true
+        - name: profileId
+          in: path
+          type: string
+          description: Profile ID to which filter link belongs
+          required: true
+        - name: linkId
+          in: path
+          type: string
+          description: ID of the profile filter link to be updated.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: management-accounts-accountId-webproperties-webPropertyId-profiles-profileId-uns
+      path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/unsampledReports
+      operations:
+      - name: analyticsmanagementunsampledreportslist
+        method: GET
+        description: Lists unsampled reports to which the user has access.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to retrieve unsampled reports for. Must be a specific account ID, ~all is not supported.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID to retrieve unsampled reports for. Must be a specific web property ID, ~all is not
+            supported.
+          required: true
+        - name: profileId
+          in: path
+          type: string
+          description: View (Profile) ID to retrieve unsampled reports for. Must be a specific view (profile) ID, ~all is
+            not supported.
+          required: true
+        - name: max-results
+          in: query
+          type: integer
+          description: The maximum number of unsampled reports to include in this response.
+        - name: start-index
+          in: query
+          type: integer
+          description: An index of the first unsampled report to retrieve. Use this parameter as a pagination mechanism along
+            with the max-results parameter.
+      - name: analyticsmanagementunsampledreportsinsert
+        method: POST
+        description: Create a new unsampled report.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to create the unsampled report for.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID to create the unsampled report for.
+          required: true
+        - name: profileId
+          in: path
+          type: string
+          description: View (Profile) ID to create the unsampled report for.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: management-accounts-accountId-webproperties-webPropertyId-profiles-profileId-uns
+      path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/unsampledReports/{unsampledReportId}
+      operations:
+      - name: analyticsmanagementunsampledreportsdelete
+        method: DELETE
+        description: Deletes an unsampled report.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to delete the unsampled report for.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID to delete the unsampled reports for.
+          required: true
+        - name: profileId
+          in: path
+          type: string
+          description: View (Profile) ID to delete the unsampled report for.
+          required: true
+        - name: unsampledReportId
+          in: path
+          type: string
+          description: ID of the unsampled report to be deleted.
+          required: true
+      - name: analyticsmanagementunsampledreportsget
+        method: GET
+        description: Returns a single unsampled report.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to retrieve unsampled report for.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID to retrieve unsampled reports for.
+          required: true
+        - name: profileId
+          in: path
+          type: string
+          description: View (Profile) ID to retrieve unsampled report for.
+          required: true
+        - name: unsampledReportId
+          in: path
+          type: string
+          description: ID of the unsampled report to retrieve.
+          required: true
+    - name: management-accounts-accountId-webproperties-webPropertyId-remarketingAudiences
+      path: /management/accounts/{accountId}/webproperties/{webPropertyId}/remarketingAudiences
+      operations:
+      - name: analyticsmanagementremarketingaudiencelist
+        method: GET
+        description: Lists remarketing audiences to which the user has access.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: The account ID of the remarketing audiences to retrieve.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: The web property ID of the remarketing audiences to retrieve.
+          required: true
+        - name: max-results
+          in: query
+          type: integer
+          description: The maximum number of remarketing audiences to include in this response.
+        - name: start-index
+          in: query
+          type: integer
+          description: An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the
+            max-results parameter.
+        - name: type
+          in: query
+          type: string
+      - name: analyticsmanagementremarketingaudienceinsert
+        method: POST
+        description: Creates a new remarketing audience.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: The account ID for which to create the remarketing audience.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID for which to create the remarketing audience.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: management-accounts-accountId-webproperties-webPropertyId-remarketingAudiences-r
+      path: /management/accounts/{accountId}/webproperties/{webPropertyId}/remarketingAudiences/{remarketingAudienceId}
+      operations:
+      - name: analyticsmanagementremarketingaudiencedelete
+        method: DELETE
+        description: Delete a remarketing audience.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID to which the remarketing audience belongs.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: Web property ID to which the remarketing audience belongs.
+          required: true
+        - name: remarketingAudienceId
+          in: path
+          type: string
+          description: The ID of the remarketing audience to delete.
+          required: true
+      - name: analyticsmanagementremarketingaudienceget
+        method: GET
+        description: Gets a remarketing audience to which the user has access.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: The account ID of the remarketing audience to retrieve.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: The web property ID of the remarketing audience to retrieve.
+          required: true
+        - name: remarketingAudienceId
+          in: path
+          type: string
+          description: The ID of the remarketing audience to retrieve.
+          required: true
+      - name: analyticsmanagementremarketingaudiencepatch
+        method: PATCH
+        description: Updates an existing remarketing audience. This method supports patch semantics.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: The account ID of the remarketing audience to update.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: The web property ID of the remarketing audience to update.
+          required: true
+        - name: remarketingAudienceId
+          in: path
+          type: string
+          description: The ID of the remarketing audience to update.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: analyticsmanagementremarketingaudienceupdate
+        method: PUT
+        description: Updates an existing remarketing audience.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: The account ID of the remarketing audience to update.
+          required: true
+        - name: webPropertyId
+          in: path
+          type: string
+          description: The web property ID of the remarketing audience to update.
+          required: true
+        - name: remarketingAudienceId
+          in: path
+          type: string
+          description: The ID of the remarketing audience to update.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: management-clientId:hashClientId
+      path: /management/clientId:hashClientId
+      operations:
+      - name: analyticsmanagementclientidhashclientid
+        method: POST
+        description: Hashes the given Client ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: management-segments
+      path: /management/segments
+      operations:
+      - name: analyticsmanagementsegmentslist
+        method: GET
+        description: Lists segments to which the user has access.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: max-results
+          in: query
+          type: integer
+          description: The maximum number of segments to include in this response.
+        - name: start-index
+          in: query
+          type: integer
+          description: An index of the first segment to retrieve. Use this parameter as a pagination mechanism along with
+            the max-results parameter.
+    authentication:
+      type: bearer
+      token: '{{env.GOOGLE_ANALYTICS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: management-api-v3-management-rest
+    port: 8080
+    description: REST adapter for Google Analytics API — management. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/management/accountsummaries
+      name: management-accountsummaries
+      description: REST surface for management-accountSummaries.
+      operations:
+      - method: GET
+        name: analyticsmanagementaccountsummarieslist
+        description: Lists account summaries (lightweight tree comprised of accounts/properties/profiles) to which the user
+          has access.
+        call: management-api-v3-management.analyticsmanagementaccountsummarieslist
+        with:
+          max-results: rest.max-results
+          start-index: rest.start-index
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts
+      name: management-accounts
+      description: REST surface for management-accounts.
+      operations:
+      - method: GET
+        name: analyticsmanagementaccountslist
+        description: Lists all accounts to which the user has access.
+        call: management-api-v3-management.analyticsmanagementaccountslist
+        with:
+          max-results: rest.max-results
+          start-index: rest.start-index
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts/{accountid}/entityuserlinks
+      name: management-accounts-accountid-entityuserlinks
+      description: REST surface for management-accounts-accountId-entityUserLinks.
+      operations:
+      - method: GET
+        name: analyticsmanagementaccountuserlinkslist
+        description: Lists account-user links for a given account.
+        call: management-api-v3-management.analyticsmanagementaccountuserlinkslist
+        with:
+          accountId: rest.accountId
+          max-results: rest.max-results
+          start-index: rest.start-index
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: analyticsmanagementaccountuserlinksinsert
+        description: Adds a new user to the given account.
+        call: management-api-v3-management.analyticsmanagementaccountuserlinksinsert
+        with:
+          accountId: rest.accountId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts/{accountid}/entityuserlinks/{linkid}
+      name: management-accounts-accountid-entityuserlinks-linkid
+      description: REST surface for management-accounts-accountId-entityUserLinks-linkId.
+      operations:
+      - method: DELETE
+        name: analyticsmanagementaccountuserlinksdelete
+        description: Removes a user from the given account.
+        call: management-api-v3-management.analyticsmanagementaccountuserlinksdelete
+        with:
+          accountId: rest.accountId
+          linkId: rest.linkId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: analyticsmanagementaccountuserlinksupdate
+        description: Updates permissions for an existing user on the given account.
+        call: management-api-v3-management.analyticsmanagementaccountuserlinksupdate
+        with:
+          accountId: rest.accountId
+          linkId: rest.linkId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts/{accountid}/filters
+      name: management-accounts-accountid-filters
+      description: REST surface for management-accounts-accountId-filters.
+      operations:
+      - method: GET
+        name: analyticsmanagementfilterslist
+        description: Lists all filters for an account
+        call: management-api-v3-management.analyticsmanagementfilterslist
+        with:
+          accountId: rest.accountId
+          max-results: rest.max-results
+          start-index: rest.start-index
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: analyticsmanagementfiltersinsert
+        description: Create a new filter.
+        call: management-api-v3-management.analyticsmanagementfiltersinsert
+        with:
+          accountId: rest.accountId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts/{accountid}/filters/{filterid}
+      name: management-accounts-accountid-filters-filterid
+      description: REST surface for management-accounts-accountId-filters-filterId.
+      operations:
+      - method: DELETE
+        name: analyticsmanagementfiltersdelete
+        description: Delete a filter.
+        call: management-api-v3-management.analyticsmanagementfiltersdelete
+        with:
+          accountId: rest.accountId
+          filterId: rest.filterId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: analyticsmanagementfiltersget
+        description: Returns filters to which the user has access.
+        call: management-api-v3-management.analyticsmanagementfiltersget
+        with:
+          accountId: rest.accountId
+          filterId: rest.filterId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: analyticsmanagementfilterspatch
+        description: Updates an existing filter. This method supports patch semantics.
+        call: management-api-v3-management.analyticsmanagementfilterspatch
+        with:
+          accountId: rest.accountId
+          filterId: rest.filterId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: analyticsmanagementfiltersupdate
+        description: Updates an existing filter.
+        call: management-api-v3-management.analyticsmanagementfiltersupdate
+        with:
+          accountId: rest.accountId
+          filterId: rest.filterId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts/{accountid}/webproperties
+      name: management-accounts-accountid-webproperties
+      description: REST surface for management-accounts-accountId-webproperties.
+      operations:
+      - method: GET
+        name: analyticsmanagementwebpropertieslist
+        description: Lists web properties to which the user has access.
+        call: management-api-v3-management.analyticsmanagementwebpropertieslist
+        with:
+          accountId: rest.accountId
+          max-results: rest.max-results
+          start-index: rest.start-index
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: analyticsmanagementwebpropertiesinsert
+        description: Create a new property if the account has fewer than 20 properties. Web properties are visible in the
+          Google Analytics interface only if they have at least one profile.
+        call: management-api-v3-management.analyticsmanagementwebpropertiesinsert
+        with:
+          accountId: rest.accountId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts/{accountid}/webproperties/{webpropertyid}
+      name: management-accounts-accountid-webproperties-webpropertyid
+      description: REST surface for management-accounts-accountId-webproperties-webPropertyId.
+      operations:
+      - method: GET
+        name: analyticsmanagementwebpropertiesget
+        description: Gets a web property to which the user has access.
+        call: management-api-v3-management.analyticsmanagementwebpropertiesget
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: analyticsmanagementwebpropertiespatch
+        description: Updates an existing web property. This method supports patch semantics.
+        call: management-api-v3-management.analyticsmanagementwebpropertiespatch
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: analyticsmanagementwebpropertiesupdate
+        description: Updates an existing web property.
+        call: management-api-v3-management.analyticsmanagementwebpropertiesupdate
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts/{accountid}/webproperties/{webpropertyid}/customdatasources
+      name: management-accounts-accountid-webproperties-webpropertyid-customdatasources
+      description: REST surface for management-accounts-accountId-webproperties-webPropertyId-customDataSources.
+      operations:
+      - method: GET
+        name: analyticsmanagementcustomdatasourceslist
+        description: List custom data sources to which the user has access.
+        call: management-api-v3-management.analyticsmanagementcustomdatasourceslist
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          max-results: rest.max-results
+          start-index: rest.start-index
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts/{accountid}/webproperties/{webpropertyid}/customdatasources/{customdatasourceid}/deleteuploaddata
+      name: management-accounts-accountid-webproperties-webpropertyid-customdatasources-cust
+      description: REST surface for management-accounts-accountId-webproperties-webPropertyId-customDataSources-cust.
+      operations:
+      - method: POST
+        name: analyticsmanagementuploadsdeleteuploaddata
+        description: Delete data associated with a previous upload.
+        call: management-api-v3-management.analyticsmanagementuploadsdeleteuploaddata
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          customDataSourceId: rest.customDataSourceId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts/{accountid}/webproperties/{webpropertyid}/customdatasources/{customdatasourceid}/uploads
+      name: management-accounts-accountid-webproperties-webpropertyid-customdatasources-cust
+      description: REST surface for management-accounts-accountId-webproperties-webPropertyId-customDataSources-cust.
+      operations:
+      - method: GET
+        name: analyticsmanagementuploadslist
+        description: List uploads to which the user has access.
+        call: management-api-v3-management.analyticsmanagementuploadslist
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          customDataSourceId: rest.customDataSourceId
+          max-results: rest.max-results
+          start-index: rest.start-index
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: analyticsmanagementuploadsuploaddata
+        description: Upload data for a custom data source.
+        call: management-api-v3-management.analyticsmanagementuploadsuploaddata
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          customDataSourceId: rest.customDataSourceId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts/{accountid}/webproperties/{webpropertyid}/customdatasources/{customdatasourceid}/uploads/{uploadid}
+      name: management-accounts-accountid-webproperties-webpropertyid-customdatasources-cust
+      description: REST surface for management-accounts-accountId-webproperties-webPropertyId-customDataSources-cust.
+      operations:
+      - method: GET
+        name: analyticsmanagementuploadsget
+        description: List uploads to which the user has access.
+        call: management-api-v3-management.analyticsmanagementuploadsget
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          customDataSourceId: rest.customDataSourceId
+          uploadId: rest.uploadId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts/{accountid}/webproperties/{webpropertyid}/customdimensions
+      name: management-accounts-accountid-webproperties-webpropertyid-customdimensions
+      description: REST surface for management-accounts-accountId-webproperties-webPropertyId-customDimensions.
+      operations:
+      - method: GET
+        name: analyticsmanagementcustomdimensionslist
+        description: Lists custom dimensions to which the user has access.
+        call: management-api-v3-management.analyticsmanagementcustomdimensionslist
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          max-results: rest.max-results
+          start-index: rest.start-index
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: analyticsmanagementcustomdimensionsinsert
+        description: Create a new custom dimension.
+        call: management-api-v3-management.analyticsmanagementcustomdimensionsinsert
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts/{accountid}/webproperties/{webpropertyid}/customdimensions/{customdimensionid}
+      name: management-accounts-accountid-webproperties-webpropertyid-customdimensions-custo
+      description: REST surface for management-accounts-accountId-webproperties-webPropertyId-customDimensions-custo.
+      operations:
+      - method: GET
+        name: analyticsmanagementcustomdimensionsget
+        description: Get a custom dimension to which the user has access.
+        call: management-api-v3-management.analyticsmanagementcustomdimensionsget
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          customDimensionId: rest.customDimensionId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: analyticsmanagementcustomdimensionspatch
+        description: Updates an existing custom dimension. This method supports patch semantics.
+        call: management-api-v3-management.analyticsmanagementcustomdimensionspatch
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          customDimensionId: rest.customDimensionId
+          ignoreCustomDataSourceLinks: rest.ignoreCustomDataSourceLinks
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: analyticsmanagementcustomdimensionsupdate
+        description: Updates an existing custom dimension.
+        call: management-api-v3-management.analyticsmanagementcustomdimensionsupdate
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          customDimensionId: rest.customDimensionId
+          ignoreCustomDataSourceLinks: rest.ignoreCustomDataSourceLinks
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts/{accountid}/webproperties/{webpropertyid}/custommetrics
+      name: management-accounts-accountid-webproperties-webpropertyid-custommetrics
+      description: REST surface for management-accounts-accountId-webproperties-webPropertyId-customMetrics.
+      operations:
+      - method: GET
+        name: analyticsmanagementcustommetricslist
+        description: Lists custom metrics to which the user has access.
+        call: management-api-v3-management.analyticsmanagementcustommetricslist
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          max-results: rest.max-results
+          start-index: rest.start-index
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: analyticsmanagementcustommetricsinsert
+        description: Create a new custom metric.
+        call: management-api-v3-management.analyticsmanagementcustommetricsinsert
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts/{accountid}/webproperties/{webpropertyid}/custommetrics/{custommetricid}
+      name: management-accounts-accountid-webproperties-webpropertyid-custommetrics-customme
+      description: REST surface for management-accounts-accountId-webproperties-webPropertyId-customMetrics-customMe.
+      operations:
+      - method: GET
+        name: analyticsmanagementcustommetricsget
+        description: Get a custom metric to which the user has access.
+        call: management-api-v3-management.analyticsmanagementcustommetricsget
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          customMetricId: rest.customMetricId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: analyticsmanagementcustommetricspatch
+        description: Updates an existing custom metric. This method supports patch semantics.
+        call: management-api-v3-management.analyticsmanagementcustommetricspatch
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          customMetricId: rest.customMetricId
+          ignoreCustomDataSourceLinks: rest.ignoreCustomDataSourceLinks
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: analyticsmanagementcustommetricsupdate
+        description: Updates an existing custom metric.
+        call: management-api-v3-management.analyticsmanagementcustommetricsupdate
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          customMetricId: rest.customMetricId
+          ignoreCustomDataSourceLinks: rest.ignoreCustomDataSourceLinks
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts/{accountid}/webproperties/{webpropertyid}/entityadwordslinks
+      name: management-accounts-accountid-webproperties-webpropertyid-entityadwordslinks
+      description: REST surface for management-accounts-accountId-webproperties-webPropertyId-entityAdWordsLinks.
+      operations:
+      - method: GET
+        name: analyticsmanagementwebpropertyadwordslinkslist
+        description: Lists webProperty-Google Ads links for a given web property.
+        call: management-api-v3-management.analyticsmanagementwebpropertyadwordslinkslist
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          max-results: rest.max-results
+          start-index: rest.start-index
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: analyticsmanagementwebpropertyadwordslinksinsert
+        description: Creates a webProperty-Google Ads link.
+        call: management-api-v3-management.analyticsmanagementwebpropertyadwordslinksinsert
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts/{accountid}/webproperties/{webpropertyid}/entityadwordslinks/{webpropertyadwordslinkid}
+      name: management-accounts-accountid-webproperties-webpropertyid-entityadwordslinks-web
+      description: REST surface for management-accounts-accountId-webproperties-webPropertyId-entityAdWordsLinks-web.
+      operations:
+      - method: DELETE
+        name: analyticsmanagementwebpropertyadwordslinksdelete
+        description: Deletes a web property-Google Ads link.
+        call: management-api-v3-management.analyticsmanagementwebpropertyadwordslinksdelete
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          webPropertyAdWordsLinkId: rest.webPropertyAdWordsLinkId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: analyticsmanagementwebpropertyadwordslinksget
+        description: Returns a web property-Google Ads link to which the user has access.
+        call: management-api-v3-management.analyticsmanagementwebpropertyadwordslinksget
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          webPropertyAdWordsLinkId: rest.webPropertyAdWordsLinkId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: analyticsmanagementwebpropertyadwordslinkspatch
+        description: Updates an existing webProperty-Google Ads link. This method supports patch semantics.
+        call: management-api-v3-management.analyticsmanagementwebpropertyadwordslinkspatch
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          webPropertyAdWordsLinkId: rest.webPropertyAdWordsLinkId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: analyticsmanagementwebpropertyadwordslinksupdate
+        description: Updates an existing webProperty-Google Ads link.
+        call: management-api-v3-management.analyticsmanagementwebpropertyadwordslinksupdate
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          webPropertyAdWordsLinkId: rest.webPropertyAdWordsLinkId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts/{accountid}/webproperties/{webpropertyid}/entityuserlinks
+      name: management-accounts-accountid-webproperties-webpropertyid-entityuserlinks
+      description: REST surface for management-accounts-accountId-webproperties-webPropertyId-entityUserLinks.
+      operations:
+      - method: GET
+        name: analyticsmanagementwebpropertyuserlinkslist
+        description: Lists webProperty-user links for a given web property.
+        call: management-api-v3-management.analyticsmanagementwebpropertyuserlinkslist
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          max-results: rest.max-results
+          start-index: rest.start-index
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: analyticsmanagementwebpropertyuserlinksinsert
+        description: Adds a new user to the given web property.
+        call: management-api-v3-management.analyticsmanagementwebpropertyuserlinksinsert
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts/{accountid}/webproperties/{webpropertyid}/entityuserlinks/{linkid}
+      name: management-accounts-accountid-webproperties-webpropertyid-entityuserlinks-linkid
+      description: REST surface for management-accounts-accountId-webproperties-webPropertyId-entityUserLinks-linkId.
+      operations:
+      - method: DELETE
+        name: analyticsmanagementwebpropertyuserlinksdelete
+        description: Removes a user from the given web property.
+        call: management-api-v3-management.analyticsmanagementwebpropertyuserlinksdelete
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          linkId: rest.linkId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: analyticsmanagementwebpropertyuserlinksupdate
+        description: Updates permissions for an existing user on the given web property.
+        call: management-api-v3-management.analyticsmanagementwebpropertyuserlinksupdate
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          linkId: rest.linkId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts/{accountid}/webproperties/{webpropertyid}/profiles
+      name: management-accounts-accountid-webproperties-webpropertyid-profiles
+      description: REST surface for management-accounts-accountId-webproperties-webPropertyId-profiles.
+      operations:
+      - method: GET
+        name: analyticsmanagementprofileslist
+        description: Lists views (profiles) to which the user has access.
+        call: management-api-v3-management.analyticsmanagementprofileslist
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          max-results: rest.max-results
+          start-index: rest.start-index
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: analyticsmanagementprofilesinsert
+        description: Create a new view (profile).
+        call: management-api-v3-management.analyticsmanagementprofilesinsert
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts/{accountid}/webproperties/{webpropertyid}/profiles/{profileid}
+      name: management-accounts-accountid-webproperties-webpropertyid-profiles-profileid
+      description: REST surface for management-accounts-accountId-webproperties-webPropertyId-profiles-profileId.
+      operations:
+      - method: DELETE
+        name: analyticsmanagementprofilesdelete
+        description: Deletes a view (profile).
+        call: management-api-v3-management.analyticsmanagementprofilesdelete
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          profileId: rest.profileId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: analyticsmanagementprofilesget
+        description: Gets a view (profile) to which the user has access.
+        call: management-api-v3-management.analyticsmanagementprofilesget
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          profileId: rest.profileId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: analyticsmanagementprofilespatch
+        description: Updates an existing view (profile). This method supports patch semantics.
+        call: management-api-v3-management.analyticsmanagementprofilespatch
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          profileId: rest.profileId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: analyticsmanagementprofilesupdate
+        description: Updates an existing view (profile).
+        call: management-api-v3-management.analyticsmanagementprofilesupdate
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          profileId: rest.profileId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts/{accountid}/webproperties/{webpropertyid}/profiles/{profileid}/entityuserlinks
+      name: management-accounts-accountid-webproperties-webpropertyid-profiles-profileid-ent
+      description: REST surface for management-accounts-accountId-webproperties-webPropertyId-profiles-profileId-ent.
+      operations:
+      - method: GET
+        name: analyticsmanagementprofileuserlinkslist
+        description: Lists profile-user links for a given view (profile).
+        call: management-api-v3-management.analyticsmanagementprofileuserlinkslist
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          profileId: rest.profileId
+          max-results: rest.max-results
+          start-index: rest.start-index
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: analyticsmanagementprofileuserlinksinsert
+        description: Adds a new user to the given view (profile).
+        call: management-api-v3-management.analyticsmanagementprofileuserlinksinsert
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          profileId: rest.profileId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts/{accountid}/webproperties/{webpropertyid}/profiles/{profileid}/entityuserlinks/{linkid}
+      name: management-accounts-accountid-webproperties-webpropertyid-profiles-profileid-ent
+      description: REST surface for management-accounts-accountId-webproperties-webPropertyId-profiles-profileId-ent.
+      operations:
+      - method: DELETE
+        name: analyticsmanagementprofileuserlinksdelete
+        description: Removes a user from the given view (profile).
+        call: management-api-v3-management.analyticsmanagementprofileuserlinksdelete
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          profileId: rest.profileId
+          linkId: rest.linkId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: analyticsmanagementprofileuserlinksupdate
+        description: Updates permissions for an existing user on the given view (profile).
+        call: management-api-v3-management.analyticsmanagementprofileuserlinksupdate
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          profileId: rest.profileId
+          linkId: rest.linkId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts/{accountid}/webproperties/{webpropertyid}/profiles/{profileid}/experiments
+      name: management-accounts-accountid-webproperties-webpropertyid-profiles-profileid-exp
+      description: REST surface for management-accounts-accountId-webproperties-webPropertyId-profiles-profileId-exp.
+      operations:
+      - method: GET
+        name: analyticsmanagementexperimentslist
+        description: Lists experiments to which the user has access.
+        call: management-api-v3-management.analyticsmanagementexperimentslist
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          profileId: rest.profileId
+          max-results: rest.max-results
+          start-index: rest.start-index
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: analyticsmanagementexperimentsinsert
+        description: Create a new experiment.
+        call: management-api-v3-management.analyticsmanagementexperimentsinsert
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          profileId: rest.profileId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts/{accountid}/webproperties/{webpropertyid}/profiles/{profileid}/experiments/{experimentid}
+      name: management-accounts-accountid-webproperties-webpropertyid-profiles-profileid-exp
+      description: REST surface for management-accounts-accountId-webproperties-webPropertyId-profiles-profileId-exp.
+      operations:
+      - method: DELETE
+        name: analyticsmanagementexperimentsdelete
+        description: Delete an experiment.
+        call: management-api-v3-management.analyticsmanagementexperimentsdelete
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          profileId: rest.profileId
+          experimentId: rest.experimentId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: analyticsmanagementexperimentsget
+        description: Returns an experiment to which the user has access.
+        call: management-api-v3-management.analyticsmanagementexperimentsget
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          profileId: rest.profileId
+          experimentId: rest.experimentId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: analyticsmanagementexperimentspatch
+        description: Update an existing experiment. This method supports patch semantics.
+        call: management-api-v3-management.analyticsmanagementexperimentspatch
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          profileId: rest.profileId
+          experimentId: rest.experimentId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: analyticsmanagementexperimentsupdate
+        description: Update an existing experiment.
+        call: management-api-v3-management.analyticsmanagementexperimentsupdate
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          profileId: rest.profileId
+          experimentId: rest.experimentId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts/{accountid}/webproperties/{webpropertyid}/profiles/{profileid}/goals
+      name: management-accounts-accountid-webproperties-webpropertyid-profiles-profileid-goa
+      description: REST surface for management-accounts-accountId-webproperties-webPropertyId-profiles-profileId-goa.
+      operations:
+      - method: GET
+        name: analyticsmanagementgoalslist
+        description: Lists goals to which the user has access.
+        call: management-api-v3-management.analyticsmanagementgoalslist
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          profileId: rest.profileId
+          max-results: rest.max-results
+          start-index: rest.start-index
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: analyticsmanagementgoalsinsert
+        description: Create a new goal.
+        call: management-api-v3-management.analyticsmanagementgoalsinsert
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          profileId: rest.profileId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts/{accountid}/webproperties/{webpropertyid}/profiles/{profileid}/goals/{goalid}
+      name: management-accounts-accountid-webproperties-webpropertyid-profiles-profileid-goa
+      description: REST surface for management-accounts-accountId-webproperties-webPropertyId-profiles-profileId-goa.
+      operations:
+      - method: GET
+        name: analyticsmanagementgoalsget
+        description: Gets a goal to which the user has access.
+        call: management-api-v3-management.analyticsmanagementgoalsget
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          profileId: rest.profileId
+          goalId: rest.goalId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: analyticsmanagementgoalspatch
+        description: Updates an existing goal. This method supports patch semantics.
+        call: management-api-v3-management.analyticsmanagementgoalspatch
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          profileId: rest.profileId
+          goalId: rest.goalId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: analyticsmanagementgoalsupdate
+        description: Updates an existing goal.
+        call: management-api-v3-management.analyticsmanagementgoalsupdate
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          profileId: rest.profileId
+          goalId: rest.goalId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts/{accountid}/webproperties/{webpropertyid}/profiles/{profileid}/profilefilterlinks
+      name: management-accounts-accountid-webproperties-webpropertyid-profiles-profileid-pro
+      description: REST surface for management-accounts-accountId-webproperties-webPropertyId-profiles-profileId-pro.
+      operations:
+      - method: GET
+        name: analyticsmanagementprofilefilterlinkslist
+        description: Lists all profile filter links for a profile.
+        call: management-api-v3-management.analyticsmanagementprofilefilterlinkslist
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          profileId: rest.profileId
+          max-results: rest.max-results
+          start-index: rest.start-index
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: analyticsmanagementprofilefilterlinksinsert
+        description: Create a new profile filter link.
+        call: management-api-v3-management.analyticsmanagementprofilefilterlinksinsert
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          profileId: rest.profileId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts/{accountid}/webproperties/{webpropertyid}/profiles/{profileid}/profilefilterlinks/{linkid}
+      name: management-accounts-accountid-webproperties-webpropertyid-profiles-profileid-pro
+      description: REST surface for management-accounts-accountId-webproperties-webPropertyId-profiles-profileId-pro.
+      operations:
+      - method: DELETE
+        name: analyticsmanagementprofilefilterlinksdelete
+        description: Delete a profile filter link.
+        call: management-api-v3-management.analyticsmanagementprofilefilterlinksdelete
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          profileId: rest.profileId
+          linkId: rest.linkId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: analyticsmanagementprofilefilterlinksget
+        description: Returns a single profile filter link.
+        call: management-api-v3-management.analyticsmanagementprofilefilterlinksget
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          profileId: rest.profileId
+          linkId: rest.linkId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: analyticsmanagementprofilefilterlinkspatch
+        description: Update an existing profile filter link. This method supports patch semantics.
+        call: management-api-v3-management.analyticsmanagementprofilefilterlinkspatch
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          profileId: rest.profileId
+          linkId: rest.linkId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: analyticsmanagementprofilefilterlinksupdate
+        description: Update an existing profile filter link.
+        call: management-api-v3-management.analyticsmanagementprofilefilterlinksupdate
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          profileId: rest.profileId
+          linkId: rest.linkId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts/{accountid}/webproperties/{webpropertyid}/profiles/{profileid}/unsampledreports
+      name: management-accounts-accountid-webproperties-webpropertyid-profiles-profileid-uns
+      description: REST surface for management-accounts-accountId-webproperties-webPropertyId-profiles-profileId-uns.
+      operations:
+      - method: GET
+        name: analyticsmanagementunsampledreportslist
+        description: Lists unsampled reports to which the user has access.
+        call: management-api-v3-management.analyticsmanagementunsampledreportslist
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          profileId: rest.profileId
+          max-results: rest.max-results
+          start-index: rest.start-index
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: analyticsmanagementunsampledreportsinsert
+        description: Create a new unsampled report.
+        call: management-api-v3-management.analyticsmanagementunsampledreportsinsert
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          profileId: rest.profileId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts/{accountid}/webproperties/{webpropertyid}/profiles/{profileid}/unsampledreports/{unsampledreportid}
+      name: management-accounts-accountid-webproperties-webpropertyid-profiles-profileid-uns
+      description: REST surface for management-accounts-accountId-webproperties-webPropertyId-profiles-profileId-uns.
+      operations:
+      - method: DELETE
+        name: analyticsmanagementunsampledreportsdelete
+        description: Deletes an unsampled report.
+        call: management-api-v3-management.analyticsmanagementunsampledreportsdelete
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          profileId: rest.profileId
+          unsampledReportId: rest.unsampledReportId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: analyticsmanagementunsampledreportsget
+        description: Returns a single unsampled report.
+        call: management-api-v3-management.analyticsmanagementunsampledreportsget
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          profileId: rest.profileId
+          unsampledReportId: rest.unsampledReportId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts/{accountid}/webproperties/{webpropertyid}/remarketingaudiences
+      name: management-accounts-accountid-webproperties-webpropertyid-remarketingaudiences
+      description: REST surface for management-accounts-accountId-webproperties-webPropertyId-remarketingAudiences.
+      operations:
+      - method: GET
+        name: analyticsmanagementremarketingaudiencelist
+        description: Lists remarketing audiences to which the user has access.
+        call: management-api-v3-management.analyticsmanagementremarketingaudiencelist
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          max-results: rest.max-results
+          start-index: rest.start-index
+          type: rest.type
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: analyticsmanagementremarketingaudienceinsert
+        description: Creates a new remarketing audience.
+        call: management-api-v3-management.analyticsmanagementremarketingaudienceinsert
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/accounts/{accountid}/webproperties/{webpropertyid}/remarketingaudiences/{remarketingaudienceid}
+      name: management-accounts-accountid-webproperties-webpropertyid-remarketingaudiences-r
+      description: REST surface for management-accounts-accountId-webproperties-webPropertyId-remarketingAudiences-r.
+      operations:
+      - method: DELETE
+        name: analyticsmanagementremarketingaudiencedelete
+        description: Delete a remarketing audience.
+        call: management-api-v3-management.analyticsmanagementremarketingaudiencedelete
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          remarketingAudienceId: rest.remarketingAudienceId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: analyticsmanagementremarketingaudienceget
+        description: Gets a remarketing audience to which the user has access.
+        call: management-api-v3-management.analyticsmanagementremarketingaudienceget
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          remarketingAudienceId: rest.remarketingAudienceId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: analyticsmanagementremarketingaudiencepatch
+        description: Updates an existing remarketing audience. This method supports patch semantics.
+        call: management-api-v3-management.analyticsmanagementremarketingaudiencepatch
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          remarketingAudienceId: rest.remarketingAudienceId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: analyticsmanagementremarketingaudienceupdate
+        description: Updates an existing remarketing audience.
+        call: management-api-v3-management.analyticsmanagementremarketingaudienceupdate
+        with:
+          accountId: rest.accountId
+          webPropertyId: rest.webPropertyId
+          remarketingAudienceId: rest.remarketingAudienceId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/clientid-hashclientid
+      name: management-clientid-hashclientid
+      description: REST surface for management-clientId:hashClientId.
+      operations:
+      - method: POST
+        name: analyticsmanagementclientidhashclientid
+        description: Hashes the given Client ID.
+        call: management-api-v3-management.analyticsmanagementclientidhashclientid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/management/segments
+      name: management-segments
+      description: REST surface for management-segments.
+      operations:
+      - method: GET
+        name: analyticsmanagementsegmentslist
+        description: Lists segments to which the user has access.
+        call: management-api-v3-management.analyticsmanagementsegmentslist
+        with:
+          max-results: rest.max-results
+          start-index: rest.start-index
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: management-api-v3-management-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google Analytics API — management. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: lists-account-summaries-lightweight-tree
+      description: Lists account summaries (lightweight tree comprised of accounts/properties/profiles) to which the user
+        has access.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementaccountsummarieslist
+      with:
+        max-results: tools.max-results
+        start-index: tools.start-index
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lists-all-accounts-which-user
+      description: Lists all accounts to which the user has access.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementaccountslist
+      with:
+        max-results: tools.max-results
+        start-index: tools.start-index
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lists-account-user-links-given
+      description: Lists account-user links for a given account.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementaccountuserlinkslist
+      with:
+        accountId: tools.accountId
+        max-results: tools.max-results
+        start-index: tools.start-index
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: adds-new-user-given-account
+      description: Adds a new user to the given account.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: management-api-v3-management.analyticsmanagementaccountuserlinksinsert
+      with:
+        accountId: tools.accountId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: removes-user-given-account
+      description: Removes a user from the given account.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementaccountuserlinksdelete
+      with:
+        accountId: tools.accountId
+        linkId: tools.linkId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updates-permissions-existing-user-given
+      description: Updates permissions for an existing user on the given account.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementaccountuserlinksupdate
+      with:
+        accountId: tools.accountId
+        linkId: tools.linkId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lists-all-filters-account
+      description: Lists all filters for an account
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementfilterslist
+      with:
+        accountId: tools.accountId
+        max-results: tools.max-results
+        start-index: tools.start-index
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-filter
+      description: Create a new filter.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: management-api-v3-management.analyticsmanagementfiltersinsert
+      with:
+        accountId: tools.accountId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-filter
+      description: Delete a filter.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementfiltersdelete
+      with:
+        accountId: tools.accountId
+        filterId: tools.filterId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: returns-filters-which-user-has
+      description: Returns filters to which the user has access.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementfiltersget
+      with:
+        accountId: tools.accountId
+        filterId: tools.filterId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updates-existing-filter-this-method
+      description: Updates an existing filter. This method supports patch semantics.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementfilterspatch
+      with:
+        accountId: tools.accountId
+        filterId: tools.filterId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updates-existing-filter
+      description: Updates an existing filter.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementfiltersupdate
+      with:
+        accountId: tools.accountId
+        filterId: tools.filterId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lists-web-properties-which-user
+      description: Lists web properties to which the user has access.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementwebpropertieslist
+      with:
+        accountId: tools.accountId
+        max-results: tools.max-results
+        start-index: tools.start-index
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-property-if-account
+      description: Create a new property if the account has fewer than 20 properties. Web properties are visible in the Google
+        Analytics interface only if they have at least one profile.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: management-api-v3-management.analyticsmanagementwebpropertiesinsert
+      with:
+        accountId: tools.accountId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gets-web-property-which-user
+      description: Gets a web property to which the user has access.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementwebpropertiesget
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updates-existing-web-property-this
+      description: Updates an existing web property. This method supports patch semantics.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementwebpropertiespatch
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updates-existing-web-property
+      description: Updates an existing web property.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementwebpropertiesupdate
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-custom-data-sources-which
+      description: List custom data sources to which the user has access.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementcustomdatasourceslist
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        max-results: tools.max-results
+        start-index: tools.start-index
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-data-associated-previous-upload
+      description: Delete data associated with a previous upload.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: management-api-v3-management.analyticsmanagementuploadsdeleteuploaddata
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        customDataSourceId: tools.customDataSourceId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-uploads-which-user-has
+      description: List uploads to which the user has access.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementuploadslist
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        customDataSourceId: tools.customDataSourceId
+        max-results: tools.max-results
+        start-index: tools.start-index
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: upload-data-custom-data-source
+      description: Upload data for a custom data source.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: management-api-v3-management.analyticsmanagementuploadsuploaddata
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        customDataSourceId: tools.customDataSourceId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-uploads-which-user-has-2
+      description: List uploads to which the user has access.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementuploadsget
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        customDataSourceId: tools.customDataSourceId
+        uploadId: tools.uploadId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lists-custom-dimensions-which-user
+      description: Lists custom dimensions to which the user has access.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementcustomdimensionslist
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        max-results: tools.max-results
+        start-index: tools.start-index
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-custom-dimension
+      description: Create a new custom dimension.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: management-api-v3-management.analyticsmanagementcustomdimensionsinsert
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-custom-dimension-which-user
+      description: Get a custom dimension to which the user has access.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementcustomdimensionsget
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        customDimensionId: tools.customDimensionId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updates-existing-custom-dimension-this
+      description: Updates an existing custom dimension. This method supports patch semantics.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementcustomdimensionspatch
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        customDimensionId: tools.customDimensionId
+        ignoreCustomDataSourceLinks: tools.ignoreCustomDataSourceLinks
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updates-existing-custom-dimension
+      description: Updates an existing custom dimension.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementcustomdimensionsupdate
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        customDimensionId: tools.customDimensionId
+        ignoreCustomDataSourceLinks: tools.ignoreCustomDataSourceLinks
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lists-custom-metrics-which-user
+      description: Lists custom metrics to which the user has access.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementcustommetricslist
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        max-results: tools.max-results
+        start-index: tools.start-index
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-custom-metric
+      description: Create a new custom metric.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: management-api-v3-management.analyticsmanagementcustommetricsinsert
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-custom-metric-which-user
+      description: Get a custom metric to which the user has access.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementcustommetricsget
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        customMetricId: tools.customMetricId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updates-existing-custom-metric-this
+      description: Updates an existing custom metric. This method supports patch semantics.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementcustommetricspatch
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        customMetricId: tools.customMetricId
+        ignoreCustomDataSourceLinks: tools.ignoreCustomDataSourceLinks
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updates-existing-custom-metric
+      description: Updates an existing custom metric.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementcustommetricsupdate
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        customMetricId: tools.customMetricId
+        ignoreCustomDataSourceLinks: tools.ignoreCustomDataSourceLinks
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lists-webproperty-google-ads-links
+      description: Lists webProperty-Google Ads links for a given web property.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementwebpropertyadwordslinkslist
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        max-results: tools.max-results
+        start-index: tools.start-index
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: creates-webproperty-google-ads-link
+      description: Creates a webProperty-Google Ads link.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: management-api-v3-management.analyticsmanagementwebpropertyadwordslinksinsert
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletes-web-property-google-ads
+      description: Deletes a web property-Google Ads link.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementwebpropertyadwordslinksdelete
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        webPropertyAdWordsLinkId: tools.webPropertyAdWordsLinkId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: returns-web-property-google-ads
+      description: Returns a web property-Google Ads link to which the user has access.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementwebpropertyadwordslinksget
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        webPropertyAdWordsLinkId: tools.webPropertyAdWordsLinkId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updates-existing-webproperty-google-ads
+      description: Updates an existing webProperty-Google Ads link. This method supports patch semantics.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementwebpropertyadwordslinkspatch
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        webPropertyAdWordsLinkId: tools.webPropertyAdWordsLinkId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updates-existing-webproperty-google-ads-2
+      description: Updates an existing webProperty-Google Ads link.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementwebpropertyadwordslinksupdate
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        webPropertyAdWordsLinkId: tools.webPropertyAdWordsLinkId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lists-webproperty-user-links-given
+      description: Lists webProperty-user links for a given web property.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementwebpropertyuserlinkslist
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        max-results: tools.max-results
+        start-index: tools.start-index
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: adds-new-user-given-web
+      description: Adds a new user to the given web property.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: management-api-v3-management.analyticsmanagementwebpropertyuserlinksinsert
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: removes-user-given-web-property
+      description: Removes a user from the given web property.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementwebpropertyuserlinksdelete
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        linkId: tools.linkId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updates-permissions-existing-user-given-2
+      description: Updates permissions for an existing user on the given web property.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementwebpropertyuserlinksupdate
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        linkId: tools.linkId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lists-views-profiles-which-user
+      description: Lists views (profiles) to which the user has access.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementprofileslist
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        max-results: tools.max-results
+        start-index: tools.start-index
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-view-profile
+      description: Create a new view (profile).
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: management-api-v3-management.analyticsmanagementprofilesinsert
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletes-view-profile
+      description: Deletes a view (profile).
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementprofilesdelete
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        profileId: tools.profileId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gets-view-profile-which-user
+      description: Gets a view (profile) to which the user has access.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementprofilesget
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        profileId: tools.profileId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updates-existing-view-profile-this
+      description: Updates an existing view (profile). This method supports patch semantics.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementprofilespatch
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        profileId: tools.profileId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updates-existing-view-profile
+      description: Updates an existing view (profile).
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementprofilesupdate
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        profileId: tools.profileId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lists-profile-user-links-given
+      description: Lists profile-user links for a given view (profile).
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementprofileuserlinkslist
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        profileId: tools.profileId
+        max-results: tools.max-results
+        start-index: tools.start-index
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: adds-new-user-given-view
+      description: Adds a new user to the given view (profile).
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: management-api-v3-management.analyticsmanagementprofileuserlinksinsert
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        profileId: tools.profileId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: removes-user-given-view-profile
+      description: Removes a user from the given view (profile).
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementprofileuserlinksdelete
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        profileId: tools.profileId
+        linkId: tools.linkId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updates-permissions-existing-user-given-3
+      description: Updates permissions for an existing user on the given view (profile).
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementprofileuserlinksupdate
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        profileId: tools.profileId
+        linkId: tools.linkId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lists-experiments-which-user-has
+      description: Lists experiments to which the user has access.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementexperimentslist
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        profileId: tools.profileId
+        max-results: tools.max-results
+        start-index: tools.start-index
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-experiment
+      description: Create a new experiment.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: management-api-v3-management.analyticsmanagementexperimentsinsert
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        profileId: tools.profileId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-experiment
+      description: Delete an experiment.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementexperimentsdelete
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        profileId: tools.profileId
+        experimentId: tools.experimentId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: returns-experiment-which-user-has
+      description: Returns an experiment to which the user has access.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementexperimentsget
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        profileId: tools.profileId
+        experimentId: tools.experimentId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-existing-experiment-this-method
+      description: Update an existing experiment. This method supports patch semantics.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementexperimentspatch
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        profileId: tools.profileId
+        experimentId: tools.experimentId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-existing-experiment
+      description: Update an existing experiment.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementexperimentsupdate
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        profileId: tools.profileId
+        experimentId: tools.experimentId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lists-goals-which-user-has
+      description: Lists goals to which the user has access.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementgoalslist
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        profileId: tools.profileId
+        max-results: tools.max-results
+        start-index: tools.start-index
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-goal
+      description: Create a new goal.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: management-api-v3-management.analyticsmanagementgoalsinsert
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        profileId: tools.profileId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gets-goal-which-user-has
+      description: Gets a goal to which the user has access.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementgoalsget
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        profileId: tools.profileId
+        goalId: tools.goalId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updates-existing-goal-this-method
+      description: Updates an existing goal. This method supports patch semantics.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementgoalspatch
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        profileId: tools.profileId
+        goalId: tools.goalId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updates-existing-goal
+      description: Updates an existing goal.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementgoalsupdate
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        profileId: tools.profileId
+        goalId: tools.goalId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lists-all-profile-filter-links
+      description: Lists all profile filter links for a profile.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementprofilefilterlinkslist
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        profileId: tools.profileId
+        max-results: tools.max-results
+        start-index: tools.start-index
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-profile-filter-link
+      description: Create a new profile filter link.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: management-api-v3-management.analyticsmanagementprofilefilterlinksinsert
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        profileId: tools.profileId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-profile-filter-link
+      description: Delete a profile filter link.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementprofilefilterlinksdelete
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        profileId: tools.profileId
+        linkId: tools.linkId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: returns-single-profile-filter-link
+      description: Returns a single profile filter link.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementprofilefilterlinksget
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        profileId: tools.profileId
+        linkId: tools.linkId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-existing-profile-filter-link
+      description: Update an existing profile filter link. This method supports patch semantics.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementprofilefilterlinkspatch
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        profileId: tools.profileId
+        linkId: tools.linkId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-existing-profile-filter-link-2
+      description: Update an existing profile filter link.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementprofilefilterlinksupdate
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        profileId: tools.profileId
+        linkId: tools.linkId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lists-unsampled-reports-which-user
+      description: Lists unsampled reports to which the user has access.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementunsampledreportslist
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        profileId: tools.profileId
+        max-results: tools.max-results
+        start-index: tools.start-index
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-unsampled-report
+      description: Create a new unsampled report.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: management-api-v3-management.analyticsmanagementunsampledreportsinsert
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        profileId: tools.profileId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletes-unsampled-report
+      description: Deletes an unsampled report.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementunsampledreportsdelete
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        profileId: tools.profileId
+        unsampledReportId: tools.unsampledReportId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: returns-single-unsampled-report
+      description: Returns a single unsampled report.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementunsampledreportsget
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        profileId: tools.profileId
+        unsampledReportId: tools.unsampledReportId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lists-remarketing-audiences-which-user
+      description: Lists remarketing audiences to which the user has access.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementremarketingaudiencelist
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        max-results: tools.max-results
+        start-index: tools.start-index
+        type: tools.type
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: creates-new-remarketing-audience
+      description: Creates a new remarketing audience.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: management-api-v3-management.analyticsmanagementremarketingaudienceinsert
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-remarketing-audience
+      description: Delete a remarketing audience.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementremarketingaudiencedelete
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        remarketingAudienceId: tools.remarketingAudienceId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gets-remarketing-audience-which-user
+      description: Gets a remarketing audience to which the user has access.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementremarketingaudienceget
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        remarketingAudienceId: tools.remarketingAudienceId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updates-existing-remarketing-audience-this
+      description: Updates an existing remarketing audience. This method supports patch semantics.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementremarketingaudiencepatch
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        remarketingAudienceId: tools.remarketingAudienceId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updates-existing-remarketing-audience
+      description: Updates an existing remarketing audience.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementremarketingaudienceupdate
+      with:
+        accountId: tools.accountId
+        webPropertyId: tools.webPropertyId
+        remarketingAudienceId: tools.remarketingAudienceId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: hashes-given-client-id
+      description: Hashes the given Client ID.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: management-api-v3-management.analyticsmanagementclientidhashclientid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lists-segments-which-user-has
+      description: Lists segments to which the user has access.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-api-v3-management.analyticsmanagementsegmentslist
+      with:
+        max-results: tools.max-results
+        start-index: tools.start-index
+      outputParameters:
+      - type: object
+        mapping: $.

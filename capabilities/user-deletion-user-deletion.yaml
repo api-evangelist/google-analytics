@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Analytics User Deletion API — User Deletion
+  description: 'Google Analytics User Deletion API — User Deletion. 1 operations. Lead operation: Google Analytics Insert
+    or Update a User Deletion Request. Self-contained Naftiko capability covering one Google Analytics business surface.'
+  tags:
+  - Google Analytics
+  - User Deletion
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_ANALYTICS_API_KEY: GOOGLE_ANALYTICS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: user-deletion-user-deletion
+    baseUri: https://www.googleapis.com/analytics/v3
+    description: Google Analytics User Deletion API — User Deletion business capability. Self-contained, no shared references.
+    resources:
+    - name: userDeletion-userDeletionRequests:upsert
+      path: /userDeletion/userDeletionRequests:upsert
+      operations:
+      - name: upsertuserdeletionrequest
+        method: POST
+        description: Google Analytics Insert or Update a User Deletion Request
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.GOOGLE_ANALYTICS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: user-deletion-user-deletion-rest
+    port: 8080
+    description: REST adapter for Google Analytics User Deletion API — User Deletion. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/userdeletion/userdeletionrequests-upsert
+      name: userdeletion-userdeletionrequests-upsert
+      description: REST surface for userDeletion-userDeletionRequests:upsert.
+      operations:
+      - method: POST
+        name: upsertuserdeletionrequest
+        description: Google Analytics Insert or Update a User Deletion Request
+        call: user-deletion-user-deletion.upsertuserdeletionrequest
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: user-deletion-user-deletion-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google Analytics User Deletion API — User Deletion. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: google-analytics-insert-update-user
+      description: Google Analytics Insert or Update a User Deletion Request
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: user-deletion-user-deletion.upsertuserdeletionrequest
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

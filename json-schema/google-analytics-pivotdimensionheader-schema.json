@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PivotDimensionHeader",
+  "title": "PivotDimensionHeader",
+  "description": "Summarizes dimension values from a row for this pivot.",
+  "properties": {
+    "dimensionValues": {
+      "description": "Values of multiple dimensions in a pivot.",
+      "items": {
+        "$ref": "#/components/schemas/DimensionValue"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

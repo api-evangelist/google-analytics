@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MetricCompatibility",
+  "title": "MetricCompatibility",
+  "description": "The compatibility for a single metric.",
+  "properties": {
+    "compatibility": {
+      "description": "The compatibility of this metric. If the compatibility is COMPATIBLE, this metric can be successfully added to the report.",
+      "enum": [
+        "COMPATIBILITY_UNSPECIFIED",
+        "COMPATIBLE",
+        "INCOMPATIBLE"
+      ],
+      "type": "string"
+    },
+    "metricMetadata": {
+      "$ref": "#/components/schemas/MetricMetadata",
+      "description": "The metric metadata contains the API name for this compatibility information. The metric metadata also contains other helpful information like the UI name and description."
+    }
+  },
+  "type": "object"
+}

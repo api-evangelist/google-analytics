@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SimpleSegment",
+  "title": "SimpleSegment",
+  "description": "A Simple segment conditions consist of one or more dimension/metric conditions that can be combined.",
+  "properties": {
+    "orFiltersForSegment": {
+      "description": "A list of segment filters groups which are combined with logical `AND` operator.",
+      "items": {
+        "$ref": "#/components/schemas/OrFiltersForSegment"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

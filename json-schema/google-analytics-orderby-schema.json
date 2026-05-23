@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OrderBy",
+  "title": "OrderBy",
+  "description": "Order bys define how rows will be sorted in the response. For example, ordering rows by descending event count is one ordering, and ordering rows by the event name string is a different ordering.",
+  "properties": {
+    "desc": {
+      "description": "If true, sorts by descending order.",
+      "type": "boolean"
+    },
+    "dimension": {
+      "$ref": "#/components/schemas/DimensionOrderBy",
+      "description": "Sorts results by a dimension's values."
+    },
+    "metric": {
+      "$ref": "#/components/schemas/MetricOrderBy",
+      "description": "Sorts results by a metric's values."
+    },
+    "pivot": {
+      "$ref": "#/components/schemas/PivotOrderBy",
+      "description": "Sorts results by a metric's values within a pivot column group."
+    }
+  },
+  "type": "object"
+}

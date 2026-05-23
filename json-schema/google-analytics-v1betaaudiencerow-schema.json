@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/V1betaAudienceRow",
+  "title": "V1betaAudienceRow",
+  "description": "Dimension value attributes for the audience user row.",
+  "properties": {
+    "dimensionValues": {
+      "description": "Each dimension value attribute for an audience user. One dimension value will be added for each dimension column requested.",
+      "items": {
+        "$ref": "#/components/schemas/V1betaAudienceDimensionValue"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

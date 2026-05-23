@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoogleAnalyticsAdminV1betaAccessOrderBy",
+  "title": "GoogleAnalyticsAdminV1betaAccessOrderBy",
+  "description": "Order bys define how rows will be sorted in the response. For example, ordering rows by descending access count is one ordering, and ordering rows by the country string is a different ordering.",
+  "properties": {
+    "desc": {
+      "description": "If true, sorts by descending order. If false or unspecified, sorts in ascending order.",
+      "type": "boolean",
+      "example": true
+    },
+    "dimension": {
+      "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderBy",
+      "description": "Sorts results by a dimension's values."
+    },
+    "metric": {
+      "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaAccessOrderByMetricOrderBy",
+      "description": "Sorts results by a metric's values."
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Upload",
+  "title": "Upload",
+  "description": "Metadata returned for an upload operation.",
+  "properties": {
+    "accountId": {
+      "description": "Account Id to which this upload belongs.",
+      "format": "int64",
+      "type": "string"
+    },
+    "customDataSourceId": {
+      "description": "Custom data source Id to which this data import belongs.",
+      "type": "string"
+    },
+    "errors": {
+      "description": "Data import errors collection.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "id": {
+      "description": "A unique ID for this upload.",
+      "type": "string"
+    },
+    "kind": {
+      "default": "analytics#upload",
+      "description": "Resource type for Analytics upload.",
+      "type": "string"
+    },
+    "status": {
+      "description": "Upload status. Possible values: PENDING, COMPLETED, FAILED, DELETING, DELETED.",
+      "type": "string"
+    },
+    "uploadTime": {
+      "description": "Time this file is uploaded.",
+      "format": "date-time",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

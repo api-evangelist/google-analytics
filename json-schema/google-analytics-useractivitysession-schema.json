@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserActivitySession",
+  "title": "UserActivitySession",
+  "description": "This represents a user session performed on a specific device at a certain time over a period of time.",
+  "properties": {
+    "activities": {
+      "description": "Represents a detailed view into each of the activity in this session.",
+      "items": {
+        "$ref": "#/components/schemas/Activity"
+      },
+      "type": "array"
+    },
+    "dataSource": {
+      "description": "The data source of a hit. By default, hits sent from analytics.js are reported as \"web\" and hits sent from the mobile SDKs are reported as \"app\". These values can be overridden in the Measurement Protocol.",
+      "type": "string"
+    },
+    "deviceCategory": {
+      "description": "The type of device used: \"mobile\", \"tablet\" etc.",
+      "type": "string"
+    },
+    "platform": {
+      "description": "Platform on which the activity happened: \"android\", \"ios\" etc.",
+      "type": "string"
+    },
+    "sessionDate": {
+      "description": "Date of this session in ISO-8601 format.",
+      "type": "string"
+    },
+    "sessionId": {
+      "description": "Unique ID of the session.",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

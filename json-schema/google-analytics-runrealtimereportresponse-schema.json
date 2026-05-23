@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RunRealtimeReportResponse",
+  "title": "RunRealtimeReportResponse",
+  "description": "The response realtime report table corresponding to a request.",
+  "properties": {
+    "dimensionHeaders": {
+      "description": "Describes dimension columns. The number of DimensionHeaders and ordering of DimensionHeaders matches the dimensions present in rows.",
+      "items": {
+        "$ref": "#/components/schemas/DimensionHeader"
+      },
+      "type": "array"
+    },
+    "kind": {
+      "description": "Identifies what kind of resource this message is. This `kind` is always the fixed string \"analyticsData#runRealtimeReport\". Useful to distinguish between response types in JSON.",
+      "type": "string"
+    },
+    "maximums": {
+      "description": "If requested, the maximum values of metrics.",
+      "items": {
+        "$ref": "#/components/schemas/Row"
+      },
+      "type": "array"
+    },
+    "metricHeaders": {
+      "description": "Describes metric columns. The number of MetricHeaders and ordering of MetricHeaders matches the metrics present in rows.",
+      "items": {
+        "$ref": "#/components/schemas/MetricHeader"
+      },
+      "type": "array"
+    },
+    "minimums": {
+      "description": "If requested, the minimum values of metrics.",
+      "items": {
+        "$ref": "#/components/schemas/Row"
+      },
+      "type": "array"
+    },
+    "propertyQuota": {
+      "$ref": "#/components/schemas/PropertyQuota",
+      "description": "This Analytics Property's Realtime quota state including this request."
+    },
+    "rowCount": {
+      "description": "The total number of rows in the query result. `rowCount` is independent of the number of rows returned in the response and the `limit` request parameter. For example if a query returns 175 rows and includes `limit` of 50 in the API request, the response will contain `rowCount` of 175 but only 50 rows.",
+      "format": "int32",
+      "type": "integer"
+    },
+    "rows": {
+      "description": "Rows of dimension value combinations and metric values in the report.",
+      "items": {
+        "$ref": "#/components/schemas/Row"
+      },
+      "type": "array"
+    },
+    "totals": {
+      "description": "If requested, the totaled values of metrics.",
+      "items": {
+        "$ref": "#/components/schemas/Row"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

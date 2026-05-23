@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FilterExpression",
+  "title": "FilterExpression",
+  "description": "To express dimension or metric filters. The fields in the same FilterExpression need to be either all dimensions or all metrics.",
+  "properties": {
+    "andGroup": {
+      "$ref": "#/components/schemas/FilterExpressionList",
+      "description": "The FilterExpressions in and_group have an AND relationship."
+    },
+    "filter": {
+      "$ref": "#/components/schemas/Filter",
+      "description": "A primitive filter. In the same FilterExpression, all of the filter's field names need to be either all dimensions or all metrics."
+    },
+    "notExpression": {
+      "$ref": "#/components/schemas/FilterExpression",
+      "description": "The FilterExpression is NOT of not_expression."
+    },
+    "orGroup": {
+      "$ref": "#/components/schemas/FilterExpressionList",
+      "description": "The FilterExpressions in or_group have an OR relationship."
+    }
+  },
+  "type": "object"
+}

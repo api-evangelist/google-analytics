@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AccountTreeResponse",
+  "title": "AccountTreeResponse",
+  "description": "JSON template for an Analytics account tree response. The account tree response is used in the provisioning api to return the result of creating an account, property, and view (profile).",
+  "properties": {
+    "account": {
+      "$ref": "#/components/schemas/Account",
+      "description": "The account created."
+    },
+    "kind": {
+      "default": "analytics#accountTreeResponse",
+      "description": "Resource type for account ticket.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "profile": {
+      "$ref": "#/components/schemas/Profile",
+      "description": "View (Profile) for the account."
+    },
+    "webproperty": {
+      "$ref": "#/components/schemas/Webproperty",
+      "description": "Web property for the account."
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/V1betaAudienceDimensionValue",
+  "title": "V1betaAudienceDimensionValue",
+  "description": "The value of a dimension.",
+  "properties": {
+    "value": {
+      "description": "Value as a string if the dimension type is a string.",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

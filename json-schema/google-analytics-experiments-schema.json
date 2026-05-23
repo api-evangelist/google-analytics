@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Experiments",
+  "title": "Experiments",
+  "description": "An experiment collection lists Analytics experiments to which the user has access. Each view (profile) can have a set of experiments. Each resource in the Experiment collection corresponds to a single Analytics experiment.",
+  "properties": {
+    "items": {
+      "description": "A list of experiments.",
+      "items": {
+        "$ref": "#/components/schemas/Experiment"
+      },
+      "type": "array"
+    },
+    "itemsPerPage": {
+      "description": "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.",
+      "format": "int32",
+      "type": "integer",
+      "example": 42
+    },
+    "kind": {
+      "default": "analytics#experiments",
+      "description": "Collection type.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "nextLink": {
+      "description": "Link to next page for this experiment collection.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "previousLink": {
+      "description": "Link to previous page for this experiment collection.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "startIndex": {
+      "description": "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter.",
+      "format": "int32",
+      "type": "integer",
+      "example": 42
+    },
+    "totalResults": {
+      "description": "The total number of results for the query, regardless of the number of resources in the result.",
+      "format": "int32",
+      "type": "integer",
+      "example": 42
+    },
+    "username": {
+      "description": "Email ID of the authenticated user",
+      "type": "string",
+      "example": "Example Name"
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProfileRef",
+  "title": "ProfileRef",
+  "description": "JSON template for a linked view (profile).",
+  "properties": {
+    "accountId": {
+      "description": "Account ID to which this view (profile) belongs.",
+      "type": "string"
+    },
+    "href": {
+      "description": "Link for this view (profile).",
+      "type": "string"
+    },
+    "id": {
+      "description": "View (Profile) ID.",
+      "type": "string"
+    },
+    "internalWebPropertyId": {
+      "description": "Internal ID for the web property to which this view (profile) belongs.",
+      "type": "string"
+    },
+    "kind": {
+      "default": "analytics#profileRef",
+      "description": "Analytics view (profile) reference.",
+      "type": "string"
+    },
+    "name": {
+      "description": "Name of this view (profile).",
+      "type": "string"
+    },
+    "webPropertyId": {
+      "description": "Web property ID of the form UA-XXXXX-YY to which this view (profile) belongs.",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

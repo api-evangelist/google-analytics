@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoogleAnalyticsAdminV1betaAccessFilterExpression",
+  "title": "GoogleAnalyticsAdminV1betaAccessFilterExpression",
+  "description": "Expresses dimension or metric filters. The fields in the same expression need to be either all dimensions or all metrics.",
+  "properties": {
+    "accessFilter": {
+      "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaAccessFilter",
+      "description": "A primitive filter. In the same FilterExpression, all of the filter's field names need to be either all dimensions or all metrics."
+    },
+    "andGroup": {
+      "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaAccessFilterExpressionList",
+      "description": "Each of the FilterExpressions in the and_group has an AND relationship."
+    },
+    "notExpression": {
+      "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaAccessFilterExpression",
+      "description": "The FilterExpression is NOT of not_expression."
+    },
+    "orGroup": {
+      "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaAccessFilterExpressionList",
+      "description": "Each of the FilterExpressions in the or_group has an OR relationship."
+    }
+  },
+  "type": "object"
+}

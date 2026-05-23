@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CustomDataSource",
+  "title": "CustomDataSource",
+  "description": "JSON template for an Analytics custom data source.",
+  "properties": {
+    "accountId": {
+      "description": "Account ID to which this custom data source belongs.",
+      "type": "string",
+      "example": "123456"
+    },
+    "childLink": {
+      "properties": {
+        "href": {
+          "description": "Link to the list of daily uploads for this custom data source. Link to the list of uploads for this custom data source.",
+          "type": "string"
+        },
+        "type": {
+          "description": "Value is \"analytics#dailyUploads\". Value is \"analytics#uploads\".",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "created": {
+      "description": "Time this custom data source was created.",
+      "format": "date-time",
+      "type": "string",
+      "example": "2026-04-17T12:00:00Z"
+    },
+    "description": {
+      "description": "Description of custom data source.",
+      "type": "string",
+      "example": "Example description"
+    },
+    "id": {
+      "description": "Custom data source ID.",
+      "type": "string",
+      "example": "123456"
+    },
+    "importBehavior": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "kind": {
+      "default": "analytics#customDataSource",
+      "description": "Resource type for Analytics custom data source.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "name": {
+      "description": "Name of this custom data source.",
+      "type": "string",
+      "example": "Example Name"
+    },
+    "parentLink": {
+      "description": "Parent link for this custom data source. Points to the web property to which this custom data source belongs.",
+      "properties": {
+        "href": {
+          "description": "Link to the web property to which this custom data source belongs.",
+          "type": "string"
+        },
+        "type": {
+          "default": "analytics#webproperty",
+          "description": "Value is \"analytics#webproperty\".",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "profilesLinked": {
+      "description": "IDs of views (profiles) linked to the custom data source.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "schema": {
+      "description": "Collection of schema headers of the custom data source.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "selfLink": {
+      "description": "Link for this Analytics custom data source.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "type": {
+      "description": "Type of the custom data source.",
+      "type": "string",
+      "example": "ACTIVE"
+    },
+    "updated": {
+      "description": "Time this custom data source was last modified.",
+      "format": "date-time",
+      "type": "string",
+      "example": "2026-04-17T12:00:00Z"
+    },
+    "uploadType": {
+      "description": "Upload type of the custom data source.",
+      "type": "string",
+      "example": "ACTIVE"
+    },
+    "webPropertyId": {
+      "description": "Web property ID of the form UA-XXXXX-YY to which this custom data source belongs.",
+      "type": "string",
+      "example": "123456"
+    }
+  },
+  "type": "object"
+}

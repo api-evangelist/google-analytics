@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Filter",
+  "title": "Filter",
+  "description": "An expression to filter dimension or metric values.",
+  "properties": {
+    "betweenFilter": {
+      "$ref": "#/components/schemas/BetweenFilter",
+      "description": "A filter for two values."
+    },
+    "fieldName": {
+      "description": "The dimension name or metric name. In most methods, dimensions & metrics can be used for the first time in this field. However in a RunPivotReportRequest, this field must be additionally specified by name in the RunPivotReportRequest's dimensions or metrics.",
+      "type": "string",
+      "example": "Example Name"
+    },
+    "inListFilter": {
+      "$ref": "#/components/schemas/InListFilter",
+      "description": "A filter for in list values."
+    },
+    "numericFilter": {
+      "$ref": "#/components/schemas/NumericFilter",
+      "description": "A filter for numeric or date values."
+    },
+    "stringFilter": {
+      "$ref": "#/components/schemas/StringFilter",
+      "description": "Strings related filter."
+    }
+  },
+  "type": "object"
+}

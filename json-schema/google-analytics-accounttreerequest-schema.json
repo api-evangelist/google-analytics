@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AccountTreeRequest",
+  "title": "AccountTreeRequest",
+  "description": "JSON template for an Analytics account tree requests. The account tree request is used in the provisioning api to create an account, property, and view (profile). It contains the basic information required to make these fields.",
+  "properties": {
+    "accountName": {
+      "type": "string",
+      "example": "Example Name"
+    },
+    "kind": {
+      "default": "analytics#accountTreeRequest",
+      "description": "Resource type for account ticket.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "profileName": {
+      "type": "string",
+      "example": "Example Name"
+    },
+    "timezone": {
+      "type": "string",
+      "example": "2026-04-17T12:00:00Z"
+    },
+    "webpropertyName": {
+      "type": "string",
+      "example": "Example Name"
+    },
+    "websiteUrl": {
+      "type": "string",
+      "example": "https://example.com/resource"
+    }
+  },
+  "type": "object"
+}

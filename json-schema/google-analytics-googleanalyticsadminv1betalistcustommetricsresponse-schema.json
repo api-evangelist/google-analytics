@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoogleAnalyticsAdminV1betaListCustomMetricsResponse",
+  "title": "GoogleAnalyticsAdminV1betaListCustomMetricsResponse",
+  "description": "Response message for ListCustomMetrics RPC.",
+  "properties": {
+    "customMetrics": {
+      "description": "List of CustomMetrics.",
+      "items": {
+        "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaCustomMetric"
+      },
+      "type": "array"
+    },
+    "nextPageToken": {
+      "description": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

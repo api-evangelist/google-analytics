@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserLocation",
+  "title": "UserLocation",
+  "type": "object",
+  "properties": {
+    "city": {
+      "type": "string",
+      "description": "City name.",
+      "example": "example_value"
+    },
+    "region_id": {
+      "type": "string",
+      "description": "Region identifier.",
+      "example": "123456"
+    },
+    "country_id": {
+      "type": "string",
+      "description": "Country identifier.",
+      "example": "123456"
+    },
+    "subcontinent_id": {
+      "type": "string",
+      "description": "Subcontinent identifier.",
+      "example": "123456"
+    },
+    "continent_id": {
+      "type": "string",
+      "description": "Continent identifier.",
+      "example": "123456"
+    }
+  }
+}

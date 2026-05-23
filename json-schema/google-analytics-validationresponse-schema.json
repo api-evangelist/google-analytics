@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ValidationResponse",
+  "title": "ValidationResponse",
+  "type": "object",
+  "properties": {
+    "validationMessages": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ValidationMessage"
+      }
+    }
+  }
+}

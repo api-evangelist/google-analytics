@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MetricFilterClause",
+  "title": "MetricFilterClause",
+  "description": "Represents a group of metric filters. Set the operator value to specify how the filters are logically combined.",
+  "properties": {
+    "filters": {
+      "description": "The repeated set of filters. They are logically combined based on the operator specified.",
+      "items": {
+        "$ref": "#/components/schemas/MetricFilter"
+      },
+      "type": "array"
+    },
+    "operator": {
+      "description": "The operator for combining multiple metric filters. If unspecified, it is treated as an `OR`.",
+      "enum": [
+        "OPERATOR_UNSPECIFIED",
+        "OR",
+        "AND"
+      ],
+      "type": "string",
+      "example": "OPERATOR_UNSPECIFIED"
+    }
+  },
+  "type": "object"
+}

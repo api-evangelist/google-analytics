@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Columns",
+  "title": "Columns",
+  "description": "Lists columns (dimensions and metrics) for a particular report type.",
+  "properties": {
+    "attributeNames": {
+      "description": "List of attributes names returned by columns.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "etag": {
+      "description": "Etag of collection. This etag can be compared with the last response etag to check if response has changed.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "items": {
+      "description": "List of columns for a report type.",
+      "items": {
+        "$ref": "#/components/schemas/Column"
+      },
+      "type": "array"
+    },
+    "kind": {
+      "default": "analytics#columns",
+      "description": "Collection type.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "totalResults": {
+      "description": "Total number of columns returned in the response.",
+      "format": "int32",
+      "type": "integer",
+      "example": 42
+    }
+  },
+  "type": "object"
+}

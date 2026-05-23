@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AdWordsAccount",
+  "title": "AdWordsAccount",
+  "description": "JSON template for an Google Ads account.",
+  "properties": {
+    "autoTaggingEnabled": {
+      "description": "True if auto-tagging is enabled on the Google Ads account. Read-only after the insert operation.",
+      "type": "boolean",
+      "example": true
+    },
+    "customerId": {
+      "description": "Customer ID. This field is required when creating a Google Ads link.",
+      "type": "string",
+      "example": "123456"
+    },
+    "kind": {
+      "default": "analytics#adWordsAccount",
+      "description": "Resource type for Google Ads account.",
+      "type": "string",
+      "example": "example_value"
+    }
+  },
+  "type": "object"
+}

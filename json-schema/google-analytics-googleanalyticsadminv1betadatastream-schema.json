@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoogleAnalyticsAdminV1betaDataStream",
+  "title": "GoogleAnalyticsAdminV1betaDataStream",
+  "description": "A resource message representing a data stream.",
+  "properties": {
+    "androidAppStreamData": {
+      "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaDataStreamAndroidAppStreamData",
+      "description": "Data specific to Android app streams. Must be populated if type is ANDROID_APP_DATA_STREAM."
+    },
+    "createTime": {
+      "description": "Output only. Time when this stream was originally created.",
+      "format": "google-datetime",
+      "readOnly": true,
+      "type": "string"
+    },
+    "displayName": {
+      "description": "Human-readable display name for the Data Stream. Required for web data streams. The max allowed display name length is 255 UTF-16 code units.",
+      "type": "string"
+    },
+    "iosAppStreamData": {
+      "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaDataStreamIosAppStreamData",
+      "description": "Data specific to iOS app streams. Must be populated if type is IOS_APP_DATA_STREAM."
+    },
+    "name": {
+      "description": "Output only. Resource name of this Data Stream. Format: properties/{property_id}/dataStreams/{stream_id} Example: \"properties/1000/dataStreams/2000\"",
+      "readOnly": true,
+      "type": "string"
+    },
+    "type": {
+      "description": "Required. Immutable. The type of this DataStream resource.",
+      "enum": [
+        "DATA_STREAM_TYPE_UNSPECIFIED",
+        "WEB_DATA_STREAM",
+        "ANDROID_APP_DATA_STREAM",
+        "IOS_APP_DATA_STREAM"
+      ],
+      "type": "string"
+    },
+    "updateTime": {
+      "description": "Output only. Time when stream payload fields were last updated.",
+      "format": "google-datetime",
+      "readOnly": true,
+      "type": "string"
+    },
+    "webStreamData": {
+      "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaDataStreamWebStreamData",
+      "description": "Data specific to web streams. Must be populated if type is WEB_DATA_STREAM."
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoogleAnalyticsAdminV1betaRunAccessReportResponse",
+  "title": "GoogleAnalyticsAdminV1betaRunAccessReportResponse",
+  "description": "The customized Data Access Record Report response.",
+  "properties": {
+    "dimensionHeaders": {
+      "description": "The header for a column in the report that corresponds to a specific dimension. The number of DimensionHeaders and ordering of DimensionHeaders matches the dimensions present in rows.",
+      "items": {
+        "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaAccessDimensionHeader"
+      },
+      "type": "array"
+    },
+    "metricHeaders": {
+      "description": "The header for a column in the report that corresponds to a specific metric. The number of MetricHeaders and ordering of MetricHeaders matches the metrics present in rows.",
+      "items": {
+        "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaAccessMetricHeader"
+      },
+      "type": "array"
+    },
+    "quota": {
+      "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaAccessQuota",
+      "description": "The quota state for this Analytics property including this request. This field doesn't work with account-level requests."
+    },
+    "rowCount": {
+      "description": "The total number of rows in the query result. `rowCount` is independent of the number of rows returned in the response, the `limit` request parameter, and the `offset` request parameter. For example if a query returns 175 rows and includes `limit` of 50 in the API request, the response will contain `rowCount` of 175 but only 50 rows. To learn more about this pagination parameter, see [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination).",
+      "format": "int32",
+      "type": "integer"
+    },
+    "rows": {
+      "description": "Rows of dimension value combinations and metric values in the report.",
+      "items": {
+        "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaAccessRow"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

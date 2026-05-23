@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SegmentMetricFilter",
+  "title": "SegmentMetricFilter",
+  "description": "Metric filter to be used in a segment filter clause.",
+  "properties": {
+    "comparisonValue": {
+      "description": "The value to compare against. If the operator is `BETWEEN`, this value is treated as minimum comparison value.",
+      "type": "string"
+    },
+    "maxComparisonValue": {
+      "description": "Max comparison value is only used for `BETWEEN` operator.",
+      "type": "string"
+    },
+    "metricName": {
+      "description": "The metric that will be filtered on. A `metricFilter` must contain a metric name.",
+      "type": "string"
+    },
+    "operator": {
+      "description": "Specifies is the operation to perform to compare the metric. The default is `EQUAL`.",
+      "enum": [
+        "UNSPECIFIED_OPERATOR",
+        "LESS_THAN",
+        "GREATER_THAN",
+        "EQUAL",
+        "BETWEEN"
+      ],
+      "type": "string"
+    },
+    "scope": {
+      "description": "Scope for a metric defines the level at which that metric is defined. The specified metric scope must be equal to or greater than its primary scope as defined in the data model. The primary scope is defined by if the segment is selecting users or sessions.",
+      "enum": [
+        "UNSPECIFIED_SCOPE",
+        "PRODUCT",
+        "HIT",
+        "SESSION",
+        "USER"
+      ],
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

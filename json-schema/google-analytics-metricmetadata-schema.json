@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MetricMetadata",
+  "title": "MetricMetadata",
+  "description": "Explains a metric.",
+  "properties": {
+    "apiName": {
+      "description": "A metric name. Useable in [Metric](#Metric)'s `name`. For example, `eventCount`.",
+      "type": "string"
+    },
+    "blockedReasons": {
+      "description": "If reasons are specified, your access is blocked to this metric for this property. API requests from you to this property for this metric will succeed; however, the report will contain only zeros for this metric. API requests with metric filters on blocked metrics will fail. If reasons are empty, you have access to this metric. To learn more, see [Access and data-restriction management](https://support.google.com/analytics/answer/10851388).",
+      "items": {
+        "enum": [
+          "BLOCKED_REASON_UNSPECIFIED",
+          "NO_REVENUE_METRICS",
+          "NO_COST_METRICS"
+        ],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "category": {
+      "description": "The display name of the category that this metrics belongs to. Similar dimensions and metrics are categorized together.",
+      "type": "string"
+    },
+    "customDefinition": {
+      "description": "True if the metric is a custom metric for this property.",
+      "type": "boolean"
+    },
+    "deprecatedApiNames": {
+      "description": "Still usable but deprecated names for this metric. If populated, this metric is available by either `apiName` or one of `deprecatedApiNames` for a period of time. After the deprecation period, the metric will be available only by `apiName`.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "description": {
+      "description": "Description of how this metric is used and calculated.",
+      "type": "string"
+    },
+    "expression": {
+      "description": "The mathematical expression for this derived metric. Can be used in [Metric](#Metric)'s `expression` field for equivalent reports. Most metrics are not expressions, and for non-expressions, this field is empty.",
+      "type": "string"
+    },
+    "type": {
+      "description": "The type of this metric.",
+      "enum": [
+        "METRIC_TYPE_UNSPECIFIED",
+        "TYPE_INTEGER",
+        "TYPE_FLOAT",
+        "TYPE_SECONDS",
+        "TYPE_MILLISECONDS",
+        "TYPE_MINUTES",
+        "TYPE_HOURS",
+        "TYPE_STANDARD",
+        "TYPE_CURRENCY",
+        "TYPE_FEET",
+        "TYPE_MILES",
+        "TYPE_METERS",
+        "TYPE_KILOMETERS"
+      ],
+      "type": "string"
+    },
+    "uiName": {
+      "description": "This metric's name within the Google Analytics user interface. For example, `Event count`.",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PageviewData",
+  "title": "PageviewData",
+  "description": "Represents details collected when the visitor views a page.",
+  "properties": {
+    "pagePath": {
+      "description": "The URL of the page that the visitor viewed.",
+      "type": "string",
+      "example": "/example/path"
+    },
+    "pageTitle": {
+      "description": "The title of the page that the visitor viewed.",
+      "type": "string",
+      "example": "example_value"
+    }
+  },
+  "type": "object"
+}

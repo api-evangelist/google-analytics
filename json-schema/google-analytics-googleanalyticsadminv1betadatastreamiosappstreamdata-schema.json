@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoogleAnalyticsAdminV1betaDataStreamIosAppStreamData",
+  "title": "GoogleAnalyticsAdminV1betaDataStreamIosAppStreamData",
+  "description": "Data specific to iOS app streams.",
+  "properties": {
+    "bundleId": {
+      "description": "Required. Immutable. The Apple App Store Bundle ID for the app Example: \"com.example.myiosapp\"",
+      "type": "string"
+    },
+    "firebaseAppId": {
+      "description": "Output only. ID of the corresponding iOS app in Firebase, if any. This ID can change if the iOS app is deleted and recreated.",
+      "readOnly": true,
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

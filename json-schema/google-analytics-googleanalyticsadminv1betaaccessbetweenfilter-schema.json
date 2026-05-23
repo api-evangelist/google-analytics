@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoogleAnalyticsAdminV1betaAccessBetweenFilter",
+  "title": "GoogleAnalyticsAdminV1betaAccessBetweenFilter",
+  "description": "To express that the result needs to be between two numbers (inclusive).",
+  "properties": {
+    "fromValue": {
+      "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaNumericValue",
+      "description": "Begins with this number."
+    },
+    "toValue": {
+      "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaNumericValue",
+      "description": "Ends with this number."
+    }
+  },
+  "type": "object"
+}

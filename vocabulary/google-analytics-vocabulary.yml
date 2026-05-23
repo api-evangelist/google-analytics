@@ -1,0 +1,10 @@
+name: Google Analytics Domain Vocabulary
+provider: Google Analytics
+providerId: google-analytics
+description: Tag-derived vocabulary for the Google Analytics API surface; sourced from openapi/ tags.
+terms:
+- term: data
+- term: management
+- term: metadata
+- term: provisioning
+- term: userDeletion

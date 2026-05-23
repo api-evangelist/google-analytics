@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Metadata",
+  "title": "Metadata",
+  "description": "The dimensions, metrics and comparisons currently accepted in reporting methods.",
+  "properties": {
+    "dimensions": {
+      "description": "The dimension descriptions.",
+      "items": {
+        "$ref": "#/components/schemas/DimensionMetadata"
+      },
+      "type": "array"
+    },
+    "metrics": {
+      "description": "The metric descriptions.",
+      "items": {
+        "$ref": "#/components/schemas/MetricMetadata"
+      },
+      "type": "array"
+    },
+    "name": {
+      "description": "Resource name of this metadata.",
+      "type": "string",
+      "example": "Example Name"
+    }
+  },
+  "type": "object"
+}

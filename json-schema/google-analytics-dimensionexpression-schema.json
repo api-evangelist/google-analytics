@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DimensionExpression",
+  "title": "DimensionExpression",
+  "description": "Used to express a dimension which is the result of a formula of multiple dimensions. Example usages: 1) lower_case(dimension) 2) concatenate(dimension1, symbol, dimension2).",
+  "properties": {
+    "concatenate": {
+      "$ref": "#/components/schemas/ConcatenateExpression",
+      "description": "Used to combine dimension values to a single dimension. For example, dimension \"country, city\": concatenate(country, \", \", city)."
+    },
+    "lowerCase": {
+      "$ref": "#/components/schemas/CaseExpression",
+      "description": "Used to convert a dimension value to lower case."
+    },
+    "upperCase": {
+      "$ref": "#/components/schemas/CaseExpression",
+      "description": "Used to convert a dimension value to upper case."
+    }
+  },
+  "type": "object"
+}

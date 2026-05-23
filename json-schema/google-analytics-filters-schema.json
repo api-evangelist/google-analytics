@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Filters",
+  "title": "Filters",
+  "description": "A filter collection lists filters created by users in an Analytics account. Each resource in the collection corresponds to a filter.",
+  "properties": {
+    "items": {
+      "description": "A list of filters.",
+      "items": {
+        "$ref": "#/components/schemas/Filter"
+      },
+      "type": "array"
+    },
+    "itemsPerPage": {
+      "description": "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1,000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.",
+      "format": "int32",
+      "type": "integer",
+      "example": 42
+    },
+    "kind": {
+      "default": "analytics#filters",
+      "description": "Collection type.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "nextLink": {
+      "description": "Link to next page for this filter collection.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "previousLink": {
+      "description": "Link to previous page for this filter collection.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "startIndex": {
+      "description": "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter.",
+      "format": "int32",
+      "type": "integer",
+      "example": 42
+    },
+    "totalResults": {
+      "description": "The total number of results for the query, regardless of the number of results in the response.",
+      "format": "int32",
+      "type": "integer",
+      "example": 42
+    },
+    "username": {
+      "description": "Email ID of the authenticated user",
+      "type": "string",
+      "example": "Example Name"
+    }
+  },
+  "type": "object"
+}

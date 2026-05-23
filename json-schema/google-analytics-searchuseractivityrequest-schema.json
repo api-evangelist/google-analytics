@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SearchUserActivityRequest",
+  "title": "SearchUserActivityRequest",
+  "description": "The request to fetch User Report from Reporting API `userActivity:get` call.",
+  "properties": {
+    "activityTypes": {
+      "description": "Set of all activity types being requested. Only acvities matching these types will be returned in the response. If empty, all activies will be returned.",
+      "items": {
+        "enum": [
+          "ACTIVITY_TYPE_UNSPECIFIED",
+          "PAGEVIEW",
+          "SCREENVIEW",
+          "GOAL",
+          "ECOMMERCE",
+          "EVENT"
+        ],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "dateRange": {
+      "$ref": "#/components/schemas/DateRange",
+      "description": "Date range for which to retrieve the user activity. If a date range is not provided, the default date range is (startDate: current date - 7 days, endDate: current date - 1 day)."
+    },
+    "pageSize": {
+      "description": "Page size is for paging and specifies the maximum number of returned rows. Page size should be > 0. If the value is 0 or if the field isn't specified, the request returns the default of 1000 rows per page.",
+      "format": "int32",
+      "type": "integer"
+    },
+    "pageToken": {
+      "description": "A continuation token to get the next page of the results. Adding this to the request will return the rows after the pageToken. The pageToken should be the value returned in the nextPageToken parameter in the response to the [SearchUserActivityRequest](#SearchUserActivityRequest) request.",
+      "type": "string"
+    },
+    "user": {
+      "$ref": "#/components/schemas/User",
+      "description": "Required. Unique user Id to query for. Every [SearchUserActivityRequest](#SearchUserActivityRequest) must contain this field."
+    },
+    "viewId": {
+      "description": "Required. The Analytics [view ID](https://support.google.com/analytics/answer/1009618) from which to retrieve data. Every [SearchUserActivityRequest](#SearchUserActivityRequest) must contain the `viewId`.",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

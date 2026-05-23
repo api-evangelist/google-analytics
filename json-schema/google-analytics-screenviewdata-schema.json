@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ScreenviewData",
+  "title": "ScreenviewData",
+  "properties": {
+    "appName": {
+      "description": "The application name.",
+      "type": "string"
+    },
+    "mobileDeviceBranding": {
+      "description": "Mobile manufacturer or branded name. Eg: \"Google\", \"Apple\" etc.",
+      "type": "string"
+    },
+    "mobileDeviceModel": {
+      "description": "Mobile device model. Eg: \"Pixel\", \"iPhone\" etc.",
+      "type": "string"
+    },
+    "screenName": {
+      "description": "The name of the screen.",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

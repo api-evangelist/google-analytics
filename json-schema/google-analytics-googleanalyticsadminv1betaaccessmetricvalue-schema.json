@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoogleAnalyticsAdminV1betaAccessMetricValue",
+  "title": "GoogleAnalyticsAdminV1betaAccessMetricValue",
+  "description": "The value of a metric.",
+  "properties": {
+    "value": {
+      "description": "The measurement value. For example, this value may be '13'.",
+      "type": "string",
+      "example": "example_value"
+    }
+  },
+  "type": "object"
+}

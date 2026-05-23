@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ReportRow",
+  "title": "ReportRow",
+  "description": "A row in the report.",
+  "properties": {
+    "dimensions": {
+      "description": "List of requested dimensions.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "metrics": {
+      "description": "List of metrics for each requested DateRange.",
+      "items": {
+        "$ref": "#/components/schemas/DateRangeValues"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

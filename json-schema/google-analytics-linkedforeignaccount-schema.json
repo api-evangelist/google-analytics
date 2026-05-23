@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LinkedForeignAccount",
+  "title": "LinkedForeignAccount",
+  "description": "JSON template for an Analytics Remarketing Audience Foreign Link.",
+  "properties": {
+    "accountId": {
+      "description": "Account ID to which this linked foreign account belongs.",
+      "type": "string"
+    },
+    "eligibleForSearch": {
+      "description": "Boolean indicating whether this is eligible for search.",
+      "readOnly": true,
+      "type": "boolean"
+    },
+    "id": {
+      "description": "Entity ad account link ID.",
+      "type": "string"
+    },
+    "internalWebPropertyId": {
+      "description": "Internal ID for the web property to which this linked foreign account belongs.",
+      "readOnly": true,
+      "type": "string"
+    },
+    "kind": {
+      "default": "analytics#linkedForeignAccount",
+      "description": "Resource type for linked foreign account.",
+      "type": "string"
+    },
+    "linkedAccountId": {
+      "description": "The foreign account ID. For example the an Google Ads `linkedAccountId` has the following format XXX-XXX-XXXX.",
+      "type": "string"
+    },
+    "remarketingAudienceId": {
+      "description": "Remarketing audience ID to which this linked foreign account belongs.",
+      "type": "string"
+    },
+    "status": {
+      "description": "The status of this foreign account link.",
+      "type": "string"
+    },
+    "type": {
+      "description": "The type of the foreign account. For example, `ADWORDS_LINKS`, `DBM_LINKS`, `MCC_LINKS` or `OPTIMIZE`.",
+      "type": "string"
+    },
+    "webPropertyId": {
+      "description": "Web property ID of the form UA-XXXXX-YY to which this linked foreign account belongs.",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

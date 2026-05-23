@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoogleAnalyticsAdminV1betaProvisionAccountTicketRequest",
+  "title": "GoogleAnalyticsAdminV1betaProvisionAccountTicketRequest",
+  "description": "Request message for ProvisionAccountTicket RPC.",
+  "properties": {
+    "account": {
+      "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaAccount",
+      "description": "The account to create."
+    },
+    "redirectUri": {
+      "description": "Redirect URI where the user will be sent after accepting Terms of Service. Must be configured in Cloud Console as a Redirect URI.",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

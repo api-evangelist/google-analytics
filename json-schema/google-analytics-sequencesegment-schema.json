@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SequenceSegment",
+  "title": "SequenceSegment",
+  "description": "Sequence conditions consist of one or more steps, where each step is defined by one or more dimension/metric conditions. Multiple steps can be combined with special sequence operators.",
+  "properties": {
+    "firstStepShouldMatchFirstHit": {
+      "description": "If set, first step condition must match the first hit of the visitor (in the date range).",
+      "type": "boolean"
+    },
+    "segmentSequenceSteps": {
+      "description": "The list of steps in the sequence.",
+      "items": {
+        "$ref": "#/components/schemas/SegmentSequenceStep"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

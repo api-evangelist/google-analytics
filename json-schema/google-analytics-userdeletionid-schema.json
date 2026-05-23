@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserDeletionId",
+  "title": "UserDeletionId",
+  "type": "object",
+  "required": [
+    "type",
+    "userId"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "The type of user identifier.",
+      "enum": [
+        "CLIENT_ID",
+        "USER_ID",
+        "APP_INSTANCE_ID"
+      ],
+      "example": "CLIENT_ID"
+    },
+    "userId": {
+      "type": "string",
+      "description": "The actual user identifier value corresponding to the specified type.",
+      "example": "123456"
+    }
+  }
+}

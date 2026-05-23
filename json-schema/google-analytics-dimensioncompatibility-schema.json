@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DimensionCompatibility",
+  "title": "DimensionCompatibility",
+  "description": "The compatibility for a single dimension.",
+  "properties": {
+    "compatibility": {
+      "description": "The compatibility of this dimension. If the compatibility is COMPATIBLE, this dimension can be successfully added to the report.",
+      "enum": [
+        "COMPATIBILITY_UNSPECIFIED",
+        "COMPATIBLE",
+        "INCOMPATIBLE"
+      ],
+      "type": "string",
+      "example": "COMPATIBILITY_UNSPECIFIED"
+    },
+    "dimensionMetadata": {
+      "$ref": "#/components/schemas/DimensionMetadata",
+      "description": "The dimension metadata contains the API name for this compatibility information. The dimension metadata also contains other helpful information like the UI name and description."
+    }
+  },
+  "type": "object"
+}

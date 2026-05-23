@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TransactionData",
+  "title": "TransactionData",
+  "description": "Represents details collected when the visitor performs a transaction on the page.",
+  "properties": {
+    "transactionId": {
+      "description": "The transaction ID, supplied by the e-commerce tracking method, for the purchase in the shopping cart.",
+      "type": "string"
+    },
+    "transactionRevenue": {
+      "description": "The total sale revenue (excluding shipping and tax) of the transaction.",
+      "format": "double",
+      "type": "number"
+    },
+    "transactionShipping": {
+      "description": "Total cost of shipping.",
+      "format": "double",
+      "type": "number"
+    },
+    "transactionTax": {
+      "description": "Total tax for the transaction.",
+      "format": "double",
+      "type": "number"
+    }
+  },
+  "type": "object"
+}

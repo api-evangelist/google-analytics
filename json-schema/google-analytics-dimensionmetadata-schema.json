@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DimensionMetadata",
+  "title": "DimensionMetadata",
+  "description": "Explains a dimension.",
+  "properties": {
+    "apiName": {
+      "description": "This dimension's name. Useable in [Dimension](#Dimension)'s `name`. For example, `eventName`.",
+      "type": "string",
+      "example": "Example Name"
+    },
+    "category": {
+      "description": "The display name of the category that this dimension belongs to. Similar dimensions and metrics are categorized together.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "customDefinition": {
+      "description": "True if the dimension is custom to this property. This includes user, event, & item scoped custom dimensions; to learn more about custom dimensions, see https://support.google.com/analytics/answer/14240153. This also include custom channel groups; to learn more about custom channel groups, see https://support.google.com/analytics/answer/13051316.",
+      "type": "boolean",
+      "example": true
+    },
+    "deprecatedApiNames": {
+      "description": "Still usable but deprecated names for this dimension. If populated, this dimension is available by either `apiName` or one of `deprecatedApiNames` for a period of time. After the deprecation period, the dimension will be available only by `apiName`.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "description": {
+      "description": "Description of how this dimension is used and calculated.",
+      "type": "string",
+      "example": "Example description"
+    },
+    "uiName": {
+      "description": "This dimension's name within the Google Analytics user interface. For example, `Event name`.",
+      "type": "string",
+      "example": "Example Name"
+    }
+  },
+  "type": "object"
+}

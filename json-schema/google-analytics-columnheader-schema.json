@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ColumnHeader",
+  "title": "ColumnHeader",
+  "description": "Column headers.",
+  "properties": {
+    "dimensions": {
+      "description": "The dimension names in the response.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "metricHeader": {
+      "$ref": "#/components/schemas/MetricHeader",
+      "description": "Metric headers for the metrics in the response."
+    }
+  },
+  "type": "object"
+}

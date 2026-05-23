@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EntityUserLink",
+  "title": "EntityUserLink",
+  "description": "JSON template for an Analytics Entity-User Link. Returns permissions that a user has for an entity.",
+  "properties": {
+    "entity": {
+      "description": "Entity for this link. It can be an account, a web property, or a view (profile).",
+      "properties": {
+        "accountRef": {
+          "$ref": "#/components/schemas/AccountRef",
+          "description": "Account for this link."
+        },
+        "profileRef": {
+          "$ref": "#/components/schemas/ProfileRef",
+          "description": "View (Profile) for this link."
+        },
+        "webPropertyRef": {
+          "$ref": "#/components/schemas/WebPropertyRef",
+          "description": "Web property for this link."
+        }
+      },
+      "type": "object"
+    },
+    "id": {
+      "description": "Entity user link ID",
+      "type": "string",
+      "example": "123456"
+    },
+    "kind": {
+      "default": "analytics#entityUserLink",
+      "description": "Resource type for entity user link.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "permissions": {
+      "description": "Permissions the user has for this entity.",
+      "properties": {
+        "effective": {
+          "description": "Effective permissions represent all the permissions that a user has for this entity. These include any implied permissions (e.g., EDIT implies VIEW) or inherited permissions from the parent entity. Effective permissions are read-only.",
+          "items": {
+            "type": "string"
+          },
+          "readOnly": true,
+          "type": "array"
+        },
+        "local": {
+          "description": "Permissions that a user has been assigned at this very level. Does not include any implied or inherited permissions. Local permissions are modifiable.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "selfLink": {
+      "description": "Self link for this resource.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "userRef": {
+      "$ref": "#/components/schemas/UserRef",
+      "description": "User reference."
+    }
+  },
+  "type": "object"
+}

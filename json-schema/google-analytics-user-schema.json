@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/User",
+  "title": "User",
+  "description": "Contains information to identify a particular user uniquely.",
+  "properties": {
+    "type": {
+      "description": "Type of the user in the request. The field `userId` is associated with this type.",
+      "enum": [
+        "USER_ID_TYPE_UNSPECIFIED",
+        "USER_ID",
+        "CLIENT_ID"
+      ],
+      "type": "string"
+    },
+    "userId": {
+      "description": "Unique Id of the user for which the data is being requested.",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

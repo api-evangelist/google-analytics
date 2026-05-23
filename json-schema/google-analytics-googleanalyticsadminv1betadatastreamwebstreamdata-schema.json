@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoogleAnalyticsAdminV1betaDataStreamWebStreamData",
+  "title": "GoogleAnalyticsAdminV1betaDataStreamWebStreamData",
+  "description": "Data specific to web streams.",
+  "properties": {
+    "defaultUri": {
+      "description": "Domain name of the web app being measured, or empty. Example: \"http://www.google.com\", \"https://www.google.com\"",
+      "type": "string"
+    },
+    "firebaseAppId": {
+      "description": "Output only. ID of the corresponding web app in Firebase, if any. This ID can change if the web app is deleted and recreated.",
+      "readOnly": true,
+      "type": "string"
+    },
+    "measurementId": {
+      "description": "Output only. Analytics Measurement ID. Example: \"G-1A2BCD345E\"",
+      "readOnly": true,
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

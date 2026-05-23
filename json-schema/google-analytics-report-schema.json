@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Report",
+  "title": "Report",
+  "description": "The data response corresponding to the request.",
+  "properties": {
+    "columnHeader": {
+      "$ref": "#/components/schemas/ColumnHeader",
+      "description": "The column headers."
+    },
+    "data": {
+      "$ref": "#/components/schemas/ReportData",
+      "description": "Response data."
+    },
+    "nextPageToken": {
+      "description": "Page token to retrieve the next page of results in the list.",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

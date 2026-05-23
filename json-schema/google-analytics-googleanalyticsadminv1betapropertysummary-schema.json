@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoogleAnalyticsAdminV1betaPropertySummary",
+  "title": "GoogleAnalyticsAdminV1betaPropertySummary",
+  "description": "A virtual resource representing metadata for a GA4 property.",
+  "properties": {
+    "displayName": {
+      "description": "Display name for the property referred to in this property summary.",
+      "type": "string"
+    },
+    "parent": {
+      "description": "Resource name of this property's logical parent. Note: The Property-Moving UI can be used to change the parent. Format: accounts/{account}, properties/{property} Example: \"accounts/100\", \"properties/200\"",
+      "type": "string"
+    },
+    "property": {
+      "description": "Resource name of property referred to by this property summary Format: properties/{property_id} Example: \"properties/1000\"",
+      "type": "string"
+    },
+    "propertyType": {
+      "description": "The property's property type.",
+      "enum": [
+        "PROPERTY_TYPE_UNSPECIFIED",
+        "PROPERTY_TYPE_ORDINARY",
+        "PROPERTY_TYPE_SUBPROPERTY",
+        "PROPERTY_TYPE_ROLLUP"
+      ],
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

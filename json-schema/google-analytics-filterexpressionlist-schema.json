@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FilterExpressionList",
+  "title": "FilterExpressionList",
+  "description": "A list of filter expressions.",
+  "properties": {
+    "expressions": {
+      "description": "A list of filter expressions.",
+      "items": {
+        "$ref": "#/components/schemas/FilterExpression"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

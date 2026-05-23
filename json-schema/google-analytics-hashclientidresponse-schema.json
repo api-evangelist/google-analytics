@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/HashClientIdResponse",
+  "title": "HashClientIdResponse",
+  "description": "JSON template for a hash Client Id response resource.",
+  "properties": {
+    "clientId": {
+      "type": "string"
+    },
+    "hashedClientId": {
+      "type": "string"
+    },
+    "kind": {
+      "default": "analytics#hashClientIdResponse",
+      "type": "string"
+    },
+    "webPropertyId": {
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

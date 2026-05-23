@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionRequest",
+  "title": "GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionRequest",
+  "description": "Request message for AcknowledgeUserDataCollection RPC.",
+  "properties": {
+    "acknowledgement": {
+      "description": "Required. An acknowledgement that the caller of this method understands the terms of user data collection. This field must contain the exact value: \"I acknowledge that I have the necessary privacy disclosures and rights from my end users for the collection and processing of their data, including the association of such data with the visitation information Google Analytics collects from my site and/or app property.\"",
+      "type": "string",
+      "example": "example_value"
+    }
+  },
+  "type": "object"
+}

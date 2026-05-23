@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/WebPropertySummary",
+  "title": "WebPropertySummary",
+  "description": "JSON template for an Analytics WebPropertySummary. WebPropertySummary returns basic information (i.e., summary) for a web property.",
+  "properties": {
+    "id": {
+      "description": "Web property ID of the form UA-XXXXX-YY.",
+      "type": "string"
+    },
+    "internalWebPropertyId": {
+      "description": "Internal ID for this web property.",
+      "type": "string"
+    },
+    "kind": {
+      "default": "analytics#webPropertySummary",
+      "description": "Resource type for Analytics WebPropertySummary.",
+      "type": "string"
+    },
+    "level": {
+      "description": "Level for this web property. Possible values are STANDARD or PREMIUM.",
+      "type": "string"
+    },
+    "name": {
+      "description": "Web property name.",
+      "type": "string"
+    },
+    "profiles": {
+      "description": "List of profiles under this web property.",
+      "items": {
+        "$ref": "#/components/schemas/ProfileSummary"
+      },
+      "type": "array"
+    },
+    "starred": {
+      "description": "Indicates whether this web property is starred or not.",
+      "type": "boolean"
+    },
+    "websiteUrl": {
+      "description": "Website url for this web property.",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

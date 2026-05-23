@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MetricHeaderEntry",
+  "title": "MetricHeaderEntry",
+  "description": "Header for the metrics.",
+  "properties": {
+    "name": {
+      "description": "The name of the header.",
+      "type": "string",
+      "example": "Example Name"
+    },
+    "type": {
+      "description": "The type of the metric, for example `INTEGER`.",
+      "enum": [
+        "METRIC_TYPE_UNSPECIFIED",
+        "INTEGER",
+        "FLOAT",
+        "CURRENCY",
+        "PERCENT",
+        "TIME"
+      ],
+      "type": "string",
+      "example": "METRIC_TYPE_UNSPECIFIED"
+    }
+  },
+  "type": "object"
+}

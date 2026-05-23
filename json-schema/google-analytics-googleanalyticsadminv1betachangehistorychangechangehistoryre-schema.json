@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource",
+  "title": "GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource",
+  "description": "A snapshot of a resource as before or after the result of a change in change history.",
+  "properties": {
+    "account": {
+      "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaAccount",
+      "description": "A snapshot of an Account resource in change history."
+    },
+    "conversionEvent": {
+      "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaConversionEvent",
+      "description": "A snapshot of a ConversionEvent resource in change history."
+    },
+    "dataRetentionSettings": {
+      "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaDataRetentionSettings",
+      "description": "A snapshot of a data retention settings resource in change history."
+    },
+    "dataStream": {
+      "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaDataStream",
+      "description": "A snapshot of a DataStream resource in change history."
+    },
+    "firebaseLink": {
+      "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaFirebaseLink",
+      "description": "A snapshot of a FirebaseLink resource in change history."
+    },
+    "googleAdsLink": {
+      "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaGoogleAdsLink",
+      "description": "A snapshot of a GoogleAdsLink resource in change history."
+    },
+    "measurementProtocolSecret": {
+      "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaMeasurementProtocolSecret",
+      "description": "A snapshot of a MeasurementProtocolSecret resource in change history."
+    },
+    "property": {
+      "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaProperty",
+      "description": "A snapshot of a Property resource in change history."
+    }
+  },
+  "type": "object"
+}

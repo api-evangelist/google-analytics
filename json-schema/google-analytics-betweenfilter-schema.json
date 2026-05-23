@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BetweenFilter",
+  "title": "BetweenFilter",
+  "description": "To express that the result needs to be between two numbers (inclusive).",
+  "properties": {
+    "fromValue": {
+      "$ref": "#/components/schemas/NumericValue",
+      "description": "Begins with this number."
+    },
+    "toValue": {
+      "$ref": "#/components/schemas/NumericValue",
+      "description": "Ends with this number."
+    }
+  },
+  "type": "object"
+}

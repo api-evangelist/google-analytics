@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BatchRunPivotReportsRequest",
+  "title": "BatchRunPivotReportsRequest",
+  "description": "The batch request containing multiple pivot report requests.",
+  "properties": {
+    "requests": {
+      "description": "Individual requests. Each request has a separate pivot report response. Each batch request is allowed up to 5 requests.",
+      "items": {
+        "$ref": "#/components/schemas/RunPivotReportRequest"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

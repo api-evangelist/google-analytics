@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoogleAnalyticsAdminV1betaDataStreamAndroidAppStreamData",
+  "title": "GoogleAnalyticsAdminV1betaDataStreamAndroidAppStreamData",
+  "description": "Data specific to Android app streams.",
+  "properties": {
+    "firebaseAppId": {
+      "description": "Output only. ID of the corresponding Android app in Firebase, if any. This ID can change if the Android app is deleted and recreated.",
+      "readOnly": true,
+      "type": "string"
+    },
+    "packageName": {
+      "description": "Immutable. The package name for the app being measured. Example: \"com.example.myandroidapp\"",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PivotHeaderEntry",
+  "title": "PivotHeaderEntry",
+  "description": "The headers for the each of the metric column corresponding to the metrics requested in the pivots section of the response.",
+  "properties": {
+    "dimensionNames": {
+      "description": "The name of the dimensions in the pivot response.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "dimensionValues": {
+      "description": "The values for the dimensions in the pivot.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "metric": {
+      "$ref": "#/components/schemas/MetricHeaderEntry",
+      "description": "The metric header for the metric in the pivot."
+    }
+  },
+  "type": "object"
+}

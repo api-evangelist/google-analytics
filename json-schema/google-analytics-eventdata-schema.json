@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EventData",
+  "title": "EventData",
+  "description": "Represents all the details pertaining to an event.",
+  "properties": {
+    "eventAction": {
+      "description": "Type of interaction with the object. Eg: 'play'.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "eventCategory": {
+      "description": "The object on the page that was interacted with. Eg: 'Video'.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "eventCount": {
+      "description": "Number of such events in this activity.",
+      "format": "int64",
+      "type": "string",
+      "example": "example_value"
+    },
+    "eventLabel": {
+      "description": "Label attached with the event.",
+      "type": "string",
+      "example": "Example Name"
+    },
+    "eventValue": {
+      "description": "Numeric value associated with the event.",
+      "format": "int64",
+      "type": "string",
+      "example": "example_value"
+    }
+  },
+  "type": "object"
+}

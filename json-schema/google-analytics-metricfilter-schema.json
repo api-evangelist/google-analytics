@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MetricFilter",
+  "title": "MetricFilter",
+  "description": "MetricFilter specifies the filter on a metric.",
+  "properties": {
+    "comparisonValue": {
+      "description": "The value to compare against.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "metricName": {
+      "description": "The metric that will be filtered on. A metricFilter must contain a metric name. A metric name can be an alias earlier defined as a metric or it can also be a metric expression.",
+      "type": "string",
+      "example": "Example Name"
+    },
+    "not": {
+      "description": "Logical `NOT` operator. If this boolean is set to true, then the matching metric values will be excluded in the report. The default is false.",
+      "type": "boolean",
+      "example": true
+    },
+    "operator": {
+      "description": "Is the metric `EQUAL`, `LESS_THAN` or `GREATER_THAN` the comparisonValue, the default is `EQUAL`. If the operator is `IS_MISSING`, checks if the metric is missing and would ignore the comparisonValue.",
+      "enum": [
+        "OPERATOR_UNSPECIFIED",
+        "EQUAL",
+        "LESS_THAN",
+        "GREATER_THAN",
+        "IS_MISSING"
+      ],
+      "type": "string",
+      "example": "OPERATOR_UNSPECIFIED"
+    }
+  },
+  "type": "object"
+}

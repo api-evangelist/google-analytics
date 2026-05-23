@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CheckCompatibilityRequest",
+  "title": "CheckCompatibilityRequest",
+  "description": "The request for compatibility information for a report's dimensions and metrics. Check compatibility provides a preview of the compatibility of a report; fields shared with the `runReport` request should be the same values as in your `runReport` request.",
+  "properties": {
+    "compatibilityFilter": {
+      "description": "Filters the dimensions and metrics in the response to just this compatibility. Commonly used as `\u201dcompatibilityFilter\u201d: \u201cCOMPATIBLE\u201d` to only return compatible dimensions & metrics.",
+      "enum": [
+        "COMPATIBILITY_UNSPECIFIED",
+        "COMPATIBLE",
+        "INCOMPATIBLE"
+      ],
+      "type": "string",
+      "example": "COMPATIBILITY_UNSPECIFIED"
+    },
+    "dimensionFilter": {
+      "$ref": "#/components/schemas/FilterExpression",
+      "description": "The filter clause of dimensions. `dimensionFilter` should be the same value as in your `runReport` request."
+    },
+    "dimensions": {
+      "description": "The dimensions in this report. `dimensions` should be the same value as in your `runReport` request.",
+      "items": {
+        "$ref": "#/components/schemas/Dimension"
+      },
+      "type": "array"
+    },
+    "metricFilter": {
+      "$ref": "#/components/schemas/FilterExpression",
+      "description": "The filter clause of metrics. `metricFilter` should be the same value as in your `runReport` request"
+    },
+    "metrics": {
+      "description": "The metrics in this report. `metrics` should be the same value as in your `runReport` request.",
+      "items": {
+        "$ref": "#/components/schemas/Metric"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

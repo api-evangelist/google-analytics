@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UnsampledReports",
+  "title": "UnsampledReports",
+  "description": "An unsampled report collection lists Analytics unsampled reports to which the user has access. Each view (profile) can have a set of unsampled reports. Each resource in the unsampled report collection corresponds to a single Analytics unsampled report.",
+  "properties": {
+    "items": {
+      "description": "A list of unsampled reports.",
+      "items": {
+        "$ref": "#/components/schemas/UnsampledReport"
+      },
+      "type": "array"
+    },
+    "itemsPerPage": {
+      "description": "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.",
+      "format": "int32",
+      "type": "integer"
+    },
+    "kind": {
+      "default": "analytics#unsampledReports",
+      "description": "Collection type.",
+      "type": "string"
+    },
+    "nextLink": {
+      "description": "Link to next page for this unsampled report collection.",
+      "type": "string"
+    },
+    "previousLink": {
+      "description": "Link to previous page for this unsampled report collection.",
+      "type": "string"
+    },
+    "startIndex": {
+      "description": "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter.",
+      "format": "int32",
+      "type": "integer"
+    },
+    "totalResults": {
+      "description": "The total number of results for the query, regardless of the number of resources in the result.",
+      "format": "int32",
+      "type": "integer"
+    },
+    "username": {
+      "description": "Email ID of the authenticated user",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

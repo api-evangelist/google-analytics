@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AccountRef",
+  "title": "AccountRef",
+  "description": "JSON template for a linked account.",
+  "properties": {
+    "href": {
+      "description": "Link for this account.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "id": {
+      "description": "Account ID.",
+      "type": "string",
+      "example": "123456"
+    },
+    "kind": {
+      "default": "analytics#accountRef",
+      "description": "Analytics account reference.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "name": {
+      "description": "Account name.",
+      "type": "string",
+      "example": "Example Name"
+    }
+  },
+  "type": "object"
+}

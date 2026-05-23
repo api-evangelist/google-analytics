@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Account",
+  "title": "Account",
+  "description": "JSON template for Analytics account entry.",
+  "properties": {
+    "childLink": {
+      "description": "Child link for an account entry. Points to the list of web properties for this account.",
+      "properties": {
+        "href": {
+          "description": "Link to the list of web properties for this account.",
+          "type": "string"
+        },
+        "type": {
+          "default": "analytics#webproperties",
+          "description": "Type of the child link. Its value is \"analytics#webproperties\".",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "created": {
+      "description": "Time the account was created.",
+      "format": "date-time",
+      "type": "string",
+      "example": "2026-04-17T12:00:00Z"
+    },
+    "id": {
+      "description": "Account ID.",
+      "type": "string",
+      "example": "123456"
+    },
+    "kind": {
+      "default": "analytics#account",
+      "description": "Resource type for Analytics account.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "name": {
+      "description": "Account name.",
+      "type": "string",
+      "example": "Example Name"
+    },
+    "permissions": {
+      "description": "Permissions the user has for this account.",
+      "properties": {
+        "effective": {
+          "description": "All the permissions that the user has for this account. These include any implied permissions (e.g., EDIT implies VIEW).",
+          "items": {
+            "type": "string"
+          },
+          "readOnly": true,
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "selfLink": {
+      "description": "Link for this account.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "starred": {
+      "description": "Indicates whether this account is starred or not.",
+      "type": "boolean",
+      "example": true
+    },
+    "updated": {
+      "description": "Time the account was last modified.",
+      "format": "date-time",
+      "type": "string",
+      "example": "2026-04-17T12:00:00Z"
+    }
+  },
+  "type": "object"
+}

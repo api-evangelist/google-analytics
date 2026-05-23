@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BatchRunPivotReportsResponse",
+  "title": "BatchRunPivotReportsResponse",
+  "description": "The batch response containing multiple pivot reports.",
+  "properties": {
+    "kind": {
+      "description": "Identifies what kind of resource this message is. This `kind` is always the fixed string \"analyticsData#batchRunPivotReports\". Useful to distinguish between response types in JSON.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "pivotReports": {
+      "description": "Individual responses. Each response has a separate pivot report request.",
+      "items": {
+        "$ref": "#/components/schemas/RunPivotReportResponse"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

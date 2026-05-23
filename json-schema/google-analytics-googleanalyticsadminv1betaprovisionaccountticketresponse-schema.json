@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoogleAnalyticsAdminV1betaProvisionAccountTicketResponse",
+  "title": "GoogleAnalyticsAdminV1betaProvisionAccountTicketResponse",
+  "description": "Response message for ProvisionAccountTicket RPC.",
+  "properties": {
+    "accountTicketId": {
+      "description": "The param to be passed in the ToS link.",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoalData",
+  "title": "GoalData",
+  "description": "Represents all the details pertaining to a goal.",
+  "properties": {
+    "goalCompletionLocation": {
+      "description": "URL of the page where this goal was completed.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "goalCompletions": {
+      "description": "Total number of goal completions in this activity.",
+      "format": "int64",
+      "type": "string",
+      "example": "example_value"
+    },
+    "goalIndex": {
+      "description": "This identifies the goal as configured for the profile.",
+      "format": "int32",
+      "type": "integer",
+      "example": 42
+    },
+    "goalName": {
+      "description": "Name of the goal.",
+      "type": "string",
+      "example": "Example Name"
+    },
+    "goalPreviousStep1": {
+      "description": "URL of the page one step prior to the goal completion.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "goalPreviousStep2": {
+      "description": "URL of the page two steps prior to the goal completion.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "goalPreviousStep3": {
+      "description": "URL of the page three steps prior to the goal completion.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "goalValue": {
+      "description": "Value in this goal.",
+      "format": "double",
+      "type": "number",
+      "example": 42.5
+    }
+  },
+  "type": "object"
+}

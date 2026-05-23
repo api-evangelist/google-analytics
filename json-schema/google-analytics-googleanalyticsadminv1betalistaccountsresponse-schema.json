@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoogleAnalyticsAdminV1betaListAccountsResponse",
+  "title": "GoogleAnalyticsAdminV1betaListAccountsResponse",
+  "description": "Request message for ListAccounts RPC.",
+  "properties": {
+    "accounts": {
+      "description": "Results that were accessible to the caller.",
+      "items": {
+        "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaAccount"
+      },
+      "type": "array"
+    },
+    "nextPageToken": {
+      "description": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

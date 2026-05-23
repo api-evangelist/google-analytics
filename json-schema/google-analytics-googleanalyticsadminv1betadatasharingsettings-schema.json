@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoogleAnalyticsAdminV1betaDataSharingSettings",
+  "title": "GoogleAnalyticsAdminV1betaDataSharingSettings",
+  "description": "A resource message representing data sharing settings of a Google Analytics account.",
+  "properties": {
+    "name": {
+      "description": "Output only. Resource name. Format: accounts/{account}/dataSharingSettings Example: \"accounts/1000/dataSharingSettings\"",
+      "readOnly": true,
+      "type": "string"
+    },
+    "sharingWithGoogleAnySalesEnabled": {
+      "description": "Allows any of Google sales to access the data in order to suggest configuration changes to improve results.",
+      "type": "boolean"
+    },
+    "sharingWithGoogleAssignedSalesEnabled": {
+      "description": "Allows Google sales teams that are assigned to the customer to access the data in order to suggest configuration changes to improve results. Sales team restrictions still apply when enabled.",
+      "type": "boolean"
+    },
+    "sharingWithGoogleProductsEnabled": {
+      "description": "Allows Google to use the data to improve other Google products or services.",
+      "type": "boolean"
+    },
+    "sharingWithGoogleSupportEnabled": {
+      "description": "Allows Google support to access the data in order to help troubleshoot issues.",
+      "type": "boolean"
+    },
+    "sharingWithOthersEnabled": {
+      "description": "Allows Google to share the data anonymously in aggregate form with others.",
+      "type": "boolean"
+    }
+  },
+  "type": "object"
+}

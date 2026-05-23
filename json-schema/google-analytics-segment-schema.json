@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Segment",
+  "title": "Segment",
+  "description": "JSON template for an Analytics segment.",
+  "properties": {
+    "created": {
+      "description": "Time the segment was created.",
+      "format": "date-time",
+      "type": "string"
+    },
+    "definition": {
+      "description": "Segment definition.",
+      "type": "string"
+    },
+    "id": {
+      "description": "Segment ID.",
+      "type": "string"
+    },
+    "kind": {
+      "default": "analytics#segment",
+      "description": "Resource type for Analytics segment.",
+      "type": "string"
+    },
+    "name": {
+      "description": "Segment name.",
+      "type": "string"
+    },
+    "segmentId": {
+      "description": "Segment ID. Can be used with the 'segment' parameter in Core Reporting API.",
+      "type": "string"
+    },
+    "selfLink": {
+      "description": "Link for this segment.",
+      "type": "string"
+    },
+    "type": {
+      "description": "Type for a segment. Possible values are \"BUILT_IN\" or \"CUSTOM\".",
+      "type": "string"
+    },
+    "updated": {
+      "description": "Time the segment was last modified.",
+      "format": "date-time",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

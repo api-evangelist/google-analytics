@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProfileSummary",
+  "title": "ProfileSummary",
+  "description": "JSON template for an Analytics ProfileSummary. ProfileSummary returns basic information (i.e., summary) for a profile.",
+  "properties": {
+    "id": {
+      "description": "View (profile) ID.",
+      "type": "string"
+    },
+    "kind": {
+      "default": "analytics#profileSummary",
+      "description": "Resource type for Analytics ProfileSummary.",
+      "type": "string"
+    },
+    "name": {
+      "description": "View (profile) name.",
+      "type": "string"
+    },
+    "starred": {
+      "description": "Indicates whether this view (profile) is starred or not.",
+      "type": "boolean"
+    },
+    "type": {
+      "description": "View (Profile) type. Supported types: WEB or APP.",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

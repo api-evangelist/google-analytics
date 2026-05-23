@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderBy",
+  "title": "GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderBy",
+  "description": "Sorts by dimension values.",
+  "properties": {
+    "dimensionName": {
+      "description": "A dimension name in the request to order by.",
+      "type": "string",
+      "example": "Example Name"
+    },
+    "orderType": {
+      "description": "Controls the rule for dimension value ordering.",
+      "enum": [
+        "ORDER_TYPE_UNSPECIFIED",
+        "ALPHANUMERIC",
+        "CASE_INSENSITIVE_ALPHANUMERIC",
+        "NUMERIC"
+      ],
+      "type": "string",
+      "example": "ORDER_TYPE_UNSPECIFIED"
+    }
+  },
+  "type": "object"
+}

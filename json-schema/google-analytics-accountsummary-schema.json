@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AccountSummary",
+  "title": "AccountSummary",
+  "description": "JSON template for an Analytics AccountSummary. An AccountSummary is a lightweight tree comprised of properties/profiles.",
+  "properties": {
+    "id": {
+      "description": "Account ID.",
+      "type": "string",
+      "example": "123456"
+    },
+    "kind": {
+      "default": "analytics#accountSummary",
+      "description": "Resource type for Analytics AccountSummary.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "name": {
+      "description": "Account name.",
+      "type": "string",
+      "example": "Example Name"
+    },
+    "starred": {
+      "description": "Indicates whether this account is starred or not.",
+      "type": "boolean",
+      "example": true
+    },
+    "webProperties": {
+      "description": "List of web properties under this account.",
+      "items": {
+        "$ref": "#/components/schemas/WebPropertySummary"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

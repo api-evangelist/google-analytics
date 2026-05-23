@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/WebPropertyRef",
+  "title": "WebPropertyRef",
+  "description": "JSON template for a web property reference.",
+  "properties": {
+    "accountId": {
+      "description": "Account ID to which this web property belongs.",
+      "type": "string"
+    },
+    "href": {
+      "description": "Link for this web property.",
+      "type": "string"
+    },
+    "id": {
+      "description": "Web property ID of the form UA-XXXXX-YY.",
+      "type": "string"
+    },
+    "internalWebPropertyId": {
+      "description": "Internal ID for this web property.",
+      "type": "string"
+    },
+    "kind": {
+      "default": "analytics#webPropertyRef",
+      "description": "Analytics web property reference.",
+      "type": "string"
+    },
+    "name": {
+      "description": "Name of this web property.",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

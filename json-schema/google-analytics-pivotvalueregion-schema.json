@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PivotValueRegion",
+  "title": "PivotValueRegion",
+  "description": "The metric values in the pivot region.",
+  "properties": {
+    "values": {
+      "description": "The values of the metrics in each of the pivot regions.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

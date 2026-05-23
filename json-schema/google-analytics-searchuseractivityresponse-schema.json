@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SearchUserActivityResponse",
+  "title": "SearchUserActivityResponse",
+  "description": "The response from `userActivity:get` call.",
+  "properties": {
+    "nextPageToken": {
+      "description": "This token should be passed to [SearchUserActivityRequest](#SearchUserActivityRequest) to retrieve the next page.",
+      "type": "string"
+    },
+    "sampleRate": {
+      "description": "This field represents the [sampling rate](https://support.google.com/analytics/answer/2637192) for the given request and is a number between 0.0 to 1.0. See [developer guide](/analytics/devguides/reporting/core/v4/basics#sampling) for details.",
+      "format": "double",
+      "type": "number"
+    },
+    "sessions": {
+      "description": "Each record represents a session (device details, duration, etc).",
+      "items": {
+        "$ref": "#/components/schemas/UserActivitySession"
+      },
+      "type": "array"
+    },
+    "totalRows": {
+      "description": "Total rows returned by this query (across different pages).",
+      "format": "int32",
+      "type": "integer"
+    }
+  },
+  "type": "object"
+}

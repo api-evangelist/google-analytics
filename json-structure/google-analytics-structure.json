@@ -1,0 +1,1146 @@
+{
+  "provider": "Google Analytics",
+  "providerId": "google-analytics",
+  "kind": "json-structure",
+  "description": "Structural overview of the Google Analytics API surface; extracted from openapi/.",
+  "schemaCount": 57,
+  "operationCount": 88,
+  "schemas": [
+    {
+      "name": "Account",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "AccountRef",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "AccountSummaries",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "AccountSummary",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "AccountTicket",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "AccountTreeRequest",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "AccountTreeResponse",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "Accounts",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "AdWordsAccount",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "AnalyticsDataimportDeleteUploadDataRequest",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Column",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "Columns",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "CustomDataSource",
+      "type": "object",
+      "propertyCount": 16,
+      "required": []
+    },
+    {
+      "name": "CustomDataSources",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "CustomDimension",
+      "type": "object",
+      "propertyCount": 12,
+      "required": []
+    },
+    {
+      "name": "CustomDimensions",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "CustomMetric",
+      "type": "object",
+      "propertyCount": 15,
+      "required": []
+    },
+    {
+      "name": "CustomMetrics",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "EntityAdWordsLink",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "EntityAdWordsLinks",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "EntityUserLink",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "EntityUserLinks",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "Experiment",
+      "type": "object",
+      "propertyCount": 28,
+      "required": []
+    },
+    {
+      "name": "Experiments",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "Filter",
+      "type": "object",
+      "propertyCount": 15,
+      "required": []
+    },
+    {
+      "name": "FilterExpression",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "FilterRef",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "Filters",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "GaData",
+      "type": "object",
+      "propertyCount": 17,
+      "required": []
+    },
+    {
+      "name": "Goal",
+      "type": "object",
+      "propertyCount": 18,
+      "required": []
+    },
+    {
+      "name": "Goals",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "HashClientIdRequest",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "HashClientIdResponse",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "IncludeConditions",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "LinkedForeignAccount",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "McfData",
+      "type": "object",
+      "propertyCount": 15,
+      "required": []
+    },
+    {
+      "name": "Profile",
+      "type": "object",
+      "propertyCount": 26,
+      "required": []
+    },
+    {
+      "name": "ProfileFilterLink",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "ProfileFilterLinks",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "ProfileRef",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "ProfileSummary",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "Profiles",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "RealtimeData",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "RemarketingAudience",
+      "type": "object",
+      "propertyCount": 14,
+      "required": []
+    },
+    {
+      "name": "RemarketingAudiences",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "Segment",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "Segments",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "UnsampledReport",
+      "type": "object",
+      "propertyCount": 19,
+      "required": []
+    },
+    {
+      "name": "UnsampledReports",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "Upload",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "Uploads",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "UserDeletionRequest",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "UserRef",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "WebPropertyRef",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "WebPropertySummary",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "Webproperties",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "Webproperty",
+      "type": "object",
+      "propertyCount": 19,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/data/ga",
+      "operationId": "analytics.data.ga.get",
+      "summary": null,
+      "tags": [
+        "data"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/data/mcf",
+      "operationId": "analytics.data.mcf.get",
+      "summary": null,
+      "tags": [
+        "data"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/data/realtime",
+      "operationId": "analytics.data.realtime.get",
+      "summary": null,
+      "tags": [
+        "data"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/management/accountSummaries",
+      "operationId": "analytics.management.accountSummaries.list",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/management/accounts",
+      "operationId": "analytics.management.accounts.list",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/management/accounts/{accountId}/entityUserLinks",
+      "operationId": "analytics.management.accountUserLinks.list",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/management/accounts/{accountId}/entityUserLinks",
+      "operationId": "analytics.management.accountUserLinks.insert",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/management/accounts/{accountId}/entityUserLinks/{linkId}",
+      "operationId": "analytics.management.accountUserLinks.update",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/management/accounts/{accountId}/entityUserLinks/{linkId}",
+      "operationId": "analytics.management.accountUserLinks.delete",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/management/accounts/{accountId}/filters",
+      "operationId": "analytics.management.filters.list",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/management/accounts/{accountId}/filters",
+      "operationId": "analytics.management.filters.insert",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/management/accounts/{accountId}/filters/{filterId}",
+      "operationId": "analytics.management.filters.get",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/management/accounts/{accountId}/filters/{filterId}",
+      "operationId": "analytics.management.filters.update",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/management/accounts/{accountId}/filters/{filterId}",
+      "operationId": "analytics.management.filters.delete",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/management/accounts/{accountId}/filters/{filterId}",
+      "operationId": "analytics.management.filters.patch",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/management/accounts/{accountId}/webproperties",
+      "operationId": "analytics.management.webproperties.list",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/management/accounts/{accountId}/webproperties",
+      "operationId": "analytics.management.webproperties.insert",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}",
+      "operationId": "analytics.management.webproperties.get",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}",
+      "operationId": "analytics.management.webproperties.update",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}",
+      "operationId": "analytics.management.webproperties.patch",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources",
+      "operationId": "analytics.management.customDataSources.list",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/deleteUploadData",
+      "operationId": "analytics.management.uploads.deleteUploadData",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/uploads",
+      "operationId": "analytics.management.uploads.list",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/uploads",
+      "operationId": "analytics.management.uploads.uploadData",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/uploads/{uploadId}",
+      "operationId": "analytics.management.uploads.get",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions",
+      "operationId": "analytics.management.customDimensions.list",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions",
+      "operationId": "analytics.management.customDimensions.insert",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions/{customDimensionId}",
+      "operationId": "analytics.management.customDimensions.get",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions/{customDimensionId}",
+      "operationId": "analytics.management.customDimensions.update",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions/{customDimensionId}",
+      "operationId": "analytics.management.customDimensions.patch",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics",
+      "operationId": "analytics.management.customMetrics.list",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics",
+      "operationId": "analytics.management.customMetrics.insert",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics/{customMetricId}",
+      "operationId": "analytics.management.customMetrics.get",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics/{customMetricId}",
+      "operationId": "analytics.management.customMetrics.update",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics/{customMetricId}",
+      "operationId": "analytics.management.customMetrics.patch",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks",
+      "operationId": "analytics.management.webPropertyAdWordsLinks.list",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks",
+      "operationId": "analytics.management.webPropertyAdWordsLinks.insert",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks/{webPropertyAdWordsLinkId}",
+      "operationId": "analytics.management.webPropertyAdWordsLinks.get",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks/{webPropertyAdWordsLinkId}",
+      "operationId": "analytics.management.webPropertyAdWordsLinks.update",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks/{webPropertyAdWordsLinkId}",
+      "operationId": "analytics.management.webPropertyAdWordsLinks.delete",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks/{webPropertyAdWordsLinkId}",
+      "operationId": "analytics.management.webPropertyAdWordsLinks.patch",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/entityUserLinks",
+      "operationId": "analytics.management.webpropertyUserLinks.list",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/entityUserLinks",
+      "operationId": "analytics.management.webpropertyUserLinks.insert",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/entityUserLinks/{linkId}",
+      "operationId": "analytics.management.webpropertyUserLinks.update",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/entityUserLinks/{linkId}",
+      "operationId": "analytics.management.webpropertyUserLinks.delete",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles",
+      "operationId": "analytics.management.profiles.list",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles",
+      "operationId": "analytics.management.profiles.insert",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}",
+      "operationId": "analytics.management.profiles.get",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}",
+      "operationId": "analytics.management.profiles.update",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}",
+      "operationId": "analytics.management.profiles.delete",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}",
+      "operationId": "analytics.management.profiles.patch",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/entityUserLinks",
+      "operationId": "analytics.management.profileUserLinks.list",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/entityUserLinks",
+      "operationId": "analytics.management.profileUserLinks.insert",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/entityUserLinks/{linkId}",
+      "operationId": "analytics.management.profileUserLinks.update",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/entityUserLinks/{linkId}",
+      "operationId": "analytics.management.profileUserLinks.delete",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments",
+      "operationId": "analytics.management.experiments.list",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments",
+      "operationId": "analytics.management.experiments.insert",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments/{experimentId}",
+      "operationId": "analytics.management.experiments.get",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments/{experimentId}",
+      "operationId": "analytics.management.experiments.update",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments/{experimentId}",
+      "operationId": "analytics.management.experiments.delete",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments/{experimentId}",
+      "operationId": "analytics.management.experiments.patch",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals",
+      "operationId": "analytics.management.goals.list",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals",
+      "operationId": "analytics.management.goals.insert",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals/{goalId}",
+      "operationId": "analytics.management.goals.get",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals/{goalId}",
+      "operationId": "analytics.management.goals.update",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals/{goalId}",
+      "operationId": "analytics.management.goals.patch",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks",
+      "operationId": "analytics.management.profileFilterLinks.list",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks",
+      "operationId": "analytics.management.profileFilterLinks.insert",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks/{linkId}",
+      "operationId": "analytics.management.profileFilterLinks.get",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks/{linkId}",
+      "operationId": "analytics.management.profileFilterLinks.update",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks/{linkId}",
+      "operationId": "analytics.management.profileFilterLinks.delete",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks/{linkId}",
+      "operationId": "analytics.management.profileFilterLinks.patch",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/unsampledReports",
+      "operationId": "analytics.management.unsampledReports.list",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/unsampledReports",
+      "operationId": "analytics.management.unsampledReports.insert",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/unsampledReports/{unsampledReportId}",
+      "operationId": "analytics.management.unsampledReports.get",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/unsampledReports/{unsampledReportId}",
+      "operationId": "analytics.management.unsampledReports.delete",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/remarketingAudiences",
+      "operationId": "analytics.management.remarketingAudience.list",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/remarketingAudiences",
+      "operationId": "analytics.management.remarketingAudience.insert",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/remarketingAudiences/{remarketingAudienceId}",
+      "operationId": "analytics.management.remarketingAudience.get",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/remarketingAudiences/{remarketingAudienceId}",
+      "operationId": "analytics.management.remarketingAudience.update",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/remarketingAudiences/{remarketingAudienceId}",
+      "operationId": "analytics.management.remarketingAudience.delete",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/management/accounts/{accountId}/webproperties/{webPropertyId}/remarketingAudiences/{remarketingAudienceId}",
+      "operationId": "analytics.management.remarketingAudience.patch",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/management/clientId:hashClientId",
+      "operationId": "analytics.management.clientId.hashClientId",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/management/segments",
+      "operationId": "analytics.management.segments.list",
+      "summary": null,
+      "tags": [
+        "management"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/metadata/{reportType}/columns",
+      "operationId": "analytics.metadata.columns.list",
+      "summary": null,
+      "tags": [
+        "metadata"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/provisioning/createAccountTicket",
+      "operationId": "analytics.provisioning.createAccountTicket",
+      "summary": null,
+      "tags": [
+        "provisioning"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/provisioning/createAccountTree",
+      "operationId": "analytics.provisioning.createAccountTree",
+      "summary": null,
+      "tags": [
+        "provisioning"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/userDeletion/userDeletionRequests:upsert",
+      "operationId": "analytics.userDeletion.userDeletionRequest.upsert",
+      "summary": null,
+      "tags": [
+        "userDeletion"
+      ]
+    }
+  ]
+}

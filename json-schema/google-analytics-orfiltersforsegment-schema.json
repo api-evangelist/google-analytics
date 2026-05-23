@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OrFiltersForSegment",
+  "title": "OrFiltersForSegment",
+  "description": "A list of segment filters in the `OR` group are combined with the logical OR operator.",
+  "properties": {
+    "segmentFilterClauses": {
+      "description": "List of segment filters to be combined with a `OR` operator.",
+      "items": {
+        "$ref": "#/components/schemas/SegmentFilterClause"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

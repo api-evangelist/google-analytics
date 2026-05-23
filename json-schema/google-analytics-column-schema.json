@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Column",
+  "title": "Column",
+  "description": "JSON template for a metadata column.",
+  "properties": {
+    "attributes": {
+      "additionalProperties": {
+        "description": "The name of the attribute.",
+        "type": "string"
+      },
+      "description": "Map of attribute name and value for this column.",
+      "type": "object"
+    },
+    "id": {
+      "description": "Column id.",
+      "type": "string",
+      "example": "123456"
+    },
+    "kind": {
+      "default": "analytics#column",
+      "description": "Resource type for Analytics column.",
+      "type": "string",
+      "example": "example_value"
+    }
+  },
+  "type": "object"
+}

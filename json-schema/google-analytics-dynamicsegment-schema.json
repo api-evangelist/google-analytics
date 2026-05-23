@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DynamicSegment",
+  "title": "DynamicSegment",
+  "description": "Dynamic segment definition for defining the segment within the request. A segment can select users, sessions or both.",
+  "properties": {
+    "name": {
+      "description": "The name of the dynamic segment.",
+      "type": "string",
+      "example": "Example Name"
+    },
+    "sessionSegment": {
+      "$ref": "#/components/schemas/SegmentDefinition",
+      "description": "Session Segment to select sessions to include in the segment."
+    },
+    "userSegment": {
+      "$ref": "#/components/schemas/SegmentDefinition",
+      "description": "User Segment to select users to include in the segment."
+    }
+  },
+  "type": "object"
+}

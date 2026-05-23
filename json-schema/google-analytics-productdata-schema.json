@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProductData",
+  "title": "ProductData",
+  "description": "Details of the products in an e-commerce transaction.",
+  "properties": {
+    "itemRevenue": {
+      "description": "The total revenue from purchased product items.",
+      "format": "double",
+      "type": "number",
+      "example": 10.0
+    },
+    "productName": {
+      "description": "The product name, supplied by the e-commerce tracking application, for the purchased items.",
+      "type": "string",
+      "example": "Example Name"
+    },
+    "productQuantity": {
+      "description": "Total number of this product units in the transaction.",
+      "format": "int64",
+      "type": "string",
+      "example": "example_value"
+    },
+    "productSku": {
+      "description": "Unique code that represents the product.",
+      "type": "string",
+      "example": "example_value"
+    }
+  },
+  "type": "object"
+}

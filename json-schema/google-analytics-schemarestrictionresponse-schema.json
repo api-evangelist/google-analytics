@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SchemaRestrictionResponse",
+  "title": "SchemaRestrictionResponse",
+  "description": "The schema restrictions actively enforced in creating this report. To learn more, see [Access and data-restriction management](https://support.google.com/analytics/answer/10851388).",
+  "properties": {
+    "activeMetricRestrictions": {
+      "description": "All restrictions actively enforced in creating the report. For example, `purchaseRevenue` always has the restriction type `REVENUE_DATA`. However, this active response restriction is only populated if the user's custom role disallows access to `REVENUE_DATA`.",
+      "items": {
+        "$ref": "#/components/schemas/ActiveMetricRestriction"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

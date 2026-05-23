@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoogleAnalyticsAdminV1betaListGoogleAdsLinksResponse",
+  "title": "GoogleAnalyticsAdminV1betaListGoogleAdsLinksResponse",
+  "description": "Response message for ListGoogleAdsLinks RPC.",
+  "properties": {
+    "googleAdsLinks": {
+      "description": "List of GoogleAdsLinks.",
+      "items": {
+        "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaGoogleAdsLink"
+      },
+      "type": "array"
+    },
+    "nextPageToken": {
+      "description": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

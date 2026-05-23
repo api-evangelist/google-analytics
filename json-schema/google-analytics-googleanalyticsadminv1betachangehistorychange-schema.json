@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoogleAnalyticsAdminV1betaChangeHistoryChange",
+  "title": "GoogleAnalyticsAdminV1betaChangeHistoryChange",
+  "description": "A description of a change to a single Google Analytics resource.",
+  "properties": {
+    "action": {
+      "description": "The type of action that changed this resource.",
+      "enum": [
+        "ACTION_TYPE_UNSPECIFIED",
+        "CREATED",
+        "UPDATED",
+        "DELETED"
+      ],
+      "type": "string",
+      "example": "ACTION_TYPE_UNSPECIFIED"
+    },
+    "resource": {
+      "description": "Resource name of the resource whose changes are described by this entry.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "resourceAfterChange": {
+      "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource",
+      "description": "Resource contents from after the change was made. If this resource was deleted in this change, this field will be missing."
+    },
+    "resourceBeforeChange": {
+      "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource",
+      "description": "Resource contents from before the change was made. If this resource was created in this change, this field will be missing."
+    }
+  },
+  "type": "object"
+}

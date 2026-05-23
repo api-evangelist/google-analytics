@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/HashClientIdRequest",
+  "title": "HashClientIdRequest",
+  "description": "JSON template for a hash Client Id request resource.",
+  "properties": {
+    "clientId": {
+      "type": "string"
+    },
+    "kind": {
+      "default": "analytics#hashClientIdRequest",
+      "type": "string"
+    },
+    "webPropertyId": {
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

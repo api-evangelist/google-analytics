@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoogleAnalyticsAdminV1betaAccessStringFilter",
+  "title": "GoogleAnalyticsAdminV1betaAccessStringFilter",
+  "description": "The filter for strings.",
+  "properties": {
+    "caseSensitive": {
+      "description": "If true, the string value is case sensitive.",
+      "type": "boolean",
+      "example": true
+    },
+    "matchType": {
+      "description": "The match type for this filter.",
+      "enum": [
+        "MATCH_TYPE_UNSPECIFIED",
+        "EXACT",
+        "BEGINS_WITH",
+        "ENDS_WITH",
+        "CONTAINS",
+        "FULL_REGEXP",
+        "PARTIAL_REGEXP"
+      ],
+      "type": "string",
+      "example": "MATCH_TYPE_UNSPECIFIED"
+    },
+    "value": {
+      "description": "The string value used for the matching.",
+      "type": "string",
+      "example": "example_value"
+    }
+  },
+  "type": "object"
+}

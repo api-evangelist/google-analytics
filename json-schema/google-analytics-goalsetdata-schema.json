@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoalSetData",
+  "title": "GoalSetData",
+  "description": "Represents a set of goals that were reached in an activity.",
+  "properties": {
+    "goals": {
+      "description": "All the goals that were reached in the current activity.",
+      "items": {
+        "$ref": "#/components/schemas/GoalData"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

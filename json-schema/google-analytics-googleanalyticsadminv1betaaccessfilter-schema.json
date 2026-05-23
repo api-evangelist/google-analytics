@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoogleAnalyticsAdminV1betaAccessFilter",
+  "title": "GoogleAnalyticsAdminV1betaAccessFilter",
+  "description": "An expression to filter dimension or metric values.",
+  "properties": {
+    "betweenFilter": {
+      "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaAccessBetweenFilter",
+      "description": "A filter for two values."
+    },
+    "fieldName": {
+      "description": "The dimension name or metric name.",
+      "type": "string",
+      "example": "Example Name"
+    },
+    "inListFilter": {
+      "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaAccessInListFilter",
+      "description": "A filter for in list values."
+    },
+    "numericFilter": {
+      "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaAccessNumericFilter",
+      "description": "A filter for numeric or date values."
+    },
+    "stringFilter": {
+      "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaAccessStringFilter",
+      "description": "Strings related filter."
+    }
+  },
+  "type": "object"
+}

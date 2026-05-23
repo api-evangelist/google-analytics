@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MetricHeader",
+  "title": "MetricHeader",
+  "description": "Describes a metric column in the report. Visible metrics requested in a report produce column entries within rows and MetricHeaders. However, metrics used exclusively within filters or expressions do not produce columns in a report; correspondingly, those metrics do not produce headers.",
+  "properties": {
+    "name": {
+      "description": "The metric's name.",
+      "type": "string"
+    },
+    "type": {
+      "description": "The metric's data type.",
+      "enum": [
+        "METRIC_TYPE_UNSPECIFIED",
+        "TYPE_INTEGER",
+        "TYPE_FLOAT",
+        "TYPE_SECONDS",
+        "TYPE_MILLISECONDS",
+        "TYPE_MINUTES",
+        "TYPE_HOURS",
+        "TYPE_STANDARD",
+        "TYPE_CURRENCY",
+        "TYPE_FEET",
+        "TYPE_MILES",
+        "TYPE_METERS",
+        "TYPE_KILOMETERS"
+      ],
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/StringFilter",
+  "title": "StringFilter",
+  "description": "The filter for string",
+  "properties": {
+    "caseSensitive": {
+      "description": "If true, the string value is case sensitive.",
+      "type": "boolean"
+    },
+    "matchType": {
+      "description": "The match type for this filter.",
+      "enum": [
+        "MATCH_TYPE_UNSPECIFIED",
+        "EXACT",
+        "BEGINS_WITH",
+        "ENDS_WITH",
+        "CONTAINS",
+        "FULL_REGEXP",
+        "PARTIAL_REGEXP"
+      ],
+      "type": "string"
+    },
+    "value": {
+      "description": "The string value used for the matching.",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

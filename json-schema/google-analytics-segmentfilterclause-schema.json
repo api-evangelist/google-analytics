@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SegmentFilterClause",
+  "title": "SegmentFilterClause",
+  "description": "Filter Clause to be used in a segment definition, can be wither a metric or a dimension filter.",
+  "properties": {
+    "dimensionFilter": {
+      "$ref": "#/components/schemas/SegmentDimensionFilter",
+      "description": "Dimension Filter for the segment definition."
+    },
+    "metricFilter": {
+      "$ref": "#/components/schemas/SegmentMetricFilter",
+      "description": "Metric Filter for the segment definition."
+    },
+    "not": {
+      "description": "Matches the complement (`!`) of the filter.",
+      "type": "boolean"
+    }
+  },
+  "type": "object"
+}

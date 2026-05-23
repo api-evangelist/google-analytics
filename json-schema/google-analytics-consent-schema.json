@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Consent",
+  "title": "Consent",
+  "type": "object",
+  "properties": {
+    "ad_user_data": {
+      "type": "string",
+      "description": "Consent for using user data in advertising.",
+      "enum": [
+        "GRANTED",
+        "DENIED"
+      ],
+      "example": "GRANTED"
+    },
+    "ad_personalization": {
+      "type": "string",
+      "description": "Consent for ad personalization.",
+      "enum": [
+        "GRANTED",
+        "DENIED"
+      ],
+      "example": "GRANTED"
+    }
+  }
+}

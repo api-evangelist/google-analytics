@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoogleAnalyticsAdminV1betaAccessOrderByMetricOrderBy",
+  "title": "GoogleAnalyticsAdminV1betaAccessOrderByMetricOrderBy",
+  "description": "Sorts by metric values.",
+  "properties": {
+    "metricName": {
+      "description": "A metric name in the request to order by.",
+      "type": "string",
+      "example": "Example Name"
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AnalyticsDataimportDeleteUploadDataRequest",
+  "title": "AnalyticsDataimportDeleteUploadDataRequest",
+  "description": "Request template for the delete upload data request.",
+  "properties": {
+    "customDataImportUids": {
+      "description": "A list of upload UIDs.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

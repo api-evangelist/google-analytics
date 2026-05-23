@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/NumericValue",
+  "title": "NumericValue",
+  "description": "To represent a number.",
+  "properties": {
+    "doubleValue": {
+      "description": "Double value",
+      "format": "double",
+      "type": "number"
+    },
+    "int64Value": {
+      "description": "Integer value",
+      "format": "int64",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

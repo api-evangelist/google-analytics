@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SegmentDefinition",
+  "title": "SegmentDefinition",
+  "description": "SegmentDefinition defines the segment to be a set of SegmentFilters which are combined together with a logical `AND` operation.",
+  "properties": {
+    "segmentFilters": {
+      "description": "A segment is defined by a set of segment filters which are combined together with a logical `AND` operation.",
+      "items": {
+        "$ref": "#/components/schemas/SegmentFilter"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

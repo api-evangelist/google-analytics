@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CustomMetrics",
+  "title": "CustomMetrics",
+  "description": "A custom metric collection lists Analytics custom metrics to which the user has access. Each resource in the collection corresponds to a single Analytics custom metric.",
+  "properties": {
+    "items": {
+      "description": "Collection of custom metrics.",
+      "items": {
+        "$ref": "#/components/schemas/CustomMetric"
+      },
+      "type": "array"
+    },
+    "itemsPerPage": {
+      "description": "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.",
+      "format": "int32",
+      "type": "integer",
+      "example": 42
+    },
+    "kind": {
+      "default": "analytics#customMetrics",
+      "description": "Collection type.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "nextLink": {
+      "description": "Link to next page for this custom metric collection.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "previousLink": {
+      "description": "Link to previous page for this custom metric collection.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "startIndex": {
+      "description": "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter.",
+      "format": "int32",
+      "type": "integer",
+      "example": 42
+    },
+    "totalResults": {
+      "description": "The total number of results for the query, regardless of the number of results in the response.",
+      "format": "int32",
+      "type": "integer",
+      "example": 42
+    },
+    "username": {
+      "description": "Email ID of the authenticated user",
+      "type": "string",
+      "example": "Example Name"
+    }
+  },
+  "type": "object"
+}

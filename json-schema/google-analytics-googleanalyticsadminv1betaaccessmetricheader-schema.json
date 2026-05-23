@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoogleAnalyticsAdminV1betaAccessMetricHeader",
+  "title": "GoogleAnalyticsAdminV1betaAccessMetricHeader",
+  "description": "Describes a metric column in the report. Visible metrics requested in a report produce column entries within rows and MetricHeaders. However, metrics used exclusively within filters or expressions do not produce columns in a report; correspondingly, those metrics do not produce headers.",
+  "properties": {
+    "metricName": {
+      "description": "The metric's name; for example 'accessCount'.",
+      "type": "string",
+      "example": "Example Name"
+    }
+  },
+  "type": "object"
+}

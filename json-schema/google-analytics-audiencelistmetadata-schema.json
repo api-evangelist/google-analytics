@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AudienceListMetadata",
+  "title": "AudienceListMetadata",
+  "description": "This metadata is currently blank.",
+  "properties": {},
+  "type": "object"
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CohortReportSettings",
+  "title": "CohortReportSettings",
+  "description": "Optional settings of a cohort report.",
+  "properties": {
+    "accumulate": {
+      "description": "If true, accumulates the result from first touch day to the end day. Not supported in `RunReportRequest`.",
+      "type": "boolean",
+      "example": true
+    }
+  },
+  "type": "object"
+}

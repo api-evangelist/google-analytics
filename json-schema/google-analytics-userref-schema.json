@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserRef",
+  "title": "UserRef",
+  "description": "JSON template for a user reference.",
+  "properties": {
+    "email": {
+      "description": "Email ID of this user.",
+      "type": "string"
+    },
+    "id": {
+      "description": "User ID.",
+      "type": "string"
+    },
+    "kind": {
+      "default": "analytics#userRef",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

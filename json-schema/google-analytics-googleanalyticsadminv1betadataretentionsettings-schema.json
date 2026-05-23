@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoogleAnalyticsAdminV1betaDataRetentionSettings",
+  "title": "GoogleAnalyticsAdminV1betaDataRetentionSettings",
+  "description": "Settings values for data retention. This is a singleton resource.",
+  "properties": {
+    "eventDataRetention": {
+      "description": "The length of time that event-level data is retained.",
+      "enum": [
+        "RETENTION_DURATION_UNSPECIFIED",
+        "TWO_MONTHS",
+        "FOURTEEN_MONTHS",
+        "TWENTY_SIX_MONTHS",
+        "THIRTY_EIGHT_MONTHS",
+        "FIFTY_MONTHS"
+      ],
+      "type": "string"
+    },
+    "name": {
+      "description": "Output only. Resource name for this DataRetentionSetting resource. Format: properties/{property}/dataRetentionSettings",
+      "readOnly": true,
+      "type": "string"
+    },
+    "resetUserDataOnNewActivity": {
+      "description": "If true, reset the retention period for the user identifier with every event from that user.",
+      "type": "boolean"
+    }
+  },
+  "type": "object"
+}

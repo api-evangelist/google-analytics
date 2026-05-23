@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SegmentSequenceStep",
+  "title": "SegmentSequenceStep",
+  "description": "A segment sequence definition.",
+  "properties": {
+    "matchType": {
+      "description": "Specifies if the step immediately precedes or can be any time before the next step.",
+      "enum": [
+        "UNSPECIFIED_MATCH_TYPE",
+        "PRECEDES",
+        "IMMEDIATELY_PRECEDES"
+      ],
+      "type": "string"
+    },
+    "orFiltersForSegment": {
+      "description": "A sequence is specified with a list of Or grouped filters which are combined with `AND` operator.",
+      "items": {
+        "$ref": "#/components/schemas/OrFiltersForSegment"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

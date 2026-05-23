@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RemarketingAudience",
+  "title": "RemarketingAudience",
+  "description": "JSON template for an Analytics remarketing audience.",
+  "properties": {
+    "accountId": {
+      "description": "Account ID to which this remarketing audience belongs.",
+      "type": "string"
+    },
+    "audienceDefinition": {
+      "description": "The simple audience definition that will cause a user to be added to an audience.",
+      "properties": {
+        "includeConditions": {
+          "$ref": "#/components/schemas/IncludeConditions",
+          "description": "Defines the conditions to include users to the audience."
+        }
+      },
+      "type": "object"
+    },
+    "audienceType": {
+      "description": "The type of audience, either SIMPLE or STATE_BASED.",
+      "type": "string"
+    },
+    "created": {
+      "description": "Time this remarketing audience was created.",
+      "format": "date-time",
+      "readOnly": true,
+      "type": "string"
+    },
+    "description": {
+      "description": "The description of this remarketing audience.",
+      "readOnly": true,
+      "type": "string"
+    },
+    "id": {
+      "description": "Remarketing Audience ID.",
+      "type": "string"
+    },
+    "internalWebPropertyId": {
+      "description": "Internal ID for the web property to which this remarketing audience belongs.",
+      "readOnly": true,
+      "type": "string"
+    },
+    "kind": {
+      "default": "analytics#remarketingAudience",
+      "description": "Collection type.",
+      "type": "string"
+    },
+    "linkedAdAccounts": {
+      "description": "The linked ad accounts associated with this remarketing audience. A remarketing audience can have only one linkedAdAccount currently.",
+      "items": {
+        "$ref": "#/components/schemas/LinkedForeignAccount"
+      },
+      "type": "array"
+    },
+    "linkedViews": {
+      "description": "The views (profiles) that this remarketing audience is linked to.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "name": {
+      "description": "The name of this remarketing audience.",
+      "type": "string"
+    },
+    "stateBasedAudienceDefinition": {
+      "description": "A state based audience definition that will cause a user to be added or removed from an audience.",
+      "properties": {
+        "excludeConditions": {
+          "description": "Defines the conditions to exclude users from the audience.",
+          "properties": {
+            "exclusionDuration": {
+              "description": "Whether to make the exclusion TEMPORARY or PERMANENT.",
+              "type": "string"
+            },
+            "segment": {
+              "description": "The segment condition that will cause a user to be removed from an audience.",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "includeConditions": {
+          "$ref": "#/components/schemas/IncludeConditions",
+          "description": "Defines the conditions to include users to the audience."
+        }
+      },
+      "type": "object"
+    },
+    "updated": {
+      "description": "Time this remarketing audience was last modified.",
+      "format": "date-time",
+      "readOnly": true,
+      "type": "string"
+    },
+    "webPropertyId": {
+      "description": "Web property ID of the form UA-XXXXX-YY to which this remarketing audience belongs.",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/V1betaAudienceDimension",
+  "title": "V1betaAudienceDimension",
+  "description": "An audience dimension is a user attribute. Specific user attributed are requested and then later returned in the `QueryAudienceExportResponse`.",
+  "properties": {
+    "dimensionName": {
+      "description": "Optional. The API name of the dimension. See the [API Dimensions](https://developers.google.com/analytics/devguides/reporting/data/v1/audience-list-api-schema#dimensions) for the list of dimension names.",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

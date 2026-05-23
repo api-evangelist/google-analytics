@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SegmentDimensionFilter",
+  "title": "SegmentDimensionFilter",
+  "description": "Dimension filter specifies the filtering options on a dimension.",
+  "properties": {
+    "caseSensitive": {
+      "description": "Should the match be case sensitive, ignored for `IN_LIST` operator.",
+      "type": "boolean"
+    },
+    "dimensionName": {
+      "description": "Name of the dimension for which the filter is being applied.",
+      "type": "string"
+    },
+    "expressions": {
+      "description": "The list of expressions, only the first element is used for all operators",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "maxComparisonValue": {
+      "description": "Maximum comparison values for `BETWEEN` match type.",
+      "type": "string"
+    },
+    "minComparisonValue": {
+      "description": "Minimum comparison values for `BETWEEN` match type.",
+      "type": "string"
+    },
+    "operator": {
+      "description": "The operator to use to match the dimension with the expressions.",
+      "enum": [
+        "OPERATOR_UNSPECIFIED",
+        "REGEXP",
+        "BEGINS_WITH",
+        "ENDS_WITH",
+        "PARTIAL",
+        "EXACT",
+        "IN_LIST",
+        "NUMERIC_LESS_THAN",
+        "NUMERIC_GREATER_THAN",
+        "NUMERIC_BETWEEN"
+      ],
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

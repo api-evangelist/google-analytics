@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CustomDimension",
+  "title": "CustomDimension",
+  "description": "JSON template for Analytics Custom Dimension.",
+  "properties": {
+    "accountId": {
+      "description": "Account ID.",
+      "type": "string",
+      "example": "123456"
+    },
+    "active": {
+      "description": "Boolean indicating whether the custom dimension is active.",
+      "type": "boolean",
+      "example": true
+    },
+    "created": {
+      "description": "Time the custom dimension was created.",
+      "format": "date-time",
+      "readOnly": true,
+      "type": "string",
+      "example": "2026-04-17T12:00:00Z"
+    },
+    "id": {
+      "description": "Custom dimension ID.",
+      "type": "string",
+      "example": "123456"
+    },
+    "index": {
+      "description": "Index of the custom dimension.",
+      "format": "int32",
+      "readOnly": true,
+      "type": "integer",
+      "example": 42
+    },
+    "kind": {
+      "default": "analytics#customDimension",
+      "description": "Kind value for a custom dimension. Set to \"analytics#customDimension\". It is a read-only field.",
+      "readOnly": true,
+      "type": "string",
+      "example": "example_value"
+    },
+    "name": {
+      "description": "Name of the custom dimension.",
+      "type": "string",
+      "example": "Example Name"
+    },
+    "parentLink": {
+      "description": "Parent link for the custom dimension. Points to the property to which the custom dimension belongs.",
+      "properties": {
+        "href": {
+          "description": "Link to the property to which the custom dimension belongs.",
+          "type": "string"
+        },
+        "type": {
+          "default": "analytics#webproperty",
+          "description": "Type of the parent link. Set to \"analytics#webproperty\".",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "scope": {
+      "description": "Scope of the custom dimension: HIT, SESSION, USER or PRODUCT.",
+      "type": "string",
+      "example": "ACTIVE"
+    },
+    "selfLink": {
+      "description": "Link for the custom dimension",
+      "readOnly": true,
+      "type": "string",
+      "example": "example_value"
+    },
+    "updated": {
+      "description": "Time the custom dimension was last modified.",
+      "format": "date-time",
+      "readOnly": true,
+      "type": "string",
+      "example": "2026-04-17T12:00:00Z"
+    },
+    "webPropertyId": {
+      "description": "Property ID.",
+      "type": "string",
+      "example": "123456"
+    }
+  },
+  "type": "object"
+}

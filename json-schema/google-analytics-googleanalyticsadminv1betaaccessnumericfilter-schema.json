@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoogleAnalyticsAdminV1betaAccessNumericFilter",
+  "title": "GoogleAnalyticsAdminV1betaAccessNumericFilter",
+  "description": "Filters for numeric or date values.",
+  "properties": {
+    "operation": {
+      "description": "The operation type for this filter.",
+      "enum": [
+        "OPERATION_UNSPECIFIED",
+        "EQUAL",
+        "LESS_THAN",
+        "LESS_THAN_OR_EQUAL",
+        "GREATER_THAN",
+        "GREATER_THAN_OR_EQUAL"
+      ],
+      "type": "string",
+      "example": "OPERATION_UNSPECIFIED"
+    },
+    "value": {
+      "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaNumericValue",
+      "description": "A numeric value or a date value."
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoogleAnalyticsAdminV1betaAccountSummary",
+  "title": "GoogleAnalyticsAdminV1betaAccountSummary",
+  "description": "A virtual resource representing an overview of an account and all its child GA4 properties.",
+  "properties": {
+    "account": {
+      "description": "Resource name of account referred to by this account summary Format: accounts/{account_id} Example: \"accounts/1000\"",
+      "type": "string",
+      "example": "example_value"
+    },
+    "displayName": {
+      "description": "Display name for the account referred to in this account summary.",
+      "type": "string",
+      "example": "Example Name"
+    },
+    "name": {
+      "description": "Resource name for this account summary. Format: accountSummaries/{account_id} Example: \"accountSummaries/1000\"",
+      "type": "string",
+      "example": "Example Name"
+    },
+    "propertySummaries": {
+      "description": "List of summaries for child accounts of this account.",
+      "items": {
+        "$ref": "#/components/schemas/GoogleAnalyticsAdminV1betaPropertySummary"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

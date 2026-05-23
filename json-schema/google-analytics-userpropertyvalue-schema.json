@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserPropertyValue",
+  "title": "UserPropertyValue",
+  "type": "object",
+  "properties": {
+    "value": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "boolean"
+        }
+      ],
+      "description": "The value of the user property.",
+      "example": "example_value"
+    }
+  }
+}

@@ -1,0 +1,238 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GaData",
+  "title": "GaData",
+  "description": "Analytics data for a given view (profile).",
+  "properties": {
+    "columnHeaders": {
+      "description": "Column headers that list dimension names followed by the metric names. The order of dimensions and metrics is same as specified in the request.",
+      "items": {
+        "properties": {
+          "columnType": {
+            "description": "Column Type. Either DIMENSION or METRIC.",
+            "type": "string"
+          },
+          "dataType": {
+            "description": "Data type. Dimension column headers have only STRING as the data type. Metric column headers have data types for metric values such as INTEGER, DOUBLE, CURRENCY etc.",
+            "type": "string"
+          },
+          "name": {
+            "description": "Column name.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "containsSampledData": {
+      "description": "Determines if Analytics data contains samples.",
+      "type": "boolean",
+      "example": true
+    },
+    "dataLastRefreshed": {
+      "description": "The last refreshed time in seconds for Analytics data.",
+      "format": "int64",
+      "type": "string",
+      "example": "example_value"
+    },
+    "dataTable": {
+      "properties": {
+        "cols": {
+          "items": {
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "rows": {
+          "items": {
+            "properties": {
+              "c": {
+                "items": {
+                  "properties": {
+                    "v": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "type": "array"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "id": {
+      "description": "Unique ID for this data response.",
+      "type": "string",
+      "example": "123456"
+    },
+    "itemsPerPage": {
+      "description": "The maximum number of rows the response can contain, regardless of the actual number of rows returned. Its value ranges from 1 to 10,000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.",
+      "format": "int32",
+      "type": "integer",
+      "example": 42
+    },
+    "kind": {
+      "default": "analytics#gaData",
+      "description": "Resource type.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "nextLink": {
+      "description": "Link to next page for this Analytics data query.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "previousLink": {
+      "description": "Link to previous page for this Analytics data query.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "profileInfo": {
+      "description": "Information for the view (profile), for which the Analytics data was requested.",
+      "properties": {
+        "accountId": {
+          "description": "Account ID to which this view (profile) belongs.",
+          "type": "string"
+        },
+        "internalWebPropertyId": {
+          "description": "Internal ID for the web property to which this view (profile) belongs.",
+          "type": "string"
+        },
+        "profileId": {
+          "description": "View (Profile) ID.",
+          "type": "string"
+        },
+        "profileName": {
+          "description": "View (Profile) name.",
+          "type": "string"
+        },
+        "tableId": {
+          "description": "Table ID for view (profile).",
+          "type": "string"
+        },
+        "webPropertyId": {
+          "description": "Web Property ID to which this view (profile) belongs.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "query": {
+      "description": "Analytics data request query parameters.",
+      "properties": {
+        "dimensions": {
+          "description": "List of analytics dimensions.",
+          "type": "string"
+        },
+        "end-date": {
+          "description": "End date.",
+          "type": "string"
+        },
+        "filters": {
+          "description": "Comma-separated list of dimension or metric filters.",
+          "type": "string"
+        },
+        "ids": {
+          "description": "Unique table ID.",
+          "type": "string"
+        },
+        "max-results": {
+          "description": "Maximum results per page.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "metrics": {
+          "description": "List of analytics metrics.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "samplingLevel": {
+          "description": "Desired sampling level",
+          "type": "string"
+        },
+        "segment": {
+          "description": "Analytics advanced segment.",
+          "type": "string"
+        },
+        "sort": {
+          "description": "List of dimensions or metrics based on which Analytics data is sorted.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "start-date": {
+          "description": "Start date.",
+          "type": "string"
+        },
+        "start-index": {
+          "description": "Start index.",
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "rows": {
+      "description": "Analytics data rows, where each row contains a list of dimension values followed by the metric values. The order of dimensions and metrics is same as specified in the request.",
+      "items": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "type": "array"
+    },
+    "sampleSize": {
+      "description": "The number of samples used to calculate the result.",
+      "format": "int64",
+      "type": "string",
+      "example": "example_value"
+    },
+    "sampleSpace": {
+      "description": "Total size of the sample space from which the samples were selected.",
+      "format": "int64",
+      "type": "string",
+      "example": "example_value"
+    },
+    "selfLink": {
+      "description": "Link to this page.",
+      "type": "string",
+      "example": "example_value"
+    },
+    "totalResults": {
+      "description": "The total number of rows for the query, regardless of the number of rows in the response.",
+      "format": "int32",
+      "type": "integer",
+      "example": 42
+    },
+    "totalsForAllResults": {
+      "additionalProperties": {
+        "description": "Key-value pair for the total value of a metric. Key is the metric name and the value is the total value for that metric.",
+        "type": "string"
+      },
+      "description": "Total values for the requested metrics over all the results, not just the results returned in this response. The order of the metric totals is same as the metric order specified in the request.",
+      "type": "object"
+    }
+  },
+  "type": "object"
+}

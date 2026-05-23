@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoogleAnalyticsAdminV1betaAccessDimensionValue",
+  "title": "GoogleAnalyticsAdminV1betaAccessDimensionValue",
+  "description": "The value of a dimension.",
+  "properties": {
+    "value": {
+      "description": "The dimension value. For example, this value may be 'France' for the 'country' dimension.",
+      "type": "string",
+      "example": "example_value"
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ListAudienceExportsResponse",
+  "title": "ListAudienceExportsResponse",
+  "description": "A list of all audience exports for a property.",
+  "properties": {
+    "audienceExports": {
+      "description": "Each audience export for a property.",
+      "items": {
+        "$ref": "#/components/schemas/AudienceExport"
+      },
+      "type": "array"
+    },
+    "nextPageToken": {
+      "description": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+      "type": "string",
+      "example": "abc123token"
+    }
+  },
+  "type": "object"
+}

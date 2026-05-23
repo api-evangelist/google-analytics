@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DateRangeValues",
+  "title": "DateRangeValues",
+  "description": "Used to return a list of metrics for a single DateRange / dimension combination",
+  "properties": {
+    "pivotValueRegions": {
+      "description": "The values of each pivot region.",
+      "items": {
+        "$ref": "#/components/schemas/PivotValueRegion"
+      },
+      "type": "array"
+    },
+    "values": {
+      "description": "Each value corresponds to each Metric in the request.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

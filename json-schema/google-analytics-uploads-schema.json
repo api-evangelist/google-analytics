@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Uploads",
+  "title": "Uploads",
+  "description": "Upload collection lists Analytics uploads to which the user has access. Each custom data source can have a set of uploads. Each resource in the upload collection corresponds to a single Analytics data upload.",
+  "properties": {
+    "items": {
+      "description": "A list of uploads.",
+      "items": {
+        "$ref": "#/components/schemas/Upload"
+      },
+      "type": "array"
+    },
+    "itemsPerPage": {
+      "description": "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.",
+      "format": "int32",
+      "type": "integer"
+    },
+    "kind": {
+      "default": "analytics#uploads",
+      "description": "Collection type.",
+      "type": "string"
+    },
+    "nextLink": {
+      "description": "Link to next page for this upload collection.",
+      "type": "string"
+    },
+    "previousLink": {
+      "description": "Link to previous page for this upload collection.",
+      "type": "string"
+    },
+    "startIndex": {
+      "description": "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter.",
+      "format": "int32",
+      "type": "integer"
+    },
+    "totalResults": {
+      "description": "The total number of results for the query, regardless of the number of resources in the result.",
+      "format": "int32",
+      "type": "integer"
+    }
+  },
+  "type": "object"
+}

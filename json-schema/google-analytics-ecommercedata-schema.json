@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EcommerceData",
+  "title": "EcommerceData",
+  "description": "E-commerce details associated with the user activity.",
+  "properties": {
+    "actionType": {
+      "description": "Action associated with this e-commerce action.",
+      "enum": [
+        "UNKNOWN",
+        "CLICK",
+        "DETAILS_VIEW",
+        "ADD_TO_CART",
+        "REMOVE_FROM_CART",
+        "CHECKOUT",
+        "PAYMENT",
+        "REFUND",
+        "CHECKOUT_OPTION"
+      ],
+      "type": "string",
+      "example": "UNKNOWN"
+    },
+    "ecommerceType": {
+      "description": "The type of this e-commerce activity.",
+      "enum": [
+        "ECOMMERCE_TYPE_UNSPECIFIED",
+        "CLASSIC",
+        "ENHANCED"
+      ],
+      "type": "string",
+      "example": "ECOMMERCE_TYPE_UNSPECIFIED"
+    },
+    "products": {
+      "description": "Details of the products in this transaction.",
+      "items": {
+        "$ref": "#/components/schemas/ProductData"
+      },
+      "type": "array"
+    },
+    "transaction": {
+      "$ref": "#/components/schemas/TransactionData",
+      "description": "Transaction details of this e-commerce action."
+    }
+  },
+  "type": "object"
+}

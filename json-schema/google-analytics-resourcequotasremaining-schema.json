@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ResourceQuotasRemaining",
+  "title": "ResourceQuotasRemaining",
+  "description": "The resource quota tokens remaining for the property after the request is completed.",
+  "properties": {
+    "dailyQuotaTokensRemaining": {
+      "description": "Daily resource quota remaining remaining.",
+      "format": "int32",
+      "type": "integer"
+    },
+    "hourlyQuotaTokensRemaining": {
+      "description": "Hourly resource quota tokens remaining.",
+      "format": "int32",
+      "type": "integer"
+    }
+  },
+  "type": "object"
+}

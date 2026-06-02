@@ -2,13 +2,13 @@
   "repo": "google-analytics",
   "feeds": [
     {
-      "source": "https://analytics.googleblog.com/",
-      "feed_url": "",
+      "source": "https://developers.google.com/analytics/devguides/collection/protocol/ga4/policy",
+      "feed_url": "https://developers.google.com/analytics/devguides/collection/protocol/ga4/policy",
       "title": "",
       "saved": 0,
-      "error": "no_feed"
+      "method": "none"
     }
   ],
-  "fetched": "2026-05-17T20:48:52Z",
+  "fetched": "2026-06-01T23:35:02Z",
   "post_count": 0
 }

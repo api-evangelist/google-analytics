@@ -1,0 +1,95 @@
+arazzo: 1.0.1
+info:
+  title: Google Analytics Query Audience Export Users
+  summary: Confirm an audience export is active, then page through the users it contains.
+  description: >-
+    A retrieval flow on the GA4 Data API for reading the users captured in an
+    audience export. Because export creation is asynchronous, the workflow first
+    gets the audience export to check its state and branches: only when the
+    export has reached the ACTIVE state does it query the users, returning the
+    audience rows and the total row count. Each request is spelled out inline,
+    including the OAuth bearer authorization.
+  version: 1.0.0
+sourceDescriptions:
+- name: analyticsDataApi
+  url: ../openapi/google-analytics-data-api.yaml
+  type: openapi
+workflows:
+- workflowId: query-audience-export-users
+  summary: Verify an audience export is ACTIVE and then retrieve its users.
+  description: >-
+    Gets the audience export to confirm it is ACTIVE, then queries the users in
+    the export with paging controls.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - audienceExport
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer access token with an analytics read scope.
+      audienceExport:
+        type: string
+        description: 'Audience export resource name (e.g. properties/1234/audienceExports/5678).'
+      limit:
+        type: string
+        description: Number of user rows to return.
+        default: "10000"
+      offset:
+        type: string
+        description: Zero-based row offset of the first row to return.
+        default: "0"
+  steps:
+  - stepId: getAudienceExport
+    description: >-
+      Get the audience export to read its state before attempting to query its
+      users.
+    operationId: analyticsdata.properties.audienceExports.get
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: name
+      in: path
+      value: $inputs.audienceExport
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      state: $response.body#/state
+      audienceDisplayName: $response.body#/audienceDisplayName
+      percentageCompleted: $response.body#/percentageCompleted
+    onSuccess:
+    - name: exportReady
+      type: goto
+      stepId: queryAudienceExport
+      criteria:
+      - context: $response.body
+        condition: $.state == "ACTIVE"
+        type: jsonpath
+  - stepId: queryAudienceExport
+    description: >-
+      Retrieve the users in the active audience export, paging with the supplied
+      limit and offset.
+    operationId: analyticsdata.properties.audienceExports.query
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: name
+      in: path
+      value: $inputs.audienceExport
+    requestBody:
+      contentType: application/json
+      payload:
+        limit: $inputs.limit
+        offset: $inputs.offset
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      audienceRows: $response.body#/audienceRows
+      rowCount: $response.body#/rowCount
+  outputs:
+    state: $steps.getAudienceExport.outputs.state
+    audienceRows: $steps.queryAudienceExport.outputs.audienceRows
+    rowCount: $steps.queryAudienceExport.outputs.rowCount

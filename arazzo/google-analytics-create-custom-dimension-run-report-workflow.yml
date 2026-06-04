@@ -1,0 +1,116 @@
+arazzo: 1.0.1
+info:
+  title: Google Analytics Create Custom Dimension then Run Report
+  summary: Create an event-scoped custom dimension on a property, then run a report grouped by it.
+  description: >-
+    A flow that spans the GA4 Admin and Data APIs to register and then exercise
+    a custom dimension. The workflow creates an event-scoped custom dimension on
+    a property and captures its tagging parameter name, then runs a core report
+    grouped by that custom dimension. The report references the dimension using
+    the documented GA4 event-scoped custom dimension naming convention,
+    customEvent:{parameterName}. Each request is spelled out inline, including
+    the OAuth bearer authorization.
+  version: 1.0.0
+sourceDescriptions:
+- name: analyticsAdminApi
+  url: ../openapi/google-analytics-admin-api.yaml
+  type: openapi
+- name: analyticsDataApi
+  url: ../openapi/google-analytics-data-api.yaml
+  type: openapi
+workflows:
+- workflowId: create-custom-dimension-run-report
+  summary: Register an event-scoped custom dimension and run a report grouped by it.
+  description: >-
+    Creates an event-scoped custom dimension on the property, then runs a
+    runReport request grouped by the new custom dimension using the
+    customEvent:{parameterName} naming convention.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - property
+    - dimensionDisplayName
+    - parameterName
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer access token with the analytics edit scope.
+      property:
+        type: string
+        description: 'GA4 property resource name (e.g. properties/1234).'
+      dimensionDisplayName:
+        type: string
+        description: Display name for the custom dimension as shown in the Analytics UI.
+      parameterName:
+        type: string
+        description: Immutable event parameter name to tag the custom dimension against.
+      description:
+        type: string
+        description: Optional description for the custom dimension.
+        default: Created by the Arazzo create-custom-dimension-run-report workflow.
+      startDate:
+        type: string
+        description: Inclusive report start date as YYYY-MM-DD or NdaysAgo.
+        default: 28daysAgo
+      endDate:
+        type: string
+        description: Inclusive report end date as YYYY-MM-DD, yesterday, or today.
+        default: yesterday
+  steps:
+  - stepId: createCustomDimension
+    description: >-
+      Create an event-scoped custom dimension on the property, tagging it
+      against the supplied event parameter name.
+    operationId: analyticsadmin.properties.customDimensions.create
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: parent
+      in: path
+      value: $inputs.property
+    requestBody:
+      contentType: application/json
+      payload:
+        displayName: $inputs.dimensionDisplayName
+        parameterName: $inputs.parameterName
+        scope: EVENT
+        description: $inputs.description
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      customDimensionName: $response.body#/name
+      parameterName: $response.body#/parameterName
+  - stepId: runReport
+    description: >-
+      Run a core report counting events grouped by the new event-scoped custom
+      dimension, referenced as customEvent:{parameterName}.
+    operationId: analyticsdata.properties.runReport
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: property
+      in: path
+      value: $inputs.property
+    requestBody:
+      contentType: application/json
+      payload:
+        dimensions:
+        - name: customEvent:$inputs.parameterName
+        metrics:
+        - name: eventCount
+        dateRanges:
+        - startDate: $inputs.startDate
+          endDate: $inputs.endDate
+        limit: "100"
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      rows: $response.body#/rows
+      rowCount: $response.body#/rowCount
+  outputs:
+    customDimensionName: $steps.createCustomDimension.outputs.customDimensionName
+    rows: $steps.runReport.outputs.rows
+    rowCount: $steps.runReport.outputs.rowCount

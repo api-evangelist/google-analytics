@@ -1,0 +1,118 @@
+arazzo: 1.0.1
+info:
+  title: Google Analytics Check Compatibility then Run Report
+  summary: Validate a report's dimensions and metrics for compatibility before running the report.
+  description: >-
+    A defensive reporting flow on the GA4 Data API. Core reports fail when they
+    combine incompatible dimensions and metrics, so this workflow first calls
+    checkCompatibility with the same dimensions and metrics filtered to
+    compatible fields, and only then runs the report. The compatibility result
+    is surfaced as an output so a caller can inspect which fields were
+    compatible. Every request is spelled out inline, including the OAuth bearer
+    authorization.
+  version: 1.0.0
+sourceDescriptions:
+- name: analyticsDataApi
+  url: ../openapi/google-analytics-data-api.yaml
+  type: openapi
+workflows:
+- workflowId: check-compatibility-run-report
+  summary: Check dimension and metric compatibility, then run the core report.
+  description: >-
+    Calls checkCompatibility for the requested dimensions and metrics, then runs
+    a runReport request against the same property and date range.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - property
+    - dimension
+    - metric
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer access token with an analytics read scope.
+      property:
+        type: string
+        description: 'GA4 property resource name to report on (e.g. properties/1234).'
+      dimension:
+        type: string
+        description: The API name of a single dimension to validate and report on.
+      metric:
+        type: string
+        description: The API name of a single metric to validate and report on.
+      startDate:
+        type: string
+        description: Inclusive report start date as YYYY-MM-DD or NdaysAgo.
+        default: 28daysAgo
+      endDate:
+        type: string
+        description: Inclusive report end date as YYYY-MM-DD, yesterday, or today.
+        default: yesterday
+  steps:
+  - stepId: checkCompatibility
+    description: >-
+      Preview the compatibility of the requested dimension and metric, filtering
+      the response to just the compatible fields.
+    operationId: analyticsdata.properties.checkCompatibility
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: property
+      in: path
+      value: $inputs.property
+    requestBody:
+      contentType: application/json
+      payload:
+        compatibilityFilter: COMPATIBLE
+        dimensions:
+        - name: $inputs.dimension
+        metrics:
+        - name: $inputs.metric
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      dimensionCompatibilities: $response.body#/dimensionCompatibilities
+      metricCompatibilities: $response.body#/metricCompatibilities
+    onSuccess:
+    - name: proceedToReport
+      type: goto
+      stepId: runReport
+      criteria:
+      - context: $response.body
+        condition: $.dimensionCompatibilities.length > 0
+        type: jsonpath
+  - stepId: runReport
+    description: >-
+      Run the core report for the validated dimension and metric over the
+      supplied date range.
+    operationId: analyticsdata.properties.runReport
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: property
+      in: path
+      value: $inputs.property
+    requestBody:
+      contentType: application/json
+      payload:
+        dimensions:
+        - name: $inputs.dimension
+        metrics:
+        - name: $inputs.metric
+        dateRanges:
+        - startDate: $inputs.startDate
+          endDate: $inputs.endDate
+        limit: "100"
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      rows: $response.body#/rows
+      rowCount: $response.body#/rowCount
+  outputs:
+    dimensionCompatibilities: $steps.checkCompatibility.outputs.dimensionCompatibilities
+    metricCompatibilities: $steps.checkCompatibility.outputs.metricCompatibilities
+    rows: $steps.runReport.outputs.rows
+    rowCount: $steps.runReport.outputs.rowCount

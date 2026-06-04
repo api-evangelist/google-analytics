@@ -1,0 +1,102 @@
+arazzo: 1.0.1
+info:
+  title: Google Analytics Create Property and Web Data Stream
+  summary: Create a GA4 property under an account, then attach a web data stream to it.
+  description: >-
+    A provisioning flow on the GA4 Admin API. The workflow creates a new GA4
+    property under a parent account, captures the generated property resource
+    name, and then creates a web data stream on that property so it can begin
+    collecting measurement data. Each request is spelled out inline, including
+    the OAuth bearer authorization, so the provisioning sequence can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: analyticsAdminApi
+  url: ../openapi/google-analytics-admin-api.yaml
+  type: openapi
+workflows:
+- workflowId: create-property-data-stream
+  summary: Create a GA4 property and a web data stream under it.
+  description: >-
+    Creates a property under the supplied parent account, then creates a web
+    data stream on the newly created property.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - parent
+    - propertyDisplayName
+    - timeZone
+    - streamDisplayName
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer access token with the analytics edit scope.
+      parent:
+        type: string
+        description: 'Parent account resource name for the new property (e.g. accounts/123).'
+      propertyDisplayName:
+        type: string
+        description: Human-readable display name for the new GA4 property.
+      timeZone:
+        type: string
+        description: 'Reporting time zone for the property (e.g. America/New_York).'
+      currencyCode:
+        type: string
+        description: 'Reporting currency in ISO 4217 format (e.g. USD).'
+        default: USD
+      streamDisplayName:
+        type: string
+        description: Human-readable display name for the web data stream.
+      defaultUri:
+        type: string
+        description: 'Domain name of the web app being measured (e.g. https://www.example.com).'
+  steps:
+  - stepId: createProperty
+    description: >-
+      Create a GA4 property under the parent account with the supplied display
+      name, time zone, and currency.
+    operationId: analyticsadmin.properties.create
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    requestBody:
+      contentType: application/json
+      payload:
+        parent: $inputs.parent
+        displayName: $inputs.propertyDisplayName
+        timeZone: $inputs.timeZone
+        currencyCode: $inputs.currencyCode
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      propertyName: $response.body#/name
+      displayName: $response.body#/displayName
+  - stepId: createDataStream
+    description: >-
+      Create a web data stream on the newly created property so it can begin
+      collecting measurement data.
+    operationId: analyticsadmin.properties.dataStreams.create
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: parent
+      in: path
+      value: $steps.createProperty.outputs.propertyName
+    requestBody:
+      contentType: application/json
+      payload:
+        type: WEB_DATA_STREAM
+        displayName: $inputs.streamDisplayName
+        webStreamData:
+          defaultUri: $inputs.defaultUri
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      dataStreamName: $response.body#/name
+      webStreamData: $response.body#/webStreamData
+  outputs:
+    propertyName: $steps.createProperty.outputs.propertyName
+    dataStreamName: $steps.createDataStream.outputs.dataStreamName

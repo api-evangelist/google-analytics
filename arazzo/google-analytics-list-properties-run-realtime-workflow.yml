@@ -1,0 +1,91 @@
+arazzo: 1.0.1
+info:
+  title: Google Analytics List Properties and Run Realtime Report
+  summary: List GA4 properties under an account, then run a realtime report for the chosen property.
+  description: >-
+    A live-monitoring flow that pairs the Admin API property listing with the
+    Data API realtime reporting endpoint. The workflow lists the GA4 properties
+    under an account so a property can be confirmed, then runs a realtime report
+    that surfaces active users by country for the last thirty minutes. Every
+    request is spelled out inline, including the OAuth bearer authorization, so
+    the flow is self-describing.
+  version: 1.0.0
+sourceDescriptions:
+- name: analyticsAdminApi
+  url: ../openapi/google-analytics-admin-api.yaml
+  type: openapi
+- name: analyticsDataApi
+  url: ../openapi/google-analytics-data-api.yaml
+  type: openapi
+workflows:
+- workflowId: list-properties-run-realtime
+  summary: Confirm a GA4 property exists, then run a realtime report against it.
+  description: >-
+    Lists the properties under an account and runs a runRealtimeReport request
+    for active users by country against the supplied property.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - account
+    - property
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer access token with an analytics read scope.
+      account:
+        type: string
+        description: 'Account resource name to list properties under (e.g. accounts/123).'
+      property:
+        type: string
+        description: 'GA4 property resource name to report on (e.g. properties/1234).'
+  steps:
+  - stepId: listProperties
+    description: >-
+      List the GA4 properties under the account so the target property can be
+      confirmed before running the realtime report.
+    operationId: analyticsadmin.properties.list
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: filter
+      in: query
+      value: parent:$inputs.account
+    - name: pageSize
+      in: query
+      value: 200
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      properties: $response.body#/properties
+  - stepId: runRealtimeReport
+    description: >-
+      Run a realtime report returning active users broken down by country for
+      the present moment through the last thirty minutes.
+    operationId: analyticsdata.properties.runRealtimeReport
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: property
+      in: path
+      value: $inputs.property
+    requestBody:
+      contentType: application/json
+      payload:
+        dimensions:
+        - name: country
+        metrics:
+        - name: activeUsers
+        limit: "100"
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      rows: $response.body#/rows
+      rowCount: $response.body#/rowCount
+      metricHeaders: $response.body#/metricHeaders
+  outputs:
+    properties: $steps.listProperties.outputs.properties
+    rows: $steps.runRealtimeReport.outputs.rows
+    rowCount: $steps.runRealtimeReport.outputs.rowCount

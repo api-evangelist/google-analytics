@@ -1,0 +1,92 @@
+arazzo: 1.0.1
+info:
+  title: Google Analytics Account Change History Audit
+  summary: List accessible accounts, then search the change history of the chosen account.
+  description: >-
+    A governance flow on the GA4 Admin API. The workflow lists every account the
+    caller can access to confirm the target account, then searches the change
+    history of that account for create, update, and delete actions against
+    property and data stream resources within a time window. Each request is
+    spelled out inline, including the OAuth bearer authorization, so the audit
+    can be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: analyticsAdminApi
+  url: ../openapi/google-analytics-admin-api.yaml
+  type: openapi
+workflows:
+- workflowId: account-change-history-audit
+  summary: Confirm an account exists and search its change history.
+  description: >-
+    Lists the accessible accounts and searches the change history events of the
+    supplied account within an optional time window.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - account
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer access token with the analytics edit scope.
+      account:
+        type: string
+        description: 'Account resource name to audit (e.g. accounts/123).'
+      earliestChangeTime:
+        type: string
+        description: Only return changes made at or after this RFC 3339 timestamp.
+        default: '2024-01-01T00:00:00Z'
+      latestChangeTime:
+        type: string
+        description: Only return changes made at or before this RFC 3339 timestamp.
+        default: '2026-01-01T00:00:00Z'
+  steps:
+  - stepId: listAccounts
+    description: >-
+      List every account accessible by the caller to confirm the target account
+      is reachable before auditing it.
+    operationId: analyticsadmin.accounts.list
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: pageSize
+      in: query
+      value: 200
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      accounts: $response.body#/accounts
+  - stepId: searchChangeHistory
+    description: >-
+      Search the account's change history for create, update, and delete actions
+      against property and data stream resources within the time window.
+    operationId: analyticsadmin.accounts.searchChangeHistoryEvents
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: account
+      in: path
+      value: $inputs.account
+    requestBody:
+      contentType: application/json
+      payload:
+        action:
+        - CREATED
+        - UPDATED
+        - DELETED
+        resourceType:
+        - PROPERTY
+        - DATA_STREAM
+        earliestChangeTime: $inputs.earliestChangeTime
+        latestChangeTime: $inputs.latestChangeTime
+        pageSize: 200
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      changeHistoryEvents: $response.body#/changeHistoryEvents
+      nextPageToken: $response.body#/nextPageToken
+  outputs:
+    accounts: $steps.listAccounts.outputs.accounts
+    changeHistoryEvents: $steps.searchChangeHistory.outputs.changeHistoryEvents

@@ -1,0 +1,117 @@
+arazzo: 1.0.1
+info:
+  title: Google Analytics Create Custom Metric then Run Report
+  summary: Create an event-scoped custom metric on a property, then run a report that reads it.
+  description: >-
+    A flow that spans the GA4 Admin and Data APIs to register and then exercise
+    a custom metric. The workflow creates an event-scoped, standard-unit custom
+    metric on a property and captures its tagging parameter name, then runs a
+    core report that reads the metric grouped by event name. The report
+    references the metric using the documented GA4 event-scoped custom metric
+    naming convention, customEvent:{parameterName}. Each request is spelled out
+    inline, including the OAuth bearer authorization.
+  version: 1.0.0
+sourceDescriptions:
+- name: analyticsAdminApi
+  url: ../openapi/google-analytics-admin-api.yaml
+  type: openapi
+- name: analyticsDataApi
+  url: ../openapi/google-analytics-data-api.yaml
+  type: openapi
+workflows:
+- workflowId: create-custom-metric-run-report
+  summary: Register an event-scoped custom metric and run a report that reads it.
+  description: >-
+    Creates an event-scoped custom metric on the property, then runs a runReport
+    request reading the new custom metric using the customEvent:{parameterName}
+    naming convention.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - property
+    - metricDisplayName
+    - parameterName
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer access token with the analytics edit scope.
+      property:
+        type: string
+        description: 'GA4 property resource name (e.g. properties/1234).'
+      metricDisplayName:
+        type: string
+        description: Display name for the custom metric as shown in the Analytics UI.
+      parameterName:
+        type: string
+        description: Immutable event parameter name to tag the custom metric against.
+      description:
+        type: string
+        description: Optional description for the custom metric.
+        default: Created by the Arazzo create-custom-metric-run-report workflow.
+      startDate:
+        type: string
+        description: Inclusive report start date as YYYY-MM-DD or NdaysAgo.
+        default: 28daysAgo
+      endDate:
+        type: string
+        description: Inclusive report end date as YYYY-MM-DD, yesterday, or today.
+        default: yesterday
+  steps:
+  - stepId: createCustomMetric
+    description: >-
+      Create an event-scoped, standard-unit custom metric on the property,
+      tagging it against the supplied event parameter name.
+    operationId: analyticsadmin.properties.customMetrics.create
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: parent
+      in: path
+      value: $inputs.property
+    requestBody:
+      contentType: application/json
+      payload:
+        displayName: $inputs.metricDisplayName
+        parameterName: $inputs.parameterName
+        measurementUnit: STANDARD
+        scope: EVENT
+        description: $inputs.description
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      customMetricName: $response.body#/name
+      parameterName: $response.body#/parameterName
+  - stepId: runReport
+    description: >-
+      Run a core report reading the new event-scoped custom metric grouped by
+      event name, referencing the metric as customEvent:{parameterName}.
+    operationId: analyticsdata.properties.runReport
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: property
+      in: path
+      value: $inputs.property
+    requestBody:
+      contentType: application/json
+      payload:
+        dimensions:
+        - name: eventName
+        metrics:
+        - name: customEvent:$inputs.parameterName
+        dateRanges:
+        - startDate: $inputs.startDate
+          endDate: $inputs.endDate
+        limit: "100"
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      rows: $response.body#/rows
+      rowCount: $response.body#/rowCount
+  outputs:
+    customMetricName: $steps.createCustomMetric.outputs.customMetricName
+    rows: $steps.runReport.outputs.rows
+    rowCount: $steps.runReport.outputs.rowCount

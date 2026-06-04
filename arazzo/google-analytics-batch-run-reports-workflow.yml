@@ -1,0 +1,110 @@
+arazzo: 1.0.1
+info:
+  title: Google Analytics Batch Run Reports
+  summary: Confirm a property exists, then run several core reports for it in a single batch.
+  description: >-
+    A batched reporting flow across the GA4 Admin and Data APIs. The workflow
+    first lists the properties under an account to confirm the target property,
+    then issues a single batchRunReports request carrying multiple report
+    definitions for that same property — a users-by-country report and an
+    events-by-event-name report — so several views are retrieved in one round
+    trip. Every request is spelled out inline, including the OAuth bearer
+    authorization.
+  version: 1.0.0
+sourceDescriptions:
+- name: analyticsAdminApi
+  url: ../openapi/google-analytics-admin-api.yaml
+  type: openapi
+- name: analyticsDataApi
+  url: ../openapi/google-analytics-data-api.yaml
+  type: openapi
+workflows:
+- workflowId: batch-run-reports
+  summary: Run multiple core reports for one GA4 property in a single batch request.
+  description: >-
+    Lists the properties under an account and submits a batchRunReports request
+    containing two report definitions for the supplied property.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - account
+    - property
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer access token with an analytics read scope.
+      account:
+        type: string
+        description: 'Account resource name to list properties under (e.g. accounts/123).'
+      property:
+        type: string
+        description: 'GA4 property resource name to report on (e.g. properties/1234).'
+      startDate:
+        type: string
+        description: Inclusive start date for both reports as YYYY-MM-DD or NdaysAgo.
+        default: 28daysAgo
+      endDate:
+        type: string
+        description: Inclusive end date for both reports as YYYY-MM-DD, yesterday, or today.
+        default: yesterday
+  steps:
+  - stepId: listProperties
+    description: >-
+      List the GA4 properties under the account so the target property can be
+      confirmed before submitting the batch.
+    operationId: analyticsadmin.properties.list
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: filter
+      in: query
+      value: parent:$inputs.account
+    - name: pageSize
+      in: query
+      value: 200
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      properties: $response.body#/properties
+  - stepId: batchRunReports
+    description: >-
+      Submit two report definitions for the property in a single batch: active
+      users by country and event count by event name.
+    operationId: analyticsdata.properties.batchRunReports
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: property
+      in: path
+      value: $inputs.property
+    requestBody:
+      contentType: application/json
+      payload:
+        requests:
+        - dimensions:
+          - name: country
+          metrics:
+          - name: activeUsers
+          dateRanges:
+          - startDate: $inputs.startDate
+            endDate: $inputs.endDate
+          limit: "100"
+        - dimensions:
+          - name: eventName
+          metrics:
+          - name: eventCount
+          dateRanges:
+          - startDate: $inputs.startDate
+            endDate: $inputs.endDate
+          limit: "100"
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      reports: $response.body#/reports
+      kind: $response.body#/kind
+  outputs:
+    properties: $steps.listProperties.outputs.properties
+    reports: $steps.batchRunReports.outputs.reports

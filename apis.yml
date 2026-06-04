@@ -252,6 +252,45 @@ apis:
   - Management
   - Universal Analytics
 common:
+- type: ArazzoWorkflows
+  url: arazzo/
+  workflows:
+  - url: arazzo/google-analytics-account-change-history-audit-workflow.yml
+    name: Google Analytics Account Change History Audit
+    summary: List accessible accounts, then search the change history of the chosen account.
+  - url: arazzo/google-analytics-audience-export-create-or-reuse-workflow.yml
+    name: Google Analytics Reuse or Create an Audience Export
+    summary: List a property's audience exports and create a new one only when none can be reused.
+  - url: arazzo/google-analytics-audit-custom-definitions-workflow.yml
+    name: Google Analytics Audit a Property's Custom Definitions
+    summary: List the custom dimensions and then the custom metrics defined on a GA4 property.
+  - url: arazzo/google-analytics-batch-run-reports-workflow.yml
+    name: Google Analytics Batch Run Reports
+    summary: Confirm a property exists, then run several core reports for it in a single batch.
+  - url: arazzo/google-analytics-check-compatibility-run-report-workflow.yml
+    name: Google Analytics Check Compatibility then Run Report
+    summary: Validate a report's dimensions and metrics for compatibility before running the report.
+  - url: arazzo/google-analytics-create-custom-dimension-run-report-workflow.yml
+    name: Google Analytics Create Custom Dimension then Run Report
+    summary: Create an event-scoped custom dimension on a property, then run a report grouped by it.
+  - url: arazzo/google-analytics-create-custom-metric-run-report-workflow.yml
+    name: Google Analytics Create Custom Metric then Run Report
+    summary: Create an event-scoped custom metric on a property, then run a report that reads it.
+  - url: arazzo/google-analytics-create-property-data-stream-workflow.yml
+    name: Google Analytics Create Property and Web Data Stream
+    summary: Create a GA4 property under an account, then attach a web data stream to it.
+  - url: arazzo/google-analytics-discover-and-run-report-workflow.yml
+    name: Google Analytics Discover Property and Run Report
+    summary: Walk account summaries to find a GA4 property, list its properties, then run a core report.
+  - url: arazzo/google-analytics-inventory-property-data-streams-workflow.yml
+    name: Google Analytics Inventory a Property's Data Streams
+    summary: List the properties under an account, then list the data streams for the chosen property.
+  - url: arazzo/google-analytics-list-properties-run-realtime-workflow.yml
+    name: Google Analytics List Properties and Run Realtime Report
+    summary: List GA4 properties under an account, then run a realtime report for the chosen property.
+  - url: arazzo/google-analytics-query-audience-export-users-workflow.yml
+    name: Google Analytics Query Audience Export Users
+    summary: Confirm an audience export is active, then page through the users it contains.
 - type: LinkedIn
   url: https://www.linkedin.com/showcase/google-analytics
 - type: GettingStarted

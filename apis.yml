@@ -252,6 +252,8 @@ apis:
   - Management
   - Universal Analytics
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/google-analytics/overview
 - type: ArazzoWorkflows
   url: arazzo/
   workflows:

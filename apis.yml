@@ -77,6 +77,8 @@ apis:
     title: JavaScript Examples
   - type: NaftikoCapability
     url: capabilities/data-properties.yaml
+  - type: GraphQL
+    url: graphql/google-analytics-graphql.md
   tags:
   - Analytics
   - Data API

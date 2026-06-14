@@ -1,0 +1,1272 @@
+"""
+Google Analytics GraphQL Schema
+Derived from the Google Analytics Data API (GA4) v1 and Admin API v1.
+Source: https://developers.google.com/analytics/devguides/reporting/data/v1
+"""
+
+# ─── Scalars ──────────────────────────────────────────────────────────────────
+
+scalar DateTime
+scalar JSON
+
+# ─── Enums ────────────────────────────────────────────────────────────────────
+
+enum MetricAggregation {
+  METRIC_AGGREGATION_UNSPECIFIED
+  TOTAL
+  MINIMUM
+  MAXIMUM
+  COUNT
+}
+
+enum MetricType {
+  METRIC_TYPE_UNSPECIFIED
+  TYPE_INTEGER
+  TYPE_FLOAT
+  TYPE_SECONDS
+  TYPE_MILLISECONDS
+  TYPE_MINUTES
+  TYPE_HOURS
+  TYPE_STANDARD
+  TYPE_CURRENCY
+  TYPE_FEET
+  TYPE_MILES
+  TYPE_METERS
+  TYPE_KILOMETERS
+}
+
+enum StringFilterMatchType {
+  MATCH_TYPE_UNSPECIFIED
+  EXACT
+  BEGINS_WITH
+  ENDS_WITH
+  CONTAINS
+  FULL_REGEXP
+  PARTIAL_REGEXP
+}
+
+enum NumericFilterOperation {
+  OPERATION_UNSPECIFIED
+  EQUAL
+  LESS_THAN
+  LESS_THAN_OR_EQUAL
+  GREATER_THAN
+  GREATER_THAN_OR_EQUAL
+}
+
+enum OrderByDirection {
+  ORDER_DIRECTION_UNSPECIFIED
+  ASCENDING
+  DESCENDING
+}
+
+enum PropertyType {
+  PROPERTY_TYPE_UNSPECIFIED
+  PROPERTY_TYPE_ORDINARY
+  PROPERTY_TYPE_SUBPROPERTY
+  PROPERTY_TYPE_ROLLUP
+}
+
+enum IndustryCategory {
+  INDUSTRY_CATEGORY_UNSPECIFIED
+  AUTOMOTIVE
+  BUSINESS_AND_INDUSTRIAL_MARKETS
+  FINANCE
+  HEALTHCARE
+  TECHNOLOGY
+  TRAVEL
+  OTHER
+  ARTS_AND_ENTERTAINMENT
+  BEAUTY_AND_FITNESS
+  BOOKS_AND_LITERATURE
+  FOOD_AND_DRINK
+  GAMES
+  HOBBIES_AND_LEISURE
+  HOME_AND_GARDEN
+  INTERNET_AND_TELECOM
+  LAW_AND_GOVERNMENT
+  NEWS
+  ONLINE_COMMUNITIES
+  PEOPLE_AND_SOCIETY
+  PETS_AND_ANIMALS
+  REAL_ESTATE
+  REFERENCE
+  SCIENCE
+  SPORTS
+  JOBS_AND_EDUCATION
+  SHOPPING
+}
+
+enum DataStreamType {
+  DATA_STREAM_TYPE_UNSPECIFIED
+  WEB_DATA_STREAM
+  ANDROID_APP_DATA_STREAM
+  IOS_APP_DATA_STREAM
+}
+
+enum CustomDimensionScope {
+  DIMENSION_SCOPE_UNSPECIFIED
+  EVENT
+  USER
+  ITEM
+}
+
+enum CustomMetricMeasurementUnit {
+  MEASUREMENT_UNIT_UNSPECIFIED
+  STANDARD
+  CURRENCY
+  FEET
+  METERS
+  KILOMETERS
+  MILES
+  MILLISECONDS
+  SECONDS
+  MINUTES
+  HOURS
+}
+
+enum CustomMetricScope {
+  METRIC_SCOPE_UNSPECIFIED
+  EVENT
+}
+
+enum AudienceFilterScope {
+  AUDIENCE_FILTER_SCOPE_UNSPECIFIED
+  AUDIENCE_FILTER_SCOPE_WITHIN_SAME_EVENT
+  AUDIENCE_FILTER_SCOPE_WITHIN_SAME_SESSION
+  AUDIENCE_FILTER_SCOPE_ACROSS_ALL_SESSIONS
+}
+
+enum ConversionCountingMethod {
+  CONVERSION_COUNTING_METHOD_UNSPECIFIED
+  ONCE_PER_EVENT
+  ONCE_PER_SESSION
+}
+
+enum ReportingAttributionModel {
+  REPORTING_ATTRIBUTION_MODEL_UNSPECIFIED
+  PAID_AND_ORGANIC_CHANNELS_DATA_DRIVEN
+  PAID_AND_ORGANIC_CHANNELS_LAST_CLICK
+  PAID_AND_ORGANIC_CHANNELS_FIRST_CLICK
+  PAID_AND_ORGANIC_CHANNELS_LINEAR
+  PAID_AND_ORGANIC_CHANNELS_POSITION_BASED
+  PAID_AND_ORGANIC_CHANNELS_TIME_DECAY
+  GOOGLE_PAID_CHANNELS_LAST_CLICK
+}
+
+enum SegmentFilterScope {
+  SEGMENT_FILTER_SCOPE_UNSPECIFIED
+  SEGMENT_FILTER_SCOPE_WITHIN_SAME_EVENT
+  SEGMENT_FILTER_SCOPE_WITHIN_SAME_SESSION
+  SEGMENT_FILTER_SCOPE_ACROSS_ALL_SESSIONS
+}
+
+# ─── Core Account & Property Types ────────────────────────────────────────────
+
+"""
+A Google Analytics account.
+"""
+type Account {
+  name: String!
+  displayName: String!
+  regionCode: String
+  createTime: DateTime
+  updateTime: DateTime
+  deleted: Boolean
+}
+
+"""
+A summary of a Google Analytics account and its child GA4 properties.
+"""
+type AccountSummary {
+  name: String!
+  account: String!
+  displayName: String!
+  propertySummaries: [PropertySummary!]
+}
+
+"""
+A virtual summary of a GA4 property.
+"""
+type PropertySummary {
+  property: String!
+  displayName: String!
+  propertyType: PropertyType
+  parent: String
+}
+
+"""
+A Google Analytics GA4 property resource.
+"""
+type Property {
+  name: String!
+  displayName: String!
+  propertyType: PropertyType
+  parent: String
+  createTime: DateTime
+  updateTime: DateTime
+  timeZone: String
+  currencyCode: String
+  industryCategory: IndustryCategory
+  serviceLevel: String
+  account: String
+  deleteTime: DateTime
+  expireTime: DateTime
+}
+
+# ─── Data Streams ─────────────────────────────────────────────────────────────
+
+"""
+A data stream resource on a GA4 property.
+"""
+type DataStream {
+  name: String!
+  displayName: String!
+  type: DataStreamType!
+  createTime: DateTime
+  updateTime: DateTime
+  webStreamData: WebDataStream
+  androidAppStreamData: AppDataStream
+  iosAppStreamData: AppDataStream
+}
+
+"""
+Data specific to web data streams.
+"""
+type WebDataStream {
+  measurementId: String
+  firebaseAppId: String
+  defaultUri: String
+}
+
+"""
+Data specific to Android or iOS app data streams.
+"""
+type AppDataStream {
+  firebaseAppId: String
+  packageName: String
+  bundleId: String
+}
+
+# ─── Configuration Resources ──────────────────────────────────────────────────
+
+"""
+A secret value used for sending hits to the Measurement Protocol.
+"""
+type MeasurementProtocolSecret {
+  name: String!
+  displayName: String!
+  secretValue: String
+}
+
+"""
+A link between a GA4 property and a Firebase project.
+"""
+type FirebaseLink {
+  name: String!
+  project: String!
+  createTime: DateTime
+}
+
+"""
+A link between a GA4 property and a Google Ads account.
+"""
+type GoogleAdsLink {
+  name: String!
+  customerId: String!
+  canManageClients: Boolean
+  adsPersonalizationEnabled: Boolean
+  emailAddress: String
+  createTime: DateTime
+  updateTime: DateTime
+}
+
+"""
+A link between a GA4 property and a BigQuery project.
+"""
+type BigQueryLink {
+  name: String!
+  project: String!
+  createTime: DateTime
+  dailyExportEnabled: Boolean
+  streamingExportEnabled: Boolean
+  freshDailyExportEnabled: Boolean
+  includeAdvertisingId: Boolean
+  exportedDataset: String
+  datasetLocation: String
+}
+
+"""
+Attribution settings for a GA4 property.
+"""
+type Attribution {
+  acquisitionConversionEventLookbackWindow: String
+  otherConversionEventLookbackWindow: String
+  reportingAttributionModel: ReportingAttributionModel
+  adsWebConversionDataExportScope: String
+}
+
+"""
+A conversion event resource.
+"""
+type ConversionEvent {
+  name: String!
+  eventName: String!
+  createTime: DateTime
+  deletable: Boolean
+  custom: Boolean
+  countingMethod: ConversionCountingMethod
+  defaultConversionValue: DefaultConversionValue
+}
+
+"""
+A key event resource (replaces conversion events in the updated Admin API).
+"""
+type KeyEvent {
+  name: String!
+  eventName: String!
+  createTime: DateTime
+  deletable: Boolean
+  custom: Boolean
+  countingMethod: ConversionCountingMethod
+  defaultValue: DefaultConversionValue
+}
+
+"""
+Default value settings for a key event.
+"""
+type DefaultConversionValue {
+  value: Float
+  currencyCode: String
+}
+
+"""
+A custom dimension on a GA4 property.
+"""
+type CustomDimension {
+  name: String!
+  parameterName: String!
+  displayName: String!
+  description: String
+  scope: CustomDimensionScope!
+  disallowAdsPersonalization: Boolean
+}
+
+"""
+A custom metric on a GA4 property.
+"""
+type CustomMetric {
+  name: String!
+  parameterName: String!
+  displayName: String!
+  description: String
+  measurementUnit: CustomMetricMeasurementUnit!
+  scope: CustomMetricScope!
+  restrictedMetricType: [String!]
+}
+
+"""
+A rule for automatically creating events.
+"""
+type EventCreateRule {
+  name: String!
+  destinationEvent: String!
+  eventConditions: [MatchingCondition!]
+  sourceCopyParameters: Boolean
+  parameterMutations: [ParameterMutation!]
+}
+
+"""
+A condition used in event creation rules.
+"""
+type MatchingCondition {
+  field: String!
+  comparisonType: String!
+  value: String!
+  negated: Boolean
+}
+
+"""
+A parameter mutation for event creation rules.
+"""
+type ParameterMutation {
+  parameter: String!
+  parameterValue: String!
+}
+
+# ─── Reporting Primitives ─────────────────────────────────────────────────────
+
+"""
+A dimension specification for a report request.
+"""
+type Dimension {
+  name: String
+  dimensionExpression: DimensionExpression
+}
+
+"""
+A metric specification for a report request.
+"""
+type Metric {
+  name: String
+  expression: String
+  invisible: Boolean
+}
+
+"""
+A date range for a report request.
+"""
+type DateRange {
+  startDate: String!
+  endDate: String!
+  name: String
+}
+
+"""
+An expression for a derived dimension.
+"""
+type DimensionExpression {
+  lowerCase: CaseExpression
+  upperCase: CaseExpression
+  concatenate: ConcatenateExpression
+}
+
+"""
+Change a dimension value to lowercase or uppercase.
+"""
+type CaseExpression {
+  dimensionName: String!
+}
+
+"""
+Concatenate dimension values.
+"""
+type ConcatenateExpression {
+  dimensionNames: [String!]!
+  delimiter: String
+}
+
+"""
+A dimension value in a report row.
+"""
+type DimensionValue {
+  value: String
+}
+
+"""
+A metric value in a report row.
+"""
+type MetricValue {
+  value: String
+}
+
+"""
+A single row in a report response.
+"""
+type Row {
+  dimensionValues: [DimensionValue!]
+  metricValues: [MetricValue!]
+}
+
+# ─── Pivot Reporting ──────────────────────────────────────────────────────────
+
+"""
+A pivot descriptor for a pivot report.
+"""
+type Pivot {
+  fieldNames: [String!]
+  orderBys: [OrderBy!]
+  offset: String
+  limit: String
+  metricAggregations: [MetricAggregation!]
+}
+
+"""
+Order a dimension or metric in a report response.
+"""
+type OrderBy {
+  metric: MetricOrderBy
+  dimension: DimensionOrderBy
+  pivot: PivotOrderBy
+  desc: Boolean
+}
+
+"""
+Order by a metric value.
+"""
+type MetricOrderBy {
+  metricName: String!
+}
+
+"""
+Order by a dimension value.
+"""
+type DimensionOrderBy {
+  dimensionName: String!
+  orderType: String
+}
+
+"""
+Order by a pivot column group.
+"""
+type PivotOrderBy {
+  metricName: String!
+  pivotSelections: [PivotSelection!]!
+}
+
+"""
+A dimension-value pair used to identify a pivot column.
+"""
+type PivotSelection {
+  dimensionName: String!
+  dimensionValue: String!
+}
+
+# ─── Filter Types ─────────────────────────────────────────────────────────────
+
+"""
+A logical expression of dimension or metric filters.
+"""
+type FilterExpression {
+  andGroup: FilterExpressionList
+  orGroup: FilterExpressionList
+  notExpression: FilterExpression
+  filter: Filter
+}
+
+"""
+A list of filter expressions combined with AND or OR.
+"""
+type FilterExpressionList {
+  expressions: [FilterExpression!]!
+}
+
+"""
+A primitive filter applied to a single dimension or metric.
+"""
+type Filter {
+  fieldName: String!
+  stringFilter: StringFilter
+  inListFilter: InListFilter
+  numericFilter: NumericFilter
+  betweenFilter: BetweenFilter
+}
+
+"""
+Filter that matches string dimension values.
+"""
+type StringFilter {
+  matchType: StringFilterMatchType!
+  value: String!
+  caseSensitive: Boolean
+}
+
+"""
+Filter that matches values in a given list.
+"""
+type InListFilter {
+  values: [String!]!
+  caseSensitive: Boolean
+}
+
+"""
+Filter for numeric dimension or metric values.
+"""
+type NumericFilter {
+  operation: NumericFilterOperation!
+  value: NumericValue!
+}
+
+"""
+Filter for values between two bounds.
+"""
+type BetweenFilter {
+  fromValue: NumericValue!
+  toValue: NumericValue!
+}
+
+"""
+A numeric value (integer or double).
+"""
+type NumericValue {
+  int64Value: String
+  doubleValue: Float
+}
+
+# ─── Report Request & Response ────────────────────────────────────────────────
+
+"""
+The request for a standard GA4 report.
+"""
+type ReportRequest {
+  property: String!
+  dimensions: [Dimension!]
+  metrics: [Metric!]
+  dateRanges: [DateRange!]
+  dimensionFilter: FilterExpression
+  metricFilter: FilterExpression
+  offset: String
+  limit: String
+  metricAggregations: [MetricAggregation!]
+  orderBys: [OrderBy!]
+  currencyCode: String
+  cohortSpec: CohortSpec
+  keepEmptyRows: Boolean
+  returnPropertyQuota: Boolean
+}
+
+"""
+The response for a standard GA4 report.
+"""
+type ReportResponse {
+  dimensionHeaders: [DimensionHeader!]
+  metricHeaders: [MetricHeader!]
+  rows: [Row!]
+  totals: [Row!]
+  maximums: [Row!]
+  minimums: [Row!]
+  rowCount: Int
+  metadata: ResponseMetaData
+  propertyQuota: PropertyQuota
+  kind: String
+}
+
+"""
+Describes a dimension column in a report response.
+"""
+type DimensionHeader {
+  name: String!
+}
+
+"""
+Describes a metric column in a report response.
+"""
+type MetricHeader {
+  name: String!
+  type: MetricType!
+}
+
+"""
+Metadata for a report response.
+"""
+type ResponseMetaData {
+  dataLossFromOtherRow: Boolean
+  schemaRestrictionResponse: SchemaRestrictionResponse
+  currencyCode: String
+  timeZone: String
+  emptyReason: String
+  subjectToThresholding: Boolean
+  samplingMetadatas: [SamplingMetadata!]
+}
+
+"""
+Restriction applied to report schema.
+"""
+type SchemaRestrictionResponse {
+  activeMetricRestrictions: [ActiveMetricRestriction!]
+}
+
+"""
+A metric restriction active for this report.
+"""
+type ActiveMetricRestriction {
+  restrictedMetricTypes: [String!]
+  metricName: String!
+}
+
+"""
+Sampling metadata for a report.
+"""
+type SamplingMetadata {
+  samplesReadCount: String
+  samplingSpaceSize: String
+}
+
+# ─── Batch & Realtime Reports ─────────────────────────────────────────────────
+
+"""
+A batch report request containing multiple individual reports.
+"""
+type BatchRunReport {
+  property: String!
+  requests: [ReportRequest!]!
+}
+
+"""
+A batch report response containing multiple individual report responses.
+"""
+type BatchRunReportResponse {
+  reports: [ReportResponse!]
+  kind: String
+}
+
+"""
+A request for a realtime (live) report.
+"""
+type RunRealtimeReport {
+  property: String!
+  dimensions: [Dimension!]
+  metrics: [Metric!]
+  dimensionFilter: FilterExpression
+  metricFilter: FilterExpression
+  limit: String
+  metricAggregations: [MetricAggregation!]
+  orderBys: [OrderBy!]
+  returnPropertyQuota: Boolean
+  minuteRanges: [MinuteRange!]
+}
+
+"""
+A time window (in minutes) for a realtime report.
+"""
+type MinuteRange {
+  startMinutesAgo: Int
+  endMinutesAgo: Int
+  name: String
+}
+
+"""
+The response for a realtime report.
+"""
+type RunRealtimeReportResponse {
+  dimensionHeaders: [DimensionHeader!]
+  metricHeaders: [MetricHeader!]
+  rows: [Row!]
+  totals: [Row!]
+  maximums: [Row!]
+  minimums: [Row!]
+  rowCount: Int
+  propertyQuota: PropertyQuota
+  kind: String
+}
+
+# ─── Funnel Reports ───────────────────────────────────────────────────────────
+
+"""
+A funnel definition for a funnel report.
+"""
+type Funnel {
+  isOpenFunnel: Boolean
+  steps: [FunnelStep!]!
+}
+
+"""
+A single step in a funnel.
+"""
+type FunnelStep {
+  name: String
+  isDirectlyFollowedBy: Boolean
+  withinDurationFromPriorStep: String
+  filterExpression: FunnelFilterExpression
+}
+
+"""
+A filter expression used within funnel steps.
+"""
+type FunnelFilterExpression {
+  andGroup: FunnelFilterExpressionList
+  orGroup: FunnelFilterExpressionList
+  notExpression: FunnelFilterExpression
+  funnelFieldFilter: FunnelFilter
+  funnelEventFilter: FunnelEventFilter
+}
+
+"""
+A list of funnel filter expressions.
+"""
+type FunnelFilterExpressionList {
+  expressions: [FunnelFilterExpression!]!
+}
+
+"""
+A filter applied to a single field within a funnel step.
+"""
+type FunnelFilter {
+  fieldName: String!
+  stringFilter: StringFilter
+  inListFilter: InListFilter
+  numericFilter: NumericFilter
+  betweenFilter: BetweenFilter
+}
+
+"""
+An event filter within a funnel step.
+"""
+type FunnelEventFilter {
+  eventName: String!
+  funnelParameterFilterExpression: FunnelFilterExpression
+}
+
+"""
+Metadata about a funnel report response.
+"""
+type FunnelResponseMetadata {
+  samplingMetadatas: [SamplingMetadata!]
+}
+
+"""
+A sub-filter further restricting funnel step users.
+"""
+type FunnelSubFilter {
+  fieldName: String!
+  stringFilter: StringFilter
+}
+
+# ─── Audience Types ───────────────────────────────────────────────────────────
+
+"""
+A GA4 audience definition resource.
+"""
+type AudienceDefinition {
+  name: String!
+  displayName: String!
+  description: String
+  membershipDurationDays: Int
+  adsPersonalizationEnabled: Boolean
+  eventTrigger: AudienceEventTrigger
+  exclusionDurationMode: String
+  filterClauses: [AudienceFilterClause!]
+  createTime: DateTime
+}
+
+"""
+An audience resource (export-oriented representation).
+"""
+type Audience {
+  name: String!
+  displayName: String!
+  description: String
+  membershipDurationDays: Int
+}
+
+"""
+A trigger that fires an event when a user joins an audience.
+"""
+type AudienceEventTrigger {
+  eventName: String!
+  logCondition: String!
+}
+
+"""
+A clause that includes or excludes users from an audience.
+"""
+type AudienceFilterClause {
+  clauseType: String!
+  simpleFilter: AudienceSimpleFilter
+  sequenceFilter: AudienceSequenceFilter
+}
+
+"""
+A simple audience filter.
+"""
+type AudienceSimpleFilter {
+  scope: AudienceFilterScope!
+  filterExpression: AudienceFilterExpression
+}
+
+"""
+An audience filter that evaluates a sequence of events.
+"""
+type AudienceSequenceFilter {
+  scope: AudienceFilterScope!
+  sequenceMaximumDuration: String
+  sequenceSteps: [AudienceSequenceStep!]!
+}
+
+"""
+A single step in an audience sequence filter.
+"""
+type AudienceSequenceStep {
+  scope: AudienceFilterScope!
+  immediatelyFollows: Boolean
+  constraintDuration: String
+  filterExpression: AudienceFilterExpression
+}
+
+"""
+A filter expression for audience membership conditions.
+"""
+type AudienceFilterExpression {
+  andGroup: AudienceFilterExpressionList
+  orGroup: AudienceFilterExpressionList
+  notExpression: AudienceFilterExpression
+  dimensionOrMetricFilter: AudienceDimensionOrMetricFilter
+  eventFilter: AudienceEventFilter
+}
+
+"""
+A list of audience filter expressions combined with AND or OR.
+"""
+type AudienceFilterExpressionList {
+  filterExpressions: [AudienceFilterExpression!]!
+}
+
+"""
+A filter for a dimension or metric used in audience definition.
+"""
+type AudienceDimensionOrMetricFilter {
+  fieldName: String!
+  atAnyPointInTime: Boolean
+  inAnyNDayPeriod: Int
+  stringFilter: StringFilter
+  inListFilter: InListFilter
+  numericFilter: NumericFilter
+  betweenFilter: BetweenFilter
+}
+
+"""
+An event filter used in audience definition.
+"""
+type AudienceEventFilter {
+  eventName: String!
+  eventParameterFilterExpression: AudienceFilterExpression
+}
+
+"""
+A filter for an audience.
+"""
+type AudienceFilter {
+  fieldName: String!
+  stringFilter: StringFilter
+  inListFilter: InListFilter
+}
+
+# ─── Segment Types ────────────────────────────────────────────────────────────
+
+"""
+A segment used in audience export queries.
+"""
+type Segment {
+  name: String!
+}
+
+"""
+A filter clause for a segment.
+"""
+type SegmentFilter {
+  fieldName: String!
+  scope: SegmentFilterScope!
+  stringFilter: StringFilter
+  inListFilter: InListFilter
+  numericFilter: NumericFilter
+  betweenFilter: BetweenFilter
+}
+
+# ─── Cohort Spec ──────────────────────────────────────────────────────────────
+
+"""
+Defines a cohort group for a cohort report.
+"""
+type CohortSpec {
+  cohorts: [Cohort!]
+  cohortsRange: CohortsRange
+  cohortReportSettings: CohortReportSettings
+}
+
+"""
+A single cohort defined by a date range.
+"""
+type Cohort {
+  name: String
+  dimension: String
+  dateRange: DateRange
+}
+
+"""
+The reporting range for a cohort report.
+"""
+type CohortsRange {
+  granularity: String!
+  startOffset: Int!
+  endOffset: Int!
+}
+
+"""
+Optional settings for a cohort report.
+"""
+type CohortReportSettings {
+  accumulate: Boolean
+}
+
+# ─── Quota & Usage ────────────────────────────────────────────────────────────
+
+"""
+Current quota state for a GA4 property.
+"""
+type PropertyQuota {
+  tokensPerDay: QuotaStatus
+  tokensPerHour: QuotaStatus
+  concurrentRequests: QuotaStatus
+  serverErrorsPerProjectPerHour: QuotaStatus
+  potentiallyThresholdedRequestsPerHour: QuotaStatus
+  tokensPerProjectPerHour: QuotaStatus
+}
+
+"""
+Remaining and consumed quota for a single quota category.
+"""
+type QuotaStatus {
+  consumed: Int!
+  remaining: Int!
+}
+
+"""
+Reporting-level quota summary.
+"""
+type ReportingQuota {
+  property: String
+  propertyQuota: PropertyQuota
+}
+
+"""
+Active user count from a realtime report.
+"""
+type ActiveUserCount {
+  propertyId: String
+  userCount: String
+}
+
+# ─── Event Count ──────────────────────────────────────────────────────────────
+
+"""
+Event count summary for a property or stream.
+"""
+type EventCount {
+  propertyId: String
+  eventName: String
+  count: String
+}
+
+# ─── User Row ─────────────────────────────────────────────────────────────────
+
+"""
+A row describing a single user returned in an audience export query.
+"""
+type UserRow {
+  dimensionValues: [DimensionValue!]
+}
+
+# ─── Access API ───────────────────────────────────────────────────────────────
+
+"""
+A request for a data access report.
+"""
+type RunAccessReport {
+  entity: AccessReportEntity
+  dimensions: [AccessDimension!]
+  metrics: [AccessMetric!]
+  dateRanges: [DateRange!]
+  dimensionFilter: AccessFilterExpression
+  metricFilter: AccessFilterExpression
+  offset: String
+  limit: String
+  orderBys: [AccessOrderBy!]
+  timeZone: String
+  returnEntityQuota: Boolean
+  includeAllUsers: Boolean
+  expandGroups: Boolean
+}
+
+"""
+The entity (account or property) for an access report.
+"""
+type AccessReportEntity {
+  propertyId: String
+}
+
+"""
+A dimension in an access report.
+"""
+type AccessDimension {
+  dimensionName: String!
+}
+
+"""
+A metric in an access report.
+"""
+type AccessMetric {
+  metricName: String!
+}
+
+"""
+A filter expression for an access report.
+"""
+type AccessFilterExpression {
+  andGroup: AccessFilterExpressionList
+  orGroup: AccessFilterExpressionList
+  notExpression: AccessFilterExpression
+  accessFilter: AccessFilter
+}
+
+"""
+A list of access filter expressions.
+"""
+type AccessFilterExpressionList {
+  expressions: [AccessFilterExpression!]!
+}
+
+"""
+A primitive filter for an access report.
+"""
+type AccessFilter {
+  fieldName: String!
+  stringFilter: StringFilter
+  inListFilter: InListFilter
+  numericFilter: NumericFilter
+  betweenFilter: BetweenFilter
+}
+
+"""
+An ordering specification for an access report.
+"""
+type AccessOrderBy {
+  metric: AccessMetricOrderBy
+  dimension: AccessDimensionOrderBy
+  desc: Boolean
+}
+
+"""
+Order by a metric in an access report.
+"""
+type AccessMetricOrderBy {
+  metricName: String!
+}
+
+"""
+Order by a dimension in an access report.
+"""
+type AccessDimensionOrderBy {
+  dimensionName: String!
+  orderType: String
+}
+
+# ─── Authentication ───────────────────────────────────────────────────────────
+
+"""
+An API key credential for Google Analytics API access.
+"""
+type APIKey {
+  keyId: String
+  keyString: String
+  displayName: String
+  createTime: DateTime
+}
+
+"""
+An OAuth 2.0 token used to authenticate API requests.
+"""
+type Token {
+  accessToken: String
+  tokenType: String
+  expiresIn: Int
+  scope: String
+  refreshToken: String
+}
+
+# ─── Root Operations ──────────────────────────────────────────────────────────
+
+type Query {
+  # Account & Property
+  listAccounts(pageSize: Int, pageToken: String, showDeleted: Boolean): [Account!]
+  getAccount(name: String!): Account
+  listAccountSummaries(pageSize: Int, pageToken: String): [AccountSummary!]
+  listProperties(filter: String!, pageSize: Int, pageToken: String, showDeleted: Boolean): [Property!]
+  getProperty(name: String!): Property
+
+  # Data Streams
+  listDataStreams(parent: String!, pageSize: Int, pageToken: String): [DataStream!]
+  getDataStream(name: String!): DataStream
+
+  # Configuration Resources
+  listMeasurementProtocolSecrets(parent: String!, pageSize: Int, pageToken: String): [MeasurementProtocolSecret!]
+  getMeasurementProtocolSecret(name: String!): MeasurementProtocolSecret
+  listFirebaseLinks(parent: String!, pageSize: Int, pageToken: String): [FirebaseLink!]
+  listGoogleAdsLinks(parent: String!, pageSize: Int, pageToken: String): [GoogleAdsLink!]
+  listBigQueryLinks(parent: String!, pageSize: Int, pageToken: String): [BigQueryLink!]
+  getAttribution(name: String!): Attribution
+
+  # Conversion Events & Key Events
+  listConversionEvents(parent: String!, pageSize: Int, pageToken: String): [ConversionEvent!]
+  getConversionEvent(name: String!): ConversionEvent
+  listKeyEvents(parent: String!, pageSize: Int, pageToken: String): [KeyEvent!]
+  getKeyEvent(name: String!): KeyEvent
+
+  # Custom Dimensions & Metrics
+  listCustomDimensions(parent: String!, pageSize: Int, pageToken: String): [CustomDimension!]
+  getCustomDimension(name: String!): CustomDimension
+  listCustomMetrics(parent: String!, pageSize: Int, pageToken: String): [CustomMetric!]
+  getCustomMetric(name: String!): CustomMetric
+
+  # Audiences
+  listAudiences(parent: String!, pageSize: Int, pageToken: String): [AudienceDefinition!]
+  getAudience(name: String!): AudienceDefinition
+
+  # Data API Reporting
+  runReport(property: String!, request: ReportRequest!): ReportResponse
+  runPivotReport(property: String!, request: ReportRequest!): ReportResponse
+  batchRunReports(property: String!, requests: [ReportRequest!]!): BatchRunReportResponse
+  runRealtimeReport(property: String!, request: RunRealtimeReport!): RunRealtimeReportResponse
+  runFunnelReport(property: String!, funnel: Funnel!, dateRanges: [DateRange!]!): ReportResponse
+  runAccessReport(entity: String!, request: RunAccessReport!): ReportResponse
+  checkCompatibility(property: String!, dimensions: [Dimension!], metrics: [Metric!]): JSON
+
+  # Audiences & Exports
+  listAudienceExports(parent: String!, pageSize: Int, pageToken: String): [Audience!]
+  queryAudienceExport(name: String!, offset: String, limit: String): [UserRow!]
+
+  # Quota
+  getPropertyQuota(property: String!): PropertyQuota
+}
+
+type Mutation {
+  # Property Management
+  createProperty(property: Property!): Property
+  updateProperty(name: String!, property: Property!): Property
+  deleteProperty(name: String!): Property
+
+  # Data Streams
+  createDataStream(parent: String!, dataStream: DataStream!): DataStream
+  updateDataStream(name: String!, dataStream: DataStream!): DataStream
+  deleteDataStream(name: String!): Boolean
+
+  # Measurement Protocol Secrets
+  createMeasurementProtocolSecret(parent: String!, secret: MeasurementProtocolSecret!): MeasurementProtocolSecret
+  updateMeasurementProtocolSecret(name: String!, secret: MeasurementProtocolSecret!): MeasurementProtocolSecret
+  deleteMeasurementProtocolSecret(name: String!): Boolean
+
+  # Firebase & Google Ads Links
+  createFirebaseLink(parent: String!, link: FirebaseLink!): FirebaseLink
+  deleteFirebaseLink(name: String!): Boolean
+  createGoogleAdsLink(parent: String!, link: GoogleAdsLink!): GoogleAdsLink
+  updateGoogleAdsLink(name: String!, link: GoogleAdsLink!): GoogleAdsLink
+  deleteGoogleAdsLink(name: String!): Boolean
+
+  # Conversion Events & Key Events
+  createConversionEvent(parent: String!, conversionEvent: ConversionEvent!): ConversionEvent
+  updateConversionEvent(name: String!, conversionEvent: ConversionEvent!): ConversionEvent
+  deleteConversionEvent(name: String!): Boolean
+  createKeyEvent(parent: String!, keyEvent: KeyEvent!): KeyEvent
+  updateKeyEvent(name: String!, keyEvent: KeyEvent!): KeyEvent
+  deleteKeyEvent(name: String!): Boolean
+
+  # Custom Dimensions & Metrics
+  createCustomDimension(parent: String!, customDimension: CustomDimension!): CustomDimension
+  updateCustomDimension(name: String!, customDimension: CustomDimension!): CustomDimension
+  archiveCustomDimension(name: String!): Boolean
+  createCustomMetric(parent: String!, customMetric: CustomMetric!): CustomMetric
+  updateCustomMetric(name: String!, customMetric: CustomMetric!): CustomMetric
+  archiveCustomMetric(name: String!): Boolean
+
+  # Audiences
+  createAudience(parent: String!, audience: AudienceDefinition!): AudienceDefinition
+  updateAudience(name: String!, audience: AudienceDefinition!): AudienceDefinition
+  archiveAudience(name: String!): Boolean
+
+  # Audience Exports
+  createAudienceExport(parent: String!, audience: Audience!): Audience
+
+  # Event Creation Rules
+  createEventCreateRule(parent: String!, rule: EventCreateRule!): EventCreateRule
+  updateEventCreateRule(name: String!, rule: EventCreateRule!): EventCreateRule
+  deleteEventCreateRule(name: String!): Boolean
+}

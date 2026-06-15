@@ -1,0 +1,405 @@
+{
+  "info": {
+    "_postman_id": "79cdbcc2-4e0c-4194-b3f1-e77dbaa15713",
+    "name": "Google Analytics Measurement Protocol (GA4)",
+    "description": "The Google Analytics Measurement Protocol lets you send events directly to Google Analytics servers via HTTP requests to augment existing GA4 data with server-to-server and offline interactions.\n\nContact Support:\n Name: Google Analytics",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:09:04.000Z",
+    "updatedAt": "2026-06-05T15:09:04.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-79cdbcc2-4e0c-4194-b3f1-e77dbaa15713"
+  },
+  "item": [
+    {
+      "name": "collect",
+      "item": [
+        {
+          "name": "debug",
+          "item": [
+            {
+              "name": "Google Analytics Validate Events Without Sending to Google Analytics",
+              "id": "19799985-4aa2-45e0-a439-63c8f5da7da6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"name\": \"<string>\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\",\n        \"eiusmod65c\": \"in\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\"\n      }\n    }\n  ],\n  \"client_id\": \"<string>\",\n  \"app_instance_id\": \"<string>\",\n  \"user_id\": \"<string>\",\n  \"timestamp_micros\": \"<long>\",\n  \"user_properties\": {\n    \"dolor_b\": {\n      \"value\": \"<string>\"\n    },\n    \"qui_\": {\n      \"value\": \"<string>\"\n    },\n    \"Excepteur_0f\": {\n      \"value\": \"<string>\"\n    },\n    \"officia__\": {\n      \"value\": \"<string>\"\n    },\n    \"eu_c\": {\n      \"value\": \"<string>\"\n    }\n  },\n  \"user_data\": {},\n  \"consent\": {\n    \"ad_user_data\": \"GRANTED\",\n    \"ad_personalization\": \"DENIED\"\n  },\n  \"non_personalized_ads\": \"<boolean>\",\n  \"user_location\": {\n    \"city\": \"<string>\",\n    \"region_id\": \"<string>\",\n    \"country_id\": \"<string>\",\n    \"subcontinent_id\": \"<string>\",\n    \"continent_id\": \"<string>\"\n  },\n  \"ip_override\": \"<string>\",\n  \"device\": {\n    \"category\": \"<string>\",\n    \"language\": \"<string>\",\n    \"screen_resolution\": \"<string>\",\n    \"operating_system\": \"<string>\",\n    \"operating_system_version\": \"<string>\",\n    \"model\": \"<string>\",\n    \"brand\": \"<string>\",\n    \"browser\": \"<string>\",\n    \"browser_version\": \"<string>\"\n  },\n  \"validation_behavior\": \"RELAXED\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/collect/debug?api_secret=<string>&measurement_id=<string>&firebase_app_id=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collect",
+                    "debug"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The API Secret generated in the Google Analytics UI.",
+                      "key": "api_secret",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The Measurement ID for a web data stream. Required for web streams.",
+                      "key": "measurement_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The Firebase App ID for an app data stream. Required for app streams.",
+                      "key": "firebase_app_id",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Validates the event payload and returns validation messages without actually sending the events to Google Analytics. Use this endpoint during development to verify your implementation."
+              },
+              "response": [
+                {
+                  "id": "b59ce08a-1227-438e-b050-0736441c6acf",
+                  "name": "Validation response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"events\": [\n    {\n      \"name\": \"<string>\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\",\n        \"eiusmod65c\": \"in\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\"\n      }\n    }\n  ],\n  \"client_id\": \"<string>\",\n  \"app_instance_id\": \"<string>\",\n  \"user_id\": \"<string>\",\n  \"timestamp_micros\": \"<long>\",\n  \"user_properties\": {\n    \"dolor_b\": {\n      \"value\": \"<string>\"\n    },\n    \"qui_\": {\n      \"value\": \"<string>\"\n    },\n    \"Excepteur_0f\": {\n      \"value\": \"<string>\"\n    },\n    \"officia__\": {\n      \"value\": \"<string>\"\n    },\n    \"eu_c\": {\n      \"value\": \"<string>\"\n    }\n  },\n  \"user_data\": {},\n  \"consent\": {\n    \"ad_user_data\": \"GRANTED\",\n    \"ad_personalization\": \"DENIED\"\n  },\n  \"non_personalized_ads\": \"<boolean>\",\n  \"user_location\": {\n    \"city\": \"<string>\",\n    \"region_id\": \"<string>\",\n    \"country_id\": \"<string>\",\n    \"subcontinent_id\": \"<string>\",\n    \"continent_id\": \"<string>\"\n  },\n  \"ip_override\": \"<string>\",\n  \"device\": {\n    \"category\": \"<string>\",\n    \"language\": \"<string>\",\n    \"screen_resolution\": \"<string>\",\n    \"operating_system\": \"<string>\",\n    \"operating_system_version\": \"<string>\",\n    \"model\": \"<string>\",\n    \"brand\": \"<string>\",\n    \"browser\": \"<string>\",\n    \"browser_version\": \"<string>\"\n  },\n  \"validation_behavior\": \"RELAXED\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/collect/debug?api_secret=<string>&measurement_id=<string>&firebase_app_id=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collect",
+                        "debug"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The API Secret generated in the Google Analytics UI.",
+                          "key": "api_secret",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The Measurement ID for a web data stream. Required for web streams.",
+                          "key": "measurement_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The Firebase App ID for an app data stream. Required for app streams.",
+                          "key": "firebase_app_id",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"validationMessages\": [\n    {\n      \"fieldPath\": \"<string>\",\n      \"description\": \"<string>\",\n      \"validationCode\": \"NAME_RESERVED\"\n    },\n    {\n      \"fieldPath\": \"<string>\",\n      \"description\": \"<string>\",\n      \"validationCode\": \"VALUE_INVALID\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:09:04.000Z",
+                  "updatedAt": "2026-06-05T15:09:04.000Z",
+                  "uid": "35240-b59ce08a-1227-438e-b050-0736441c6acf"
+                }
+              ],
+              "createdAt": "2026-06-05T15:09:04.000Z",
+              "updatedAt": "2026-06-05T15:09:04.000Z",
+              "uid": "35240-19799985-4aa2-45e0-a439-63c8f5da7da6"
+            }
+          ],
+          "id": "438f4edd-a7f4-453a-af19-bd3934d8118e",
+          "createdAt": "2026-06-05T15:09:04.000Z",
+          "updatedAt": "2026-06-05T15:09:04.000Z",
+          "uid": "35240-438f4edd-a7f4-453a-af19-bd3934d8118e"
+        },
+        {
+          "name": "Google Analytics Send Events to Google Analytics",
+          "id": "76ca55ca-6606-4988-bd7c-9681a1f8782e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"events\": [\n    {\n      \"name\": \"<string>\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\",\n        \"eiusmod65c\": \"in\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\"\n      }\n    }\n  ],\n  \"client_id\": \"<string>\",\n  \"app_instance_id\": \"<string>\",\n  \"user_id\": \"<string>\",\n  \"timestamp_micros\": \"<long>\",\n  \"user_properties\": {\n    \"dolor_b\": {\n      \"value\": \"<string>\"\n    },\n    \"qui_\": {\n      \"value\": \"<string>\"\n    },\n    \"Excepteur_0f\": {\n      \"value\": \"<string>\"\n    },\n    \"officia__\": {\n      \"value\": \"<string>\"\n    },\n    \"eu_c\": {\n      \"value\": \"<string>\"\n    }\n  },\n  \"user_data\": {},\n  \"consent\": {\n    \"ad_user_data\": \"GRANTED\",\n    \"ad_personalization\": \"DENIED\"\n  },\n  \"non_personalized_ads\": \"<boolean>\",\n  \"user_location\": {\n    \"city\": \"<string>\",\n    \"region_id\": \"<string>\",\n    \"country_id\": \"<string>\",\n    \"subcontinent_id\": \"<string>\",\n    \"continent_id\": \"<string>\"\n  },\n  \"ip_override\": \"<string>\",\n  \"device\": {\n    \"category\": \"<string>\",\n    \"language\": \"<string>\",\n    \"screen_resolution\": \"<string>\",\n    \"operating_system\": \"<string>\",\n    \"operating_system_version\": \"<string>\",\n    \"model\": \"<string>\",\n    \"brand\": \"<string>\",\n    \"browser\": \"<string>\",\n    \"browser_version\": \"<string>\"\n  },\n  \"validation_behavior\": \"RELAXED\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/collect?api_secret=<string>&measurement_id=<string>&firebase_app_id=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "collect"
+              ],
+              "query": [
+                {
+                  "description": "(Required) The API Secret generated in the Google Analytics UI. Found under Admin > Data Streams > Choose your stream > Measurement Protocol > Create.",
+                  "key": "api_secret",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The Measurement ID for a web data stream. Required for web streams. Found in the Google Analytics UI under Admin > Data Streams.",
+                  "key": "measurement_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The Firebase App ID for an app data stream. Required for app streams. Found in the Firebase console under Project Settings.",
+                  "key": "firebase_app_id",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Sends one or more events to Google Analytics for processing. Up to 25 events can be sent per request. Events can be backdated up to 72 hours."
+          },
+          "response": [
+            {
+              "id": "bb5d0cf8-6825-4051-a4ce-1347c51f8eb3",
+              "name": "Events accepted. Note that a 2xx response does not guarantee the events are valid or will appear in reports. The Measurement Protocol does not return error details for malformed payloads.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"name\": \"<string>\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\",\n        \"eiusmod65c\": \"in\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\"\n      }\n    }\n  ],\n  \"client_id\": \"<string>\",\n  \"app_instance_id\": \"<string>\",\n  \"user_id\": \"<string>\",\n  \"timestamp_micros\": \"<long>\",\n  \"user_properties\": {\n    \"dolor_b\": {\n      \"value\": \"<string>\"\n    },\n    \"qui_\": {\n      \"value\": \"<string>\"\n    },\n    \"Excepteur_0f\": {\n      \"value\": \"<string>\"\n    },\n    \"officia__\": {\n      \"value\": \"<string>\"\n    },\n    \"eu_c\": {\n      \"value\": \"<string>\"\n    }\n  },\n  \"user_data\": {},\n  \"consent\": {\n    \"ad_user_data\": \"GRANTED\",\n    \"ad_personalization\": \"DENIED\"\n  },\n  \"non_personalized_ads\": \"<boolean>\",\n  \"user_location\": {\n    \"city\": \"<string>\",\n    \"region_id\": \"<string>\",\n    \"country_id\": \"<string>\",\n    \"subcontinent_id\": \"<string>\",\n    \"continent_id\": \"<string>\"\n  },\n  \"ip_override\": \"<string>\",\n  \"device\": {\n    \"category\": \"<string>\",\n    \"language\": \"<string>\",\n    \"screen_resolution\": \"<string>\",\n    \"operating_system\": \"<string>\",\n    \"operating_system_version\": \"<string>\",\n    \"model\": \"<string>\",\n    \"brand\": \"<string>\",\n    \"browser\": \"<string>\",\n    \"browser_version\": \"<string>\"\n  },\n  \"validation_behavior\": \"RELAXED\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/collect?api_secret=<string>&measurement_id=<string>&firebase_app_id=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collect"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The API Secret generated in the Google Analytics UI. Found under Admin > Data Streams > Choose your stream > Measurement Protocol > Create.",
+                      "key": "api_secret",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The Measurement ID for a web data stream. Required for web streams. Found in the Google Analytics UI under Admin > Data Streams.",
+                      "key": "measurement_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The Firebase App ID for an app data stream. Required for app streams. Found in the Firebase console under Project Settings.",
+                      "key": "firebase_app_id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:09:04.000Z",
+              "updatedAt": "2026-06-05T15:09:04.000Z",
+              "uid": "35240-bb5d0cf8-6825-4051-a4ce-1347c51f8eb3"
+            },
+            {
+              "id": "b69e64b3-9e20-4a79-b6fe-d5a5a26103bb",
+              "name": "Malformed request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"name\": \"<string>\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\",\n        \"eiusmod65c\": \"in\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\"\n      }\n    }\n  ],\n  \"client_id\": \"<string>\",\n  \"app_instance_id\": \"<string>\",\n  \"user_id\": \"<string>\",\n  \"timestamp_micros\": \"<long>\",\n  \"user_properties\": {\n    \"dolor_b\": {\n      \"value\": \"<string>\"\n    },\n    \"qui_\": {\n      \"value\": \"<string>\"\n    },\n    \"Excepteur_0f\": {\n      \"value\": \"<string>\"\n    },\n    \"officia__\": {\n      \"value\": \"<string>\"\n    },\n    \"eu_c\": {\n      \"value\": \"<string>\"\n    }\n  },\n  \"user_data\": {},\n  \"consent\": {\n    \"ad_user_data\": \"GRANTED\",\n    \"ad_personalization\": \"DENIED\"\n  },\n  \"non_personalized_ads\": \"<boolean>\",\n  \"user_location\": {\n    \"city\": \"<string>\",\n    \"region_id\": \"<string>\",\n    \"country_id\": \"<string>\",\n    \"subcontinent_id\": \"<string>\",\n    \"continent_id\": \"<string>\"\n  },\n  \"ip_override\": \"<string>\",\n  \"device\": {\n    \"category\": \"<string>\",\n    \"language\": \"<string>\",\n    \"screen_resolution\": \"<string>\",\n    \"operating_system\": \"<string>\",\n    \"operating_system_version\": \"<string>\",\n    \"model\": \"<string>\",\n    \"brand\": \"<string>\",\n    \"browser\": \"<string>\",\n    \"browser_version\": \"<string>\"\n  },\n  \"validation_behavior\": \"RELAXED\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/collect?api_secret=<string>&measurement_id=<string>&firebase_app_id=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collect"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The API Secret generated in the Google Analytics UI. Found under Admin > Data Streams > Choose your stream > Measurement Protocol > Create.",
+                      "key": "api_secret",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The Measurement ID for a web data stream. Required for web streams. Found in the Google Analytics UI under Admin > Data Streams.",
+                      "key": "measurement_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The Firebase App ID for an app data stream. Required for app streams. Found in the Firebase console under Project Settings.",
+                      "key": "firebase_app_id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:09:04.000Z",
+              "updatedAt": "2026-06-05T15:09:04.000Z",
+              "uid": "35240-b69e64b3-9e20-4a79-b6fe-d5a5a26103bb"
+            },
+            {
+              "id": "3538eb33-ff8c-45eb-be0d-e030cfc47543",
+              "name": "Invalid api_secret",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"name\": \"<string>\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\",\n        \"eiusmod65c\": \"in\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\"\n      }\n    }\n  ],\n  \"client_id\": \"<string>\",\n  \"app_instance_id\": \"<string>\",\n  \"user_id\": \"<string>\",\n  \"timestamp_micros\": \"<long>\",\n  \"user_properties\": {\n    \"dolor_b\": {\n      \"value\": \"<string>\"\n    },\n    \"qui_\": {\n      \"value\": \"<string>\"\n    },\n    \"Excepteur_0f\": {\n      \"value\": \"<string>\"\n    },\n    \"officia__\": {\n      \"value\": \"<string>\"\n    },\n    \"eu_c\": {\n      \"value\": \"<string>\"\n    }\n  },\n  \"user_data\": {},\n  \"consent\": {\n    \"ad_user_data\": \"GRANTED\",\n    \"ad_personalization\": \"DENIED\"\n  },\n  \"non_personalized_ads\": \"<boolean>\",\n  \"user_location\": {\n    \"city\": \"<string>\",\n    \"region_id\": \"<string>\",\n    \"country_id\": \"<string>\",\n    \"subcontinent_id\": \"<string>\",\n    \"continent_id\": \"<string>\"\n  },\n  \"ip_override\": \"<string>\",\n  \"device\": {\n    \"category\": \"<string>\",\n    \"language\": \"<string>\",\n    \"screen_resolution\": \"<string>\",\n    \"operating_system\": \"<string>\",\n    \"operating_system_version\": \"<string>\",\n    \"model\": \"<string>\",\n    \"brand\": \"<string>\",\n    \"browser\": \"<string>\",\n    \"browser_version\": \"<string>\"\n  },\n  \"validation_behavior\": \"RELAXED\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/collect?api_secret=<string>&measurement_id=<string>&firebase_app_id=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collect"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The API Secret generated in the Google Analytics UI. Found under Admin > Data Streams > Choose your stream > Measurement Protocol > Create.",
+                      "key": "api_secret",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The Measurement ID for a web data stream. Required for web streams. Found in the Google Analytics UI under Admin > Data Streams.",
+                      "key": "measurement_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The Firebase App ID for an app data stream. Required for app streams. Found in the Firebase console under Project Settings.",
+                      "key": "firebase_app_id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:09:04.000Z",
+              "updatedAt": "2026-06-05T15:09:04.000Z",
+              "uid": "35240-3538eb33-ff8c-45eb-be0d-e030cfc47543"
+            }
+          ],
+          "createdAt": "2026-06-05T15:09:04.000Z",
+          "updatedAt": "2026-06-05T15:09:04.000Z",
+          "uid": "35240-76ca55ca-6606-4988-bd7c-9681a1f8782e"
+        }
+      ],
+      "id": "fb997034-57e2-4dbb-8d5c-571e0c0fc1f0",
+      "createdAt": "2026-06-05T15:09:04.000Z",
+      "updatedAt": "2026-06-05T15:09:04.000Z",
+      "uid": "35240-fb997034-57e2-4dbb-8d5c-571e0c0fc1f0"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://www.google-analytics.com/mp"
+    }
+  ]
+}

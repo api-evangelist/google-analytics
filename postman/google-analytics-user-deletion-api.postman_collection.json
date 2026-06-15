@@ -1,0 +1,310 @@
+{
+  "info": {
+    "_postman_id": "9400dc7f-eadf-46e6-b085-d9f54cd98295",
+    "name": "Google Analytics User Deletion API",
+    "description": "The Google Analytics User Deletion API enables removal of data linked to specific user identifiers, supporting compliance with data protection and privacy requirements such as GDPR. Supports deletion by CLIENT_ID, USER_ID, and APP_INSTANCE_ID. Data appears in Individual User Reports within 72 hours and complete deletion occurs during bimonthly processes.\n\nContact Support:\n Name: Google Analytics",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:09:05.000Z",
+    "updatedAt": "2026-06-05T15:09:05.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9400dc7f-eadf-46e6-b085-d9f54cd98295"
+  },
+  "item": [
+    {
+      "name": "userDeletion",
+      "item": [
+        {
+          "name": "userDeletionRequests:upsert",
+          "item": [
+            {
+              "name": "Google Analytics Insert or Update a User Deletion Request",
+              "id": "716df61d-eacf-4ee4-9f44-3fe032c1bc32",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "https://www.googleapis.com/auth/analytics.user.deletion",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://oauth2.googleapis.com/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://accounts.google.com/o/oauth2/auth",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": {\n    \"type\": \"APP_INSTANCE_ID\",\n    \"userId\": \"<string>\"\n  },\n  \"kind\": \"analytics#userDeletionRequest\",\n  \"webPropertyId\": \"<string>\",\n  \"firebaseProjectId\": \"<string>\",\n  \"propertyId\": \"<string>\",\n  \"deletionRequestTime\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/userDeletion/userDeletionRequests:upsert",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "userDeletion",
+                    "userDeletionRequests:upsert"
+                  ]
+                },
+                "description": "Inserts or updates a user deletion request. Submitting a deletion request for a user that already has a pending request will update the existing request. The User Deletion API does not remove data from reports based on previously aggregated data or exported datasets like BigQuery."
+              },
+              "response": [
+                {
+                  "id": "925ecf5b-68d1-4296-8470-6215ca221933",
+                  "name": "Successful user deletion request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": {\n    \"type\": \"APP_INSTANCE_ID\",\n    \"userId\": \"<string>\"\n  },\n  \"kind\": \"analytics#userDeletionRequest\",\n  \"webPropertyId\": \"<string>\",\n  \"firebaseProjectId\": \"<string>\",\n  \"propertyId\": \"<string>\",\n  \"deletionRequestTime\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/userDeletion/userDeletionRequests:upsert",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "userDeletion",
+                        "userDeletionRequests:upsert"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": {\n    \"type\": \"APP_INSTANCE_ID\",\n    \"userId\": \"<string>\"\n  },\n  \"kind\": \"analytics#userDeletionRequest\",\n  \"webPropertyId\": \"<string>\",\n  \"firebaseProjectId\": \"<string>\",\n  \"propertyId\": \"<string>\",\n  \"deletionRequestTime\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-06-05T15:09:06.000Z",
+                  "updatedAt": "2026-06-05T15:09:06.000Z",
+                  "uid": "35240-925ecf5b-68d1-4296-8470-6215ca221933"
+                },
+                {
+                  "id": "0ea0fd67-2fb7-4067-8578-fa5d10913382",
+                  "name": "Invalid request - malformed body or invalid ID type",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": {\n    \"type\": \"APP_INSTANCE_ID\",\n    \"userId\": \"<string>\"\n  },\n  \"kind\": \"analytics#userDeletionRequest\",\n  \"webPropertyId\": \"<string>\",\n  \"firebaseProjectId\": \"<string>\",\n  \"propertyId\": \"<string>\",\n  \"deletionRequestTime\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/userDeletion/userDeletionRequests:upsert",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "userDeletion",
+                        "userDeletionRequests:upsert"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:09:06.000Z",
+                  "updatedAt": "2026-06-05T15:09:06.000Z",
+                  "uid": "35240-0ea0fd67-2fb7-4067-8578-fa5d10913382"
+                },
+                {
+                  "id": "e0398ce2-9057-4b0c-81bc-61275dd43733",
+                  "name": "Authentication required",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": {\n    \"type\": \"APP_INSTANCE_ID\",\n    \"userId\": \"<string>\"\n  },\n  \"kind\": \"analytics#userDeletionRequest\",\n  \"webPropertyId\": \"<string>\",\n  \"firebaseProjectId\": \"<string>\",\n  \"propertyId\": \"<string>\",\n  \"deletionRequestTime\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/userDeletion/userDeletionRequests:upsert",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "userDeletion",
+                        "userDeletionRequests:upsert"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:09:06.000Z",
+                  "updatedAt": "2026-06-05T15:09:06.000Z",
+                  "uid": "35240-e0398ce2-9057-4b0c-81bc-61275dd43733"
+                },
+                {
+                  "id": "7a1c8fc2-5a58-4a00-975a-d0f2311c97b3",
+                  "name": "Insufficient permissions - missing required OAuth scope",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": {\n    \"type\": \"APP_INSTANCE_ID\",\n    \"userId\": \"<string>\"\n  },\n  \"kind\": \"analytics#userDeletionRequest\",\n  \"webPropertyId\": \"<string>\",\n  \"firebaseProjectId\": \"<string>\",\n  \"propertyId\": \"<string>\",\n  \"deletionRequestTime\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/userDeletion/userDeletionRequests:upsert",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "userDeletion",
+                        "userDeletionRequests:upsert"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:09:06.000Z",
+                  "updatedAt": "2026-06-05T15:09:06.000Z",
+                  "uid": "35240-7a1c8fc2-5a58-4a00-975a-d0f2311c97b3"
+                }
+              ],
+              "createdAt": "2026-06-05T15:09:06.000Z",
+              "updatedAt": "2026-06-05T15:09:06.000Z",
+              "uid": "35240-716df61d-eacf-4ee4-9f44-3fe032c1bc32"
+            }
+          ],
+          "id": "13044f5d-c27e-4396-8a1a-b3f140d7c60f",
+          "createdAt": "2026-06-05T15:09:05.000Z",
+          "updatedAt": "2026-06-05T15:09:05.000Z",
+          "uid": "35240-13044f5d-c27e-4396-8a1a-b3f140d7c60f"
+        }
+      ],
+      "id": "ba7f219e-a4ab-4c0b-a6a5-2522c3978317",
+      "createdAt": "2026-06-05T15:09:05.000Z",
+      "updatedAt": "2026-06-05T15:09:05.000Z",
+      "uid": "35240-ba7f219e-a4ab-4c0b-a6a5-2522c3978317"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://www.googleapis.com/analytics/v3"
+    }
+  ]
+}

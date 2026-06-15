@@ -1,0 +1,521 @@
+{
+  "info": {
+    "_postman_id": "859f28a3-198b-46c6-b5d8-6a5e25e007e3",
+    "name": "Analytics Reporting API",
+    "description": "Accesses Analytics report data.\n\nContact Support:\n Name: Google",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:09:17.000Z",
+    "updatedAt": "2026-06-05T15:09:17.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-859f28a3-198b-46c6-b5d8-6a5e25e007e3"
+  },
+  "item": [
+    {
+      "name": "v4",
+      "item": [
+        {
+          "name": "reports:batchGet",
+          "item": [
+            {
+              "name": "analyticsreporting.reports.batch Get",
+              "id": "88e6d71c-d2ad-46a6-8a55-5a3e455f06df",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "https://www.googleapis.com/auth/analytics https://www.googleapis.com/auth/analytics.readonly",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://accounts.google.com/o/oauth2/auth",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "implicit",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reportRequests\": [\n    {\n      \"cohortGroup\": {\n        \"cohorts\": [\n          {\n            \"dateRange\": {\n              \"endDate\": \"<string>\",\n              \"startDate\": \"<string>\"\n            },\n            \"name\": \"<string>\",\n            \"type\": \"FIRST_VISIT_DATE\"\n          },\n          {\n            \"dateRange\": {\n              \"endDate\": \"<string>\",\n              \"startDate\": \"<string>\"\n            },\n            \"name\": \"<string>\",\n            \"type\": \"UNSPECIFIED_COHORT_TYPE\"\n          }\n        ],\n        \"lifetimeValue\": \"<boolean>\"\n      },\n      \"dateRanges\": [\n        {\n          \"endDate\": \"<string>\",\n          \"startDate\": \"<string>\"\n        },\n        {\n          \"endDate\": \"<string>\",\n          \"startDate\": \"<string>\"\n        }\n      ],\n      \"dimensionFilterClauses\": [\n        {\n          \"filters\": [\n            \"ut Excepteur nisi\",\n            null\n          ],\n          \"operator\": \"OPERATOR_UNSPECIFIED\"\n        },\n        {\n          \"filters\": [\n            26029120.027751014,\n            \"eu occaecat sunt dolor deser\"\n          ],\n          \"operator\": \"AND\"\n        }\n      ],\n      \"dimensions\": [\n        {\n          \"histogramBuckets\": [\n            \"<int64>\",\n            \"<int64>\"\n          ],\n          \"name\": \"<string>\"\n        },\n        {\n          \"histogramBuckets\": [\n            \"<int64>\",\n            \"<int64>\"\n          ],\n          \"name\": \"<string>\"\n        }\n      ],\n      \"filtersExpression\": \"<string>\",\n      \"hideTotals\": \"<boolean>\",\n      \"hideValueRanges\": \"<boolean>\",\n      \"includeEmptyRows\": \"<boolean>\",\n      \"metricFilterClauses\": [\n        {\n          \"filters\": [\n            [],\n            null\n          ],\n          \"operator\": \"OPERATOR_UNSPECIFIED\"\n        },\n        {\n          \"filters\": [\n            null,\n            -8098172.324226379\n          ],\n          \"operator\": \"OPERATOR_UNSPECIFIED\"\n        }\n      ],\n      \"metrics\": [\n        {\n          \"alias\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"formattingType\": \"TIME\"\n        },\n        {\n          \"alias\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"formattingType\": \"CURRENCY\"\n        }\n      ],\n      \"orderBys\": [\n        {\n          \"fieldName\": \"<string>\",\n          \"orderType\": \"VALUE\",\n          \"sortOrder\": \"ASCENDING\"\n        },\n        {\n          \"fieldName\": \"<string>\",\n          \"orderType\": \"ORDER_TYPE_UNSPECIFIED\",\n          \"sortOrder\": \"ASCENDING\"\n        }\n      ],\n      \"pageSize\": \"<integer>\",\n      \"pageToken\": \"<string>\",\n      \"pivots\": [\n        {\n          \"dimensionFilterClauses\": [\n            {\n              \"filters\": [\n                -95688850,\n                \"dolore fugiat esse aliqua\"\n              ],\n              \"operator\": \"OPERATOR_UNSPECIFIED\"\n            },\n            {\n              \"filters\": [\n                \"laboris\",\n                94723238\n              ],\n              \"operator\": \"OR\"\n            }\n          ],\n          \"dimensions\": [\n            {\n              \"histogramBuckets\": [\n                \"<int64>\",\n                \"<int64>\"\n              ],\n              \"name\": \"<string>\"\n            },\n            {\n              \"histogramBuckets\": [\n                \"<int64>\",\n                \"<int64>\"\n              ],\n              \"name\": \"<string>\"\n            }\n          ],\n          \"maxGroupCount\": \"<integer>\",\n          \"metrics\": [\n            {\n              \"alias\": \"<string>\",\n              \"expression\": \"<string>\",\n              \"formattingType\": \"FLOAT\"\n            },\n            {\n              \"alias\": \"<string>\",\n              \"expression\": \"<string>\",\n              \"formattingType\": \"INTEGER\"\n            }\n          ],\n          \"startGroup\": \"<integer>\"\n        },\n        {\n          \"dimensionFilterClauses\": [\n            {\n              \"filters\": [\n                null,\n                []\n              ],\n              \"operator\": \"OPERATOR_UNSPECIFIED\"\n            },\n            {\n              \"filters\": [\n                -5964766.722821355,\n                null\n              ],\n              \"operator\": \"AND\"\n            }\n          ],\n          \"dimensions\": [\n            {\n              \"histogramBuckets\": [\n                \"<int64>\",\n                \"<int64>\"\n              ],\n              \"name\": \"<string>\"\n            },\n            {\n              \"histogramBuckets\": [\n                \"<int64>\",\n                \"<int64>\"\n              ],\n              \"name\": \"<string>\"\n            }\n          ],\n          \"maxGroupCount\": \"<integer>\",\n          \"metrics\": [\n            {\n              \"alias\": \"<string>\",\n              \"expression\": \"<string>\",\n              \"formattingType\": \"FLOAT\"\n            },\n            {\n              \"alias\": \"<string>\",\n              \"expression\": \"<string>\",\n              \"formattingType\": \"PERCENT\"\n            }\n          ],\n          \"startGroup\": \"<integer>\"\n        }\n      ],\n      \"samplingLevel\": \"SAMPLING_UNSPECIFIED\",\n      \"segments\": [\n        {\n          \"dynamicSegment\": {\n            \"name\": \"<string>\",\n            \"sessionSegment\": {\n              \"segmentFilters\": [\n                93322445.63745645,\n                []\n              ]\n            },\n            \"userSegment\": {\n              \"segmentFilters\": [\n                null\n              ]\n            }\n          },\n          \"segmentId\": \"<string>\"\n        },\n        {\n          \"dynamicSegment\": {\n            \"name\": \"<string>\",\n            \"sessionSegment\": {\n              \"segmentFilters\": [\n                null\n              ]\n            },\n            \"userSegment\": {\n              \"segmentFilters\": [\n                null,\n                []\n              ]\n            }\n          },\n          \"segmentId\": \"<string>\"\n        }\n      ],\n      \"viewId\": \"<string>\"\n    },\n    {\n      \"cohortGroup\": {\n        \"cohorts\": [\n          {\n            \"dateRange\": {\n              \"endDate\": \"<string>\",\n              \"startDate\": \"<string>\"\n            },\n            \"name\": \"<string>\",\n            \"type\": \"UNSPECIFIED_COHORT_TYPE\"\n          },\n          {\n            \"dateRange\": {\n              \"endDate\": \"<string>\",\n              \"startDate\": \"<string>\"\n            },\n            \"name\": \"<string>\",\n            \"type\": \"UNSPECIFIED_COHORT_TYPE\"\n          }\n        ],\n        \"lifetimeValue\": \"<boolean>\"\n      },\n      \"dateRanges\": [\n        {\n          \"endDate\": \"<string>\",\n          \"startDate\": \"<string>\"\n        },\n        {\n          \"endDate\": \"<string>\",\n          \"startDate\": \"<string>\"\n        }\n      ],\n      \"dimensionFilterClauses\": [\n        {\n          \"filters\": [\n            \"sit id\",\n            15606732\n          ],\n          \"operator\": \"AND\"\n        },\n        {\n          \"filters\": [\n            23059592.882387742,\n            null\n          ],\n          \"operator\": \"OPERATOR_UNSPECIFIED\"\n        }\n      ],\n      \"dimensions\": [\n        {\n          \"histogramBuckets\": [\n            \"<int64>\",\n            \"<int64>\"\n          ],\n          \"name\": \"<string>\"\n        },\n        {\n          \"histogramBuckets\": [\n            \"<int64>\",\n            \"<int64>\"\n          ],\n          \"name\": \"<string>\"\n        }\n      ],\n      \"filtersExpression\": \"<string>\",\n      \"hideTotals\": \"<boolean>\",\n      \"hideValueRanges\": \"<boolean>\",\n      \"includeEmptyRows\": \"<boolean>\",\n      \"metricFilterClauses\": [\n        {\n          \"filters\": [\n            4433264,\n            null\n          ],\n          \"operator\": \"OPERATOR_UNSPECIFIED\"\n        },\n        {\n          \"filters\": [\n            [],\n            -91028528\n          ],\n          \"operator\": \"AND\"\n        }\n      ],\n      \"metrics\": [\n        {\n          \"alias\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"formattingType\": \"PERCENT\"\n        },\n        {\n          \"alias\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"formattingType\": \"TIME\"\n        }\n      ],\n      \"orderBys\": [\n        {\n          \"fieldName\": \"<string>\",\n          \"orderType\": \"ORDER_TYPE_UNSPECIFIED\",\n          \"sortOrder\": \"ASCENDING\"\n        },\n        {\n          \"fieldName\": \"<string>\",\n          \"orderType\": \"DELTA\",\n          \"sortOrder\": \"SORT_ORDER_UNSPECIFIED\"\n        }\n      ],\n      \"pageSize\": \"<integer>\",\n      \"pageToken\": \"<string>\",\n      \"pivots\": [\n        {\n          \"dimensionFilterClauses\": [\n            {\n              \"filters\": [\n                54714120.935031205,\n                \"sed in deserunt\"\n              ],\n              \"operator\": \"OR\"\n            },\n            {\n              \"filters\": [\n                -66779748,\n                -32519753.837140992\n              ],\n              \"operator\": \"OPERATOR_UNSPECIFIED\"\n            }\n          ],\n          \"dimensions\": [\n            {\n              \"histogramBuckets\": [\n                \"<int64>\",\n                \"<int64>\"\n              ],\n              \"name\": \"<string>\"\n            },\n            {\n              \"histogramBuckets\": [\n                \"<int64>\",\n                \"<int64>\"\n              ],\n              \"name\": \"<string>\"\n            }\n          ],\n          \"maxGroupCount\": \"<integer>\",\n          \"metrics\": [\n            {\n              \"alias\": \"<string>\",\n              \"expression\": \"<string>\",\n              \"formattingType\": \"TIME\"\n            },\n            {\n              \"alias\": \"<string>\",\n              \"expression\": \"<string>\",\n              \"formattingType\": \"FLOAT\"\n            }\n          ],\n          \"startGroup\": \"<integer>\"\n        },\n        {\n          \"dimensionFilterClauses\": [\n            {\n              \"filters\": [\n                null\n              ],\n              \"operator\": \"OR\"\n            },\n            {\n              \"filters\": [\n                44480531.32253578,\n                99617521.1708268\n              ],\n              \"operator\": \"OPERATOR_UNSPECIFIED\"\n            }\n          ],\n          \"dimensions\": [\n            {\n              \"histogramBuckets\": [\n                \"<int64>\",\n                \"<int64>\"\n              ],\n              \"name\": \"<string>\"\n            },\n            {\n              \"histogramBuckets\": [\n                \"<int64>\",\n                \"<int64>\"\n              ],\n              \"name\": \"<string>\"\n            }\n          ],\n          \"maxGroupCount\": \"<integer>\",\n          \"metrics\": [\n            {\n              \"alias\": \"<string>\",\n              \"expression\": \"<string>\",\n              \"formattingType\": \"FLOAT\"\n            },\n            {\n              \"alias\": \"<string>\",\n              \"expression\": \"<string>\",\n              \"formattingType\": \"FLOAT\"\n            }\n          ],\n          \"startGroup\": \"<integer>\"\n        }\n      ],\n      \"samplingLevel\": \"SAMPLING_UNSPECIFIED\",\n      \"segments\": [\n        {\n          \"dynamicSegment\": {\n            \"name\": \"<string>\",\n            \"sessionSegment\": {},\n            \"userSegment\": {\n              \"segmentFilters\": [\n                -93019815.9350932\n              ]\n            }\n          },\n          \"segmentId\": \"<string>\"\n        },\n        {\n          \"dynamicSegment\": {\n            \"name\": \"<string>\",\n            \"sessionSegment\": {\n              \"segmentFilters\": [\n                -96045856\n              ]\n            },\n            \"userSegment\": {\n              \"segmentFilters\": [\n                [],\n                null\n              ]\n            }\n          },\n          \"segmentId\": \"<string>\"\n        }\n      ],\n      \"viewId\": \"<string>\"\n    }\n  ],\n  \"useResourceQuotas\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v4/reports:batchGet?$.xgafv=2&access_token=<string>&alt=json&callback=<string>&fields=<string>&key=<string>&oauth_token=<string>&prettyPrint=<boolean>&quotaUser=<string>&upload_protocol=<string>&uploadType=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v4",
+                    "reports:batchGet"
+                  ],
+                  "query": [
+                    {
+                      "description": "V1 error format.",
+                      "key": "$.xgafv",
+                      "value": "2"
+                    },
+                    {
+                      "description": "OAuth access token.",
+                      "key": "access_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Data format for response.",
+                      "key": "alt",
+                      "value": "json"
+                    },
+                    {
+                      "description": "JSONP",
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Selector specifying which fields to include in a partial response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "OAuth 2.0 token for the current user.",
+                      "key": "oauth_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Returns response with indentations and line breaks.",
+                      "key": "prettyPrint",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+                      "key": "quotaUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+                      "key": "upload_protocol",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+                      "key": "uploadType",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns the Analytics data."
+              },
+              "response": [
+                {
+                  "id": "35d91dbe-d6d3-461b-8ddc-0ea55c14ad6d",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"reportRequests\": [\n    {\n      \"cohortGroup\": {\n        \"cohorts\": [\n          {\n            \"dateRange\": {\n              \"endDate\": \"<string>\",\n              \"startDate\": \"<string>\"\n            },\n            \"name\": \"<string>\",\n            \"type\": \"FIRST_VISIT_DATE\"\n          },\n          {\n            \"dateRange\": {\n              \"endDate\": \"<string>\",\n              \"startDate\": \"<string>\"\n            },\n            \"name\": \"<string>\",\n            \"type\": \"UNSPECIFIED_COHORT_TYPE\"\n          }\n        ],\n        \"lifetimeValue\": \"<boolean>\"\n      },\n      \"dateRanges\": [\n        {\n          \"endDate\": \"<string>\",\n          \"startDate\": \"<string>\"\n        },\n        {\n          \"endDate\": \"<string>\",\n          \"startDate\": \"<string>\"\n        }\n      ],\n      \"dimensionFilterClauses\": [\n        {\n          \"filters\": [\n            \"ut Excepteur nisi\",\n            null\n          ],\n          \"operator\": \"OPERATOR_UNSPECIFIED\"\n        },\n        {\n          \"filters\": [\n            26029120.027751014,\n            \"eu occaecat sunt dolor deser\"\n          ],\n          \"operator\": \"AND\"\n        }\n      ],\n      \"dimensions\": [\n        {\n          \"histogramBuckets\": [\n            \"<int64>\",\n            \"<int64>\"\n          ],\n          \"name\": \"<string>\"\n        },\n        {\n          \"histogramBuckets\": [\n            \"<int64>\",\n            \"<int64>\"\n          ],\n          \"name\": \"<string>\"\n        }\n      ],\n      \"filtersExpression\": \"<string>\",\n      \"hideTotals\": \"<boolean>\",\n      \"hideValueRanges\": \"<boolean>\",\n      \"includeEmptyRows\": \"<boolean>\",\n      \"metricFilterClauses\": [\n        {\n          \"filters\": [\n            [],\n            null\n          ],\n          \"operator\": \"OPERATOR_UNSPECIFIED\"\n        },\n        {\n          \"filters\": [\n            null,\n            -8098172.324226379\n          ],\n          \"operator\": \"OPERATOR_UNSPECIFIED\"\n        }\n      ],\n      \"metrics\": [\n        {\n          \"alias\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"formattingType\": \"TIME\"\n        },\n        {\n          \"alias\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"formattingType\": \"CURRENCY\"\n        }\n      ],\n      \"orderBys\": [\n        {\n          \"fieldName\": \"<string>\",\n          \"orderType\": \"VALUE\",\n          \"sortOrder\": \"ASCENDING\"\n        },\n        {\n          \"fieldName\": \"<string>\",\n          \"orderType\": \"ORDER_TYPE_UNSPECIFIED\",\n          \"sortOrder\": \"ASCENDING\"\n        }\n      ],\n      \"pageSize\": \"<integer>\",\n      \"pageToken\": \"<string>\",\n      \"pivots\": [\n        {\n          \"dimensionFilterClauses\": [\n            {\n              \"filters\": [\n                -95688850,\n                \"dolore fugiat esse aliqua\"\n              ],\n              \"operator\": \"OPERATOR_UNSPECIFIED\"\n            },\n            {\n              \"filters\": [\n                \"laboris\",\n                94723238\n              ],\n              \"operator\": \"OR\"\n            }\n          ],\n          \"dimensions\": [\n            {\n              \"histogramBuckets\": [\n                \"<int64>\",\n                \"<int64>\"\n              ],\n              \"name\": \"<string>\"\n            },\n            {\n              \"histogramBuckets\": [\n                \"<int64>\",\n                \"<int64>\"\n              ],\n              \"name\": \"<string>\"\n            }\n          ],\n          \"maxGroupCount\": \"<integer>\",\n          \"metrics\": [\n            {\n              \"alias\": \"<string>\",\n              \"expression\": \"<string>\",\n              \"formattingType\": \"FLOAT\"\n            },\n            {\n              \"alias\": \"<string>\",\n              \"expression\": \"<string>\",\n              \"formattingType\": \"INTEGER\"\n            }\n          ],\n          \"startGroup\": \"<integer>\"\n        },\n        {\n          \"dimensionFilterClauses\": [\n            {\n              \"filters\": [\n                null,\n                []\n              ],\n              \"operator\": \"OPERATOR_UNSPECIFIED\"\n            },\n            {\n              \"filters\": [\n                -5964766.722821355,\n                null\n              ],\n              \"operator\": \"AND\"\n            }\n          ],\n          \"dimensions\": [\n            {\n              \"histogramBuckets\": [\n                \"<int64>\",\n                \"<int64>\"\n              ],\n              \"name\": \"<string>\"\n            },\n            {\n              \"histogramBuckets\": [\n                \"<int64>\",\n                \"<int64>\"\n              ],\n              \"name\": \"<string>\"\n            }\n          ],\n          \"maxGroupCount\": \"<integer>\",\n          \"metrics\": [\n            {\n              \"alias\": \"<string>\",\n              \"expression\": \"<string>\",\n              \"formattingType\": \"FLOAT\"\n            },\n            {\n              \"alias\": \"<string>\",\n              \"expression\": \"<string>\",\n              \"formattingType\": \"PERCENT\"\n            }\n          ],\n          \"startGroup\": \"<integer>\"\n        }\n      ],\n      \"samplingLevel\": \"SAMPLING_UNSPECIFIED\",\n      \"segments\": [\n        {\n          \"dynamicSegment\": {\n            \"name\": \"<string>\",\n            \"sessionSegment\": {\n              \"segmentFilters\": [\n                93322445.63745645,\n                []\n              ]\n            },\n            \"userSegment\": {\n              \"segmentFilters\": [\n                null\n              ]\n            }\n          },\n          \"segmentId\": \"<string>\"\n        },\n        {\n          \"dynamicSegment\": {\n            \"name\": \"<string>\",\n            \"sessionSegment\": {\n              \"segmentFilters\": [\n                null\n              ]\n            },\n            \"userSegment\": {\n              \"segmentFilters\": [\n                null,\n                []\n              ]\n            }\n          },\n          \"segmentId\": \"<string>\"\n        }\n      ],\n      \"viewId\": \"<string>\"\n    },\n    {\n      \"cohortGroup\": {\n        \"cohorts\": [\n          {\n            \"dateRange\": {\n              \"endDate\": \"<string>\",\n              \"startDate\": \"<string>\"\n            },\n            \"name\": \"<string>\",\n            \"type\": \"UNSPECIFIED_COHORT_TYPE\"\n          },\n          {\n            \"dateRange\": {\n              \"endDate\": \"<string>\",\n              \"startDate\": \"<string>\"\n            },\n            \"name\": \"<string>\",\n            \"type\": \"UNSPECIFIED_COHORT_TYPE\"\n          }\n        ],\n        \"lifetimeValue\": \"<boolean>\"\n      },\n      \"dateRanges\": [\n        {\n          \"endDate\": \"<string>\",\n          \"startDate\": \"<string>\"\n        },\n        {\n          \"endDate\": \"<string>\",\n          \"startDate\": \"<string>\"\n        }\n      ],\n      \"dimensionFilterClauses\": [\n        {\n          \"filters\": [\n            \"sit id\",\n            15606732\n          ],\n          \"operator\": \"AND\"\n        },\n        {\n          \"filters\": [\n            23059592.882387742,\n            null\n          ],\n          \"operator\": \"OPERATOR_UNSPECIFIED\"\n        }\n      ],\n      \"dimensions\": [\n        {\n          \"histogramBuckets\": [\n            \"<int64>\",\n            \"<int64>\"\n          ],\n          \"name\": \"<string>\"\n        },\n        {\n          \"histogramBuckets\": [\n            \"<int64>\",\n            \"<int64>\"\n          ],\n          \"name\": \"<string>\"\n        }\n      ],\n      \"filtersExpression\": \"<string>\",\n      \"hideTotals\": \"<boolean>\",\n      \"hideValueRanges\": \"<boolean>\",\n      \"includeEmptyRows\": \"<boolean>\",\n      \"metricFilterClauses\": [\n        {\n          \"filters\": [\n            4433264,\n            null\n          ],\n          \"operator\": \"OPERATOR_UNSPECIFIED\"\n        },\n        {\n          \"filters\": [\n            [],\n            -91028528\n          ],\n          \"operator\": \"AND\"\n        }\n      ],\n      \"metrics\": [\n        {\n          \"alias\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"formattingType\": \"PERCENT\"\n        },\n        {\n          \"alias\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"formattingType\": \"TIME\"\n        }\n      ],\n      \"orderBys\": [\n        {\n          \"fieldName\": \"<string>\",\n          \"orderType\": \"ORDER_TYPE_UNSPECIFIED\",\n          \"sortOrder\": \"ASCENDING\"\n        },\n        {\n          \"fieldName\": \"<string>\",\n          \"orderType\": \"DELTA\",\n          \"sortOrder\": \"SORT_ORDER_UNSPECIFIED\"\n        }\n      ],\n      \"pageSize\": \"<integer>\",\n      \"pageToken\": \"<string>\",\n      \"pivots\": [\n        {\n          \"dimensionFilterClauses\": [\n            {\n              \"filters\": [\n                54714120.935031205,\n                \"sed in deserunt\"\n              ],\n              \"operator\": \"OR\"\n            },\n            {\n              \"filters\": [\n                -66779748,\n                -32519753.837140992\n              ],\n              \"operator\": \"OPERATOR_UNSPECIFIED\"\n            }\n          ],\n          \"dimensions\": [\n            {\n              \"histogramBuckets\": [\n                \"<int64>\",\n                \"<int64>\"\n              ],\n              \"name\": \"<string>\"\n            },\n            {\n              \"histogramBuckets\": [\n                \"<int64>\",\n                \"<int64>\"\n              ],\n              \"name\": \"<string>\"\n            }\n          ],\n          \"maxGroupCount\": \"<integer>\",\n          \"metrics\": [\n            {\n              \"alias\": \"<string>\",\n              \"expression\": \"<string>\",\n              \"formattingType\": \"TIME\"\n            },\n            {\n              \"alias\": \"<string>\",\n              \"expression\": \"<string>\",\n              \"formattingType\": \"FLOAT\"\n            }\n          ],\n          \"startGroup\": \"<integer>\"\n        },\n        {\n          \"dimensionFilterClauses\": [\n            {\n              \"filters\": [\n                null\n              ],\n              \"operator\": \"OR\"\n            },\n            {\n              \"filters\": [\n                44480531.32253578,\n                99617521.1708268\n              ],\n              \"operator\": \"OPERATOR_UNSPECIFIED\"\n            }\n          ],\n          \"dimensions\": [\n            {\n              \"histogramBuckets\": [\n                \"<int64>\",\n                \"<int64>\"\n              ],\n              \"name\": \"<string>\"\n            },\n            {\n              \"histogramBuckets\": [\n                \"<int64>\",\n                \"<int64>\"\n              ],\n              \"name\": \"<string>\"\n            }\n          ],\n          \"maxGroupCount\": \"<integer>\",\n          \"metrics\": [\n            {\n              \"alias\": \"<string>\",\n              \"expression\": \"<string>\",\n              \"formattingType\": \"FLOAT\"\n            },\n            {\n              \"alias\": \"<string>\",\n              \"expression\": \"<string>\",\n              \"formattingType\": \"FLOAT\"\n            }\n          ],\n          \"startGroup\": \"<integer>\"\n        }\n      ],\n      \"samplingLevel\": \"SAMPLING_UNSPECIFIED\",\n      \"segments\": [\n        {\n          \"dynamicSegment\": {\n            \"name\": \"<string>\",\n            \"sessionSegment\": {},\n            \"userSegment\": {\n              \"segmentFilters\": [\n                -93019815.9350932\n              ]\n            }\n          },\n          \"segmentId\": \"<string>\"\n        },\n        {\n          \"dynamicSegment\": {\n            \"name\": \"<string>\",\n            \"sessionSegment\": {\n              \"segmentFilters\": [\n                -96045856\n              ]\n            },\n            \"userSegment\": {\n              \"segmentFilters\": [\n                [],\n                null\n              ]\n            }\n          },\n          \"segmentId\": \"<string>\"\n        }\n      ],\n      \"viewId\": \"<string>\"\n    }\n  ],\n  \"useResourceQuotas\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v4/reports:batchGet?$.xgafv=2&access_token=<string>&alt=json&callback=<string>&fields=<string>&key=<string>&oauth_token=<string>&prettyPrint=<boolean>&quotaUser=<string>&upload_protocol=<string>&uploadType=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v4",
+                        "reports:batchGet"
+                      ],
+                      "query": [
+                        {
+                          "description": "V1 error format.",
+                          "key": "$.xgafv",
+                          "value": "2"
+                        },
+                        {
+                          "description": "OAuth access token.",
+                          "key": "access_token",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Data format for response.",
+                          "key": "alt",
+                          "value": "json"
+                        },
+                        {
+                          "description": "JSONP",
+                          "key": "callback",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Selector specifying which fields to include in a partial response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+                          "key": "key",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "OAuth 2.0 token for the current user.",
+                          "key": "oauth_token",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Returns response with indentations and line breaks.",
+                          "key": "prettyPrint",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+                          "key": "quotaUser",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+                          "key": "upload_protocol",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+                          "key": "uploadType",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"queryCost\": \"<integer>\",\n  \"reports\": [\n    {\n      \"columnHeader\": {\n        \"dimensions\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"metricHeader\": {\n          \"metricHeaderEntries\": [\n            {\n              \"name\": \"<string>\",\n              \"type\": \"PERCENT\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"type\": \"INTEGER\"\n            }\n          ],\n          \"pivotHeaders\": [\n            {\n              \"pivotHeaderEntries\": [\n                {\n                  \"dimensionNames\": [\n                    \"<string>\",\n                    \"<string>\"\n                  ],\n                  \"dimensionValues\": [\n                    \"<string>\",\n                    \"<string>\"\n                  ],\n                  \"metric\": {\n                    \"name\": \"<string>\",\n                    \"type\": \"FLOAT\"\n                  }\n                },\n                {\n                  \"dimensionNames\": [\n                    \"<string>\",\n                    \"<string>\"\n                  ],\n                  \"dimensionValues\": [\n                    \"<string>\",\n                    \"<string>\"\n                  ],\n                  \"metric\": {\n                    \"name\": \"<string>\",\n                    \"type\": \"INTEGER\"\n                  }\n                }\n              ],\n              \"totalPivotGroupsCount\": \"<integer>\"\n            },\n            {\n              \"pivotHeaderEntries\": [\n                {\n                  \"dimensionNames\": [\n                    \"<string>\",\n                    \"<string>\"\n                  ],\n                  \"dimensionValues\": [\n                    \"<string>\",\n                    \"<string>\"\n                  ],\n                  \"metric\": {\n                    \"name\": \"<string>\",\n                    \"type\": \"TIME\"\n                  }\n                },\n                {\n                  \"dimensionNames\": [\n                    \"<string>\",\n                    \"<string>\"\n                  ],\n                  \"dimensionValues\": [\n                    \"<string>\",\n                    \"<string>\"\n                  ],\n                  \"metric\": {\n                    \"name\": \"<string>\",\n                    \"type\": \"METRIC_TYPE_UNSPECIFIED\"\n                  }\n                }\n              ],\n              \"totalPivotGroupsCount\": \"<integer>\"\n            }\n          ]\n        }\n      },\n      \"data\": {\n        \"dataLastRefreshed\": \"<string>\",\n        \"emptyReason\": \"<string>\",\n        \"isDataGolden\": \"<boolean>\",\n        \"maximums\": [\n          {\n            \"pivotValueRegions\": [\n              {\n                \"values\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              },\n              {\n                \"values\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              }\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"pivotValueRegions\": [\n              {\n                \"values\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              },\n              {\n                \"values\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              }\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"minimums\": [\n          {\n            \"pivotValueRegions\": [\n              {\n                \"values\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              },\n              {\n                \"values\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              }\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"pivotValueRegions\": [\n              {\n                \"values\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              },\n              {\n                \"values\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              }\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"rowCount\": \"<integer>\",\n        \"rows\": [\n          {\n            \"dimensions\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"metrics\": [\n              {\n                \"pivotValueRegions\": [\n                  {\n                    \"values\": [\n                      \"<string>\",\n                      \"<string>\"\n                    ]\n                  },\n                  {\n                    \"values\": [\n                      \"<string>\",\n                      \"<string>\"\n                    ]\n                  }\n                ],\n                \"values\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              },\n              {\n                \"pivotValueRegions\": [\n                  {\n                    \"values\": [\n                      \"<string>\",\n                      \"<string>\"\n                    ]\n                  },\n                  {\n                    \"values\": [\n                      \"<string>\",\n                      \"<string>\"\n                    ]\n                  }\n                ],\n                \"values\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              }\n            ]\n          },\n          {\n            \"dimensions\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"metrics\": [\n              {\n                \"pivotValueRegions\": [\n                  {\n                    \"values\": [\n                      \"<string>\",\n                      \"<string>\"\n                    ]\n                  },\n                  {\n                    \"values\": [\n                      \"<string>\",\n                      \"<string>\"\n                    ]\n                  }\n                ],\n                \"values\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              },\n              {\n                \"pivotValueRegions\": [\n                  {\n                    \"values\": [\n                      \"<string>\",\n                      \"<string>\"\n                    ]\n                  },\n                  {\n                    \"values\": [\n                      \"<string>\",\n                      \"<string>\"\n                    ]\n                  }\n                ],\n                \"values\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              }\n            ]\n          }\n        ],\n        \"samplesReadCounts\": [\n          \"<int64>\",\n          \"<int64>\"\n        ],\n        \"samplingSpaceSizes\": [\n          \"<int64>\",\n          \"<int64>\"\n        ],\n        \"totals\": [\n          {\n            \"pivotValueRegions\": [\n              {\n                \"values\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              },\n              {\n                \"values\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              }\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"pivotValueRegions\": [\n              {\n                \"values\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              },\n              {\n                \"values\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              }\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ]\n      },\n      \"nextPageToken\": \"<string>\"\n    },\n    {\n      \"columnHeader\": {\n        \"dimensions\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"metricHeader\": {\n          \"metricHeaderEntries\": [\n            {\n              \"name\": \"<string>\",\n              \"type\": \"FLOAT\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"type\": \"CURRENCY\"\n            }\n          ],\n          \"pivotHeaders\": [\n            {\n              \"pivotHeaderEntries\": [\n                {\n                  \"dimensionNames\": [\n                    \"<string>\",\n                    \"<string>\"\n                  ],\n                  \"dimensionValues\": [\n                    \"<string>\",\n                    \"<string>\"\n                  ],\n                  \"metric\": {\n                    \"name\": \"<string>\",\n                    \"type\": \"INTEGER\"\n                  }\n                },\n                {\n                  \"dimensionNames\": [\n                    \"<string>\",\n                    \"<string>\"\n                  ],\n                  \"dimensionValues\": [\n                    \"<string>\",\n                    \"<string>\"\n                  ],\n                  \"metric\": {\n                    \"name\": \"<string>\",\n                    \"type\": \"INTEGER\"\n                  }\n                }\n              ],\n              \"totalPivotGroupsCount\": \"<integer>\"\n            },\n            {\n              \"pivotHeaderEntries\": [\n                {\n                  \"dimensionNames\": [\n                    \"<string>\",\n                    \"<string>\"\n                  ],\n                  \"dimensionValues\": [\n                    \"<string>\",\n                    \"<string>\"\n                  ],\n                  \"metric\": {\n                    \"name\": \"<string>\",\n                    \"type\": \"PERCENT\"\n                  }\n                },\n                {\n                  \"dimensionNames\": [\n                    \"<string>\",\n                    \"<string>\"\n                  ],\n                  \"dimensionValues\": [\n                    \"<string>\",\n                    \"<string>\"\n                  ],\n                  \"metric\": {\n                    \"name\": \"<string>\",\n                    \"type\": \"FLOAT\"\n                  }\n                }\n              ],\n              \"totalPivotGroupsCount\": \"<integer>\"\n            }\n          ]\n        }\n      },\n      \"data\": {\n        \"dataLastRefreshed\": \"<string>\",\n        \"emptyReason\": \"<string>\",\n        \"isDataGolden\": \"<boolean>\",\n        \"maximums\": [\n          {\n            \"pivotValueRegions\": [\n              {\n                \"values\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              },\n              {\n                \"values\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              }\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"pivotValueRegions\": [\n              {\n                \"values\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              },\n              {\n                \"values\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              }\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"minimums\": [\n          {\n            \"pivotValueRegions\": [\n              {\n                \"values\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              },\n              {\n                \"values\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              }\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"pivotValueRegions\": [\n              {\n                \"values\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              },\n              {\n                \"values\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              }\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"rowCount\": \"<integer>\",\n        \"rows\": [\n          {\n            \"dimensions\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"metrics\": [\n              {\n                \"pivotValueRegions\": [\n                  {\n                    \"values\": [\n                      \"<string>\",\n                      \"<string>\"\n                    ]\n                  },\n                  {\n                    \"values\": [\n                      \"<string>\",\n                      \"<string>\"\n                    ]\n                  }\n                ],\n                \"values\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              },\n              {\n                \"pivotValueRegions\": [\n                  {\n                    \"values\": [\n                      \"<string>\",\n                      \"<string>\"\n                    ]\n                  },\n                  {\n                    \"values\": [\n                      \"<string>\",\n                      \"<string>\"\n                    ]\n                  }\n                ],\n                \"values\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              }\n            ]\n          },\n          {\n            \"dimensions\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"metrics\": [\n              {\n                \"pivotValueRegions\": [\n                  {\n                    \"values\": [\n                      \"<string>\",\n                      \"<string>\"\n                    ]\n                  },\n                  {\n                    \"values\": [\n                      \"<string>\",\n                      \"<string>\"\n                    ]\n                  }\n                ],\n                \"values\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              },\n              {\n                \"pivotValueRegions\": [\n                  {\n                    \"values\": [\n                      \"<string>\",\n                      \"<string>\"\n                    ]\n                  },\n                  {\n                    \"values\": [\n                      \"<string>\",\n                      \"<string>\"\n                    ]\n                  }\n                ],\n                \"values\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              }\n            ]\n          }\n        ],\n        \"samplesReadCounts\": [\n          \"<int64>\",\n          \"<int64>\"\n        ],\n        \"samplingSpaceSizes\": [\n          \"<int64>\",\n          \"<int64>\"\n        ],\n        \"totals\": [\n          {\n            \"pivotValueRegions\": [\n              {\n                \"values\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              },\n              {\n                \"values\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              }\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"pivotValueRegions\": [\n              {\n                \"values\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              },\n              {\n                \"values\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              }\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ]\n      },\n      \"nextPageToken\": \"<string>\"\n    }\n  ],\n  \"resourceQuotasRemaining\": {\n    \"dailyQuotaTokensRemaining\": \"<integer>\",\n    \"hourlyQuotaTokensRemaining\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:09:17.000Z",
+                  "updatedAt": "2026-06-05T15:09:17.000Z",
+                  "uid": "35240-35d91dbe-d6d3-461b-8ddc-0ea55c14ad6d"
+                }
+              ],
+              "createdAt": "2026-06-05T15:09:17.000Z",
+              "updatedAt": "2026-06-05T15:09:17.000Z",
+              "uid": "35240-88e6d71c-d2ad-46a6-8a55-5a3e455f06df"
+            }
+          ],
+          "id": "c0cfbd91-d90f-44ed-a54f-2148a5d22e54",
+          "createdAt": "2026-06-05T15:09:17.000Z",
+          "updatedAt": "2026-06-05T15:09:17.000Z",
+          "uid": "35240-c0cfbd91-d90f-44ed-a54f-2148a5d22e54"
+        },
+        {
+          "name": "userActivity:search",
+          "item": [
+            {
+              "name": "analyticsreporting.user Activity.search",
+              "id": "c3df763c-defe-4f17-aebb-35a493818fe4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "https://www.googleapis.com/auth/analytics https://www.googleapis.com/auth/analytics.readonly",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://accounts.google.com/o/oauth2/auth",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "implicit",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activityTypes\": [\n    \"ECOMMERCE\",\n    \"EVENT\"\n  ],\n  \"dateRange\": {\n    \"endDate\": \"<string>\",\n    \"startDate\": \"<string>\"\n  },\n  \"pageSize\": \"<integer>\",\n  \"pageToken\": \"<string>\",\n  \"user\": {\n    \"type\": \"CLIENT_ID\",\n    \"userId\": \"<string>\"\n  },\n  \"viewId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v4/userActivity:search?$.xgafv=2&access_token=<string>&alt=json&callback=<string>&fields=<string>&key=<string>&oauth_token=<string>&prettyPrint=<boolean>&quotaUser=<string>&upload_protocol=<string>&uploadType=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v4",
+                    "userActivity:search"
+                  ],
+                  "query": [
+                    {
+                      "description": "V1 error format.",
+                      "key": "$.xgafv",
+                      "value": "2"
+                    },
+                    {
+                      "description": "OAuth access token.",
+                      "key": "access_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Data format for response.",
+                      "key": "alt",
+                      "value": "json"
+                    },
+                    {
+                      "description": "JSONP",
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Selector specifying which fields to include in a partial response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "OAuth 2.0 token for the current user.",
+                      "key": "oauth_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Returns response with indentations and line breaks.",
+                      "key": "prettyPrint",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+                      "key": "quotaUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+                      "key": "upload_protocol",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+                      "key": "uploadType",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns User Activity data."
+              },
+              "response": [
+                {
+                  "id": "565fc229-0878-4d9a-a81a-a9253816c472",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"activityTypes\": [\n    \"ECOMMERCE\",\n    \"EVENT\"\n  ],\n  \"dateRange\": {\n    \"endDate\": \"<string>\",\n    \"startDate\": \"<string>\"\n  },\n  \"pageSize\": \"<integer>\",\n  \"pageToken\": \"<string>\",\n  \"user\": {\n    \"type\": \"CLIENT_ID\",\n    \"userId\": \"<string>\"\n  },\n  \"viewId\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v4/userActivity:search?$.xgafv=2&access_token=<string>&alt=json&callback=<string>&fields=<string>&key=<string>&oauth_token=<string>&prettyPrint=<boolean>&quotaUser=<string>&upload_protocol=<string>&uploadType=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v4",
+                        "userActivity:search"
+                      ],
+                      "query": [
+                        {
+                          "description": "V1 error format.",
+                          "key": "$.xgafv",
+                          "value": "2"
+                        },
+                        {
+                          "description": "OAuth access token.",
+                          "key": "access_token",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Data format for response.",
+                          "key": "alt",
+                          "value": "json"
+                        },
+                        {
+                          "description": "JSONP",
+                          "key": "callback",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Selector specifying which fields to include in a partial response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+                          "key": "key",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "OAuth 2.0 token for the current user.",
+                          "key": "oauth_token",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Returns response with indentations and line breaks.",
+                          "key": "prettyPrint",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+                          "key": "quotaUser",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+                          "key": "upload_protocol",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+                          "key": "uploadType",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"nextPageToken\": \"<string>\",\n  \"sampleRate\": \"<double>\",\n  \"sessions\": [\n    {\n      \"activities\": [\n        {\n          \"activityTime\": \"<string>\",\n          \"activityType\": \"SCREENVIEW\",\n          \"appview\": {\n            \"appName\": \"<string>\",\n            \"mobileDeviceBranding\": \"<string>\",\n            \"mobileDeviceModel\": \"<string>\",\n            \"screenName\": \"<string>\"\n          },\n          \"campaign\": \"<string>\",\n          \"channelGrouping\": \"<string>\",\n          \"customDimension\": [\n            {\n              \"index\": \"<integer>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"index\": \"<integer>\",\n              \"value\": \"<string>\"\n            }\n          ],\n          \"ecommerce\": {\n            \"actionType\": \"CHECKOUT_OPTION\",\n            \"ecommerceType\": \"ENHANCED\",\n            \"products\": [\n              {\n                \"itemRevenue\": \"<double>\",\n                \"productName\": \"<string>\",\n                \"productQuantity\": \"<int64>\",\n                \"productSku\": \"<string>\"\n              },\n              {\n                \"itemRevenue\": \"<double>\",\n                \"productName\": \"<string>\",\n                \"productQuantity\": \"<int64>\",\n                \"productSku\": \"<string>\"\n              }\n            ],\n            \"transaction\": {\n              \"transactionId\": \"<string>\",\n              \"transactionRevenue\": \"<double>\",\n              \"transactionShipping\": \"<double>\",\n              \"transactionTax\": \"<double>\"\n            }\n          },\n          \"event\": {\n            \"eventAction\": \"<string>\",\n            \"eventCategory\": \"<string>\",\n            \"eventCount\": \"<int64>\",\n            \"eventLabel\": \"<string>\",\n            \"eventValue\": \"<int64>\"\n          },\n          \"goals\": {\n            \"goals\": [\n              {\n                \"goalCompletionLocation\": \"<string>\",\n                \"goalCompletions\": \"<int64>\",\n                \"goalIndex\": \"<integer>\",\n                \"goalName\": \"<string>\",\n                \"goalPreviousStep1\": \"<string>\",\n                \"goalPreviousStep2\": \"<string>\",\n                \"goalPreviousStep3\": \"<string>\",\n                \"goalValue\": \"<double>\"\n              },\n              {\n                \"goalCompletionLocation\": \"<string>\",\n                \"goalCompletions\": \"<int64>\",\n                \"goalIndex\": \"<integer>\",\n                \"goalName\": \"<string>\",\n                \"goalPreviousStep1\": \"<string>\",\n                \"goalPreviousStep2\": \"<string>\",\n                \"goalPreviousStep3\": \"<string>\",\n                \"goalValue\": \"<double>\"\n              }\n            ]\n          },\n          \"hostname\": \"<string>\",\n          \"keyword\": \"<string>\",\n          \"landingPagePath\": \"<string>\",\n          \"medium\": \"<string>\",\n          \"pageview\": {\n            \"pagePath\": \"<string>\",\n            \"pageTitle\": \"<string>\"\n          },\n          \"source\": \"<string>\"\n        },\n        {\n          \"activityTime\": \"<string>\",\n          \"activityType\": \"EVENT\",\n          \"appview\": {\n            \"appName\": \"<string>\",\n            \"mobileDeviceBranding\": \"<string>\",\n            \"mobileDeviceModel\": \"<string>\",\n            \"screenName\": \"<string>\"\n          },\n          \"campaign\": \"<string>\",\n          \"channelGrouping\": \"<string>\",\n          \"customDimension\": [\n            {\n              \"index\": \"<integer>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"index\": \"<integer>\",\n              \"value\": \"<string>\"\n            }\n          ],\n          \"ecommerce\": {\n            \"actionType\": \"ADD_TO_CART\",\n            \"ecommerceType\": \"ECOMMERCE_TYPE_UNSPECIFIED\",\n            \"products\": [\n              {\n                \"itemRevenue\": \"<double>\",\n                \"productName\": \"<string>\",\n                \"productQuantity\": \"<int64>\",\n                \"productSku\": \"<string>\"\n              },\n              {\n                \"itemRevenue\": \"<double>\",\n                \"productName\": \"<string>\",\n                \"productQuantity\": \"<int64>\",\n                \"productSku\": \"<string>\"\n              }\n            ],\n            \"transaction\": {\n              \"transactionId\": \"<string>\",\n              \"transactionRevenue\": \"<double>\",\n              \"transactionShipping\": \"<double>\",\n              \"transactionTax\": \"<double>\"\n            }\n          },\n          \"event\": {\n            \"eventAction\": \"<string>\",\n            \"eventCategory\": \"<string>\",\n            \"eventCount\": \"<int64>\",\n            \"eventLabel\": \"<string>\",\n            \"eventValue\": \"<int64>\"\n          },\n          \"goals\": {\n            \"goals\": [\n              {\n                \"goalCompletionLocation\": \"<string>\",\n                \"goalCompletions\": \"<int64>\",\n                \"goalIndex\": \"<integer>\",\n                \"goalName\": \"<string>\",\n                \"goalPreviousStep1\": \"<string>\",\n                \"goalPreviousStep2\": \"<string>\",\n                \"goalPreviousStep3\": \"<string>\",\n                \"goalValue\": \"<double>\"\n              },\n              {\n                \"goalCompletionLocation\": \"<string>\",\n                \"goalCompletions\": \"<int64>\",\n                \"goalIndex\": \"<integer>\",\n                \"goalName\": \"<string>\",\n                \"goalPreviousStep1\": \"<string>\",\n                \"goalPreviousStep2\": \"<string>\",\n                \"goalPreviousStep3\": \"<string>\",\n                \"goalValue\": \"<double>\"\n              }\n            ]\n          },\n          \"hostname\": \"<string>\",\n          \"keyword\": \"<string>\",\n          \"landingPagePath\": \"<string>\",\n          \"medium\": \"<string>\",\n          \"pageview\": {\n            \"pagePath\": \"<string>\",\n            \"pageTitle\": \"<string>\"\n          },\n          \"source\": \"<string>\"\n        }\n      ],\n      \"dataSource\": \"<string>\",\n      \"deviceCategory\": \"<string>\",\n      \"platform\": \"<string>\",\n      \"sessionDate\": \"<string>\",\n      \"sessionId\": \"<string>\"\n    },\n    {\n      \"activities\": [\n        {\n          \"activityTime\": \"<string>\",\n          \"activityType\": \"ECOMMERCE\",\n          \"appview\": {\n            \"appName\": \"<string>\",\n            \"mobileDeviceBranding\": \"<string>\",\n            \"mobileDeviceModel\": \"<string>\",\n            \"screenName\": \"<string>\"\n          },\n          \"campaign\": \"<string>\",\n          \"channelGrouping\": \"<string>\",\n          \"customDimension\": [\n            {\n              \"index\": \"<integer>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"index\": \"<integer>\",\n              \"value\": \"<string>\"\n            }\n          ],\n          \"ecommerce\": {\n            \"actionType\": \"UNKNOWN\",\n            \"ecommerceType\": \"ECOMMERCE_TYPE_UNSPECIFIED\",\n            \"products\": [\n              {\n                \"itemRevenue\": \"<double>\",\n                \"productName\": \"<string>\",\n                \"productQuantity\": \"<int64>\",\n                \"productSku\": \"<string>\"\n              },\n              {\n                \"itemRevenue\": \"<double>\",\n                \"productName\": \"<string>\",\n                \"productQuantity\": \"<int64>\",\n                \"productSku\": \"<string>\"\n              }\n            ],\n            \"transaction\": {\n              \"transactionId\": \"<string>\",\n              \"transactionRevenue\": \"<double>\",\n              \"transactionShipping\": \"<double>\",\n              \"transactionTax\": \"<double>\"\n            }\n          },\n          \"event\": {\n            \"eventAction\": \"<string>\",\n            \"eventCategory\": \"<string>\",\n            \"eventCount\": \"<int64>\",\n            \"eventLabel\": \"<string>\",\n            \"eventValue\": \"<int64>\"\n          },\n          \"goals\": {\n            \"goals\": [\n              {\n                \"goalCompletionLocation\": \"<string>\",\n                \"goalCompletions\": \"<int64>\",\n                \"goalIndex\": \"<integer>\",\n                \"goalName\": \"<string>\",\n                \"goalPreviousStep1\": \"<string>\",\n                \"goalPreviousStep2\": \"<string>\",\n                \"goalPreviousStep3\": \"<string>\",\n                \"goalValue\": \"<double>\"\n              },\n              {\n                \"goalCompletionLocation\": \"<string>\",\n                \"goalCompletions\": \"<int64>\",\n                \"goalIndex\": \"<integer>\",\n                \"goalName\": \"<string>\",\n                \"goalPreviousStep1\": \"<string>\",\n                \"goalPreviousStep2\": \"<string>\",\n                \"goalPreviousStep3\": \"<string>\",\n                \"goalValue\": \"<double>\"\n              }\n            ]\n          },\n          \"hostname\": \"<string>\",\n          \"keyword\": \"<string>\",\n          \"landingPagePath\": \"<string>\",\n          \"medium\": \"<string>\",\n          \"pageview\": {\n            \"pagePath\": \"<string>\",\n            \"pageTitle\": \"<string>\"\n          },\n          \"source\": \"<string>\"\n        },\n        {\n          \"activityTime\": \"<string>\",\n          \"activityType\": \"ACTIVITY_TYPE_UNSPECIFIED\",\n          \"appview\": {\n            \"appName\": \"<string>\",\n            \"mobileDeviceBranding\": \"<string>\",\n            \"mobileDeviceModel\": \"<string>\",\n            \"screenName\": \"<string>\"\n          },\n          \"campaign\": \"<string>\",\n          \"channelGrouping\": \"<string>\",\n          \"customDimension\": [\n            {\n              \"index\": \"<integer>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"index\": \"<integer>\",\n              \"value\": \"<string>\"\n            }\n          ],\n          \"ecommerce\": {\n            \"actionType\": \"REFUND\",\n            \"ecommerceType\": \"CLASSIC\",\n            \"products\": [\n              {\n                \"itemRevenue\": \"<double>\",\n                \"productName\": \"<string>\",\n                \"productQuantity\": \"<int64>\",\n                \"productSku\": \"<string>\"\n              },\n              {\n                \"itemRevenue\": \"<double>\",\n                \"productName\": \"<string>\",\n                \"productQuantity\": \"<int64>\",\n                \"productSku\": \"<string>\"\n              }\n            ],\n            \"transaction\": {\n              \"transactionId\": \"<string>\",\n              \"transactionRevenue\": \"<double>\",\n              \"transactionShipping\": \"<double>\",\n              \"transactionTax\": \"<double>\"\n            }\n          },\n          \"event\": {\n            \"eventAction\": \"<string>\",\n            \"eventCategory\": \"<string>\",\n            \"eventCount\": \"<int64>\",\n            \"eventLabel\": \"<string>\",\n            \"eventValue\": \"<int64>\"\n          },\n          \"goals\": {\n            \"goals\": [\n              {\n                \"goalCompletionLocation\": \"<string>\",\n                \"goalCompletions\": \"<int64>\",\n                \"goalIndex\": \"<integer>\",\n                \"goalName\": \"<string>\",\n                \"goalPreviousStep1\": \"<string>\",\n                \"goalPreviousStep2\": \"<string>\",\n                \"goalPreviousStep3\": \"<string>\",\n                \"goalValue\": \"<double>\"\n              },\n              {\n                \"goalCompletionLocation\": \"<string>\",\n                \"goalCompletions\": \"<int64>\",\n                \"goalIndex\": \"<integer>\",\n                \"goalName\": \"<string>\",\n                \"goalPreviousStep1\": \"<string>\",\n                \"goalPreviousStep2\": \"<string>\",\n                \"goalPreviousStep3\": \"<string>\",\n                \"goalValue\": \"<double>\"\n              }\n            ]\n          },\n          \"hostname\": \"<string>\",\n          \"keyword\": \"<string>\",\n          \"landingPagePath\": \"<string>\",\n          \"medium\": \"<string>\",\n          \"pageview\": {\n            \"pagePath\": \"<string>\",\n            \"pageTitle\": \"<string>\"\n          },\n          \"source\": \"<string>\"\n        }\n      ],\n      \"dataSource\": \"<string>\",\n      \"deviceCategory\": \"<string>\",\n      \"platform\": \"<string>\",\n      \"sessionDate\": \"<string>\",\n      \"sessionId\": \"<string>\"\n    }\n  ],\n  \"totalRows\": \"<integer>\"\n}",
+                  "createdAt": "2026-06-05T15:09:17.000Z",
+                  "updatedAt": "2026-06-05T15:09:17.000Z",
+                  "uid": "35240-565fc229-0878-4d9a-a81a-a9253816c472"
+                }
+              ],
+              "createdAt": "2026-06-05T15:09:17.000Z",
+              "updatedAt": "2026-06-05T15:09:17.000Z",
+              "uid": "35240-c3df763c-defe-4f17-aebb-35a493818fe4"
+            }
+          ],
+          "id": "e95f02b5-de77-454c-a854-9f1cbb94c806",
+          "createdAt": "2026-06-05T15:09:17.000Z",
+          "updatedAt": "2026-06-05T15:09:17.000Z",
+          "uid": "35240-e95f02b5-de77-454c-a854-9f1cbb94c806"
+        }
+      ],
+      "id": "6bf69d7a-842d-4953-bff1-50983751d9e4",
+      "createdAt": "2026-06-05T15:09:17.000Z",
+      "updatedAt": "2026-06-05T15:09:17.000Z",
+      "uid": "35240-6bf69d7a-842d-4953-bff1-50983751d9e4"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://analyticsreporting.googleapis.com/"
+    }
+  ]
+}

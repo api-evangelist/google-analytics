@@ -2,17 +2,13 @@
   "repo": "google-analytics",
   "feeds": [
     {
-      "source": "https://analytics.googleblog.com/feeds/posts/default",
-      "error": "HTTPError"
-    },
-    {
-      "source": "https://developers.google.com/analytics/devguides/collection/protocol/ga4/policy",
-      "feed_url": "https://developers.google.com/analytics/devguides/collection/protocol/ga4/policy",
-      "title": "",
+      "source": "https://analytics.googleblog.com/",
+      "feed_url": "",
       "saved": 0,
-      "method": "none"
+      "method": "agent-scrape"
     }
   ],
-  "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 25,
+  "fetched": "2026-06-27T12:45:16Z",
+  "agent_pulled": "2026-06-27"
 }

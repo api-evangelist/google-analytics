@@ -33,25 +33,25 @@ apis:
     url: openapi/google-analytics-data-api.yaml
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/reporting/data/v1/rest
-  - type: Quickstart
+  - type: GettingStarted
     url: https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart
   - type: Authentication
     url: https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries
   - type: RateLimits
     url: https://developers.google.com/analytics/devguides/reporting/data/v1/quotas
-  - type: SDK
+  - type: SDKs
     url: https://pypi.org/project/google-analytics-data/
     title: Python SDK
-  - type: SDK
+  - type: SDKs
     url: https://www.npmjs.com/package/@google-analytics/data
     title: Node.js SDK
-  - type: SDK
+  - type: SDKs
     url: https://central.sonatype.com/artifact/com.google.analytics/google-analytics-data
     title: Java SDK
-  - type: SDK
+  - type: SDKs
     url: https://www.nuget.org/packages/Google.Analytics.Data.V1Beta
     title: .NET SDK
-  - type: SDK
+  - type: SDKs
     url: https://packagist.org/packages/google/analytics-data
     title: PHP SDK
   - type: CodeExamples
@@ -75,7 +75,7 @@ apis:
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-data-javascript-examples
     title: JavaScript Examples
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/data-properties.yaml
   - type: GraphQL
     url: graphql/google-analytics-graphql.md
@@ -100,23 +100,23 @@ apis:
     url: openapi/google-analytics-admin-api.yaml
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/admin/v1/rest
-  - type: Quickstart
+  - type: GettingStarted
     url: https://developers.google.com/analytics/devguides/config/admin/v1/quickstart
-  - type: SDK
+  - type: SDKs
     url: https://developers.google.com/analytics/devguides/config/admin/v1/client-libraries
-  - type: SDK
+  - type: SDKs
     url: https://pypi.org/project/google-analytics-admin/
     title: Python SDK
-  - type: SDK
+  - type: SDKs
     url: https://www.npmjs.com/package/@google-analytics/admin
     title: Node.js SDK
-  - type: SDK
+  - type: SDKs
     url: https://central.sonatype.com/artifact/com.google.analytics/google-analytics-admin
     title: Java SDK
-  - type: SDK
+  - type: SDKs
     url: https://www.nuget.org/packages/Google.Analytics.Admin.V1Beta
     title: .NET SDK
-  - type: SDK
+  - type: SDKs
     url: https://packagist.org/packages/google/analytics-admin
     title: PHP SDK
   - type: CodeExamples
@@ -137,11 +137,11 @@ apis:
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-samples-config
     title: Configuration Samples
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/admin-accountsummaries.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/admin-accounts.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/admin-properties.yaml
   tags:
   - Admin
@@ -161,15 +161,15 @@ apis:
     url: https://developers.google.com/analytics/devguides/collection/protocol/ga4
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference
-  - type: Quickstart
+  - type: GettingStarted
     url: https://developers.google.com/analytics/devguides/collection/protocol/ga4/sending-events
   - type: OpenAPI
     url: openapi/google-analytics-measurement-protocol.yaml
   - type: Troubleshooting
     url: https://developers.google.com/analytics/devguides/collection/protocol/ga4/troubleshooting
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/measurement-protocol-events.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/measurement-protocol-validation.yaml
   tags:
   - Events
@@ -192,7 +192,7 @@ apis:
     url: openapi/google-analytics-user-deletion-api.yaml
   - type: Authentication
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/authorization
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/user-deletion-user-deletion.yaml
   tags:
   - Compliance
@@ -213,9 +213,9 @@ apis:
     url: openapi/google-analytics-reporting-api-v4.yaml
   - type: GettingStarted
     url: https://developers.google.com/analytics/devguides/migration/api/reporting-ua-to-ga4
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/reporting-api-v4-reports.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/reporting-api-v4-useractivity.yaml
   tags:
   - Analytics
@@ -237,15 +237,15 @@ apis:
     url: openapi/google-analytics-management-api-v3.yaml
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/management-api-v3-data.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/management-api-v3-management.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/management-api-v3-metadata.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/management-api-v3-provisioning.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/management-api-v3-userdeletion.yaml
   tags:
   - Configuration
@@ -256,265 +256,262 @@ apis:
 common:
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/google-analytics/overview
-- type: ArazzoWorkflows
-  url: arazzo/
-  workflows:
-  - url: arazzo/google-analytics-account-change-history-audit-workflow.yml
+  - type: Arazzo
+    url: arazzo/google-analytics-account-change-history-audit-workflow.yml
     name: Google Analytics Account Change History Audit
-    summary: List accessible accounts, then search the change history of the chosen account.
-  - url: arazzo/google-analytics-audience-export-create-or-reuse-workflow.yml
+  - type: Arazzo
+    url: arazzo/google-analytics-audience-export-create-or-reuse-workflow.yml
     name: Google Analytics Reuse or Create an Audience Export
-    summary: List a property's audience exports and create a new one only when none can be reused.
-  - url: arazzo/google-analytics-audit-custom-definitions-workflow.yml
+  - type: Arazzo
+    url: arazzo/google-analytics-audit-custom-definitions-workflow.yml
     name: Google Analytics Audit a Property's Custom Definitions
-    summary: List the custom dimensions and then the custom metrics defined on a GA4 property.
-  - url: arazzo/google-analytics-batch-run-reports-workflow.yml
+  - type: Arazzo
+    url: arazzo/google-analytics-batch-run-reports-workflow.yml
     name: Google Analytics Batch Run Reports
-    summary: Confirm a property exists, then run several core reports for it in a single batch.
-  - url: arazzo/google-analytics-check-compatibility-run-report-workflow.yml
+  - type: Arazzo
+    url: arazzo/google-analytics-check-compatibility-run-report-workflow.yml
     name: Google Analytics Check Compatibility then Run Report
-    summary: Validate a report's dimensions and metrics for compatibility before running the report.
-  - url: arazzo/google-analytics-create-custom-dimension-run-report-workflow.yml
+  - type: Arazzo
+    url: arazzo/google-analytics-create-custom-dimension-run-report-workflow.yml
     name: Google Analytics Create Custom Dimension then Run Report
-    summary: Create an event-scoped custom dimension on a property, then run a report grouped by it.
-  - url: arazzo/google-analytics-create-custom-metric-run-report-workflow.yml
+  - type: Arazzo
+    url: arazzo/google-analytics-create-custom-metric-run-report-workflow.yml
     name: Google Analytics Create Custom Metric then Run Report
-    summary: Create an event-scoped custom metric on a property, then run a report that reads it.
-  - url: arazzo/google-analytics-create-property-data-stream-workflow.yml
+  - type: Arazzo
+    url: arazzo/google-analytics-create-property-data-stream-workflow.yml
     name: Google Analytics Create Property and Web Data Stream
-    summary: Create a GA4 property under an account, then attach a web data stream to it.
-  - url: arazzo/google-analytics-discover-and-run-report-workflow.yml
+  - type: Arazzo
+    url: arazzo/google-analytics-discover-and-run-report-workflow.yml
     name: Google Analytics Discover Property and Run Report
-    summary: Walk account summaries to find a GA4 property, list its properties, then run a core report.
-  - url: arazzo/google-analytics-inventory-property-data-streams-workflow.yml
+  - type: Arazzo
+    url: arazzo/google-analytics-inventory-property-data-streams-workflow.yml
     name: Google Analytics Inventory a Property's Data Streams
-    summary: List the properties under an account, then list the data streams for the chosen property.
-  - url: arazzo/google-analytics-list-properties-run-realtime-workflow.yml
+  - type: Arazzo
+    url: arazzo/google-analytics-list-properties-run-realtime-workflow.yml
     name: Google Analytics List Properties and Run Realtime Report
-    summary: List GA4 properties under an account, then run a realtime report for the chosen property.
-  - url: arazzo/google-analytics-query-audience-export-users-workflow.yml
+  - type: Arazzo
+    url: arazzo/google-analytics-query-audience-export-users-workflow.yml
     name: Google Analytics Query Audience Export Users
-    summary: Confirm an audience export is active, then page through the users it contains.
-- type: LinkedIn
-  url: https://www.linkedin.com/showcase/google-analytics
-- type: GettingStarted
-  url: https://developers.google.com/analytics/get-started
-- type: Portal
-  url: https://developers.google.com/analytics
-- type: Console
-  url: https://console.cloud.google.com/apis/library/analytics.googleapis.com
-- type: SignUp
-  url: https://analytics.google.com/analytics/
-- type: Authentication
-  url: https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries
-- type: SDK
-  url: https://developers.google.com/analytics/devguides/config/admin/v1/client-libraries
-- type: Tools
-  url: https://github.com/googleanalytics/google-analytics-mcp
-  title: MCP Server
-- type: Tools
-  url: https://ga-dev-tools.google/ga4/
-  title: GA Dev Tools
-- type: Tools
-  url: https://github.com/googleanalytics/ecommerce-migration-helper
-  title: E-commerce Migration Helper
-- type: Tutorials
-  url: https://github.com/googleanalytics/ga4-tutorials
-  title: GA4 Tutorials
-- type: CodeExamples
-  url: https://github.com/googleanalytics/gtm-consent-mode-examples
-  title: Consent Mode Examples
-- type: Pricing
-  url: https://marketingplatform.google.com/about/analytics/
-- type: TermsOfService
-  url: https://developers.google.com/analytics/terms
-- type: PrivacyPolicy
-  url: https://developers.google.com/analytics/devguides/collection/protocol/ga4/policy
-- type: Blog
-  url: https://analytics.googleblog.com/
-- type: StatusPage
-  url: https://status.cloud.google.com/
-- type: Support
-  url: https://developers.google.com/analytics/support
-- type: FAQ
-  url: https://support.google.com/analytics
-- type: ReleaseNotes
-  url: https://support.google.com/analytics/answer/9164320
-- type: ChangeLog
-  url: https://groups.google.com/forum/#!forum/google-analytics-api-notify
-- type: Skills
-  data:
-  - name: Run Report
-    url: skills/run-report/SKILL.md
-  - name: Run Realtime Report
-    url: skills/run-realtime-report/SKILL.md
-  - name: Run Pivot Report
-    url: skills/run-pivot-report/SKILL.md
-  - name: Batch Run Reports
-    url: skills/batch-run-reports/SKILL.md
-  - name: Batch Run Pivot Reports
-    url: skills/batch-run-pivot-reports/SKILL.md
-  - name: Check Compatibility
-    url: skills/check-compatibility/SKILL.md
-  - name: Create Audience Export
-    url: skills/create-audience-export/SKILL.md
-  - name: Get Audience Export
-    url: skills/get-audience-export/SKILL.md
-  - name: List Audience Exports
-    url: skills/list-audience-exports/SKILL.md
-  - name: Query Audience Export
-    url: skills/query-audience-export/SKILL.md
-  - name: List Account Summaries
-    url: skills/list-account-summaries/SKILL.md
-  - name: List Accounts
-    url: skills/list-accounts/SKILL.md
-  - name: Provision Account Ticket
-    url: skills/provision-account-ticket/SKILL.md
-  - name: List Properties
-    url: skills/list-properties/SKILL.md
-  - name: Create Property
-    url: skills/create-property/SKILL.md
-  - name: Search Change History Events
-    url: skills/search-change-history-events/SKILL.md
-  - name: Run Access Report
-    url: skills/run-access-report/SKILL.md
-  - name: Delete Google Ads Link
-    url: skills/delete-google-ads-link/SKILL.md
-  - name: Get Measurement Protocol Secret
-    url: skills/get-measurement-protocol-secret/SKILL.md
-  - name: Update Google Ads Link
-    url: skills/update-google-ads-link/SKILL.md
-  - name: Archive Custom Metric
-    url: skills/archive-custom-metric/SKILL.md
-  - name: List Conversion Events
-    url: skills/list-conversion-events/SKILL.md
-  - name: Create Conversion Event
-    url: skills/create-conversion-event/SKILL.md
-  - name: List Custom Dimensions
-    url: skills/list-custom-dimensions/SKILL.md
-  - name: Create Custom Dimension
-    url: skills/create-custom-dimension/SKILL.md
-  - name: List Custom Metrics
-    url: skills/list-custom-metrics/SKILL.md
-  - name: Create Custom Metric
-    url: skills/create-custom-metric/SKILL.md
-  - name: List Data Streams
-    url: skills/list-data-streams/SKILL.md
-  - name: Create Data Stream
-    url: skills/create-data-stream/SKILL.md
-  - name: List Firebase Links
-    url: skills/list-firebase-links/SKILL.md
-  - name: Create Firebase Link
-    url: skills/create-firebase-link/SKILL.md
-  - name: List Google Ads Links
-    url: skills/list-google-ads-links/SKILL.md
-  - name: Create Google Ads Link
-    url: skills/create-google-ads-link/SKILL.md
-  - name: List Measurement Protocol Secrets
-    url: skills/list-measurement-protocol-secrets/SKILL.md
-  - name: Create Measurement Protocol Secret
-    url: skills/create-measurement-protocol-secret/SKILL.md
-  - name: Acknowledge User Data Collection
-    url: skills/acknowledge-user-data-collection/SKILL.md
-  - name: Send Events
-    url: skills/send-events/SKILL.md
-  - name: Validate Events
-    url: skills/validate-events/SKILL.md
-  - name: Upsert User Deletion Request
-    url: skills/upsert-user-deletion-request/SKILL.md
-- type: GitHubOrganization
-  url: https://github.com/googleanalytics/
-- type: StackOverflow
-  url: https://stackoverflow.com/questions/tagged/google-analytics
-- type: YouTube
-  url: https://www.youtube.com/user/googleanalytics
-- type: Training
-  url: https://goo.gle/ga-courses
-- type: Academy
-  url: https://marketingplatformacademy.withgoogle.com/google-analytics-360
-- type: Features
-  data:
-  - name: Predictive Capabilities
-    description: Machine learning models that predict future actions users may take, like purchasing or churning.
-  - name: Proactive Insights
-    description: Automatically detects and surfaces actionable insights from your data.
-  - name: Real-Time Reporting
-    description: Monitor user activity on your site or app as it happens.
-  - name: Data-Driven Attribution
-    description: Machine learning to understand how each touchpoint contributes to conversions.
-  - name: Free-Form Exploration
-    description: Drag-and-drop analysis with instant visualizations for custom reporting.
-  - name: Funnel Exploration
-    description: Visualize user steps through conversion funnels and identify optimization opportunities.
-  - name: Path Exploration
-    description: Visualize user navigation paths to understand how users reach conversions.
-  - name: Cohort Exploration
-    description: Analyze behavior of users grouped by common attributes over time.
-  - name: BigQuery Export
-    description: Export raw event data to BigQuery for advanced analysis and data warehousing.
-  - name: Cross-Platform Measurement
-    description: Customer-centric measurement across websites and apps throughout the entire customer lifecycle.
-  - name: Privacy-Safe Modeling
-    description: Machine learning models that provide a complete picture of the customer journey while respecting privacy.
-  - name: Custom Dimensions and Metrics
-    description: Define custom dimensions and metrics to capture data specific to your business needs.
-- type: UseCases
-  data:
-  - name: Website Traffic Analysis
-    description: Understand where visitors come from, what pages they view, and how they interact with your website.
-  - name: Conversion Optimization
-    description: Track conversion events, analyze funnels, and identify drop-off points to improve conversion rates.
-  - name: Audience Segmentation
-    description: Segment users by demographics, behavior, technology, and custom attributes for targeted analysis.
-  - name: Marketing Campaign Measurement
-    description: Measure the effectiveness of advertising campaigns across channels with attribution modeling.
-  - name: E-commerce Analytics
-    description: Track purchase activity, revenue, product performance, and shopping behavior.
-  - name: App Analytics
-    description: Measure user engagement, retention, and in-app actions for mobile and web applications.
-  - name: Server-Side Event Tracking
-    description: Send events from your server using the Measurement Protocol for offline and backend interactions.
-  - name: Compliance and Data Privacy
-    description: Manage user data deletion requests and privacy compliance using the User Deletion API.
-  - name: Custom Reporting and Dashboards
-    description: Build custom reports and dashboards programmatically using the Data API.
-  - name: Real-Time Monitoring
-    description: Monitor live user activity for time-sensitive campaigns, launches, and events.
-- type: Integrations
-  data:
-  - name: Google Ads
-    description: Link Google Ads accounts to analyze campaign performance and optimize ad spend with Analytics data.
-  - name: Google BigQuery
-    description: Export raw Analytics data to BigQuery for advanced SQL-based analysis and data warehousing.
-  - name: Google Search Console
-    description: Connect Search Console to see organic search queries, impressions, and click data alongside Analytics.
-  - name: Firebase
-    description: Integrate with Firebase for comprehensive mobile and web app analytics and event tracking.
-  - name: Display & Video 360
-    description: Link DV360 for programmatic advertising measurement and attribution.
-  - name: Search Ads 360
-    description: Connect SA360 for unified search advertising measurement across engines.
-  - name: Google Tag Manager
-    description: Use Tag Manager to deploy and manage Analytics tags without modifying website code.
-  - name: Google Ad Manager
-    description: Integrate publisher ad serving data with Analytics for holistic content and ad performance analysis.
-  - name: Google Cloud
-    description: Leverage Google Cloud services for advanced data processing, ML models, and storage with Analytics data.
-  - name: Salesforce Marketing Cloud
-    description: Connect Salesforce Marketing Cloud for cross-platform marketing measurement and audience activation.
-- type: Solutions
-  data:
-  - name: Google Analytics Free
-    description: Full-featured web and app analytics solution available at no charge for businesses of all sizes.
-  - name: Analytics 360
-    description: Enterprise-grade analytics with advanced features including intraday data, sub-properties, roll-up reporting,
-      and higher limits.
-  - name: Google Marketing Platform
-    description: Integrated advertising and analytics platform combining Analytics 360 with advertising products for enterprise
-      marketing.
-- name: MCP Server
-  url: https://github.com/googleanalytics/google-analytics-mcp
-  type: MCPServer
+  - type: LinkedIn
+    url: https://www.linkedin.com/showcase/google-analytics
+  - type: GettingStarted
+    url: https://developers.google.com/analytics/get-started
+  - type: Portal
+    url: https://developers.google.com/analytics
+  - type: Console
+    url: https://console.cloud.google.com/apis/library/analytics.googleapis.com
+  - type: Signup
+    url: https://analytics.google.com/analytics/
+  - type: Authentication
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries
+  - type: SDKs
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/client-libraries
+  - type: Tools
+    url: https://github.com/googleanalytics/google-analytics-mcp
+    title: MCP Server
+  - type: Tools
+    url: https://ga-dev-tools.google/ga4/
+    title: GA Dev Tools
+  - type: Tools
+    url: https://github.com/googleanalytics/ecommerce-migration-helper
+    title: E-commerce Migration Helper
+  - type: Tutorials
+    url: https://github.com/googleanalytics/ga4-tutorials
+    title: GA4 Tutorials
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/gtm-consent-mode-examples
+    title: Consent Mode Examples
+  - type: Pricing
+    url: https://marketingplatform.google.com/about/analytics/
+  - type: TermsOfService
+    url: https://developers.google.com/analytics/terms
+  - type: PrivacyPolicy
+    url: https://developers.google.com/analytics/devguides/collection/protocol/ga4/policy
+  - type: Blog
+    url: https://analytics.googleblog.com/
+  - type: StatusPage
+    url: https://status.cloud.google.com/
+  - type: Support
+    url: https://developers.google.com/analytics/support
+  - type: FAQ
+    url: https://support.google.com/analytics
+  - type: ReleaseNotes
+    url: https://support.google.com/analytics/answer/9164320
+  - type: ChangeLog
+    url: https://groups.google.com/forum/#!forum/google-analytics-api-notify
+  - type: Skills
+    data:
+    - name: Run Report
+      url: skills/run-report/SKILL.md
+    - name: Run Realtime Report
+      url: skills/run-realtime-report/SKILL.md
+    - name: Run Pivot Report
+      url: skills/run-pivot-report/SKILL.md
+    - name: Batch Run Reports
+      url: skills/batch-run-reports/SKILL.md
+    - name: Batch Run Pivot Reports
+      url: skills/batch-run-pivot-reports/SKILL.md
+    - name: Check Compatibility
+      url: skills/check-compatibility/SKILL.md
+    - name: Create Audience Export
+      url: skills/create-audience-export/SKILL.md
+    - name: Get Audience Export
+      url: skills/get-audience-export/SKILL.md
+    - name: List Audience Exports
+      url: skills/list-audience-exports/SKILL.md
+    - name: Query Audience Export
+      url: skills/query-audience-export/SKILL.md
+    - name: List Account Summaries
+      url: skills/list-account-summaries/SKILL.md
+    - name: List Accounts
+      url: skills/list-accounts/SKILL.md
+    - name: Provision Account Ticket
+      url: skills/provision-account-ticket/SKILL.md
+    - name: List Properties
+      url: skills/list-properties/SKILL.md
+    - name: Create Property
+      url: skills/create-property/SKILL.md
+    - name: Search Change History Events
+      url: skills/search-change-history-events/SKILL.md
+    - name: Run Access Report
+      url: skills/run-access-report/SKILL.md
+    - name: Delete Google Ads Link
+      url: skills/delete-google-ads-link/SKILL.md
+    - name: Get Measurement Protocol Secret
+      url: skills/get-measurement-protocol-secret/SKILL.md
+    - name: Update Google Ads Link
+      url: skills/update-google-ads-link/SKILL.md
+    - name: Archive Custom Metric
+      url: skills/archive-custom-metric/SKILL.md
+    - name: List Conversion Events
+      url: skills/list-conversion-events/SKILL.md
+    - name: Create Conversion Event
+      url: skills/create-conversion-event/SKILL.md
+    - name: List Custom Dimensions
+      url: skills/list-custom-dimensions/SKILL.md
+    - name: Create Custom Dimension
+      url: skills/create-custom-dimension/SKILL.md
+    - name: List Custom Metrics
+      url: skills/list-custom-metrics/SKILL.md
+    - name: Create Custom Metric
+      url: skills/create-custom-metric/SKILL.md
+    - name: List Data Streams
+      url: skills/list-data-streams/SKILL.md
+    - name: Create Data Stream
+      url: skills/create-data-stream/SKILL.md
+    - name: List Firebase Links
+      url: skills/list-firebase-links/SKILL.md
+    - name: Create Firebase Link
+      url: skills/create-firebase-link/SKILL.md
+    - name: List Google Ads Links
+      url: skills/list-google-ads-links/SKILL.md
+    - name: Create Google Ads Link
+      url: skills/create-google-ads-link/SKILL.md
+    - name: List Measurement Protocol Secrets
+      url: skills/list-measurement-protocol-secrets/SKILL.md
+    - name: Create Measurement Protocol Secret
+      url: skills/create-measurement-protocol-secret/SKILL.md
+    - name: Acknowledge User Data Collection
+      url: skills/acknowledge-user-data-collection/SKILL.md
+    - name: Send Events
+      url: skills/send-events/SKILL.md
+    - name: Validate Events
+      url: skills/validate-events/SKILL.md
+    - name: Upsert User Deletion Request
+      url: skills/upsert-user-deletion-request/SKILL.md
+  - type: GitHubOrganization
+    url: https://github.com/googleanalytics/
+  - type: StackOverflow
+    url: https://stackoverflow.com/questions/tagged/google-analytics
+  - type: YouTube
+    url: https://www.youtube.com/user/googleanalytics
+  - type: Training
+    url: https://goo.gle/ga-courses
+  - type: Academy
+    url: https://marketingplatformacademy.withgoogle.com/google-analytics-360
+  - type: Features
+    data:
+    - name: Predictive Capabilities
+      description: Machine learning models that predict future actions users may take, like purchasing or churning.
+    - name: Proactive Insights
+      description: Automatically detects and surfaces actionable insights from your data.
+    - name: Real-Time Reporting
+      description: Monitor user activity on your site or app as it happens.
+    - name: Data-Driven Attribution
+      description: Machine learning to understand how each touchpoint contributes to conversions.
+    - name: Free-Form Exploration
+      description: Drag-and-drop analysis with instant visualizations for custom reporting.
+    - name: Funnel Exploration
+      description: Visualize user steps through conversion funnels and identify optimization opportunities.
+    - name: Path Exploration
+      description: Visualize user navigation paths to understand how users reach conversions.
+    - name: Cohort Exploration
+      description: Analyze behavior of users grouped by common attributes over time.
+    - name: BigQuery Export
+      description: Export raw event data to BigQuery for advanced analysis and data warehousing.
+    - name: Cross-Platform Measurement
+      description: Customer-centric measurement across websites and apps throughout the entire customer lifecycle.
+    - name: Privacy-Safe Modeling
+      description: Machine learning models that provide a complete picture of the customer journey while respecting privacy.
+    - name: Custom Dimensions and Metrics
+      description: Define custom dimensions and metrics to capture data specific to your business needs.
+  - type: UseCases
+    data:
+    - name: Website Traffic Analysis
+      description: Understand where visitors come from, what pages they view, and how they interact with your website.
+    - name: Conversion Optimization
+      description: Track conversion events, analyze funnels, and identify drop-off points to improve conversion rates.
+    - name: Audience Segmentation
+      description: Segment users by demographics, behavior, technology, and custom attributes for targeted analysis.
+    - name: Marketing Campaign Measurement
+      description: Measure the effectiveness of advertising campaigns across channels with attribution modeling.
+    - name: E-commerce Analytics
+      description: Track purchase activity, revenue, product performance, and shopping behavior.
+    - name: App Analytics
+      description: Measure user engagement, retention, and in-app actions for mobile and web applications.
+    - name: Server-Side Event Tracking
+      description: Send events from your server using the Measurement Protocol for offline and backend interactions.
+    - name: Compliance and Data Privacy
+      description: Manage user data deletion requests and privacy compliance using the User Deletion API.
+    - name: Custom Reporting and Dashboards
+      description: Build custom reports and dashboards programmatically using the Data API.
+    - name: Real-Time Monitoring
+      description: Monitor live user activity for time-sensitive campaigns, launches, and events.
+  - type: Integrations
+    data:
+    - name: Google Ads
+      description: Link Google Ads accounts to analyze campaign performance and optimize ad spend with Analytics data.
+    - name: Google BigQuery
+      description: Export raw Analytics data to BigQuery for advanced SQL-based analysis and data warehousing.
+    - name: Google Search Console
+      description: Connect Search Console to see organic search queries, impressions, and click data alongside Analytics.
+    - name: Firebase
+      description: Integrate with Firebase for comprehensive mobile and web app analytics and event tracking.
+    - name: Display & Video 360
+      description: Link DV360 for programmatic advertising measurement and attribution.
+    - name: Search Ads 360
+      description: Connect SA360 for unified search advertising measurement across engines.
+    - name: Google Tag Manager
+      description: Use Tag Manager to deploy and manage Analytics tags without modifying website code.
+    - name: Google Ad Manager
+      description: Integrate publisher ad serving data with Analytics for holistic content and ad performance analysis.
+    - name: Google Cloud
+      description: Leverage Google Cloud services for advanced data processing, ML models, and storage with Analytics data.
+    - name: Salesforce Marketing Cloud
+      description: Connect Salesforce Marketing Cloud for cross-platform marketing measurement and audience activation.
+  - type: Solutions
+    data:
+    - name: Google Analytics Free
+      description: Full-featured web and app analytics solution available at no charge for businesses of all sizes.
+    - name: Analytics 360
+      description: Enterprise-grade analytics with advanced features including intraday data, sub-properties, roll-up reporting,
+        and higher limits.
+    - name: Google Marketing Platform
+      description: Integrated advertising and analytics platform combining Analytics 360 with advertising products for enterprise
+        marketing.
+  - name: MCP Server
+    url: https://github.com/googleanalytics/google-analytics-mcp
+    type: MCPServer
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

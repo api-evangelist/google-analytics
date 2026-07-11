@@ -254,6 +254,8 @@ apis:
   - Management
   - Universal Analytics
 common:
+  - type: OAuthScopes
+    url: scopes/google-analytics-scopes.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/google-analytics/overview
   - type: Arazzo

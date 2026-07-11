@@ -1,0 +1,121 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/google-analytics-admin-api.yaml, openapi/google-analytics-data-api.yaml, openapi/google-analytics-management-api-v3.yaml,
+  openapi/google-analytics-reporting-api-v4.yaml, openapi/google-analytics-user-deletion-api.yaml
+schemes:
+- name: Oauth2
+  source: openapi/google-analytics-admin-api.yaml
+  flows:
+  - flow: implicit
+    authorizationUrl: https://accounts.google.com/o/oauth2/auth
+  description: Oauth 2.0 implicit authentication
+- name: Oauth2c
+  source: openapi/google-analytics-admin-api.yaml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://accounts.google.com/o/oauth2/auth
+    tokenUrl: https://accounts.google.com/o/oauth2/token
+  description: Oauth 2.0 authorizationCode authentication
+- name: Oauth2
+  source: openapi/google-analytics-data-api.yaml
+  flows:
+  - flow: implicit
+    authorizationUrl: https://accounts.google.com/o/oauth2/auth
+  description: Oauth 2.0 implicit authentication
+- name: Oauth2c
+  source: openapi/google-analytics-data-api.yaml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://accounts.google.com/o/oauth2/auth
+    tokenUrl: https://accounts.google.com/o/oauth2/token
+  description: Oauth 2.0 authorizationCode authentication
+- name: Oauth2
+  source: openapi/google-analytics-management-api-v3.yaml
+  flows:
+  - flow: implicit
+    authorizationUrl: https://accounts.google.com/o/oauth2/auth
+  description: Oauth 2.0 implicit authentication
+- name: Oauth2c
+  source: openapi/google-analytics-management-api-v3.yaml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://accounts.google.com/o/oauth2/auth
+    tokenUrl: https://accounts.google.com/o/oauth2/token
+  description: Oauth 2.0 authorizationCode authentication
+- name: Oauth2
+  source: openapi/google-analytics-reporting-api-v4.yaml
+  flows:
+  - flow: implicit
+    authorizationUrl: https://accounts.google.com/o/oauth2/auth
+  description: Oauth 2.0 implicit authentication
+- name: Oauth2c
+  source: openapi/google-analytics-reporting-api-v4.yaml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://accounts.google.com/o/oauth2/auth
+    tokenUrl: https://accounts.google.com/o/oauth2/token
+  description: Oauth 2.0 authorizationCode authentication
+- name: oauth2
+  source: openapi/google-analytics-user-deletion-api.yaml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://accounts.google.com/o/oauth2/auth
+    tokenUrl: https://oauth2.googleapis.com/token
+  description: OAuth 2.0 authentication
+scopes:
+- scope: https://www.googleapis.com/auth/analytics
+  description: View and manage your Google Analytics data
+  flows:
+  - authorizationCode
+  - implicit
+  sources:
+  - openapi/google-analytics-data-api.yaml
+  - openapi/google-analytics-management-api-v3.yaml
+  - openapi/google-analytics-reporting-api-v4.yaml
+- scope: https://www.googleapis.com/auth/analytics.edit
+  description: Edit Google Analytics management entities
+  flows:
+  - authorizationCode
+  - implicit
+  sources:
+  - openapi/google-analytics-admin-api.yaml
+  - openapi/google-analytics-management-api-v3.yaml
+- scope: https://www.googleapis.com/auth/analytics.manage.users
+  description: Manage Google Analytics Account users by email address
+  flows:
+  - authorizationCode
+  - implicit
+  sources:
+  - openapi/google-analytics-management-api-v3.yaml
+- scope: https://www.googleapis.com/auth/analytics.manage.users.readonly
+  description: View Google Analytics user permissions
+  flows:
+  - authorizationCode
+  - implicit
+  sources:
+  - openapi/google-analytics-management-api-v3.yaml
+- scope: https://www.googleapis.com/auth/analytics.provision
+  description: Create a new Google Analytics account along with its default property and view
+  flows:
+  - authorizationCode
+  - implicit
+  sources:
+  - openapi/google-analytics-management-api-v3.yaml
+- scope: https://www.googleapis.com/auth/analytics.readonly
+  description: See and download your Google Analytics data
+  flows:
+  - authorizationCode
+  - implicit
+  sources:
+  - openapi/google-analytics-admin-api.yaml
+  - openapi/google-analytics-data-api.yaml
+  - openapi/google-analytics-management-api-v3.yaml
+  - openapi/google-analytics-reporting-api-v4.yaml
+- scope: https://www.googleapis.com/auth/analytics.user.deletion
+  description: Manage Google Analytics user deletion requests
+  flows:
+  - authorizationCode
+  - implicit
+  sources:
+  - openapi/google-analytics-management-api-v3.yaml
+  - openapi/google-analytics-user-deletion-api.yaml

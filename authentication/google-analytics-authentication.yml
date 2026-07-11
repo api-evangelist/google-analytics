@@ -1,0 +1,37 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/google-analytics-admin-api.yaml, openapi/google-analytics-data-api.yaml, openapi/google-analytics-management-api-v3.yaml,
+  openapi/google-analytics-reporting-api-v4.yaml, openapi/google-analytics-user-deletion-api.yaml
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+  - implicit
+schemes:
+- name: Oauth2
+  type: oauth2
+  flows:
+  - flow: implicit
+    authorizationUrl: https://accounts.google.com/o/oauth2/auth
+    scopes: 2
+  description: Oauth 2.0 implicit authentication
+  sources:
+  - openapi/google-analytics-admin-api.yaml
+  - openapi/google-analytics-data-api.yaml
+  - openapi/google-analytics-management-api-v3.yaml
+  - openapi/google-analytics-reporting-api-v4.yaml
+- name: Oauth2c
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://accounts.google.com/o/oauth2/auth
+    tokenUrl: https://accounts.google.com/o/oauth2/token
+    scopes: 2
+  description: Oauth 2.0 authorizationCode authentication
+  sources:
+  - openapi/google-analytics-admin-api.yaml
+  - openapi/google-analytics-data-api.yaml
+  - openapi/google-analytics-management-api-v3.yaml
+  - openapi/google-analytics-reporting-api-v4.yaml
+  - openapi/google-analytics-user-deletion-api.yaml

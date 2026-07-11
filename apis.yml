@@ -254,6 +254,12 @@ apis:
   - Management
   - Universal Analytics
 common:
+  - type: VulnerabilityDisclosure
+    url: security/google-analytics-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/google-analytics-domain-security.yml
+  - type: Authentication
+    url: authentication/google-analytics-authentication.yml
   - type: OAuthScopes
     url: scopes/google-analytics-scopes.yml
   - type: PostmanWorkspace

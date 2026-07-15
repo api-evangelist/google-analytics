@@ -1,0 +1,2139 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/google-analytics-admin-api.yaml, openapi/google-analytics-data-api.yaml, openapi/google-analytics-management-api-v3.yaml,
+  openapi/google-analytics-measurement-protocol.yaml, openapi/google-analytics-reporting-api-v4.yaml,
+  openapi/google-analytics-user-deletion-api.yaml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 129
+  by_action_class:
+    connected: 48
+    acting: 81
+  by_consequence:
+    read: 48
+    physical: 5
+    write: 76
+  human_in_the_loop_required: 0
+operations:
+- path: /v1beta/accountSummaries
+  method: get
+  operationId: analyticsadmin.accountSummaries.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1beta/accounts
+  method: get
+  operationId: analyticsadmin.accounts.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1beta/accounts:provisionAccountTicket
+  method: post
+  operationId: analyticsadmin.accounts.provisionAccountTicket
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1beta/properties
+  method: get
+  operationId: analyticsadmin.properties.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1beta/properties
+  method: post
+  operationId: analyticsadmin.properties.create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1beta/{account}:searchChangeHistoryEvents
+  method: post
+  operationId: analyticsadmin.accounts.searchChangeHistoryEvents
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1beta/{entity}:runAccessReport
+  method: post
+  operationId: analyticsadmin.properties.runAccessReport
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1beta/{name}
+  method: delete
+  operationId: analyticsadmin.properties.googleAdsLinks.delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1beta/{name}
+  method: get
+  operationId: analyticsadmin.properties.dataStreams.measurementProtocolSecrets.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1beta/{name}
+  method: patch
+  operationId: analyticsadmin.properties.googleAdsLinks.patch
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1beta/{name}:archive
+  method: post
+  operationId: analyticsadmin.properties.customMetrics.archive
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1beta/{parent}/conversionEvents
+  method: get
+  operationId: analyticsadmin.properties.conversionEvents.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1beta/{parent}/conversionEvents
+  method: post
+  operationId: analyticsadmin.properties.conversionEvents.create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1beta/{parent}/customDimensions
+  method: get
+  operationId: analyticsadmin.properties.customDimensions.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1beta/{parent}/customDimensions
+  method: post
+  operationId: analyticsadmin.properties.customDimensions.create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1beta/{parent}/customMetrics
+  method: get
+  operationId: analyticsadmin.properties.customMetrics.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1beta/{parent}/customMetrics
+  method: post
+  operationId: analyticsadmin.properties.customMetrics.create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1beta/{parent}/dataStreams
+  method: get
+  operationId: analyticsadmin.properties.dataStreams.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1beta/{parent}/dataStreams
+  method: post
+  operationId: analyticsadmin.properties.dataStreams.create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1beta/{parent}/firebaseLinks
+  method: get
+  operationId: analyticsadmin.properties.firebaseLinks.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1beta/{parent}/firebaseLinks
+  method: post
+  operationId: analyticsadmin.properties.firebaseLinks.create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1beta/{parent}/googleAdsLinks
+  method: get
+  operationId: analyticsadmin.properties.googleAdsLinks.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1beta/{parent}/googleAdsLinks
+  method: post
+  operationId: analyticsadmin.properties.googleAdsLinks.create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1beta/{parent}/measurementProtocolSecrets
+  method: get
+  operationId: analyticsadmin.properties.dataStreams.measurementProtocolSecrets.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1beta/{parent}/measurementProtocolSecrets
+  method: post
+  operationId: analyticsadmin.properties.dataStreams.measurementProtocolSecrets.create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1beta/{property}:acknowledgeUserDataCollection
+  method: post
+  operationId: analyticsadmin.properties.acknowledgeUserDataCollection
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1beta/{name}
+  method: get
+  operationId: analyticsdata.properties.audienceExports.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1beta/{name}:query
+  method: post
+  operationId: analyticsdata.properties.audienceExports.query
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.readonly
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1beta/{parent}/audienceExports
+  method: get
+  operationId: analyticsdata.properties.audienceExports.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1beta/{parent}/audienceExports
+  method: post
+  operationId: analyticsdata.properties.audienceExports.create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.readonly
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1beta/{property}:batchRunPivotReports
+  method: post
+  operationId: analyticsdata.properties.batchRunPivotReports
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.readonly
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1beta/{property}:batchRunReports
+  method: post
+  operationId: analyticsdata.properties.batchRunReports
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.readonly
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1beta/{property}:checkCompatibility
+  method: post
+  operationId: analyticsdata.properties.checkCompatibility
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.readonly
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1beta/{property}:runPivotReport
+  method: post
+  operationId: analyticsdata.properties.runPivotReport
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.readonly
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1beta/{property}:runRealtimeReport
+  method: post
+  operationId: analyticsdata.properties.runRealtimeReport
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.readonly
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1beta/{property}:runReport
+  method: post
+  operationId: analyticsdata.properties.runReport
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.readonly
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /data/ga
+  method: get
+  operationId: analytics.data.ga.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /data/mcf
+  method: get
+  operationId: analytics.data.mcf.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /data/realtime
+  method: get
+  operationId: analytics.data.realtime.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/accountSummaries
+  method: get
+  operationId: analytics.management.accountSummaries.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/accounts
+  method: get
+  operationId: analytics.management.accounts.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/accounts/{accountId}/entityUserLinks
+  method: get
+  operationId: analytics.management.accountUserLinks.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics.manage.users
+    - https://www.googleapis.com/auth/analytics.manage.users.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/accounts/{accountId}/entityUserLinks
+  method: post
+  operationId: analytics.management.accountUserLinks.insert
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.manage.users
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/entityUserLinks/{linkId}
+  method: delete
+  operationId: analytics.management.accountUserLinks.delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.manage.users
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/entityUserLinks/{linkId}
+  method: put
+  operationId: analytics.management.accountUserLinks.update
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.manage.users
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/filters
+  method: get
+  operationId: analytics.management.filters.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/accounts/{accountId}/filters
+  method: post
+  operationId: analytics.management.filters.insert
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/filters/{filterId}
+  method: delete
+  operationId: analytics.management.filters.delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/filters/{filterId}
+  method: get
+  operationId: analytics.management.filters.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/accounts/{accountId}/filters/{filterId}
+  method: patch
+  operationId: analytics.management.filters.patch
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/filters/{filterId}
+  method: put
+  operationId: analytics.management.filters.update
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties
+  method: get
+  operationId: analytics.management.webproperties.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/accounts/{accountId}/webproperties
+  method: post
+  operationId: analytics.management.webproperties.insert
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}
+  method: get
+  operationId: analytics.management.webproperties.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}
+  method: patch
+  operationId: analytics.management.webproperties.patch
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}
+  method: put
+  operationId: analytics.management.webproperties.update
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources
+  method: get
+  operationId: analytics.management.customDataSources.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/deleteUploadData
+  method: post
+  operationId: analytics.management.uploads.deleteUploadData
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/uploads
+  method: get
+  operationId: analytics.management.uploads.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/uploads
+  method: post
+  operationId: analytics.management.uploads.uploadData
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/uploads/{uploadId}
+  method: get
+  operationId: analytics.management.uploads.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions
+  method: get
+  operationId: analytics.management.customDimensions.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions
+  method: post
+  operationId: analytics.management.customDimensions.insert
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions/{customDimensionId}
+  method: get
+  operationId: analytics.management.customDimensions.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions/{customDimensionId}
+  method: patch
+  operationId: analytics.management.customDimensions.patch
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions/{customDimensionId}
+  method: put
+  operationId: analytics.management.customDimensions.update
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics
+  method: get
+  operationId: analytics.management.customMetrics.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics
+  method: post
+  operationId: analytics.management.customMetrics.insert
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics/{customMetricId}
+  method: get
+  operationId: analytics.management.customMetrics.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics/{customMetricId}
+  method: patch
+  operationId: analytics.management.customMetrics.patch
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics/{customMetricId}
+  method: put
+  operationId: analytics.management.customMetrics.update
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks
+  method: get
+  operationId: analytics.management.webPropertyAdWordsLinks.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks
+  method: post
+  operationId: analytics.management.webPropertyAdWordsLinks.insert
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks/{webPropertyAdWordsLinkId}
+  method: delete
+  operationId: analytics.management.webPropertyAdWordsLinks.delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks/{webPropertyAdWordsLinkId}
+  method: get
+  operationId: analytics.management.webPropertyAdWordsLinks.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks/{webPropertyAdWordsLinkId}
+  method: patch
+  operationId: analytics.management.webPropertyAdWordsLinks.patch
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks/{webPropertyAdWordsLinkId}
+  method: put
+  operationId: analytics.management.webPropertyAdWordsLinks.update
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/entityUserLinks
+  method: get
+  operationId: analytics.management.webpropertyUserLinks.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics.manage.users
+    - https://www.googleapis.com/auth/analytics.manage.users.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/entityUserLinks
+  method: post
+  operationId: analytics.management.webpropertyUserLinks.insert
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.manage.users
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/entityUserLinks/{linkId}
+  method: delete
+  operationId: analytics.management.webpropertyUserLinks.delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.manage.users
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/entityUserLinks/{linkId}
+  method: put
+  operationId: analytics.management.webpropertyUserLinks.update
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.manage.users
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles
+  method: get
+  operationId: analytics.management.profiles.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles
+  method: post
+  operationId: analytics.management.profiles.insert
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}
+  method: delete
+  operationId: analytics.management.profiles.delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}
+  method: get
+  operationId: analytics.management.profiles.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}
+  method: patch
+  operationId: analytics.management.profiles.patch
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}
+  method: put
+  operationId: analytics.management.profiles.update
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/entityUserLinks
+  method: get
+  operationId: analytics.management.profileUserLinks.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics.manage.users
+    - https://www.googleapis.com/auth/analytics.manage.users.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/entityUserLinks
+  method: post
+  operationId: analytics.management.profileUserLinks.insert
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.manage.users
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/entityUserLinks/{linkId}
+  method: delete
+  operationId: analytics.management.profileUserLinks.delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.manage.users
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/entityUserLinks/{linkId}
+  method: put
+  operationId: analytics.management.profileUserLinks.update
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.manage.users
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments
+  method: get
+  operationId: analytics.management.experiments.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments
+  method: post
+  operationId: analytics.management.experiments.insert
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments/{experimentId}
+  method: delete
+  operationId: analytics.management.experiments.delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments/{experimentId}
+  method: get
+  operationId: analytics.management.experiments.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments/{experimentId}
+  method: patch
+  operationId: analytics.management.experiments.patch
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments/{experimentId}
+  method: put
+  operationId: analytics.management.experiments.update
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals
+  method: get
+  operationId: analytics.management.goals.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals
+  method: post
+  operationId: analytics.management.goals.insert
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals/{goalId}
+  method: get
+  operationId: analytics.management.goals.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals/{goalId}
+  method: patch
+  operationId: analytics.management.goals.patch
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals/{goalId}
+  method: put
+  operationId: analytics.management.goals.update
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks
+  method: get
+  operationId: analytics.management.profileFilterLinks.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks
+  method: post
+  operationId: analytics.management.profileFilterLinks.insert
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks/{linkId}
+  method: delete
+  operationId: analytics.management.profileFilterLinks.delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks/{linkId}
+  method: get
+  operationId: analytics.management.profileFilterLinks.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks/{linkId}
+  method: patch
+  operationId: analytics.management.profileFilterLinks.patch
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks/{linkId}
+  method: put
+  operationId: analytics.management.profileFilterLinks.update
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/unsampledReports
+  method: get
+  operationId: analytics.management.unsampledReports.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/unsampledReports
+  method: post
+  operationId: analytics.management.unsampledReports.insert
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/unsampledReports/{unsampledReportId}
+  method: delete
+  operationId: analytics.management.unsampledReports.delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/unsampledReports/{unsampledReportId}
+  method: get
+  operationId: analytics.management.unsampledReports.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/remarketingAudiences
+  method: get
+  operationId: analytics.management.remarketingAudience.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/remarketingAudiences
+  method: post
+  operationId: analytics.management.remarketingAudience.insert
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/remarketingAudiences/{remarketingAudienceId}
+  method: delete
+  operationId: analytics.management.remarketingAudience.delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/remarketingAudiences/{remarketingAudienceId}
+  method: get
+  operationId: analytics.management.remarketingAudience.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/remarketingAudiences/{remarketingAudienceId}
+  method: patch
+  operationId: analytics.management.remarketingAudience.patch
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/accounts/{accountId}/webproperties/{webPropertyId}/remarketingAudiences/{remarketingAudienceId}
+  method: put
+  operationId: analytics.management.remarketingAudience.update
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/clientId:hashClientId
+  method: post
+  operationId: analytics.management.clientId.hashClientId
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/segments
+  method: get
+  operationId: analytics.management.segments.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /metadata/{reportType}/columns
+  method: get
+  operationId: analytics.metadata.columns.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.edit
+    - https://www.googleapis.com/auth/analytics.readonly
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /provisioning/createAccountTicket
+  method: post
+  operationId: analytics.provisioning.createAccountTicket
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.provision
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /provisioning/createAccountTree
+  method: post
+  operationId: analytics.provisioning.createAccountTree
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.provision
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /userDeletion/userDeletionRequests:upsert
+  method: post
+  operationId: analytics.userDeletion.userDeletionRequest.upsert
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.user.deletion
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /collect
+  method: post
+  operationId: collectEvents
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /collect/debug
+  method: post
+  operationId: validateEvents
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v4/reports:batchGet
+  method: post
+  operationId: analyticsreporting.reports.batchGet
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.readonly
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v4/userActivity:search
+  method: post
+  operationId: analyticsreporting.userActivity.search
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics
+    - https://www.googleapis.com/auth/analytics.readonly
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /userDeletion/userDeletionRequests:upsert
+  method: post
+  operationId: upsertUserDeletionRequest
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/analytics.user.deletion
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required

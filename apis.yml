@@ -254,6 +254,8 @@ apis:
   - Management
   - Universal Analytics
 common:
+  - type: AgenticAccess
+    url: agentic-access/google-analytics-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/google-analytics-vulnerability-disclosure.yml
   - type: DomainSecurity

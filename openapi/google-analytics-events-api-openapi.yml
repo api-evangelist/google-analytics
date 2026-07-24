@@ -1,0 +1,271 @@
+openapi: 3.0.0
+info:
+  contact:
+    name: Google
+    url: https://google.com
+    x-twitter: youtube
+  description: 'Manage properties in Google Analytics. Warning: Creating multiple Customer Applications, Accounts, or Projects to simulate or act as a single Customer Application, Account, or Project (respectively) or to circumvent Service-specific usage limits or quotas is a direct violation of Google Cloud Platform Terms of Service as well as Google APIs Terms of Service. These actions can result in immediate termination of your GCP project(s) without any warning.'
+  license:
+    name: Creative Commons Attribution 3.0
+    url: http://creativecommons.org/licenses/by/3.0/
+  termsOfService: https://developers.google.com/terms/
+  title: Google Analytics Admin accounts Events API
+  version: v1beta
+  x-apisguru-categories:
+  - analytics
+  - media
+  x-logo:
+    url: https://upload.wikimedia.org/wikipedia/commons/e/e1/YouTube_play_buttom_icon_%282013-2017%29.svg
+  x-origin:
+  - format: google
+    url: https://analyticsadmin.googleapis.com/$discovery/rest?version=v1beta
+    version: v1
+  x-preferred: true
+  x-providerName: googleapis.com
+  x-serviceName: analyticsadmin
+servers:
+- url: https://analyticsadmin.googleapis.com/
+tags:
+- name: Events
+paths:
+  /collect:
+    post:
+      operationId: collectEvents
+      summary: Google Analytics Send Events to Google Analytics
+      description: Sends one or more events to Google Analytics for processing. Up to 25 events can be sent per request. Events can be backdated up to 72 hours.
+      parameters:
+      - name: api_secret
+        in: query
+        required: true
+        description: The API Secret generated in the Google Analytics UI. Found under Admin > Data Streams > Choose your stream > Measurement Protocol > Create.
+        schema:
+          type: string
+        example: secret_abc123
+      - name: measurement_id
+        in: query
+        required: false
+        description: The Measurement ID for a web data stream. Required for web streams. Found in the Google Analytics UI under Admin > Data Streams.
+        schema:
+          type: string
+        example: '123456'
+      - name: firebase_app_id
+        in: query
+        required: false
+        description: The Firebase App ID for an app data stream. Required for app streams. Found in the Firebase console under Project Settings.
+        schema:
+          type: string
+        example: '123456'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MeasurementPayload'
+      responses:
+        '204':
+          description: Events accepted. Note that a 2xx response does not guarantee the events are valid or will appear in reports. The Measurement Protocol does not return error details for malformed payloads.
+        '400':
+          description: Malformed request
+        '403':
+          description: Invalid api_secret
+      tags:
+      - Events
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    UserPropertyValue:
+      type: object
+      properties:
+        value:
+          oneOf:
+          - type: string
+          - type: number
+          - type: boolean
+          description: The value of the user property.
+          example: example_value
+    MeasurementPayload:
+      type: object
+      required:
+      - events
+      properties:
+        client_id:
+          type: string
+          description: Uniquely identifies a user instance of a web client. Required for web streams.
+          example: '123456789.1234567890'
+        app_instance_id:
+          type: string
+          description: Uniquely identifies a user instance of an app. Required for app streams.
+          example: '123456'
+        user_id:
+          type: string
+          description: A unique identifier for a user. Enables cross-platform analysis. Must contain only UTF-8 characters.
+          example: '123456'
+        timestamp_micros:
+          type: integer
+          format: int64
+          description: Unix timestamp in microseconds for the request. Used to backdate events up to 72 hours.
+          example: 1713355200000000
+        user_properties:
+          type: object
+          description: User-scoped properties for the measurement.
+          additionalProperties:
+            $ref: '#/components/schemas/UserPropertyValue'
+        user_data:
+          type: object
+          description: User-provided data for enhanced measurement.
+        consent:
+          $ref: '#/components/schemas/Consent'
+        non_personalized_ads:
+          type: boolean
+          description: Deprecated. Use consent.ad_personalization instead.
+          deprecated: true
+          example: true
+        user_location:
+          $ref: '#/components/schemas/UserLocation'
+        ip_override:
+          type: string
+          description: IP address used to derive geographic information.
+          example: '123456'
+        device:
+          $ref: '#/components/schemas/Device'
+        validation_behavior:
+          type: string
+          description: Controls validation strictness. RELAXED only rejects malformed requests. ENFORCE_RECOMMENDATIONS also rejects invalid types and exceeded limits.
+          enum:
+          - RELAXED
+          - ENFORCE_RECOMMENDATIONS
+          default: RELAXED
+          example: RELAXED
+        events:
+          type: array
+          description: Array of event objects. Maximum 25 events per request.
+          maxItems: 25
+          items:
+            $ref: '#/components/schemas/Event'
+    Event:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: The name of the event. Must not use reserved names (ad_click, app_exception, error, session_start, etc.) or reserved prefixes (_, firebase_, ga_, google_, gtag.).
+          example: Example Name
+        params:
+          type: object
+          description: Event parameters as key-value pairs. Common parameters include session_id, engagement_time_msec, and timestamp_micros.
+          additionalProperties: true
+          properties:
+            session_id:
+              type: string
+              description: Session identifier for accurate session metrics.
+            engagement_time_msec:
+              type: integer
+              description: User engagement duration in milliseconds.
+            timestamp_micros:
+              type: integer
+              format: int64
+              description: Unix epoch time in microseconds to override event timestamp.
+    Device:
+      type: object
+      properties:
+        category:
+          type: string
+          description: Device category (e.g., mobile, tablet, desktop).
+          example: example_value
+        language:
+          type: string
+          description: Device language setting.
+          example: example_value
+        screen_resolution:
+          type: string
+          description: Screen resolution (e.g., 1920x1080).
+          example: example_value
+        operating_system:
+          type: string
+          description: Operating system name.
+          example: example_value
+        operating_system_version:
+          type: string
+          description: Operating system version.
+          example: example_value
+        model:
+          type: string
+          description: Device model.
+          example: example_value
+        brand:
+          type: string
+          description: Device brand.
+          example: example_value
+        browser:
+          type: string
+          description: Browser name.
+          example: example_value
+        browser_version:
+          type: string
+          description: Browser version.
+          example: example_value
+    UserLocation:
+      type: object
+      properties:
+        city:
+          type: string
+          description: City name.
+          example: example_value
+        region_id:
+          type: string
+          description: Region identifier.
+          example: '123456'
+        country_id:
+          type: string
+          description: Country identifier.
+          example: '123456'
+        subcontinent_id:
+          type: string
+          description: Subcontinent identifier.
+          example: '123456'
+        continent_id:
+          type: string
+          description: Continent identifier.
+          example: '123456'
+    Consent:
+      type: object
+      properties:
+        ad_user_data:
+          type: string
+          description: Consent for using user data in advertising.
+          enum:
+          - GRANTED
+          - DENIED
+          example: GRANTED
+        ad_personalization:
+          type: string
+          description: Consent for ad personalization.
+          enum:
+          - GRANTED
+          - DENIED
+          example: GRANTED
+  securitySchemes:
+    Oauth2:
+      description: Oauth 2.0 implicit authentication
+      flows:
+        implicit:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          scopes:
+            https://www.googleapis.com/auth/analytics.edit: Edit Google Analytics management entities
+            https://www.googleapis.com/auth/analytics.readonly: See and download your Google Analytics data
+      type: oauth2
+    Oauth2c:
+      description: Oauth 2.0 authorizationCode authentication
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          scopes:
+            https://www.googleapis.com/auth/analytics.edit: Edit Google Analytics management entities
+            https://www.googleapis.com/auth/analytics.readonly: See and download your Google Analytics data
+          tokenUrl: https://accounts.google.com/o/oauth2/token
+      type: oauth2
+externalDocs:
+  url: http://code.google.com/apis/analytics/docs/mgmt/home.html

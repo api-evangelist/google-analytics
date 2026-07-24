@@ -1,0 +1,135 @@
+openapi: 3.0.0
+info:
+  contact:
+    name: Google
+    url: https://google.com
+    x-twitter: youtube
+  description: 'Manage properties in Google Analytics. Warning: Creating multiple Customer Applications, Accounts, or Projects to simulate or act as a single Customer Application, Account, or Project (respectively) or to circumvent Service-specific usage limits or quotas is a direct violation of Google Cloud Platform Terms of Service as well as Google APIs Terms of Service. These actions can result in immediate termination of your GCP project(s) without any warning.'
+  license:
+    name: Creative Commons Attribution 3.0
+    url: http://creativecommons.org/licenses/by/3.0/
+  termsOfService: https://developers.google.com/terms/
+  title: Google Analytics Admin accounts User Deletion API
+  version: v1beta
+  x-apisguru-categories:
+  - analytics
+  - media
+  x-logo:
+    url: https://upload.wikimedia.org/wikipedia/commons/e/e1/YouTube_play_buttom_icon_%282013-2017%29.svg
+  x-origin:
+  - format: google
+    url: https://analyticsadmin.googleapis.com/$discovery/rest?version=v1beta
+    version: v1
+  x-preferred: true
+  x-providerName: googleapis.com
+  x-serviceName: analyticsadmin
+servers:
+- url: https://analyticsadmin.googleapis.com/
+tags:
+- name: User Deletion
+paths:
+  /userDeletion/userDeletionRequests:upsert:
+    post:
+      operationId: upsertUserDeletionRequest
+      summary: Google Analytics Insert or Update a User Deletion Request
+      description: Inserts or updates a user deletion request. Submitting a deletion request for a user that already has a pending request will update the existing request. The User Deletion API does not remove data from reports based on previously aggregated data or exported datasets like BigQuery.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDeletionRequest'
+      responses:
+        '200':
+          description: Successful user deletion request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDeletionRequest'
+        '400':
+          description: Invalid request - malformed body or invalid ID type
+        '401':
+          description: Authentication required
+        '403':
+          description: Insufficient permissions - missing required OAuth scope
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/analytics.user.deletion
+      tags:
+      - User Deletion
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    UserDeletionId:
+      type: object
+      required:
+      - type
+      - userId
+      properties:
+        type:
+          type: string
+          description: The type of user identifier.
+          enum:
+          - CLIENT_ID
+          - USER_ID
+          - APP_INSTANCE_ID
+          example: CLIENT_ID
+        userId:
+          type: string
+          description: The actual user identifier value corresponding to the specified type.
+          example: '123456'
+    UserDeletionRequest:
+      type: object
+      required:
+      - id
+      properties:
+        kind:
+          type: string
+          description: Resource type identifier.
+          default: analytics#userDeletionRequest
+          readOnly: true
+          example: example_value
+        id:
+          $ref: '#/components/schemas/UserDeletionId'
+        webPropertyId:
+          type: string
+          description: The Web Property ID for a Universal Analytics property. Required for Universal Analytics properties.
+          example: '123456'
+        firebaseProjectId:
+          type: string
+          description: The Firebase Project ID. Required for app streams using APP_INSTANCE_ID.
+          example: '123456'
+        propertyId:
+          type: string
+          description: The GA4 property ID.
+          example: '123456'
+        deletionRequestTime:
+          type: string
+          format: date-time
+          description: The time when the deletion request was submitted. Set by the server.
+          readOnly: true
+          example: '2026-04-17T12:00:00Z'
+  securitySchemes:
+    Oauth2:
+      description: Oauth 2.0 implicit authentication
+      flows:
+        implicit:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          scopes:
+            https://www.googleapis.com/auth/analytics.edit: Edit Google Analytics management entities
+            https://www.googleapis.com/auth/analytics.readonly: See and download your Google Analytics data
+      type: oauth2
+    Oauth2c:
+      description: Oauth 2.0 authorizationCode authentication
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          scopes:
+            https://www.googleapis.com/auth/analytics.edit: Edit Google Analytics management entities
+            https://www.googleapis.com/auth/analytics.readonly: See and download your Google Analytics data
+          tokenUrl: https://accounts.google.com/o/oauth2/token
+      type: oauth2
+externalDocs:
+  url: http://code.google.com/apis/analytics/docs/mgmt/home.html

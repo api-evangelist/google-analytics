@@ -1,0 +1,509 @@
+openapi: 3.0.0
+info:
+  contact:
+    name: Google
+    url: https://google.com
+    x-twitter: youtube
+  description: 'Manage properties in Google Analytics. Warning: Creating multiple Customer Applications, Accounts, or Projects to simulate or act as a single Customer Application, Account, or Project (respectively) or to circumvent Service-specific usage limits or quotas is a direct violation of Google Cloud Platform Terms of Service as well as Google APIs Terms of Service. These actions can result in immediate termination of your GCP project(s) without any warning.'
+  license:
+    name: Creative Commons Attribution 3.0
+    url: http://creativecommons.org/licenses/by/3.0/
+  termsOfService: https://developers.google.com/terms/
+  title: Google Analytics Admin accounts provisioning API
+  version: v1beta
+  x-apisguru-categories:
+  - analytics
+  - media
+  x-logo:
+    url: https://upload.wikimedia.org/wikipedia/commons/e/e1/YouTube_play_buttom_icon_%282013-2017%29.svg
+  x-origin:
+  - format: google
+    url: https://analyticsadmin.googleapis.com/$discovery/rest?version=v1beta
+    version: v1
+  x-preferred: true
+  x-providerName: googleapis.com
+  x-serviceName: analyticsadmin
+servers:
+- url: https://analyticsadmin.googleapis.com/
+tags:
+- name: provisioning
+paths:
+  /provisioning/createAccountTicket:
+    parameters:
+    - $ref: '#/components/parameters/alt'
+    - $ref: '#/components/parameters/fields'
+    - $ref: '#/components/parameters/key'
+    - $ref: '#/components/parameters/oauth_token'
+    - $ref: '#/components/parameters/prettyPrint'
+    - $ref: '#/components/parameters/quotaUser'
+    - $ref: '#/components/parameters/userIp'
+    post:
+      description: Creates an account ticket.
+      operationId: analytics.provisioning.createAccountTicket
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountTicket'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountTicket'
+          description: Successful response
+      security:
+      - Oauth2:
+        - https://www.googleapis.com/auth/analytics.provision
+        Oauth2c:
+        - https://www.googleapis.com/auth/analytics.provision
+      tags:
+      - provisioning
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /provisioning/createAccountTree:
+    parameters:
+    - $ref: '#/components/parameters/alt'
+    - $ref: '#/components/parameters/fields'
+    - $ref: '#/components/parameters/key'
+    - $ref: '#/components/parameters/oauth_token'
+    - $ref: '#/components/parameters/prettyPrint'
+    - $ref: '#/components/parameters/quotaUser'
+    - $ref: '#/components/parameters/userIp'
+    post:
+      description: Provision account.
+      operationId: analytics.provisioning.createAccountTree
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountTreeRequest'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountTreeResponse'
+          description: Successful response
+      security:
+      - Oauth2:
+        - https://www.googleapis.com/auth/analytics.provision
+        Oauth2c:
+        - https://www.googleapis.com/auth/analytics.provision
+      tags:
+      - provisioning
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    alt:
+      description: Data format for the response.
+      in: query
+      name: alt
+      schema:
+        enum:
+        - json
+        type: string
+    key:
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+      in: query
+      name: key
+      schema:
+        type: string
+    userIp:
+      description: Deprecated. Please use quotaUser instead.
+      in: query
+      name: userIp
+      schema:
+        type: string
+    fields:
+      description: Selector specifying which fields to include in a partial response.
+      in: query
+      name: fields
+      schema:
+        type: string
+    prettyPrint:
+      description: Returns response with indentations and line breaks.
+      in: query
+      name: prettyPrint
+      schema:
+        type: boolean
+    oauth_token:
+      description: OAuth 2.0 token for the current user.
+      in: query
+      name: oauth_token
+      schema:
+        type: string
+    quotaUser:
+      description: An opaque string that represents a user for quota purposes. Must not exceed 40 characters.
+      in: query
+      name: quotaUser
+      schema:
+        type: string
+  schemas:
+    AccountTicket:
+      description: JSON template for an Analytics account ticket. The account ticket consists of the ticket ID and the basic information for the account, property and profile.
+      properties:
+        account:
+          $ref: '#/components/schemas/Account'
+          description: Account for this ticket.
+        id:
+          description: Account ticket ID used to access the account ticket.
+          type: string
+          example: '123456'
+        kind:
+          default: analytics#accountTicket
+          description: Resource type for account ticket.
+          type: string
+          example: example_value
+        profile:
+          $ref: '#/components/schemas/Profile'
+          description: View (Profile) for the account.
+        redirectUri:
+          description: Redirect URI where the user will be sent after accepting Terms of Service. Must be configured in APIs console as a callback URL.
+          type: string
+          example: https://example.com/resource
+        webproperty:
+          $ref: '#/components/schemas/Webproperty'
+          description: Web property for the account.
+      type: object
+    Webproperty:
+      description: JSON template for an Analytics web property.
+      properties:
+        accountId:
+          description: Account ID to which this web property belongs.
+          type: string
+        childLink:
+          description: Child link for this web property. Points to the list of views (profiles) for this web property.
+          properties:
+            href:
+              description: Link to the list of views (profiles) for this web property.
+              type: string
+            type:
+              default: analytics#profiles
+              description: Type of the parent link. Its value is "analytics#profiles".
+              type: string
+          type: object
+        created:
+          description: Time this web property was created.
+          format: date-time
+          readOnly: true
+          type: string
+        dataRetentionResetOnNewActivity:
+          description: 'Set to true to reset the retention period of the user identifier with each new event from that user (thus setting the expiration date to current time plus retention period).
+
+            Set to false to delete data associated with the user identifier automatically after the rentention period.
+
+            This property cannot be set on insert.'
+          type: boolean
+        dataRetentionTtl:
+          description: 'The length of time for which user and event data is retained.
+
+            This property cannot be set on insert.'
+          type: string
+        defaultProfileId:
+          description: Default view (profile) ID.
+          format: int64
+          type: string
+        id:
+          description: Web property ID of the form UA-XXXXX-YY.
+          type: string
+        industryVertical:
+          description: The industry vertical/category selected for this web property.
+          type: string
+        internalWebPropertyId:
+          description: Internal ID for this web property.
+          readOnly: true
+          type: string
+        kind:
+          default: analytics#webproperty
+          description: Resource type for Analytics WebProperty.
+          readOnly: true
+          type: string
+        level:
+          description: Level for this web property. Possible values are STANDARD or PREMIUM.
+          readOnly: true
+          type: string
+        name:
+          description: Name of this web property.
+          type: string
+        parentLink:
+          description: Parent link for this web property. Points to the account to which this web property belongs.
+          properties:
+            href:
+              description: Link to the account for this web property.
+              type: string
+            type:
+              default: analytics#account
+              description: Type of the parent link. Its value is "analytics#account".
+              type: string
+          type: object
+        permissions:
+          description: Permissions the user has for this web property.
+          properties:
+            effective:
+              description: All the permissions that the user has for this web property. These include any implied permissions (e.g., EDIT implies VIEW) or inherited permissions from the parent account.
+              items:
+                type: string
+              readOnly: true
+              type: array
+          type: object
+        profileCount:
+          description: View (Profile) count for this web property.
+          format: int32
+          readOnly: true
+          type: integer
+        selfLink:
+          description: Link for this web property.
+          readOnly: true
+          type: string
+        starred:
+          description: Indicates whether this web property is starred or not.
+          type: boolean
+        updated:
+          description: Time this web property was last modified.
+          format: date-time
+          readOnly: true
+          type: string
+        websiteUrl:
+          description: Website url for this web property.
+          type: string
+      type: object
+    Profile:
+      description: JSON template for an Analytics view (profile).
+      properties:
+        accountId:
+          description: Account ID to which this view (profile) belongs.
+          type: string
+        botFilteringEnabled:
+          description: Indicates whether bot filtering is enabled for this view (profile).
+          type: boolean
+        childLink:
+          description: Child link for this view (profile). Points to the list of goals for this view (profile).
+          properties:
+            href:
+              description: Link to the list of goals for this view (profile).
+              type: string
+            type:
+              default: analytics#goals
+              description: Value is "analytics#goals".
+              type: string
+          type: object
+        created:
+          description: Time this view (profile) was created.
+          format: date-time
+          readOnly: true
+          type: string
+        currency:
+          description: 'The currency type associated with this view (profile), defaults to USD. The supported values are:
+
+            USD, JPY, EUR, GBP, AUD, KRW, BRL, CNY, DKK, RUB, SEK, NOK, PLN, TRY, TWD, HKD, THB, IDR, ARS, MXN, VND, PHP, INR, CHF, CAD, CZK, NZD, HUF, BGN, LTL, ZAR, UAH, AED, BOB, CLP, COP, EGP, HRK, ILS, MAD, MYR, PEN, PKR, RON, RSD, SAR, SGD, VEF, LVL'
+          type: string
+        defaultPage:
+          description: Default page for this view (profile).
+          type: string
+        eCommerceTracking:
+          description: Indicates whether ecommerce tracking is enabled for this view (profile).
+          type: boolean
+        enhancedECommerceTracking:
+          description: Indicates whether enhanced ecommerce tracking is enabled for this view (profile). This property can only be enabled if ecommerce tracking is enabled.
+          type: boolean
+        excludeQueryParameters:
+          description: The query parameters that are excluded from this view (profile).
+          type: string
+        id:
+          description: View (Profile) ID.
+          type: string
+        internalWebPropertyId:
+          description: Internal ID for the web property to which this view (profile) belongs.
+          readOnly: true
+          type: string
+        kind:
+          default: analytics#profile
+          description: Resource type for Analytics view (profile).
+          readOnly: true
+          type: string
+        name:
+          description: Name of this view (profile).
+          type: string
+        parentLink:
+          description: Parent link for this view (profile). Points to the web property to which this view (profile) belongs.
+          properties:
+            href:
+              description: Link to the web property to which this view (profile) belongs.
+              type: string
+            type:
+              default: analytics#webproperty
+              description: Value is "analytics#webproperty".
+              type: string
+          type: object
+        permissions:
+          description: Permissions the user has for this view (profile).
+          properties:
+            effective:
+              description: All the permissions that the user has for this view (profile). These include any implied permissions (e.g., EDIT implies VIEW) or inherited permissions from the parent web property.
+              items:
+                type: string
+              readOnly: true
+              type: array
+          type: object
+        selfLink:
+          description: Link for this view (profile).
+          readOnly: true
+          type: string
+        siteSearchCategoryParameters:
+          description: Site search category parameters for this view (profile).
+          type: string
+        siteSearchQueryParameters:
+          description: The site search query parameters for this view (profile).
+          type: string
+        starred:
+          description: Indicates whether this view (profile) is starred or not.
+          type: boolean
+        stripSiteSearchCategoryParameters:
+          description: Whether or not Analytics will strip search category parameters from the URLs in your reports.
+          type: boolean
+        stripSiteSearchQueryParameters:
+          description: Whether or not Analytics will strip search query parameters from the URLs in your reports.
+          type: boolean
+        timezone:
+          description: Time zone for which this view (profile) has been configured. Time zones are identified by strings from the TZ database.
+          type: string
+        type:
+          description: 'View (Profile) type. Supported types: WEB or APP.'
+          type: string
+        updated:
+          description: Time this view (profile) was last modified.
+          format: date-time
+          readOnly: true
+          type: string
+        webPropertyId:
+          description: Web property ID of the form UA-XXXXX-YY to which this view (profile) belongs.
+          readOnly: true
+          type: string
+        websiteUrl:
+          description: Website URL for this view (profile).
+          type: string
+      type: object
+    AccountTreeRequest:
+      description: JSON template for an Analytics account tree requests. The account tree request is used in the provisioning api to create an account, property, and view (profile). It contains the basic information required to make these fields.
+      properties:
+        accountName:
+          type: string
+          example: Example Name
+        kind:
+          default: analytics#accountTreeRequest
+          description: Resource type for account ticket.
+          type: string
+          example: example_value
+        profileName:
+          type: string
+          example: Example Name
+        timezone:
+          type: string
+          example: '2026-04-17T12:00:00Z'
+        webpropertyName:
+          type: string
+          example: Example Name
+        websiteUrl:
+          type: string
+          example: https://example.com/resource
+      type: object
+    AccountTreeResponse:
+      description: JSON template for an Analytics account tree response. The account tree response is used in the provisioning api to return the result of creating an account, property, and view (profile).
+      properties:
+        account:
+          $ref: '#/components/schemas/Account'
+          description: The account created.
+        kind:
+          default: analytics#accountTreeResponse
+          description: Resource type for account ticket.
+          type: string
+          example: example_value
+        profile:
+          $ref: '#/components/schemas/Profile'
+          description: View (Profile) for the account.
+        webproperty:
+          $ref: '#/components/schemas/Webproperty'
+          description: Web property for the account.
+      type: object
+    Account:
+      description: JSON template for Analytics account entry.
+      properties:
+        childLink:
+          description: Child link for an account entry. Points to the list of web properties for this account.
+          properties:
+            href:
+              description: Link to the list of web properties for this account.
+              type: string
+            type:
+              default: analytics#webproperties
+              description: Type of the child link. Its value is "analytics#webproperties".
+              type: string
+          type: object
+        created:
+          description: Time the account was created.
+          format: date-time
+          type: string
+          example: '2026-04-17T12:00:00Z'
+        id:
+          description: Account ID.
+          type: string
+          example: '123456'
+        kind:
+          default: analytics#account
+          description: Resource type for Analytics account.
+          type: string
+          example: example_value
+        name:
+          description: Account name.
+          type: string
+          example: Example Name
+        permissions:
+          description: Permissions the user has for this account.
+          properties:
+            effective:
+              description: All the permissions that the user has for this account. These include any implied permissions (e.g., EDIT implies VIEW).
+              items:
+                type: string
+              readOnly: true
+              type: array
+          type: object
+        selfLink:
+          description: Link for this account.
+          type: string
+          example: example_value
+        starred:
+          description: Indicates whether this account is starred or not.
+          type: boolean
+          example: true
+        updated:
+          description: Time the account was last modified.
+          format: date-time
+          type: string
+          example: '2026-04-17T12:00:00Z'
+      type: object
+  securitySchemes:
+    Oauth2:
+      description: Oauth 2.0 implicit authentication
+      flows:
+        implicit:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          scopes:
+            https://www.googleapis.com/auth/analytics.edit: Edit Google Analytics management entities
+            https://www.googleapis.com/auth/analytics.readonly: See and download your Google Analytics data
+      type: oauth2
+    Oauth2c:
+      description: Oauth 2.0 authorizationCode authentication
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          scopes:
+            https://www.googleapis.com/auth/analytics.edit: Edit Google Analytics management entities
+            https://www.googleapis.com/auth/analytics.readonly: See and download your Google Analytics data
+          tokenUrl: https://accounts.google.com/o/oauth2/token
+      type: oauth2
+externalDocs:
+  url: http://code.google.com/apis/analytics/docs/mgmt/home.html

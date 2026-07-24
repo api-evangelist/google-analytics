@@ -1,0 +1,815 @@
+openapi: 3.0.0
+info:
+  contact:
+    name: Google
+    url: https://google.com
+    x-twitter: youtube
+  description: 'Manage properties in Google Analytics. Warning: Creating multiple Customer Applications, Accounts, or Projects to simulate or act as a single Customer Application, Account, or Project (respectively) or to circumvent Service-specific usage limits or quotas is a direct violation of Google Cloud Platform Terms of Service as well as Google APIs Terms of Service. These actions can result in immediate termination of your GCP project(s) without any warning.'
+  license:
+    name: Creative Commons Attribution 3.0
+    url: http://creativecommons.org/licenses/by/3.0/
+  termsOfService: https://developers.google.com/terms/
+  title: Google Analytics Admin accounts data API
+  version: v1beta
+  x-apisguru-categories:
+  - analytics
+  - media
+  x-logo:
+    url: https://upload.wikimedia.org/wikipedia/commons/e/e1/YouTube_play_buttom_icon_%282013-2017%29.svg
+  x-origin:
+  - format: google
+    url: https://analyticsadmin.googleapis.com/$discovery/rest?version=v1beta
+    version: v1
+  x-preferred: true
+  x-providerName: googleapis.com
+  x-serviceName: analyticsadmin
+servers:
+- url: https://analyticsadmin.googleapis.com/
+tags:
+- name: data
+paths:
+  /data/ga:
+    parameters:
+    - $ref: '#/components/parameters/alt'
+    - $ref: '#/components/parameters/fields'
+    - $ref: '#/components/parameters/key'
+    - $ref: '#/components/parameters/oauth_token'
+    - $ref: '#/components/parameters/prettyPrint'
+    - $ref: '#/components/parameters/quotaUser'
+    - $ref: '#/components/parameters/userIp'
+    get:
+      description: Returns Analytics data for a view (profile).
+      operationId: analytics.data.ga.get
+      parameters:
+      - description: Unique table ID for retrieving Analytics data. Table ID is of the form ga:XXXX, where XXXX is the Analytics view (profile) ID.
+        in: query
+        name: ids
+        required: true
+        schema:
+          type: string
+        example: '123456'
+      - description: Start date for fetching Analytics data. Requests can specify a start date formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is 7daysAgo.
+        in: query
+        name: start-date
+        required: true
+        schema:
+          type: string
+        example: '2026-04-17'
+      - description: End date for fetching Analytics data. Request can should specify an end date formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is yesterday.
+        in: query
+        name: end-date
+        required: true
+        schema:
+          type: string
+        example: '2026-04-17'
+      - description: A comma-separated list of Analytics metrics. E.g., 'ga:sessions,ga:pageviews'. At least one metric must be specified.
+        in: query
+        name: metrics
+        required: true
+        schema:
+          type: string
+        example: example_value
+      - description: A comma-separated list of Analytics dimensions. E.g., 'ga:browser,ga:city'.
+        in: query
+        name: dimensions
+        schema:
+          type: string
+        example: example_value
+      - description: A comma-separated list of dimension or metric filters to be applied to Analytics data.
+        in: query
+        name: filters
+        schema:
+          type: string
+        example: example_value
+      - description: The response will include empty rows if this parameter is set to true, the default is true
+        in: query
+        name: include-empty-rows
+        schema:
+          type: boolean
+        example: true
+      - description: The maximum number of entries to include in this feed.
+        in: query
+        name: max-results
+        schema:
+          type: integer
+        example: 42
+      - description: The selected format for the response. Default format is JSON.
+        in: query
+        name: output
+        schema:
+          enum:
+          - dataTable
+          - json
+          type: string
+        example: dataTable
+      - description: The desired sampling level.
+        in: query
+        name: samplingLevel
+        schema:
+          enum:
+          - DEFAULT
+          - FASTER
+          - HIGHER_PRECISION
+          type: string
+        example: DEFAULT
+      - description: An Analytics segment to be applied to data.
+        in: query
+        name: segment
+        schema:
+          type: string
+        example: example_value
+      - description: A comma-separated list of dimensions or metrics that determine the sort order for Analytics data.
+        in: query
+        name: sort
+        schema:
+          type: string
+        example: example_value
+      - description: An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter.
+        in: query
+        name: start-index
+        schema:
+          minimum: 1
+          type: integer
+        example: 42
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GaData'
+          description: Successful response
+      security:
+      - Oauth2:
+        - https://www.googleapis.com/auth/analytics
+        Oauth2c:
+        - https://www.googleapis.com/auth/analytics
+      - Oauth2:
+        - https://www.googleapis.com/auth/analytics.readonly
+        Oauth2c:
+        - https://www.googleapis.com/auth/analytics.readonly
+      tags:
+      - data
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /data/mcf:
+    parameters:
+    - $ref: '#/components/parameters/alt'
+    - $ref: '#/components/parameters/fields'
+    - $ref: '#/components/parameters/key'
+    - $ref: '#/components/parameters/oauth_token'
+    - $ref: '#/components/parameters/prettyPrint'
+    - $ref: '#/components/parameters/quotaUser'
+    - $ref: '#/components/parameters/userIp'
+    get:
+      description: Returns Analytics Multi-Channel Funnels data for a view (profile).
+      operationId: analytics.data.mcf.get
+      parameters:
+      - description: Unique table ID for retrieving Analytics data. Table ID is of the form ga:XXXX, where XXXX is the Analytics view (profile) ID.
+        in: query
+        name: ids
+        required: true
+        schema:
+          type: string
+        example: '123456'
+      - description: Start date for fetching Analytics data. Requests can specify a start date formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is 7daysAgo.
+        in: query
+        name: start-date
+        required: true
+        schema:
+          type: string
+        example: '2026-04-17'
+      - description: End date for fetching Analytics data. Requests can specify a start date formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is 7daysAgo.
+        in: query
+        name: end-date
+        required: true
+        schema:
+          type: string
+        example: '2026-04-17'
+      - description: A comma-separated list of Multi-Channel Funnels metrics. E.g., 'mcf:totalConversions,mcf:totalConversionValue'. At least one metric must be specified.
+        in: query
+        name: metrics
+        required: true
+        schema:
+          type: string
+        example: example_value
+      - description: A comma-separated list of Multi-Channel Funnels dimensions. E.g., 'mcf:source,mcf:medium'.
+        in: query
+        name: dimensions
+        schema:
+          type: string
+        example: example_value
+      - description: A comma-separated list of dimension or metric filters to be applied to the Analytics data.
+        in: query
+        name: filters
+        schema:
+          type: string
+        example: example_value
+      - description: The maximum number of entries to include in this feed.
+        in: query
+        name: max-results
+        schema:
+          type: integer
+        example: 42
+      - description: The desired sampling level.
+        in: query
+        name: samplingLevel
+        schema:
+          enum:
+          - DEFAULT
+          - FASTER
+          - HIGHER_PRECISION
+          type: string
+        example: DEFAULT
+      - description: A comma-separated list of dimensions or metrics that determine the sort order for the Analytics data.
+        in: query
+        name: sort
+        schema:
+          type: string
+        example: example_value
+      - description: An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter.
+        in: query
+        name: start-index
+        schema:
+          minimum: 1
+          type: integer
+        example: 42
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/McfData'
+          description: Successful response
+      security:
+      - Oauth2:
+        - https://www.googleapis.com/auth/analytics
+        Oauth2c:
+        - https://www.googleapis.com/auth/analytics
+      - Oauth2:
+        - https://www.googleapis.com/auth/analytics.readonly
+        Oauth2c:
+        - https://www.googleapis.com/auth/analytics.readonly
+      tags:
+      - data
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /data/realtime:
+    parameters:
+    - $ref: '#/components/parameters/alt'
+    - $ref: '#/components/parameters/fields'
+    - $ref: '#/components/parameters/key'
+    - $ref: '#/components/parameters/oauth_token'
+    - $ref: '#/components/parameters/prettyPrint'
+    - $ref: '#/components/parameters/quotaUser'
+    - $ref: '#/components/parameters/userIp'
+    get:
+      description: Returns real time data for a view (profile).
+      operationId: analytics.data.realtime.get
+      parameters:
+      - description: Unique table ID for retrieving real time data. Table ID is of the form ga:XXXX, where XXXX is the Analytics view (profile) ID.
+        in: query
+        name: ids
+        required: true
+        schema:
+          type: string
+        example: '123456'
+      - description: A comma-separated list of real time metrics. E.g., 'rt:activeUsers'. At least one metric must be specified.
+        in: query
+        name: metrics
+        required: true
+        schema:
+          type: string
+        example: example_value
+      - description: A comma-separated list of real time dimensions. E.g., 'rt:medium,rt:city'.
+        in: query
+        name: dimensions
+        schema:
+          type: string
+        example: example_value
+      - description: A comma-separated list of dimension or metric filters to be applied to real time data.
+        in: query
+        name: filters
+        schema:
+          type: string
+        example: example_value
+      - description: The maximum number of entries to include in this feed.
+        in: query
+        name: max-results
+        schema:
+          type: integer
+        example: 42
+      - description: A comma-separated list of dimensions or metrics that determine the sort order for real time data.
+        in: query
+        name: sort
+        schema:
+          type: string
+        example: example_value
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RealtimeData'
+          description: Successful response
+      security:
+      - Oauth2:
+        - https://www.googleapis.com/auth/analytics
+        Oauth2c:
+        - https://www.googleapis.com/auth/analytics
+      - Oauth2:
+        - https://www.googleapis.com/auth/analytics.readonly
+        Oauth2c:
+        - https://www.googleapis.com/auth/analytics.readonly
+      tags:
+      - data
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    GaData:
+      description: Analytics data for a given view (profile).
+      properties:
+        columnHeaders:
+          description: Column headers that list dimension names followed by the metric names. The order of dimensions and metrics is same as specified in the request.
+          items:
+            properties:
+              columnType:
+                description: Column Type. Either DIMENSION or METRIC.
+                type: string
+              dataType:
+                description: Data type. Dimension column headers have only STRING as the data type. Metric column headers have data types for metric values such as INTEGER, DOUBLE, CURRENCY etc.
+                type: string
+              name:
+                description: Column name.
+                type: string
+            type: object
+          type: array
+        containsSampledData:
+          description: Determines if Analytics data contains samples.
+          type: boolean
+          example: true
+        dataLastRefreshed:
+          description: The last refreshed time in seconds for Analytics data.
+          format: int64
+          type: string
+          example: example_value
+        dataTable:
+          properties:
+            cols:
+              items:
+                properties:
+                  id:
+                    type: string
+                  label:
+                    type: string
+                  type:
+                    type: string
+                type: object
+              type: array
+            rows:
+              items:
+                properties:
+                  c:
+                    items:
+                      properties:
+                        v:
+                          type: string
+                      type: object
+                    type: array
+                type: object
+              type: array
+          type: object
+        id:
+          description: Unique ID for this data response.
+          type: string
+          example: '123456'
+        itemsPerPage:
+          description: The maximum number of rows the response can contain, regardless of the actual number of rows returned. Its value ranges from 1 to 10,000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.
+          format: int32
+          type: integer
+          example: 42
+        kind:
+          default: analytics#gaData
+          description: Resource type.
+          type: string
+          example: example_value
+        nextLink:
+          description: Link to next page for this Analytics data query.
+          type: string
+          example: example_value
+        previousLink:
+          description: Link to previous page for this Analytics data query.
+          type: string
+          example: example_value
+        profileInfo:
+          description: Information for the view (profile), for which the Analytics data was requested.
+          properties:
+            accountId:
+              description: Account ID to which this view (profile) belongs.
+              type: string
+            internalWebPropertyId:
+              description: Internal ID for the web property to which this view (profile) belongs.
+              type: string
+            profileId:
+              description: View (Profile) ID.
+              type: string
+            profileName:
+              description: View (Profile) name.
+              type: string
+            tableId:
+              description: Table ID for view (profile).
+              type: string
+            webPropertyId:
+              description: Web Property ID to which this view (profile) belongs.
+              type: string
+          type: object
+        query:
+          description: Analytics data request query parameters.
+          properties:
+            dimensions:
+              description: List of analytics dimensions.
+              type: string
+            end-date:
+              description: End date.
+              type: string
+            filters:
+              description: Comma-separated list of dimension or metric filters.
+              type: string
+            ids:
+              description: Unique table ID.
+              type: string
+            max-results:
+              description: Maximum results per page.
+              format: int32
+              type: integer
+            metrics:
+              description: List of analytics metrics.
+              items:
+                type: string
+              type: array
+            samplingLevel:
+              description: Desired sampling level
+              type: string
+            segment:
+              description: Analytics advanced segment.
+              type: string
+            sort:
+              description: List of dimensions or metrics based on which Analytics data is sorted.
+              items:
+                type: string
+              type: array
+            start-date:
+              description: Start date.
+              type: string
+            start-index:
+              description: Start index.
+              format: int32
+              type: integer
+          type: object
+        rows:
+          description: Analytics data rows, where each row contains a list of dimension values followed by the metric values. The order of dimensions and metrics is same as specified in the request.
+          items:
+            items:
+              type: string
+            type: array
+          type: array
+        sampleSize:
+          description: The number of samples used to calculate the result.
+          format: int64
+          type: string
+          example: example_value
+        sampleSpace:
+          description: Total size of the sample space from which the samples were selected.
+          format: int64
+          type: string
+          example: example_value
+        selfLink:
+          description: Link to this page.
+          type: string
+          example: example_value
+        totalResults:
+          description: The total number of rows for the query, regardless of the number of rows in the response.
+          format: int32
+          type: integer
+          example: 42
+        totalsForAllResults:
+          additionalProperties:
+            description: Key-value pair for the total value of a metric. Key is the metric name and the value is the total value for that metric.
+            type: string
+          description: Total values for the requested metrics over all the results, not just the results returned in this response. The order of the metric totals is same as the metric order specified in the request.
+          type: object
+      type: object
+    RealtimeData:
+      description: Real time data for a given view (profile).
+      properties:
+        columnHeaders:
+          description: Column headers that list dimension names followed by the metric names. The order of dimensions and metrics is same as specified in the request.
+          items:
+            properties:
+              columnType:
+                description: Column Type. Either DIMENSION or METRIC.
+                type: string
+              dataType:
+                description: Data type. Dimension column headers have only STRING as the data type. Metric column headers have data types for metric values such as INTEGER, DOUBLE, CURRENCY etc.
+                type: string
+              name:
+                description: Column name.
+                type: string
+            type: object
+          type: array
+        id:
+          description: Unique ID for this data response.
+          type: string
+        kind:
+          default: analytics#realtimeData
+          description: Resource type.
+          type: string
+        profileInfo:
+          description: Information for the view (profile), for which the real time data was requested.
+          properties:
+            accountId:
+              description: Account ID to which this view (profile) belongs.
+              type: string
+            internalWebPropertyId:
+              description: Internal ID for the web property to which this view (profile) belongs.
+              type: string
+            profileId:
+              description: View (Profile) ID.
+              type: string
+            profileName:
+              description: View (Profile) name.
+              type: string
+            tableId:
+              description: Table ID for view (profile).
+              type: string
+            webPropertyId:
+              description: Web Property ID to which this view (profile) belongs.
+              type: string
+          type: object
+        query:
+          description: Real time data request query parameters.
+          properties:
+            dimensions:
+              description: List of real time dimensions.
+              type: string
+            filters:
+              description: Comma-separated list of dimension or metric filters.
+              type: string
+            ids:
+              description: Unique table ID.
+              type: string
+            max-results:
+              description: Maximum results per page.
+              format: int32
+              type: integer
+            metrics:
+              description: List of real time metrics.
+              items:
+                type: string
+              type: array
+            sort:
+              description: List of dimensions or metrics based on which real time data is sorted.
+              items:
+                type: string
+              type: array
+          type: object
+        rows:
+          description: Real time data rows, where each row contains a list of dimension values followed by the metric values. The order of dimensions and metrics is same as specified in the request.
+          items:
+            items:
+              type: string
+            type: array
+          type: array
+        selfLink:
+          description: Link to this page.
+          type: string
+        totalResults:
+          description: The total number of rows for the query, regardless of the number of rows in the response.
+          format: int32
+          type: integer
+        totalsForAllResults:
+          additionalProperties:
+            description: Key-value pair for the total value of a metric. Key is the metric name and the value is the total value for that metric.
+            type: string
+          description: Total values for the requested metrics over all the results, not just the results returned in this response. The order of the metric totals is same as the metric order specified in the request.
+          type: object
+      type: object
+    McfData:
+      description: Multi-Channel Funnels data for a given view (profile).
+      properties:
+        columnHeaders:
+          description: Column headers that list dimension names followed by the metric names. The order of dimensions and metrics is same as specified in the request.
+          items:
+            properties:
+              columnType:
+                description: Column Type. Either DIMENSION or METRIC.
+                type: string
+              dataType:
+                description: Data type. Dimension and metric values data types such as INTEGER, DOUBLE, CURRENCY, MCF_SEQUENCE etc.
+                type: string
+              name:
+                description: Column name.
+                type: string
+            type: object
+          type: array
+        containsSampledData:
+          description: Determines if the Analytics data contains sampled data.
+          type: boolean
+        id:
+          description: Unique ID for this data response.
+          type: string
+        itemsPerPage:
+          description: The maximum number of rows the response can contain, regardless of the actual number of rows returned. Its value ranges from 1 to 10,000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.
+          format: int32
+          type: integer
+        kind:
+          default: analytics#mcfData
+          description: Resource type.
+          type: string
+        nextLink:
+          description: Link to next page for this Analytics data query.
+          type: string
+        previousLink:
+          description: Link to previous page for this Analytics data query.
+          type: string
+        profileInfo:
+          description: Information for the view (profile), for which the Analytics data was requested.
+          properties:
+            accountId:
+              description: Account ID to which this view (profile) belongs.
+              type: string
+            internalWebPropertyId:
+              description: Internal ID for the web property to which this view (profile) belongs.
+              type: string
+            profileId:
+              description: View (Profile) ID.
+              type: string
+            profileName:
+              description: View (Profile) name.
+              type: string
+            tableId:
+              description: Table ID for view (profile).
+              type: string
+            webPropertyId:
+              description: Web Property ID to which this view (profile) belongs.
+              type: string
+          type: object
+        query:
+          description: Analytics data request query parameters.
+          properties:
+            dimensions:
+              description: List of analytics dimensions.
+              type: string
+            end-date:
+              description: End date.
+              type: string
+            filters:
+              description: Comma-separated list of dimension or metric filters.
+              type: string
+            ids:
+              description: Unique table ID.
+              type: string
+            max-results:
+              description: Maximum results per page.
+              format: int32
+              type: integer
+            metrics:
+              description: List of analytics metrics.
+              items:
+                type: string
+              type: array
+            samplingLevel:
+              description: Desired sampling level
+              type: string
+            segment:
+              description: Analytics advanced segment.
+              type: string
+            sort:
+              description: List of dimensions or metrics based on which Analytics data is sorted.
+              items:
+                type: string
+              type: array
+            start-date:
+              description: Start date.
+              type: string
+            start-index:
+              description: Start index.
+              format: int32
+              type: integer
+          type: object
+        rows:
+          description: Analytics data rows, where each row contains a list of dimension values followed by the metric values. The order of dimensions and metrics is same as specified in the request.
+          items:
+            items:
+              description: A union object representing a dimension or metric value. Only one of "primitiveValue" or "conversionPathValue" attribute will be populated.
+              properties:
+                conversionPathValue:
+                  description: A conversion path dimension value, containing a list of interactions with their attributes.
+                  items:
+                    properties:
+                      interactionType:
+                        description: Type of an interaction on conversion path. Such as CLICK, IMPRESSION etc.
+                        type: string
+                      nodeValue:
+                        description: Node value of an interaction on conversion path. Such as source, medium etc.
+                        type: string
+                    type: object
+                  type: array
+                primitiveValue:
+                  description: A primitive dimension value. A primitive metric value.
+                  type: string
+              type: object
+            type: array
+          type: array
+        sampleSize:
+          description: The number of samples used to calculate the result.
+          format: int64
+          type: string
+        sampleSpace:
+          description: Total size of the sample space from which the samples were selected.
+          format: int64
+          type: string
+        selfLink:
+          description: Link to this page.
+          type: string
+        totalResults:
+          description: The total number of rows for the query, regardless of the number of rows in the response.
+          format: int32
+          type: integer
+        totalsForAllResults:
+          additionalProperties:
+            description: Key-value pair for the total value of a metric. Key is the metric name and the value is the total value for that metric.
+            type: string
+          description: Total values for the requested metrics over all the results, not just the results returned in this response. The order of the metric totals is same as the metric order specified in the request.
+          type: object
+      type: object
+  parameters:
+    alt:
+      description: Data format for the response.
+      in: query
+      name: alt
+      schema:
+        enum:
+        - json
+        type: string
+    key:
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+      in: query
+      name: key
+      schema:
+        type: string
+    userIp:
+      description: Deprecated. Please use quotaUser instead.
+      in: query
+      name: userIp
+      schema:
+        type: string
+    fields:
+      description: Selector specifying which fields to include in a partial response.
+      in: query
+      name: fields
+      schema:
+        type: string
+    prettyPrint:
+      description: Returns response with indentations and line breaks.
+      in: query
+      name: prettyPrint
+      schema:
+        type: boolean
+    oauth_token:
+      description: OAuth 2.0 token for the current user.
+      in: query
+      name: oauth_token
+      schema:
+        type: string
+    quotaUser:
+      description: An opaque string that represents a user for quota purposes. Must not exceed 40 characters.
+      in: query
+      name: quotaUser
+      schema:
+        type: string
+  securitySchemes:
+    Oauth2:
+      description: Oauth 2.0 implicit authentication
+      flows:
+        implicit:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          scopes:
+            https://www.googleapis.com/auth/analytics.edit: Edit Google Analytics management entities
+            https://www.googleapis.com/auth/analytics.readonly: See and download your Google Analytics data
+      type: oauth2
+    Oauth2c:
+      description: Oauth 2.0 authorizationCode authentication
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          scopes:
+            https://www.googleapis.com/auth/analytics.edit: Edit Google Analytics management entities
+            https://www.googleapis.com/auth/analytics.readonly: See and download your Google Analytics data
+          tokenUrl: https://accounts.google.com/o/oauth2/token
+      type: oauth2
+externalDocs:
+  url: http://code.google.com/apis/analytics/docs/mgmt/home.html

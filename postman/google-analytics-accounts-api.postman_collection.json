@@ -1,0 +1,773 @@
+{
+  "info": {
+    "_postman_id": "334cd80c-294e-4a13-adf6-629d1ae6232a",
+    "name": "Google Analytics Admin accounts API",
+    "description": "Manage properties in Google Analytics. Warning: Creating multiple Customer Applications, Accounts, or Projects to simulate or act as a single Customer Application, Account, or Project (respectively) or to circumvent Service-specific usage limits or quotas is a direct violation of Google Cloud Platform Terms of Service as well as Google APIs Terms of Service. These actions can result in immediate termination of your GCP project(s) without any warning.\n\nContact Support:\n Name: Google",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:55:09.000Z",
+    "updatedAt": "2026-07-28T10:55:09.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-334cd80c-294e-4a13-adf6-629d1ae6232a"
+  },
+  "item": [
+    {
+      "name": "v1beta",
+      "item": [
+        {
+          "name": "accounts",
+          "item": [
+            {
+              "name": "analyticsadmin.accounts.list",
+              "id": "3044658e-2815-42b2-8211-e1b8ef0b8539",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "https://www.googleapis.com/auth/analytics.edit https://www.googleapis.com/auth/analytics.readonly",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://accounts.google.com/o/oauth2/auth",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "implicit",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1beta/accounts?pageSize=<integer>&pageToken=<string>&showDeleted=<boolean>&$.xgafv=2&access_token=<string>&alt=proto&callback=<string>&fields=<string>&key=<string>&oauth_token=<string>&prettyPrint=<boolean>&quotaUser=<string>&upload_protocol=<string>&uploadType=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1beta",
+                    "accounts"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "A page token, received from a previous `ListAccounts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAccounts` must match the call that provided the page token.",
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether to include soft-deleted (ie: \"trashed\") Accounts in the results. Accounts can be inspected to determine whether they are deleted or not.",
+                      "key": "showDeleted",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "V1 error format.",
+                      "key": "$.xgafv",
+                      "value": "2"
+                    },
+                    {
+                      "description": "OAuth access token.",
+                      "key": "access_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Data format for response.",
+                      "key": "alt",
+                      "value": "proto"
+                    },
+                    {
+                      "description": "JSONP",
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Selector specifying which fields to include in a partial response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "OAuth 2.0 token for the current user.",
+                      "key": "oauth_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Returns response with indentations and line breaks.",
+                      "key": "prettyPrint",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+                      "key": "quotaUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+                      "key": "upload_protocol",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+                      "key": "uploadType",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns all accounts accessible by the caller. Note that these accounts might not currently have GA4 properties. Soft-deleted (ie: \"trashed\") accounts are excluded by default. Returns an empty list if no relevant accounts are found."
+              },
+              "response": [
+                {
+                  "id": "bbf56e26-54bf-40de-a8c1-50b431999072",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1beta/accounts?pageSize=<integer>&pageToken=<string>&showDeleted=<boolean>&$.xgafv=2&access_token=<string>&alt=proto&callback=<string>&fields=<string>&key=<string>&oauth_token=<string>&prettyPrint=<boolean>&quotaUser=<string>&upload_protocol=<string>&uploadType=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1beta",
+                        "accounts"
+                      ],
+                      "query": [
+                        {
+                          "description": "The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)",
+                          "key": "pageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "A page token, received from a previous `ListAccounts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAccounts` must match the call that provided the page token.",
+                          "key": "pageToken",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Whether to include soft-deleted (ie: \"trashed\") Accounts in the results. Accounts can be inspected to determine whether they are deleted or not.",
+                          "key": "showDeleted",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "V1 error format.",
+                          "key": "$.xgafv",
+                          "value": "2"
+                        },
+                        {
+                          "description": "OAuth access token.",
+                          "key": "access_token",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Data format for response.",
+                          "key": "alt",
+                          "value": "proto"
+                        },
+                        {
+                          "description": "JSONP",
+                          "key": "callback",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Selector specifying which fields to include in a partial response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+                          "key": "key",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "OAuth 2.0 token for the current user.",
+                          "key": "oauth_token",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Returns response with indentations and line breaks.",
+                          "key": "prettyPrint",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+                          "key": "quotaUser",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+                          "key": "upload_protocol",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+                          "key": "uploadType",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"accounts\": [\n    {\n      \"createTime\": \"<string>\",\n      \"deleted\": \"<boolean>\",\n      \"displayName\": \"<string>\",\n      \"name\": \"<string>\",\n      \"regionCode\": \"<string>\",\n      \"updateTime\": \"<string>\"\n    },\n    {\n      \"createTime\": \"<string>\",\n      \"deleted\": \"<boolean>\",\n      \"displayName\": \"<string>\",\n      \"name\": \"<string>\",\n      \"regionCode\": \"<string>\",\n      \"updateTime\": \"<string>\"\n    }\n  ],\n  \"nextPageToken\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T10:55:10.000Z",
+                  "updatedAt": "2026-07-28T10:55:10.000Z",
+                  "uid": "35240-bbf56e26-54bf-40de-a8c1-50b431999072"
+                }
+              ],
+              "createdAt": "2026-07-28T10:55:10.000Z",
+              "updatedAt": "2026-07-28T10:55:10.000Z",
+              "uid": "35240-3044658e-2815-42b2-8211-e1b8ef0b8539"
+            }
+          ],
+          "id": "85bd4916-a277-480e-9a79-ec754f9165c5",
+          "createdAt": "2026-07-28T10:55:10.000Z",
+          "updatedAt": "2026-07-28T10:55:10.000Z",
+          "uid": "35240-85bd4916-a277-480e-9a79-ec754f9165c5"
+        },
+        {
+          "name": "accounts:provisionAccountTicket",
+          "item": [
+            {
+              "name": "analyticsadmin.accounts.provision Account Ticket",
+              "id": "f80e7b0b-0dc8-49e7-9b51-36f4f20d0e41",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "https://www.googleapis.com/auth/analytics.edit https://www.googleapis.com/auth/analytics.readonly",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://accounts.google.com/o/oauth2/auth",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "implicit",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"account\": {\n    \"createTime\": \"<string>\",\n    \"deleted\": \"<boolean>\",\n    \"displayName\": \"<string>\",\n    \"name\": \"<string>\",\n    \"regionCode\": \"<string>\",\n    \"updateTime\": \"<string>\"\n  },\n  \"redirectUri\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1beta/accounts:provisionAccountTicket?$.xgafv=2&access_token=<string>&alt=proto&callback=<string>&fields=<string>&key=<string>&oauth_token=<string>&prettyPrint=<boolean>&quotaUser=<string>&upload_protocol=<string>&uploadType=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1beta",
+                    "accounts:provisionAccountTicket"
+                  ],
+                  "query": [
+                    {
+                      "description": "V1 error format.",
+                      "key": "$.xgafv",
+                      "value": "2"
+                    },
+                    {
+                      "description": "OAuth access token.",
+                      "key": "access_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Data format for response.",
+                      "key": "alt",
+                      "value": "proto"
+                    },
+                    {
+                      "description": "JSONP",
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Selector specifying which fields to include in a partial response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "OAuth 2.0 token for the current user.",
+                      "key": "oauth_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Returns response with indentations and line breaks.",
+                      "key": "prettyPrint",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+                      "key": "quotaUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+                      "key": "upload_protocol",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+                      "key": "uploadType",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Requests a ticket for creating an account."
+              },
+              "response": [
+                {
+                  "id": "aa9c3836-0fb1-4b39-8597-ac23613801d7",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"account\": {\n    \"createTime\": \"<string>\",\n    \"deleted\": \"<boolean>\",\n    \"displayName\": \"<string>\",\n    \"name\": \"<string>\",\n    \"regionCode\": \"<string>\",\n    \"updateTime\": \"<string>\"\n  },\n  \"redirectUri\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1beta/accounts:provisionAccountTicket?$.xgafv=2&access_token=<string>&alt=proto&callback=<string>&fields=<string>&key=<string>&oauth_token=<string>&prettyPrint=<boolean>&quotaUser=<string>&upload_protocol=<string>&uploadType=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1beta",
+                        "accounts:provisionAccountTicket"
+                      ],
+                      "query": [
+                        {
+                          "description": "V1 error format.",
+                          "key": "$.xgafv",
+                          "value": "2"
+                        },
+                        {
+                          "description": "OAuth access token.",
+                          "key": "access_token",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Data format for response.",
+                          "key": "alt",
+                          "value": "proto"
+                        },
+                        {
+                          "description": "JSONP",
+                          "key": "callback",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Selector specifying which fields to include in a partial response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+                          "key": "key",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "OAuth 2.0 token for the current user.",
+                          "key": "oauth_token",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Returns response with indentations and line breaks.",
+                          "key": "prettyPrint",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+                          "key": "quotaUser",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+                          "key": "upload_protocol",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+                          "key": "uploadType",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"accountTicketId\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T10:55:10.000Z",
+                  "updatedAt": "2026-07-28T10:55:10.000Z",
+                  "uid": "35240-aa9c3836-0fb1-4b39-8597-ac23613801d7"
+                }
+              ],
+              "createdAt": "2026-07-28T10:55:10.000Z",
+              "updatedAt": "2026-07-28T10:55:10.000Z",
+              "uid": "35240-f80e7b0b-0dc8-49e7-9b51-36f4f20d0e41"
+            }
+          ],
+          "id": "5aa09100-badf-4abd-b440-d1bb9d645582",
+          "createdAt": "2026-07-28T10:55:10.000Z",
+          "updatedAt": "2026-07-28T10:55:10.000Z",
+          "uid": "35240-5aa09100-badf-4abd-b440-d1bb9d645582"
+        },
+        {
+          "name": "{account}:searchChangeHistoryEvents",
+          "item": [
+            {
+              "name": "analyticsadmin.accounts.search Change History Events",
+              "id": "e85edde9-171c-4b39-a4f4-7b83dc6fb350",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "https://www.googleapis.com/auth/analytics.edit https://www.googleapis.com/auth/analytics.readonly",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://accounts.google.com/o/oauth2/auth",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "implicit",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": [\n    \"ACTION_TYPE_UNSPECIFIED\",\n    \"DELETED\"\n  ],\n  \"actorEmail\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"earliestChangeTime\": \"<string>\",\n  \"latestChangeTime\": \"<string>\",\n  \"pageSize\": \"<integer>\",\n  \"pageToken\": \"<string>\",\n  \"property\": \"<string>\",\n  \"resourceType\": [\n    \"DISPLAY_VIDEO_360_ADVERTISER_LINK_PROPOSAL\",\n    \"GOOGLE_SIGNALS_SETTINGS\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1beta/{{account}}:searchChangeHistoryEvents?$.xgafv=2&access_token=<string>&alt=proto&callback=<string>&fields=<string>&key=<string>&oauth_token=<string>&prettyPrint=<boolean>&quotaUser=<string>&upload_protocol=<string>&uploadType=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1beta",
+                    "{{account}}:searchChangeHistoryEvents"
+                  ],
+                  "query": [
+                    {
+                      "description": "V1 error format.",
+                      "key": "$.xgafv",
+                      "value": "2"
+                    },
+                    {
+                      "description": "OAuth access token.",
+                      "key": "access_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Data format for response.",
+                      "key": "alt",
+                      "value": "proto"
+                    },
+                    {
+                      "description": "JSONP",
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Selector specifying which fields to include in a partial response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "OAuth 2.0 token for the current user.",
+                      "key": "oauth_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Returns response with indentations and line breaks.",
+                      "key": "prettyPrint",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+                      "key": "quotaUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+                      "key": "upload_protocol",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+                      "key": "uploadType",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Searches through all changes to an account or its children given the specified set of filters."
+              },
+              "response": [
+                {
+                  "id": "cc726c84-f50c-4a7a-8d5a-d21294711e6d",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"action\": [\n    \"ACTION_TYPE_UNSPECIFIED\",\n    \"DELETED\"\n  ],\n  \"actorEmail\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"earliestChangeTime\": \"<string>\",\n  \"latestChangeTime\": \"<string>\",\n  \"pageSize\": \"<integer>\",\n  \"pageToken\": \"<string>\",\n  \"property\": \"<string>\",\n  \"resourceType\": [\n    \"DISPLAY_VIDEO_360_ADVERTISER_LINK_PROPOSAL\",\n    \"GOOGLE_SIGNALS_SETTINGS\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1beta/{{account}}:searchChangeHistoryEvents?$.xgafv=2&access_token=<string>&alt=proto&callback=<string>&fields=<string>&key=<string>&oauth_token=<string>&prettyPrint=<boolean>&quotaUser=<string>&upload_protocol=<string>&uploadType=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1beta",
+                        "{{account}}:searchChangeHistoryEvents"
+                      ],
+                      "query": [
+                        {
+                          "description": "V1 error format.",
+                          "key": "$.xgafv",
+                          "value": "2"
+                        },
+                        {
+                          "description": "OAuth access token.",
+                          "key": "access_token",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Data format for response.",
+                          "key": "alt",
+                          "value": "proto"
+                        },
+                        {
+                          "description": "JSONP",
+                          "key": "callback",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Selector specifying which fields to include in a partial response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+                          "key": "key",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "OAuth 2.0 token for the current user.",
+                          "key": "oauth_token",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Returns response with indentations and line breaks.",
+                          "key": "prettyPrint",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+                          "key": "quotaUser",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+                          "key": "upload_protocol",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+                          "key": "uploadType",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"changeHistoryEvents\": [\n    {\n      \"actorType\": \"ACTOR_TYPE_UNSPECIFIED\",\n      \"changeTime\": \"<string>\",\n      \"changes\": [\n        {\n          \"action\": \"CREATED\",\n          \"resource\": \"<string>\",\n          \"resourceAfterChange\": {\n            \"account\": {\n              \"createTime\": \"<string>\",\n              \"deleted\": \"<boolean>\",\n              \"displayName\": \"<string>\",\n              \"name\": \"<string>\",\n              \"regionCode\": \"<string>\",\n              \"updateTime\": \"<string>\"\n            },\n            \"conversionEvent\": {\n              \"countingMethod\": \"ONCE_PER_EVENT\",\n              \"createTime\": \"<string>\",\n              \"custom\": \"<boolean>\",\n              \"defaultConversionValue\": {\n                \"currencyCode\": \"<string>\",\n                \"value\": \"<double>\"\n              },\n              \"deletable\": \"<boolean>\",\n              \"eventName\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            \"dataRetentionSettings\": {\n              \"eventDataRetention\": \"FIFTY_MONTHS\",\n              \"name\": \"<string>\",\n              \"resetUserDataOnNewActivity\": \"<boolean>\"\n            },\n            \"dataStream\": {\n              \"androidAppStreamData\": {\n                \"firebaseAppId\": \"<string>\",\n                \"packageName\": \"<string>\"\n              },\n              \"createTime\": \"<string>\",\n              \"displayName\": \"<string>\",\n              \"iosAppStreamData\": {\n                \"bundleId\": \"<string>\",\n                \"firebaseAppId\": \"<string>\"\n              },\n              \"name\": \"<string>\",\n              \"type\": \"WEB_DATA_STREAM\",\n              \"updateTime\": \"<string>\",\n              \"webStreamData\": {\n                \"defaultUri\": \"<string>\",\n                \"firebaseAppId\": \"<string>\",\n                \"measurementId\": \"<string>\"\n              }\n            },\n            \"firebaseLink\": {\n              \"createTime\": \"<string>\",\n              \"name\": \"<string>\",\n              \"project\": \"<string>\"\n            },\n            \"googleAdsLink\": {\n              \"adsPersonalizationEnabled\": \"<boolean>\",\n              \"canManageClients\": \"<boolean>\",\n              \"createTime\": \"<string>\",\n              \"creatorEmailAddress\": \"<string>\",\n              \"customerId\": \"<string>\",\n              \"name\": \"<string>\",\n              \"updateTime\": \"<string>\"\n            },\n            \"measurementProtocolSecret\": {\n              \"displayName\": \"<string>\",\n              \"name\": \"<string>\",\n              \"secretValue\": \"<string>\"\n            },\n            \"property\": {\n              \"account\": \"<string>\",\n              \"createTime\": \"<string>\",\n              \"currencyCode\": \"<string>\",\n              \"deleteTime\": \"<string>\",\n              \"displayName\": \"<string>\",\n              \"expireTime\": \"<string>\",\n              \"industryCategory\": \"INDUSTRY_CATEGORY_UNSPECIFIED\",\n              \"name\": \"<string>\",\n              \"parent\": \"<string>\",\n              \"propertyType\": \"PROPERTY_TYPE_ORDINARY\",\n              \"serviceLevel\": \"GOOGLE_ANALYTICS_360\",\n              \"timeZone\": \"<string>\",\n              \"updateTime\": \"<string>\"\n            }\n          },\n          \"resourceBeforeChange\": {\n            \"account\": {\n              \"createTime\": \"<string>\",\n              \"deleted\": \"<boolean>\",\n              \"displayName\": \"<string>\",\n              \"name\": \"<string>\",\n              \"regionCode\": \"<string>\",\n              \"updateTime\": \"<string>\"\n            },\n            \"conversionEvent\": {\n              \"countingMethod\": \"CONVERSION_COUNTING_METHOD_UNSPECIFIED\",\n              \"createTime\": \"<string>\",\n              \"custom\": \"<boolean>\",\n              \"defaultConversionValue\": {\n                \"currencyCode\": \"<string>\",\n                \"value\": \"<double>\"\n              },\n              \"deletable\": \"<boolean>\",\n              \"eventName\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            \"dataRetentionSettings\": {\n              \"eventDataRetention\": \"TWO_MONTHS\",\n              \"name\": \"<string>\",\n              \"resetUserDataOnNewActivity\": \"<boolean>\"\n            },\n            \"dataStream\": {\n              \"androidAppStreamData\": {\n                \"firebaseAppId\": \"<string>\",\n                \"packageName\": \"<string>\"\n              },\n              \"createTime\": \"<string>\",\n              \"displayName\": \"<string>\",\n              \"iosAppStreamData\": {\n                \"bundleId\": \"<string>\",\n                \"firebaseAppId\": \"<string>\"\n              },\n              \"name\": \"<string>\",\n              \"type\": \"ANDROID_APP_DATA_STREAM\",\n              \"updateTime\": \"<string>\",\n              \"webStreamData\": {\n                \"defaultUri\": \"<string>\",\n                \"firebaseAppId\": \"<string>\",\n                \"measurementId\": \"<string>\"\n              }\n            },\n            \"firebaseLink\": {\n              \"createTime\": \"<string>\",\n              \"name\": \"<string>\",\n              \"project\": \"<string>\"\n            },\n            \"googleAdsLink\": {\n              \"adsPersonalizationEnabled\": \"<boolean>\",\n              \"canManageClients\": \"<boolean>\",\n              \"createTime\": \"<string>\",\n              \"creatorEmailAddress\": \"<string>\",\n              \"customerId\": \"<string>\",\n              \"name\": \"<string>\",\n              \"updateTime\": \"<string>\"\n            },\n            \"measurementProtocolSecret\": {\n              \"displayName\": \"<string>\",\n              \"name\": \"<string>\",\n              \"secretValue\": \"<string>\"\n            },\n            \"property\": {\n              \"account\": \"<string>\",\n              \"createTime\": \"<string>\",\n              \"currencyCode\": \"<string>\",\n              \"deleteTime\": \"<string>\",\n              \"displayName\": \"<string>\",\n              \"expireTime\": \"<string>\",\n              \"industryCategory\": \"REFERENCE\",\n              \"name\": \"<string>\",\n              \"parent\": \"<string>\",\n              \"propertyType\": \"PROPERTY_TYPE_ORDINARY\",\n              \"serviceLevel\": \"GOOGLE_ANALYTICS_360\",\n              \"timeZone\": \"<string>\",\n              \"updateTime\": \"<string>\"\n            }\n          }\n        },\n        {\n          \"action\": \"UPDATED\",\n          \"resource\": \"<string>\",\n          \"resourceAfterChange\": {\n            \"account\": {\n              \"createTime\": \"<string>\",\n              \"deleted\": \"<boolean>\",\n              \"displayName\": \"<string>\",\n              \"name\": \"<string>\",\n              \"regionCode\": \"<string>\",\n              \"updateTime\": \"<string>\"\n            },\n            \"conversionEvent\": {\n              \"countingMethod\": \"CONVERSION_COUNTING_METHOD_UNSPECIFIED\",\n              \"createTime\": \"<string>\",\n              \"custom\": \"<boolean>\",\n              \"defaultConversionValue\": {\n                \"currencyCode\": \"<string>\",\n                \"value\": \"<double>\"\n              },\n              \"deletable\": \"<boolean>\",\n              \"eventName\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            \"dataRetentionSettings\": {\n              \"eventDataRetention\": \"TWO_MONTHS\",\n              \"name\": \"<string>\",\n              \"resetUserDataOnNewActivity\": \"<boolean>\"\n            },\n            \"dataStream\": {\n              \"androidAppStreamData\": {\n                \"firebaseAppId\": \"<string>\",\n                \"packageName\": \"<string>\"\n              },\n              \"createTime\": \"<string>\",\n              \"displayName\": \"<string>\",\n              \"iosAppStreamData\": {\n                \"bundleId\": \"<string>\",\n                \"firebaseAppId\": \"<string>\"\n              },\n              \"name\": \"<string>\",\n              \"type\": \"DATA_STREAM_TYPE_UNSPECIFIED\",\n              \"updateTime\": \"<string>\",\n              \"webStreamData\": {\n                \"defaultUri\": \"<string>\",\n                \"firebaseAppId\": \"<string>\",\n                \"measurementId\": \"<string>\"\n              }\n            },\n            \"firebaseLink\": {\n              \"createTime\": \"<string>\",\n              \"name\": \"<string>\",\n              \"project\": \"<string>\"\n            },\n            \"googleAdsLink\": {\n              \"adsPersonalizationEnabled\": \"<boolean>\",\n              \"canManageClients\": \"<boolean>\",\n              \"createTime\": \"<string>\",\n              \"creatorEmailAddress\": \"<string>\",\n              \"customerId\": \"<string>\",\n              \"name\": \"<string>\",\n              \"updateTime\": \"<string>\"\n            },\n            \"measurementProtocolSecret\": {\n              \"displayName\": \"<string>\",\n              \"name\": \"<string>\",\n              \"secretValue\": \"<string>\"\n            },\n            \"property\": {\n              \"account\": \"<string>\",\n              \"createTime\": \"<string>\",\n              \"currencyCode\": \"<string>\",\n              \"deleteTime\": \"<string>\",\n              \"displayName\": \"<string>\",\n              \"expireTime\": \"<string>\",\n              \"industryCategory\": \"BOOKS_AND_LITERATURE\",\n              \"name\": \"<string>\",\n              \"parent\": \"<string>\",\n              \"propertyType\": \"PROPERTY_TYPE_SUBPROPERTY\",\n              \"serviceLevel\": \"GOOGLE_ANALYTICS_STANDARD\",\n              \"timeZone\": \"<string>\",\n              \"updateTime\": \"<string>\"\n            }\n          },\n          \"resourceBeforeChange\": {\n            \"account\": {\n              \"createTime\": \"<string>\",\n              \"deleted\": \"<boolean>\",\n              \"displayName\": \"<string>\",\n              \"name\": \"<string>\",\n              \"regionCode\": \"<string>\",\n              \"updateTime\": \"<string>\"\n            },\n            \"conversionEvent\": {\n              \"countingMethod\": \"CONVERSION_COUNTING_METHOD_UNSPECIFIED\",\n              \"createTime\": \"<string>\",\n              \"custom\": \"<boolean>\",\n              \"defaultConversionValue\": {\n                \"currencyCode\": \"<string>\",\n                \"value\": \"<double>\"\n              },\n              \"deletable\": \"<boolean>\",\n              \"eventName\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            \"dataRetentionSettings\": {\n              \"eventDataRetention\": \"TWO_MONTHS\",\n              \"name\": \"<string>\",\n              \"resetUserDataOnNewActivity\": \"<boolean>\"\n            },\n            \"dataStream\": {\n              \"androidAppStreamData\": {\n                \"firebaseAppId\": \"<string>\",\n                \"packageName\": \"<string>\"\n              },\n              \"createTime\": \"<string>\",\n              \"displayName\": \"<string>\",\n              \"iosAppStreamData\": {\n                \"bundleId\": \"<string>\",\n                \"firebaseAppId\": \"<string>\"\n              },\n              \"name\": \"<string>\",\n              \"type\": \"ANDROID_APP_DATA_STREAM\",\n              \"updateTime\": \"<string>\",\n              \"webStreamData\": {\n                \"defaultUri\": \"<string>\",\n                \"firebaseAppId\": \"<string>\",\n                \"measurementId\": \"<string>\"\n              }\n            },\n            \"firebaseLink\": {\n              \"createTime\": \"<string>\",\n              \"name\": \"<string>\",\n              \"project\": \"<string>\"\n            },\n            \"googleAdsLink\": {\n              \"adsPersonalizationEnabled\": \"<boolean>\",\n              \"canManageClients\": \"<boolean>\",\n              \"createTime\": \"<string>\",\n              \"creatorEmailAddress\": \"<string>\",\n              \"customerId\": \"<string>\",\n              \"name\": \"<string>\",\n              \"updateTime\": \"<string>\"\n            },\n            \"measurementProtocolSecret\": {\n              \"displayName\": \"<string>\",\n              \"name\": \"<string>\",\n              \"secretValue\": \"<string>\"\n            },\n            \"property\": {\n              \"account\": \"<string>\",\n              \"createTime\": \"<string>\",\n              \"currencyCode\": \"<string>\",\n              \"deleteTime\": \"<string>\",\n              \"displayName\": \"<string>\",\n              \"expireTime\": \"<string>\",\n              \"industryCategory\": \"GAMES\",\n              \"name\": \"<string>\",\n              \"parent\": \"<string>\",\n              \"propertyType\": \"PROPERTY_TYPE_ORDINARY\",\n              \"serviceLevel\": \"GOOGLE_ANALYTICS_360\",\n              \"timeZone\": \"<string>\",\n              \"updateTime\": \"<string>\"\n            }\n          }\n        }\n      ],\n      \"changesFiltered\": \"<boolean>\",\n      \"id\": \"<string>\",\n      \"userActorEmail\": \"<string>\"\n    },\n    {\n      \"actorType\": \"SUPPORT\",\n      \"changeTime\": \"<string>\",\n      \"changes\": [\n        {\n          \"action\": \"DELETED\",\n          \"resource\": \"<string>\",\n          \"resourceAfterChange\": {\n            \"account\": {\n              \"createTime\": \"<string>\",\n              \"deleted\": \"<boolean>\",\n              \"displayName\": \"<string>\",\n              \"name\": \"<string>\",\n              \"regionCode\": \"<string>\",\n              \"updateTime\": \"<string>\"\n            },\n            \"conversionEvent\": {\n              \"countingMethod\": \"ONCE_PER_EVENT\",\n              \"createTime\": \"<string>\",\n              \"custom\": \"<boolean>\",\n              \"defaultConversionValue\": {\n                \"currencyCode\": \"<string>\",\n                \"value\": \"<double>\"\n              },\n              \"deletable\": \"<boolean>\",\n              \"eventName\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            \"dataRetentionSettings\": {\n              \"eventDataRetention\": \"RETENTION_DURATION_UNSPECIFIED\",\n              \"name\": \"<string>\",\n              \"resetUserDataOnNewActivity\": \"<boolean>\"\n            },\n            \"dataStream\": {\n              \"androidAppStreamData\": {\n                \"firebaseAppId\": \"<string>\",\n                \"packageName\": \"<string>\"\n              },\n              \"createTime\": \"<string>\",\n              \"displayName\": \"<string>\",\n              \"iosAppStreamData\": {\n                \"bundleId\": \"<string>\",\n                \"firebaseAppId\": \"<string>\"\n              },\n              \"name\": \"<string>\",\n              \"type\": \"WEB_DATA_STREAM\",\n              \"updateTime\": \"<string>\",\n              \"webStreamData\": {\n                \"defaultUri\": \"<string>\",\n                \"firebaseAppId\": \"<string>\",\n                \"measurementId\": \"<string>\"\n              }\n            },\n            \"firebaseLink\": {\n              \"createTime\": \"<string>\",\n              \"name\": \"<string>\",\n              \"project\": \"<string>\"\n            },\n            \"googleAdsLink\": {\n              \"adsPersonalizationEnabled\": \"<boolean>\",\n              \"canManageClients\": \"<boolean>\",\n              \"createTime\": \"<string>\",\n              \"creatorEmailAddress\": \"<string>\",\n              \"customerId\": \"<string>\",\n              \"name\": \"<string>\",\n              \"updateTime\": \"<string>\"\n            },\n            \"measurementProtocolSecret\": {\n              \"displayName\": \"<string>\",\n              \"name\": \"<string>\",\n              \"secretValue\": \"<string>\"\n            },\n            \"property\": {\n              \"account\": \"<string>\",\n              \"createTime\": \"<string>\",\n              \"currencyCode\": \"<string>\",\n              \"deleteTime\": \"<string>\",\n              \"displayName\": \"<string>\",\n              \"expireTime\": \"<string>\",\n              \"industryCategory\": \"FINANCE\",\n              \"name\": \"<string>\",\n              \"parent\": \"<string>\",\n              \"propertyType\": \"PROPERTY_TYPE_SUBPROPERTY\",\n              \"serviceLevel\": \"GOOGLE_ANALYTICS_360\",\n              \"timeZone\": \"<string>\",\n              \"updateTime\": \"<string>\"\n            }\n          },\n          \"resourceBeforeChange\": {\n            \"account\": {\n              \"createTime\": \"<string>\",\n              \"deleted\": \"<boolean>\",\n              \"displayName\": \"<string>\",\n              \"name\": \"<string>\",\n              \"regionCode\": \"<string>\",\n              \"updateTime\": \"<string>\"\n            },\n            \"conversionEvent\": {\n              \"countingMethod\": \"ONCE_PER_SESSION\",\n              \"createTime\": \"<string>\",\n              \"custom\": \"<boolean>\",\n              \"defaultConversionValue\": {\n                \"currencyCode\": \"<string>\",\n                \"value\": \"<double>\"\n              },\n              \"deletable\": \"<boolean>\",\n              \"eventName\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            \"dataRetentionSettings\": {\n              \"eventDataRetention\": \"FIFTY_MONTHS\",\n              \"name\": \"<string>\",\n              \"resetUserDataOnNewActivity\": \"<boolean>\"\n            },\n            \"dataStream\": {\n              \"androidAppStreamData\": {\n                \"firebaseAppId\": \"<string>\",\n                \"packageName\": \"<string>\"\n              },\n              \"createTime\": \"<string>\",\n              \"displayName\": \"<string>\",\n              \"iosAppStreamData\": {\n                \"bundleId\": \"<string>\",\n                \"firebaseAppId\": \"<string>\"\n              },\n              \"name\": \"<string>\",\n              \"type\": \"ANDROID_APP_DATA_STREAM\",\n              \"updateTime\": \"<string>\",\n              \"webStreamData\": {\n                \"defaultUri\": \"<string>\",\n                \"firebaseAppId\": \"<string>\",\n                \"measurementId\": \"<string>\"\n              }\n            },\n            \"firebaseLink\": {\n              \"createTime\": \"<string>\",\n              \"name\": \"<string>\",\n              \"project\": \"<string>\"\n            },\n            \"googleAdsLink\": {\n              \"adsPersonalizationEnabled\": \"<boolean>\",\n              \"canManageClients\": \"<boolean>\",\n              \"createTime\": \"<string>\",\n              \"creatorEmailAddress\": \"<string>\",\n              \"customerId\": \"<string>\",\n              \"name\": \"<string>\",\n              \"updateTime\": \"<string>\"\n            },\n            \"measurementProtocolSecret\": {\n              \"displayName\": \"<string>\",\n              \"name\": \"<string>\",\n              \"secretValue\": \"<string>\"\n            },\n            \"property\": {\n              \"account\": \"<string>\",\n              \"createTime\": \"<string>\",\n              \"currencyCode\": \"<string>\",\n              \"deleteTime\": \"<string>\",\n              \"displayName\": \"<string>\",\n              \"expireTime\": \"<string>\",\n              \"industryCategory\": \"NEWS\",\n              \"name\": \"<string>\",\n              \"parent\": \"<string>\",\n              \"propertyType\": \"PROPERTY_TYPE_SUBPROPERTY\",\n              \"serviceLevel\": \"SERVICE_LEVEL_UNSPECIFIED\",\n              \"timeZone\": \"<string>\",\n              \"updateTime\": \"<string>\"\n            }\n          }\n        },\n        {\n          \"action\": \"UPDATED\",\n          \"resource\": \"<string>\",\n          \"resourceAfterChange\": {\n            \"account\": {\n              \"createTime\": \"<string>\",\n              \"deleted\": \"<boolean>\",\n              \"displayName\": \"<string>\",\n              \"name\": \"<string>\",\n              \"regionCode\": \"<string>\",\n              \"updateTime\": \"<string>\"\n            },\n            \"conversionEvent\": {\n              \"countingMethod\": \"ONCE_PER_EVENT\",\n              \"createTime\": \"<string>\",\n              \"custom\": \"<boolean>\",\n              \"defaultConversionValue\": {\n                \"currencyCode\": \"<string>\",\n                \"value\": \"<double>\"\n              },\n              \"deletable\": \"<boolean>\",\n              \"eventName\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            \"dataRetentionSettings\": {\n              \"eventDataRetention\": \"TWO_MONTHS\",\n              \"name\": \"<string>\",\n              \"resetUserDataOnNewActivity\": \"<boolean>\"\n            },\n            \"dataStream\": {\n              \"androidAppStreamData\": {\n                \"firebaseAppId\": \"<string>\",\n                \"packageName\": \"<string>\"\n              },\n              \"createTime\": \"<string>\",\n              \"displayName\": \"<string>\",\n              \"iosAppStreamData\": {\n                \"bundleId\": \"<string>\",\n                \"firebaseAppId\": \"<string>\"\n              },\n              \"name\": \"<string>\",\n              \"type\": \"ANDROID_APP_DATA_STREAM\",\n              \"updateTime\": \"<string>\",\n              \"webStreamData\": {\n                \"defaultUri\": \"<string>\",\n                \"firebaseAppId\": \"<string>\",\n                \"measurementId\": \"<string>\"\n              }\n            },\n            \"firebaseLink\": {\n              \"createTime\": \"<string>\",\n              \"name\": \"<string>\",\n              \"project\": \"<string>\"\n            },\n            \"googleAdsLink\": {\n              \"adsPersonalizationEnabled\": \"<boolean>\",\n              \"canManageClients\": \"<boolean>\",\n              \"createTime\": \"<string>\",\n              \"creatorEmailAddress\": \"<string>\",\n              \"customerId\": \"<string>\",\n              \"name\": \"<string>\",\n              \"updateTime\": \"<string>\"\n            },\n            \"measurementProtocolSecret\": {\n              \"displayName\": \"<string>\",\n              \"name\": \"<string>\",\n              \"secretValue\": \"<string>\"\n            },\n            \"property\": {\n              \"account\": \"<string>\",\n              \"createTime\": \"<string>\",\n              \"currencyCode\": \"<string>\",\n              \"deleteTime\": \"<string>\",\n              \"displayName\": \"<string>\",\n              \"expireTime\": \"<string>\",\n              \"industryCategory\": \"HOME_AND_GARDEN\",\n              \"name\": \"<string>\",\n              \"parent\": \"<string>\",\n              \"propertyType\": \"PROPERTY_TYPE_UNSPECIFIED\",\n              \"serviceLevel\": \"SERVICE_LEVEL_UNSPECIFIED\",\n              \"timeZone\": \"<string>\",\n              \"updateTime\": \"<string>\"\n            }\n          },\n          \"resourceBeforeChange\": {\n            \"account\": {\n              \"createTime\": \"<string>\",\n              \"deleted\": \"<boolean>\",\n              \"displayName\": \"<string>\",\n              \"name\": \"<string>\",\n              \"regionCode\": \"<string>\",\n              \"updateTime\": \"<string>\"\n            },\n            \"conversionEvent\": {\n              \"countingMethod\": \"CONVERSION_COUNTING_METHOD_UNSPECIFIED\",\n              \"createTime\": \"<string>\",\n              \"custom\": \"<boolean>\",\n              \"defaultConversionValue\": {\n                \"currencyCode\": \"<string>\",\n                \"value\": \"<double>\"\n              },\n              \"deletable\": \"<boolean>\",\n              \"eventName\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            \"dataRetentionSettings\": {\n              \"eventDataRetention\": \"RETENTION_DURATION_UNSPECIFIED\",\n              \"name\": \"<string>\",\n              \"resetUserDataOnNewActivity\": \"<boolean>\"\n            },\n            \"dataStream\": {\n              \"androidAppStreamData\": {\n                \"firebaseAppId\": \"<string>\",\n                \"packageName\": \"<string>\"\n              },\n              \"createTime\": \"<string>\",\n              \"displayName\": \"<string>\",\n              \"iosAppStreamData\": {\n                \"bundleId\": \"<string>\",\n                \"firebaseAppId\": \"<string>\"\n              },\n              \"name\": \"<string>\",\n              \"type\": \"DATA_STREAM_TYPE_UNSPECIFIED\",\n              \"updateTime\": \"<string>\",\n              \"webStreamData\": {\n                \"defaultUri\": \"<string>\",\n                \"firebaseAppId\": \"<string>\",\n                \"measurementId\": \"<string>\"\n              }\n            },\n            \"firebaseLink\": {\n              \"createTime\": \"<string>\",\n              \"name\": \"<string>\",\n              \"project\": \"<string>\"\n            },\n            \"googleAdsLink\": {\n              \"adsPersonalizationEnabled\": \"<boolean>\",\n              \"canManageClients\": \"<boolean>\",\n              \"createTime\": \"<string>\",\n              \"creatorEmailAddress\": \"<string>\",\n              \"customerId\": \"<string>\",\n              \"name\": \"<string>\",\n              \"updateTime\": \"<string>\"\n            },\n            \"measurementProtocolSecret\": {\n              \"displayName\": \"<string>\",\n              \"name\": \"<string>\",\n              \"secretValue\": \"<string>\"\n            },\n            \"property\": {\n              \"account\": \"<string>\",\n              \"createTime\": \"<string>\",\n              \"currencyCode\": \"<string>\",\n              \"deleteTime\": \"<string>\",\n              \"displayName\": \"<string>\",\n              \"expireTime\": \"<string>\",\n              \"industryCategory\": \"FOOD_AND_DRINK\",\n              \"name\": \"<string>\",\n              \"parent\": \"<string>\",\n              \"propertyType\": \"PROPERTY_TYPE_ROLLUP\",\n              \"serviceLevel\": \"GOOGLE_ANALYTICS_STANDARD\",\n              \"timeZone\": \"<string>\",\n              \"updateTime\": \"<string>\"\n            }\n          }\n        }\n      ],\n      \"changesFiltered\": \"<boolean>\",\n      \"id\": \"<string>\",\n      \"userActorEmail\": \"<string>\"\n    }\n  ],\n  \"nextPageToken\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T10:55:10.000Z",
+                  "updatedAt": "2026-07-28T10:55:10.000Z",
+                  "uid": "35240-cc726c84-f50c-4a7a-8d5a-d21294711e6d"
+                }
+              ],
+              "createdAt": "2026-07-28T10:55:10.000Z",
+              "updatedAt": "2026-07-28T10:55:10.000Z",
+              "uid": "35240-e85edde9-171c-4b39-a4f4-7b83dc6fb350"
+            }
+          ],
+          "id": "fe1a1450-7aa7-41b2-a65f-35b2285dec14",
+          "createdAt": "2026-07-28T10:55:10.000Z",
+          "updatedAt": "2026-07-28T10:55:10.000Z",
+          "uid": "35240-fe1a1450-7aa7-41b2-a65f-35b2285dec14"
+        }
+      ],
+      "id": "44b73ae7-d046-49d9-ad08-584497355730",
+      "createdAt": "2026-07-28T10:55:10.000Z",
+      "updatedAt": "2026-07-28T10:55:10.000Z",
+      "uid": "35240-44b73ae7-d046-49d9-ad08-584497355730"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://analyticsadmin.googleapis.com/"
+    },
+    {
+      "key": "account",
+      "value": "<string>"
+    }
+  ]
+}

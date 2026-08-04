@@ -1,0 +1,264 @@
+{
+  "info": {
+    "_postman_id": "9069141a-334c-4a7d-aac6-e75d449f9f87",
+    "name": "Google Analytics Admin accounts Events API",
+    "description": "Manage properties in Google Analytics. Warning: Creating multiple Customer Applications, Accounts, or Projects to simulate or act as a single Customer Application, Account, or Project (respectively) or to circumvent Service-specific usage limits or quotas is a direct violation of Google Cloud Platform Terms of Service as well as Google APIs Terms of Service. These actions can result in immediate termination of your GCP project(s) without any warning.\n\nContact Support:\n Name: Google",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:55:23.000Z",
+    "updatedAt": "2026-07-28T10:55:23.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9069141a-334c-4a7d-aac6-e75d449f9f87"
+  },
+  "item": [
+    {
+      "name": "collect",
+      "item": [
+        {
+          "name": "Google Analytics Send Events to Google Analytics",
+          "id": "20030a90-fcd6-4af2-8c1b-83dcf02762e5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"events\": [\n    {\n      \"name\": \"<string>\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\",\n        \"dolorb\": false,\n        \"amet4_\": true,\n        \"mollit25b\": \"eu\",\n        \"ut_372\": \"ea Ut nostrud exercita\"\n      }\n    }\n  ],\n  \"client_id\": \"<string>\",\n  \"app_instance_id\": \"<string>\",\n  \"user_id\": \"<string>\",\n  \"timestamp_micros\": \"<long>\",\n  \"user_properties\": {\n    \"essea6\": {\n      \"value\": \"<string>\"\n    },\n    \"elit_d2\": {\n      \"value\": \"<string>\"\n    },\n    \"consequat_74c\": {\n      \"value\": \"<string>\"\n    }\n  },\n  \"user_data\": {},\n  \"consent\": {\n    \"ad_user_data\": \"DENIED\",\n    \"ad_personalization\": \"GRANTED\"\n  },\n  \"non_personalized_ads\": \"<boolean>\",\n  \"user_location\": {\n    \"city\": \"<string>\",\n    \"region_id\": \"<string>\",\n    \"country_id\": \"<string>\",\n    \"subcontinent_id\": \"<string>\",\n    \"continent_id\": \"<string>\"\n  },\n  \"ip_override\": \"<string>\",\n  \"device\": {\n    \"category\": \"<string>\",\n    \"language\": \"<string>\",\n    \"screen_resolution\": \"<string>\",\n    \"operating_system\": \"<string>\",\n    \"operating_system_version\": \"<string>\",\n    \"model\": \"<string>\",\n    \"brand\": \"<string>\",\n    \"browser\": \"<string>\",\n    \"browser_version\": \"<string>\"\n  },\n  \"validation_behavior\": \"RELAXED\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/collect?api_secret=<string>&measurement_id=<string>&firebase_app_id=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "collect"
+              ],
+              "query": [
+                {
+                  "description": "(Required) The API Secret generated in the Google Analytics UI. Found under Admin > Data Streams > Choose your stream > Measurement Protocol > Create.",
+                  "key": "api_secret",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The Measurement ID for a web data stream. Required for web streams. Found in the Google Analytics UI under Admin > Data Streams.",
+                  "key": "measurement_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The Firebase App ID for an app data stream. Required for app streams. Found in the Firebase console under Project Settings.",
+                  "key": "firebase_app_id",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Sends one or more events to Google Analytics for processing. Up to 25 events can be sent per request. Events can be backdated up to 72 hours."
+          },
+          "response": [
+            {
+              "id": "cc3dac79-125b-4e78-9327-184ce46ec6a5",
+              "name": "Events accepted. Note that a 2xx response does not guarantee the events are valid or will appear in reports. The Measurement Protocol does not return error details for malformed payloads.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"name\": \"<string>\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\",\n        \"dolorb\": false,\n        \"amet4_\": true,\n        \"mollit25b\": \"eu\",\n        \"ut_372\": \"ea Ut nostrud exercita\"\n      }\n    }\n  ],\n  \"client_id\": \"<string>\",\n  \"app_instance_id\": \"<string>\",\n  \"user_id\": \"<string>\",\n  \"timestamp_micros\": \"<long>\",\n  \"user_properties\": {\n    \"essea6\": {\n      \"value\": \"<string>\"\n    },\n    \"elit_d2\": {\n      \"value\": \"<string>\"\n    },\n    \"consequat_74c\": {\n      \"value\": \"<string>\"\n    }\n  },\n  \"user_data\": {},\n  \"consent\": {\n    \"ad_user_data\": \"DENIED\",\n    \"ad_personalization\": \"GRANTED\"\n  },\n  \"non_personalized_ads\": \"<boolean>\",\n  \"user_location\": {\n    \"city\": \"<string>\",\n    \"region_id\": \"<string>\",\n    \"country_id\": \"<string>\",\n    \"subcontinent_id\": \"<string>\",\n    \"continent_id\": \"<string>\"\n  },\n  \"ip_override\": \"<string>\",\n  \"device\": {\n    \"category\": \"<string>\",\n    \"language\": \"<string>\",\n    \"screen_resolution\": \"<string>\",\n    \"operating_system\": \"<string>\",\n    \"operating_system_version\": \"<string>\",\n    \"model\": \"<string>\",\n    \"brand\": \"<string>\",\n    \"browser\": \"<string>\",\n    \"browser_version\": \"<string>\"\n  },\n  \"validation_behavior\": \"RELAXED\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/collect?api_secret=<string>&measurement_id=<string>&firebase_app_id=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collect"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The API Secret generated in the Google Analytics UI. Found under Admin > Data Streams > Choose your stream > Measurement Protocol > Create.",
+                      "key": "api_secret",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The Measurement ID for a web data stream. Required for web streams. Found in the Google Analytics UI under Admin > Data Streams.",
+                      "key": "measurement_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The Firebase App ID for an app data stream. Required for app streams. Found in the Firebase console under Project Settings.",
+                      "key": "firebase_app_id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T10:55:24.000Z",
+              "updatedAt": "2026-07-28T10:55:24.000Z",
+              "uid": "35240-cc3dac79-125b-4e78-9327-184ce46ec6a5"
+            },
+            {
+              "id": "65073d9b-aa0d-4323-bb5e-d8bdcf286323",
+              "name": "Malformed request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"name\": \"<string>\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\",\n        \"dolorb\": false,\n        \"amet4_\": true,\n        \"mollit25b\": \"eu\",\n        \"ut_372\": \"ea Ut nostrud exercita\"\n      }\n    }\n  ],\n  \"client_id\": \"<string>\",\n  \"app_instance_id\": \"<string>\",\n  \"user_id\": \"<string>\",\n  \"timestamp_micros\": \"<long>\",\n  \"user_properties\": {\n    \"essea6\": {\n      \"value\": \"<string>\"\n    },\n    \"elit_d2\": {\n      \"value\": \"<string>\"\n    },\n    \"consequat_74c\": {\n      \"value\": \"<string>\"\n    }\n  },\n  \"user_data\": {},\n  \"consent\": {\n    \"ad_user_data\": \"DENIED\",\n    \"ad_personalization\": \"GRANTED\"\n  },\n  \"non_personalized_ads\": \"<boolean>\",\n  \"user_location\": {\n    \"city\": \"<string>\",\n    \"region_id\": \"<string>\",\n    \"country_id\": \"<string>\",\n    \"subcontinent_id\": \"<string>\",\n    \"continent_id\": \"<string>\"\n  },\n  \"ip_override\": \"<string>\",\n  \"device\": {\n    \"category\": \"<string>\",\n    \"language\": \"<string>\",\n    \"screen_resolution\": \"<string>\",\n    \"operating_system\": \"<string>\",\n    \"operating_system_version\": \"<string>\",\n    \"model\": \"<string>\",\n    \"brand\": \"<string>\",\n    \"browser\": \"<string>\",\n    \"browser_version\": \"<string>\"\n  },\n  \"validation_behavior\": \"RELAXED\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/collect?api_secret=<string>&measurement_id=<string>&firebase_app_id=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collect"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The API Secret generated in the Google Analytics UI. Found under Admin > Data Streams > Choose your stream > Measurement Protocol > Create.",
+                      "key": "api_secret",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The Measurement ID for a web data stream. Required for web streams. Found in the Google Analytics UI under Admin > Data Streams.",
+                      "key": "measurement_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The Firebase App ID for an app data stream. Required for app streams. Found in the Firebase console under Project Settings.",
+                      "key": "firebase_app_id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T10:55:24.000Z",
+              "updatedAt": "2026-07-28T10:55:24.000Z",
+              "uid": "35240-65073d9b-aa0d-4323-bb5e-d8bdcf286323"
+            },
+            {
+              "id": "44e9a613-da0e-4c09-b7ba-09aca3a79ede",
+              "name": "Invalid api_secret",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"name\": \"<string>\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\",\n        \"dolorb\": false,\n        \"amet4_\": true,\n        \"mollit25b\": \"eu\",\n        \"ut_372\": \"ea Ut nostrud exercita\"\n      }\n    }\n  ],\n  \"client_id\": \"<string>\",\n  \"app_instance_id\": \"<string>\",\n  \"user_id\": \"<string>\",\n  \"timestamp_micros\": \"<long>\",\n  \"user_properties\": {\n    \"essea6\": {\n      \"value\": \"<string>\"\n    },\n    \"elit_d2\": {\n      \"value\": \"<string>\"\n    },\n    \"consequat_74c\": {\n      \"value\": \"<string>\"\n    }\n  },\n  \"user_data\": {},\n  \"consent\": {\n    \"ad_user_data\": \"DENIED\",\n    \"ad_personalization\": \"GRANTED\"\n  },\n  \"non_personalized_ads\": \"<boolean>\",\n  \"user_location\": {\n    \"city\": \"<string>\",\n    \"region_id\": \"<string>\",\n    \"country_id\": \"<string>\",\n    \"subcontinent_id\": \"<string>\",\n    \"continent_id\": \"<string>\"\n  },\n  \"ip_override\": \"<string>\",\n  \"device\": {\n    \"category\": \"<string>\",\n    \"language\": \"<string>\",\n    \"screen_resolution\": \"<string>\",\n    \"operating_system\": \"<string>\",\n    \"operating_system_version\": \"<string>\",\n    \"model\": \"<string>\",\n    \"brand\": \"<string>\",\n    \"browser\": \"<string>\",\n    \"browser_version\": \"<string>\"\n  },\n  \"validation_behavior\": \"RELAXED\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/collect?api_secret=<string>&measurement_id=<string>&firebase_app_id=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collect"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The API Secret generated in the Google Analytics UI. Found under Admin > Data Streams > Choose your stream > Measurement Protocol > Create.",
+                      "key": "api_secret",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The Measurement ID for a web data stream. Required for web streams. Found in the Google Analytics UI under Admin > Data Streams.",
+                      "key": "measurement_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The Firebase App ID for an app data stream. Required for app streams. Found in the Firebase console under Project Settings.",
+                      "key": "firebase_app_id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T10:55:24.000Z",
+              "updatedAt": "2026-07-28T10:55:24.000Z",
+              "uid": "35240-44e9a613-da0e-4c09-b7ba-09aca3a79ede"
+            }
+          ],
+          "createdAt": "2026-07-28T10:55:24.000Z",
+          "updatedAt": "2026-07-28T10:55:24.000Z",
+          "uid": "35240-20030a90-fcd6-4af2-8c1b-83dcf02762e5"
+        }
+      ],
+      "id": "1c263367-4722-465e-ab8c-8b1a9ed25e05",
+      "createdAt": "2026-07-28T10:55:24.000Z",
+      "updatedAt": "2026-07-28T10:55:24.000Z",
+      "uid": "35240-1c263367-4722-465e-ab8c-8b1a9ed25e05"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://analyticsadmin.googleapis.com/"
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "info": {
+    "_postman_id": "8fb90779-85ef-417e-ae48-552989aa85b2",
+    "name": "Google Analytics Admin accounts metadata API",
+    "description": "Manage properties in Google Analytics. Warning: Creating multiple Customer Applications, Accounts, or Projects to simulate or act as a single Customer Application, Account, or Project (respectively) or to circumvent Service-specific usage limits or quotas is a direct violation of Google Cloud Platform Terms of Service as well as Google APIs Terms of Service. These actions can result in immediate termination of your GCP project(s) without any warning.\n\nContact Support:\n Name: Google",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:55:30.000Z",
+    "updatedAt": "2026-07-28T10:55:31.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8fb90779-85ef-417e-ae48-552989aa85b2"
+  },
+  "item": [
+    {
+      "name": "metadata",
+      "item": [
+        {
+          "name": "{reportType}",
+          "item": [
+            {
+              "name": "columns",
+              "item": [
+                {
+                  "name": "analytics.metadata.columns.list",
+                  "id": "c9c684e3-f25c-445c-881f-a51e1899aad3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "https://www.googleapis.com/auth/analytics.edit https://www.googleapis.com/auth/analytics.readonly",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://accounts.google.com/o/oauth2/auth",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "implicit",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/metadata/:reportType/columns?alt=json&fields=<string>&key=<string>&oauth_token=<string>&prettyPrint=<boolean>&quotaUser=<string>&userIp=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "metadata",
+                        ":reportType",
+                        "columns"
+                      ],
+                      "query": [
+                        {
+                          "description": "Data format for the response.",
+                          "key": "alt",
+                          "value": "json"
+                        },
+                        {
+                          "description": "Selector specifying which fields to include in a partial response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+                          "key": "key",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "OAuth 2.0 token for the current user.",
+                          "key": "oauth_token",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Returns response with indentations and line breaks.",
+                          "key": "prettyPrint",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
+                          "key": "quotaUser",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Deprecated. Please use quotaUser instead.",
+                          "key": "userIp",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "dd242173-dd60-45fb-9f43-2207e4a267f5",
+                          "key": "reportType",
+                          "value": "<string>",
+                          "description": "(Required) Report type. Allowed Values: 'ga'. Where 'ga' corresponds to the Core Reporting API"
+                        }
+                      ]
+                    },
+                    "description": "Lists all columns for a report type"
+                  },
+                  "response": [
+                    {
+                      "id": "ec0cca8c-257b-44a9-9729-ad9ebaab3a40",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/metadata/:reportType/columns?alt=json&fields=<string>&key=<string>&oauth_token=<string>&prettyPrint=<boolean>&quotaUser=<string>&userIp=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "metadata",
+                            ":reportType",
+                            "columns"
+                          ],
+                          "query": [
+                            {
+                              "description": "Data format for the response.",
+                              "key": "alt",
+                              "value": "json"
+                            },
+                            {
+                              "description": "Selector specifying which fields to include in a partial response.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+                              "key": "key",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "OAuth 2.0 token for the current user.",
+                              "key": "oauth_token",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Returns response with indentations and line breaks.",
+                              "key": "prettyPrint",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
+                              "key": "quotaUser",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Deprecated. Please use quotaUser instead.",
+                              "key": "userIp",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "reportType"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"attributeNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"etag\": \"<string>\",\n  \"items\": [\n    {\n      \"attributes\": {\n        \"fugiat_27\": \"<string>\",\n        \"commodo_98b\": \"<string>\"\n      },\n      \"id\": \"<string>\",\n      \"kind\": \"analytics#column\"\n    },\n    {\n      \"attributes\": {\n        \"minimef\": \"<string>\",\n        \"Ut_e\": \"<string>\",\n        \"dolore_e_\": \"<string>\"\n      },\n      \"id\": \"<string>\",\n      \"kind\": \"analytics#column\"\n    }\n  ],\n  \"kind\": \"analytics#columns\",\n  \"totalResults\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T10:55:31.000Z",
+                      "updatedAt": "2026-07-28T10:55:31.000Z",
+                      "uid": "35240-ec0cca8c-257b-44a9-9729-ad9ebaab3a40"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T10:55:31.000Z",
+                  "updatedAt": "2026-07-28T10:55:31.000Z",
+                  "uid": "35240-c9c684e3-f25c-445c-881f-a51e1899aad3"
+                }
+              ],
+              "id": "0981c614-65da-45ee-b87d-8454e605e217",
+              "createdAt": "2026-07-28T10:55:31.000Z",
+              "updatedAt": "2026-07-28T10:55:31.000Z",
+              "uid": "35240-0981c614-65da-45ee-b87d-8454e605e217"
+            }
+          ],
+          "id": "49f15cb0-c998-4627-9669-1c980f3bdc79",
+          "createdAt": "2026-07-28T10:55:31.000Z",
+          "updatedAt": "2026-07-28T10:55:31.000Z",
+          "uid": "35240-49f15cb0-c998-4627-9669-1c980f3bdc79"
+        }
+      ],
+      "id": "527d9a62-2837-4023-bd05-5dac534e6df0",
+      "createdAt": "2026-07-28T10:55:31.000Z",
+      "updatedAt": "2026-07-28T10:55:31.000Z",
+      "uid": "35240-527d9a62-2837-4023-bd05-5dac534e6df0"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://analyticsadmin.googleapis.com/"
+    }
+  ]
+}

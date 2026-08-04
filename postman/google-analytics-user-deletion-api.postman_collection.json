@@ -1,13 +1,13 @@
 {
   "info": {
-    "_postman_id": "9400dc7f-eadf-46e6-b085-d9f54cd98295",
-    "name": "Google Analytics User Deletion API",
-    "description": "The Google Analytics User Deletion API enables removal of data linked to specific user identifiers, supporting compliance with data protection and privacy requirements such as GDPR. Supports deletion by CLIENT_ID, USER_ID, and APP_INSTANCE_ID. Data appears in Individual User Reports within 72 hours and complete deletion occurs during bimonthly processes.\n\nContact Support:\n Name: Google Analytics",
+    "_postman_id": "23ecc732-9e78-423f-acc2-0f7f5e726795",
+    "name": "Google Analytics Admin accounts User Deletion API",
+    "description": "Manage properties in Google Analytics. Warning: Creating multiple Customer Applications, Accounts, or Projects to simulate or act as a single Customer Application, Account, or Project (respectively) or to circumvent Service-specific usage limits or quotas is a direct violation of Google Cloud Platform Terms of Service as well as Google APIs Terms of Service. These actions can result in immediate termination of your GCP project(s) without any warning.\n\nContact Support:\n Name: Google",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "createdAt": "2026-06-05T15:09:05.000Z",
-    "updatedAt": "2026-06-05T15:09:05.000Z",
+    "createdAt": "2026-07-28T10:55:36.000Z",
+    "updatedAt": "2026-07-28T10:55:36.000Z",
     "lastUpdatedBy": "35240",
-    "uid": "35240-9400dc7f-eadf-46e6-b085-d9f54cd98295"
+    "uid": "35240-23ecc732-9e78-423f-acc2-0f7f5e726795"
   },
   "item": [
     {
@@ -18,36 +18,11 @@
           "item": [
             {
               "name": "Google Analytics Insert or Update a User Deletion Request",
-              "id": "716df61d-eacf-4ee4-9f44-3fe032c1bc32",
+              "id": "2dbbe991-9940-4dce-a04e-812851f766d3",
               "protocolProfileBehavior": {
                 "disableBodyPruning": true
               },
               "request": {
-                "auth": {
-                  "type": "oauth2",
-                  "oauth2": [
-                    {
-                      "key": "scope",
-                      "value": "https://www.googleapis.com/auth/analytics.user.deletion",
-                      "type": "string"
-                    },
-                    {
-                      "key": "accessTokenUrl",
-                      "value": "https://oauth2.googleapis.com/token",
-                      "type": "string"
-                    },
-                    {
-                      "key": "authUrl",
-                      "value": "https://accounts.google.com/o/oauth2/auth",
-                      "type": "string"
-                    },
-                    {
-                      "key": "grant_type",
-                      "value": "authorization_code",
-                      "type": "string"
-                    }
-                  ]
-                },
                 "method": "POST",
                 "header": [
                   {
@@ -61,7 +36,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": {\n    \"type\": \"APP_INSTANCE_ID\",\n    \"userId\": \"<string>\"\n  },\n  \"kind\": \"analytics#userDeletionRequest\",\n  \"webPropertyId\": \"<string>\",\n  \"firebaseProjectId\": \"<string>\",\n  \"propertyId\": \"<string>\",\n  \"deletionRequestTime\": \"<dateTime>\"\n}",
+                  "raw": "{\n  \"id\": {\n    \"type\": \"CLIENT_ID\",\n    \"userId\": \"<string>\"\n  },\n  \"kind\": \"analytics#userDeletionRequest\",\n  \"webPropertyId\": \"<string>\",\n  \"firebaseProjectId\": \"<string>\",\n  \"propertyId\": \"<string>\",\n  \"deletionRequestTime\": \"<dateTime>\"\n}",
                   "options": {
                     "raw": {
                       "headerFamily": "json",
@@ -83,7 +58,7 @@
               },
               "response": [
                 {
-                  "id": "925ecf5b-68d1-4296-8470-6215ca221933",
+                  "id": "eb01a829-099f-4894-8144-526267014579",
                   "name": "Successful user deletion request",
                   "originalRequest": {
                     "method": "POST",
@@ -95,16 +70,11 @@
                       {
                         "key": "Accept",
                         "value": "application/json"
-                      },
-                      {
-                        "description": "Added as a part of security scheme: oauth2",
-                        "key": "Authorization",
-                        "value": "<token>"
                       }
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\n  \"id\": {\n    \"type\": \"APP_INSTANCE_ID\",\n    \"userId\": \"<string>\"\n  },\n  \"kind\": \"analytics#userDeletionRequest\",\n  \"webPropertyId\": \"<string>\",\n  \"firebaseProjectId\": \"<string>\",\n  \"propertyId\": \"<string>\",\n  \"deletionRequestTime\": \"<dateTime>\"\n}",
+                      "raw": "{\n  \"id\": {\n    \"type\": \"CLIENT_ID\",\n    \"userId\": \"<string>\"\n  },\n  \"kind\": \"analytics#userDeletionRequest\",\n  \"webPropertyId\": \"<string>\",\n  \"firebaseProjectId\": \"<string>\",\n  \"propertyId\": \"<string>\",\n  \"deletionRequestTime\": \"<dateTime>\"\n}",
                       "options": {
                         "raw": {
                           "headerFamily": "json",
@@ -134,13 +104,13 @@
                   ],
                   "cookie": [],
                   "responseTime": null,
-                  "body": "{\n  \"id\": {\n    \"type\": \"APP_INSTANCE_ID\",\n    \"userId\": \"<string>\"\n  },\n  \"kind\": \"analytics#userDeletionRequest\",\n  \"webPropertyId\": \"<string>\",\n  \"firebaseProjectId\": \"<string>\",\n  \"propertyId\": \"<string>\",\n  \"deletionRequestTime\": \"<dateTime>\"\n}",
-                  "createdAt": "2026-06-05T15:09:06.000Z",
-                  "updatedAt": "2026-06-05T15:09:06.000Z",
-                  "uid": "35240-925ecf5b-68d1-4296-8470-6215ca221933"
+                  "body": "{\n  \"id\": {\n    \"type\": \"CLIENT_ID\",\n    \"userId\": \"<string>\"\n  },\n  \"kind\": \"analytics#userDeletionRequest\",\n  \"webPropertyId\": \"<string>\",\n  \"firebaseProjectId\": \"<string>\",\n  \"propertyId\": \"<string>\",\n  \"deletionRequestTime\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T10:55:36.000Z",
+                  "updatedAt": "2026-07-28T10:55:36.000Z",
+                  "uid": "35240-eb01a829-099f-4894-8144-526267014579"
                 },
                 {
-                  "id": "0ea0fd67-2fb7-4067-8578-fa5d10913382",
+                  "id": "5fea4fe5-ef90-4b63-a150-cf5e33a1e971",
                   "name": "Invalid request - malformed body or invalid ID type",
                   "originalRequest": {
                     "method": "POST",
@@ -148,16 +118,11 @@
                       {
                         "key": "Content-Type",
                         "value": "application/json"
-                      },
-                      {
-                        "description": "Added as a part of security scheme: oauth2",
-                        "key": "Authorization",
-                        "value": "<token>"
                       }
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\n  \"id\": {\n    \"type\": \"APP_INSTANCE_ID\",\n    \"userId\": \"<string>\"\n  },\n  \"kind\": \"analytics#userDeletionRequest\",\n  \"webPropertyId\": \"<string>\",\n  \"firebaseProjectId\": \"<string>\",\n  \"propertyId\": \"<string>\",\n  \"deletionRequestTime\": \"<dateTime>\"\n}",
+                      "raw": "{\n  \"id\": {\n    \"type\": \"CLIENT_ID\",\n    \"userId\": \"<string>\"\n  },\n  \"kind\": \"analytics#userDeletionRequest\",\n  \"webPropertyId\": \"<string>\",\n  \"firebaseProjectId\": \"<string>\",\n  \"propertyId\": \"<string>\",\n  \"deletionRequestTime\": \"<dateTime>\"\n}",
                       "options": {
                         "raw": {
                           "headerFamily": "json",
@@ -183,12 +148,12 @@
                   "cookie": [],
                   "responseTime": null,
                   "body": null,
-                  "createdAt": "2026-06-05T15:09:06.000Z",
-                  "updatedAt": "2026-06-05T15:09:06.000Z",
-                  "uid": "35240-0ea0fd67-2fb7-4067-8578-fa5d10913382"
+                  "createdAt": "2026-07-28T10:55:36.000Z",
+                  "updatedAt": "2026-07-28T10:55:36.000Z",
+                  "uid": "35240-5fea4fe5-ef90-4b63-a150-cf5e33a1e971"
                 },
                 {
-                  "id": "e0398ce2-9057-4b0c-81bc-61275dd43733",
+                  "id": "b28a5ea7-ab8d-4858-8cbc-b76ce4d30b2d",
                   "name": "Authentication required",
                   "originalRequest": {
                     "method": "POST",
@@ -196,16 +161,11 @@
                       {
                         "key": "Content-Type",
                         "value": "application/json"
-                      },
-                      {
-                        "description": "Added as a part of security scheme: oauth2",
-                        "key": "Authorization",
-                        "value": "<token>"
                       }
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\n  \"id\": {\n    \"type\": \"APP_INSTANCE_ID\",\n    \"userId\": \"<string>\"\n  },\n  \"kind\": \"analytics#userDeletionRequest\",\n  \"webPropertyId\": \"<string>\",\n  \"firebaseProjectId\": \"<string>\",\n  \"propertyId\": \"<string>\",\n  \"deletionRequestTime\": \"<dateTime>\"\n}",
+                      "raw": "{\n  \"id\": {\n    \"type\": \"CLIENT_ID\",\n    \"userId\": \"<string>\"\n  },\n  \"kind\": \"analytics#userDeletionRequest\",\n  \"webPropertyId\": \"<string>\",\n  \"firebaseProjectId\": \"<string>\",\n  \"propertyId\": \"<string>\",\n  \"deletionRequestTime\": \"<dateTime>\"\n}",
                       "options": {
                         "raw": {
                           "headerFamily": "json",
@@ -231,12 +191,12 @@
                   "cookie": [],
                   "responseTime": null,
                   "body": null,
-                  "createdAt": "2026-06-05T15:09:06.000Z",
-                  "updatedAt": "2026-06-05T15:09:06.000Z",
-                  "uid": "35240-e0398ce2-9057-4b0c-81bc-61275dd43733"
+                  "createdAt": "2026-07-28T10:55:36.000Z",
+                  "updatedAt": "2026-07-28T10:55:36.000Z",
+                  "uid": "35240-b28a5ea7-ab8d-4858-8cbc-b76ce4d30b2d"
                 },
                 {
-                  "id": "7a1c8fc2-5a58-4a00-975a-d0f2311c97b3",
+                  "id": "40664e86-9193-43ea-aa2c-1b5b24229bf2",
                   "name": "Insufficient permissions - missing required OAuth scope",
                   "originalRequest": {
                     "method": "POST",
@@ -244,16 +204,11 @@
                       {
                         "key": "Content-Type",
                         "value": "application/json"
-                      },
-                      {
-                        "description": "Added as a part of security scheme: oauth2",
-                        "key": "Authorization",
-                        "value": "<token>"
                       }
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\n  \"id\": {\n    \"type\": \"APP_INSTANCE_ID\",\n    \"userId\": \"<string>\"\n  },\n  \"kind\": \"analytics#userDeletionRequest\",\n  \"webPropertyId\": \"<string>\",\n  \"firebaseProjectId\": \"<string>\",\n  \"propertyId\": \"<string>\",\n  \"deletionRequestTime\": \"<dateTime>\"\n}",
+                      "raw": "{\n  \"id\": {\n    \"type\": \"CLIENT_ID\",\n    \"userId\": \"<string>\"\n  },\n  \"kind\": \"analytics#userDeletionRequest\",\n  \"webPropertyId\": \"<string>\",\n  \"firebaseProjectId\": \"<string>\",\n  \"propertyId\": \"<string>\",\n  \"deletionRequestTime\": \"<dateTime>\"\n}",
                       "options": {
                         "raw": {
                           "headerFamily": "json",
@@ -279,32 +234,32 @@
                   "cookie": [],
                   "responseTime": null,
                   "body": null,
-                  "createdAt": "2026-06-05T15:09:06.000Z",
-                  "updatedAt": "2026-06-05T15:09:06.000Z",
-                  "uid": "35240-7a1c8fc2-5a58-4a00-975a-d0f2311c97b3"
+                  "createdAt": "2026-07-28T10:55:36.000Z",
+                  "updatedAt": "2026-07-28T10:55:36.000Z",
+                  "uid": "35240-40664e86-9193-43ea-aa2c-1b5b24229bf2"
                 }
               ],
-              "createdAt": "2026-06-05T15:09:06.000Z",
-              "updatedAt": "2026-06-05T15:09:06.000Z",
-              "uid": "35240-716df61d-eacf-4ee4-9f44-3fe032c1bc32"
+              "createdAt": "2026-07-28T10:55:36.000Z",
+              "updatedAt": "2026-07-28T10:55:36.000Z",
+              "uid": "35240-2dbbe991-9940-4dce-a04e-812851f766d3"
             }
           ],
-          "id": "13044f5d-c27e-4396-8a1a-b3f140d7c60f",
-          "createdAt": "2026-06-05T15:09:05.000Z",
-          "updatedAt": "2026-06-05T15:09:05.000Z",
-          "uid": "35240-13044f5d-c27e-4396-8a1a-b3f140d7c60f"
+          "id": "16c29c51-29cb-41e6-a81a-b2749b427091",
+          "createdAt": "2026-07-28T10:55:36.000Z",
+          "updatedAt": "2026-07-28T10:55:36.000Z",
+          "uid": "35240-16c29c51-29cb-41e6-a81a-b2749b427091"
         }
       ],
-      "id": "ba7f219e-a4ab-4c0b-a6a5-2522c3978317",
-      "createdAt": "2026-06-05T15:09:05.000Z",
-      "updatedAt": "2026-06-05T15:09:05.000Z",
-      "uid": "35240-ba7f219e-a4ab-4c0b-a6a5-2522c3978317"
+      "id": "cb711822-8a68-45ed-ad38-4ec932bfa010",
+      "createdAt": "2026-07-28T10:55:36.000Z",
+      "updatedAt": "2026-07-28T10:55:36.000Z",
+      "uid": "35240-cb711822-8a68-45ed-ad38-4ec932bfa010"
     }
   ],
   "variable": [
     {
       "key": "baseUrl",
-      "value": "https://www.googleapis.com/analytics/v3"
+      "value": "https://analyticsadmin.googleapis.com/"
     }
   ]
 }

@@ -1,0 +1,235 @@
+{
+  "info": {
+    "_postman_id": "5311c409-9b9d-4146-ab0b-b851d9ffd5ec",
+    "name": "Google Analytics Admin accounts userDeletion API",
+    "description": "Manage properties in Google Analytics. Warning: Creating multiple Customer Applications, Accounts, or Projects to simulate or act as a single Customer Application, Account, or Project (respectively) or to circumvent Service-specific usage limits or quotas is a direct violation of Google Cloud Platform Terms of Service as well as Google APIs Terms of Service. These actions can result in immediate termination of your GCP project(s) without any warning.\n\nContact Support:\n Name: Google",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:55:38.000Z",
+    "updatedAt": "2026-07-28T10:55:38.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5311c409-9b9d-4146-ab0b-b851d9ffd5ec"
+  },
+  "item": [
+    {
+      "name": "userDeletion",
+      "item": [
+        {
+          "name": "userDeletionRequests:upsert",
+          "item": [
+            {
+              "name": "analytics.user Deletion.user Deletion Request.upsert",
+              "id": "941feb5e-5cc9-4fc4-a96f-f902886267e0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "https://www.googleapis.com/auth/analytics.edit https://www.googleapis.com/auth/analytics.readonly",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://accounts.google.com/o/oauth2/auth",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "implicit",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deletionRequestTime\": \"<dateTime>\",\n  \"firebaseProjectId\": \"<string>\",\n  \"id\": {\n    \"type\": \"<string>\",\n    \"userId\": \"<string>\"\n  },\n  \"kind\": \"analytics#userDeletionRequest\",\n  \"propertyId\": \"<string>\",\n  \"webPropertyId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/userDeletion/userDeletionRequests:upsert?alt=json&fields=<string>&key=<string>&oauth_token=<string>&prettyPrint=<boolean>&quotaUser=<string>&userIp=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "userDeletion",
+                    "userDeletionRequests:upsert"
+                  ],
+                  "query": [
+                    {
+                      "description": "Data format for the response.",
+                      "key": "alt",
+                      "value": "json"
+                    },
+                    {
+                      "description": "Selector specifying which fields to include in a partial response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "OAuth 2.0 token for the current user.",
+                      "key": "oauth_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Returns response with indentations and line breaks.",
+                      "key": "prettyPrint",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
+                      "key": "quotaUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Deprecated. Please use quotaUser instead.",
+                      "key": "userIp",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Insert or update a user deletion requests."
+              },
+              "response": [
+                {
+                  "id": "a857b74c-535f-4c3d-b922-5f662411e0b1",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"deletionRequestTime\": \"<dateTime>\",\n  \"firebaseProjectId\": \"<string>\",\n  \"id\": {\n    \"type\": \"<string>\",\n    \"userId\": \"<string>\"\n  },\n  \"kind\": \"analytics#userDeletionRequest\",\n  \"propertyId\": \"<string>\",\n  \"webPropertyId\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/userDeletion/userDeletionRequests:upsert?alt=json&fields=<string>&key=<string>&oauth_token=<string>&prettyPrint=<boolean>&quotaUser=<string>&userIp=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "userDeletion",
+                        "userDeletionRequests:upsert"
+                      ],
+                      "query": [
+                        {
+                          "description": "Data format for the response.",
+                          "key": "alt",
+                          "value": "json"
+                        },
+                        {
+                          "description": "Selector specifying which fields to include in a partial response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+                          "key": "key",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "OAuth 2.0 token for the current user.",
+                          "key": "oauth_token",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Returns response with indentations and line breaks.",
+                          "key": "prettyPrint",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
+                          "key": "quotaUser",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Deprecated. Please use quotaUser instead.",
+                          "key": "userIp",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"deletionRequestTime\": \"<dateTime>\",\n  \"firebaseProjectId\": \"<string>\",\n  \"id\": {\n    \"type\": \"<string>\",\n    \"userId\": \"<string>\"\n  },\n  \"kind\": \"analytics#userDeletionRequest\",\n  \"propertyId\": \"<string>\",\n  \"webPropertyId\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T10:55:39.000Z",
+                  "updatedAt": "2026-07-28T10:55:39.000Z",
+                  "uid": "35240-a857b74c-535f-4c3d-b922-5f662411e0b1"
+                }
+              ],
+              "createdAt": "2026-07-28T10:55:39.000Z",
+              "updatedAt": "2026-07-28T10:55:39.000Z",
+              "uid": "35240-941feb5e-5cc9-4fc4-a96f-f902886267e0"
+            }
+          ],
+          "id": "fee94422-ba45-4426-a89e-a5ba116663ae",
+          "createdAt": "2026-07-28T10:55:39.000Z",
+          "updatedAt": "2026-07-28T10:55:39.000Z",
+          "uid": "35240-fee94422-ba45-4426-a89e-a5ba116663ae"
+        }
+      ],
+      "id": "fa20cf47-2d90-4212-9720-6278eb31fe47",
+      "createdAt": "2026-07-28T10:55:39.000Z",
+      "updatedAt": "2026-07-28T10:55:39.000Z",
+      "uid": "35240-fa20cf47-2d90-4212-9720-6278eb31fe47"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://analyticsadmin.googleapis.com/"
+    }
+  ]
+}

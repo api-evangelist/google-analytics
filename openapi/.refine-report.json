@@ -1,0 +1,38 @@
+{
+  "provider": "google-analytics",
+  "sources": [
+    "google-analytics-accounts-api-openapi.yml",
+    "google-analytics-accountsummaries-api-openapi.yml",
+    "google-analytics-data-api-openapi.yml",
+    "google-analytics-events-api-openapi.yml",
+    "google-analytics-management-api-openapi.yml",
+    "google-analytics-metadata-api-openapi.yml",
+    "google-analytics-properties-api-openapi.yml",
+    "google-analytics-provisioning-api-openapi.yml",
+    "google-analytics-reports-api-openapi.yml",
+    "google-analytics-user-deletion-api-openapi.yml",
+    "google-analytics-useractivity-api-openapi.yml",
+    "google-analytics-userdeletion-api-openapi.yml",
+    "google-analytics-validation-api-openapi.yml"
+  ],
+  "outputs": [
+    "google-analytics-accounts-api-openapi.yml",
+    "google-analytics-accountsummaries-api-openapi.yml",
+    "google-analytics-data-api-openapi.yml",
+    "google-analytics-events-api-openapi.yml",
+    "google-analytics-management-api-openapi.yml",
+    "google-analytics-metadata-api-openapi.yml",
+    "google-analytics-properties-api-openapi.yml",
+    "google-analytics-provisioning-api-openapi.yml",
+    "google-analytics-reports-api-openapi.yml",
+    "google-analytics-user-deletion-api-openapi.yml",
+    "google-analytics-useractivity-api-openapi.yml",
+    "google-analytics-userdeletion-api-openapi.yml",
+    "google-analytics-validation-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

@@ -10,7 +10,7 @@ info:
     url: http://creativecommons.org/licenses/by/3.0/
   termsOfService: https://developers.google.com/terms/
   title: Google Analytics Admin accounts metadata API
-  version: v1beta
+  version: "v1"
   x-apisguru-categories:
   - analytics
   - media
@@ -19,7 +19,6 @@ info:
   x-origin:
   - format: google
     url: https://analyticsadmin.googleapis.com/$discovery/rest?version=v1beta
-    version: v1
   x-preferred: true
   x-providerName: googleapis.com
   x-serviceName: analyticsadmin

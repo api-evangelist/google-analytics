@@ -1,0 +1,170 @@
+{
+  "info": {
+    "_postman_id": "49a0c951-7f88-4b75-9211-ecce079468db",
+    "name": "Google Analytics Admin accounts Validation API",
+    "description": "Manage properties in Google Analytics. Warning: Creating multiple Customer Applications, Accounts, or Projects to simulate or act as a single Customer Application, Account, or Project (respectively) or to circumvent Service-specific usage limits or quotas is a direct violation of Google Cloud Platform Terms of Service as well as Google APIs Terms of Service. These actions can result in immediate termination of your GCP project(s) without any warning.\n\nContact Support:\n Name: Google",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:55:39.000Z",
+    "updatedAt": "2026-07-28T10:55:39.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-49a0c951-7f88-4b75-9211-ecce079468db"
+  },
+  "item": [
+    {
+      "name": "collect",
+      "item": [
+        {
+          "name": "debug",
+          "item": [
+            {
+              "name": "Google Analytics Validate Events Without Sending to Google Analytics",
+              "id": "d4181e79-3f67-41f6-961d-ec3fee0b3e8a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"name\": \"<string>\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\",\n        \"sint_b9a\": 45207915.14087543\n      }\n    }\n  ],\n  \"client_id\": \"<string>\",\n  \"app_instance_id\": \"<string>\",\n  \"user_id\": \"<string>\",\n  \"timestamp_micros\": \"<long>\",\n  \"user_properties\": {\n    \"proidentb\": {\n      \"value\": \"<string>\"\n    }\n  },\n  \"user_data\": {},\n  \"consent\": {\n    \"ad_user_data\": \"DENIED\",\n    \"ad_personalization\": \"GRANTED\"\n  },\n  \"non_personalized_ads\": \"<boolean>\",\n  \"user_location\": {\n    \"city\": \"<string>\",\n    \"region_id\": \"<string>\",\n    \"country_id\": \"<string>\",\n    \"subcontinent_id\": \"<string>\",\n    \"continent_id\": \"<string>\"\n  },\n  \"ip_override\": \"<string>\",\n  \"device\": {\n    \"category\": \"<string>\",\n    \"language\": \"<string>\",\n    \"screen_resolution\": \"<string>\",\n    \"operating_system\": \"<string>\",\n    \"operating_system_version\": \"<string>\",\n    \"model\": \"<string>\",\n    \"brand\": \"<string>\",\n    \"browser\": \"<string>\",\n    \"browser_version\": \"<string>\"\n  },\n  \"validation_behavior\": \"RELAXED\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/collect/debug?api_secret=<string>&measurement_id=<string>&firebase_app_id=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collect",
+                    "debug"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The API Secret generated in the Google Analytics UI.",
+                      "key": "api_secret",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The Measurement ID for a web data stream. Required for web streams.",
+                      "key": "measurement_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The Firebase App ID for an app data stream. Required for app streams.",
+                      "key": "firebase_app_id",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Validates the event payload and returns validation messages without actually sending the events to Google Analytics. Use this endpoint during development to verify your implementation."
+              },
+              "response": [
+                {
+                  "id": "0567c1ed-9211-463c-8a35-f254bcaf4521",
+                  "name": "Validation response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"events\": [\n    {\n      \"name\": \"<string>\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\",\n        \"sint_b9a\": 45207915.14087543\n      }\n    }\n  ],\n  \"client_id\": \"<string>\",\n  \"app_instance_id\": \"<string>\",\n  \"user_id\": \"<string>\",\n  \"timestamp_micros\": \"<long>\",\n  \"user_properties\": {\n    \"proidentb\": {\n      \"value\": \"<string>\"\n    }\n  },\n  \"user_data\": {},\n  \"consent\": {\n    \"ad_user_data\": \"DENIED\",\n    \"ad_personalization\": \"GRANTED\"\n  },\n  \"non_personalized_ads\": \"<boolean>\",\n  \"user_location\": {\n    \"city\": \"<string>\",\n    \"region_id\": \"<string>\",\n    \"country_id\": \"<string>\",\n    \"subcontinent_id\": \"<string>\",\n    \"continent_id\": \"<string>\"\n  },\n  \"ip_override\": \"<string>\",\n  \"device\": {\n    \"category\": \"<string>\",\n    \"language\": \"<string>\",\n    \"screen_resolution\": \"<string>\",\n    \"operating_system\": \"<string>\",\n    \"operating_system_version\": \"<string>\",\n    \"model\": \"<string>\",\n    \"brand\": \"<string>\",\n    \"browser\": \"<string>\",\n    \"browser_version\": \"<string>\"\n  },\n  \"validation_behavior\": \"RELAXED\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/collect/debug?api_secret=<string>&measurement_id=<string>&firebase_app_id=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collect",
+                        "debug"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The API Secret generated in the Google Analytics UI.",
+                          "key": "api_secret",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The Measurement ID for a web data stream. Required for web streams.",
+                          "key": "measurement_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The Firebase App ID for an app data stream. Required for app streams.",
+                          "key": "firebase_app_id",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"validationMessages\": [\n    {\n      \"fieldPath\": \"<string>\",\n      \"description\": \"<string>\",\n      \"validationCode\": \"VALUE_REQUIRED\"\n    },\n    {\n      \"fieldPath\": \"<string>\",\n      \"description\": \"<string>\",\n      \"validationCode\": \"VALUE_OUT_OF_BOUNDS\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T10:55:40.000Z",
+                  "updatedAt": "2026-07-28T10:55:40.000Z",
+                  "uid": "35240-0567c1ed-9211-463c-8a35-f254bcaf4521"
+                }
+              ],
+              "createdAt": "2026-07-28T10:55:40.000Z",
+              "updatedAt": "2026-07-28T10:55:40.000Z",
+              "uid": "35240-d4181e79-3f67-41f6-961d-ec3fee0b3e8a"
+            }
+          ],
+          "id": "8062709d-3856-429b-b346-67b9805babb2",
+          "createdAt": "2026-07-28T10:55:40.000Z",
+          "updatedAt": "2026-07-28T10:55:40.000Z",
+          "uid": "35240-8062709d-3856-429b-b346-67b9805babb2"
+        }
+      ],
+      "id": "6336dba4-16dc-4e19-a52d-3b9c800e672e",
+      "createdAt": "2026-07-28T10:55:40.000Z",
+      "updatedAt": "2026-07-28T10:55:40.000Z",
+      "uid": "35240-6336dba4-16dc-4e19-a52d-3b9c800e672e"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://analyticsadmin.googleapis.com/"
+    }
+  ]
+}

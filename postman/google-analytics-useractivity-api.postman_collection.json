@@ -1,0 +1,275 @@
+{
+  "info": {
+    "_postman_id": "0fb44e68-d966-40bc-977f-936a1185ad28",
+    "name": "Google Analytics Admin accounts userActivity API",
+    "description": "Manage properties in Google Analytics. Warning: Creating multiple Customer Applications, Accounts, or Projects to simulate or act as a single Customer Application, Account, or Project (respectively) or to circumvent Service-specific usage limits or quotas is a direct violation of Google Cloud Platform Terms of Service as well as Google APIs Terms of Service. These actions can result in immediate termination of your GCP project(s) without any warning.\n\nContact Support:\n Name: Google",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:55:37.000Z",
+    "updatedAt": "2026-07-28T10:55:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0fb44e68-d966-40bc-977f-936a1185ad28"
+  },
+  "item": [
+    {
+      "name": "v4",
+      "item": [
+        {
+          "name": "userActivity:search",
+          "item": [
+            {
+              "name": "analyticsreporting.user Activity.search",
+              "id": "27ab4c4d-f472-4a86-abe5-29ec50bc24fd",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "https://www.googleapis.com/auth/analytics.edit https://www.googleapis.com/auth/analytics.readonly",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://accounts.google.com/o/oauth2/auth",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "implicit",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activityTypes\": [\n    \"EVENT\",\n    \"PAGEVIEW\"\n  ],\n  \"dateRange\": {\n    \"endDate\": \"<string>\",\n    \"startDate\": \"<string>\"\n  },\n  \"pageSize\": \"<integer>\",\n  \"pageToken\": \"<string>\",\n  \"user\": {\n    \"type\": \"USER_ID_TYPE_UNSPECIFIED\",\n    \"userId\": \"<string>\"\n  },\n  \"viewId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v4/userActivity:search?$.xgafv=2&access_token=<string>&alt=proto&callback=<string>&fields=<string>&key=<string>&oauth_token=<string>&prettyPrint=<boolean>&quotaUser=<string>&upload_protocol=<string>&uploadType=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v4",
+                    "userActivity:search"
+                  ],
+                  "query": [
+                    {
+                      "description": "V1 error format.",
+                      "key": "$.xgafv",
+                      "value": "2"
+                    },
+                    {
+                      "description": "OAuth access token.",
+                      "key": "access_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Data format for response.",
+                      "key": "alt",
+                      "value": "proto"
+                    },
+                    {
+                      "description": "JSONP",
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Selector specifying which fields to include in a partial response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "OAuth 2.0 token for the current user.",
+                      "key": "oauth_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Returns response with indentations and line breaks.",
+                      "key": "prettyPrint",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+                      "key": "quotaUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+                      "key": "upload_protocol",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+                      "key": "uploadType",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns User Activity data."
+              },
+              "response": [
+                {
+                  "id": "f99b1488-5df6-45fa-8f5e-5e60199dcedc",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"activityTypes\": [\n    \"EVENT\",\n    \"PAGEVIEW\"\n  ],\n  \"dateRange\": {\n    \"endDate\": \"<string>\",\n    \"startDate\": \"<string>\"\n  },\n  \"pageSize\": \"<integer>\",\n  \"pageToken\": \"<string>\",\n  \"user\": {\n    \"type\": \"USER_ID_TYPE_UNSPECIFIED\",\n    \"userId\": \"<string>\"\n  },\n  \"viewId\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v4/userActivity:search?$.xgafv=2&access_token=<string>&alt=proto&callback=<string>&fields=<string>&key=<string>&oauth_token=<string>&prettyPrint=<boolean>&quotaUser=<string>&upload_protocol=<string>&uploadType=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v4",
+                        "userActivity:search"
+                      ],
+                      "query": [
+                        {
+                          "description": "V1 error format.",
+                          "key": "$.xgafv",
+                          "value": "2"
+                        },
+                        {
+                          "description": "OAuth access token.",
+                          "key": "access_token",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Data format for response.",
+                          "key": "alt",
+                          "value": "proto"
+                        },
+                        {
+                          "description": "JSONP",
+                          "key": "callback",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Selector specifying which fields to include in a partial response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+                          "key": "key",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "OAuth 2.0 token for the current user.",
+                          "key": "oauth_token",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Returns response with indentations and line breaks.",
+                          "key": "prettyPrint",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+                          "key": "quotaUser",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+                          "key": "upload_protocol",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+                          "key": "uploadType",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"nextPageToken\": \"<string>\",\n  \"sampleRate\": \"<double>\",\n  \"sessions\": [\n    {\n      \"activities\": [\n        {\n          \"activityTime\": \"<string>\",\n          \"activityType\": \"SCREENVIEW\",\n          \"appview\": {\n            \"appName\": \"<string>\",\n            \"mobileDeviceBranding\": \"<string>\",\n            \"mobileDeviceModel\": \"<string>\",\n            \"screenName\": \"<string>\"\n          },\n          \"campaign\": \"<string>\",\n          \"channelGrouping\": \"<string>\",\n          \"customDimension\": [\n            {\n              \"index\": \"<integer>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"index\": \"<integer>\",\n              \"value\": \"<string>\"\n            }\n          ],\n          \"ecommerce\": {\n            \"actionType\": \"PAYMENT\",\n            \"ecommerceType\": \"ENHANCED\",\n            \"products\": [\n              {\n                \"itemRevenue\": \"<double>\",\n                \"productName\": \"<string>\",\n                \"productQuantity\": \"<int64>\",\n                \"productSku\": \"<string>\"\n              },\n              {\n                \"itemRevenue\": \"<double>\",\n                \"productName\": \"<string>\",\n                \"productQuantity\": \"<int64>\",\n                \"productSku\": \"<string>\"\n              }\n            ],\n            \"transaction\": {\n              \"transactionId\": \"<string>\",\n              \"transactionRevenue\": \"<double>\",\n              \"transactionShipping\": \"<double>\",\n              \"transactionTax\": \"<double>\"\n            }\n          },\n          \"event\": {\n            \"eventAction\": \"<string>\",\n            \"eventCategory\": \"<string>\",\n            \"eventCount\": \"<int64>\",\n            \"eventLabel\": \"<string>\",\n            \"eventValue\": \"<int64>\"\n          },\n          \"goals\": {\n            \"goals\": [\n              {\n                \"goalCompletionLocation\": \"<string>\",\n                \"goalCompletions\": \"<int64>\",\n                \"goalIndex\": \"<integer>\",\n                \"goalName\": \"<string>\",\n                \"goalPreviousStep1\": \"<string>\",\n                \"goalPreviousStep2\": \"<string>\",\n                \"goalPreviousStep3\": \"<string>\",\n                \"goalValue\": \"<double>\"\n              },\n              {\n                \"goalCompletionLocation\": \"<string>\",\n                \"goalCompletions\": \"<int64>\",\n                \"goalIndex\": \"<integer>\",\n                \"goalName\": \"<string>\",\n                \"goalPreviousStep1\": \"<string>\",\n                \"goalPreviousStep2\": \"<string>\",\n                \"goalPreviousStep3\": \"<string>\",\n                \"goalValue\": \"<double>\"\n              }\n            ]\n          },\n          \"hostname\": \"<string>\",\n          \"keyword\": \"<string>\",\n          \"landingPagePath\": \"<string>\",\n          \"medium\": \"<string>\",\n          \"pageview\": {\n            \"pagePath\": \"<string>\",\n            \"pageTitle\": \"<string>\"\n          },\n          \"source\": \"<string>\"\n        },\n        {\n          \"activityTime\": \"<string>\",\n          \"activityType\": \"EVENT\",\n          \"appview\": {\n            \"appName\": \"<string>\",\n            \"mobileDeviceBranding\": \"<string>\",\n            \"mobileDeviceModel\": \"<string>\",\n            \"screenName\": \"<string>\"\n          },\n          \"campaign\": \"<string>\",\n          \"channelGrouping\": \"<string>\",\n          \"customDimension\": [\n            {\n              \"index\": \"<integer>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"index\": \"<integer>\",\n              \"value\": \"<string>\"\n            }\n          ],\n          \"ecommerce\": {\n            \"actionType\": \"CHECKOUT\",\n            \"ecommerceType\": \"ECOMMERCE_TYPE_UNSPECIFIED\",\n            \"products\": [\n              {\n                \"itemRevenue\": \"<double>\",\n                \"productName\": \"<string>\",\n                \"productQuantity\": \"<int64>\",\n                \"productSku\": \"<string>\"\n              },\n              {\n                \"itemRevenue\": \"<double>\",\n                \"productName\": \"<string>\",\n                \"productQuantity\": \"<int64>\",\n                \"productSku\": \"<string>\"\n              }\n            ],\n            \"transaction\": {\n              \"transactionId\": \"<string>\",\n              \"transactionRevenue\": \"<double>\",\n              \"transactionShipping\": \"<double>\",\n              \"transactionTax\": \"<double>\"\n            }\n          },\n          \"event\": {\n            \"eventAction\": \"<string>\",\n            \"eventCategory\": \"<string>\",\n            \"eventCount\": \"<int64>\",\n            \"eventLabel\": \"<string>\",\n            \"eventValue\": \"<int64>\"\n          },\n          \"goals\": {\n            \"goals\": [\n              {\n                \"goalCompletionLocation\": \"<string>\",\n                \"goalCompletions\": \"<int64>\",\n                \"goalIndex\": \"<integer>\",\n                \"goalName\": \"<string>\",\n                \"goalPreviousStep1\": \"<string>\",\n                \"goalPreviousStep2\": \"<string>\",\n                \"goalPreviousStep3\": \"<string>\",\n                \"goalValue\": \"<double>\"\n              },\n              {\n                \"goalCompletionLocation\": \"<string>\",\n                \"goalCompletions\": \"<int64>\",\n                \"goalIndex\": \"<integer>\",\n                \"goalName\": \"<string>\",\n                \"goalPreviousStep1\": \"<string>\",\n                \"goalPreviousStep2\": \"<string>\",\n                \"goalPreviousStep3\": \"<string>\",\n                \"goalValue\": \"<double>\"\n              }\n            ]\n          },\n          \"hostname\": \"<string>\",\n          \"keyword\": \"<string>\",\n          \"landingPagePath\": \"<string>\",\n          \"medium\": \"<string>\",\n          \"pageview\": {\n            \"pagePath\": \"<string>\",\n            \"pageTitle\": \"<string>\"\n          },\n          \"source\": \"<string>\"\n        }\n      ],\n      \"dataSource\": \"<string>\",\n      \"deviceCategory\": \"<string>\",\n      \"platform\": \"<string>\",\n      \"sessionDate\": \"<string>\",\n      \"sessionId\": \"<string>\"\n    },\n    {\n      \"activities\": [\n        {\n          \"activityTime\": \"<string>\",\n          \"activityType\": \"ACTIVITY_TYPE_UNSPECIFIED\",\n          \"appview\": {\n            \"appName\": \"<string>\",\n            \"mobileDeviceBranding\": \"<string>\",\n            \"mobileDeviceModel\": \"<string>\",\n            \"screenName\": \"<string>\"\n          },\n          \"campaign\": \"<string>\",\n          \"channelGrouping\": \"<string>\",\n          \"customDimension\": [\n            {\n              \"index\": \"<integer>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"index\": \"<integer>\",\n              \"value\": \"<string>\"\n            }\n          ],\n          \"ecommerce\": {\n            \"actionType\": \"CHECKOUT_OPTION\",\n            \"ecommerceType\": \"CLASSIC\",\n            \"products\": [\n              {\n                \"itemRevenue\": \"<double>\",\n                \"productName\": \"<string>\",\n                \"productQuantity\": \"<int64>\",\n                \"productSku\": \"<string>\"\n              },\n              {\n                \"itemRevenue\": \"<double>\",\n                \"productName\": \"<string>\",\n                \"productQuantity\": \"<int64>\",\n                \"productSku\": \"<string>\"\n              }\n            ],\n            \"transaction\": {\n              \"transactionId\": \"<string>\",\n              \"transactionRevenue\": \"<double>\",\n              \"transactionShipping\": \"<double>\",\n              \"transactionTax\": \"<double>\"\n            }\n          },\n          \"event\": {\n            \"eventAction\": \"<string>\",\n            \"eventCategory\": \"<string>\",\n            \"eventCount\": \"<int64>\",\n            \"eventLabel\": \"<string>\",\n            \"eventValue\": \"<int64>\"\n          },\n          \"goals\": {\n            \"goals\": [\n              {\n                \"goalCompletionLocation\": \"<string>\",\n                \"goalCompletions\": \"<int64>\",\n                \"goalIndex\": \"<integer>\",\n                \"goalName\": \"<string>\",\n                \"goalPreviousStep1\": \"<string>\",\n                \"goalPreviousStep2\": \"<string>\",\n                \"goalPreviousStep3\": \"<string>\",\n                \"goalValue\": \"<double>\"\n              },\n              {\n                \"goalCompletionLocation\": \"<string>\",\n                \"goalCompletions\": \"<int64>\",\n                \"goalIndex\": \"<integer>\",\n                \"goalName\": \"<string>\",\n                \"goalPreviousStep1\": \"<string>\",\n                \"goalPreviousStep2\": \"<string>\",\n                \"goalPreviousStep3\": \"<string>\",\n                \"goalValue\": \"<double>\"\n              }\n            ]\n          },\n          \"hostname\": \"<string>\",\n          \"keyword\": \"<string>\",\n          \"landingPagePath\": \"<string>\",\n          \"medium\": \"<string>\",\n          \"pageview\": {\n            \"pagePath\": \"<string>\",\n            \"pageTitle\": \"<string>\"\n          },\n          \"source\": \"<string>\"\n        },\n        {\n          \"activityTime\": \"<string>\",\n          \"activityType\": \"ECOMMERCE\",\n          \"appview\": {\n            \"appName\": \"<string>\",\n            \"mobileDeviceBranding\": \"<string>\",\n            \"mobileDeviceModel\": \"<string>\",\n            \"screenName\": \"<string>\"\n          },\n          \"campaign\": \"<string>\",\n          \"channelGrouping\": \"<string>\",\n          \"customDimension\": [\n            {\n              \"index\": \"<integer>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"index\": \"<integer>\",\n              \"value\": \"<string>\"\n            }\n          ],\n          \"ecommerce\": {\n            \"actionType\": \"CHECKOUT_OPTION\",\n            \"ecommerceType\": \"CLASSIC\",\n            \"products\": [\n              {\n                \"itemRevenue\": \"<double>\",\n                \"productName\": \"<string>\",\n                \"productQuantity\": \"<int64>\",\n                \"productSku\": \"<string>\"\n              },\n              {\n                \"itemRevenue\": \"<double>\",\n                \"productName\": \"<string>\",\n                \"productQuantity\": \"<int64>\",\n                \"productSku\": \"<string>\"\n              }\n            ],\n            \"transaction\": {\n              \"transactionId\": \"<string>\",\n              \"transactionRevenue\": \"<double>\",\n              \"transactionShipping\": \"<double>\",\n              \"transactionTax\": \"<double>\"\n            }\n          },\n          \"event\": {\n            \"eventAction\": \"<string>\",\n            \"eventCategory\": \"<string>\",\n            \"eventCount\": \"<int64>\",\n            \"eventLabel\": \"<string>\",\n            \"eventValue\": \"<int64>\"\n          },\n          \"goals\": {\n            \"goals\": [\n              {\n                \"goalCompletionLocation\": \"<string>\",\n                \"goalCompletions\": \"<int64>\",\n                \"goalIndex\": \"<integer>\",\n                \"goalName\": \"<string>\",\n                \"goalPreviousStep1\": \"<string>\",\n                \"goalPreviousStep2\": \"<string>\",\n                \"goalPreviousStep3\": \"<string>\",\n                \"goalValue\": \"<double>\"\n              },\n              {\n                \"goalCompletionLocation\": \"<string>\",\n                \"goalCompletions\": \"<int64>\",\n                \"goalIndex\": \"<integer>\",\n                \"goalName\": \"<string>\",\n                \"goalPreviousStep1\": \"<string>\",\n                \"goalPreviousStep2\": \"<string>\",\n                \"goalPreviousStep3\": \"<string>\",\n                \"goalValue\": \"<double>\"\n              }\n            ]\n          },\n          \"hostname\": \"<string>\",\n          \"keyword\": \"<string>\",\n          \"landingPagePath\": \"<string>\",\n          \"medium\": \"<string>\",\n          \"pageview\": {\n            \"pagePath\": \"<string>\",\n            \"pageTitle\": \"<string>\"\n          },\n          \"source\": \"<string>\"\n        }\n      ],\n      \"dataSource\": \"<string>\",\n      \"deviceCategory\": \"<string>\",\n      \"platform\": \"<string>\",\n      \"sessionDate\": \"<string>\",\n      \"sessionId\": \"<string>\"\n    }\n  ],\n  \"totalRows\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T10:55:38.000Z",
+                  "updatedAt": "2026-07-28T10:55:38.000Z",
+                  "uid": "35240-f99b1488-5df6-45fa-8f5e-5e60199dcedc"
+                }
+              ],
+              "createdAt": "2026-07-28T10:55:38.000Z",
+              "updatedAt": "2026-07-28T10:55:38.000Z",
+              "uid": "35240-27ab4c4d-f472-4a86-abe5-29ec50bc24fd"
+            }
+          ],
+          "id": "0217869c-5850-410e-83b0-80003e971d02",
+          "createdAt": "2026-07-28T10:55:38.000Z",
+          "updatedAt": "2026-07-28T10:55:38.000Z",
+          "uid": "35240-0217869c-5850-410e-83b0-80003e971d02"
+        }
+      ],
+      "id": "9ac64336-b5ea-466d-95fd-5d3e4c26663b",
+      "createdAt": "2026-07-28T10:55:38.000Z",
+      "updatedAt": "2026-07-28T10:55:38.000Z",
+      "uid": "35240-9ac64336-b5ea-466d-95fd-5d3e4c26663b"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://analyticsadmin.googleapis.com/"
+    }
+  ]
+}

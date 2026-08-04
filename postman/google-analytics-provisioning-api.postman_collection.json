@@ -1,0 +1,441 @@
+{
+  "info": {
+    "_postman_id": "c73a424e-49a9-4441-a2e9-a96465f8155a",
+    "name": "Google Analytics Admin accounts provisioning API",
+    "description": "Manage properties in Google Analytics. Warning: Creating multiple Customer Applications, Accounts, or Projects to simulate or act as a single Customer Application, Account, or Project (respectively) or to circumvent Service-specific usage limits or quotas is a direct violation of Google Cloud Platform Terms of Service as well as Google APIs Terms of Service. These actions can result in immediate termination of your GCP project(s) without any warning.\n\nContact Support:\n Name: Google",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:55:34.000Z",
+    "updatedAt": "2026-07-28T10:55:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c73a424e-49a9-4441-a2e9-a96465f8155a"
+  },
+  "item": [
+    {
+      "name": "provisioning",
+      "item": [
+        {
+          "name": "createAccountTicket",
+          "item": [
+            {
+              "name": "analytics.provisioning.create Account Ticket",
+              "id": "6478f801-01a6-49c8-9dad-271ffed9e0f9",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "https://www.googleapis.com/auth/analytics.edit https://www.googleapis.com/auth/analytics.readonly",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://accounts.google.com/o/oauth2/auth",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "implicit",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"account\": {\n    \"childLink\": {\n      \"href\": \"<string>\",\n      \"type\": \"analytics#webproperties\"\n    },\n    \"created\": \"<dateTime>\",\n    \"id\": \"<string>\",\n    \"kind\": \"analytics#account\",\n    \"name\": \"<string>\",\n    \"permissions\": {\n      \"effective\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"selfLink\": \"<string>\",\n    \"starred\": \"<boolean>\",\n    \"updated\": \"<dateTime>\"\n  },\n  \"id\": \"<string>\",\n  \"kind\": \"analytics#accountTicket\",\n  \"profile\": {\n    \"accountId\": \"<string>\",\n    \"botFilteringEnabled\": \"<boolean>\",\n    \"childLink\": {\n      \"href\": \"<string>\",\n      \"type\": \"analytics#goals\"\n    },\n    \"created\": \"<dateTime>\",\n    \"currency\": \"<string>\",\n    \"defaultPage\": \"<string>\",\n    \"eCommerceTracking\": \"<boolean>\",\n    \"enhancedECommerceTracking\": \"<boolean>\",\n    \"excludeQueryParameters\": \"<string>\",\n    \"id\": \"<string>\",\n    \"internalWebPropertyId\": \"<string>\",\n    \"kind\": \"analytics#profile\",\n    \"name\": \"<string>\",\n    \"parentLink\": {\n      \"href\": \"<string>\",\n      \"type\": \"analytics#webproperty\"\n    },\n    \"permissions\": {\n      \"effective\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"selfLink\": \"<string>\",\n    \"siteSearchCategoryParameters\": \"<string>\",\n    \"siteSearchQueryParameters\": \"<string>\",\n    \"starred\": \"<boolean>\",\n    \"stripSiteSearchCategoryParameters\": \"<boolean>\",\n    \"stripSiteSearchQueryParameters\": \"<boolean>\",\n    \"timezone\": \"<string>\",\n    \"type\": \"<string>\",\n    \"updated\": \"<dateTime>\",\n    \"webPropertyId\": \"<string>\",\n    \"websiteUrl\": \"<string>\"\n  },\n  \"redirectUri\": \"<string>\",\n  \"webproperty\": {\n    \"accountId\": \"<string>\",\n    \"childLink\": {\n      \"href\": \"<string>\",\n      \"type\": \"analytics#profiles\"\n    },\n    \"created\": \"<dateTime>\",\n    \"dataRetentionResetOnNewActivity\": \"<boolean>\",\n    \"dataRetentionTtl\": \"<string>\",\n    \"defaultProfileId\": \"<int64>\",\n    \"id\": \"<string>\",\n    \"industryVertical\": \"<string>\",\n    \"internalWebPropertyId\": \"<string>\",\n    \"kind\": \"analytics#webproperty\",\n    \"level\": \"<string>\",\n    \"name\": \"<string>\",\n    \"parentLink\": {\n      \"href\": \"<string>\",\n      \"type\": \"analytics#account\"\n    },\n    \"permissions\": {\n      \"effective\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"profileCount\": \"<integer>\",\n    \"selfLink\": \"<string>\",\n    \"starred\": \"<boolean>\",\n    \"updated\": \"<dateTime>\",\n    \"websiteUrl\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/provisioning/createAccountTicket?alt=json&fields=<string>&key=<string>&oauth_token=<string>&prettyPrint=<boolean>&quotaUser=<string>&userIp=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "provisioning",
+                    "createAccountTicket"
+                  ],
+                  "query": [
+                    {
+                      "description": "Data format for the response.",
+                      "key": "alt",
+                      "value": "json"
+                    },
+                    {
+                      "description": "Selector specifying which fields to include in a partial response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "OAuth 2.0 token for the current user.",
+                      "key": "oauth_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Returns response with indentations and line breaks.",
+                      "key": "prettyPrint",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
+                      "key": "quotaUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Deprecated. Please use quotaUser instead.",
+                      "key": "userIp",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Creates an account ticket."
+              },
+              "response": [
+                {
+                  "id": "fb5356a7-594c-45b4-b9f3-134063168b6d",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"account\": {\n    \"childLink\": {\n      \"href\": \"<string>\",\n      \"type\": \"analytics#webproperties\"\n    },\n    \"created\": \"<dateTime>\",\n    \"id\": \"<string>\",\n    \"kind\": \"analytics#account\",\n    \"name\": \"<string>\",\n    \"permissions\": {\n      \"effective\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"selfLink\": \"<string>\",\n    \"starred\": \"<boolean>\",\n    \"updated\": \"<dateTime>\"\n  },\n  \"id\": \"<string>\",\n  \"kind\": \"analytics#accountTicket\",\n  \"profile\": {\n    \"accountId\": \"<string>\",\n    \"botFilteringEnabled\": \"<boolean>\",\n    \"childLink\": {\n      \"href\": \"<string>\",\n      \"type\": \"analytics#goals\"\n    },\n    \"created\": \"<dateTime>\",\n    \"currency\": \"<string>\",\n    \"defaultPage\": \"<string>\",\n    \"eCommerceTracking\": \"<boolean>\",\n    \"enhancedECommerceTracking\": \"<boolean>\",\n    \"excludeQueryParameters\": \"<string>\",\n    \"id\": \"<string>\",\n    \"internalWebPropertyId\": \"<string>\",\n    \"kind\": \"analytics#profile\",\n    \"name\": \"<string>\",\n    \"parentLink\": {\n      \"href\": \"<string>\",\n      \"type\": \"analytics#webproperty\"\n    },\n    \"permissions\": {\n      \"effective\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"selfLink\": \"<string>\",\n    \"siteSearchCategoryParameters\": \"<string>\",\n    \"siteSearchQueryParameters\": \"<string>\",\n    \"starred\": \"<boolean>\",\n    \"stripSiteSearchCategoryParameters\": \"<boolean>\",\n    \"stripSiteSearchQueryParameters\": \"<boolean>\",\n    \"timezone\": \"<string>\",\n    \"type\": \"<string>\",\n    \"updated\": \"<dateTime>\",\n    \"webPropertyId\": \"<string>\",\n    \"websiteUrl\": \"<string>\"\n  },\n  \"redirectUri\": \"<string>\",\n  \"webproperty\": {\n    \"accountId\": \"<string>\",\n    \"childLink\": {\n      \"href\": \"<string>\",\n      \"type\": \"analytics#profiles\"\n    },\n    \"created\": \"<dateTime>\",\n    \"dataRetentionResetOnNewActivity\": \"<boolean>\",\n    \"dataRetentionTtl\": \"<string>\",\n    \"defaultProfileId\": \"<int64>\",\n    \"id\": \"<string>\",\n    \"industryVertical\": \"<string>\",\n    \"internalWebPropertyId\": \"<string>\",\n    \"kind\": \"analytics#webproperty\",\n    \"level\": \"<string>\",\n    \"name\": \"<string>\",\n    \"parentLink\": {\n      \"href\": \"<string>\",\n      \"type\": \"analytics#account\"\n    },\n    \"permissions\": {\n      \"effective\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"profileCount\": \"<integer>\",\n    \"selfLink\": \"<string>\",\n    \"starred\": \"<boolean>\",\n    \"updated\": \"<dateTime>\",\n    \"websiteUrl\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/provisioning/createAccountTicket?alt=json&fields=<string>&key=<string>&oauth_token=<string>&prettyPrint=<boolean>&quotaUser=<string>&userIp=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "provisioning",
+                        "createAccountTicket"
+                      ],
+                      "query": [
+                        {
+                          "description": "Data format for the response.",
+                          "key": "alt",
+                          "value": "json"
+                        },
+                        {
+                          "description": "Selector specifying which fields to include in a partial response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+                          "key": "key",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "OAuth 2.0 token for the current user.",
+                          "key": "oauth_token",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Returns response with indentations and line breaks.",
+                          "key": "prettyPrint",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
+                          "key": "quotaUser",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Deprecated. Please use quotaUser instead.",
+                          "key": "userIp",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"account\": {\n    \"childLink\": {\n      \"href\": \"<string>\",\n      \"type\": \"analytics#webproperties\"\n    },\n    \"created\": \"<dateTime>\",\n    \"id\": \"<string>\",\n    \"kind\": \"analytics#account\",\n    \"name\": \"<string>\",\n    \"permissions\": {\n      \"effective\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"selfLink\": \"<string>\",\n    \"starred\": \"<boolean>\",\n    \"updated\": \"<dateTime>\"\n  },\n  \"id\": \"<string>\",\n  \"kind\": \"analytics#accountTicket\",\n  \"profile\": {\n    \"accountId\": \"<string>\",\n    \"botFilteringEnabled\": \"<boolean>\",\n    \"childLink\": {\n      \"href\": \"<string>\",\n      \"type\": \"analytics#goals\"\n    },\n    \"created\": \"<dateTime>\",\n    \"currency\": \"<string>\",\n    \"defaultPage\": \"<string>\",\n    \"eCommerceTracking\": \"<boolean>\",\n    \"enhancedECommerceTracking\": \"<boolean>\",\n    \"excludeQueryParameters\": \"<string>\",\n    \"id\": \"<string>\",\n    \"internalWebPropertyId\": \"<string>\",\n    \"kind\": \"analytics#profile\",\n    \"name\": \"<string>\",\n    \"parentLink\": {\n      \"href\": \"<string>\",\n      \"type\": \"analytics#webproperty\"\n    },\n    \"permissions\": {\n      \"effective\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"selfLink\": \"<string>\",\n    \"siteSearchCategoryParameters\": \"<string>\",\n    \"siteSearchQueryParameters\": \"<string>\",\n    \"starred\": \"<boolean>\",\n    \"stripSiteSearchCategoryParameters\": \"<boolean>\",\n    \"stripSiteSearchQueryParameters\": \"<boolean>\",\n    \"timezone\": \"<string>\",\n    \"type\": \"<string>\",\n    \"updated\": \"<dateTime>\",\n    \"webPropertyId\": \"<string>\",\n    \"websiteUrl\": \"<string>\"\n  },\n  \"redirectUri\": \"<string>\",\n  \"webproperty\": {\n    \"accountId\": \"<string>\",\n    \"childLink\": {\n      \"href\": \"<string>\",\n      \"type\": \"analytics#profiles\"\n    },\n    \"created\": \"<dateTime>\",\n    \"dataRetentionResetOnNewActivity\": \"<boolean>\",\n    \"dataRetentionTtl\": \"<string>\",\n    \"defaultProfileId\": \"<int64>\",\n    \"id\": \"<string>\",\n    \"industryVertical\": \"<string>\",\n    \"internalWebPropertyId\": \"<string>\",\n    \"kind\": \"analytics#webproperty\",\n    \"level\": \"<string>\",\n    \"name\": \"<string>\",\n    \"parentLink\": {\n      \"href\": \"<string>\",\n      \"type\": \"analytics#account\"\n    },\n    \"permissions\": {\n      \"effective\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"profileCount\": \"<integer>\",\n    \"selfLink\": \"<string>\",\n    \"starred\": \"<boolean>\",\n    \"updated\": \"<dateTime>\",\n    \"websiteUrl\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T10:55:34.000Z",
+                  "updatedAt": "2026-07-28T10:55:34.000Z",
+                  "uid": "35240-fb5356a7-594c-45b4-b9f3-134063168b6d"
+                }
+              ],
+              "createdAt": "2026-07-28T10:55:34.000Z",
+              "updatedAt": "2026-07-28T10:55:34.000Z",
+              "uid": "35240-6478f801-01a6-49c8-9dad-271ffed9e0f9"
+            }
+          ],
+          "id": "9c301058-2068-49a5-a2a5-d376c1d8b82c",
+          "createdAt": "2026-07-28T10:55:34.000Z",
+          "updatedAt": "2026-07-28T10:55:34.000Z",
+          "uid": "35240-9c301058-2068-49a5-a2a5-d376c1d8b82c"
+        },
+        {
+          "name": "createAccountTree",
+          "item": [
+            {
+              "name": "analytics.provisioning.create Account Tree",
+              "id": "ca3f91bd-2f53-489b-b871-b2600081c254",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "https://www.googleapis.com/auth/analytics.edit https://www.googleapis.com/auth/analytics.readonly",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://accounts.google.com/o/oauth2/auth",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "implicit",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountName\": \"<string>\",\n  \"kind\": \"analytics#accountTreeRequest\",\n  \"profileName\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"webpropertyName\": \"<string>\",\n  \"websiteUrl\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/provisioning/createAccountTree?alt=json&fields=<string>&key=<string>&oauth_token=<string>&prettyPrint=<boolean>&quotaUser=<string>&userIp=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "provisioning",
+                    "createAccountTree"
+                  ],
+                  "query": [
+                    {
+                      "description": "Data format for the response.",
+                      "key": "alt",
+                      "value": "json"
+                    },
+                    {
+                      "description": "Selector specifying which fields to include in a partial response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "OAuth 2.0 token for the current user.",
+                      "key": "oauth_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Returns response with indentations and line breaks.",
+                      "key": "prettyPrint",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
+                      "key": "quotaUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Deprecated. Please use quotaUser instead.",
+                      "key": "userIp",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Provision account."
+              },
+              "response": [
+                {
+                  "id": "52566eca-4226-4172-9390-8659459047d5",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"accountName\": \"<string>\",\n  \"kind\": \"analytics#accountTreeRequest\",\n  \"profileName\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"webpropertyName\": \"<string>\",\n  \"websiteUrl\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/provisioning/createAccountTree?alt=json&fields=<string>&key=<string>&oauth_token=<string>&prettyPrint=<boolean>&quotaUser=<string>&userIp=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "provisioning",
+                        "createAccountTree"
+                      ],
+                      "query": [
+                        {
+                          "description": "Data format for the response.",
+                          "key": "alt",
+                          "value": "json"
+                        },
+                        {
+                          "description": "Selector specifying which fields to include in a partial response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+                          "key": "key",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "OAuth 2.0 token for the current user.",
+                          "key": "oauth_token",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Returns response with indentations and line breaks.",
+                          "key": "prettyPrint",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
+                          "key": "quotaUser",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Deprecated. Please use quotaUser instead.",
+                          "key": "userIp",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"account\": {\n    \"childLink\": {\n      \"href\": \"<string>\",\n      \"type\": \"analytics#webproperties\"\n    },\n    \"created\": \"<dateTime>\",\n    \"id\": \"<string>\",\n    \"kind\": \"analytics#account\",\n    \"name\": \"<string>\",\n    \"permissions\": {\n      \"effective\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"selfLink\": \"<string>\",\n    \"starred\": \"<boolean>\",\n    \"updated\": \"<dateTime>\"\n  },\n  \"kind\": \"analytics#accountTreeResponse\",\n  \"profile\": {\n    \"accountId\": \"<string>\",\n    \"botFilteringEnabled\": \"<boolean>\",\n    \"childLink\": {\n      \"href\": \"<string>\",\n      \"type\": \"analytics#goals\"\n    },\n    \"created\": \"<dateTime>\",\n    \"currency\": \"<string>\",\n    \"defaultPage\": \"<string>\",\n    \"eCommerceTracking\": \"<boolean>\",\n    \"enhancedECommerceTracking\": \"<boolean>\",\n    \"excludeQueryParameters\": \"<string>\",\n    \"id\": \"<string>\",\n    \"internalWebPropertyId\": \"<string>\",\n    \"kind\": \"analytics#profile\",\n    \"name\": \"<string>\",\n    \"parentLink\": {\n      \"href\": \"<string>\",\n      \"type\": \"analytics#webproperty\"\n    },\n    \"permissions\": {\n      \"effective\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"selfLink\": \"<string>\",\n    \"siteSearchCategoryParameters\": \"<string>\",\n    \"siteSearchQueryParameters\": \"<string>\",\n    \"starred\": \"<boolean>\",\n    \"stripSiteSearchCategoryParameters\": \"<boolean>\",\n    \"stripSiteSearchQueryParameters\": \"<boolean>\",\n    \"timezone\": \"<string>\",\n    \"type\": \"<string>\",\n    \"updated\": \"<dateTime>\",\n    \"webPropertyId\": \"<string>\",\n    \"websiteUrl\": \"<string>\"\n  },\n  \"webproperty\": {\n    \"accountId\": \"<string>\",\n    \"childLink\": {\n      \"href\": \"<string>\",\n      \"type\": \"analytics#profiles\"\n    },\n    \"created\": \"<dateTime>\",\n    \"dataRetentionResetOnNewActivity\": \"<boolean>\",\n    \"dataRetentionTtl\": \"<string>\",\n    \"defaultProfileId\": \"<int64>\",\n    \"id\": \"<string>\",\n    \"industryVertical\": \"<string>\",\n    \"internalWebPropertyId\": \"<string>\",\n    \"kind\": \"analytics#webproperty\",\n    \"level\": \"<string>\",\n    \"name\": \"<string>\",\n    \"parentLink\": {\n      \"href\": \"<string>\",\n      \"type\": \"analytics#account\"\n    },\n    \"permissions\": {\n      \"effective\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"profileCount\": \"<integer>\",\n    \"selfLink\": \"<string>\",\n    \"starred\": \"<boolean>\",\n    \"updated\": \"<dateTime>\",\n    \"websiteUrl\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T10:55:34.000Z",
+                  "updatedAt": "2026-07-28T10:55:34.000Z",
+                  "uid": "35240-52566eca-4226-4172-9390-8659459047d5"
+                }
+              ],
+              "createdAt": "2026-07-28T10:55:34.000Z",
+              "updatedAt": "2026-07-28T10:55:34.000Z",
+              "uid": "35240-ca3f91bd-2f53-489b-b871-b2600081c254"
+            }
+          ],
+          "id": "a94f9bfe-149f-4af2-b89f-ac2983253605",
+          "createdAt": "2026-07-28T10:55:34.000Z",
+          "updatedAt": "2026-07-28T10:55:34.000Z",
+          "uid": "35240-a94f9bfe-149f-4af2-b89f-ac2983253605"
+        }
+      ],
+      "id": "9bcbd414-30c6-47fe-9360-85efad4ad79e",
+      "createdAt": "2026-07-28T10:55:34.000Z",
+      "updatedAt": "2026-07-28T10:55:34.000Z",
+      "uid": "35240-9bcbd414-30c6-47fe-9360-85efad4ad79e"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://analyticsadmin.googleapis.com/"
+    }
+  ]
+}

@@ -77,8 +77,6 @@ apis:
     url: https://github.com/googleanalytics/analytics-data-curl-examples
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-data-javascript-examples
-  - type: X-NaftikoCapability
-    url: capabilities/data-properties.yaml
   - type: GraphQL
     url: graphql/google-analytics-graphql.md
   - type: Documentation
@@ -101,12 +99,6 @@ apis:
     url: https://packagist.org/packages/google/analytics-admin
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-samples-config
-  - type: X-NaftikoCapability
-    url: capabilities/admin-accountsummaries.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/admin-accounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/admin-properties.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/collection/protocol/ga4
   - type: APIReference
@@ -116,40 +108,20 @@ apis:
   - type: Troubleshooting
     url: >-
       https://developers.google.com/analytics/devguides/collection/protocol/ga4/troubleshooting
-  - type: X-NaftikoCapability
-    url: capabilities/measurement-protocol-events.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/measurement-protocol-validation.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/reference
   - type: Authentication
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/authorization
-  - type: X-NaftikoCapability
-    url: capabilities/user-deletion-user-deletion.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/reporting/core/v4
   - type: GettingStarted
     url: https://developers.google.com/analytics/devguides/migration/api/reporting-ua-to-ga4
-  - type: X-NaftikoCapability
-    url: capabilities/reporting-api-v4-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/reporting-api-v4-useractivity.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-data.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-management.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-metadata.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-provisioning.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-userdeletion.yaml
 - aid: google-analytics:google-analytics-accountsummaries-api
   name: Google Analytics accountSummaries API
   description: The accountSummaries API from Google Analytics — 1 operation(s) for accountsummaries.
@@ -195,8 +167,6 @@ apis:
     url: https://github.com/googleanalytics/analytics-data-curl-examples
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-data-javascript-examples
-  - type: X-NaftikoCapability
-    url: capabilities/data-properties.yaml
   - type: GraphQL
     url: graphql/google-analytics-graphql.md
   - type: Documentation
@@ -219,12 +189,6 @@ apis:
     url: https://packagist.org/packages/google/analytics-admin
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-samples-config
-  - type: X-NaftikoCapability
-    url: capabilities/admin-accountsummaries.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/admin-accounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/admin-properties.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/collection/protocol/ga4
   - type: APIReference
@@ -234,40 +198,20 @@ apis:
   - type: Troubleshooting
     url: >-
       https://developers.google.com/analytics/devguides/collection/protocol/ga4/troubleshooting
-  - type: X-NaftikoCapability
-    url: capabilities/measurement-protocol-events.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/measurement-protocol-validation.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/reference
   - type: Authentication
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/authorization
-  - type: X-NaftikoCapability
-    url: capabilities/user-deletion-user-deletion.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/reporting/core/v4
   - type: GettingStarted
     url: https://developers.google.com/analytics/devguides/migration/api/reporting-ua-to-ga4
-  - type: X-NaftikoCapability
-    url: capabilities/reporting-api-v4-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/reporting-api-v4-useractivity.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-data.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-management.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-metadata.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-provisioning.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-userdeletion.yaml
 - aid: google-analytics:google-analytics-data-api
   name: Google Analytics data API
   description: The data API from Google Analytics — 3 operation(s) for data.
@@ -313,8 +257,6 @@ apis:
     url: https://github.com/googleanalytics/analytics-data-curl-examples
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-data-javascript-examples
-  - type: X-NaftikoCapability
-    url: capabilities/data-properties.yaml
   - type: GraphQL
     url: graphql/google-analytics-graphql.md
   - type: Documentation
@@ -337,12 +279,6 @@ apis:
     url: https://packagist.org/packages/google/analytics-admin
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-samples-config
-  - type: X-NaftikoCapability
-    url: capabilities/admin-accountsummaries.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/admin-accounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/admin-properties.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/collection/protocol/ga4
   - type: APIReference
@@ -352,40 +288,20 @@ apis:
   - type: Troubleshooting
     url: >-
       https://developers.google.com/analytics/devguides/collection/protocol/ga4/troubleshooting
-  - type: X-NaftikoCapability
-    url: capabilities/measurement-protocol-events.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/measurement-protocol-validation.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/reference
   - type: Authentication
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/authorization
-  - type: X-NaftikoCapability
-    url: capabilities/user-deletion-user-deletion.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/reporting/core/v4
   - type: GettingStarted
     url: https://developers.google.com/analytics/devguides/migration/api/reporting-ua-to-ga4
-  - type: X-NaftikoCapability
-    url: capabilities/reporting-api-v4-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/reporting-api-v4-useractivity.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-data.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-management.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-metadata.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-provisioning.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-userdeletion.yaml
 - aid: google-analytics:google-analytics-events-api
   name: Google Analytics Events API
   description: The Events API from Google Analytics — 1 operation(s) for events.
@@ -431,8 +347,6 @@ apis:
     url: https://github.com/googleanalytics/analytics-data-curl-examples
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-data-javascript-examples
-  - type: X-NaftikoCapability
-    url: capabilities/data-properties.yaml
   - type: GraphQL
     url: graphql/google-analytics-graphql.md
   - type: Documentation
@@ -455,12 +369,6 @@ apis:
     url: https://packagist.org/packages/google/analytics-admin
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-samples-config
-  - type: X-NaftikoCapability
-    url: capabilities/admin-accountsummaries.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/admin-accounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/admin-properties.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/collection/protocol/ga4
   - type: APIReference
@@ -470,40 +378,20 @@ apis:
   - type: Troubleshooting
     url: >-
       https://developers.google.com/analytics/devguides/collection/protocol/ga4/troubleshooting
-  - type: X-NaftikoCapability
-    url: capabilities/measurement-protocol-events.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/measurement-protocol-validation.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/reference
   - type: Authentication
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/authorization
-  - type: X-NaftikoCapability
-    url: capabilities/user-deletion-user-deletion.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/reporting/core/v4
   - type: GettingStarted
     url: https://developers.google.com/analytics/devguides/migration/api/reporting-ua-to-ga4
-  - type: X-NaftikoCapability
-    url: capabilities/reporting-api-v4-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/reporting-api-v4-useractivity.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-data.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-management.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-metadata.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-provisioning.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-userdeletion.yaml
 - aid: google-analytics:google-analytics-management-api
   name: Google Analytics management API
   description: The management API from Google Analytics — 36 operation(s) for management.
@@ -549,8 +437,6 @@ apis:
     url: https://github.com/googleanalytics/analytics-data-curl-examples
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-data-javascript-examples
-  - type: X-NaftikoCapability
-    url: capabilities/data-properties.yaml
   - type: GraphQL
     url: graphql/google-analytics-graphql.md
   - type: Documentation
@@ -573,12 +459,6 @@ apis:
     url: https://packagist.org/packages/google/analytics-admin
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-samples-config
-  - type: X-NaftikoCapability
-    url: capabilities/admin-accountsummaries.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/admin-accounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/admin-properties.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/collection/protocol/ga4
   - type: APIReference
@@ -588,40 +468,20 @@ apis:
   - type: Troubleshooting
     url: >-
       https://developers.google.com/analytics/devguides/collection/protocol/ga4/troubleshooting
-  - type: X-NaftikoCapability
-    url: capabilities/measurement-protocol-events.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/measurement-protocol-validation.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/reference
   - type: Authentication
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/authorization
-  - type: X-NaftikoCapability
-    url: capabilities/user-deletion-user-deletion.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/reporting/core/v4
   - type: GettingStarted
     url: https://developers.google.com/analytics/devguides/migration/api/reporting-ua-to-ga4
-  - type: X-NaftikoCapability
-    url: capabilities/reporting-api-v4-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/reporting-api-v4-useractivity.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-data.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-management.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-metadata.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-provisioning.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-userdeletion.yaml
 - aid: google-analytics:google-analytics-metadata-api
   name: Google Analytics metadata API
   description: The metadata API from Google Analytics — 1 operation(s) for metadata.
@@ -667,8 +527,6 @@ apis:
     url: https://github.com/googleanalytics/analytics-data-curl-examples
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-data-javascript-examples
-  - type: X-NaftikoCapability
-    url: capabilities/data-properties.yaml
   - type: GraphQL
     url: graphql/google-analytics-graphql.md
   - type: Documentation
@@ -691,12 +549,6 @@ apis:
     url: https://packagist.org/packages/google/analytics-admin
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-samples-config
-  - type: X-NaftikoCapability
-    url: capabilities/admin-accountsummaries.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/admin-accounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/admin-properties.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/collection/protocol/ga4
   - type: APIReference
@@ -706,40 +558,20 @@ apis:
   - type: Troubleshooting
     url: >-
       https://developers.google.com/analytics/devguides/collection/protocol/ga4/troubleshooting
-  - type: X-NaftikoCapability
-    url: capabilities/measurement-protocol-events.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/measurement-protocol-validation.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/reference
   - type: Authentication
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/authorization
-  - type: X-NaftikoCapability
-    url: capabilities/user-deletion-user-deletion.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/reporting/core/v4
   - type: GettingStarted
     url: https://developers.google.com/analytics/devguides/migration/api/reporting-ua-to-ga4
-  - type: X-NaftikoCapability
-    url: capabilities/reporting-api-v4-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/reporting-api-v4-useractivity.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-data.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-management.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-metadata.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-provisioning.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-userdeletion.yaml
 - aid: google-analytics:google-analytics-properties-api
   name: Google Analytics properties API
   description: The properties API from Google Analytics — 20 operation(s) for properties.
@@ -785,8 +617,6 @@ apis:
     url: https://github.com/googleanalytics/analytics-data-curl-examples
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-data-javascript-examples
-  - type: X-NaftikoCapability
-    url: capabilities/data-properties.yaml
   - type: GraphQL
     url: graphql/google-analytics-graphql.md
   - type: Documentation
@@ -809,12 +639,6 @@ apis:
     url: https://packagist.org/packages/google/analytics-admin
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-samples-config
-  - type: X-NaftikoCapability
-    url: capabilities/admin-accountsummaries.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/admin-accounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/admin-properties.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/collection/protocol/ga4
   - type: APIReference
@@ -824,40 +648,20 @@ apis:
   - type: Troubleshooting
     url: >-
       https://developers.google.com/analytics/devguides/collection/protocol/ga4/troubleshooting
-  - type: X-NaftikoCapability
-    url: capabilities/measurement-protocol-events.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/measurement-protocol-validation.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/reference
   - type: Authentication
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/authorization
-  - type: X-NaftikoCapability
-    url: capabilities/user-deletion-user-deletion.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/reporting/core/v4
   - type: GettingStarted
     url: https://developers.google.com/analytics/devguides/migration/api/reporting-ua-to-ga4
-  - type: X-NaftikoCapability
-    url: capabilities/reporting-api-v4-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/reporting-api-v4-useractivity.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-data.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-management.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-metadata.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-provisioning.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-userdeletion.yaml
 - aid: google-analytics:google-analytics-provisioning-api
   name: Google Analytics provisioning API
   description: The provisioning API from Google Analytics — 2 operation(s) for provisioning.
@@ -903,8 +707,6 @@ apis:
     url: https://github.com/googleanalytics/analytics-data-curl-examples
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-data-javascript-examples
-  - type: X-NaftikoCapability
-    url: capabilities/data-properties.yaml
   - type: GraphQL
     url: graphql/google-analytics-graphql.md
   - type: Documentation
@@ -927,12 +729,6 @@ apis:
     url: https://packagist.org/packages/google/analytics-admin
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-samples-config
-  - type: X-NaftikoCapability
-    url: capabilities/admin-accountsummaries.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/admin-accounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/admin-properties.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/collection/protocol/ga4
   - type: APIReference
@@ -942,40 +738,20 @@ apis:
   - type: Troubleshooting
     url: >-
       https://developers.google.com/analytics/devguides/collection/protocol/ga4/troubleshooting
-  - type: X-NaftikoCapability
-    url: capabilities/measurement-protocol-events.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/measurement-protocol-validation.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/reference
   - type: Authentication
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/authorization
-  - type: X-NaftikoCapability
-    url: capabilities/user-deletion-user-deletion.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/reporting/core/v4
   - type: GettingStarted
     url: https://developers.google.com/analytics/devguides/migration/api/reporting-ua-to-ga4
-  - type: X-NaftikoCapability
-    url: capabilities/reporting-api-v4-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/reporting-api-v4-useractivity.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-data.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-management.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-metadata.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-provisioning.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-userdeletion.yaml
 - aid: google-analytics:google-analytics-reports-api
   name: Google Analytics reports API
   description: The reports API from Google Analytics — 1 operation(s) for reports.
@@ -1021,8 +797,6 @@ apis:
     url: https://github.com/googleanalytics/analytics-data-curl-examples
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-data-javascript-examples
-  - type: X-NaftikoCapability
-    url: capabilities/data-properties.yaml
   - type: GraphQL
     url: graphql/google-analytics-graphql.md
   - type: Documentation
@@ -1045,12 +819,6 @@ apis:
     url: https://packagist.org/packages/google/analytics-admin
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-samples-config
-  - type: X-NaftikoCapability
-    url: capabilities/admin-accountsummaries.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/admin-accounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/admin-properties.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/collection/protocol/ga4
   - type: APIReference
@@ -1060,40 +828,20 @@ apis:
   - type: Troubleshooting
     url: >-
       https://developers.google.com/analytics/devguides/collection/protocol/ga4/troubleshooting
-  - type: X-NaftikoCapability
-    url: capabilities/measurement-protocol-events.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/measurement-protocol-validation.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/reference
   - type: Authentication
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/authorization
-  - type: X-NaftikoCapability
-    url: capabilities/user-deletion-user-deletion.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/reporting/core/v4
   - type: GettingStarted
     url: https://developers.google.com/analytics/devguides/migration/api/reporting-ua-to-ga4
-  - type: X-NaftikoCapability
-    url: capabilities/reporting-api-v4-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/reporting-api-v4-useractivity.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-data.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-management.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-metadata.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-provisioning.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-userdeletion.yaml
 - aid: google-analytics:google-analytics-user-deletion-api
   name: Google Analytics User Deletion API
   description: The User Deletion API from Google Analytics — 1 operation(s) for user deletion.
@@ -1139,8 +887,6 @@ apis:
     url: https://github.com/googleanalytics/analytics-data-curl-examples
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-data-javascript-examples
-  - type: X-NaftikoCapability
-    url: capabilities/data-properties.yaml
   - type: GraphQL
     url: graphql/google-analytics-graphql.md
   - type: Documentation
@@ -1163,12 +909,6 @@ apis:
     url: https://packagist.org/packages/google/analytics-admin
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-samples-config
-  - type: X-NaftikoCapability
-    url: capabilities/admin-accountsummaries.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/admin-accounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/admin-properties.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/collection/protocol/ga4
   - type: APIReference
@@ -1178,40 +918,20 @@ apis:
   - type: Troubleshooting
     url: >-
       https://developers.google.com/analytics/devguides/collection/protocol/ga4/troubleshooting
-  - type: X-NaftikoCapability
-    url: capabilities/measurement-protocol-events.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/measurement-protocol-validation.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/reference
   - type: Authentication
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/authorization
-  - type: X-NaftikoCapability
-    url: capabilities/user-deletion-user-deletion.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/reporting/core/v4
   - type: GettingStarted
     url: https://developers.google.com/analytics/devguides/migration/api/reporting-ua-to-ga4
-  - type: X-NaftikoCapability
-    url: capabilities/reporting-api-v4-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/reporting-api-v4-useractivity.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-data.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-management.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-metadata.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-provisioning.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-userdeletion.yaml
 - aid: google-analytics:google-analytics-useractivity-api
   name: Google Analytics userActivity API
   description: The userActivity API from Google Analytics — 1 operation(s) for useractivity.
@@ -1257,8 +977,6 @@ apis:
     url: https://github.com/googleanalytics/analytics-data-curl-examples
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-data-javascript-examples
-  - type: X-NaftikoCapability
-    url: capabilities/data-properties.yaml
   - type: GraphQL
     url: graphql/google-analytics-graphql.md
   - type: Documentation
@@ -1281,12 +999,6 @@ apis:
     url: https://packagist.org/packages/google/analytics-admin
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-samples-config
-  - type: X-NaftikoCapability
-    url: capabilities/admin-accountsummaries.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/admin-accounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/admin-properties.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/collection/protocol/ga4
   - type: APIReference
@@ -1296,40 +1008,20 @@ apis:
   - type: Troubleshooting
     url: >-
       https://developers.google.com/analytics/devguides/collection/protocol/ga4/troubleshooting
-  - type: X-NaftikoCapability
-    url: capabilities/measurement-protocol-events.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/measurement-protocol-validation.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/reference
   - type: Authentication
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/authorization
-  - type: X-NaftikoCapability
-    url: capabilities/user-deletion-user-deletion.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/reporting/core/v4
   - type: GettingStarted
     url: https://developers.google.com/analytics/devguides/migration/api/reporting-ua-to-ga4
-  - type: X-NaftikoCapability
-    url: capabilities/reporting-api-v4-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/reporting-api-v4-useractivity.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-data.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-management.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-metadata.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-provisioning.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-userdeletion.yaml
 - aid: google-analytics:google-analytics-userdeletion-api
   name: Google Analytics userDeletion API
   description: The userDeletion API from Google Analytics — 1 operation(s) for userdeletion.
@@ -1375,8 +1067,6 @@ apis:
     url: https://github.com/googleanalytics/analytics-data-curl-examples
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-data-javascript-examples
-  - type: X-NaftikoCapability
-    url: capabilities/data-properties.yaml
   - type: GraphQL
     url: graphql/google-analytics-graphql.md
   - type: Documentation
@@ -1399,12 +1089,6 @@ apis:
     url: https://packagist.org/packages/google/analytics-admin
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-samples-config
-  - type: X-NaftikoCapability
-    url: capabilities/admin-accountsummaries.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/admin-accounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/admin-properties.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/collection/protocol/ga4
   - type: APIReference
@@ -1414,40 +1098,20 @@ apis:
   - type: Troubleshooting
     url: >-
       https://developers.google.com/analytics/devguides/collection/protocol/ga4/troubleshooting
-  - type: X-NaftikoCapability
-    url: capabilities/measurement-protocol-events.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/measurement-protocol-validation.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/reference
   - type: Authentication
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/authorization
-  - type: X-NaftikoCapability
-    url: capabilities/user-deletion-user-deletion.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/reporting/core/v4
   - type: GettingStarted
     url: https://developers.google.com/analytics/devguides/migration/api/reporting-ua-to-ga4
-  - type: X-NaftikoCapability
-    url: capabilities/reporting-api-v4-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/reporting-api-v4-useractivity.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-data.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-management.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-metadata.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-provisioning.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-userdeletion.yaml
 - aid: google-analytics:google-analytics-validation-api
   name: Google Analytics Validation API
   description: The Validation API from Google Analytics — 1 operation(s) for validation.
@@ -1493,8 +1157,6 @@ apis:
     url: https://github.com/googleanalytics/analytics-data-curl-examples
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-data-javascript-examples
-  - type: X-NaftikoCapability
-    url: capabilities/data-properties.yaml
   - type: GraphQL
     url: graphql/google-analytics-graphql.md
   - type: Documentation
@@ -1517,12 +1179,6 @@ apis:
     url: https://packagist.org/packages/google/analytics-admin
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-samples-config
-  - type: X-NaftikoCapability
-    url: capabilities/admin-accountsummaries.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/admin-accounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/admin-properties.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/collection/protocol/ga4
   - type: APIReference
@@ -1532,40 +1188,20 @@ apis:
   - type: Troubleshooting
     url: >-
       https://developers.google.com/analytics/devguides/collection/protocol/ga4/troubleshooting
-  - type: X-NaftikoCapability
-    url: capabilities/measurement-protocol-events.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/measurement-protocol-validation.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/reference
   - type: Authentication
     url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/authorization
-  - type: X-NaftikoCapability
-    url: capabilities/user-deletion-user-deletion.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/reporting/core/v4
   - type: GettingStarted
     url: https://developers.google.com/analytics/devguides/migration/api/reporting-ua-to-ga4
-  - type: X-NaftikoCapability
-    url: capabilities/reporting-api-v4-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/reporting-api-v4-useractivity.yaml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-data.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-management.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-metadata.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-provisioning.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-api-v3-userdeletion.yaml
 common:
   - type: AgenticAccess
     url: agentic-access/google-analytics-agentic-access.yml

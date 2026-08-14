@@ -20,7 +20,7 @@ accessModel:
 image: https://www.google.com/analytics/images/google-analytics-logo.png
 url: https://raw.githubusercontent.com/api-evangelist/google-analytics/refs/heads/main/apis.yml
 created: '2024-01-01'
-modified: '2026-05-19'
+modified: '2026-08-13'
 specificationVersion: '0.19'
 tags:
 - Analytics
@@ -36,7 +36,7 @@ apis:
   name: Google Analytics accounts API
   description: The accounts API from Google Analytics — 3 operation(s) for accounts.
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
-  baseURL: https://analyticsdata.googleapis.com
+  baseURL: https://analyticsadmin.googleapis.com
   tags:
   - accounts
   properties:
@@ -126,7 +126,7 @@ apis:
   name: Google Analytics accountSummaries API
   description: The accountSummaries API from Google Analytics — 1 operation(s) for accountsummaries.
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
-  baseURL: https://analyticsdata.googleapis.com
+  baseURL: https://analyticsadmin.googleapis.com
   tags:
   - accountSummaries
   properties:
@@ -216,7 +216,7 @@ apis:
   name: Google Analytics data API
   description: The data API from Google Analytics — 3 operation(s) for data.
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
-  baseURL: https://analyticsdata.googleapis.com
+  baseURL: https://analytics.googleapis.com/analytics/v3
   tags:
   - data
   properties:
@@ -306,7 +306,7 @@ apis:
   name: Google Analytics Events API
   description: The Events API from Google Analytics — 1 operation(s) for events.
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
-  baseURL: https://analyticsdata.googleapis.com
+  baseURL: https://www.google-analytics.com/mp
   tags:
   - Events
   properties:
@@ -396,7 +396,7 @@ apis:
   name: Google Analytics management API
   description: The management API from Google Analytics — 36 operation(s) for management.
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
-  baseURL: https://analyticsdata.googleapis.com
+  baseURL: https://analytics.googleapis.com/analytics/v3
   tags:
   - management
   properties:
@@ -486,7 +486,7 @@ apis:
   name: Google Analytics metadata API
   description: The metadata API from Google Analytics — 1 operation(s) for metadata.
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
-  baseURL: https://analyticsdata.googleapis.com
+  baseURL: https://analytics.googleapis.com/analytics/v3
   tags:
   - metadata
   properties:
@@ -576,7 +576,7 @@ apis:
   name: Google Analytics properties API
   description: The properties API from Google Analytics — 20 operation(s) for properties.
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
-  baseURL: https://analyticsdata.googleapis.com
+  baseURL: https://analyticsadmin.googleapis.com
   tags:
   - properties
   properties:
@@ -666,7 +666,7 @@ apis:
   name: Google Analytics provisioning API
   description: The provisioning API from Google Analytics — 2 operation(s) for provisioning.
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
-  baseURL: https://analyticsdata.googleapis.com
+  baseURL: https://analytics.googleapis.com/analytics/v3
   tags:
   - provisioning
   properties:
@@ -756,7 +756,7 @@ apis:
   name: Google Analytics reports API
   description: The reports API from Google Analytics — 1 operation(s) for reports.
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
-  baseURL: https://analyticsdata.googleapis.com
+  baseURL: https://analyticsreporting.googleapis.com
   tags:
   - reports
   properties:
@@ -846,7 +846,7 @@ apis:
   name: Google Analytics User Deletion API
   description: The User Deletion API from Google Analytics — 1 operation(s) for user deletion.
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
-  baseURL: https://analyticsdata.googleapis.com
+  baseURL: https://www.googleapis.com/analytics/v3
   tags:
   - User Deletion
   properties:
@@ -936,7 +936,7 @@ apis:
   name: Google Analytics userActivity API
   description: The userActivity API from Google Analytics — 1 operation(s) for useractivity.
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
-  baseURL: https://analyticsdata.googleapis.com
+  baseURL: https://analyticsreporting.googleapis.com
   tags:
   - userActivity
   properties:
@@ -1026,7 +1026,7 @@ apis:
   name: Google Analytics userDeletion API
   description: The userDeletion API from Google Analytics — 1 operation(s) for userdeletion.
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
-  baseURL: https://analyticsdata.googleapis.com
+  baseURL: https://www.googleapis.com/analytics/v3
   tags:
   - userDeletion
   properties:
@@ -1116,7 +1116,7 @@ apis:
   name: Google Analytics Validation API
   description: The Validation API from Google Analytics — 1 operation(s) for validation.
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
-  baseURL: https://analyticsdata.googleapis.com
+  baseURL: https://www.google-analytics.com/debug/mp
   tags:
   - Validation
   properties:
@@ -1471,6 +1471,92 @@ common:
   - name: MCP Server
     url: https://github.com/googleanalytics/google-analytics-mcp
     type: MCPServer
+  - name: MCP Server (artifact)
+    url: mcp/google-analytics-mcp.yml
+    type: MCPServer
+  - type: ToolCrosswalk
+    url: mcp/google-analytics-tool-crosswalk.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: Packages
+    url: packages/google-analytics-packages.yml
+  - type: SDKs
+    url: packages/google-analytics-packages.yml
+  - type: WellKnown
+    url: well-known/google-analytics-well-known.yml
+  - type: SecurityTxt
+    url: well-known/google-analytics-security.txt
+  - type: Security
+    url: security/google-analytics-vulnerability-disclosure.yml
+  - type: LLMsTxt
+    url: llms/google-analytics-llms.txt
+  - type: Conformance
+    url: conformance/google-analytics-conformance.yml
+  - type: ErrorCatalog
+    url: errors/google-analytics-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/google-analytics-lifecycle.yml
+  - type: Deprecation
+    url: lifecycle/google-analytics-lifecycle.yml
+  - type: ChangeLog
+    url: changelog/google-analytics-changelog.yml
+  - type: Conventions
+    url: conventions/google-analytics-conventions.yml
+  - type: DataModel
+    url: data-model/google-analytics-data-model.yml
+  - type: Components
+    url: components/google-analytics-components.yml
+  - type: Sandbox
+    url: sandbox/google-analytics-sandbox.yml
+  - type: Plans
+    url: plans/google-analytics-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/google-analytics-rate-limits.yml
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1
+  - type: APIReference
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/rest
+  - type: DeveloperPortal
+    url: https://developers.google.com/analytics
+  - type: Protobuf
+    url: grpc/google-analytics-data-v1beta-analytics_data_api.proto
+  - type: Protobuf
+    url: grpc/google-analytics-data-v1beta-data.proto
+  - type: Protobuf
+    url: grpc/google-analytics-admin-v1beta-analytics_admin.proto
+  - type: Protobuf
+    url: grpc/google-analytics-admin-v1beta-resources.proto
+  - type: Overlay
+    url: overlays/google-analytics-accounts-api-overlay.yaml
+  - type: Overlay
+    url: overlays/google-analytics-accountsummaries-api-overlay.yaml
+  - type: Overlay
+    url: overlays/google-analytics-data-api-overlay.yaml
+  - type: Overlay
+    url: overlays/google-analytics-events-api-overlay.yaml
+  - type: Overlay
+    url: overlays/google-analytics-management-api-overlay.yaml
+  - type: Overlay
+    url: overlays/google-analytics-metadata-api-overlay.yaml
+  - type: Overlay
+    url: overlays/google-analytics-properties-api-overlay.yaml
+  - type: Overlay
+    url: overlays/google-analytics-provisioning-api-overlay.yaml
+  - type: Overlay
+    url: overlays/google-analytics-reports-api-overlay.yaml
+  - type: Overlay
+    url: overlays/google-analytics-user-deletion-api-overlay.yaml
+  - type: Overlay
+    url: overlays/google-analytics-useractivity-api-overlay.yaml
+  - type: Overlay
+    url: overlays/google-analytics-userdeletion-api-overlay.yaml
+  - type: Overlay
+    url: overlays/google-analytics-validation-api-overlay.yaml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-08-13'
+  status: enriched
+  artifacts_added: 39
+  pass: local-v1

@@ -1,0 +1,53 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Analytics Admin accounts Events API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Analytics Send Events to Google Analytics",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://analyticsadmin.googleapis.com/collect",
+            "params": [
+              {
+                "name": "api_secret",
+                "value": "secret_abc123",
+                "type": "query",
+                "description": "The API Secret generated in the Google Analytics UI. Found under Admin > Data Streams > Choose your stream > Measurement Protocol > Create."
+              },
+              {
+                "name": "measurement_id",
+                "value": "123456",
+                "type": "query",
+                "description": "The Measurement ID for a web data stream. Required for web streams. Found in the Google Analytics UI under Admin > Data Streams."
+              },
+              {
+                "name": "firebase_app_id",
+                "value": "123456",
+                "type": "query",
+                "description": "The Firebase App ID for an app data stream. Required for app streams. Found in the Firebase console under Project Settings."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends one or more events to Google Analytics for processing. Up to 25 events can be sent per request. Events can be backdated up to 72 hours."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

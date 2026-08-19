@@ -1,0 +1,261 @@
+{
+  "item": [
+    {
+      "id": "debf6c77-5ba1-4e40-ab92-90d17a50d0c5",
+      "name": "userActivity",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d6148de4-0db9-4ff6-ac1a-20cf59aa1598",
+          "name": "analyticsreporting.user Activity.search",
+          "request": {
+            "name": "analyticsreporting.user Activity.search",
+            "description": {
+              "content": "Returns User Activity data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "userActivity:search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$.xgafv",
+                  "value": "<string>",
+                  "description": "V1 error format."
+                },
+                {
+                  "disabled": false,
+                  "key": "access_token",
+                  "value": "<string>",
+                  "description": "OAuth access token."
+                },
+                {
+                  "disabled": false,
+                  "key": "alt",
+                  "value": "<string>",
+                  "description": "Data format for response."
+                },
+                {
+                  "disabled": false,
+                  "key": "callback",
+                  "value": "<string>",
+                  "description": "JSONP"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Selector specifying which fields to include in a partial response."
+                },
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+                },
+                {
+                  "disabled": false,
+                  "key": "oauth_token",
+                  "value": "<string>",
+                  "description": "OAuth 2.0 token for the current user."
+                },
+                {
+                  "disabled": false,
+                  "key": "prettyPrint",
+                  "value": "<boolean>",
+                  "description": "Returns response with indentations and line breaks."
+                },
+                {
+                  "disabled": false,
+                  "key": "quotaUser",
+                  "value": "<string>",
+                  "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+                },
+                {
+                  "disabled": false,
+                  "key": "upload_protocol",
+                  "value": "<string>",
+                  "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+                },
+                {
+                  "disabled": false,
+                  "key": "uploadType",
+                  "value": "<string>",
+                  "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "https://www.googleapis.com/auth/analytics.edit https://www.googleapis.com/auth/analytics.readonly"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.google.com/o/oauth2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "implicit"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"activityTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"dateRange\": {\n    \"endDate\": \"<string>\",\n    \"startDate\": \"<string>\"\n  },\n  \"pageSize\": \"<integer>\",\n  \"pageToken\": \"<string>\",\n  \"user\": {\n    \"type\": \"<string>\",\n    \"userId\": \"<string>\"\n  },\n  \"viewId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e0573d4d-868a-4b96-93aa-8da133f27118",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "userActivity:search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$.xgafv",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "access_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "alt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "oauth_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prettyPrint",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "quotaUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "upload_protocol",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "uploadType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activityTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"dateRange\": {\n    \"endDate\": \"2026-04-17\",\n    \"startDate\": \"2026-04-17\"\n  },\n  \"pageSize\": \"<integer>\",\n  \"pageToken\": \"<string>\",\n  \"user\": {\n    \"type\": \"<string>\",\n    \"userId\": \"<string>\"\n  },\n  \"viewId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nextPageToken\": \"string\",\n  \"sampleRate\": 1043.8773220444043,\n  \"sessions\": [\n    {\n      \"activities\": [\n        {\n          \"activityTime\": \"2026-04-17T12:00:00Z\",\n          \"activityType\": \"ACTIVITY_TYPE_UNSPECIFIED\",\n          \"appview\": {\n            \"appName\": \"string\",\n            \"mobileDeviceBranding\": \"string\",\n            \"mobileDeviceModel\": \"string\",\n            \"screenName\": \"string\"\n          },\n          \"campaign\": \"example_value\",\n          \"channelGrouping\": \"example_value\",\n          \"customDimension\": [\n            {\n              \"index\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"index\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"ecommerce\": {\n            \"actionType\": \"UNKNOWN\",\n            \"ecommerceType\": \"ECOMMERCE_TYPE_UNSPECIFIED\",\n            \"products\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"transaction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"event\": {\n            \"eventAction\": \"example_value\",\n            \"eventCategory\": \"example_value\",\n            \"eventCount\": \"example_value\",\n            \"eventLabel\": \"Example Name\",\n            \"eventValue\": \"example_value\"\n          },\n          \"goals\": {\n            \"goals\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"hostname\": \"Example Name\",\n          \"keyword\": \"secret_abc123\",\n          \"landingPagePath\": \"/example/path\",\n          \"medium\": \"example_value\",\n          \"pageview\": {\n            \"pagePath\": \"/example/path\",\n            \"pageTitle\": \"example_value\"\n          },\n          \"source\": \"example_value\"\n        },\n        {\n          \"activityTime\": \"2026-04-17T12:00:00Z\",\n          \"activityType\": \"ACTIVITY_TYPE_UNSPECIFIED\",\n          \"appview\": {\n            \"appName\": \"string\",\n            \"mobileDeviceBranding\": \"string\",\n            \"mobileDeviceModel\": \"string\",\n            \"screenName\": \"string\"\n          },\n          \"campaign\": \"example_value\",\n          \"channelGrouping\": \"example_value\",\n          \"customDimension\": [\n            {\n              \"index\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"index\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"ecommerce\": {\n            \"actionType\": \"UNKNOWN\",\n            \"ecommerceType\": \"ECOMMERCE_TYPE_UNSPECIFIED\",\n            \"products\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"transaction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"event\": {\n            \"eventAction\": \"example_value\",\n            \"eventCategory\": \"example_value\",\n            \"eventCount\": \"example_value\",\n            \"eventLabel\": \"Example Name\",\n            \"eventValue\": \"example_value\"\n          },\n          \"goals\": {\n            \"goals\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"hostname\": \"Example Name\",\n          \"keyword\": \"secret_abc123\",\n          \"landingPagePath\": \"/example/path\",\n          \"medium\": \"example_value\",\n          \"pageview\": {\n            \"pagePath\": \"/example/path\",\n            \"pageTitle\": \"example_value\"\n          },\n          \"source\": \"example_value\"\n        }\n      ],\n      \"dataSource\": \"string\",\n      \"deviceCategory\": \"string\",\n      \"platform\": \"string\",\n      \"sessionDate\": \"string\",\n      \"sessionId\": \"string\"\n    },\n    {\n      \"activities\": [\n        {\n          \"activityTime\": \"2026-04-17T12:00:00Z\",\n          \"activityType\": \"ACTIVITY_TYPE_UNSPECIFIED\",\n          \"appview\": {\n            \"appName\": \"string\",\n            \"mobileDeviceBranding\": \"string\",\n            \"mobileDeviceModel\": \"string\",\n            \"screenName\": \"string\"\n          },\n          \"campaign\": \"example_value\",\n          \"channelGrouping\": \"example_value\",\n          \"customDimension\": [\n            {\n              \"index\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"index\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"ecommerce\": {\n            \"actionType\": \"UNKNOWN\",\n            \"ecommerceType\": \"ECOMMERCE_TYPE_UNSPECIFIED\",\n            \"products\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"transaction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"event\": {\n            \"eventAction\": \"example_value\",\n            \"eventCategory\": \"example_value\",\n            \"eventCount\": \"example_value\",\n            \"eventLabel\": \"Example Name\",\n            \"eventValue\": \"example_value\"\n          },\n          \"goals\": {\n            \"goals\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"hostname\": \"Example Name\",\n          \"keyword\": \"secret_abc123\",\n          \"landingPagePath\": \"/example/path\",\n          \"medium\": \"example_value\",\n          \"pageview\": {\n            \"pagePath\": \"/example/path\",\n            \"pageTitle\": \"example_value\"\n          },\n          \"source\": \"example_value\"\n        },\n        {\n          \"activityTime\": \"2026-04-17T12:00:00Z\",\n          \"activityType\": \"ACTIVITY_TYPE_UNSPECIFIED\",\n          \"appview\": {\n            \"appName\": \"string\",\n            \"mobileDeviceBranding\": \"string\",\n            \"mobileDeviceModel\": \"string\",\n            \"screenName\": \"string\"\n          },\n          \"campaign\": \"example_value\",\n          \"channelGrouping\": \"example_value\",\n          \"customDimension\": [\n            {\n              \"index\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"index\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"ecommerce\": {\n            \"actionType\": \"UNKNOWN\",\n            \"ecommerceType\": \"ECOMMERCE_TYPE_UNSPECIFIED\",\n            \"products\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"transaction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"event\": {\n            \"eventAction\": \"example_value\",\n            \"eventCategory\": \"example_value\",\n            \"eventCount\": \"example_value\",\n            \"eventLabel\": \"Example Name\",\n            \"eventValue\": \"example_value\"\n          },\n          \"goals\": {\n            \"goals\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"hostname\": \"Example Name\",\n          \"keyword\": \"secret_abc123\",\n          \"landingPagePath\": \"/example/path\",\n          \"medium\": \"example_value\",\n          \"pageview\": {\n            \"pagePath\": \"/example/path\",\n            \"pageTitle\": \"example_value\"\n          },\n          \"source\": \"example_value\"\n        }\n      ],\n      \"dataSource\": \"string\",\n      \"deviceCategory\": \"string\",\n      \"platform\": \"string\",\n      \"sessionDate\": \"string\",\n      \"sessionId\": \"string\"\n    }\n  ],\n  \"totalRows\": 1826\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://analyticsadmin.googleapis.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c3b551e9-6d74-4171-9ff6-cf53d69262b0",
+    "name": "Google Analytics Admin accounts userActivity API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manage properties in Google Analytics. Warning: Creating multiple Customer Applications, Accounts, or Projects to simulate or act as a single Customer Application, Account, or Project (respectively) or to circumvent Service-specific usage limits or quotas is a direct violation of Google Cloud Platform Terms of Service as well as Google APIs Terms of Service. These actions can result in immediate termination of your GCP project(s) without any warning.\n\nContact Support:\n Name: Google",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,37 +1,119 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/google-analytics-admin-api.yaml, openapi/google-analytics-data-api.yaml, openapi/google-analytics-management-api-v3.yaml,
-  openapi/google-analytics-reporting-api-v4.yaml, openapi/google-analytics-user-deletion-api.yaml
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries,
+  https://developers.google.com/analytics/devguides/collection/protocol/ga4/sending-events
+  and https://developers.google.com/analytics/devguides/config/userdeletion/v3/authorization
+  (fetched 2026-08-13), plus the live metadata at
+  https://accounts.google.com/.well-known/openid-configuration and
+  .../oauth-authorization-server (both HTTP 200, saved under well-known/), and the
+  securitySchemes declared in openapi/_original/*.yaml
+provider: Google Analytics
+providerId: google-analytics
+supersedes: >-
+  The 2026-07-11 derived version, which reported only the two OpenAPI oauth2 schemes
+  (implicit + authorizationCode) and missed both the Measurement Protocol shared
+  secret and the service-account/ADC path that is the actual production pattern.
 summary:
   types:
-  - oauth2
+    - oauth2
+    - apiKey
   oauth2_flows:
-  - authorizationCode
-  - implicit
+    - authorizationCode
+    - implicit
+    - jwt-bearer (service account)
+    - device_code
+  transport: HTTPS only (TLS 1.3 observed on all API hosts)
 schemes:
-- name: Oauth2
-  type: oauth2
-  flows:
-  - flow: implicit
-    authorizationUrl: https://accounts.google.com/o/oauth2/auth
-    scopes: 2
-  description: Oauth 2.0 implicit authentication
-  sources:
-  - openapi/google-analytics-admin-api.yaml
-  - openapi/google-analytics-data-api.yaml
-  - openapi/google-analytics-management-api-v3.yaml
-  - openapi/google-analytics-reporting-api-v4.yaml
-- name: Oauth2c
-  type: oauth2
-  flows:
-  - flow: authorizationCode
-    authorizationUrl: https://accounts.google.com/o/oauth2/auth
-    tokenUrl: https://accounts.google.com/o/oauth2/token
-    scopes: 2
-  description: Oauth 2.0 authorizationCode authentication
-  sources:
-  - openapi/google-analytics-admin-api.yaml
-  - openapi/google-analytics-data-api.yaml
-  - openapi/google-analytics-management-api-v3.yaml
-  - openapi/google-analytics-reporting-api-v4.yaml
-  - openapi/google-analytics-user-deletion-api.yaml
+  - name: OAuth 2.0 user credentials (authorization code)
+    type: oauth2
+    flow: authorizationCode
+    authorization_endpoint: https://accounts.google.com/o/oauth2/v2/auth
+    token_endpoint: https://oauth2.googleapis.com/token
+    revocation_endpoint: https://oauth2.googleapis.com/revoke
+    header: 'Authorization: Bearer <access_token>'
+    refresh: true
+    applies_to:
+      - Google Analytics Data API
+      - Google Analytics Admin API
+    note: >-
+      The legacy endpoint https://accounts.google.com/o/oauth2/auth still appears in
+      the OpenAPI securitySchemes; the current discovery document publishes
+      https://accounts.google.com/o/oauth2/v2/auth.
+  - name: OAuth 2.0 implicit
+    type: oauth2
+    flow: implicit
+    authorization_endpoint: https://accounts.google.com/o/oauth2/auth
+    applies_to:
+      - Google Analytics Data API
+      - Google Analytics Admin API
+    deprecated: true
+    note: >-
+      Declared in the OpenAPI securitySchemes but discouraged by Google; the implicit
+      grant is not recommended for new integrations.
+  - name: Service account / Application Default Credentials
+    type: oauth2
+    flow: 'urn:ietf:params:oauth:grant-type:jwt-bearer'
+    applies_to:
+      - Google Analytics Data API
+      - Google Analytics Admin API
+    setup: >-
+      gcloud auth application-default login --scopes
+      https://www.googleapis.com/auth/analytics.readonly,https://www.googleapis.com/auth/cloud-platform
+      — or a service-account key file referenced by GOOGLE_APPLICATION_CREDENTIALS.
+      The service account's email must then be granted a role on the Google
+      Analytics property in the Analytics UI; enabling the API is not enough.
+    note: >-
+      This is the production pattern for server-to-server access and the only path
+      Google's own MCP server supports.
+  - name: Measurement Protocol api_secret
+    type: apiKey
+    in: query
+    parameter: api_secret
+    companion_parameters:
+      - measurement_id (web streams)
+      - firebase_app_id (app streams)
+    applies_to:
+      - Measurement Protocol (GA4)
+    minted_at: >-
+      Google Analytics UI > Admin > Data collection and modification > Data streams >
+      select stream > Measurement Protocol API secrets > Create
+    api_managed: >-
+      Also creatable through the Admin API:
+      properties.dataStreams.measurementProtocolSecrets.create
+    rotation: >-
+      Multiple secrets can exist per stream, so rotation is create-new-then-delete-old.
+      No expiry, no automatic rotation.
+    risk: >-
+      A bearer secret in a query string. Google's docs warn explicitly that exposing
+      it lets anyone inject arbitrary or spam events into the property and corrupt
+      its reporting. It grants write-only ingestion — it cannot read data.
+  - name: Google Cloud API key
+    type: apiKey
+    in: query
+    parameter: key
+    applies_to:
+      - Google Analytics Data API
+      - Google Analytics Admin API
+    note: >-
+      Identifies the calling Google Cloud project for quota and billing. It is NOT an
+      authorization mechanism — an API key alone cannot access any property's data.
+authorization_model:
+  description: >-
+    Two independent gates, and both must pass. (1) The Google Cloud project must have
+    the Google Analytics Admin API and/or Data API enabled. (2) The calling identity
+    — user or service account — must hold a Google Analytics role on the target
+    property, granted in the Analytics UI or through Admin API access bindings. OAuth
+    scope is a third, coarse filter on top of both.
+  common_failure: >-
+    HTTP 403 PERMISSION_DENIED with the API enabled and the token valid almost always
+    means step (2) was skipped — the service account was never added to the property.
+mtls:
+  supported: false
+scopes: scopes/google-analytics-scopes.yml
+well_known:
+  openid_configuration: well-known/google-analytics-openid-configuration.json
+  oauth_authorization_server: well-known/google-analytics-oauth-authorization-server.json
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

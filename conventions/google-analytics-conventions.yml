@@ -1,0 +1,156 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://developers.google.com/analytics/devguides/reporting/data/v1/errors,
+  .../reporting/data/v1/quotas, .../config/admin/v1/quotas,
+  .../collection/protocol/ga4/sending-events (all fetched 2026-08-13, HTTP 200),
+  plus the Google API Discovery documents captured in discovery/ and the OpenAPI
+  files in openapi/
+provider: Google Analytics
+providerId: google-analytics
+description: >-
+  Cross-cutting runtime semantics for the GA4-era Google Analytics APIs. Two very
+  different contracts live under one brand: the Data and Admin APIs are ordinary
+  Google Cloud AIP-style JSON/REST services with OAuth 2.0, pageSize/pageToken
+  pagination and the canonical Google error envelope; the Measurement Protocol is a
+  fire-and-forget ingestion endpoint with a query-string shared secret, no
+  meaningful response body and no error reporting at all.
+auth:
+  style: oauth2
+  services:
+    - api: Google Analytics Data API + Admin API
+      mechanism: OAuth 2.0 Bearer token (Authorization header) or Application Default Credentials
+      authorization_endpoint: https://accounts.google.com/o/oauth2/v2/auth
+      token_endpoint: https://oauth2.googleapis.com/token
+      note: >-
+        Service accounts and user credentials both work. An API key alone identifies
+        the billing/quota project but cannot authorize property access.
+    - api: Measurement Protocol (GA4)
+      mechanism: shared secret in the query string
+      params:
+        - api_secret
+        - measurement_id (web streams) or firebase_app_id (app streams)
+      note: >-
+        No OAuth. The api_secret is created in the Google Analytics UI under Data
+        streams > Measurement Protocol API secrets and must never reach client-side
+        code — anyone holding it can inject arbitrary events into the property.
+  detail: authentication/google-analytics-authentication.yml
+  scopes: scopes/google-analytics-scopes.yml
+idempotency:
+  supported: false
+  header: null
+  note: >-
+    No Google Analytics API accepts an idempotency key, a client-supplied request ID,
+    or any other de-duplication token. This matters most on the Measurement Protocol:
+    a retried POST to /mp/collect creates duplicate events in the property, and
+    because the endpoint returns 204 with no body even for invalid payloads, a client
+    cannot tell a retry-worthy failure from a silently-dropped one. On the Admin API,
+    create methods are not idempotent either — a retried create yields a second
+    resource.
+pagination:
+  data_api:
+    style: limit/offset
+    request_params:
+      - name: limit
+        note: Rows per page. Default 10,000; maximum 250,000 rows per request.
+      - name: offset
+        note: Zero-based row offset.
+    response_fields:
+      - rowCount
+      - rows
+    note: >-
+      Reporting responses are not cursor-paginated. rowCount reports the total
+      matching rows so a client can walk offsets.
+  admin_api:
+    style: page-token
+    request_params:
+      - name: pageSize
+        note: >-
+          "The service may return fewer than this value, even if there are additional
+          pages." Default 50, maximum 200 on most list methods.
+      - name: pageToken
+        note: >-
+          Opaque token from the previous call. All other parameters must match the
+          call that produced the token.
+    response_fields:
+      - nextPageToken
+    note: Standard Google AIP-158 pagination.
+field_selection:
+  supported: true
+  mechanism: >-
+    The Google API global query parameter `fields` selects a partial response
+    (FieldMask syntax). Available on every Data and Admin API method.
+  other_global_params:
+    - key
+    - access_token
+    - oauth_token
+    - alt
+    - callback
+    - prettyPrint
+    - quotaUser
+    - fields
+    - '$.xgafv'
+    - uploadType
+    - upload_protocol
+  note: >-
+    `quotaUser` is the per-caller quota attribution parameter — an arbitrary string
+    used to shard the per-user quota when one server calls on behalf of many end
+    users.
+metadata:
+  supported: false
+  note: >-
+    There is no free-form metadata bag on Data or Admin API resources. Extensibility
+    on the collection side is via custom dimensions and custom metrics, which are
+    declared resources (properties.customDimensions, properties.customMetrics), not
+    arbitrary key/value pairs.
+request_tracing:
+  request_id_header: null
+  note: >-
+    No request-id or trace header is documented for correlation with Google support.
+    The only in-band diagnostic is `propertyQuota` on Data API responses when the
+    request sets returnPropertyQuota=true.
+versioning:
+  style: path prefix per service — /v1beta (stable) and /v1alpha (preview)
+  detail: lifecycle/google-analytics-lifecycle.yml
+error_envelope:
+  format: google-canonical
+  rfc9457: false
+  shape: '{"error": {"code": <int>, "message": <string>, "status": <CANONICAL_ENUM>}}'
+  branch_on: error.status
+  detail: errors/google-analytics-problem-types.yml
+  measurement_protocol_exception: >-
+    /mp/collect always returns 2xx with an empty body regardless of payload validity.
+    The only way to see validation errors is the separate debug endpoint
+    /debug/mp/collect, which returns a validationMessages array.
+rate_limit_signaling:
+  headers: []
+  note: >-
+    Google Analytics returns NO rate-limit response headers — no X-RateLimit-*, no
+    RateLimit-*, no Retry-After. Exhaustion is signalled by status only: HTTP 429
+    RESOURCE_EXHAUSTED on the Data API, HTTP 403 on the Admin API. The runtime
+    balance is available in-band only when a Data API request opts in with
+    "returnPropertyQuota": true, which returns a PropertyQuota object
+    (tokensPerDay, tokensPerHour, tokensPerProjectPerHour, concurrentRequests,
+    serverErrorsPerProjectPerHour, potentiallyThresholdedRequestsPerHour). This is a
+    request-scoped opt-in, not a header, so an agent that does not know to ask sees
+    no warning before it is throttled.
+  status_on_exhaustion:
+    data_api: 429
+    admin_api: 403
+  detail: rate-limits/google-analytics-rate-limits.yml
+retry:
+  strategy: exponential backoff with jitter AND a retry limit
+  note: >-
+    Retries are self-limiting by design: 500/503 responses charge the Server Errors
+    quota (10/hour Standard, 50/hour 360) and all other non-200 responses charge the
+    client-errors quota (10,000 per 15 minutes). Unbounded retry gets the calling
+    project blocked from the property.
+data_freshness:
+  note: >-
+    Reporting is not read-your-writes. Events sent through the Measurement Protocol
+    are not immediately queryable through the Data API; standard processing latency
+    applies (Analytics 360 contracts for lower latency). Events may be backdated up
+    to 72 hours with timestamp_micros.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

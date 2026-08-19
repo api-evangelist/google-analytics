@@ -1,0 +1,826 @@
+{
+  "item": [
+    {
+      "id": "f170f69a-2bfa-468a-8b84-0f6bd5b932ee",
+      "name": "data",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1cd02094-4662-4dbf-8e5e-7390bc9a9ae9",
+          "name": "analytics.data.ga.get",
+          "request": {
+            "name": "analytics.data.ga.get",
+            "description": {
+              "content": "Returns Analytics data for a view (profile).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "ga"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "(Required) Unique table ID for retrieving Analytics data. Table ID is of the form ga:XXXX, where XXXX is the Analytics view (profile) ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "start-date",
+                  "value": "<string>",
+                  "description": "(Required) Start date for fetching Analytics data. Requests can specify a start date formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is 7daysAgo."
+                },
+                {
+                  "disabled": false,
+                  "key": "end-date",
+                  "value": "<string>",
+                  "description": "(Required) End date for fetching Analytics data. Request can should specify an end date formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is yesterday."
+                },
+                {
+                  "disabled": false,
+                  "key": "metrics",
+                  "value": "<string>",
+                  "description": "(Required) A comma-separated list of Analytics metrics. E.g., 'ga:sessions,ga:pageviews'. At least one metric must be specified."
+                },
+                {
+                  "disabled": false,
+                  "key": "dimensions",
+                  "value": "<string>",
+                  "description": "A comma-separated list of Analytics dimensions. E.g., 'ga:browser,ga:city'."
+                },
+                {
+                  "disabled": false,
+                  "key": "filters",
+                  "value": "<string>",
+                  "description": "A comma-separated list of dimension or metric filters to be applied to Analytics data."
+                },
+                {
+                  "disabled": false,
+                  "key": "include-empty-rows",
+                  "value": "<boolean>",
+                  "description": "The response will include empty rows if this parameter is set to true, the default is true"
+                },
+                {
+                  "disabled": false,
+                  "key": "max-results",
+                  "value": "<integer>",
+                  "description": "The maximum number of entries to include in this feed."
+                },
+                {
+                  "disabled": false,
+                  "key": "output",
+                  "value": "<string>",
+                  "description": "The selected format for the response. Default format is JSON."
+                },
+                {
+                  "disabled": false,
+                  "key": "samplingLevel",
+                  "value": "<string>",
+                  "description": "The desired sampling level."
+                },
+                {
+                  "disabled": false,
+                  "key": "segment",
+                  "value": "<string>",
+                  "description": "An Analytics segment to be applied to data."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "A comma-separated list of dimensions or metrics that determine the sort order for Analytics data."
+                },
+                {
+                  "disabled": false,
+                  "key": "start-index",
+                  "value": "<integer>",
+                  "description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+                },
+                {
+                  "disabled": false,
+                  "key": "alt",
+                  "value": "<string>",
+                  "description": "Data format for the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Selector specifying which fields to include in a partial response."
+                },
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+                },
+                {
+                  "disabled": false,
+                  "key": "oauth_token",
+                  "value": "<string>",
+                  "description": "OAuth 2.0 token for the current user."
+                },
+                {
+                  "disabled": false,
+                  "key": "prettyPrint",
+                  "value": "<boolean>",
+                  "description": "Returns response with indentations and line breaks."
+                },
+                {
+                  "disabled": false,
+                  "key": "quotaUser",
+                  "value": "<string>",
+                  "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."
+                },
+                {
+                  "disabled": false,
+                  "key": "userIp",
+                  "value": "<string>",
+                  "description": "Deprecated. Please use quotaUser instead."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "https://www.googleapis.com/auth/analytics.edit https://www.googleapis.com/auth/analytics.readonly"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.google.com/o/oauth2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "implicit"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "dda2cab5-daeb-4d21-9d22-7fbe5e6673c9",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "ga"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "123456"
+                    },
+                    {
+                      "key": "start-date",
+                      "value": "2026-04-17"
+                    },
+                    {
+                      "key": "end-date",
+                      "value": "2026-04-17"
+                    },
+                    {
+                      "key": "metrics",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "dimensions",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "filters",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "include-empty-rows",
+                      "value": "true"
+                    },
+                    {
+                      "key": "max-results",
+                      "value": "42"
+                    },
+                    {
+                      "key": "output",
+                      "value": "dataTable"
+                    },
+                    {
+                      "key": "samplingLevel",
+                      "value": "DEFAULT"
+                    },
+                    {
+                      "key": "segment",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "start-index",
+                      "value": "42"
+                    },
+                    {
+                      "key": "alt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "oauth_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prettyPrint",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "quotaUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userIp",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"columnHeaders\": [\n    {\n      \"columnType\": \"string\",\n      \"dataType\": \"string\",\n      \"name\": \"string\"\n    },\n    {\n      \"columnType\": \"string\",\n      \"dataType\": \"string\",\n      \"name\": \"string\"\n    }\n  ],\n  \"containsSampledData\": true,\n  \"dataLastRefreshed\": \"example_value\",\n  \"dataTable\": {\n    \"cols\": [\n      {\n        \"id\": \"string\",\n        \"label\": \"string\",\n        \"type\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"label\": \"string\",\n        \"type\": \"string\"\n      }\n    ],\n    \"rows\": [\n      {\n        \"c\": [\n          {\n            \"v\": \"string\"\n          },\n          {\n            \"v\": \"string\"\n          }\n        ]\n      },\n      {\n        \"c\": [\n          {\n            \"v\": \"string\"\n          },\n          {\n            \"v\": \"string\"\n          }\n        ]\n      }\n    ]\n  },\n  \"id\": \"123456\",\n  \"itemsPerPage\": 42,\n  \"kind\": \"example_value\",\n  \"nextLink\": \"example_value\",\n  \"previousLink\": \"example_value\",\n  \"profileInfo\": {\n    \"accountId\": \"string\",\n    \"internalWebPropertyId\": \"string\",\n    \"profileId\": \"string\",\n    \"profileName\": \"string\",\n    \"tableId\": \"string\",\n    \"webPropertyId\": \"string\"\n  },\n  \"query\": {\n    \"dimensions\": \"string\",\n    \"end-date\": \"string\",\n    \"filters\": \"string\",\n    \"ids\": \"string\",\n    \"max-results\": 4448,\n    \"metrics\": [\n      \"string\",\n      \"string\"\n    ],\n    \"samplingLevel\": \"string\",\n    \"segment\": \"string\",\n    \"sort\": [\n      \"string\",\n      \"string\"\n    ],\n    \"start-date\": \"string\",\n    \"start-index\": 4812\n  },\n  \"rows\": [\n    [\n      \"string\",\n      \"string\"\n    ],\n    [\n      \"string\",\n      \"string\"\n    ]\n  ],\n  \"sampleSize\": \"example_value\",\n  \"sampleSpace\": \"example_value\",\n  \"selfLink\": \"example_value\",\n  \"totalResults\": 42,\n  \"totalsForAllResults\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "df666f6a-7f52-40bf-9c9d-4d428a5551f9",
+          "name": "analytics.data.mcf.get",
+          "request": {
+            "name": "analytics.data.mcf.get",
+            "description": {
+              "content": "Returns Analytics Multi-Channel Funnels data for a view (profile).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "mcf"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "(Required) Unique table ID for retrieving Analytics data. Table ID is of the form ga:XXXX, where XXXX is the Analytics view (profile) ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "start-date",
+                  "value": "<string>",
+                  "description": "(Required) Start date for fetching Analytics data. Requests can specify a start date formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is 7daysAgo."
+                },
+                {
+                  "disabled": false,
+                  "key": "end-date",
+                  "value": "<string>",
+                  "description": "(Required) End date for fetching Analytics data. Requests can specify a start date formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is 7daysAgo."
+                },
+                {
+                  "disabled": false,
+                  "key": "metrics",
+                  "value": "<string>",
+                  "description": "(Required) A comma-separated list of Multi-Channel Funnels metrics. E.g., 'mcf:totalConversions,mcf:totalConversionValue'. At least one metric must be specified."
+                },
+                {
+                  "disabled": false,
+                  "key": "dimensions",
+                  "value": "<string>",
+                  "description": "A comma-separated list of Multi-Channel Funnels dimensions. E.g., 'mcf:source,mcf:medium'."
+                },
+                {
+                  "disabled": false,
+                  "key": "filters",
+                  "value": "<string>",
+                  "description": "A comma-separated list of dimension or metric filters to be applied to the Analytics data."
+                },
+                {
+                  "disabled": false,
+                  "key": "max-results",
+                  "value": "<integer>",
+                  "description": "The maximum number of entries to include in this feed."
+                },
+                {
+                  "disabled": false,
+                  "key": "samplingLevel",
+                  "value": "<string>",
+                  "description": "The desired sampling level."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "A comma-separated list of dimensions or metrics that determine the sort order for the Analytics data."
+                },
+                {
+                  "disabled": false,
+                  "key": "start-index",
+                  "value": "<integer>",
+                  "description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+                },
+                {
+                  "disabled": false,
+                  "key": "alt",
+                  "value": "<string>",
+                  "description": "Data format for the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Selector specifying which fields to include in a partial response."
+                },
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+                },
+                {
+                  "disabled": false,
+                  "key": "oauth_token",
+                  "value": "<string>",
+                  "description": "OAuth 2.0 token for the current user."
+                },
+                {
+                  "disabled": false,
+                  "key": "prettyPrint",
+                  "value": "<boolean>",
+                  "description": "Returns response with indentations and line breaks."
+                },
+                {
+                  "disabled": false,
+                  "key": "quotaUser",
+                  "value": "<string>",
+                  "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."
+                },
+                {
+                  "disabled": false,
+                  "key": "userIp",
+                  "value": "<string>",
+                  "description": "Deprecated. Please use quotaUser instead."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "https://www.googleapis.com/auth/analytics.edit https://www.googleapis.com/auth/analytics.readonly"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.google.com/o/oauth2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "implicit"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "af9c4372-2995-457e-b0c6-d79bc156686b",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "mcf"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "123456"
+                    },
+                    {
+                      "key": "start-date",
+                      "value": "2026-04-17"
+                    },
+                    {
+                      "key": "end-date",
+                      "value": "2026-04-17"
+                    },
+                    {
+                      "key": "metrics",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "dimensions",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "filters",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "max-results",
+                      "value": "42"
+                    },
+                    {
+                      "key": "samplingLevel",
+                      "value": "DEFAULT"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "start-index",
+                      "value": "42"
+                    },
+                    {
+                      "key": "alt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "oauth_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prettyPrint",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "quotaUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userIp",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"columnHeaders\": [\n    {\n      \"columnType\": \"string\",\n      \"dataType\": \"string\",\n      \"name\": \"string\"\n    },\n    {\n      \"columnType\": \"string\",\n      \"dataType\": \"string\",\n      \"name\": \"string\"\n    }\n  ],\n  \"containsSampledData\": false,\n  \"id\": \"string\",\n  \"itemsPerPage\": 685,\n  \"kind\": \"analytics#mcfData\",\n  \"nextLink\": \"string\",\n  \"previousLink\": \"string\",\n  \"profileInfo\": {\n    \"accountId\": \"string\",\n    \"internalWebPropertyId\": \"string\",\n    \"profileId\": \"string\",\n    \"profileName\": \"string\",\n    \"tableId\": \"string\",\n    \"webPropertyId\": \"string\"\n  },\n  \"query\": {\n    \"dimensions\": \"string\",\n    \"end-date\": \"string\",\n    \"filters\": \"string\",\n    \"ids\": \"string\",\n    \"max-results\": 970,\n    \"metrics\": [\n      \"string\",\n      \"string\"\n    ],\n    \"samplingLevel\": \"string\",\n    \"segment\": \"string\",\n    \"sort\": [\n      \"string\",\n      \"string\"\n    ],\n    \"start-date\": \"string\",\n    \"start-index\": 1490\n  },\n  \"rows\": [\n    [\n      {\n        \"conversionPathValue\": [\n          {\n            \"interactionType\": \"string\",\n            \"nodeValue\": \"string\"\n          },\n          {\n            \"interactionType\": \"string\",\n            \"nodeValue\": \"string\"\n          }\n        ],\n        \"primitiveValue\": \"string\"\n      },\n      {\n        \"conversionPathValue\": [\n          {\n            \"interactionType\": \"string\",\n            \"nodeValue\": \"string\"\n          },\n          {\n            \"interactionType\": \"string\",\n            \"nodeValue\": \"string\"\n          }\n        ],\n        \"primitiveValue\": \"string\"\n      }\n    ],\n    [\n      {\n        \"conversionPathValue\": [\n          {\n            \"interactionType\": \"string\",\n            \"nodeValue\": \"string\"\n          },\n          {\n            \"interactionType\": \"string\",\n            \"nodeValue\": \"string\"\n          }\n        ],\n        \"primitiveValue\": \"string\"\n      },\n      {\n        \"conversionPathValue\": [\n          {\n            \"interactionType\": \"string\",\n            \"nodeValue\": \"string\"\n          },\n          {\n            \"interactionType\": \"string\",\n            \"nodeValue\": \"string\"\n          }\n        ],\n        \"primitiveValue\": \"string\"\n      }\n    ]\n  ],\n  \"sampleSize\": \"string\",\n  \"sampleSpace\": \"string\",\n  \"selfLink\": \"string\",\n  \"totalResults\": 6616,\n  \"totalsForAllResults\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ffd1521c-81dc-4d8c-97ba-9382716252e3",
+          "name": "analytics.data.realtime.get",
+          "request": {
+            "name": "analytics.data.realtime.get",
+            "description": {
+              "content": "Returns real time data for a view (profile).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "realtime"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "(Required) Unique table ID for retrieving real time data. Table ID is of the form ga:XXXX, where XXXX is the Analytics view (profile) ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "metrics",
+                  "value": "<string>",
+                  "description": "(Required) A comma-separated list of real time metrics. E.g., 'rt:activeUsers'. At least one metric must be specified."
+                },
+                {
+                  "disabled": false,
+                  "key": "dimensions",
+                  "value": "<string>",
+                  "description": "A comma-separated list of real time dimensions. E.g., 'rt:medium,rt:city'."
+                },
+                {
+                  "disabled": false,
+                  "key": "filters",
+                  "value": "<string>",
+                  "description": "A comma-separated list of dimension or metric filters to be applied to real time data."
+                },
+                {
+                  "disabled": false,
+                  "key": "max-results",
+                  "value": "<integer>",
+                  "description": "The maximum number of entries to include in this feed."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "A comma-separated list of dimensions or metrics that determine the sort order for real time data."
+                },
+                {
+                  "disabled": false,
+                  "key": "alt",
+                  "value": "<string>",
+                  "description": "Data format for the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Selector specifying which fields to include in a partial response."
+                },
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+                },
+                {
+                  "disabled": false,
+                  "key": "oauth_token",
+                  "value": "<string>",
+                  "description": "OAuth 2.0 token for the current user."
+                },
+                {
+                  "disabled": false,
+                  "key": "prettyPrint",
+                  "value": "<boolean>",
+                  "description": "Returns response with indentations and line breaks."
+                },
+                {
+                  "disabled": false,
+                  "key": "quotaUser",
+                  "value": "<string>",
+                  "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."
+                },
+                {
+                  "disabled": false,
+                  "key": "userIp",
+                  "value": "<string>",
+                  "description": "Deprecated. Please use quotaUser instead."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "https://www.googleapis.com/auth/analytics.edit https://www.googleapis.com/auth/analytics.readonly"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.google.com/o/oauth2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "implicit"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f3afe887-c19c-4956-b8dc-67d41b540717",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "realtime"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "123456"
+                    },
+                    {
+                      "key": "metrics",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "dimensions",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "filters",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "max-results",
+                      "value": "42"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "alt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "oauth_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prettyPrint",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "quotaUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userIp",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"columnHeaders\": [\n    {\n      \"columnType\": \"string\",\n      \"dataType\": \"string\",\n      \"name\": \"string\"\n    },\n    {\n      \"columnType\": \"string\",\n      \"dataType\": \"string\",\n      \"name\": \"string\"\n    }\n  ],\n  \"id\": \"string\",\n  \"kind\": \"analytics#realtimeData\",\n  \"profileInfo\": {\n    \"accountId\": \"string\",\n    \"internalWebPropertyId\": \"string\",\n    \"profileId\": \"string\",\n    \"profileName\": \"string\",\n    \"tableId\": \"string\",\n    \"webPropertyId\": \"string\"\n  },\n  \"query\": {\n    \"dimensions\": \"string\",\n    \"filters\": \"string\",\n    \"ids\": \"string\",\n    \"max-results\": 6715,\n    \"metrics\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sort\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"rows\": [\n    [\n      \"string\",\n      \"string\"\n    ],\n    [\n      \"string\",\n      \"string\"\n    ]\n  ],\n  \"selfLink\": \"string\",\n  \"totalResults\": 5555,\n  \"totalsForAllResults\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://analyticsadmin.googleapis.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3700aa4b-b3f8-420e-b554-682bdb4ab28e",
+    "name": "Google Analytics Admin accounts data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manage properties in Google Analytics. Warning: Creating multiple Customer Applications, Accounts, or Projects to simulate or act as a single Customer Application, Account, or Project (respectively) or to circumvent Service-specific usage limits or quotas is a direct violation of Google Cloud Platform Terms of Service as well as Google APIs Terms of Service. These actions can result in immediate termination of your GCP project(s) without any warning.\n\nContact Support:\n Name: Google",
+      "type": "text/plain"
+    }
+  }
+}

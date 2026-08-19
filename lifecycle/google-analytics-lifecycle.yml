@@ -1,0 +1,180 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  Live fetches on 2026-08-13 of
+  https://developers.google.com/analytics/devguides/config/mgmt/v3,
+  .../reporting/core/v4, .../collection/protocol/v1,
+  .../config/userdeletion/v3, .../config/admin/v1/changelog,
+  .../reporting/data/v1/changelog, https://status.cloud.google.com/ and
+  https://support.google.com/analytics/answer/9164320
+provider: Google Analytics
+providerId: google-analytics
+versioning:
+  scheme: >-
+    Path-prefixed channel versions per service — /v1beta (stable), /v1alpha
+    (preview). Universal Analytics-era services used /v3 and /v4 in the path or in
+    the host servicePath.
+  current:
+    - api: Google Analytics Data API
+      version: v1beta
+      channel: stable
+      base: https://analyticsdata.googleapis.com
+    - api: Google Analytics Data API
+      version: v1alpha
+      channel: preview
+      base: https://analyticsdata.googleapis.com
+      note: >-
+        Carries report tasks, funnel reports and conversion reporting. Google's own
+        MCP server calls v1alpha for three of its nine tools.
+    - api: Google Analytics Admin API
+      version: v1beta
+      channel: stable
+      base: https://analyticsadmin.googleapis.com
+    - api: Google Analytics Admin API
+      version: v1alpha
+      channel: preview
+      base: https://analyticsadmin.googleapis.com
+    - api: Measurement Protocol (GA4)
+      version: unversioned
+      channel: stable
+      base: https://www.google-analytics.com/mp
+      note: >-
+        No version token in the path. Regional endpoint
+        https://region1.google-analytics.com/mp is also published.
+  policy_note: >-
+    Google publishes no numbered deprecation window for the Analytics APIs. Changes
+    are announced in the per-API changelogs and the google-analytics-api-notify
+    Google Group. The v1alpha channel is explicitly unstable — the Admin API
+    changelog records a straight rename (createSubproperty -> provisionSubproperty,
+    2024-08-01) labelled "Breaking change", with no alias period.
+deprecated:
+  - api: Universal Analytics Reporting API v4
+    host: https://analyticsreporting.googleapis.com
+    status: sunset
+    sunset_date: '2024-07-01'
+    evidence:
+      url: https://developers.google.com/analytics/devguides/reporting/core/v4
+      http_status: 200
+      body: >-
+        "The link you clicked was to documentation on the legacy version, Universal
+        Analytics. Universal Analytics has sunset and is no longer available as of
+        July 1, 2024."
+    replacement: Google Analytics Data API (GA4) v1beta
+    repo_artifacts:
+      - openapi/google-analytics-reports-api-openapi.yml
+      - openapi/google-analytics-useractivity-api-openapi.yml
+      - openapi/_original/google-analytics-reporting-api-v4.yaml
+  - api: Universal Analytics Management API v3
+    host: https://analytics.googleapis.com/analytics/v3
+    status: sunset
+    sunset_date: '2024-07-01'
+    evidence:
+      url: https://developers.google.com/analytics/devguides/config/mgmt/v3
+      http_status: 200
+      body: Same Universal Analytics sunset notice.
+    replacement: Google Analytics Admin API v1beta
+    repo_artifacts:
+      - openapi/google-analytics-management-api-openapi.yml
+      - openapi/google-analytics-data-api-openapi.yml
+      - openapi/google-analytics-metadata-api-openapi.yml
+      - openapi/google-analytics-provisioning-api-openapi.yml
+      - openapi/_original/google-analytics-management-api-v3.yaml
+  - api: Measurement Protocol v1 (Universal Analytics)
+    status: sunset
+    sunset_date: '2024-07-01'
+    evidence:
+      url: https://developers.google.com/analytics/devguides/collection/protocol/v1
+      http_status: 200
+      body: Same Universal Analytics sunset notice.
+    replacement: Measurement Protocol (GA4)
+  - api: User Deletion API v3
+    status: sunset
+    sunset_date: '2024-07-01'
+    evidence:
+      url: https://developers.google.com/analytics/devguides/config/userdeletion/v3
+      http_status: 200
+      body: >-
+        "The legacy Google Analytics User Deletion API (v3) has been sunset along
+        with Universal Analytics. The Google Analytics Admin API (v1alpha) provides a
+        replacement SubmitUserDeletion method."
+    replacement: Admin API v1alpha properties.submitUserDeletion
+    repo_artifacts:
+      - openapi/google-analytics-user-deletion-api-openapi.yml
+      - openapi/google-analytics-userdeletion-api-openapi.yml
+      - openapi/_original/google-analytics-user-deletion-api.yaml
+deprecated_fields:
+  - field: sharingWithGoogleAnySalesEnabled
+    api: Google Analytics Admin API
+    method: getDataSharingSettings
+    announced: '2025-03-07'
+    removed: '2025-06'
+    note: Deprecated, always returns false, then removed from v1beta in June 2025.
+    source: https://developers.google.com/analytics/devguides/config/admin/v1/changelog
+  - field: isConversionEvent
+    api: Google Analytics Data API
+    announced: '2024-05-06'
+    replacement: isKeyEvent
+    note: >-
+      Conversion dimensions and metrics were renamed to key events; the deprecated
+      metric names were kept alongside new Key Event metrics.
+    source: https://developers.google.com/analytics/devguides/reporting/data/v1/changelog
+  - field: ConversionEvent resource
+    api: Google Analytics Admin API
+    replacement: KeyEvent
+    source: https://developers.google.com/analytics/devguides/config/admin/v1/changelog
+removed_methods:
+  - names:
+      - SetAutomatedGa4ConfigurationOptOut
+      - FetchAutomatedGa4ConfigurationOptOut
+      - CreateConnectedSiteTag
+      - DeleteConnectedSiteTag
+      - ListConnectedSiteTags
+      - FetchConnectedGa4Property
+    api: Google Analytics Admin API v1alpha
+    removed: '2025-08-20'
+    reason: Legacy Universal Analytics methods.
+    source: https://developers.google.com/analytics/devguides/config/admin/v1/changelog
+sunset_headers:
+  rfc8594: false
+  note: >-
+    No Sunset or Deprecation response headers are documented for any Google Analytics
+    API. Deprecation is communicated only through docs, changelogs and the notify
+    group — a client cannot detect it at runtime.
+status_page:
+  url: https://status.cloud.google.com/
+  http_status: 200
+  covers: >-
+    Google Cloud dashboard. Google Analytics API incidents surface here rather than
+    on a dedicated Analytics status page.
+  machine_readable: https://status.cloud.google.com/incidents.json
+announcements:
+  - name: Google Analytics API Notify Group
+    url: https://groups.google.com/forum/#!forum/google-analytics-api-notify
+    note: Google's stated channel for official API announcements.
+  - name: Google Analytics release notes
+    url: https://support.google.com/analytics/answer/9164320
+  - name: Data API changelog
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/changelog
+  - name: Admin API changelog
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/changelog
+  - name: Measurement Protocol changelog
+    url: https://developers.google.com/analytics/devguides/collection/protocol/ga4/changelog
+sla:
+  standard: none
+  ga360: >-
+    Google Analytics 360 is sold with contractual SLAs for data collection,
+    processing latency and reporting availability. The SLA text is not published at a
+    public URL; it is part of the Analytics 360 order form.
+findings:
+  - >-
+    Seven of the thirteen OpenAPI files in this repo describe Universal Analytics-era
+    services that Google sunset on 2024-07-01. They are kept as historical record,
+    not as callable contracts. The GA4-era surface is the Data API v1beta, the Admin
+    API v1beta/v1alpha and the GA4 Measurement Protocol.
+  - >-
+    All four sunset doc URLs return HTTP 200 with a "page isn't available" body —
+    a soft-404. Anything that treats 200 as evidence of a live surface will
+    mis-credit these.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

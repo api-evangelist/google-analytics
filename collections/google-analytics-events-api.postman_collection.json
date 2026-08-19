@@ -1,0 +1,245 @@
+{
+  "item": [
+    {
+      "id": "08a60797-ca15-4089-a74d-18c8eb9afa91",
+      "name": "Events",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8a430a01-ecc7-4ed0-a6fa-ddb037204c54",
+          "name": "Google Analytics Send Events to Google Analytics",
+          "request": {
+            "name": "Google Analytics Send Events to Google Analytics",
+            "description": {
+              "content": "Sends one or more events to Google Analytics for processing. Up to 25 events can be sent per request. Events can be backdated up to 72 hours.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "collect"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_secret",
+                  "value": "<string>",
+                  "description": "(Required) The API Secret generated in the Google Analytics UI. Found under Admin > Data Streams > Choose your stream > Measurement Protocol > Create."
+                },
+                {
+                  "disabled": false,
+                  "key": "measurement_id",
+                  "value": "<string>",
+                  "description": "The Measurement ID for a web data stream. Required for web streams. Found in the Google Analytics UI under Admin > Data Streams."
+                },
+                {
+                  "disabled": false,
+                  "key": "firebase_app_id",
+                  "value": "<string>",
+                  "description": "The Firebase App ID for an app data stream. Required for app streams. Found in the Firebase console under Project Settings."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"events\": [\n    {\n      \"name\": \"<string>\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\",\n        \"key_0\": 8680,\n        \"key_1\": true,\n        \"key_2\": 7055.576204117921\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\",\n        \"key_0\": 8239,\n        \"key_1\": 4414\n      }\n    }\n  ],\n  \"client_id\": \"<string>\",\n  \"app_instance_id\": \"<string>\",\n  \"user_id\": \"<string>\",\n  \"timestamp_micros\": \"<long>\",\n  \"user_properties\": {\n    \"key_0\": {\n      \"value\": \"<string>\"\n    }\n  },\n  \"user_data\": \"<object>\",\n  \"consent\": {\n    \"ad_user_data\": \"<string>\",\n    \"ad_personalization\": \"<string>\"\n  },\n  \"non_personalized_ads\": \"<boolean>\",\n  \"user_location\": {\n    \"city\": \"<string>\",\n    \"region_id\": \"<string>\",\n    \"country_id\": \"<string>\",\n    \"subcontinent_id\": \"<string>\",\n    \"continent_id\": \"<string>\"\n  },\n  \"ip_override\": \"<string>\",\n  \"device\": {\n    \"category\": \"<string>\",\n    \"language\": \"<string>\",\n    \"screen_resolution\": \"<string>\",\n    \"operating_system\": \"<string>\",\n    \"operating_system_version\": \"<string>\",\n    \"model\": \"<string>\",\n    \"brand\": \"<string>\",\n    \"browser\": \"<string>\",\n    \"browser_version\": \"<string>\"\n  },\n  \"validation_behavior\": \"RELAXED\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "78c2ca87-bb41-4ff6-9658-540653f9f634",
+              "name": "Events accepted. Note that a 2xx response does not guarantee the events are valid or will appear in reports. The Measurement Protocol does not return error details for malformed payloads.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collect"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_secret",
+                      "value": "secret_abc123"
+                    },
+                    {
+                      "key": "measurement_id",
+                      "value": "123456"
+                    },
+                    {
+                      "key": "firebase_app_id",
+                      "value": "123456"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"name\": \"Example Name\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\"\n      }\n    },\n    {\n      \"name\": \"Example Name\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\"\n      }\n    }\n  ],\n  \"client_id\": \"123456789.1234567890\",\n  \"app_instance_id\": \"123456\",\n  \"user_id\": \"123456\",\n  \"timestamp_micros\": 1713355200000000,\n  \"user_properties\": {\n    \"key_0\": {\n      \"value\": \"<string>\"\n    }\n  },\n  \"user_data\": \"<object>\",\n  \"consent\": {\n    \"ad_user_data\": \"GRANTED\",\n    \"ad_personalization\": \"GRANTED\"\n  },\n  \"non_personalized_ads\": true,\n  \"user_location\": {\n    \"city\": \"example_value\",\n    \"region_id\": \"123456\",\n    \"country_id\": \"123456\",\n    \"subcontinent_id\": \"123456\",\n    \"continent_id\": \"123456\"\n  },\n  \"ip_override\": \"123456\",\n  \"device\": {\n    \"category\": \"example_value\",\n    \"language\": \"example_value\",\n    \"screen_resolution\": \"example_value\",\n    \"operating_system\": \"example_value\",\n    \"operating_system_version\": \"example_value\",\n    \"model\": \"example_value\",\n    \"brand\": \"example_value\",\n    \"browser\": \"example_value\",\n    \"browser_version\": \"example_value\"\n  },\n  \"validation_behavior\": \"RELAXED\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "981f06e7-5033-4b56-b4e8-64e392a62cdf",
+              "name": "Malformed request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collect"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_secret",
+                      "value": "secret_abc123"
+                    },
+                    {
+                      "key": "measurement_id",
+                      "value": "123456"
+                    },
+                    {
+                      "key": "firebase_app_id",
+                      "value": "123456"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"name\": \"Example Name\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\"\n      }\n    },\n    {\n      \"name\": \"Example Name\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\"\n      }\n    }\n  ],\n  \"client_id\": \"123456789.1234567890\",\n  \"app_instance_id\": \"123456\",\n  \"user_id\": \"123456\",\n  \"timestamp_micros\": 1713355200000000,\n  \"user_properties\": {\n    \"key_0\": {\n      \"value\": \"<string>\"\n    }\n  },\n  \"user_data\": \"<object>\",\n  \"consent\": {\n    \"ad_user_data\": \"GRANTED\",\n    \"ad_personalization\": \"GRANTED\"\n  },\n  \"non_personalized_ads\": true,\n  \"user_location\": {\n    \"city\": \"example_value\",\n    \"region_id\": \"123456\",\n    \"country_id\": \"123456\",\n    \"subcontinent_id\": \"123456\",\n    \"continent_id\": \"123456\"\n  },\n  \"ip_override\": \"123456\",\n  \"device\": {\n    \"category\": \"example_value\",\n    \"language\": \"example_value\",\n    \"screen_resolution\": \"example_value\",\n    \"operating_system\": \"example_value\",\n    \"operating_system_version\": \"example_value\",\n    \"model\": \"example_value\",\n    \"brand\": \"example_value\",\n    \"browser\": \"example_value\",\n    \"browser_version\": \"example_value\"\n  },\n  \"validation_behavior\": \"RELAXED\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "73c33af0-7bb0-4198-980c-d80b382b257a",
+              "name": "Invalid api_secret",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collect"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_secret",
+                      "value": "secret_abc123"
+                    },
+                    {
+                      "key": "measurement_id",
+                      "value": "123456"
+                    },
+                    {
+                      "key": "firebase_app_id",
+                      "value": "123456"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"name\": \"Example Name\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\"\n      }\n    },\n    {\n      \"name\": \"Example Name\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\"\n      }\n    }\n  ],\n  \"client_id\": \"123456789.1234567890\",\n  \"app_instance_id\": \"123456\",\n  \"user_id\": \"123456\",\n  \"timestamp_micros\": 1713355200000000,\n  \"user_properties\": {\n    \"key_0\": {\n      \"value\": \"<string>\"\n    }\n  },\n  \"user_data\": \"<object>\",\n  \"consent\": {\n    \"ad_user_data\": \"GRANTED\",\n    \"ad_personalization\": \"GRANTED\"\n  },\n  \"non_personalized_ads\": true,\n  \"user_location\": {\n    \"city\": \"example_value\",\n    \"region_id\": \"123456\",\n    \"country_id\": \"123456\",\n    \"subcontinent_id\": \"123456\",\n    \"continent_id\": \"123456\"\n  },\n  \"ip_override\": \"123456\",\n  \"device\": {\n    \"category\": \"example_value\",\n    \"language\": \"example_value\",\n    \"screen_resolution\": \"example_value\",\n    \"operating_system\": \"example_value\",\n    \"operating_system_version\": \"example_value\",\n    \"model\": \"example_value\",\n    \"brand\": \"example_value\",\n    \"browser\": \"example_value\",\n    \"browser_version\": \"example_value\"\n  },\n  \"validation_behavior\": \"RELAXED\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://analyticsadmin.googleapis.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d2952af9-1807-4598-bd93-4c83b6f77307",
+    "name": "Google Analytics Admin accounts Events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manage properties in Google Analytics. Warning: Creating multiple Customer Applications, Accounts, or Projects to simulate or act as a single Customer Application, Account, or Project (respectively) or to circumvent Service-specific usage limits or quotas is a direct violation of Google Cloud Platform Terms of Service as well as Google APIs Terms of Service. These actions can result in immediate termination of your GCP project(s) without any warning.\n\nContact Support:\n Name: Google",
+      "type": "text/plain"
+    }
+  }
+}

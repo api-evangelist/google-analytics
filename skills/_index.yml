@@ -1,0 +1,89 @@
+generated: '2026-08-13'
+method: generated
+source: >-
+  Grounded in operationIds grepped from openapi/*.yml in this repository, and in the
+  runtime rules recorded in conventions/google-analytics-conventions.yml,
+  rate-limits/google-analytics-rate-limits.yml,
+  errors/google-analytics-problem-types.yml and
+  scopes/google-analytics-scopes.yml. Google publishes no AGENTS.md and no skills
+  directory of its own — probed
+  https://raw.githubusercontent.com/googleanalytics/google-analytics-mcp/main/AGENTS.md
+  (404) on 2026-08-13.
+provider: Google Analytics
+providerId: google-analytics
+description: >-
+  Packaged Agent Skills for the marquee Google Analytics flows, mirroring the Arazzo
+  workflows in arazzo/. Each names only operationIds that exist in this repository's
+  OpenAPI files and carries the quota, idempotency and error rules that decide whether
+  the flow succeeds or gets the calling project blocked.
+skills:
+  - name: google-analytics-discover-and-run-report
+    file: google-analytics-discover-and-run-report.md
+    api: Data API v1beta + Admin API v1beta
+    scope_required: https://www.googleapis.com/auth/analytics.readonly
+    operations:
+      - analyticsadmin.accountSummaries.list
+      - analyticsadmin.properties.list
+      - analyticsdata.properties.checkCompatibility
+      - analyticsdata.properties.runReport
+    arazzo: arazzo/google-analytics-discover-and-run-report-workflow.yml
+  - name: google-analytics-send-measurement-protocol-event
+    file: google-analytics-send-measurement-protocol-event.md
+    api: Measurement Protocol (GA4) + Admin API v1beta
+    scope_required: https://www.googleapis.com/auth/analytics.edit (for secret management)
+    operations:
+      - analyticsadmin.properties.dataStreams.list
+      - analyticsadmin.properties.dataStreams.measurementProtocolSecrets.list
+      - analyticsadmin.properties.dataStreams.measurementProtocolSecrets.create
+      - validateEvents
+      - collectEvents
+  - name: google-analytics-provision-custom-dimension
+    file: google-analytics-provision-custom-dimension.md
+    api: Admin API v1beta + Data API v1beta
+    scope_required: https://www.googleapis.com/auth/analytics.edit
+    operations:
+      - analyticsadmin.properties.customDimensions.list
+      - analyticsadmin.properties.customDimensions.create
+      - analyticsdata.properties.checkCompatibility
+      - analyticsdata.properties.runReport
+    arazzo: arazzo/google-analytics-create-custom-dimension-run-report-workflow.yml
+  - name: google-analytics-audience-export
+    file: google-analytics-audience-export.md
+    api: Data API v1beta
+    scope_required: https://www.googleapis.com/auth/analytics.readonly
+    operations:
+      - analyticsdata.properties.audienceExports.create
+      - analyticsdata.properties.audienceExports.list
+      - analyticsdata.properties.audienceExports.query
+    arazzo: arazzo/google-analytics-audience-export-create-or-reuse-workflow.yml
+  - name: google-analytics-audit-property-configuration
+    file: google-analytics-audit-property-configuration.md
+    api: Admin API v1beta
+    scope_required: https://www.googleapis.com/auth/analytics.readonly
+    operations:
+      - analyticsadmin.accountSummaries.list
+      - analyticsadmin.properties.list
+      - analyticsadmin.properties.dataStreams.list
+      - analyticsadmin.properties.customDimensions.list
+      - analyticsadmin.properties.customMetrics.list
+      - analyticsadmin.properties.conversionEvents.list
+      - analyticsadmin.properties.googleAdsLinks.list
+      - analyticsadmin.properties.firebaseLinks.list
+      - analyticsadmin.properties.runAccessReport
+      - analyticsadmin.accounts.searchChangeHistoryEvents
+    arazzo: arazzo/google-analytics-audit-custom-definitions-workflow.yml
+cross_cutting_rules:
+  - No Google Analytics API supports idempotency keys. Never build a blind retry around a write.
+  - >-
+    No rate-limit response headers exist. The Data API exposes quota in-band only when a
+    request sets returnPropertyQuota=true.
+  - >-
+    The Admin API returns HTTP 403 on quota exhaustion, the Data API returns 429. Reading
+    403 as a permissions failure is the most common misdiagnosis on this platform.
+  - >-
+    Retries are self-limiting: 5xx charge a server-error quota and every other non-200
+    charges a client-error quota. Exhausting either blocks the project from the property.
+  - Branch on error.status (the Google canonical code), not on the HTTP status.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

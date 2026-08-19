@@ -1,0 +1,157 @@
+{
+  "item": [
+    {
+      "id": "f47aa705-2cd5-42ea-b6cb-209ce535ce41",
+      "name": "Validation",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c033bec3-249e-4aa0-b473-b8791302d9d4",
+          "name": "Google Analytics Validate Events Without Sending to Google Analytics",
+          "request": {
+            "name": "Google Analytics Validate Events Without Sending to Google Analytics",
+            "description": {
+              "content": "Validates the event payload and returns validation messages without actually sending the events to Google Analytics. Use this endpoint during development to verify your implementation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "collect",
+                "debug"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_secret",
+                  "value": "<string>",
+                  "description": "(Required) The API Secret generated in the Google Analytics UI."
+                },
+                {
+                  "disabled": false,
+                  "key": "measurement_id",
+                  "value": "<string>",
+                  "description": "The Measurement ID for a web data stream. Required for web streams."
+                },
+                {
+                  "disabled": false,
+                  "key": "firebase_app_id",
+                  "value": "<string>",
+                  "description": "The Firebase App ID for an app data stream. Required for app streams."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"events\": [\n    {\n      \"name\": \"<string>\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\"\n      }\n    }\n  ],\n  \"client_id\": \"<string>\",\n  \"app_instance_id\": \"<string>\",\n  \"user_id\": \"<string>\",\n  \"timestamp_micros\": \"<long>\",\n  \"user_properties\": {\n    \"key_0\": {\n      \"value\": \"<string>\"\n    },\n    \"key_1\": {\n      \"value\": \"<string>\"\n    }\n  },\n  \"user_data\": \"<object>\",\n  \"consent\": {\n    \"ad_user_data\": \"<string>\",\n    \"ad_personalization\": \"<string>\"\n  },\n  \"non_personalized_ads\": \"<boolean>\",\n  \"user_location\": {\n    \"city\": \"<string>\",\n    \"region_id\": \"<string>\",\n    \"country_id\": \"<string>\",\n    \"subcontinent_id\": \"<string>\",\n    \"continent_id\": \"<string>\"\n  },\n  \"ip_override\": \"<string>\",\n  \"device\": {\n    \"category\": \"<string>\",\n    \"language\": \"<string>\",\n    \"screen_resolution\": \"<string>\",\n    \"operating_system\": \"<string>\",\n    \"operating_system_version\": \"<string>\",\n    \"model\": \"<string>\",\n    \"brand\": \"<string>\",\n    \"browser\": \"<string>\",\n    \"browser_version\": \"<string>\"\n  },\n  \"validation_behavior\": \"RELAXED\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "79da424f-c5d4-42b6-bcc0-80abd159af18",
+              "name": "Validation response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collect",
+                    "debug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_secret",
+                      "value": "secret_abc123"
+                    },
+                    {
+                      "key": "measurement_id",
+                      "value": "123456"
+                    },
+                    {
+                      "key": "firebase_app_id",
+                      "value": "123456"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"name\": \"Example Name\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\",\n        \"key_0\": 277.9415568988464,\n        \"key_1\": 6751.301893506931\n      }\n    },\n    {\n      \"name\": \"Example Name\",\n      \"params\": {\n        \"session_id\": \"<string>\",\n        \"engagement_time_msec\": \"<integer>\",\n        \"timestamp_micros\": \"<long>\",\n        \"key_0\": false,\n        \"key_1\": 9134.508099675057,\n        \"key_2\": true\n      }\n    }\n  ],\n  \"client_id\": \"123456789.1234567890\",\n  \"app_instance_id\": \"123456\",\n  \"user_id\": \"123456\",\n  \"timestamp_micros\": 1713355200000000,\n  \"user_properties\": {\n    \"key_0\": {\n      \"value\": \"<string>\"\n    }\n  },\n  \"user_data\": \"<object>\",\n  \"consent\": {\n    \"ad_user_data\": \"GRANTED\",\n    \"ad_personalization\": \"GRANTED\"\n  },\n  \"non_personalized_ads\": true,\n  \"user_location\": {\n    \"city\": \"example_value\",\n    \"region_id\": \"123456\",\n    \"country_id\": \"123456\",\n    \"subcontinent_id\": \"123456\",\n    \"continent_id\": \"123456\"\n  },\n  \"ip_override\": \"123456\",\n  \"device\": {\n    \"category\": \"example_value\",\n    \"language\": \"example_value\",\n    \"screen_resolution\": \"example_value\",\n    \"operating_system\": \"example_value\",\n    \"operating_system_version\": \"example_value\",\n    \"model\": \"example_value\",\n    \"brand\": \"example_value\",\n    \"browser\": \"example_value\",\n    \"browser_version\": \"example_value\"\n  },\n  \"validation_behavior\": \"RELAXED\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"validationMessages\": [\n    {\n      \"fieldPath\": \"/example/path\",\n      \"description\": \"Example description\",\n      \"validationCode\": \"VALUE_INVALID\"\n    },\n    {\n      \"fieldPath\": \"/example/path\",\n      \"description\": \"Example description\",\n      \"validationCode\": \"VALUE_INVALID\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://analyticsadmin.googleapis.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "866aeb7d-9ce5-4c46-af29-7a67a1f06409",
+    "name": "Google Analytics Admin accounts Validation API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manage properties in Google Analytics. Warning: Creating multiple Customer Applications, Accounts, or Projects to simulate or act as a single Customer Application, Account, or Project (respectively) or to circumvent Service-specific usage limits or quotas is a direct violation of Google Cloud Platform Terms of Service as well as Google APIs Terms of Service. These actions can result in immediate termination of your GCP project(s) without any warning.\n\nContact Support:\n Name: Google",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,121 +1,118 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/google-analytics-admin-api.yaml, openapi/google-analytics-data-api.yaml, openapi/google-analytics-management-api-v3.yaml,
-  openapi/google-analytics-reporting-api-v4.yaml, openapi/google-analytics-user-deletion-api.yaml
-schemes:
-- name: Oauth2
-  source: openapi/google-analytics-admin-api.yaml
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://developers.google.com/identity/protocols/oauth2/scopes (Google's canonical
+  OAuth 2.0 scope reference, sections "Google Analytics API, v3" and "Google
+  Analytics Data API, v1beta"; fetched 2026-08-13, HTTP 200), cross-checked against
+  the auth.oauth2.scopes blocks of discovery/google-analytics-admin-api.json,
+  discovery/google-analytics-data-api.json and
+  discovery/google-analytics-management-api-v3.json
+docs: https://developers.google.com/identity/protocols/oauth2/scopes
+provider: Google Analytics
+providerId: google-analytics
+supersedes: >-
+  The 2026-07-11 derived version of this file, which listed the OAuth flows from the
+  OpenAPI securitySchemes but carried no scope strings at all.
+authorization_server:
+  issuer: https://accounts.google.com
+  authorization_endpoint: https://accounts.google.com/o/oauth2/v2/auth
+  token_endpoint: https://oauth2.googleapis.com/token
+  revocation_endpoint: https://oauth2.googleapis.com/revoke
+  metadata: well-known/google-analytics-oauth-authorization-server.json
   flows:
-  - flow: implicit
-    authorizationUrl: https://accounts.google.com/o/oauth2/auth
-  description: Oauth 2.0 implicit authentication
-- name: Oauth2c
-  source: openapi/google-analytics-admin-api.yaml
-  flows:
-  - flow: authorizationCode
-    authorizationUrl: https://accounts.google.com/o/oauth2/auth
-    tokenUrl: https://accounts.google.com/o/oauth2/token
-  description: Oauth 2.0 authorizationCode authentication
-- name: Oauth2
-  source: openapi/google-analytics-data-api.yaml
-  flows:
-  - flow: implicit
-    authorizationUrl: https://accounts.google.com/o/oauth2/auth
-  description: Oauth 2.0 implicit authentication
-- name: Oauth2c
-  source: openapi/google-analytics-data-api.yaml
-  flows:
-  - flow: authorizationCode
-    authorizationUrl: https://accounts.google.com/o/oauth2/auth
-    tokenUrl: https://accounts.google.com/o/oauth2/token
-  description: Oauth 2.0 authorizationCode authentication
-- name: Oauth2
-  source: openapi/google-analytics-management-api-v3.yaml
-  flows:
-  - flow: implicit
-    authorizationUrl: https://accounts.google.com/o/oauth2/auth
-  description: Oauth 2.0 implicit authentication
-- name: Oauth2c
-  source: openapi/google-analytics-management-api-v3.yaml
-  flows:
-  - flow: authorizationCode
-    authorizationUrl: https://accounts.google.com/o/oauth2/auth
-    tokenUrl: https://accounts.google.com/o/oauth2/token
-  description: Oauth 2.0 authorizationCode authentication
-- name: Oauth2
-  source: openapi/google-analytics-reporting-api-v4.yaml
-  flows:
-  - flow: implicit
-    authorizationUrl: https://accounts.google.com/o/oauth2/auth
-  description: Oauth 2.0 implicit authentication
-- name: Oauth2c
-  source: openapi/google-analytics-reporting-api-v4.yaml
-  flows:
-  - flow: authorizationCode
-    authorizationUrl: https://accounts.google.com/o/oauth2/auth
-    tokenUrl: https://accounts.google.com/o/oauth2/token
-  description: Oauth 2.0 authorizationCode authentication
-- name: oauth2
-  source: openapi/google-analytics-user-deletion-api.yaml
-  flows:
-  - flow: authorizationCode
-    authorizationUrl: https://accounts.google.com/o/oauth2/auth
-    tokenUrl: https://oauth2.googleapis.com/token
-  description: OAuth 2.0 authentication
+    - authorization_code
+    - refresh_token
+    - device_code
+    - jwt_bearer (service accounts)
+scope_count: 7
 scopes:
-- scope: https://www.googleapis.com/auth/analytics
-  description: View and manage your Google Analytics data
-  flows:
-  - authorizationCode
-  - implicit
-  sources:
-  - openapi/google-analytics-data-api.yaml
-  - openapi/google-analytics-management-api-v3.yaml
-  - openapi/google-analytics-reporting-api-v4.yaml
-- scope: https://www.googleapis.com/auth/analytics.edit
-  description: Edit Google Analytics management entities
-  flows:
-  - authorizationCode
-  - implicit
-  sources:
-  - openapi/google-analytics-admin-api.yaml
-  - openapi/google-analytics-management-api-v3.yaml
-- scope: https://www.googleapis.com/auth/analytics.manage.users
-  description: Manage Google Analytics Account users by email address
-  flows:
-  - authorizationCode
-  - implicit
-  sources:
-  - openapi/google-analytics-management-api-v3.yaml
-- scope: https://www.googleapis.com/auth/analytics.manage.users.readonly
-  description: View Google Analytics user permissions
-  flows:
-  - authorizationCode
-  - implicit
-  sources:
-  - openapi/google-analytics-management-api-v3.yaml
-- scope: https://www.googleapis.com/auth/analytics.provision
-  description: Create a new Google Analytics account along with its default property and view
-  flows:
-  - authorizationCode
-  - implicit
-  sources:
-  - openapi/google-analytics-management-api-v3.yaml
-- scope: https://www.googleapis.com/auth/analytics.readonly
-  description: See and download your Google Analytics data
-  flows:
-  - authorizationCode
-  - implicit
-  sources:
-  - openapi/google-analytics-admin-api.yaml
-  - openapi/google-analytics-data-api.yaml
-  - openapi/google-analytics-management-api-v3.yaml
-  - openapi/google-analytics-reporting-api-v4.yaml
-- scope: https://www.googleapis.com/auth/analytics.user.deletion
-  description: Manage Google Analytics user deletion requests
-  flows:
-  - authorizationCode
-  - implicit
-  sources:
-  - openapi/google-analytics-management-api-v3.yaml
-  - openapi/google-analytics-user-deletion-api.yaml
+  - scope: https://www.googleapis.com/auth/analytics
+    description: View and manage your Google Analytics data
+    grants: read+write
+    apis:
+      - Google Analytics Data API (v1beta)
+      - Google Analytics Management API (v3, sunset)
+  - scope: https://www.googleapis.com/auth/analytics.readonly
+    description: >-
+      See and download your Google Analytics data (rendered as "View your Google
+      Analytics data" in the v3 scope table)
+    grants: read
+    apis:
+      - Google Analytics Data API (v1beta)
+      - Google Analytics Admin API (v1beta)
+      - Google Analytics Management API (v3, sunset)
+    note: >-
+      The scope Google's own MCP server requires. Sufficient for every reporting
+      call and for reading Admin API configuration.
+  - scope: https://www.googleapis.com/auth/analytics.edit
+    description: Edit Google Analytics management entities
+    grants: write
+    apis:
+      - Google Analytics Admin API (v1beta)
+      - Google Analytics Management API (v3, sunset)
+    note: >-
+      Required for every Admin API create / patch / delete / archive method — custom
+      dimensions, custom metrics, data streams, key events, links.
+  - scope: https://www.googleapis.com/auth/analytics.manage.users
+    description: Manage Google Analytics Account users by email address
+    grants: write
+    apis:
+      - Google Analytics Management API (v3, sunset)
+      - Google Analytics Admin API access bindings (v1alpha)
+  - scope: https://www.googleapis.com/auth/analytics.manage.users.readonly
+    description: View Google Analytics user permissions
+    grants: read
+    apis:
+      - Google Analytics Management API (v3, sunset)
+      - Google Analytics Admin API access bindings (v1alpha)
+  - scope: https://www.googleapis.com/auth/analytics.provision
+    description: Create a new Google Analytics account along with its default property and view
+    grants: write
+    apis:
+      - Google Analytics Admin API (accounts.provisionAccountTicket)
+      - Google Analytics Management API (v3, sunset)
+  - scope: https://www.googleapis.com/auth/analytics.user.deletion
+    description: Manage Google Analytics user deletion requests
+    grants: write
+    apis:
+      - Google Analytics User Deletion API (v3, sunset)
+      - Google Analytics Admin API v1alpha properties.submitUserDeletion
+by_api:
+  - api: Google Analytics Data API v1beta
+    host: https://analyticsdata.googleapis.com
+    scopes:
+      - https://www.googleapis.com/auth/analytics
+      - https://www.googleapis.com/auth/analytics.readonly
+    source: discovery/google-analytics-data-api.json
+  - api: Google Analytics Admin API v1beta
+    host: https://analyticsadmin.googleapis.com
+    scopes:
+      - https://www.googleapis.com/auth/analytics.edit
+      - https://www.googleapis.com/auth/analytics.readonly
+    source: discovery/google-analytics-admin-api.json
+  - api: Google Analytics Management API v3 (sunset 2024-07-01)
+    host: https://analytics.googleapis.com/analytics/v3
+    scopes:
+      - https://www.googleapis.com/auth/analytics
+      - https://www.googleapis.com/auth/analytics.edit
+      - https://www.googleapis.com/auth/analytics.readonly
+      - https://www.googleapis.com/auth/analytics.manage.users
+      - https://www.googleapis.com/auth/analytics.manage.users.readonly
+      - https://www.googleapis.com/auth/analytics.provision
+      - https://www.googleapis.com/auth/analytics.user.deletion
+    source: discovery/google-analytics-management-api-v3.json
+  - api: Measurement Protocol (GA4)
+    host: https://www.google-analytics.com/mp
+    scopes: []
+    note: >-
+      No OAuth. Authenticated by an api_secret query parameter minted per data stream
+      in the Google Analytics UI.
+granularity_note: >-
+  Scopes are coarse. There is no per-property, per-resource or per-method scope: any
+  token carrying analytics.readonly can read every property the underlying identity
+  can reach, and analytics.edit can reconfigure all of them. Least-privilege for an
+  agent has to be enforced by which Google identity it impersonates, not by which
+  scope it holds.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

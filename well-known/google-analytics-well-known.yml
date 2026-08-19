@@ -1,0 +1,182 @@
+generated: '2026-08-13'
+method: probed
+source: live HTTP probes of every Google Analytics API host, the docs host, and the
+  Google identity hosts that issue tokens for these APIs
+provider: Google Analytics
+providerId: google-analytics
+summary: >-
+  None of the Google Analytics API hosts serve any /.well-known/ document — every
+  path returns 404 on analyticsdata.googleapis.com, analyticsadmin.googleapis.com,
+  analyticsreporting.googleapis.com, www.google-analytics.com, www.googleapis.com
+  and developers.google.com. The real, served documents live on Google's shared
+  identity and corporate hosts: accounts.google.com publishes the OpenID Provider
+  and OAuth 2.0 Authorization Server metadata that every Google Analytics API
+  client authenticates against, and www.google.com publishes Google's security.txt
+  (the vulnerability disclosure surface that covers Google Analytics).
+probes:
+  - host: analyticsdata.googleapis.com
+    paths:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: analyticsadmin.googleapis.com
+    paths:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: analyticsreporting.googleapis.com
+    paths:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: www.google-analytics.com
+    paths:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: www.googleapis.com
+    paths:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: developers.google.com
+    note: docs / developer portal host
+    paths:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /llms.txt
+        status: 404
+  - host: accounts.google.com
+    note: >-
+      Google's identity host. This is the authorization server named by every
+      Google Analytics OpenAPI securityScheme (authorizationUrl
+      https://accounts.google.com/o/oauth2/auth), so its metadata is the
+      machine-readable auth contract for these APIs.
+    paths:
+      - path: /.well-known/openid-configuration
+        status: 200
+        file: google-analytics-openid-configuration.json
+        content_type: application/json
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        file: google-analytics-oauth-authorization-server.json
+        content_type: application/json
+  - host: www.google.com
+    note: >-
+      Google's corporate host serves the security.txt that covers all Google
+      products including Google Analytics.
+    paths:
+      - path: /.well-known/security.txt
+        status: 200
+        file: google-analytics-security.txt
+        content_type: text/plain
+documents:
+  - name: OpenID Provider Metadata
+    url: https://accounts.google.com/.well-known/openid-configuration
+    file: google-analytics-openid-configuration.json
+    status: 200
+    issuer: https://accounts.google.com
+    authorization_endpoint: https://accounts.google.com/o/oauth2/v2/auth
+    token_endpoint: https://oauth2.googleapis.com/token
+    revocation_endpoint: https://oauth2.googleapis.com/revoke
+    jwks_uri: https://www.googleapis.com/oauth2/v3/certs
+  - name: OAuth 2.0 Authorization Server Metadata (RFC 8414)
+    url: https://accounts.google.com/.well-known/oauth-authorization-server
+    file: google-analytics-oauth-authorization-server.json
+    status: 200
+    issuer: https://accounts.google.com
+    grant_types_supported:
+      - authorization_code
+      - refresh_token
+      - 'urn:ietf:params:oauth:grant-type:device_code'
+      - 'urn:ietf:params:oauth:grant-type:jwt-bearer'
+  - name: security.txt (RFC 9116)
+    url: https://www.google.com/.well-known/security.txt
+    file: google-analytics-security.txt
+    status: 200
+    contact:
+      - https://g.co/vulnz
+      - mailto:security@google.com
+    policy: https://g.co/vrp
+    acknowledgments: https://bughunters.google.com/
+    expires: '2030-04-01T00:00:00Z'
+findings:
+  - No Google Analytics API host publishes /.well-known/ anything. Discovery on these
+    hosts happens through the Google API Discovery Service instead
+    (https://analyticsdata.googleapis.com/$discovery/rest?version=v1beta,
+    https://analyticsadmin.googleapis.com/$discovery/rest?version=v1beta — both 200,
+    captured under discovery/).
+  - No agent card is served on any host, at either the canonical
+    /.well-known/agent-card.json path or the legacy /.well-known/agent.json path.
+    No AgentCard artifact was written.
+  - No ai-plugin.json and no api-catalog anywhere in the estate.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

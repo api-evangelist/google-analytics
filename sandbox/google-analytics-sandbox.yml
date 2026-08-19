@@ -1,0 +1,91 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://developers.google.com/analytics/devguides/collection/protocol/ga4/validating-events
+  (HTTP 200) and https://support.google.com/analytics/answer/6367342 (HTTP 200),
+  both fetched 2026-08-13; https://ga-dev-tools.google/ga4/ (HTTP 200)
+provider: Google Analytics
+providerId: google-analytics
+description: >-
+  Google Analytics has no test-mode credentials and no sandbox tenant. What it has
+  instead are two narrower things: a validation endpoint for the Measurement Protocol
+  that parses an event and returns errors without recording it, and a shared read-only
+  demo property loaded with real Google Merchandise Store data that any Google account
+  can attach and query through the live Data API.
+test_mode:
+  key_prefixes: []
+  note: >-
+    There is no test vs live key distinction. The same OAuth credentials and the same
+    api_secret are used against production. Nothing in the request identifies a test
+    call, and there is no per-request "test mode" flag on the Data or Admin APIs.
+validation_endpoint:
+  name: Measurement Protocol validation server
+  live_url: https://www.google-analytics.com/mp/collect
+  validation_url: https://www.google-analytics.com/debug/mp/collect
+  difference: >-
+    The URL only. Every other request field is identical. Events sent to /debug do not
+    appear in reports.
+  request_flag:
+    name: validation_behavior
+    values:
+      - ENFORCE_RECOMMENDATIONS
+    guidance: >-
+      Google's stated approach — set validation_behavior ENFORCE_RECOMMENDATIONS during
+      development, and omit it in production so less data is rejected.
+  response: >-
+    validationMessages[] with fieldPath, description and validationCode for each
+    problem found.
+  limitations:
+    - >-
+      The validation server does NOT validate api_secret or firebase_app_id. A request
+      can validate cleanly and still be dropped in production because the credentials
+      are wrong.
+  why_it_matters: >-
+    The production Measurement Protocol returns no HTTP error code even for a malformed
+    or incomplete event, so /debug/mp/collect is the only way to learn that an event is
+    invalid.
+demo_data:
+  name: Google Analytics demo account
+  url: https://support.google.com/analytics/answer/6367342
+  description: >-
+    A fully functional Google Analytics account any Google user can add to their own
+    account, containing live properties for the Google Merchandise Store (web) and
+    Flood-It! (app + web). It is real production data, queryable through the Data API
+    with the caller's own OAuth credentials.
+  properties:
+    - Google Merchandise Store (web data)
+    - Flood-It! (app and web data)
+  access: read-only; counts against the 2,000-account-per-Google-account limit
+  note: >-
+    This is the closest thing to a sandbox for the Data API — a stable, populated
+    property to develop reports against without touching a customer's data.
+tooling:
+  - name: Google Analytics Event Builder
+    url: https://ga-dev-tools.google/ga4/event-builder/
+    description: >-
+      Interactive Measurement Protocol event constructor that submits to the validation
+      server.
+  - name: GA4 Dev Tools (ga-dev-tools.google)
+    url: https://ga-dev-tools.google/ga4/
+    description: >-
+      Google-published tool suite — query explorer, dimensions & metrics explorer,
+      event builder, campaign URL builder.
+  - name: DebugView
+    url: https://support.google.com/analytics/answer/7201382
+    description: >-
+      Real-time stream of events from a device flagged for debugging, viewed in the
+      Google Analytics UI. Applies to tag/SDK collection, not to server-side
+      Measurement Protocol calls.
+fixtures:
+  test_values: []
+  note: >-
+    Google publishes no test client IDs, no test measurement IDs and no fixture
+    payloads. Nothing in this artifact is a credential.
+time_simulation:
+  supported: false
+  note: >-
+    There is no test clock. The only time control is timestamp_micros on Measurement
+    Protocol events, which permits backdating up to 72 hours against real data.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

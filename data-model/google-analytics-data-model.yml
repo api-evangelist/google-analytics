@@ -1,0 +1,315 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  discovery/google-analytics-admin-api.json (analyticsadmin v1beta, revision
+  20260415) and discovery/google-analytics-data-api.json (analyticsdata v1beta,
+  revision 20260415) — resource hierarchy, $ref links and resource-name field
+  patterns; cross-checked against
+  openapi/google-analytics-properties-api-openapi.yml and
+  openapi/google-analytics-accounts-api-openapi.yml
+provider: Google Analytics
+providerId: google-analytics
+description: >-
+  The GA4 entity graph. Google Analytics uses AIP-122 resource names, not opaque
+  IDs: every entity is addressed by a hierarchical path string
+  (accounts/1234/…, properties/5678/dataStreams/9012), and the parent relationship
+  is encoded in the name itself rather than in a separate foreign-key field. There
+  are no id prefixes in the Stripe sense; the resource-name segment is the type
+  discriminator.
+identifier_convention:
+  style: AIP-122 hierarchical resource names
+  examples:
+    - accounts/1234
+    - properties/5678
+    - properties/5678/dataStreams/9012
+    - properties/5678/dataStreams/9012/measurementProtocolSecrets/abc
+    - properties/5678/customDimensions/3456
+  note: >-
+    The Data API accepts a bare numeric property ID or the full `properties/{id}`
+    form on the `property` request field. Admin API `name` and `parent` fields always
+    require the full path.
+entities:
+  - name: Account
+    resource: accounts/{account}
+    api: Admin API v1beta
+    description: Top-level billing/ownership container for Google Analytics properties.
+    key_fields:
+      - name
+      - displayName
+      - regionCode
+      - createTime
+      - updateTime
+      - deleted
+    operations:
+      - analyticsadmin.accounts.list
+      - analyticsadmin.accounts.provisionAccountTicket
+      - analyticsadmin.accounts.searchChangeHistoryEvents
+  - name: AccountSummary
+    resource: accountSummaries/{account}
+    api: Admin API v1beta
+    description: >-
+      A read-only projection of an account plus its property summaries. The cheapest
+      way to discover what an authenticated identity can reach — this is the first
+      call Google's own MCP server makes.
+    key_fields:
+      - name
+      - account
+      - displayName
+      - propertySummaries
+    operations:
+      - analyticsadmin.accountSummaries.list
+  - name: PropertySummary
+    api: Admin API v1beta
+    description: Nested inside AccountSummary; carries property, displayName, propertyType, parent, canEdit.
+  - name: Property
+    resource: properties/{property}
+    api: Admin API v1beta
+    description: >-
+      A GA4 property — the reporting and configuration unit. Every Data API report is
+      scoped to exactly one property.
+    key_fields:
+      - name
+      - parent
+      - displayName
+      - propertyType
+      - industryCategory
+      - timeZone
+      - currencyCode
+      - serviceLevel
+      - createTime
+      - deleteTime
+      - expireTime
+    operations:
+      - analyticsadmin.properties.list
+      - analyticsadmin.properties.create
+      - analyticsadmin.properties.get
+      - analyticsadmin.properties.patch
+      - analyticsadmin.properties.delete
+      - analyticsadmin.properties.runAccessReport
+      - analyticsadmin.properties.acknowledgeUserDataCollection
+  - name: DataStream
+    resource: properties/{property}/dataStreams/{dataStream}
+    api: Admin API v1beta
+    description: >-
+      A collection endpoint on a property — web, iOS app or Android app. Carries the
+      measurement ID (web) or firebase app ID (app) used by the Measurement Protocol.
+    key_fields:
+      - name
+      - type
+      - displayName
+      - webStreamData.measurementId
+      - androidAppStreamData.firebaseAppId
+      - iosAppStreamData.firebaseAppId
+    operations:
+      - analyticsadmin.properties.dataStreams.list
+      - analyticsadmin.properties.dataStreams.create
+  - name: MeasurementProtocolSecret
+    resource: properties/{p}/dataStreams/{ds}/measurementProtocolSecrets/{secret}
+    api: Admin API v1beta
+    description: >-
+      The api_secret value the Measurement Protocol requires. Created per data
+      stream. This is the join between the configuration API and the ingestion
+      endpoint.
+    key_fields:
+      - name
+      - displayName
+      - secretValue
+    operations:
+      - analyticsadmin.properties.dataStreams.measurementProtocolSecrets.list
+      - analyticsadmin.properties.dataStreams.measurementProtocolSecrets.create
+  - name: CustomDimension
+    resource: properties/{property}/customDimensions/{customDimension}
+    api: Admin API v1beta
+    key_fields:
+      - name
+      - parameterName
+      - displayName
+      - scope
+      - disallowAdsPersonalization
+    operations:
+      - analyticsadmin.properties.customDimensions.list
+      - analyticsadmin.properties.customDimensions.create
+      - analyticsadmin.properties.customMetrics.archive
+    note: >-
+      parameterName is the join key to the event parameters sent by the Measurement
+      Protocol and to the customEvent:<parameterName> dimension names used in Data
+      API reports.
+  - name: CustomMetric
+    resource: properties/{property}/customMetrics/{customMetric}
+    api: Admin API v1beta
+    key_fields:
+      - name
+      - parameterName
+      - displayName
+      - measurementUnit
+      - scope
+    operations:
+      - analyticsadmin.properties.customMetrics.list
+      - analyticsadmin.properties.customMetrics.create
+  - name: KeyEvent
+    resource: properties/{property}/keyEvents/{keyEvent}
+    api: Admin API v1beta
+    description: >-
+      Successor to ConversionEvent (renamed 2024-05-06). Marks an event name as a key
+      event for the property.
+    key_fields:
+      - name
+      - eventName
+      - countingMethod
+      - custom
+  - name: ConversionEvent
+    resource: properties/{property}/conversionEvents/{conversionEvent}
+    api: Admin API v1beta
+    deprecated: true
+    replacement: KeyEvent
+  - name: GoogleAdsLink
+    resource: properties/{property}/googleAdsLinks/{googleAdsLink}
+    api: Admin API v1beta
+    key_fields:
+      - name
+      - customerId
+      - adsPersonalizationEnabled
+      - canManageClients
+  - name: FirebaseLink
+    resource: properties/{property}/firebaseLinks/{firebaseLink}
+    api: Admin API v1beta
+    key_fields:
+      - name
+      - project
+  - name: DataRetentionSettings
+    resource: properties/{property}/dataRetentionSettings
+    api: Admin API v1beta
+    singleton: true
+    key_fields:
+      - eventDataRetention
+      - userDataRetention
+      - resetUserDataOnNewActivity
+  - name: DataSharingSettings
+    resource: accounts/{account}/dataSharingSettings
+    api: Admin API v1beta
+    singleton: true
+  - name: ChangeHistoryEvent
+    api: Admin API v1beta
+    description: Audit record of a configuration change, searched from the account.
+    operations:
+      - analyticsadmin.accounts.searchChangeHistoryEvents
+  - name: AudienceExport
+    resource: properties/{property}/audienceExports/{audienceExport}
+    api: Data API v1beta
+    description: >-
+      A long-running export of the users in an audience. Created, then polled, then
+      queried — the only asynchronous resource in the stable Data API.
+    key_fields:
+      - name
+      - audience
+      - audienceDisplayName
+      - state
+      - beginCreatingTime
+      - rowCount
+    operations:
+      - analyticsdata.properties.audienceExports.create
+      - analyticsdata.properties.audienceExports.get
+      - analyticsdata.properties.audienceExports.list
+      - analyticsdata.properties.audienceExports.query
+  - name: Metadata
+    resource: properties/{property}/metadata
+    api: Data API v1beta
+    singleton: true
+    description: >-
+      The dimension and metric catalog available on a property, including every
+      custom dimension/metric. The lookup an agent must do before composing a report.
+  - name: PropertyQuota
+    api: Data API v1beta
+    description: >-
+      Not a stored resource — an in-band quota snapshot returned on reporting
+      responses when returnPropertyQuota=true.
+    key_fields:
+      - tokensPerDay
+      - tokensPerHour
+      - tokensPerProjectPerHour
+      - concurrentRequests
+      - serverErrorsPerProjectPerHour
+      - potentiallyThresholdedRequestsPerHour
+relationships:
+  - from: Account
+    to: Property
+    type: has_many
+    via: Property.parent = "accounts/{account}"
+  - from: Account
+    to: AccountSummary
+    type: has_one
+    via: AccountSummary.account
+  - from: AccountSummary
+    to: PropertySummary
+    type: has_many
+    via: AccountSummary.propertySummaries[]
+  - from: Account
+    to: DataSharingSettings
+    type: has_one
+    via: accounts/{account}/dataSharingSettings
+  - from: Account
+    to: ChangeHistoryEvent
+    type: has_many
+    via: accounts.searchChangeHistoryEvents
+  - from: Property
+    to: DataStream
+    type: has_many
+    via: resource name parent properties/{property}
+  - from: Property
+    to: CustomDimension
+    type: has_many
+    via: resource name parent properties/{property}
+  - from: Property
+    to: CustomMetric
+    type: has_many
+    via: resource name parent properties/{property}
+  - from: Property
+    to: KeyEvent
+    type: has_many
+    via: resource name parent properties/{property}
+  - from: Property
+    to: ConversionEvent
+    type: has_many
+    via: resource name parent properties/{property}
+  - from: Property
+    to: GoogleAdsLink
+    type: has_many
+    via: resource name parent properties/{property}
+  - from: Property
+    to: FirebaseLink
+    type: has_many
+    via: resource name parent properties/{property}
+  - from: Property
+    to: DataRetentionSettings
+    type: has_one
+    via: properties/{property}/dataRetentionSettings
+  - from: Property
+    to: AudienceExport
+    type: has_many
+    via: resource name parent properties/{property}
+  - from: Property
+    to: Metadata
+    type: has_one
+    via: properties/{property}/metadata
+  - from: DataStream
+    to: MeasurementProtocolSecret
+    type: has_many
+    via: resource name parent properties/{p}/dataStreams/{ds}
+  - from: Property
+    to: Property
+    type: has_many
+    via: Property.parent — roll-up and subproperties (Analytics 360 only)
+cross_api_joins:
+  - from: DataStream.webStreamData.measurementId
+    to: Measurement Protocol query parameter measurement_id
+    note: Configuration API to ingestion endpoint.
+  - from: MeasurementProtocolSecret.secretValue
+    to: Measurement Protocol query parameter api_secret
+  - from: CustomDimension.parameterName
+    to: Data API dimension name customEvent:<parameterName>
+  - from: CustomMetric.parameterName
+    to: Data API metric name customEvent:<parameterName>
+render: null
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

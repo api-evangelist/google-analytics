@@ -1,0 +1,81 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://developers.google.com/tag-platform/gtagjs/install (HTTP 200),
+  https://developers.google.com/analytics/devguides/collection/ga4 (HTTP 200),
+  https://firebase.google.com/docs/analytics (HTTP 200), and a live probe of
+  https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX (HTTP 200) on 2026-08-13
+provider: Google Analytics
+providerId: google-analytics
+description: >-
+  Google Analytics' client-side surface is a collection library, not a UI component
+  library. There are no embeddable dashboards or drop-in widgets for GA4 — the
+  Embed API that provided them died with Universal Analytics. What ships today is
+  the Google tag (gtag.js), the Google Tag Manager container, and the Firebase
+  Analytics SDKs for mobile.
+families:
+  - name: Google tag (gtag.js)
+    kind: loader script
+    distribution: cdn
+    loader: https://www.googletagmanager.com/gtag/js?id=TAG_ID
+    probe_status: 200
+    version: null
+    pinned: false
+    note: >-
+      Unpinned by design. The URL carries the property's measurement ID, not a
+      version, and Google rolls the served script continuously. A site owner cannot
+      pin, diff or subresource-integrity-check what executes on their pages — and
+      neither can a consumer reason about which build is live. Recorded as
+      version: null because there is nothing to record, not because it was not
+      checked.
+    install: |
+      <script async src="https://www.googletagmanager.com/gtag/js?id=TAG_ID"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'TAG_ID');
+      </script>
+    docs: https://developers.google.com/tag-platform/gtagjs/install
+    api_surface:
+      - gtag('config', TAG_ID, {...})
+      - gtag('event', EVENT_NAME, {...})
+      - gtag('set', {...})
+      - gtag('consent', 'default'|'update', {...})
+      - gtag('get', TAG_ID, FIELD, callback)
+  - name: Google Tag Manager container
+    kind: tag container
+    distribution: cdn
+    loader: https://www.googletagmanager.com/gtm.js?id=GTM_CONTAINER_ID
+    version: null
+    pinned: false
+    note: >-
+      Configuration-driven alternative to hand-placed gtag.js. Also unpinned. A bare
+      probe with a placeholder container ID returns 404, so container IDs are
+      validated server-side.
+    docs: https://developers.google.com/tag-platform/tag-manager/web
+  - name: Google Analytics for Firebase SDKs
+    kind: mobile SDK
+    distribution: platform package managers
+    platforms:
+      - Android (Gradle — com.google.firebase:firebase-analytics)
+      - iOS (Swift Package Manager / CocoaPods — FirebaseAnalytics)
+      - Flutter (pub — firebase_analytics)
+      - Unity, C++
+    docs: https://firebase.google.com/docs/analytics
+    note: >-
+      App-stream collection is delivered through Firebase, not through a Google
+      Analytics package. The app_instance_id these SDKs generate is the device
+      identifier the Measurement Protocol requires for app streams.
+embedded_dashboards:
+  available: false
+  note: >-
+    The Google Analytics Embed API — the JavaScript library that rendered charts and
+    an auth button in a customer's own page — was a Universal Analytics component and
+    was retired with UA on 2024-07-01. GA4 has no replacement. To display GA4 data in
+    your own product you query the Data API server-side and render it yourself, or
+    embed a Looker Studio report.
+  alternative: Looker Studio (https://lookerstudio.google.com) with the GA4 connector
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

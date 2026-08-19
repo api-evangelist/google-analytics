@@ -1,0 +1,738 @@
+{
+  "item": [
+    {
+      "id": "3489c175-ab99-4d51-afa5-b80a135c621a",
+      "name": "accounts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d53972be-4a1e-4bdb-b5c1-98d04d0f84b7",
+          "name": "analyticsadmin.accounts.list",
+          "request": {
+            "name": "analyticsadmin.accounts.list",
+            "description": {
+              "content": "Returns all accounts accessible by the caller. Note that these accounts might not currently have GA4 properties. Soft-deleted (ie: \"trashed\") accounts are excluded by default. Returns an empty list if no relevant accounts are found.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1beta",
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "A page token, received from a previous `ListAccounts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAccounts` must match the call that provided the page token."
+                },
+                {
+                  "disabled": false,
+                  "key": "showDeleted",
+                  "value": "<boolean>",
+                  "description": "Whether to include soft-deleted (ie: \"trashed\") Accounts in the results. Accounts can be inspected to determine whether they are deleted or not."
+                },
+                {
+                  "disabled": false,
+                  "key": "$.xgafv",
+                  "value": "<string>",
+                  "description": "V1 error format."
+                },
+                {
+                  "disabled": false,
+                  "key": "access_token",
+                  "value": "<string>",
+                  "description": "OAuth access token."
+                },
+                {
+                  "disabled": false,
+                  "key": "alt",
+                  "value": "<string>",
+                  "description": "Data format for response."
+                },
+                {
+                  "disabled": false,
+                  "key": "callback",
+                  "value": "<string>",
+                  "description": "JSONP"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Selector specifying which fields to include in a partial response."
+                },
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+                },
+                {
+                  "disabled": false,
+                  "key": "oauth_token",
+                  "value": "<string>",
+                  "description": "OAuth 2.0 token for the current user."
+                },
+                {
+                  "disabled": false,
+                  "key": "prettyPrint",
+                  "value": "<boolean>",
+                  "description": "Returns response with indentations and line breaks."
+                },
+                {
+                  "disabled": false,
+                  "key": "quotaUser",
+                  "value": "<string>",
+                  "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+                },
+                {
+                  "disabled": false,
+                  "key": "upload_protocol",
+                  "value": "<string>",
+                  "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+                },
+                {
+                  "disabled": false,
+                  "key": "uploadType",
+                  "value": "<string>",
+                  "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "https://www.googleapis.com/auth/analytics.edit https://www.googleapis.com/auth/analytics.readonly"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.google.com/o/oauth2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "implicit"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2a08095e-2573-409e-a46d-e63e229009c0",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "abc123token"
+                    },
+                    {
+                      "key": "showDeleted",
+                      "value": "true"
+                    },
+                    {
+                      "key": "$.xgafv",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "access_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "alt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "oauth_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prettyPrint",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "quotaUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "upload_protocol",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "uploadType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accounts\": [\n    {\n      \"createTime\": \"2026-04-17T12:00:00Z\",\n      \"deleted\": true,\n      \"displayName\": \"Example Name\",\n      \"name\": \"Example Name\",\n      \"regionCode\": \"example_value\",\n      \"updateTime\": \"2026-04-17T12:00:00Z\"\n    },\n    {\n      \"createTime\": \"2026-04-17T12:00:00Z\",\n      \"deleted\": true,\n      \"displayName\": \"Example Name\",\n      \"name\": \"Example Name\",\n      \"regionCode\": \"example_value\",\n      \"updateTime\": \"2026-04-17T12:00:00Z\"\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d54c2096-aea5-4b4e-a6b8-ec77cf28123e",
+          "name": "analyticsadmin.accounts.provision Account Ticket",
+          "request": {
+            "name": "analyticsadmin.accounts.provision Account Ticket",
+            "description": {
+              "content": "Requests a ticket for creating an account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1beta",
+                "accounts:provisionAccountTicket"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$.xgafv",
+                  "value": "<string>",
+                  "description": "V1 error format."
+                },
+                {
+                  "disabled": false,
+                  "key": "access_token",
+                  "value": "<string>",
+                  "description": "OAuth access token."
+                },
+                {
+                  "disabled": false,
+                  "key": "alt",
+                  "value": "<string>",
+                  "description": "Data format for response."
+                },
+                {
+                  "disabled": false,
+                  "key": "callback",
+                  "value": "<string>",
+                  "description": "JSONP"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Selector specifying which fields to include in a partial response."
+                },
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+                },
+                {
+                  "disabled": false,
+                  "key": "oauth_token",
+                  "value": "<string>",
+                  "description": "OAuth 2.0 token for the current user."
+                },
+                {
+                  "disabled": false,
+                  "key": "prettyPrint",
+                  "value": "<boolean>",
+                  "description": "Returns response with indentations and line breaks."
+                },
+                {
+                  "disabled": false,
+                  "key": "quotaUser",
+                  "value": "<string>",
+                  "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+                },
+                {
+                  "disabled": false,
+                  "key": "upload_protocol",
+                  "value": "<string>",
+                  "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+                },
+                {
+                  "disabled": false,
+                  "key": "uploadType",
+                  "value": "<string>",
+                  "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "https://www.googleapis.com/auth/analytics.edit https://www.googleapis.com/auth/analytics.readonly"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.google.com/o/oauth2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "implicit"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"account\": {\n    \"displayName\": \"<string>\",\n    \"regionCode\": \"<string>\"\n  },\n  \"redirectUri\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2dde6aec-4eb6-4af6-994f-f6640c8fc343",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta",
+                    "accounts:provisionAccountTicket"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$.xgafv",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "access_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "alt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "oauth_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prettyPrint",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "quotaUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "upload_protocol",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "uploadType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"account\": {\n    \"displayName\": \"Example Name\",\n    \"regionCode\": \"example_value\"\n  },\n  \"redirectUri\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accountTicketId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3d1dea91-b91b-48bb-a85c-667c164c9b7e",
+          "name": "analyticsadmin.accounts.search Change History Events",
+          "request": {
+            "name": "analyticsadmin.accounts.search Change History Events",
+            "description": {
+              "content": "Searches through all changes to an account or its children given the specified set of filters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1beta",
+                "{{account}}:searchChangeHistoryEvents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$.xgafv",
+                  "value": "<string>",
+                  "description": "V1 error format."
+                },
+                {
+                  "disabled": false,
+                  "key": "access_token",
+                  "value": "<string>",
+                  "description": "OAuth access token."
+                },
+                {
+                  "disabled": false,
+                  "key": "alt",
+                  "value": "<string>",
+                  "description": "Data format for response."
+                },
+                {
+                  "disabled": false,
+                  "key": "callback",
+                  "value": "<string>",
+                  "description": "JSONP"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Selector specifying which fields to include in a partial response."
+                },
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+                },
+                {
+                  "disabled": false,
+                  "key": "oauth_token",
+                  "value": "<string>",
+                  "description": "OAuth 2.0 token for the current user."
+                },
+                {
+                  "disabled": false,
+                  "key": "prettyPrint",
+                  "value": "<boolean>",
+                  "description": "Returns response with indentations and line breaks."
+                },
+                {
+                  "disabled": false,
+                  "key": "quotaUser",
+                  "value": "<string>",
+                  "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+                },
+                {
+                  "disabled": false,
+                  "key": "upload_protocol",
+                  "value": "<string>",
+                  "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+                },
+                {
+                  "disabled": false,
+                  "key": "uploadType",
+                  "value": "<string>",
+                  "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "https://www.googleapis.com/auth/analytics.edit https://www.googleapis.com/auth/analytics.readonly"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.google.com/o/oauth2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "implicit"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"actorEmail\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"earliestChangeTime\": \"<google-datetime>\",\n  \"latestChangeTime\": \"<google-datetime>\",\n  \"pageSize\": \"<integer>\",\n  \"pageToken\": \"<string>\",\n  \"property\": \"<string>\",\n  \"resourceType\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "041327fb-c1b4-4019-9c2e-7401c885ebe8",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta",
+                    "{{account}}:searchChangeHistoryEvents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$.xgafv",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "access_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "alt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "oauth_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prettyPrint",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "quotaUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "upload_protocol",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "uploadType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"actorEmail\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"earliestChangeTime\": \"<google-datetime>\",\n  \"latestChangeTime\": \"<google-datetime>\",\n  \"pageSize\": \"<integer>\",\n  \"pageToken\": \"<string>\",\n  \"property\": \"<string>\",\n  \"resourceType\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"changeHistoryEvents\": [\n    {\n      \"actorType\": \"ACTOR_TYPE_UNSPECIFIED\",\n      \"changeTime\": \"2026-04-17T12:00:00Z\",\n      \"changes\": [\n        {\n          \"action\": \"ACTION_TYPE_UNSPECIFIED\",\n          \"resource\": \"example_value\",\n          \"resourceAfterChange\": {\n            \"account\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"conversionEvent\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dataRetentionSettings\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dataStream\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"firebaseLink\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"googleAdsLink\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"measurementProtocolSecret\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"resourceBeforeChange\": {\n            \"account\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"conversionEvent\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dataRetentionSettings\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dataStream\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"firebaseLink\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"googleAdsLink\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"measurementProtocolSecret\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"action\": \"ACTION_TYPE_UNSPECIFIED\",\n          \"resource\": \"example_value\",\n          \"resourceAfterChange\": {\n            \"account\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"conversionEvent\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dataRetentionSettings\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dataStream\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"firebaseLink\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"googleAdsLink\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"measurementProtocolSecret\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"resourceBeforeChange\": {\n            \"account\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"conversionEvent\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dataRetentionSettings\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dataStream\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"firebaseLink\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"googleAdsLink\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"measurementProtocolSecret\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"changesFiltered\": true,\n      \"id\": \"123456\",\n      \"userActorEmail\": \"user@example.com\"\n    },\n    {\n      \"actorType\": \"ACTOR_TYPE_UNSPECIFIED\",\n      \"changeTime\": \"2026-04-17T12:00:00Z\",\n      \"changes\": [\n        {\n          \"action\": \"ACTION_TYPE_UNSPECIFIED\",\n          \"resource\": \"example_value\",\n          \"resourceAfterChange\": {\n            \"account\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"conversionEvent\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dataRetentionSettings\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dataStream\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"firebaseLink\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"googleAdsLink\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"measurementProtocolSecret\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"resourceBeforeChange\": {\n            \"account\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"conversionEvent\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dataRetentionSettings\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dataStream\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"firebaseLink\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"googleAdsLink\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"measurementProtocolSecret\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"action\": \"ACTION_TYPE_UNSPECIFIED\",\n          \"resource\": \"example_value\",\n          \"resourceAfterChange\": {\n            \"account\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"conversionEvent\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dataRetentionSettings\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dataStream\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"firebaseLink\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"googleAdsLink\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"measurementProtocolSecret\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"resourceBeforeChange\": {\n            \"account\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"conversionEvent\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dataRetentionSettings\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dataStream\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"firebaseLink\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"googleAdsLink\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"measurementProtocolSecret\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"changesFiltered\": true,\n      \"id\": \"123456\",\n      \"userActorEmail\": \"user@example.com\"\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://analyticsadmin.googleapis.com/",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Required. The account resource for which to return change history resources. Format: accounts/{account} Example: \"accounts/100\"",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "account"
+    }
+  ],
+  "info": {
+    "_postman_id": "94f16449-32a3-474c-91c5-b8b97d40b069",
+    "name": "Google Analytics Admin accounts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manage properties in Google Analytics. Warning: Creating multiple Customer Applications, Accounts, or Projects to simulate or act as a single Customer Application, Account, or Project (respectively) or to circumvent Service-specific usage limits or quotas is a direct violation of Google Cloud Platform Terms of Service as well as Google APIs Terms of Service. These actions can result in immediate termination of your GCP project(s) without any warning.\n\nContact Support:\n Name: Google",
+      "type": "text/plain"
+    }
+  }
+}

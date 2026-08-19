@@ -4,7 +4,18 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Google Analytics
 providerId: google-analytics
 created: '2026-05-04'
-modified: '2026-05-05'
+generated: '2026-08-13'
+method: searched
+modified: '2026-08-13'
+source: >-
+  https://developers.google.com/analytics/devguides/reporting/data/v1/quotas,
+  https://developers.google.com/analytics/devguides/config/admin/v1/quotas,
+  https://developers.google.com/analytics/devguides/collection/protocol/ga4/sending-events
+  and https://developers.google.com/analytics/devguides/reporting/data/v1/changelog —
+  all fetched 2026-08-13, all HTTP 200. Upgraded from the 2026-05-04 bulk-sweep
+  version (method: generated), whose Data API figures were re-verified line by line
+  against the live quotas page and confirmed unchanged; the Admin API, Measurement
+  Protocol and client-error quotas below are new.
 reconciled: true
 tags:
   - Analytics
@@ -13,79 +24,270 @@ tags:
   - Web Analytics
   - Reporting
   - Rate Limiting
-description: Google Analytics Data API enforces token-based quotas per GA4 property, applied separately
-  to Core (runReport/runPivotReport/batch/getMetadata), Realtime (runRealtimeReport), and Funnel (runFunnelReport)
-  request categories. Standard GA4 properties and Analytics 360 properties have different limits (360
-  is 10x standard). Daily quotas refresh at midnight Pacific Time.
-sources:
-  - https://developers.google.com/analytics/devguides/reporting/data/v1/quotas
-  - https://developers.google.com/analytics/devguides/reporting/data/v1/basics
+description: >-
+  Google Analytics rate limiting is quota-based and split by service. The Data API
+  charges variable-cost "tokens" per GA4 property in three independent categories
+  (Core, Realtime, Funnel), with Analytics 360 properties getting 10x the Standard
+  ceilings. The Admin API uses flat requests-per-minute and writes-per-minute counters
+  and signals exhaustion with 403, not 429. The Measurement Protocol has an hourly
+  request ceiling and hard per-event structural caps.
+limit_count: 24
+response_headers: []
+headers_note: >-
+  Google Analytics returns NO rate-limit response headers on any service — no
+  X-RateLimit-*, no RateLimit-*, no Retry-After. The only runtime signal is in-band
+  and opt-in: send "returnPropertyQuota": true on a Data API reporting request and the
+  response carries a PropertyQuota object with tokensPerDay, tokensPerHour,
+  tokensPerProjectPerHour, concurrentRequests, serverErrorsPerProjectPerHour and
+  potentiallyThresholdedRequestsPerHour. An agent that does not know to ask gets no
+  warning before it is throttled. The Data API also publishes
+  properties.getPropertyQuotasSnapshot (added 2024-09-18) for an out-of-band read.
 responseCodes:
   throttled: 429
   quotaExceeded: 429
+  adminApiQuotaExceeded: 403
   serverError: 500
+  unavailable: 503
+canonical_status:
+  '429': RESOURCE_EXHAUSTED
+  '403': PERMISSION_DENIED or RESOURCE_EXHAUSTED
 limits:
+  # ---------- Data API — Core (Standard) ----------
   - name: Core tokens — daily (Standard)
+    api: Google Analytics Data API
     scope: property
     metric: tokens_per_day
     limit: 200000
     timeFrame: day
-    notes: Applies to runReport, runPivotReport, batch methods, getMetadata. Refresh at midnight PST.
+    notes: >-
+      Applies to runReport, runPivotReport, batchRunReports, batchRunPivotReports,
+      runAccessReport, getMetadata, checkCompatibility, createAudienceExports.
+      Refreshes at midnight Pacific.
   - name: Core tokens — hourly (Standard)
+    api: Google Analytics Data API
     scope: property
     metric: tokens_per_hour
     limit: 40000
     timeFrame: hour
   - name: Core tokens — hourly per project/property (Standard)
+    api: Google Analytics Data API
     scope: project/property
     metric: tokens_per_hour
     limit: 14000
     timeFrame: hour
-  - name: Concurrent requests (Standard)
+  - name: Core concurrent requests (Standard)
+    api: Google Analytics Data API
     scope: property
     metric: concurrent_requests
     limit: 10
-  - name: Server errors per hour (Standard)
+  - name: Core server errors per hour (Standard)
+    api: Google Analytics Data API
     scope: project/property
     metric: errors_per_hour
     limit: 10
     timeFrame: hour
-    notes: Property is throttled if more than this many 5xx responses are returned in the hour.
+    notes: >-
+      500 and 503 responses only. When exhausted, ALL requests from that project to
+      that property are blocked.
+  # ---------- Data API — Core (360) ----------
   - name: Core tokens — daily (Analytics 360)
+    api: Google Analytics Data API
     scope: property
     metric: tokens_per_day
     limit: 2000000
     timeFrame: day
   - name: Core tokens — hourly (Analytics 360)
+    api: Google Analytics Data API
     scope: property
     metric: tokens_per_hour
     limit: 400000
     timeFrame: hour
   - name: Core tokens — hourly per project/property (Analytics 360)
+    api: Google Analytics Data API
     scope: project/property
     metric: tokens_per_hour
     limit: 140000
     timeFrame: hour
-  - name: Concurrent requests (Analytics 360)
+  - name: Core concurrent requests (Analytics 360)
+    api: Google Analytics Data API
     scope: property
     metric: concurrent_requests
     limit: 50
-  - name: Server errors per hour (Analytics 360)
+  - name: Core server errors per hour (Analytics 360)
+    api: Google Analytics Data API
     scope: project/property
     metric: errors_per_hour
     limit: 50
     timeFrame: hour
+  # ---------- Data API — Realtime ----------
+  - name: Realtime tokens — daily (Standard / 360)
+    api: Google Analytics Data API
+    scope: property
+    metric: tokens_per_day
+    limit: 200000
+    limit_360: 2000000
+    timeFrame: day
+    notes: runRealtimeReport only. Independent bucket from Core.
+  - name: Realtime tokens — hourly (Standard / 360)
+    api: Google Analytics Data API
+    scope: property
+    metric: tokens_per_hour
+    limit: 40000
+    limit_360: 400000
+    timeFrame: hour
+  - name: Realtime tokens — hourly per project/property (Standard / 360)
+    api: Google Analytics Data API
+    scope: project/property
+    metric: tokens_per_hour
+    limit: 14000
+    limit_360: 140000
+    timeFrame: hour
+  - name: Realtime concurrent requests (Standard / 360)
+    api: Google Analytics Data API
+    scope: property
+    metric: concurrent_requests
+    limit: 10
+    limit_360: 50
+  - name: Realtime server errors per hour (Standard / 360)
+    api: Google Analytics Data API
+    scope: project/property
+    metric: errors_per_hour
+    limit: 10
+    limit_360: 50
+    timeFrame: hour
+  # ---------- Data API — Funnel ----------
+  - name: Funnel tokens — daily (Standard / 360)
+    api: Google Analytics Data API
+    scope: property
+    metric: tokens_per_day
+    limit: 200000
+    limit_360: 2000000
+    timeFrame: day
+    notes: runFunnelReport only (v1alpha). Independent bucket from Core and Realtime.
+  - name: Funnel tokens — hourly (Standard / 360)
+    api: Google Analytics Data API
+    scope: property
+    metric: tokens_per_hour
+    limit: 40000
+    limit_360: 400000
+    timeFrame: hour
+  - name: Funnel concurrent requests (Standard / 360)
+    api: Google Analytics Data API
+    scope: property
+    metric: concurrent_requests
+    limit: 10
+    limit_360: 50
+  # ---------- Data API — cross-cutting ----------
+  - name: Client errors per project per property
+    api: Google Analytics Data API
+    scope: project/property
+    metric: error_responses
+    limit: 10000
+    timeFrame: 15 minutes
+    notes: >-
+      Added 2024-06-28. Counts every response that is neither 200 nor 500 —
+      authentication failures and incompatible dimension/metric combinations included.
+      Exceeding it temporarily blocks the project from the property until the window
+      closes.
+  - name: Potentially thresholded requests per hour
+    api: Google Analytics Data API
+    scope: property
+    metric: requests_per_hour
+    limit: 120
+    timeFrame: hour
+    notes: >-
+      Requests using userAgeBracket, userGender, brandingInterest, audienceId or
+      audienceName. Thresholding prevents inferring demographics of individual users.
+  # ---------- Admin API ----------
+  - name: Requests per minute
+    api: Google Analytics Admin API
+    scope: project
+    metric: requests_per_minute
+    limit: 1200
+    timeFrame: minute
+    notes: Quota refills every 60 seconds. Exhaustion returns HTTP 403, not 429.
+  - name: Requests per minute per user
+    api: Google Analytics Admin API
+    scope: user
+    metric: requests_per_minute
+    limit: 600
+    timeFrame: minute
+  - name: Writes per minute
+    api: Google Analytics Admin API
+    scope: project
+    metric: writes_per_minute
+    limit: 600
+    timeFrame: minute
+    notes: >-
+      Any create, patch, delete, archive or update method charges BOTH the request and
+      the write quota.
+  - name: Writes per minute per user
+    api: Google Analytics Admin API
+    scope: user
+    metric: writes_per_minute
+    limit: 180
+    timeFrame: minute
+  - name: User deletions per day per property
+    api: Google Analytics Admin API
+    scope: property
+    metric: deletions_per_day
+    limit: 500
+    timeFrame: day
+  # ---------- Measurement Protocol ----------
+  - name: Non-conversion requests per hour
+    api: Measurement Protocol (GA4)
+    scope: property
+    metric: requests_per_hour
+    limit: 100000000
+    timeFrame: hour
+    notes: >-
+      100 million per property per hour. Beyond it the Measurement Protocol SILENTLY
+      ignores all non-conversion requests for the rest of the hour — no error, no
+      status code. Does not apply to Analytics 360 properties.
+structural_limits:
+  api: Measurement Protocol (GA4)
+  source: https://developers.google.com/analytics/devguides/collection/protocol/ga4/sending-events
+  limits:
+    - Maximum 25 events per request
+    - Maximum 25 parameters per event
+    - Maximum 25 user properties per event
+    - User property names 24 characters or fewer
+    - User property values 36 characters or fewer
+    - Event names 40 characters or fewer, alphanumeric + underscore, must start with a letter
+    - Parameter names 40 characters or fewer, alphanumeric + underscore, must start with a letter
+    - Parameter values 100 characters or fewer
+    - Events may be backdated at most 72 hours via timestamp_micros
 policies:
-  - name: Token-based pricing
-    description: 'Token cost varies by row count, dimensions/metrics, filter complexity, date range, and
-      cardinality. Send returnPropertyQuota=true in requests to see remaining tokens in the response.'
-  - name: Separate categories
-    description: Core, Realtime, and Funnel categories each have their own independent quota buckets.
-  - name: Backoff strategy
-    description: Implement exponential backoff with jitter on 429 responses. Daily resets at midnight Pacific.
-  - name: Sampling on Standard
-    description: Reports may sample at high cardinality on Standard properties; 360 properties get unsampled
-      reporting up to higher row caps.
+  - name: Token-based cost
+    description: >-
+      Token cost is computed at execution time and varies with row count, number of
+      dimensions and metrics, filter complexity, date range length, dimension
+      cardinality and the property's event volume. Most requests cost 10 tokens or
+      fewer. There is no way to pre-calculate cost; send returnPropertyQuota=true to
+      observe it.
+  - name: Independent quota categories
+    description: >-
+      Core, Realtime and Funnel each have their own buckets. A request consumes
+      exactly one category.
+  - name: Cross-quota interaction
+    description: >-
+      Every request charges both "tokens per property per hour" and "tokens per
+      project per property per hour". A property must be queried by more than three
+      projects before the per-property ceiling binds before the per-project one.
+  - name: Bounded backoff
+    description: >-
+      Retry with exponential backoff AND a retry limit. Retries are self-limiting:
+      5xx responses charge the server-error quota and everything else charges the
+      client-error quota, so unbounded retry gets the project blocked.
+  - name: Quota attribution
+    description: >-
+      The global quotaUser query parameter shards per-user quota when one server
+      calls on behalf of many end users.
+  - name: Sampling
+    description: >-
+      Standard properties may return sampled reports at high cardinality. Analytics
+      360 gets higher sampling limits (1 billion events) and an UNSAMPLED setting on
+      report tasks.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

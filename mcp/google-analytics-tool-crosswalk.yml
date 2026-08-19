@@ -1,0 +1,163 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  mcp/google-analytics-mcp.yml (tools read from
+  https://github.com/googleanalytics/google-analytics-mcp analytics_mcp/tools/*.py on
+  main, 2026-08-13) bound to operationIds in openapi/google-analytics-properties-api-openapi.yml,
+  openapi/google-analytics-accountsummaries-api-openapi.yml and
+  openapi/_original/google-analytics-admin-api.yaml
+provider: Google Analytics
+providerId: google-analytics
+description: >-
+  Binds each tool of Google's official (local-stdio) Google Analytics MCP server to
+  the REST operation it actually calls, so an agent can inherit the real request
+  shape — parameters, request body, quota category and error envelope — from the
+  OpenAPI instead of guessing from a tool name. The live MCP schema could not be
+  introspected because the server ships no hosted endpoint (no URL to POST
+  tools/list to); the binding below was made from the server's own Python source,
+  which names the underlying Admin/Data API method in every call site.
+surfaces:
+  openapi:
+    - file: openapi/google-analytics-properties-api-openapi.yml
+      note: >-
+        Carries BOTH analyticsadmin.* and analyticsdata.* operations after the
+        by-tag refine merged the "properties" tag across the Admin and Data specs.
+        Its servers[] block names only analyticsadmin.googleapis.com; the
+        analyticsdata.* operations in it are actually served by
+        analyticsdata.googleapis.com.
+    - file: openapi/google-analytics-accountsummaries-api-openapi.yml
+    - file: openapi/_original/google-analytics-admin-api.yaml
+  graphql:
+    endpoint: null
+    note: >-
+      Google Analytics ships no GraphQL API. graphql/google-analytics-schema.graphql
+      in this repo is a conceptual translation authored by API Evangelist, not a
+      provider surface, so nothing is crosswalked to it.
+  mcp:
+    url: null
+    mode: local-stdio
+    install: pipx run analytics-mcp
+    gated: true
+    note: Auth is Google Application Default Credentials; no anonymous introspection possible.
+crosswalk:
+  - tool: get_account_summaries
+    category: admin
+    rest:
+      - analyticsadmin.accountSummaries.list
+    binding: direct
+    confidence: high
+    note: >-
+      Source calls AnalyticsAdminServiceClient.list_account_summaries; the OpenAPI
+      operation is GET /v1beta/accountSummaries.
+  - tool: get_property_details
+    category: admin
+    rest:
+      - analyticsadmin.properties.get
+    binding: direct
+    confidence: medium
+    note: >-
+      Source calls get_property(name=properties/{id}). The REST operation is
+      GET /v1beta/{name} on the Admin API, but that operationId is NOT present in the
+      captured specs — the by-tag refine collapsed the shared /v1beta/{name} path onto
+      analyticsadmin.properties.dataStreams.measurementProtocolSecrets.get. Confidence
+      is medium for that reason, not because the mapping is uncertain.
+  - tool: list_google_ads_links
+    category: admin
+    rest:
+      - analyticsadmin.properties.googleAdsLinks.list
+    binding: direct
+    confidence: high
+  - tool: run_report
+    category: reporting
+    rest:
+      - analyticsdata.properties.runReport
+    binding: direct
+    confidence: high
+    note: >-
+      POST /v1beta/{property}:runReport. The tool's date_ranges/dimensions/metrics/
+      dimension_filter/metric_filter/order_bys/limit/offset/currency_code/
+      return_property_quota arguments are a 1:1 subset of RunReportRequest. Charges
+      the Core quota category.
+  - tool: run_realtime_report
+    category: reporting
+    rest:
+      - analyticsdata.properties.runRealtimeReport
+    binding: direct
+    confidence: high
+    note: >-
+      POST /v1beta/{property}:runRealtimeReport. Charges the Realtime quota category.
+  - tool: get_custom_dimensions_and_metrics
+    category: reporting
+    rest:
+      - analyticsdata.properties.getMetadata
+    binding: direct
+    confidence: medium
+    note: >-
+      Source fetches {property}/metadata. GET /v1beta/{property}/metadata exists in
+      the live Data API v1beta but is absent from the captured OpenAPI files, so the
+      operationId cannot be resolved inside this repo.
+mcp_only:
+  - tool: run_funnel_report
+    reason: >-
+      Backed by properties.runFunnelReport, which is Data API v1alpha only. No v1beta
+      REST operation exists and no v1alpha spec is captured in this repo.
+  - tool: run_conversions_report
+    reason: >-
+      Backed by the Data API v1alpha conversion-reporting extension to runReport
+      (ConversionSpec on RunReportRequest, added 2026-04-23). v1alpha only.
+  - tool: list_property_annotations
+    reason: >-
+      Backed by Admin API v1alpha ListReportingDataAnnotations. v1alpha only; no
+      v1beta REST operation.
+rest_only:
+  - operationId: analyticsdata.properties.runPivotReport
+    note: Pivot reporting is not exposed as a tool.
+  - operationId: analyticsdata.properties.batchRunReports
+    note: Batch reporting is not exposed as a tool.
+  - operationId: analyticsdata.properties.batchRunPivotReports
+  - operationId: analyticsdata.properties.checkCompatibility
+    note: >-
+      Dimension/metric compatibility checking — arguably the operation an agent needs
+      most before composing a report — has no tool.
+  - operationId: analyticsdata.properties.audienceExports.create
+  - operationId: analyticsdata.properties.audienceExports.get
+  - operationId: analyticsdata.properties.audienceExports.list
+  - operationId: analyticsdata.properties.audienceExports.query
+  - operationId: analyticsadmin.properties.list
+  - operationId: analyticsadmin.properties.create
+  - operationId: analyticsadmin.properties.runAccessReport
+  - operationId: analyticsadmin.properties.customDimensions.list
+  - operationId: analyticsadmin.properties.customDimensions.create
+  - operationId: analyticsadmin.properties.customMetrics.list
+  - operationId: analyticsadmin.properties.customMetrics.create
+  - operationId: analyticsadmin.properties.dataStreams.list
+  - operationId: analyticsadmin.properties.dataStreams.create
+  - operationId: analyticsadmin.properties.conversionEvents.list
+  - operationId: analyticsadmin.properties.conversionEvents.create
+  - operationId: analyticsadmin.properties.firebaseLinks.list
+  - operationId: analyticsadmin.properties.googleAdsLinks.create
+  - operationId: analyticsadmin.properties.googleAdsLinks.patch
+  - operationId: analyticsadmin.properties.googleAdsLinks.delete
+  - operationId: analyticsadmin.properties.dataStreams.measurementProtocolSecrets.list
+  - operationId: analyticsadmin.properties.dataStreams.measurementProtocolSecrets.create
+  - operationId: analyticsadmin.properties.acknowledgeUserDataCollection
+  - operationId: analyticsadmin.accounts.list
+  - operationId: analyticsadmin.accounts.provisionAccountTicket
+  - operationId: analyticsadmin.accounts.searchChangeHistoryEvents
+coverage:
+  mcp_tools: 9
+  bound_to_rest: 6
+  mcp_only: 3
+  rest_operations_in_repo: 127
+  rest_operations_with_a_tool: 6
+  note: >-
+    Six of nine tools bind to a REST operation; the other three sit on v1alpha
+    surfaces with no captured contract. In the other direction the gap is the story:
+    the repo holds 127 REST operations across the GA4 Data, Admin, Management v3,
+    Reporting v4, Measurement Protocol and User Deletion APIs, and Google's MCP
+    server reaches six of them. Every write operation, all of Universal Analytics'
+    Management v3 surface, the Measurement Protocol and User Deletion are absent from
+    the agent surface entirely.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

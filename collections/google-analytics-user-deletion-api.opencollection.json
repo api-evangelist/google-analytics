@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Analytics Admin accounts User Deletion API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User Deletion",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Analytics Insert or Update a User Deletion Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://analyticsadmin.googleapis.com/userDeletion/userDeletionRequests:upsert",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Inserts or updates a user deletion request. Submitting a deletion request for a user that already has a pending request will update the existing request. The User Deletion API does not remove data from reports based on previously aggregated data or exported datasets like BigQuery."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

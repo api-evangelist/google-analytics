@@ -1,0 +1,3095 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Analytics Admin accounts properties API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "properties",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "analyticsadmin.properties.list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://analyticsadmin.googleapis.com/v1beta/properties",
+            "params": [
+              {
+                "name": "$.xgafv",
+                "value": "",
+                "type": "query",
+                "description": "V1 error format."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth access token."
+              },
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for response."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+              },
+              {
+                "name": "upload_protocol",
+                "value": "",
+                "type": "query",
+                "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+              },
+              {
+                "name": "uploadType",
+                "value": "",
+                "type": "query",
+                "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+              },
+              {
+                "name": "filter",
+                "value": "example_value",
+                "type": "query",
+                "description": "Required. An expression for filtering the results of the request. Fields eligible for filtering are: `parent:`(The resource name of the parent account/property) or `ancestor:`(The resource name of the parent account) or `firebase_project:`(The id or number of the linked firebase project). Some examples of filters: ``` | Filter | Description | |-----------------------------|-------------------------------------------| | parent:accounts/123 | The account with account id: 123. | | parent:properties/123 | The property with property id: 123. | | ancestor:accounts/123 | The account with account id: 123. | | firebase_project:project-id | The firebase project with id: project-id. | | firebase_project:123 | The firebase project with number: 123. | ```"
+              },
+              {
+                "name": "pageSize",
+                "value": "10",
+                "type": "query",
+                "description": "The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)"
+              },
+              {
+                "name": "pageToken",
+                "value": "abc123token",
+                "type": "query",
+                "description": "A page token, received from a previous `ListProperties` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListProperties` must match the call that provided the page token."
+              },
+              {
+                "name": "showDeleted",
+                "value": "true",
+                "type": "query",
+                "description": "Whether to include soft-deleted (ie: \"trashed\") Properties in the results. Properties can be inspected to determine whether they are deleted or not."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Returns child Properties under the specified parent Account. Only \"GA4\" properties will be returned. Properties will be excluded if the caller does not have access. Soft-deleted (ie: \"trashed\") properties are excluded by default. Returns an empty list if no relevant properties are found."
+        },
+        {
+          "info": {
+            "name": "analyticsadmin.properties.create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://analyticsadmin.googleapis.com/v1beta/properties",
+            "params": [
+              {
+                "name": "$.xgafv",
+                "value": "",
+                "type": "query",
+                "description": "V1 error format."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth access token."
+              },
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for response."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+              },
+              {
+                "name": "upload_protocol",
+                "value": "",
+                "type": "query",
+                "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+              },
+              {
+                "name": "uploadType",
+                "value": "",
+                "type": "query",
+                "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Creates an \"GA4\" property with the specified location and attributes."
+        },
+        {
+          "info": {
+            "name": "analyticsadmin.properties.runAccessReport",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://analyticsadmin.googleapis.com/v1beta/:entity:runAccessReport",
+            "params": [
+              {
+                "name": "$.xgafv",
+                "value": "",
+                "type": "query",
+                "description": "V1 error format."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth access token."
+              },
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for response."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+              },
+              {
+                "name": "upload_protocol",
+                "value": "",
+                "type": "query",
+                "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+              },
+              {
+                "name": "uploadType",
+                "value": "",
+                "type": "query",
+                "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+              },
+              {
+                "name": "entity",
+                "value": "example_value",
+                "type": "path",
+                "description": "The Data Access Report supports requesting at the property level or account level. If requested at the account level, Data Access Reports include all access for all properties under that account. To request at the property level, entity should be for example 'properties/123' if \"123\" is your GA4 property ID. To request at the account level, entity should be for example 'accounts/1234' if \"1234\" is your GA4 Account ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Returns a customized report of data access records. The report provides records of each time a user reads Google Analytics reporting data. Access records are retained for up to 2 years. Data Access Reports can be requested for a property. Reports may be requested for any property, but dimensions that aren't related to quota can only be requested on Google Analytics 360 properties. This method is only available to Administrators. These data access records include GA4 UI Reporting, GA4 UI Explorat"
+        },
+        {
+          "info": {
+            "name": "analyticsadmin.properties.dataStreams.measurementProtocolSecrets.get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://analyticsadmin.googleapis.com/v1beta/:name",
+            "params": [
+              {
+                "name": "$.xgafv",
+                "value": "",
+                "type": "query",
+                "description": "V1 error format."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth access token."
+              },
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for response."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+              },
+              {
+                "name": "upload_protocol",
+                "value": "",
+                "type": "query",
+                "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+              },
+              {
+                "name": "uploadType",
+                "value": "",
+                "type": "query",
+                "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+              },
+              {
+                "name": "name",
+                "value": "Example Name",
+                "type": "path",
+                "description": "Required. The name of the measurement protocol secret to lookup. Format: properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets/{measurementProtocolSecret}"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Lookup for a single \"GA4\" MeasurementProtocolSecret."
+        },
+        {
+          "info": {
+            "name": "analyticsadmin.properties.googleAdsLinks.patch",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://analyticsadmin.googleapis.com/v1beta/:name",
+            "params": [
+              {
+                "name": "$.xgafv",
+                "value": "",
+                "type": "query",
+                "description": "V1 error format."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth access token."
+              },
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for response."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+              },
+              {
+                "name": "upload_protocol",
+                "value": "",
+                "type": "query",
+                "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+              },
+              {
+                "name": "uploadType",
+                "value": "",
+                "type": "query",
+                "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+              },
+              {
+                "name": "name",
+                "value": "Example Name",
+                "type": "path",
+                "description": "Output only. Format: properties/{propertyId}/googleAdsLinks/{googleAdsLinkId} Note: googleAdsLinkId is not the Google Ads customer ID."
+              },
+              {
+                "name": "updateMask",
+                "value": "2026-04-17",
+                "type": "query",
+                "description": "Required. The list of fields to be updated. Field names must be in snake case (e.g., \"field_to_update\"). Omitted fields will not be updated. To replace the entire entity, use one path with the string \"*\" to match all fields."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Updates a GoogleAdsLink on a property"
+        },
+        {
+          "info": {
+            "name": "analyticsadmin.properties.googleAdsLinks.delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://analyticsadmin.googleapis.com/v1beta/:name",
+            "params": [
+              {
+                "name": "$.xgafv",
+                "value": "",
+                "type": "query",
+                "description": "V1 error format."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth access token."
+              },
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for response."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+              },
+              {
+                "name": "upload_protocol",
+                "value": "",
+                "type": "query",
+                "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+              },
+              {
+                "name": "uploadType",
+                "value": "",
+                "type": "query",
+                "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+              },
+              {
+                "name": "name",
+                "value": "Example Name",
+                "type": "path",
+                "description": "Required. Example format: properties/1234/googleAdsLinks/5678"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Deletes a GoogleAdsLink on a property"
+        },
+        {
+          "info": {
+            "name": "analyticsadmin.properties.customMetrics.archive",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://analyticsadmin.googleapis.com/v1beta/:name:archive",
+            "params": [
+              {
+                "name": "$.xgafv",
+                "value": "",
+                "type": "query",
+                "description": "V1 error format."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth access token."
+              },
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for response."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+              },
+              {
+                "name": "upload_protocol",
+                "value": "",
+                "type": "query",
+                "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+              },
+              {
+                "name": "uploadType",
+                "value": "",
+                "type": "query",
+                "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+              },
+              {
+                "name": "name",
+                "value": "Example Name",
+                "type": "path",
+                "description": "Required. The name of the CustomMetric to archive. Example format: properties/1234/customMetrics/5678"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Archives a CustomMetric on a property."
+        },
+        {
+          "info": {
+            "name": "analyticsadmin.properties.conversionEvents.list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://analyticsadmin.googleapis.com/v1beta/:parent/conversionEvents",
+            "params": [
+              {
+                "name": "$.xgafv",
+                "value": "",
+                "type": "query",
+                "description": "V1 error format."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth access token."
+              },
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for response."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+              },
+              {
+                "name": "upload_protocol",
+                "value": "",
+                "type": "query",
+                "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+              },
+              {
+                "name": "uploadType",
+                "value": "",
+                "type": "query",
+                "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+              },
+              {
+                "name": "parent",
+                "value": "example_value",
+                "type": "path",
+                "description": "Required. The resource name of the parent property. Example: 'properties/123'"
+              },
+              {
+                "name": "pageSize",
+                "value": "10",
+                "type": "query",
+                "description": "The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)"
+              },
+              {
+                "name": "pageToken",
+                "value": "abc123token",
+                "type": "query",
+                "description": "A page token, received from a previous `ListConversionEvents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListConversionEvents` must match the call that provided the page token."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Returns a list of conversion events in the specified parent property. Returns an empty list if no conversion events are found."
+        },
+        {
+          "info": {
+            "name": "analyticsadmin.properties.conversionEvents.create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://analyticsadmin.googleapis.com/v1beta/:parent/conversionEvents",
+            "params": [
+              {
+                "name": "$.xgafv",
+                "value": "",
+                "type": "query",
+                "description": "V1 error format."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth access token."
+              },
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for response."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+              },
+              {
+                "name": "upload_protocol",
+                "value": "",
+                "type": "query",
+                "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+              },
+              {
+                "name": "uploadType",
+                "value": "",
+                "type": "query",
+                "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+              },
+              {
+                "name": "parent",
+                "value": "example_value",
+                "type": "path",
+                "description": "Required. The resource name of the parent property where this conversion event will be created. Format: properties/123"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Creates a conversion event with the specified attributes."
+        },
+        {
+          "info": {
+            "name": "analyticsadmin.properties.customDimensions.list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://analyticsadmin.googleapis.com/v1beta/:parent/customDimensions",
+            "params": [
+              {
+                "name": "$.xgafv",
+                "value": "",
+                "type": "query",
+                "description": "V1 error format."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth access token."
+              },
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for response."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+              },
+              {
+                "name": "upload_protocol",
+                "value": "",
+                "type": "query",
+                "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+              },
+              {
+                "name": "uploadType",
+                "value": "",
+                "type": "query",
+                "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+              },
+              {
+                "name": "parent",
+                "value": "example_value",
+                "type": "path",
+                "description": "Required. Example format: properties/1234"
+              },
+              {
+                "name": "pageSize",
+                "value": "10",
+                "type": "query",
+                "description": "The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200 (higher values will be coerced to the maximum)."
+              },
+              {
+                "name": "pageToken",
+                "value": "abc123token",
+                "type": "query",
+                "description": "A page token, received from a previous `ListCustomDimensions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListCustomDimensions` must match the call that provided the page token."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Lists CustomDimensions on a property."
+        },
+        {
+          "info": {
+            "name": "analyticsadmin.properties.customDimensions.create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://analyticsadmin.googleapis.com/v1beta/:parent/customDimensions",
+            "params": [
+              {
+                "name": "$.xgafv",
+                "value": "",
+                "type": "query",
+                "description": "V1 error format."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth access token."
+              },
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for response."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+              },
+              {
+                "name": "upload_protocol",
+                "value": "",
+                "type": "query",
+                "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+              },
+              {
+                "name": "uploadType",
+                "value": "",
+                "type": "query",
+                "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+              },
+              {
+                "name": "parent",
+                "value": "example_value",
+                "type": "path",
+                "description": "Required. Example format: properties/1234"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Creates a CustomDimension."
+        },
+        {
+          "info": {
+            "name": "analyticsadmin.properties.customMetrics.list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://analyticsadmin.googleapis.com/v1beta/:parent/customMetrics",
+            "params": [
+              {
+                "name": "$.xgafv",
+                "value": "",
+                "type": "query",
+                "description": "V1 error format."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth access token."
+              },
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for response."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+              },
+              {
+                "name": "upload_protocol",
+                "value": "",
+                "type": "query",
+                "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+              },
+              {
+                "name": "uploadType",
+                "value": "",
+                "type": "query",
+                "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+              },
+              {
+                "name": "parent",
+                "value": "example_value",
+                "type": "path",
+                "description": "Required. Example format: properties/1234"
+              },
+              {
+                "name": "pageSize",
+                "value": "10",
+                "type": "query",
+                "description": "The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200 (higher values will be coerced to the maximum)."
+              },
+              {
+                "name": "pageToken",
+                "value": "abc123token",
+                "type": "query",
+                "description": "A page token, received from a previous `ListCustomMetrics` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListCustomMetrics` must match the call that provided the page token."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Lists CustomMetrics on a property."
+        },
+        {
+          "info": {
+            "name": "analyticsadmin.properties.customMetrics.create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://analyticsadmin.googleapis.com/v1beta/:parent/customMetrics",
+            "params": [
+              {
+                "name": "$.xgafv",
+                "value": "",
+                "type": "query",
+                "description": "V1 error format."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth access token."
+              },
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for response."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+              },
+              {
+                "name": "upload_protocol",
+                "value": "",
+                "type": "query",
+                "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+              },
+              {
+                "name": "uploadType",
+                "value": "",
+                "type": "query",
+                "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+              },
+              {
+                "name": "parent",
+                "value": "example_value",
+                "type": "path",
+                "description": "Required. Example format: properties/1234"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Creates a CustomMetric."
+        },
+        {
+          "info": {
+            "name": "analyticsadmin.properties.dataStreams.list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://analyticsadmin.googleapis.com/v1beta/:parent/dataStreams",
+            "params": [
+              {
+                "name": "$.xgafv",
+                "value": "",
+                "type": "query",
+                "description": "V1 error format."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth access token."
+              },
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for response."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+              },
+              {
+                "name": "upload_protocol",
+                "value": "",
+                "type": "query",
+                "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+              },
+              {
+                "name": "uploadType",
+                "value": "",
+                "type": "query",
+                "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+              },
+              {
+                "name": "parent",
+                "value": "example_value",
+                "type": "path",
+                "description": "Required. Example format: properties/1234"
+              },
+              {
+                "name": "pageSize",
+                "value": "10",
+                "type": "query",
+                "description": "The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200 (higher values will be coerced to the maximum)."
+              },
+              {
+                "name": "pageToken",
+                "value": "abc123token",
+                "type": "query",
+                "description": "A page token, received from a previous `ListDataStreams` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDataStreams` must match the call that provided the page token."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Lists DataStreams on a property."
+        },
+        {
+          "info": {
+            "name": "analyticsadmin.properties.dataStreams.create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://analyticsadmin.googleapis.com/v1beta/:parent/dataStreams",
+            "params": [
+              {
+                "name": "$.xgafv",
+                "value": "",
+                "type": "query",
+                "description": "V1 error format."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth access token."
+              },
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for response."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+              },
+              {
+                "name": "upload_protocol",
+                "value": "",
+                "type": "query",
+                "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+              },
+              {
+                "name": "uploadType",
+                "value": "",
+                "type": "query",
+                "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+              },
+              {
+                "name": "parent",
+                "value": "example_value",
+                "type": "path",
+                "description": "Required. Example format: properties/1234"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Creates a DataStream."
+        },
+        {
+          "info": {
+            "name": "analyticsadmin.properties.firebaseLinks.list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://analyticsadmin.googleapis.com/v1beta/:parent/firebaseLinks",
+            "params": [
+              {
+                "name": "$.xgafv",
+                "value": "",
+                "type": "query",
+                "description": "V1 error format."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth access token."
+              },
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for response."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+              },
+              {
+                "name": "upload_protocol",
+                "value": "",
+                "type": "query",
+                "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+              },
+              {
+                "name": "uploadType",
+                "value": "",
+                "type": "query",
+                "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+              },
+              {
+                "name": "parent",
+                "value": "example_value",
+                "type": "path",
+                "description": "Required. Format: properties/{property_id} Example: properties/1234"
+              },
+              {
+                "name": "pageSize",
+                "value": "10",
+                "type": "query",
+                "description": "The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)"
+              },
+              {
+                "name": "pageToken",
+                "value": "abc123token",
+                "type": "query",
+                "description": "A page token, received from a previous `ListFirebaseLinks` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListFirebaseLinks` must match the call that provided the page token."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Lists FirebaseLinks on a property. Properties can have at most one FirebaseLink."
+        },
+        {
+          "info": {
+            "name": "analyticsadmin.properties.firebaseLinks.create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://analyticsadmin.googleapis.com/v1beta/:parent/firebaseLinks",
+            "params": [
+              {
+                "name": "$.xgafv",
+                "value": "",
+                "type": "query",
+                "description": "V1 error format."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth access token."
+              },
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for response."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+              },
+              {
+                "name": "upload_protocol",
+                "value": "",
+                "type": "query",
+                "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+              },
+              {
+                "name": "uploadType",
+                "value": "",
+                "type": "query",
+                "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+              },
+              {
+                "name": "parent",
+                "value": "example_value",
+                "type": "path",
+                "description": "Required. Format: properties/{property_id} Example: properties/1234"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Creates a FirebaseLink. Properties can have at most one FirebaseLink."
+        },
+        {
+          "info": {
+            "name": "analyticsadmin.properties.googleAdsLinks.list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://analyticsadmin.googleapis.com/v1beta/:parent/googleAdsLinks",
+            "params": [
+              {
+                "name": "$.xgafv",
+                "value": "",
+                "type": "query",
+                "description": "V1 error format."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth access token."
+              },
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for response."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+              },
+              {
+                "name": "upload_protocol",
+                "value": "",
+                "type": "query",
+                "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+              },
+              {
+                "name": "uploadType",
+                "value": "",
+                "type": "query",
+                "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+              },
+              {
+                "name": "parent",
+                "value": "example_value",
+                "type": "path",
+                "description": "Required. Example format: properties/1234"
+              },
+              {
+                "name": "pageSize",
+                "value": "10",
+                "type": "query",
+                "description": "The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200 (higher values will be coerced to the maximum)."
+              },
+              {
+                "name": "pageToken",
+                "value": "abc123token",
+                "type": "query",
+                "description": "A page token, received from a previous `ListGoogleAdsLinks` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListGoogleAdsLinks` must match the call that provided the page token."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Lists GoogleAdsLinks on a property."
+        },
+        {
+          "info": {
+            "name": "analyticsadmin.properties.googleAdsLinks.create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://analyticsadmin.googleapis.com/v1beta/:parent/googleAdsLinks",
+            "params": [
+              {
+                "name": "$.xgafv",
+                "value": "",
+                "type": "query",
+                "description": "V1 error format."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth access token."
+              },
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for response."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+              },
+              {
+                "name": "upload_protocol",
+                "value": "",
+                "type": "query",
+                "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+              },
+              {
+                "name": "uploadType",
+                "value": "",
+                "type": "query",
+                "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+              },
+              {
+                "name": "parent",
+                "value": "example_value",
+                "type": "path",
+                "description": "Required. Example format: properties/1234"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Creates a GoogleAdsLink."
+        },
+        {
+          "info": {
+            "name": "analyticsadmin.properties.dataStreams.measurementProtocolSecrets.list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://analyticsadmin.googleapis.com/v1beta/:parent/measurementProtocolSecrets",
+            "params": [
+              {
+                "name": "$.xgafv",
+                "value": "",
+                "type": "query",
+                "description": "V1 error format."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth access token."
+              },
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for response."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+              },
+              {
+                "name": "upload_protocol",
+                "value": "",
+                "type": "query",
+                "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+              },
+              {
+                "name": "uploadType",
+                "value": "",
+                "type": "query",
+                "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+              },
+              {
+                "name": "parent",
+                "value": "example_value",
+                "type": "path",
+                "description": "Required. The resource name of the parent stream. Format: properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets"
+              },
+              {
+                "name": "pageSize",
+                "value": "10",
+                "type": "query",
+                "description": "The maximum number of resources to return. If unspecified, at most 10 resources will be returned. The maximum value is 10. Higher values will be coerced to the maximum."
+              },
+              {
+                "name": "pageToken",
+                "value": "abc123token",
+                "type": "query",
+                "description": "A page token, received from a previous `ListMeasurementProtocolSecrets` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMeasurementProtocolSecrets` must match the call that provided the page token."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Returns child MeasurementProtocolSecrets under the specified parent Property."
+        },
+        {
+          "info": {
+            "name": "analyticsadmin.properties.dataStreams.measurementProtocolSecrets.create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://analyticsadmin.googleapis.com/v1beta/:parent/measurementProtocolSecrets",
+            "params": [
+              {
+                "name": "$.xgafv",
+                "value": "",
+                "type": "query",
+                "description": "V1 error format."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth access token."
+              },
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for response."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+              },
+              {
+                "name": "upload_protocol",
+                "value": "",
+                "type": "query",
+                "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+              },
+              {
+                "name": "uploadType",
+                "value": "",
+                "type": "query",
+                "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+              },
+              {
+                "name": "parent",
+                "value": "example_value",
+                "type": "path",
+                "description": "Required. The parent resource where this secret will be created. Format: properties/{property}/dataStreams/{dataStream}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Creates a measurement protocol secret."
+        },
+        {
+          "info": {
+            "name": "analyticsadmin.properties.acknowledgeUserDataCollection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://analyticsadmin.googleapis.com/v1beta/:property:acknowledgeUserDataCollection",
+            "params": [
+              {
+                "name": "$.xgafv",
+                "value": "",
+                "type": "query",
+                "description": "V1 error format."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth access token."
+              },
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for response."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+              },
+              {
+                "name": "upload_protocol",
+                "value": "",
+                "type": "query",
+                "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+              },
+              {
+                "name": "uploadType",
+                "value": "",
+                "type": "query",
+                "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+              },
+              {
+                "name": "property",
+                "value": "example_value",
+                "type": "path",
+                "description": "Required. The property for which to acknowledge user data collection."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Acknowledges the terms of user data collection for the specified property. This acknowledgement must be completed (either in the Google Analytics UI or through this API) before MeasurementProtocolSecret resources may be created."
+        },
+        {
+          "info": {
+            "name": "analyticsdata.properties.audienceExports.query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://analyticsadmin.googleapis.com/v1beta/:name:query",
+            "params": [
+              {
+                "name": "$.xgafv",
+                "value": "",
+                "type": "query",
+                "description": "V1 error format."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth access token."
+              },
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for response."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+              },
+              {
+                "name": "upload_protocol",
+                "value": "",
+                "type": "query",
+                "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+              },
+              {
+                "name": "uploadType",
+                "value": "",
+                "type": "query",
+                "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+              },
+              {
+                "name": "name",
+                "value": "Example Name",
+                "type": "path",
+                "description": "Required. The name of the audience export to retrieve users from. Format: `properties/{property}/audienceExports/{audience_export}`"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Retrieves an audience export of users. After creating an audience, the users are not immediately available for exporting. First, a request to `CreateAudienceExport` is necessary to create an audience export of users, and then second, this method is used to retrieve the users in the audience export. See [Creating an Audience Export](https://developers.google.com/analytics/devguides/reporting/data/v1/audience-list-basics) for an introduction to Audience Exports with examples. Audiences in Google A"
+        },
+        {
+          "info": {
+            "name": "analyticsdata.properties.audienceExports.list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://analyticsadmin.googleapis.com/v1beta/:parent/audienceExports",
+            "params": [
+              {
+                "name": "$.xgafv",
+                "value": "",
+                "type": "query",
+                "description": "V1 error format."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth access token."
+              },
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for response."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+              },
+              {
+                "name": "upload_protocol",
+                "value": "",
+                "type": "query",
+                "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+              },
+              {
+                "name": "uploadType",
+                "value": "",
+                "type": "query",
+                "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+              },
+              {
+                "name": "parent",
+                "value": "example_value",
+                "type": "path",
+                "description": "Required. All audience exports for this property will be listed in the response. Format: `properties/{property}`"
+              },
+              {
+                "name": "pageSize",
+                "value": "10",
+                "type": "query",
+                "description": "Optional. The maximum number of audience exports to return. The service may return fewer than this value. If unspecified, at most 200 audience exports will be returned. The maximum value is 1000 (higher values will be coerced to the maximum)."
+              },
+              {
+                "name": "pageToken",
+                "value": "abc123token",
+                "type": "query",
+                "description": "Optional. A page token, received from a previous `ListAudienceExports` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAudienceExports` must match the call that provided the page token."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Lists all audience exports for a property. This method can be used for you to find and reuse existing audience exports rather than creating unnecessary new audience exports. The same audience can have multiple audience exports that represent the export of users that were in an audience on different days. See [Creating an Audience Export](https://developers.google.com/analytics/devguides/reporting/data/v1/audience-list-basics) for an introduction to Audience Exports with examples. Audience Export"
+        },
+        {
+          "info": {
+            "name": "analyticsdata.properties.audienceExports.create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://analyticsadmin.googleapis.com/v1beta/:parent/audienceExports",
+            "params": [
+              {
+                "name": "$.xgafv",
+                "value": "",
+                "type": "query",
+                "description": "V1 error format."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth access token."
+              },
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for response."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+              },
+              {
+                "name": "upload_protocol",
+                "value": "",
+                "type": "query",
+                "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+              },
+              {
+                "name": "uploadType",
+                "value": "",
+                "type": "query",
+                "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+              },
+              {
+                "name": "parent",
+                "value": "example_value",
+                "type": "path",
+                "description": "Required. The parent resource where this audience export will be created. Format: `properties/{property}`"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Creates an audience export for later retrieval. This method quickly returns the audience export's resource name and initiates a long running asynchronous request to form an audience export. To export the users in an audience export, first create the audience export through this method and then send the audience resource name to the `QueryAudienceExport` method. See [Creating an Audience Export](https://developers.google.com/analytics/devguides/reporting/data/v1/audience-list-basics) for an intro"
+        },
+        {
+          "info": {
+            "name": "analyticsdata.properties.batchRunPivotReports",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://analyticsadmin.googleapis.com/v1beta/:property:batchRunPivotReports",
+            "params": [
+              {
+                "name": "$.xgafv",
+                "value": "",
+                "type": "query",
+                "description": "V1 error format."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth access token."
+              },
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for response."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+              },
+              {
+                "name": "upload_protocol",
+                "value": "",
+                "type": "query",
+                "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+              },
+              {
+                "name": "uploadType",
+                "value": "",
+                "type": "query",
+                "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+              },
+              {
+                "name": "property",
+                "value": "example_value",
+                "type": "path",
+                "description": "A Google Analytics GA4 property identifier whose events are tracked. Specified in the URL path and not the body. To learn more, see [where to find your Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). This property must be specified for the batch. The property within RunPivotReportRequest may either be unspecified or consistent with this property. Example: properties/1234"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Returns multiple pivot reports in a batch. All reports must be for the same GA4 Property."
+        },
+        {
+          "info": {
+            "name": "analyticsdata.properties.batchRunReports",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://analyticsadmin.googleapis.com/v1beta/:property:batchRunReports",
+            "params": [
+              {
+                "name": "$.xgafv",
+                "value": "",
+                "type": "query",
+                "description": "V1 error format."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth access token."
+              },
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for response."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+              },
+              {
+                "name": "upload_protocol",
+                "value": "",
+                "type": "query",
+                "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+              },
+              {
+                "name": "uploadType",
+                "value": "",
+                "type": "query",
+                "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+              },
+              {
+                "name": "property",
+                "value": "example_value",
+                "type": "path",
+                "description": "A Google Analytics GA4 property identifier whose events are tracked. Specified in the URL path and not the body. To learn more, see [where to find your Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). This property must be specified for the batch. The property within RunReportRequest may either be unspecified or consistent with this property. Example: properties/1234"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Returns multiple reports in a batch. All reports must be for the same GA4 Property."
+        },
+        {
+          "info": {
+            "name": "analyticsdata.properties.checkCompatibility",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://analyticsadmin.googleapis.com/v1beta/:property:checkCompatibility",
+            "params": [
+              {
+                "name": "$.xgafv",
+                "value": "",
+                "type": "query",
+                "description": "V1 error format."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth access token."
+              },
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for response."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+              },
+              {
+                "name": "upload_protocol",
+                "value": "",
+                "type": "query",
+                "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+              },
+              {
+                "name": "uploadType",
+                "value": "",
+                "type": "query",
+                "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+              },
+              {
+                "name": "property",
+                "value": "example_value",
+                "type": "path",
+                "description": "A Google Analytics GA4 property identifier whose events are tracked. To learn more, see [where to find your Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). `property` should be the same value as in your `runReport` request. Example: properties/1234"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "This compatibility method lists dimensions and metrics that can be added to a report request and maintain compatibility. This method fails if the request's dimensions and metrics are incompatible. In Google Analytics, reports fail if they request incompatible dimensions and/or metrics; in that case, you will need to remove dimensions and/or metrics from the incompatible report until the report is compatible. The Realtime and Core reports have different compatibility rules. This method checks com"
+        },
+        {
+          "info": {
+            "name": "analyticsdata.properties.runPivotReport",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://analyticsadmin.googleapis.com/v1beta/:property:runPivotReport",
+            "params": [
+              {
+                "name": "$.xgafv",
+                "value": "",
+                "type": "query",
+                "description": "V1 error format."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth access token."
+              },
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for response."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+              },
+              {
+                "name": "upload_protocol",
+                "value": "",
+                "type": "query",
+                "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+              },
+              {
+                "name": "uploadType",
+                "value": "",
+                "type": "query",
+                "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+              },
+              {
+                "name": "property",
+                "value": "example_value",
+                "type": "path",
+                "description": "A Google Analytics GA4 property identifier whose events are tracked. Specified in the URL path and not the body. To learn more, see [where to find your Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). Within a batch request, this property should either be unspecified or consistent with the batch-level property. Example: properties/1234"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Returns a customized pivot report of your Google Analytics event data. Pivot reports are more advanced and expressive formats than regular reports. In a pivot report, dimensions are only visible if they are included in a pivot. Multiple pivots can be specified to further dissect your data."
+        },
+        {
+          "info": {
+            "name": "analyticsdata.properties.runRealtimeReport",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://analyticsadmin.googleapis.com/v1beta/:property:runRealtimeReport",
+            "params": [
+              {
+                "name": "$.xgafv",
+                "value": "",
+                "type": "query",
+                "description": "V1 error format."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth access token."
+              },
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for response."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+              },
+              {
+                "name": "upload_protocol",
+                "value": "",
+                "type": "query",
+                "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+              },
+              {
+                "name": "uploadType",
+                "value": "",
+                "type": "query",
+                "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+              },
+              {
+                "name": "property",
+                "value": "example_value",
+                "type": "path",
+                "description": "A Google Analytics GA4 property identifier whose events are tracked. Specified in the URL path and not the body. To learn more, see [where to find your Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). Example: properties/1234"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Returns a customized report of realtime event data for your property. Events appear in realtime reports seconds after they have been sent to the Google Analytics. Realtime reports show events and usage data for the periods of time ranging from the present moment to 30 minutes ago (up to 60 minutes for Google Analytics 360 properties). For a guide to constructing realtime requests & understanding responses, see [Creating a Realtime Report](https://developers.google.com/analytics/devguides/reporti"
+        },
+        {
+          "info": {
+            "name": "analyticsdata.properties.runReport",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://analyticsadmin.googleapis.com/v1beta/:property:runReport",
+            "params": [
+              {
+                "name": "$.xgafv",
+                "value": "",
+                "type": "query",
+                "description": "V1 error format."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth access token."
+              },
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for response."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+              },
+              {
+                "name": "upload_protocol",
+                "value": "",
+                "type": "query",
+                "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+              },
+              {
+                "name": "uploadType",
+                "value": "",
+                "type": "query",
+                "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+              },
+              {
+                "name": "property",
+                "value": "example_value",
+                "type": "path",
+                "description": "A Google Analytics GA4 property identifier whose events are tracked. Specified in the URL path and not the body. To learn more, see [where to find your Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). Within a batch request, this property should either be unspecified or consistent with the batch-level property. Example: properties/1234"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Returns a customized report of your Google Analytics event data. Reports contain statistics derived from data collected by the Google Analytics tracking code. The data returned from the API is as a table with columns for the requested dimensions and metrics. Metrics are individual measurements of user activity on your property, such as active users or event count. Dimensions break down metrics across some common criteria, such as country or event name. For a guide to constructing requests & unde"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

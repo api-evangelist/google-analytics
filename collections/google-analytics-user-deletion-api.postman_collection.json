@@ -1,0 +1,238 @@
+{
+  "item": [
+    {
+      "id": "d3f7a7dc-d34f-45eb-b1fe-7c0ec5c707e2",
+      "name": "User Deletion",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f38f9916-7bc9-421f-9de4-1205937a1101",
+          "name": "Google Analytics Insert or Update a User Deletion Request",
+          "request": {
+            "name": "Google Analytics Insert or Update a User Deletion Request",
+            "description": {
+              "content": "Inserts or updates a user deletion request. Submitting a deletion request for a user that already has a pending request will update the existing request. The User Deletion API does not remove data from reports based on previously aggregated data or exported datasets like BigQuery.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "userDeletion",
+                "userDeletionRequests:upsert"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": {\n    \"type\": \"<string>\",\n    \"userId\": \"<string>\"\n  },\n  \"webPropertyId\": \"<string>\",\n  \"firebaseProjectId\": \"<string>\",\n  \"propertyId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2bd66cd5-7561-43a6-ba53-c826dfbcfe91",
+              "name": "Successful user deletion request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userDeletion",
+                    "userDeletionRequests:upsert"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": {\n    \"type\": \"CLIENT_ID\",\n    \"userId\": \"123456\"\n  },\n  \"webPropertyId\": \"123456\",\n  \"firebaseProjectId\": \"123456\",\n  \"propertyId\": \"123456\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": {\n    \"type\": \"CLIENT_ID\",\n    \"userId\": \"123456\"\n  },\n  \"kind\": \"example_value\",\n  \"webPropertyId\": \"123456\",\n  \"firebaseProjectId\": \"123456\",\n  \"propertyId\": \"123456\",\n  \"deletionRequestTime\": \"2026-04-17T12:00:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "28ddba22-b51b-46a7-a716-f21f95cc0a6f",
+              "name": "Invalid request - malformed body or invalid ID type",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userDeletion",
+                    "userDeletionRequests:upsert"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": {\n    \"type\": \"CLIENT_ID\",\n    \"userId\": \"123456\"\n  },\n  \"webPropertyId\": \"123456\",\n  \"firebaseProjectId\": \"123456\",\n  \"propertyId\": \"123456\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "147bf28f-fa9e-4f50-90db-db731e6b7d63",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userDeletion",
+                    "userDeletionRequests:upsert"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": {\n    \"type\": \"CLIENT_ID\",\n    \"userId\": \"123456\"\n  },\n  \"webPropertyId\": \"123456\",\n  \"firebaseProjectId\": \"123456\",\n  \"propertyId\": \"123456\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "afbb067d-dfbb-4b3c-b78d-3e80b7f2d811",
+              "name": "Insufficient permissions - missing required OAuth scope",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userDeletion",
+                    "userDeletionRequests:upsert"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": {\n    \"type\": \"CLIENT_ID\",\n    \"userId\": \"123456\"\n  },\n  \"webPropertyId\": \"123456\",\n  \"firebaseProjectId\": \"123456\",\n  \"propertyId\": \"123456\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://analyticsadmin.googleapis.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c77571dd-7d3f-4b8f-aef5-767b79f3bd4d",
+    "name": "Google Analytics Admin accounts User Deletion API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manage properties in Google Analytics. Warning: Creating multiple Customer Applications, Accounts, or Projects to simulate or act as a single Customer Application, Account, or Project (respectively) or to circumvent Service-specific usage limits or quotas is a direct violation of Google Cloud Platform Terms of Service as well as Google APIs Terms of Service. These actions can result in immediate termination of your GCP project(s) without any warning.\n\nContact Support:\n Name: Google",
+      "type": "text/plain"
+    }
+  }
+}

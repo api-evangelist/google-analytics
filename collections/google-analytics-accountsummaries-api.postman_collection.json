@@ -1,0 +1,260 @@
+{
+  "item": [
+    {
+      "id": "f46041b1-d414-4cc0-a334-1f9b83cbb26c",
+      "name": "accountSummaries",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a631f39f-eaa9-4ccf-9b5d-d2a4beb2e0c7",
+          "name": "analyticsadmin.account Summaries.list",
+          "request": {
+            "name": "analyticsadmin.account Summaries.list",
+            "description": {
+              "content": "Returns summaries of all accounts accessible by the caller.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1beta",
+                "accountSummaries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "The maximum number of AccountSummary resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "A page token, received from a previous `ListAccountSummaries` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAccountSummaries` must match the call that provided the page token."
+                },
+                {
+                  "disabled": false,
+                  "key": "$.xgafv",
+                  "value": "<string>",
+                  "description": "V1 error format."
+                },
+                {
+                  "disabled": false,
+                  "key": "access_token",
+                  "value": "<string>",
+                  "description": "OAuth access token."
+                },
+                {
+                  "disabled": false,
+                  "key": "alt",
+                  "value": "<string>",
+                  "description": "Data format for response."
+                },
+                {
+                  "disabled": false,
+                  "key": "callback",
+                  "value": "<string>",
+                  "description": "JSONP"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Selector specifying which fields to include in a partial response."
+                },
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+                },
+                {
+                  "disabled": false,
+                  "key": "oauth_token",
+                  "value": "<string>",
+                  "description": "OAuth 2.0 token for the current user."
+                },
+                {
+                  "disabled": false,
+                  "key": "prettyPrint",
+                  "value": "<boolean>",
+                  "description": "Returns response with indentations and line breaks."
+                },
+                {
+                  "disabled": false,
+                  "key": "quotaUser",
+                  "value": "<string>",
+                  "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+                },
+                {
+                  "disabled": false,
+                  "key": "upload_protocol",
+                  "value": "<string>",
+                  "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+                },
+                {
+                  "disabled": false,
+                  "key": "uploadType",
+                  "value": "<string>",
+                  "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "https://www.googleapis.com/auth/analytics.edit https://www.googleapis.com/auth/analytics.readonly"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.google.com/o/oauth2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "implicit"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "43931030-44a4-4ac2-9ade-0debec6a1bfe",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta",
+                    "accountSummaries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "abc123token"
+                    },
+                    {
+                      "key": "$.xgafv",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "access_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "alt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "oauth_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prettyPrint",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "quotaUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "upload_protocol",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "uploadType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accountSummaries\": [\n    {\n      \"account\": \"example_value\",\n      \"displayName\": \"Example Name\",\n      \"name\": \"Example Name\",\n      \"propertySummaries\": [\n        {\n          \"displayName\": \"string\",\n          \"parent\": \"string\",\n          \"property\": \"string\",\n          \"propertyType\": \"PROPERTY_TYPE_ROLLUP\"\n        },\n        {\n          \"displayName\": \"string\",\n          \"parent\": \"string\",\n          \"property\": \"string\",\n          \"propertyType\": \"PROPERTY_TYPE_ROLLUP\"\n        }\n      ]\n    },\n    {\n      \"account\": \"example_value\",\n      \"displayName\": \"Example Name\",\n      \"name\": \"Example Name\",\n      \"propertySummaries\": [\n        {\n          \"displayName\": \"string\",\n          \"parent\": \"string\",\n          \"property\": \"string\",\n          \"propertyType\": \"PROPERTY_TYPE_ROLLUP\"\n        },\n        {\n          \"displayName\": \"string\",\n          \"parent\": \"string\",\n          \"property\": \"string\",\n          \"propertyType\": \"PROPERTY_TYPE_ROLLUP\"\n        }\n      ]\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://analyticsadmin.googleapis.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0f881a7f-6a63-4ea0-b90f-b0432d4249ac",
+    "name": "Google Analytics Admin accounts accountSummaries API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manage properties in Google Analytics. Warning: Creating multiple Customer Applications, Accounts, or Projects to simulate or act as a single Customer Application, Account, or Project (respectively) or to circumvent Service-specific usage limits or quotas is a direct violation of Google Cloud Platform Terms of Service as well as Google APIs Terms of Service. These actions can result in immediate termination of your GCP project(s) without any warning.\n\nContact Support:\n Name: Google",
+      "type": "text/plain"
+    }
+  }
+}

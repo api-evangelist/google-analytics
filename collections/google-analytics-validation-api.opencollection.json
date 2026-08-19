@@ -1,0 +1,53 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Analytics Admin accounts Validation API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Validation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Analytics Validate Events Without Sending to Google Analytics",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://analyticsadmin.googleapis.com/collect/debug",
+            "params": [
+              {
+                "name": "api_secret",
+                "value": "secret_abc123",
+                "type": "query",
+                "description": "The API Secret generated in the Google Analytics UI."
+              },
+              {
+                "name": "measurement_id",
+                "value": "123456",
+                "type": "query",
+                "description": "The Measurement ID for a web data stream. Required for web streams."
+              },
+              {
+                "name": "firebase_app_id",
+                "value": "123456",
+                "type": "query",
+                "description": "The Firebase App ID for an app data stream. Required for app streams."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validates the event payload and returns validation messages without actually sending the events to Google Analytics. Use this endpoint during development to verify your implementation."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

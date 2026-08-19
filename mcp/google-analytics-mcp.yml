@@ -1,0 +1,250 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://github.com/googleanalytics/google-analytics-mcp — Google's own MCP server
+  repository (README + analytics_mcp/tools/*.py read on main, 2026-08-13);
+  package metadata from https://pypi.org/pypi/analytics-mcp/json
+provider: Google Analytics
+providerId: google-analytics
+name: Google Analytics MCP Server
+status: official
+description: >-
+  Google publishes an official (labelled "Experimental") MCP server for Google
+  Analytics. It is a LOCAL stdio server: you install it with pipx/uv and an MCP
+  client launches it as a subprocess. There is no hosted endpoint an agent can POST
+  to. It wraps the Google Analytics Admin API and Google Analytics Data API (GA4)
+  and authenticates with Application Default Credentials, so the human running it
+  must already hold Google Analytics access.
+deployment:
+  mode: local-stdio
+  install: pipx run analytics-mcp
+  package: https://pypi.org/project/analytics-mcp/
+  repository: https://github.com/googleanalytics/google-analytics-mcp
+  auth: oauth
+  verified: searched
+  note: >-
+    No remote/hosted MCP endpoint exists. Every install path in Google's README is a
+    local subprocess launch ("command": "pipx", "args": ["run", "analytics-mcp"] in
+    ~/.gemini/settings.json, or `claude mcp add analytics-mcp -- pipx run
+    analytics-mcp`). Credentials come from Google Application Default Credentials
+    (gcloud auth application-default login) and must carry the
+    https://www.googleapis.com/auth/analytics.readonly scope. Because there is no
+    URL, tools/list could not be probed live; the tool inventory below was read from
+    the server's own source on main.
+package:
+  registry: pypi
+  name: analytics-mcp
+  version: 0.7.0
+  published: '2026-07-29'
+repository:
+  url: https://github.com/googleanalytics/google-analytics-mcp
+  org: googleanalytics
+  stars: 2949
+  last_push: '2026-08-07'
+  archived: false
+  license: Apache-2.0
+requirements:
+  - Python 3.10+
+  - pipx (or uv)
+  - Google Cloud project with the Google Analytics Admin API and Google Analytics
+    Data API enabled
+  - Application Default Credentials with scope
+    https://www.googleapis.com/auth/analytics.readonly
+backing_apis:
+  - name: Google Analytics Admin API
+    docs: https://developers.google.com/analytics/devguides/config/admin/v1
+    host: https://analyticsadmin.googleapis.com
+  - name: Google Analytics Data API (GA4)
+    docs: https://developers.google.com/analytics/devguides/reporting/data/v1
+    host: https://analyticsdata.googleapis.com
+tools:
+  - name: get_account_summaries
+    category: admin
+    description: Retrieves information about the user's Google Analytics accounts and properties.
+    parameters: []
+    source_file: analytics_mcp/tools/admin/info.py
+  - name: get_property_details
+    category: admin
+    description: Returns details about a property.
+    parameters:
+      - name: property_id
+        type: integer|string
+        required: true
+    source_file: analytics_mcp/tools/admin/info.py
+  - name: list_google_ads_links
+    category: admin
+    description: Returns a list of links to Google Ads accounts for a property.
+    parameters:
+      - name: property_id
+        type: integer|string
+        required: true
+    source_file: analytics_mcp/tools/admin/info.py
+  - name: list_property_annotations
+    category: admin
+    description: >-
+      Returns reporting data annotations for a property — notes left on GA4 for
+      specific dates or periods.
+    parameters:
+      - name: property_id
+        type: integer|string
+        required: true
+    source_file: analytics_mcp/tools/admin/info.py
+    note: Calls the Admin API v1alpha ListReportingDataAnnotations method.
+  - name: run_report
+    category: reporting
+    description: Runs a Google Analytics report using the Data API.
+    parameters:
+      - name: property_id
+        type: integer|string
+        required: true
+      - name: date_ranges
+        type: array<object>
+        required: true
+      - name: dimensions
+        type: array<string>
+        required: true
+      - name: metrics
+        type: array<string>
+        required: true
+      - name: dimension_filter
+        type: object
+        required: false
+      - name: metric_filter
+        type: object
+        required: false
+      - name: order_bys
+        type: array<object>
+        required: false
+      - name: limit
+        type: integer
+        required: false
+      - name: offset
+        type: integer
+        required: false
+      - name: currency_code
+        type: string
+        required: false
+      - name: return_property_quota
+        type: boolean
+        required: false
+    source_file: analytics_mcp/tools/reporting/core.py
+  - name: run_realtime_report
+    category: reporting
+    description: Runs a Google Analytics realtime report using the Data API.
+    parameters:
+      - name: property_id
+        type: integer|string
+        required: true
+      - name: dimensions
+        type: array<string>
+        required: true
+      - name: metrics
+        type: array<string>
+        required: true
+      - name: dimension_filter
+        type: object
+        required: false
+      - name: metric_filter
+        type: object
+        required: false
+      - name: order_bys
+        type: array<object>
+        required: false
+      - name: limit
+        type: integer
+        required: false
+      - name: offset
+        type: integer
+        required: false
+      - name: return_property_quota
+        type: boolean
+        required: false
+    source_file: analytics_mcp/tools/reporting/realtime.py
+  - name: run_funnel_report
+    category: reporting
+    description: Runs a Google Analytics funnel report using the Data API.
+    parameters:
+      - name: property_id
+        type: integer|string
+        required: true
+      - name: funnel_steps
+        type: array<object>
+        required: true
+      - name: date_ranges
+        type: array<object>
+        required: false
+      - name: funnel_breakdown
+        type: object
+        required: false
+      - name: funnel_next_action
+        type: object
+        required: false
+      - name: segments
+        type: array<object>
+        required: false
+      - name: return_property_quota
+        type: boolean
+        required: false
+    source_file: analytics_mcp/tools/reporting/funnel.py
+    note: Backed by the Data API v1alpha runFunnelReport method.
+  - name: run_conversions_report
+    category: reporting
+    description: >-
+      Runs a conversion-performance report using the Data API v1alpha conversion
+      reporting surface (Advertising > Conversion performance).
+    parameters:
+      - name: property_id
+        type: integer|string
+        required: true
+      - name: date_ranges
+        type: array<object>
+        required: true
+      - name: dimensions
+        type: array<string>
+        required: true
+      - name: metrics
+        type: array<string>
+        required: true
+      - name: conversion_spec
+        type: object
+        required: true
+      - name: dimension_filter
+        type: object
+        required: false
+      - name: metric_filter
+        type: object
+        required: false
+      - name: order_bys
+        type: array<object>
+        required: false
+      - name: limit
+        type: integer
+        required: false
+      - name: offset
+        type: integer
+        required: false
+      - name: currency_code
+        type: string
+        required: false
+      - name: return_property_quota
+        type: boolean
+        required: false
+    source_file: analytics_mcp/tools/reporting/conversions.py
+  - name: get_custom_dimensions_and_metrics
+    category: reporting
+    description: Retrieves the custom dimensions and metrics for a specific property.
+    parameters:
+      - name: property_id
+        type: integer|string
+        required: true
+    source_file: analytics_mcp/tools/reporting/metadata.py
+coverage:
+  tool_count: 9
+  write_tools: 0
+  note: >-
+    The server is read-only. Nothing in it creates, patches, archives or deletes a
+    Google Analytics resource, even though the Admin API exposes 80+ write
+    operations. The Measurement Protocol (event ingestion) is not exposed either.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

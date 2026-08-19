@@ -1,0 +1,45 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist overlay — Google Analytics Admin accounts metadata API
+  version: 1.0.0
+extends: ../openapi/google-analytics-metadata-api-openapi.yml
+x-generated: '2026-08-13'
+x-method: generated
+x-source: openapi/google-analytics-metadata-api-openapi.yml plus the artifacts in this repository
+x-provider: Google Analytics
+x-providerId: google-analytics
+actions:
+- target: $.info
+  description: Record provenance and lifecycle context on the document.
+  update:
+    x-api-evangelist:
+      provenance: Converted by API Evangelist from the Google API Discovery document. Google publishes
+        no OpenAPI for Google Analytics.
+      discovery: discovery/
+      protobuf: grpc/
+      note: 'SUNSET SURFACE. These operations belong to the Universal Analytics Management API v3, which
+        Google turned down on 2024-07-01 together with Universal Analytics. The replacement is Google
+        Analytics Data API v1beta getMetadata. Retained as historical record; do not build against it.
+        Evidence and the full deprecation record are in lifecycle/google-analytics-lifecycle.yml. Original
+        host: https://analytics.googleapis.com/analytics/v3. Source of truth for this contract is Google''s
+        API Discovery document (discovery/) and the .proto service definitions (grpc/); this OpenAPI is
+        an API Evangelist conversion, not a Google-published artifact.'
+      lifecycle: lifecycle/google-analytics-lifecycle.yml
+      conventions: conventions/google-analytics-conventions.yml
+      errors: errors/google-analytics-problem-types.yml
+      rate_limits: rate-limits/google-analytics-rate-limits.yml
+      authentication: authentication/google-analytics-authentication.yml
+      scopes: scopes/google-analytics-scopes.yml
+- target: $.info
+  description: Flag the whole document as describing a sunset service.
+  update:
+    x-sunset:
+      service: Universal Analytics Management API v3
+      sunset_date: '2024-07-01'
+      replacement: Google Analytics Data API v1beta getMetadata
+      status: sunset
+      evidence: lifecycle/google-analytics-lifecycle.yml
+- target: $.paths.*.*
+  description: Mark every operation deprecated — the service it belongs to no longer exists.
+  update:
+    deprecated: true

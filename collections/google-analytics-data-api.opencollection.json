@@ -1,0 +1,381 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Analytics Admin accounts data API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "analytics.data.ga.get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://analyticsadmin.googleapis.com/data/ga",
+            "params": [
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for the response."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."
+              },
+              {
+                "name": "userIp",
+                "value": "",
+                "type": "query",
+                "description": "Deprecated. Please use quotaUser instead."
+              },
+              {
+                "name": "ids",
+                "value": "123456",
+                "type": "query",
+                "description": "Unique table ID for retrieving Analytics data. Table ID is of the form ga:XXXX, where XXXX is the Analytics view (profile) ID."
+              },
+              {
+                "name": "start-date",
+                "value": "2026-04-17",
+                "type": "query",
+                "description": "Start date for fetching Analytics data. Requests can specify a start date formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is 7daysAgo."
+              },
+              {
+                "name": "end-date",
+                "value": "2026-04-17",
+                "type": "query",
+                "description": "End date for fetching Analytics data. Request can should specify an end date formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is yesterday."
+              },
+              {
+                "name": "metrics",
+                "value": "example_value",
+                "type": "query",
+                "description": "A comma-separated list of Analytics metrics. E.g., 'ga:sessions,ga:pageviews'. At least one metric must be specified."
+              },
+              {
+                "name": "dimensions",
+                "value": "example_value",
+                "type": "query",
+                "description": "A comma-separated list of Analytics dimensions. E.g., 'ga:browser,ga:city'."
+              },
+              {
+                "name": "filters",
+                "value": "example_value",
+                "type": "query",
+                "description": "A comma-separated list of dimension or metric filters to be applied to Analytics data."
+              },
+              {
+                "name": "include-empty-rows",
+                "value": "true",
+                "type": "query",
+                "description": "The response will include empty rows if this parameter is set to true, the default is true"
+              },
+              {
+                "name": "max-results",
+                "value": "42",
+                "type": "query",
+                "description": "The maximum number of entries to include in this feed."
+              },
+              {
+                "name": "output",
+                "value": "dataTable",
+                "type": "query",
+                "description": "The selected format for the response. Default format is JSON."
+              },
+              {
+                "name": "samplingLevel",
+                "value": "DEFAULT",
+                "type": "query",
+                "description": "The desired sampling level."
+              },
+              {
+                "name": "segment",
+                "value": "example_value",
+                "type": "query",
+                "description": "An Analytics segment to be applied to data."
+              },
+              {
+                "name": "sort",
+                "value": "example_value",
+                "type": "query",
+                "description": "A comma-separated list of dimensions or metrics that determine the sort order for Analytics data."
+              },
+              {
+                "name": "start-index",
+                "value": "42",
+                "type": "query",
+                "description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Returns Analytics data for a view (profile)."
+        },
+        {
+          "info": {
+            "name": "analytics.data.mcf.get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://analyticsadmin.googleapis.com/data/mcf",
+            "params": [
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for the response."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."
+              },
+              {
+                "name": "userIp",
+                "value": "",
+                "type": "query",
+                "description": "Deprecated. Please use quotaUser instead."
+              },
+              {
+                "name": "ids",
+                "value": "123456",
+                "type": "query",
+                "description": "Unique table ID for retrieving Analytics data. Table ID is of the form ga:XXXX, where XXXX is the Analytics view (profile) ID."
+              },
+              {
+                "name": "start-date",
+                "value": "2026-04-17",
+                "type": "query",
+                "description": "Start date for fetching Analytics data. Requests can specify a start date formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is 7daysAgo."
+              },
+              {
+                "name": "end-date",
+                "value": "2026-04-17",
+                "type": "query",
+                "description": "End date for fetching Analytics data. Requests can specify a start date formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is 7daysAgo."
+              },
+              {
+                "name": "metrics",
+                "value": "example_value",
+                "type": "query",
+                "description": "A comma-separated list of Multi-Channel Funnels metrics. E.g., 'mcf:totalConversions,mcf:totalConversionValue'. At least one metric must be specified."
+              },
+              {
+                "name": "dimensions",
+                "value": "example_value",
+                "type": "query",
+                "description": "A comma-separated list of Multi-Channel Funnels dimensions. E.g., 'mcf:source,mcf:medium'."
+              },
+              {
+                "name": "filters",
+                "value": "example_value",
+                "type": "query",
+                "description": "A comma-separated list of dimension or metric filters to be applied to the Analytics data."
+              },
+              {
+                "name": "max-results",
+                "value": "42",
+                "type": "query",
+                "description": "The maximum number of entries to include in this feed."
+              },
+              {
+                "name": "samplingLevel",
+                "value": "DEFAULT",
+                "type": "query",
+                "description": "The desired sampling level."
+              },
+              {
+                "name": "sort",
+                "value": "example_value",
+                "type": "query",
+                "description": "A comma-separated list of dimensions or metrics that determine the sort order for the Analytics data."
+              },
+              {
+                "name": "start-index",
+                "value": "42",
+                "type": "query",
+                "description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Returns Analytics Multi-Channel Funnels data for a view (profile)."
+        },
+        {
+          "info": {
+            "name": "analytics.data.realtime.get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://analyticsadmin.googleapis.com/data/realtime",
+            "params": [
+              {
+                "name": "alt",
+                "value": "",
+                "type": "query",
+                "description": "Data format for the response."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Selector specifying which fields to include in a partial response."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+              },
+              {
+                "name": "oauth_token",
+                "value": "",
+                "type": "query",
+                "description": "OAuth 2.0 token for the current user."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Returns response with indentations and line breaks."
+              },
+              {
+                "name": "quotaUser",
+                "value": "",
+                "type": "query",
+                "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."
+              },
+              {
+                "name": "userIp",
+                "value": "",
+                "type": "query",
+                "description": "Deprecated. Please use quotaUser instead."
+              },
+              {
+                "name": "ids",
+                "value": "123456",
+                "type": "query",
+                "description": "Unique table ID for retrieving real time data. Table ID is of the form ga:XXXX, where XXXX is the Analytics view (profile) ID."
+              },
+              {
+                "name": "metrics",
+                "value": "example_value",
+                "type": "query",
+                "description": "A comma-separated list of real time metrics. E.g., 'rt:activeUsers'. At least one metric must be specified."
+              },
+              {
+                "name": "dimensions",
+                "value": "example_value",
+                "type": "query",
+                "description": "A comma-separated list of real time dimensions. E.g., 'rt:medium,rt:city'."
+              },
+              {
+                "name": "filters",
+                "value": "example_value",
+                "type": "query",
+                "description": "A comma-separated list of dimension or metric filters to be applied to real time data."
+              },
+              {
+                "name": "max-results",
+                "value": "42",
+                "type": "query",
+                "description": "The maximum number of entries to include in this feed."
+              },
+              {
+                "name": "sort",
+                "value": "example_value",
+                "type": "query",
+                "description": "A comma-separated list of dimensions or metrics that determine the sort order for real time data."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "implicit",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "credentials": {
+                "clientId": "{{clientId}}"
+              }
+            }
+          },
+          "docs": "Returns real time data for a view (profile)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

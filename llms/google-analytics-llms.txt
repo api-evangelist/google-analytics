@@ -1,0 +1,102 @@
+# Google Analytics
+
+> Google Analytics measures traffic and engagement across websites and apps. Its GA4-era
+> developer surface is three separate APIs: the Data API (reporting), the Admin API
+> (configuration), and the Measurement Protocol (server-side event ingestion). Google
+> publishes no OpenAPI for any of them — the machine-readable contract Google serves is
+> the Google API Discovery document, plus .proto service definitions in googleapis/googleapis.
+
+> Provenance: generated 2026-08-13 by the API Evangelist enrichment pipeline from
+> apis.yml and the artifacts in this repository. Google does not publish an llms.txt —
+> https://developers.google.com/llms.txt and https://developers.google.com/analytics/llms.txt
+> both return HTTP 404 (probed 2026-08-13). This file is API Evangelist's summary, not a
+> Google document.
+
+## APIs
+
+- [Google Analytics Data API (GA4) v1beta](https://developers.google.com/analytics/devguides/reporting/data/v1): Run standard, pivot, realtime, funnel and batch reports against a GA4 property. Base: https://analyticsdata.googleapis.com. Token-quota metered.
+- [Google Analytics Admin API v1beta / v1alpha](https://developers.google.com/analytics/devguides/config/admin/v1): Manage accounts, properties, data streams, custom dimensions and metrics, key events, links, retention and access. Base: https://analyticsadmin.googleapis.com.
+- [Measurement Protocol (GA4)](https://developers.google.com/analytics/devguides/collection/protocol/ga4): POST events server-side into a property. Base: https://www.google-analytics.com/mp (regional: https://region1.google-analytics.com/mp). No OAuth; an api_secret query parameter.
+
+## Sunset APIs (do not build on these)
+
+Universal Analytics was turned down on 2024-07-01. The following are gone; their doc URLs
+still return HTTP 200 with a "page isn't available" notice, so a status code alone will
+mislead you.
+
+- Reporting API v4 (analyticsreporting.googleapis.com) — replaced by the Data API v1beta
+- Management API v3 (analytics.googleapis.com/analytics/v3) — replaced by the Admin API v1beta
+- Measurement Protocol v1 — replaced by the GA4 Measurement Protocol
+- User Deletion API v3 — replaced by Admin API v1alpha properties.submitUserDeletion
+
+## Authentication
+
+- OAuth 2.0. Authorize at https://accounts.google.com/o/oauth2/v2/auth, token at https://oauth2.googleapis.com/token. Send `Authorization: Bearer <token>`.
+- Service accounts / Application Default Credentials are the production pattern for server-to-server.
+- Scopes: `analytics.readonly` (read everything), `analytics.edit` (Admin writes), `analytics`, `analytics.manage.users`, `analytics.manage.users.readonly`, `analytics.provision`, `analytics.user.deletion`. All are prefixed `https://www.googleapis.com/auth/`.
+- Two gates must both pass: the Google Cloud project must have the API enabled, AND the calling identity must hold a Google Analytics role on the property. A 403 PERMISSION_DENIED with a valid token almost always means the second was skipped.
+- The Measurement Protocol uses an `api_secret` query parameter minted per data stream. It is write-only ingestion and must never be exposed client-side.
+- Details: authentication/google-analytics-authentication.yml, scopes/google-analytics-scopes.yml
+
+## Rate limits
+
+- Data API: token quotas per GA4 property in three independent categories (Core, Realtime, Funnel). Standard: 200,000 tokens/day, 40,000/hour, 14,000/hour per project/property, 10 concurrent. Analytics 360: 10x each. Exhaustion returns HTTP 429 RESOURCE_EXHAUSTED.
+- Admin API: 1,200 requests/minute per project, 600/minute per user, 600 writes/minute, 180 writes/minute per user. Exhaustion returns HTTP 403, not 429. Refills every 60 seconds.
+- Measurement Protocol: 100 million non-conversion requests per property per hour, then requests are silently dropped for the rest of the hour.
+- No rate-limit response headers exist. Send `"returnPropertyQuota": true` on a Data API request to read the remaining balance in-band, or call `properties.getPropertyQuotasSnapshot`.
+- 5xx responses charge a server-error quota (10/hour Standard); all other non-200s charge a client-error quota (10,000 per 15 minutes). Retry with backoff AND a retry limit, or the project gets blocked from the property.
+- Details: rate-limits/google-analytics-rate-limits.yml
+
+## Errors
+
+- Envelope is Google canonical, not RFC 9457: `{"error": {"code": 403, "message": "...", "status": "PERMISSION_DENIED"}}`. Branch on `error.status`, not on the HTTP code.
+- 400 INVALID_ARGUMENT, 401 UNAUTHENTICATED, 403 PERMISSION_DENIED, 429 RESOURCE_EXHAUSTED, 500 INTERNAL, 503 UNAVAILABLE.
+- The Measurement Protocol returns no error codes at all. Validate against https://www.google-analytics.com/debug/mp/collect first.
+- Details: errors/google-analytics-problem-types.yml
+
+## Conventions
+
+- Resource names are hierarchical (AIP-122): `accounts/1234`, `properties/5678/dataStreams/9012`. There are no opaque ID prefixes.
+- Admin API pagination is `pageSize` / `pageToken` / `nextPageToken`. Data API reporting uses `limit` / `offset` with `rowCount`.
+- No idempotency keys anywhere. Retried Measurement Protocol events duplicate; retried Admin creates duplicate.
+- No Sunset or Deprecation response headers, even though four services were sunset.
+- Partial responses via the global `fields` parameter; per-caller quota sharding via `quotaUser`.
+- Details: conventions/google-analytics-conventions.yml
+
+## Machine-readable contracts
+
+- Google API Discovery (Google-served): https://analyticsdata.googleapis.com/$discovery/rest?version=v1beta and https://analyticsadmin.googleapis.com/$discovery/rest?version=v1beta — captured in discovery/
+- Protocol Buffers (Google-served): grpc/ — analytics_data_api.proto, data.proto, analytics_admin.proto, resources.proto from googleapis/googleapis
+- OpenAPI (API Evangelist conversions, not provider artifacts): openapi/
+- Entity graph: data-model/google-analytics-data-model.yml
+
+## Agent surface
+
+- Official MCP server: https://github.com/googleanalytics/google-analytics-mcp — LOCAL STDIO ONLY. Install with `pipx run analytics-mcp` (PyPI `analytics-mcp` 0.7.0). There is no hosted endpoint an agent can POST to.
+- Nine read-only tools: get_account_summaries, get_property_details, list_google_ads_links, list_property_annotations, run_report, run_realtime_report, run_funnel_report, run_conversions_report, get_custom_dimensions_and_metrics.
+- No A2A agent card is served on any Google Analytics host.
+- Tool-to-REST binding: mcp/google-analytics-tool-crosswalk.yml
+
+## Testing
+
+- Measurement Protocol validation server: https://www.google-analytics.com/debug/mp/collect — same request, different path; events do not reach reports. It does NOT validate api_secret or firebase_app_id.
+- Google Analytics demo account (Google Merchandise Store, Flood-It!) is real, populated, and attachable to any Google account for read-only Data API development: https://support.google.com/analytics/answer/6367342
+- No test-mode credentials, no sandbox tenant, no test clock.
+
+## Client libraries
+
+Official, current as of 2026-08-13: npm `@google-analytics/data` 7.0.0 and `@google-analytics/admin` 10.0.0; PyPI `google-analytics-data` 0.23.0 and `google-analytics-admin` 0.30.1; RubyGems, Packagist, Maven `com.google.analytics:*`, NuGet `Google.Analytics.*` (still beta identifiers), Go `cloud.google.com/go/analytics`. There is no client library for the Measurement Protocol. See packages/google-analytics-packages.yml.
+
+## Pricing
+
+Standard GA4 is free. Analytics 360 is enterprise, sales-gated, with no published price and 10x quotas. See plans/google-analytics-plans-pricing.yml.
+
+## Reference
+
+- [Developer portal](https://developers.google.com/analytics)
+- [Data API changelog](https://developers.google.com/analytics/devguides/reporting/data/v1/changelog)
+- [Admin API changelog](https://developers.google.com/analytics/devguides/config/admin/v1/changelog)
+- [Status](https://status.cloud.google.com/)
+- [GitHub](https://github.com/googleanalytics/)
+- [GA Dev Tools](https://ga-dev-tools.google/ga4/)
+- [Terms of service](https://developers.google.com/analytics/terms)

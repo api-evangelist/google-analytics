@@ -1,0 +1,216 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://developers.google.com/analytics/devguides/reporting/data/v1/changelog and
+  https://developers.google.com/analytics/devguides/config/admin/v1/changelog
+  (both fetched 2026-08-13, HTTP 200)
+provider: Google Analytics
+providerId: google-analytics
+scheme: >-
+  Dated prose changelogs, one per API, published on the developer site. Entries are
+  headed by an ISO date and a change title. There is no version number attached to an
+  entry — the version is the API channel (v1beta / v1alpha) named inside it.
+machine_readable: false
+notification_channel: https://groups.google.com/forum/#!forum/google-analytics-api-notify
+changelogs:
+  - api: Google Analytics Data API (GA4)
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/changelog
+    current_version: v1beta
+  - api: Google Analytics Admin API
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/changelog
+    current_version: v1beta
+  - api: Measurement Protocol (GA4)
+    url: https://developers.google.com/analytics/devguides/collection/protocol/ga4/changelog
+    current_version: unversioned
+entries:
+  - date: '2026-06-18'
+    api: Google Analytics Admin API
+    channel: v1alpha
+    type: addition
+    breaking: false
+    title: Added UpdateReportingIdentitySettings method
+    highlights:
+      - Lets you update the ReportingIdentitySettings for a property.
+  - date: '2026-06-18'
+    api: Google Analytics Admin API
+    channel: v1alpha + v1beta
+    type: addition
+    breaking: false
+    title: Added can_edit field to PropertySummary
+    highlights:
+      - >-
+        Indicates whether the user holds a Google Analytics role permitting settings
+        changes on the property.
+  - date: '2026-04-23'
+    api: Google Analytics Data API
+    channel: v1alpha
+    type: addition
+    breaking: false
+    title: Added support for conversion reporting
+    highlights:
+      - >-
+        runReport can now return Advertising > Conversion performance data via a new
+        ConversionSpec field on RunReportRequest (conversionActions +
+        AttributionModel DATA_DRIVEN or LAST_CLICK).
+      - Added Section to ResponseMetaData (SECTION_REPORT vs SECTION_ADVERTISING).
+      - >-
+        getMetadata gained conversions[] (ConversionMetadata) and per-field sections
+        on DimensionMetadata/MetricMetadata.
+      - Not yet available on every property.
+  - date: '2026-04-14'
+    api: Google Analytics Admin API
+    channel: v1alpha
+    type: addition
+    breaking: false
+    title: Added GetUserProvidedDataSettings method
+    highlights:
+      - >-
+        New UserProvidedDataSettings resource with
+        userProvidedDataCollectionEnabled and
+        automaticallyDetectedDataCollectionEnabled.
+  - date: '2025-08-20'
+    api: Google Analytics Admin API
+    channel: v1alpha
+    type: addition
+    breaking: false
+    title: Added GetReportingIdentitySettings method
+  - date: '2025-08-20'
+    api: Google Analytics Admin API
+    channel: v1alpha
+    type: removal
+    breaking: true
+    title: Removed legacy Universal Analytics methods
+    highlights:
+      - >-
+        Removed SetAutomatedGa4ConfigurationOptOut,
+        FetchAutomatedGa4ConfigurationOptOut, CreateConnectedSiteTag,
+        DeleteConnectedSiteTag, ListConnectedSiteTags and FetchConnectedGa4Property.
+  - date: '2025-06-12'
+    api: Google Analytics Admin API
+    channel: v1alpha
+    type: addition
+    breaking: false
+    title: Added subproperty sync configuration management methods
+    highlights:
+      - GetSubpropertySyncConfig, ListSubpropertySyncConfig, UpdateSubpropertySyncConfig.
+  - date: '2025-04-16'
+    api: Google Analytics Admin API
+    channel: v1alpha
+    type: addition
+    breaking: false
+    title: Added Reporting Data Annotation management methods
+    highlights:
+      - >-
+        Create/Get/List/Update/DeleteReportingDataAnnotation for the
+        ReportingDataAnnotation resource.
+  - date: '2025-03-07'
+    api: Google Analytics Admin API
+    channel: v1beta
+    type: deprecation
+    breaking: true
+    title: Deprecating the sharingWithGoogleAnySalesEnabled parameter
+    highlights:
+      - >-
+        The getDataSharingSettings field now always returns false and was removed
+        from v1beta in June 2025.
+  - date: '2025-01-20'
+    api: Google Analytics Admin API
+    channel: v1alpha + v1beta
+    type: addition
+    breaking: false
+    title: Added user data retention to DataRetentionSettings
+  - date: '2024-10-20'
+    api: Google Analytics Data API
+    channel: v1beta
+    type: addition
+    breaking: false
+    title: Added the EmptyFilter dimension filter type
+  - date: '2024-10-15'
+    api: Google Analytics Data API
+    channel: v1alpha
+    type: addition
+    breaking: false
+    title: Added sampling level to the reportTasks method
+    highlights:
+      - >-
+        samplingLevel on properties.runReportTask; Analytics 360 properties get
+        1-billion-event sampling limits and an UNSAMPLED setting.
+  - date: '2024-09-18'
+    api: Google Analytics Data API
+    channel: v1beta
+    type: addition
+    breaking: false
+    title: Added Property Quotas Snapshot feature
+    highlights:
+      - >-
+        properties.getPropertyQuotasSnapshot returns all property quotas grouped by
+        quota category.
+  - date: '2024-06-28'
+    api: Google Analytics Data API
+    channel: v1beta
+    type: quota
+    breaking: true
+    title: Added "client errors per project per property" quota
+    highlights:
+      - >-
+        10,000 non-200/non-500 responses per project per property per 15-minute
+        window; exceeding it temporarily blocks the project from the property.
+  - date: '2024-05-14'
+    api: Google Analytics Data API
+    channel: v1beta
+    type: addition
+    breaking: false
+    title: Added Comparisons feature
+    highlights:
+      - >-
+        comparisons field on core reporting methods; getMetadata lists saved
+        comparisons. Saved comparisons can only be created in the Google Analytics UI.
+  - date: '2024-05-08'
+    api: Google Analytics Data API
+    channel: v1alpha
+    type: addition
+    breaking: false
+    title: Added report tasks (asynchronous reporting)
+    highlights:
+      - properties.reportTasks create / get / list / query.
+  - date: '2024-05-06'
+    api: Google Analytics Data API
+    channel: v1beta
+    type: deprecation
+    breaking: true
+    title: New dimensions for key events
+    highlights:
+      - Replace the isConversionEvent dimension with isKeyEvent.
+      - Conversion metrics deprecated in favour of Key Event metrics.
+  - date: '2024-08-01'
+    api: Google Analytics Admin API
+    channel: v1alpha
+    type: rename
+    breaking: true
+    title: Breaking change to the createSubproperty method
+    highlights:
+      - >-
+        Renamed createSubproperty to provisionSubproperty to align with custom method
+        guidelines. No alias period was announced.
+  - date: '2024-08-01'
+    api: Google Analytics Admin API
+    channel: v1alpha
+    type: addition
+    breaking: false
+    title: Added BigQuery link management and event edit rules
+    highlights:
+      - Create/Update/DeleteBigQueryLink plus a dataset_location field.
+      - >-
+        Get/Create/Delete/List/Update/ReorderEventEditRule for the EventEditRule
+        resource.
+observations:
+  - >-
+    The Admin API v1alpha channel is where nearly all new capability lands; v1beta
+    receives a trickle. Six of the last ten Admin API entries are v1alpha-only.
+  - >-
+    Breaking changes are announced in the same undifferentiated dated list as
+    additions. There is no severity tag, no machine-readable feed, and no Sunset
+    header at runtime.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

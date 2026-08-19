@@ -4,7 +4,26 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Google Analytics
 providerId: google-analytics
 created: '2026-05-04'
-modified: '2026-05-05'
+generated: '2026-08-13'
+method: searched
+modified: '2026-08-13'
+source: >-
+  https://marketingplatform.google.com/about/analytics-360/ and
+  https://marketingplatform.google.com/about/analytics/ (both fetched 2026-08-13,
+  HTTP 200) plus
+  https://developers.google.com/analytics/devguides/reporting/data/v1/quotas.
+  Upgraded from the 2026-05-04 bulk-sweep version (method: generated): the two-SKU
+  structure and every quota figure below were re-verified against the live pages.
+plan_count: 2
+published_price: false
+pricing_note: >-
+  Google publishes NO list price for Google Analytics. The Standard SKU is free and
+  says so; the Analytics 360 page carries no price at all — the only calls to action
+  are "Talk to Sales" and "Sign in to Analytics 360". The enterprise SKU's cost,
+  contract term and minimum commitment are all sales-gated. What the page does state
+  publicly is that 360 includes "service level agreements across many product
+  functionalities – from data collection to attribution – and even for BigQuery daily
+  export", though the SLA text itself is not published.
 reconciled: true
 tags:
   - Analytics

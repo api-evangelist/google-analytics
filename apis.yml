@@ -29,6 +29,15 @@ tags:
 - Metrics
 - Reporting
 - Web Analytics
+- Machine-Learning
+- Attribution
+tags_raw:
+- Analytics
+- Data
+- Google
+- Metrics
+- Reporting
+- Web Analytics
 - Machine Learning
 - Attribution
 apis:
@@ -38,6 +47,8 @@ apis:
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
   baseURL: https://analyticsadmin.googleapis.com
   tags:
+  - Account
+  tags_raw:
   - accounts
   properties:
   - type: OpenAPI
@@ -127,7 +138,8 @@ apis:
   description: The accountSummaries API from Google Analytics — 1 operation(s) for accountsummaries.
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
   baseURL: https://analyticsadmin.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - accountSummaries
   properties:
   - type: OpenAPI
@@ -218,6 +230,8 @@ apis:
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
   baseURL: https://analytics.googleapis.com/analytics/v3
   tags:
+  - Data
+  tags_raw:
   - data
   properties:
   - type: OpenAPI
@@ -308,6 +322,8 @@ apis:
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
   baseURL: https://www.google-analytics.com/mp
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -398,6 +414,8 @@ apis:
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
   baseURL: https://analytics.googleapis.com/analytics/v3
   tags:
+  - Management
+  tags_raw:
   - management
   properties:
   - type: OpenAPI
@@ -488,6 +506,8 @@ apis:
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
   baseURL: https://analytics.googleapis.com/analytics/v3
   tags:
+  - Metadata
+  tags_raw:
   - metadata
   properties:
   - type: OpenAPI
@@ -578,6 +598,8 @@ apis:
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
   baseURL: https://analyticsadmin.googleapis.com
   tags:
+  - Properties
+  tags_raw:
   - properties
   properties:
   - type: OpenAPI
@@ -668,6 +690,8 @@ apis:
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
   baseURL: https://analytics.googleapis.com/analytics/v3
   tags:
+  - Provisioning
+  tags_raw:
   - provisioning
   properties:
   - type: OpenAPI
@@ -758,6 +782,8 @@ apis:
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
   baseURL: https://analyticsreporting.googleapis.com
   tags:
+  - Reports
+  tags_raw:
   - reports
   properties:
   - type: OpenAPI
@@ -938,6 +964,8 @@ apis:
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
   baseURL: https://analyticsreporting.googleapis.com
   tags:
+  - User Activity
+  tags_raw:
   - userActivity
   properties:
   - type: OpenAPI
@@ -1028,6 +1056,8 @@ apis:
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
   baseURL: https://www.googleapis.com/analytics/v3
   tags:
+  - User Deletion
+  tags_raw:
   - userDeletion
   properties:
   - type: OpenAPI

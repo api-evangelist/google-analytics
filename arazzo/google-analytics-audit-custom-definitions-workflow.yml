@@ -10,8 +10,8 @@ info:
     request is spelled out inline, including the OAuth bearer authorization.
   version: 1.0.0
 sourceDescriptions:
-- name: analyticsAdminApi
-  url: ../openapi/google-analytics-admin-api.yaml
+- name: propertiesApi
+  url: ../openapi/google-analytics-properties-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: audit-custom-definitions

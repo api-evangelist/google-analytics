@@ -11,11 +11,11 @@ info:
     executed without opening the underlying OpenAPI descriptions.
   version: 1.0.0
 sourceDescriptions:
-- name: analyticsAdminApi
-  url: ../openapi/google-analytics-admin-api.yaml
+- name: accountsummariesApi
+  url: ../openapi/google-analytics-accountsummaries-api-openapi.yml
   type: openapi
-- name: analyticsDataApi
-  url: ../openapi/google-analytics-data-api.yaml
+- name: propertiesApi
+  url: ../openapi/google-analytics-properties-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: discover-and-run-report

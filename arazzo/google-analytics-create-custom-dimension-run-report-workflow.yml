@@ -12,11 +12,8 @@ info:
     the OAuth bearer authorization.
   version: 1.0.0
 sourceDescriptions:
-- name: analyticsAdminApi
-  url: ../openapi/google-analytics-admin-api.yaml
-  type: openapi
-- name: analyticsDataApi
-  url: ../openapi/google-analytics-data-api.yaml
+- name: propertiesApi
+  url: ../openapi/google-analytics-properties-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: create-custom-dimension-run-report

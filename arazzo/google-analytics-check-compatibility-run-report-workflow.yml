@@ -12,8 +12,8 @@ info:
     authorization.
   version: 1.0.0
 sourceDescriptions:
-- name: analyticsDataApi
-  url: ../openapi/google-analytics-data-api.yaml
+- name: propertiesApi
+  url: ../openapi/google-analytics-properties-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: check-compatibility-run-report

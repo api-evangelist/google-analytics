@@ -11,8 +11,8 @@ info:
     can be read and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: analyticsAdminApi
-  url: ../openapi/google-analytics-admin-api.yaml
+- name: accountsApi
+  url: ../openapi/google-analytics-accounts-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: account-change-history-audit

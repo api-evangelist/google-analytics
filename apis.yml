@@ -4,6 +4,18 @@ description: Google Analytics provides data and insights about website and app u
   audience and optimize their digital properties through customer-centric measurement, machine learning insights, and cross-platform
   attribution.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
@@ -1233,6 +1245,9 @@ apis:
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
 common:
+  - type: CapabilityMap
+    url: capabilities/google-analytics-capability-edges.yml
+    name: Google Analytics Business Capability Map
   - type: AgenticAccess
     url: agentic-access/google-analytics-agentic-access.yml
   - type: VulnerabilityDisclosure

@@ -1,29 +1,32 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   contact:
     name: Google
     url: https://google.com
     x-twitter: youtube
-  description: 'Manage properties in Google Analytics. Warning: Creating multiple Customer Applications, Accounts, or Projects to simulate or act as a single Customer Application, Account, or Project (respectively) or to circumvent Service-specific usage limits or quotas is a direct violation of Google Cloud Platform Terms of Service as well as Google APIs Terms of Service. These actions can result in immediate termination of your GCP project(s) without any warning.'
+  description: Views and manages your Google Analytics data.
   license:
     name: Creative Commons Attribution 3.0
     url: http://creativecommons.org/licenses/by/3.0/
   termsOfService: https://developers.google.com/terms/
-  title: Google Analytics Admin accounts userDeletion API
-  version: "v1"
+  title: Google Analytics User Deletion API
+  version: v3
+  x-apiClientRegistration:
+    url: https://console.developers.google.com
   x-apisguru-categories:
   - analytics
   - media
   x-logo:
-    url: https://upload.wikimedia.org/wikipedia/commons/e/e1/YouTube_play_buttom_icon_%282013-2017%29.svg
+    url: https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png
   x-origin:
   - format: google
-    url: https://analyticsadmin.googleapis.com/$discovery/rest?version=v1beta
+    url: https://analytics.googleapis.com/$discovery/rest?version=v3
+    version: v1
   x-preferred: true
   x-providerName: googleapis.com
-  x-serviceName: analyticsadmin
+  x-serviceName: analytics
 servers:
-- url: https://analyticsadmin.googleapis.com/
+- url: https://analytics.googleapis.com/analytics/v3
 tags:
 - name: userDeletion
 paths:
@@ -63,6 +66,24 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
+    prettyPrint:
+      description: Returns response with indentations and line breaks.
+      in: query
+      name: prettyPrint
+      schema:
+        type: boolean
+    userIp:
+      description: Deprecated. Please use quotaUser instead.
+      in: query
+      name: userIp
+      schema:
+        type: string
+    quotaUser:
+      description: An opaque string that represents a user for quota purposes. Must not exceed 40 characters.
+      in: query
+      name: quotaUser
+      schema:
+        type: string
     alt:
       description: Data format for the response.
       in: query
@@ -71,16 +92,10 @@ components:
         enum:
         - json
         type: string
-    key:
-      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    oauth_token:
+      description: OAuth 2.0 token for the current user.
       in: query
-      name: key
-      schema:
-        type: string
-    userIp:
-      description: Deprecated. Please use quotaUser instead.
-      in: query
-      name: userIp
+      name: oauth_token
       schema:
         type: string
     fields:
@@ -89,22 +104,10 @@ components:
       name: fields
       schema:
         type: string
-    prettyPrint:
-      description: Returns response with indentations and line breaks.
+    key:
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
       in: query
-      name: prettyPrint
-      schema:
-        type: boolean
-    oauth_token:
-      description: OAuth 2.0 token for the current user.
-      in: query
-      name: oauth_token
-      schema:
-        type: string
-    quotaUser:
-      description: An opaque string that represents a user for quota purposes. Must not exceed 40 characters.
-      in: query
-      name: quotaUser
+      name: key
       schema:
         type: string
   schemas:
@@ -147,8 +150,13 @@ components:
         implicit:
           authorizationUrl: https://accounts.google.com/o/oauth2/auth
           scopes:
+            https://www.googleapis.com/auth/analytics: View and manage your Google Analytics data
             https://www.googleapis.com/auth/analytics.edit: Edit Google Analytics management entities
-            https://www.googleapis.com/auth/analytics.readonly: See and download your Google Analytics data
+            https://www.googleapis.com/auth/analytics.manage.users: Manage Google Analytics Account users by email address
+            https://www.googleapis.com/auth/analytics.manage.users.readonly: View Google Analytics user permissions
+            https://www.googleapis.com/auth/analytics.provision: Create a new Google Analytics account along with its default property and view
+            https://www.googleapis.com/auth/analytics.readonly: View your Google Analytics data
+            https://www.googleapis.com/auth/analytics.user.deletion: Manage Google Analytics user deletion requests
       type: oauth2
     Oauth2c:
       description: Oauth 2.0 authorizationCode authentication
@@ -156,9 +164,14 @@ components:
         authorizationCode:
           authorizationUrl: https://accounts.google.com/o/oauth2/auth
           scopes:
+            https://www.googleapis.com/auth/analytics: View and manage your Google Analytics data
             https://www.googleapis.com/auth/analytics.edit: Edit Google Analytics management entities
-            https://www.googleapis.com/auth/analytics.readonly: See and download your Google Analytics data
+            https://www.googleapis.com/auth/analytics.manage.users: Manage Google Analytics Account users by email address
+            https://www.googleapis.com/auth/analytics.manage.users.readonly: View Google Analytics user permissions
+            https://www.googleapis.com/auth/analytics.provision: Create a new Google Analytics account along with its default property and view
+            https://www.googleapis.com/auth/analytics.readonly: View your Google Analytics data
+            https://www.googleapis.com/auth/analytics.user.deletion: Manage Google Analytics user deletion requests
           tokenUrl: https://accounts.google.com/o/oauth2/token
       type: oauth2
 externalDocs:
-  url: http://code.google.com/apis/analytics/docs/mgmt/home.html
+  url: https://developers.google.com/analytics/

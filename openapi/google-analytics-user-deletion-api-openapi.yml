@@ -1,29 +1,19 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
+  title: Google Analytics User Deletion API
+  description: The Google Analytics User Deletion API enables removal of data linked to specific user identifiers, supporting compliance with data protection and privacy requirements such as GDPR. Supports deletion by CLIENT_ID, USER_ID, and APP_INSTANCE_ID. Data appears in Individual User Reports within 72 hours and complete deletion occurs during bimonthly processes.
+  version: v3
   contact:
-    name: Google
-    url: https://google.com
-    x-twitter: youtube
-  description: 'Manage properties in Google Analytics. Warning: Creating multiple Customer Applications, Accounts, or Projects to simulate or act as a single Customer Application, Account, or Project (respectively) or to circumvent Service-specific usage limits or quotas is a direct violation of Google Cloud Platform Terms of Service as well as Google APIs Terms of Service. These actions can result in immediate termination of your GCP project(s) without any warning.'
+    name: Google Analytics
+    url: https://developers.google.com/analytics
   license:
-    name: Creative Commons Attribution 3.0
-    url: http://creativecommons.org/licenses/by/3.0/
-  termsOfService: https://developers.google.com/terms/
-  title: Google Analytics Admin accounts User Deletion API
-  version: "v1"
-  x-apisguru-categories:
-  - analytics
-  - media
+    name: Google APIs Terms of Service
+    url: https://developers.google.com/analytics/terms
   x-logo:
-    url: https://upload.wikimedia.org/wikipedia/commons/e/e1/YouTube_play_buttom_icon_%282013-2017%29.svg
-  x-origin:
-  - format: google
-    url: https://analyticsadmin.googleapis.com/$discovery/rest?version=v1beta
-  x-preferred: true
-  x-providerName: googleapis.com
-  x-serviceName: analyticsadmin
+    url: https://www.google.com/analytics/images/google-analytics-logo.png
 servers:
-- url: https://analyticsadmin.googleapis.com/
+- url: https://www.googleapis.com/analytics/v3
+  description: Google Analytics API v3
 tags:
 - name: User Deletion
 paths:
@@ -111,24 +101,15 @@ components:
           readOnly: true
           example: '2026-04-17T12:00:00Z'
   securitySchemes:
-    Oauth2:
-      description: Oauth 2.0 implicit authentication
-      flows:
-        implicit:
-          authorizationUrl: https://accounts.google.com/o/oauth2/auth
-          scopes:
-            https://www.googleapis.com/auth/analytics.edit: Edit Google Analytics management entities
-            https://www.googleapis.com/auth/analytics.readonly: See and download your Google Analytics data
+    oauth2:
       type: oauth2
-    Oauth2c:
-      description: Oauth 2.0 authorizationCode authentication
+      description: OAuth 2.0 authentication
       flows:
         authorizationCode:
           authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
           scopes:
-            https://www.googleapis.com/auth/analytics.edit: Edit Google Analytics management entities
-            https://www.googleapis.com/auth/analytics.readonly: See and download your Google Analytics data
-          tokenUrl: https://accounts.google.com/o/oauth2/token
-      type: oauth2
+            https://www.googleapis.com/auth/analytics.user.deletion: Delete user data from Google Analytics
 externalDocs:
-  url: http://code.google.com/apis/analytics/docs/mgmt/home.html
+  description: User Deletion API documentation
+  url: https://developers.google.com/analytics/devguides/config/userdeletion/v3

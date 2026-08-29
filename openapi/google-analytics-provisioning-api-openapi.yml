@@ -1,29 +1,32 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   contact:
     name: Google
     url: https://google.com
     x-twitter: youtube
-  description: 'Manage properties in Google Analytics. Warning: Creating multiple Customer Applications, Accounts, or Projects to simulate or act as a single Customer Application, Account, or Project (respectively) or to circumvent Service-specific usage limits or quotas is a direct violation of Google Cloud Platform Terms of Service as well as Google APIs Terms of Service. These actions can result in immediate termination of your GCP project(s) without any warning.'
+  description: Views and manages your Google Analytics data.
   license:
     name: Creative Commons Attribution 3.0
     url: http://creativecommons.org/licenses/by/3.0/
   termsOfService: https://developers.google.com/terms/
-  title: Google Analytics Admin accounts provisioning API
-  version: "v1"
+  title: Google Analytics Provisioning API
+  version: v3
+  x-apiClientRegistration:
+    url: https://console.developers.google.com
   x-apisguru-categories:
   - analytics
   - media
   x-logo:
-    url: https://upload.wikimedia.org/wikipedia/commons/e/e1/YouTube_play_buttom_icon_%282013-2017%29.svg
+    url: https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png
   x-origin:
   - format: google
-    url: https://analyticsadmin.googleapis.com/$discovery/rest?version=v1beta
+    url: https://analytics.googleapis.com/$discovery/rest?version=v3
+    version: v1
   x-preferred: true
   x-providerName: googleapis.com
-  x-serviceName: analyticsadmin
+  x-serviceName: analytics
 servers:
-- url: https://analyticsadmin.googleapis.com/
+- url: https://analytics.googleapis.com/analytics/v3
 tags:
 - name: provisioning
 paths:
@@ -96,78 +99,7 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    alt:
-      description: Data format for the response.
-      in: query
-      name: alt
-      schema:
-        enum:
-        - json
-        type: string
-    key:
-      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
-      in: query
-      name: key
-      schema:
-        type: string
-    userIp:
-      description: Deprecated. Please use quotaUser instead.
-      in: query
-      name: userIp
-      schema:
-        type: string
-    fields:
-      description: Selector specifying which fields to include in a partial response.
-      in: query
-      name: fields
-      schema:
-        type: string
-    prettyPrint:
-      description: Returns response with indentations and line breaks.
-      in: query
-      name: prettyPrint
-      schema:
-        type: boolean
-    oauth_token:
-      description: OAuth 2.0 token for the current user.
-      in: query
-      name: oauth_token
-      schema:
-        type: string
-    quotaUser:
-      description: An opaque string that represents a user for quota purposes. Must not exceed 40 characters.
-      in: query
-      name: quotaUser
-      schema:
-        type: string
   schemas:
-    AccountTicket:
-      description: JSON template for an Analytics account ticket. The account ticket consists of the ticket ID and the basic information for the account, property and profile.
-      properties:
-        account:
-          $ref: '#/components/schemas/Account'
-          description: Account for this ticket.
-        id:
-          description: Account ticket ID used to access the account ticket.
-          type: string
-          example: '123456'
-        kind:
-          default: analytics#accountTicket
-          description: Resource type for account ticket.
-          type: string
-          example: example_value
-        profile:
-          $ref: '#/components/schemas/Profile'
-          description: View (Profile) for the account.
-        redirectUri:
-          description: Redirect URI where the user will be sent after accepting Terms of Service. Must be configured in APIs console as a callback URL.
-          type: string
-          example: https://example.com/resource
-        webproperty:
-          $ref: '#/components/schemas/Webproperty'
-          description: Web property for the account.
-      type: object
     Webproperty:
       description: JSON template for an Analytics web property.
       properties:
@@ -386,48 +318,6 @@ components:
           description: Website URL for this view (profile).
           type: string
       type: object
-    AccountTreeRequest:
-      description: JSON template for an Analytics account tree requests. The account tree request is used in the provisioning api to create an account, property, and view (profile). It contains the basic information required to make these fields.
-      properties:
-        accountName:
-          type: string
-          example: Example Name
-        kind:
-          default: analytics#accountTreeRequest
-          description: Resource type for account ticket.
-          type: string
-          example: example_value
-        profileName:
-          type: string
-          example: Example Name
-        timezone:
-          type: string
-          example: '2026-04-17T12:00:00Z'
-        webpropertyName:
-          type: string
-          example: Example Name
-        websiteUrl:
-          type: string
-          example: https://example.com/resource
-      type: object
-    AccountTreeResponse:
-      description: JSON template for an Analytics account tree response. The account tree response is used in the provisioning api to return the result of creating an account, property, and view (profile).
-      properties:
-        account:
-          $ref: '#/components/schemas/Account'
-          description: The account created.
-        kind:
-          default: analytics#accountTreeResponse
-          description: Resource type for account ticket.
-          type: string
-          example: example_value
-        profile:
-          $ref: '#/components/schemas/Profile'
-          description: View (Profile) for the account.
-        webproperty:
-          $ref: '#/components/schemas/Webproperty'
-          description: Web property for the account.
-      type: object
     Account:
       description: JSON template for Analytics account entry.
       properties:
@@ -484,6 +374,119 @@ components:
           type: string
           example: '2026-04-17T12:00:00Z'
       type: object
+    AccountTreeResponse:
+      description: JSON template for an Analytics account tree response. The account tree response is used in the provisioning api to return the result of creating an account, property, and view (profile).
+      properties:
+        account:
+          $ref: '#/components/schemas/Account'
+          description: The account created.
+        kind:
+          default: analytics#accountTreeResponse
+          description: Resource type for account ticket.
+          type: string
+          example: example_value
+        profile:
+          $ref: '#/components/schemas/Profile'
+          description: View (Profile) for the account.
+        webproperty:
+          $ref: '#/components/schemas/Webproperty'
+          description: Web property for the account.
+      type: object
+    AccountTreeRequest:
+      description: JSON template for an Analytics account tree requests. The account tree request is used in the provisioning api to create an account, property, and view (profile). It contains the basic information required to make these fields.
+      properties:
+        accountName:
+          type: string
+          example: Example Name
+        kind:
+          default: analytics#accountTreeRequest
+          description: Resource type for account ticket.
+          type: string
+          example: example_value
+        profileName:
+          type: string
+          example: Example Name
+        timezone:
+          type: string
+          example: '2026-04-17T12:00:00Z'
+        webpropertyName:
+          type: string
+          example: Example Name
+        websiteUrl:
+          type: string
+          example: https://example.com/resource
+      type: object
+    AccountTicket:
+      description: JSON template for an Analytics account ticket. The account ticket consists of the ticket ID and the basic information for the account, property and profile.
+      properties:
+        account:
+          $ref: '#/components/schemas/Account'
+          description: Account for this ticket.
+        id:
+          description: Account ticket ID used to access the account ticket.
+          type: string
+          example: '123456'
+        kind:
+          default: analytics#accountTicket
+          description: Resource type for account ticket.
+          type: string
+          example: example_value
+        profile:
+          $ref: '#/components/schemas/Profile'
+          description: View (Profile) for the account.
+        redirectUri:
+          description: Redirect URI where the user will be sent after accepting Terms of Service. Must be configured in APIs console as a callback URL.
+          type: string
+          example: https://example.com/resource
+        webproperty:
+          $ref: '#/components/schemas/Webproperty'
+          description: Web property for the account.
+      type: object
+  parameters:
+    prettyPrint:
+      description: Returns response with indentations and line breaks.
+      in: query
+      name: prettyPrint
+      schema:
+        type: boolean
+    fields:
+      description: Selector specifying which fields to include in a partial response.
+      in: query
+      name: fields
+      schema:
+        type: string
+    userIp:
+      description: Deprecated. Please use quotaUser instead.
+      in: query
+      name: userIp
+      schema:
+        type: string
+    quotaUser:
+      description: An opaque string that represents a user for quota purposes. Must not exceed 40 characters.
+      in: query
+      name: quotaUser
+      schema:
+        type: string
+    alt:
+      description: Data format for the response.
+      in: query
+      name: alt
+      schema:
+        enum:
+        - json
+        type: string
+    oauth_token:
+      description: OAuth 2.0 token for the current user.
+      in: query
+      name: oauth_token
+      schema:
+        type: string
+    key:
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+      in: query
+      name: key
+      schema:
+        type: string
   securitySchemes:
     Oauth2:
       description: Oauth 2.0 implicit authentication
@@ -491,8 +494,13 @@ components:
         implicit:
           authorizationUrl: https://accounts.google.com/o/oauth2/auth
           scopes:
+            https://www.googleapis.com/auth/analytics: View and manage your Google Analytics data
             https://www.googleapis.com/auth/analytics.edit: Edit Google Analytics management entities
-            https://www.googleapis.com/auth/analytics.readonly: See and download your Google Analytics data
+            https://www.googleapis.com/auth/analytics.manage.users: Manage Google Analytics Account users by email address
+            https://www.googleapis.com/auth/analytics.manage.users.readonly: View Google Analytics user permissions
+            https://www.googleapis.com/auth/analytics.provision: Create a new Google Analytics account along with its default property and view
+            https://www.googleapis.com/auth/analytics.readonly: View your Google Analytics data
+            https://www.googleapis.com/auth/analytics.user.deletion: Manage Google Analytics user deletion requests
       type: oauth2
     Oauth2c:
       description: Oauth 2.0 authorizationCode authentication
@@ -500,9 +508,14 @@ components:
         authorizationCode:
           authorizationUrl: https://accounts.google.com/o/oauth2/auth
           scopes:
+            https://www.googleapis.com/auth/analytics: View and manage your Google Analytics data
             https://www.googleapis.com/auth/analytics.edit: Edit Google Analytics management entities
-            https://www.googleapis.com/auth/analytics.readonly: See and download your Google Analytics data
+            https://www.googleapis.com/auth/analytics.manage.users: Manage Google Analytics Account users by email address
+            https://www.googleapis.com/auth/analytics.manage.users.readonly: View Google Analytics user permissions
+            https://www.googleapis.com/auth/analytics.provision: Create a new Google Analytics account along with its default property and view
+            https://www.googleapis.com/auth/analytics.readonly: View your Google Analytics data
+            https://www.googleapis.com/auth/analytics.user.deletion: Manage Google Analytics user deletion requests
           tokenUrl: https://accounts.google.com/o/oauth2/token
       type: oauth2
 externalDocs:
-  url: http://code.google.com/apis/analytics/docs/mgmt/home.html
+  url: https://developers.google.com/analytics/

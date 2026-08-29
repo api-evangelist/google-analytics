@@ -1,29 +1,34 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   contact:
     name: Google
     url: https://google.com
     x-twitter: youtube
-  description: 'Manage properties in Google Analytics. Warning: Creating multiple Customer Applications, Accounts, or Projects to simulate or act as a single Customer Application, Account, or Project (respectively) or to circumvent Service-specific usage limits or quotas is a direct violation of Google Cloud Platform Terms of Service as well as Google APIs Terms of Service. These actions can result in immediate termination of your GCP project(s) without any warning.'
+  description: Accesses Analytics report data.
   license:
     name: Creative Commons Attribution 3.0
     url: http://creativecommons.org/licenses/by/3.0/
   termsOfService: https://developers.google.com/terms/
-  title: Google Analytics Admin accounts userActivity API
-  version: "v1"
+  title: Analytics Reporting User Activity API
+  version: v4
+  x-apiClientRegistration:
+    url: https://console.developers.google.com
   x-apisguru-categories:
   - analytics
   - media
   x-logo:
-    url: https://upload.wikimedia.org/wikipedia/commons/e/e1/YouTube_play_buttom_icon_%282013-2017%29.svg
+    url: https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png
   x-origin:
-  - format: google
-    url: https://analyticsadmin.googleapis.com/$discovery/rest?version=v1beta
-  x-preferred: true
+  - converter:
+      url: https://github.com/mermade/oas-kit
+      version: 7.0.4
+    format: google
+    url: https://analyticsreporting.googleapis.com/$discovery/rest?version=v4
+    version: v1
   x-providerName: googleapis.com
-  x-serviceName: analyticsadmin
+  x-serviceName: analyticsreporting
 servers:
-- url: https://analyticsadmin.googleapis.com/
+- url: https://analyticsreporting.googleapis.com/
 tags:
 - name: userActivity
 paths:
@@ -71,14 +76,17 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
-    _.xgafv:
-      description: V1 error format.
+    callback:
+      description: JSONP
       in: query
-      name: $.xgafv
+      name: callback
       schema:
-        enum:
-        - '1'
-        - '2'
+        type: string
+    upload_protocol:
+      description: Upload protocol for media (e.g. "raw", "multipart").
+      in: query
+      name: upload_protocol
+      schema:
         type: string
     alt:
       description: Data format for response.
@@ -90,22 +98,31 @@ components:
         - media
         - proto
         type: string
+    key:
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+      in: query
+      name: key
+      schema:
+        type: string
+    access_token:
+      description: OAuth access token.
+      in: query
+      name: access_token
+      schema:
+        type: string
+    _.xgafv:
+      description: V1 error format.
+      in: query
+      name: $.xgafv
+      schema:
+        enum:
+        - '1'
+        - '2'
+        type: string
     uploadType:
       description: Legacy upload protocol for media (e.g. "media", "multipart").
       in: query
       name: uploadType
-      schema:
-        type: string
-    callback:
-      description: JSONP
-      in: query
-      name: callback
-      schema:
-        type: string
-    fields:
-      description: Selector specifying which fields to include in a partial response.
-      in: query
-      name: fields
       schema:
         type: string
     oauth_token:
@@ -114,28 +131,16 @@ components:
       name: oauth_token
       schema:
         type: string
+    fields:
+      description: Selector specifying which fields to include in a partial response.
+      in: query
+      name: fields
+      schema:
+        type: string
     quotaUser:
       description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
       in: query
       name: quotaUser
-      schema:
-        type: string
-    key:
-      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
-      in: query
-      name: key
-      schema:
-        type: string
-    upload_protocol:
-      description: Upload protocol for media (e.g. "raw", "multipart").
-      in: query
-      name: upload_protocol
-      schema:
-        type: string
-    access_token:
-      description: OAuth access token.
-      in: query
-      name: access_token
       schema:
         type: string
     prettyPrint:
@@ -145,6 +150,193 @@ components:
       schema:
         type: boolean
   schemas:
+    PageviewData:
+      description: Represents details collected when the visitor views a page.
+      properties:
+        pagePath:
+          description: The URL of the page that the visitor viewed.
+          type: string
+          example: /example/path
+        pageTitle:
+          description: The title of the page that the visitor viewed.
+          type: string
+          example: example_value
+      type: object
+    ProductData:
+      description: Details of the products in an e-commerce transaction.
+      properties:
+        itemRevenue:
+          description: The total revenue from purchased product items.
+          format: double
+          type: number
+          example: 10.0
+        productName:
+          description: The product name, supplied by the e-commerce tracking application, for the purchased items.
+          type: string
+          example: Example Name
+        productQuantity:
+          description: Total number of this product units in the transaction.
+          format: int64
+          type: string
+          example: example_value
+        productSku:
+          description: Unique code that represents the product.
+          type: string
+          example: example_value
+      type: object
+    EcommerceData:
+      description: E-commerce details associated with the user activity.
+      properties:
+        actionType:
+          description: Action associated with this e-commerce action.
+          enum:
+          - UNKNOWN
+          - CLICK
+          - DETAILS_VIEW
+          - ADD_TO_CART
+          - REMOVE_FROM_CART
+          - CHECKOUT
+          - PAYMENT
+          - REFUND
+          - CHECKOUT_OPTION
+          type: string
+          example: UNKNOWN
+        ecommerceType:
+          description: The type of this e-commerce activity.
+          enum:
+          - ECOMMERCE_TYPE_UNSPECIFIED
+          - CLASSIC
+          - ENHANCED
+          type: string
+          example: ECOMMERCE_TYPE_UNSPECIFIED
+        products:
+          description: Details of the products in this transaction.
+          items:
+            $ref: '#/components/schemas/ProductData'
+          type: array
+        transaction:
+          $ref: '#/components/schemas/TransactionData'
+          description: Transaction details of this e-commerce action.
+      type: object
+    DateRange:
+      description: 'A contiguous set of days: startDate, startDate + 1 day, ..., endDate. The start and end dates are specified in [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) date format `YYYY-MM-DD`.'
+      properties:
+        endDate:
+          description: The end date for the query in the format `YYYY-MM-DD`.
+          type: string
+          example: '2026-04-17'
+        startDate:
+          description: The start date for the query in the format `YYYY-MM-DD`.
+          type: string
+          example: '2026-04-17'
+      type: object
+    GoalSetData:
+      description: Represents a set of goals that were reached in an activity.
+      properties:
+        goals:
+          description: All the goals that were reached in the current activity.
+          items:
+            $ref: '#/components/schemas/GoalData'
+          type: array
+      type: object
+    GoalData:
+      description: Represents all the details pertaining to a goal.
+      properties:
+        goalCompletionLocation:
+          description: URL of the page where this goal was completed.
+          type: string
+          example: example_value
+        goalCompletions:
+          description: Total number of goal completions in this activity.
+          format: int64
+          type: string
+          example: example_value
+        goalIndex:
+          description: This identifies the goal as configured for the profile.
+          format: int32
+          type: integer
+          example: 42
+        goalName:
+          description: Name of the goal.
+          type: string
+          example: Example Name
+        goalPreviousStep1:
+          description: URL of the page one step prior to the goal completion.
+          type: string
+          example: example_value
+        goalPreviousStep2:
+          description: URL of the page two steps prior to the goal completion.
+          type: string
+          example: example_value
+        goalPreviousStep3:
+          description: URL of the page three steps prior to the goal completion.
+          type: string
+          example: example_value
+        goalValue:
+          description: Value in this goal.
+          format: double
+          type: number
+          example: 42.5
+      type: object
+    CustomDimension:
+      description: Custom dimension.
+      properties:
+        index:
+          description: Slot number of custom dimension.
+          format: int32
+          type: integer
+          example: 42
+        value:
+          description: Value of the custom dimension. Default value (i.e. empty string) indicates clearing sesion/visitor scope custom dimension value.
+          type: string
+          example: example_value
+      type: object
+    SearchUserActivityResponse:
+      description: The response from `userActivity:get` call.
+      properties:
+        nextPageToken:
+          description: This token should be passed to [SearchUserActivityRequest](#SearchUserActivityRequest) to retrieve the next page.
+          type: string
+        sampleRate:
+          description: This field represents the [sampling rate](https://support.google.com/analytics/answer/2637192) for the given request and is a number between 0.0 to 1.0. See [developer guide](/analytics/devguides/reporting/core/v4/basics#sampling) for details.
+          format: double
+          type: number
+        sessions:
+          description: Each record represents a session (device details, duration, etc).
+          items:
+            $ref: '#/components/schemas/UserActivitySession'
+          type: array
+        totalRows:
+          description: Total rows returned by this query (across different pages).
+          format: int32
+          type: integer
+      type: object
+    EventData:
+      description: Represents all the details pertaining to an event.
+      properties:
+        eventAction:
+          description: 'Type of interaction with the object. Eg: ''play''.'
+          type: string
+          example: example_value
+        eventCategory:
+          description: 'The object on the page that was interacted with. Eg: ''Video''.'
+          type: string
+          example: example_value
+        eventCount:
+          description: Number of such events in this activity.
+          format: int64
+          type: string
+          example: example_value
+        eventLabel:
+          description: Label attached with the event.
+          type: string
+          example: Example Name
+        eventValue:
+          description: Numeric value associated with the event.
+          format: int64
+          type: string
+          example: example_value
+      type: object
     Activity:
       description: An Activity represents data for an activity of a user. Note that an Activity is different from a hit. A hit might result in multiple Activity's. For example, if a hit includes a transaction and a goal completion, there will be two Activity protos for this hit, one for ECOMMERCE and one for GOAL. Conversely, multiple hits can also construct one Activity. In classic e-commerce, data for one transaction might be sent through multiple hits. These hits will be merged into one ECOMMERCE Activity.
       properties:
@@ -213,66 +405,48 @@ components:
           type: string
           example: example_value
       type: object
-    ScreenviewData:
+    TransactionData:
+      description: Represents details collected when the visitor performs a transaction on the page.
       properties:
-        appName:
-          description: The application name.
+        transactionId:
+          description: The transaction ID, supplied by the e-commerce tracking method, for the purchase in the shopping cart.
           type: string
-        mobileDeviceBranding:
-          description: 'Mobile manufacturer or branded name. Eg: "Google", "Apple" etc.'
-          type: string
-        mobileDeviceModel:
-          description: 'Mobile device model. Eg: "Pixel", "iPhone" etc.'
-          type: string
-        screenName:
-          description: The name of the screen.
-          type: string
+        transactionRevenue:
+          description: The total sale revenue (excluding shipping and tax) of the transaction.
+          format: double
+          type: number
+        transactionShipping:
+          description: Total cost of shipping.
+          format: double
+          type: number
+        transactionTax:
+          description: Total tax for the transaction.
+          format: double
+          type: number
       type: object
-    EcommerceData:
-      description: E-commerce details associated with the user activity.
+    UserActivitySession:
+      description: This represents a user session performed on a specific device at a certain time over a period of time.
       properties:
-        actionType:
-          description: Action associated with this e-commerce action.
-          enum:
-          - UNKNOWN
-          - CLICK
-          - DETAILS_VIEW
-          - ADD_TO_CART
-          - REMOVE_FROM_CART
-          - CHECKOUT
-          - PAYMENT
-          - REFUND
-          - CHECKOUT_OPTION
-          type: string
-          example: UNKNOWN
-        ecommerceType:
-          description: The type of this e-commerce activity.
-          enum:
-          - ECOMMERCE_TYPE_UNSPECIFIED
-          - CLASSIC
-          - ENHANCED
-          type: string
-          example: ECOMMERCE_TYPE_UNSPECIFIED
-        products:
-          description: Details of the products in this transaction.
+        activities:
+          description: Represents a detailed view into each of the activity in this session.
           items:
-            $ref: '#/components/schemas/ProductData'
+            $ref: '#/components/schemas/Activity'
           type: array
-        transaction:
-          $ref: '#/components/schemas/TransactionData'
-          description: Transaction details of this e-commerce action.
-      type: object
-    PageviewData:
-      description: Represents details collected when the visitor views a page.
-      properties:
-        pagePath:
-          description: The URL of the page that the visitor viewed.
+        dataSource:
+          description: The data source of a hit. By default, hits sent from analytics.js are reported as "web" and hits sent from the mobile SDKs are reported as "app". These values can be overridden in the Measurement Protocol.
           type: string
-          example: /example/path
-        pageTitle:
-          description: The title of the page that the visitor viewed.
+        deviceCategory:
+          description: 'The type of device used: "mobile", "tablet" etc.'
           type: string
-          example: example_value
+        platform:
+          description: 'Platform on which the activity happened: "android", "ios" etc.'
+          type: string
+        sessionDate:
+          description: Date of this session in ISO-8601 format.
+          type: string
+        sessionId:
+          description: Unique ID of the session.
+          type: string
       type: object
     SearchUserActivityRequest:
       description: The request to fetch User Report from Reporting API `userActivity:get` call.
@@ -306,99 +480,6 @@ components:
           description: Required. The Analytics [view ID](https://support.google.com/analytics/answer/1009618) from which to retrieve data. Every [SearchUserActivityRequest](#SearchUserActivityRequest) must contain the `viewId`.
           type: string
       type: object
-    ProductData:
-      description: Details of the products in an e-commerce transaction.
-      properties:
-        itemRevenue:
-          description: The total revenue from purchased product items.
-          format: double
-          type: number
-          example: 10.0
-        productName:
-          description: The product name, supplied by the e-commerce tracking application, for the purchased items.
-          type: string
-          example: Example Name
-        productQuantity:
-          description: Total number of this product units in the transaction.
-          format: int64
-          type: string
-          example: example_value
-        productSku:
-          description: Unique code that represents the product.
-          type: string
-          example: example_value
-      type: object
-    SearchUserActivityResponse:
-      description: The response from `userActivity:get` call.
-      properties:
-        nextPageToken:
-          description: This token should be passed to [SearchUserActivityRequest](#SearchUserActivityRequest) to retrieve the next page.
-          type: string
-        sampleRate:
-          description: This field represents the [sampling rate](https://support.google.com/analytics/answer/2637192) for the given request and is a number between 0.0 to 1.0. See [developer guide](/analytics/devguides/reporting/core/v4/basics#sampling) for details.
-          format: double
-          type: number
-        sessions:
-          description: Each record represents a session (device details, duration, etc).
-          items:
-            $ref: '#/components/schemas/UserActivitySession'
-          type: array
-        totalRows:
-          description: Total rows returned by this query (across different pages).
-          format: int32
-          type: integer
-      type: object
-    EventData:
-      description: Represents all the details pertaining to an event.
-      properties:
-        eventAction:
-          description: 'Type of interaction with the object. Eg: ''play''.'
-          type: string
-          example: example_value
-        eventCategory:
-          description: 'The object on the page that was interacted with. Eg: ''Video''.'
-          type: string
-          example: example_value
-        eventCount:
-          description: Number of such events in this activity.
-          format: int64
-          type: string
-          example: example_value
-        eventLabel:
-          description: Label attached with the event.
-          type: string
-          example: Example Name
-        eventValue:
-          description: Numeric value associated with the event.
-          format: int64
-          type: string
-          example: example_value
-      type: object
-    DateRange:
-      description: 'A contiguous set of days: startDate, startDate + 1 day, ..., endDate. The start and end dates are specified in [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) date format `YYYY-MM-DD`.'
-      properties:
-        endDate:
-          description: The end date for the query in the format `YYYY-MM-DD`.
-          type: string
-          example: '2026-04-17'
-        startDate:
-          description: The start date for the query in the format `YYYY-MM-DD`.
-          type: string
-          example: '2026-04-17'
-      type: object
-    CustomDimension:
-      description: Custom dimension.
-      properties:
-        index:
-          description: Slot number of custom dimension.
-          format: int32
-          type: integer
-          example: 42
-        value:
-          description: Value of the custom dimension. Default value (i.e. empty string) indicates clearing sesion/visitor scope custom dimension value.
-          type: string
-          example: example_value
-      type: object
     User:
       description: Contains information to identify a particular user uniquely.
       properties:
@@ -413,95 +494,19 @@ components:
           description: Unique Id of the user for which the data is being requested.
           type: string
       type: object
-    GoalData:
-      description: Represents all the details pertaining to a goal.
+    ScreenviewData:
       properties:
-        goalCompletionLocation:
-          description: URL of the page where this goal was completed.
+        appName:
+          description: The application name.
           type: string
-          example: example_value
-        goalCompletions:
-          description: Total number of goal completions in this activity.
-          format: int64
+        mobileDeviceBranding:
+          description: 'Mobile manufacturer or branded name. Eg: "Google", "Apple" etc.'
           type: string
-          example: example_value
-        goalIndex:
-          description: This identifies the goal as configured for the profile.
-          format: int32
-          type: integer
-          example: 42
-        goalName:
-          description: Name of the goal.
+        mobileDeviceModel:
+          description: 'Mobile device model. Eg: "Pixel", "iPhone" etc.'
           type: string
-          example: Example Name
-        goalPreviousStep1:
-          description: URL of the page one step prior to the goal completion.
-          type: string
-          example: example_value
-        goalPreviousStep2:
-          description: URL of the page two steps prior to the goal completion.
-          type: string
-          example: example_value
-        goalPreviousStep3:
-          description: URL of the page three steps prior to the goal completion.
-          type: string
-          example: example_value
-        goalValue:
-          description: Value in this goal.
-          format: double
-          type: number
-          example: 42.5
-      type: object
-    TransactionData:
-      description: Represents details collected when the visitor performs a transaction on the page.
-      properties:
-        transactionId:
-          description: The transaction ID, supplied by the e-commerce tracking method, for the purchase in the shopping cart.
-          type: string
-        transactionRevenue:
-          description: The total sale revenue (excluding shipping and tax) of the transaction.
-          format: double
-          type: number
-        transactionShipping:
-          description: Total cost of shipping.
-          format: double
-          type: number
-        transactionTax:
-          description: Total tax for the transaction.
-          format: double
-          type: number
-      type: object
-    GoalSetData:
-      description: Represents a set of goals that were reached in an activity.
-      properties:
-        goals:
-          description: All the goals that were reached in the current activity.
-          items:
-            $ref: '#/components/schemas/GoalData'
-          type: array
-      type: object
-    UserActivitySession:
-      description: This represents a user session performed on a specific device at a certain time over a period of time.
-      properties:
-        activities:
-          description: Represents a detailed view into each of the activity in this session.
-          items:
-            $ref: '#/components/schemas/Activity'
-          type: array
-        dataSource:
-          description: The data source of a hit. By default, hits sent from analytics.js are reported as "web" and hits sent from the mobile SDKs are reported as "app". These values can be overridden in the Measurement Protocol.
-          type: string
-        deviceCategory:
-          description: 'The type of device used: "mobile", "tablet" etc.'
-          type: string
-        platform:
-          description: 'Platform on which the activity happened: "android", "ios" etc.'
-          type: string
-        sessionDate:
-          description: Date of this session in ISO-8601 format.
-          type: string
-        sessionId:
-          description: Unique ID of the session.
+        screenName:
+          description: The name of the screen.
           type: string
       type: object
   securitySchemes:
@@ -511,7 +516,7 @@ components:
         implicit:
           authorizationUrl: https://accounts.google.com/o/oauth2/auth
           scopes:
-            https://www.googleapis.com/auth/analytics.edit: Edit Google Analytics management entities
+            https://www.googleapis.com/auth/analytics: View and manage your Google Analytics data
             https://www.googleapis.com/auth/analytics.readonly: See and download your Google Analytics data
       type: oauth2
     Oauth2c:
@@ -520,9 +525,9 @@ components:
         authorizationCode:
           authorizationUrl: https://accounts.google.com/o/oauth2/auth
           scopes:
-            https://www.googleapis.com/auth/analytics.edit: Edit Google Analytics management entities
+            https://www.googleapis.com/auth/analytics: View and manage your Google Analytics data
             https://www.googleapis.com/auth/analytics.readonly: See and download your Google Analytics data
           tokenUrl: https://accounts.google.com/o/oauth2/token
       type: oauth2
 externalDocs:
-  url: http://code.google.com/apis/analytics/docs/mgmt/home.html
+  url: https://developers.google.com/analytics/devguides/reporting/core/v4/

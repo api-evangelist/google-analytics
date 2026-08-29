@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   contact:
     name: Google
@@ -9,8 +9,8 @@ info:
     name: Creative Commons Attribution 3.0
     url: http://creativecommons.org/licenses/by/3.0/
   termsOfService: https://developers.google.com/terms/
-  title: Google Analytics Admin accounts API
-  version: "v1"
+  title: Google Analytics Admin Accounts API
+  version: v1beta
   x-apisguru-categories:
   - analytics
   - media
@@ -19,6 +19,7 @@ info:
   x-origin:
   - format: google
     url: https://analyticsadmin.googleapis.com/$discovery/rest?version=v1beta
+    version: v1
   x-preferred: true
   x-providerName: googleapis.com
   x-serviceName: analyticsadmin
@@ -169,14 +170,17 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
-    _.xgafv:
-      description: V1 error format.
+    callback:
+      description: JSONP
       in: query
-      name: $.xgafv
+      name: callback
       schema:
-        enum:
-        - '1'
-        - '2'
+        type: string
+    upload_protocol:
+      description: Upload protocol for media (e.g. "raw", "multipart").
+      in: query
+      name: upload_protocol
+      schema:
         type: string
     alt:
       description: Data format for response.
@@ -188,22 +192,31 @@ components:
         - media
         - proto
         type: string
+    key:
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+      in: query
+      name: key
+      schema:
+        type: string
+    access_token:
+      description: OAuth access token.
+      in: query
+      name: access_token
+      schema:
+        type: string
+    _.xgafv:
+      description: V1 error format.
+      in: query
+      name: $.xgafv
+      schema:
+        enum:
+        - '1'
+        - '2'
+        type: string
     uploadType:
       description: Legacy upload protocol for media (e.g. "media", "multipart").
       in: query
       name: uploadType
-      schema:
-        type: string
-    callback:
-      description: JSONP
-      in: query
-      name: callback
-      schema:
-        type: string
-    fields:
-      description: Selector specifying which fields to include in a partial response.
-      in: query
-      name: fields
       schema:
         type: string
     oauth_token:
@@ -212,28 +225,16 @@ components:
       name: oauth_token
       schema:
         type: string
+    fields:
+      description: Selector specifying which fields to include in a partial response.
+      in: query
+      name: fields
+      schema:
+        type: string
     quotaUser:
       description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
       in: query
       name: quotaUser
-      schema:
-        type: string
-    key:
-      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
-      in: query
-      name: key
-      schema:
-        type: string
-    upload_protocol:
-      description: Upload protocol for media (e.g. "raw", "multipart").
-      in: query
-      name: upload_protocol
-      schema:
-        type: string
-    access_token:
-      description: OAuth access token.
-      in: query
-      name: access_token
       schema:
         type: string
     prettyPrint:
@@ -243,96 +244,23 @@ components:
       schema:
         type: boolean
   schemas:
-    GoogleAnalyticsAdminV1betaDataStreamIosAppStreamData:
-      description: Data specific to iOS app streams.
+    GoogleAnalyticsAdminV1betaProvisionAccountTicketResponse:
+      description: Response message for ProvisionAccountTicket RPC.
       properties:
-        bundleId:
-          description: 'Required. Immutable. The Apple App Store Bundle ID for the app Example: "com.example.myiosapp"'
-          type: string
-        firebaseAppId:
-          description: Output only. ID of the corresponding iOS app in Firebase, if any. This ID can change if the iOS app is deleted and recreated.
-          readOnly: true
+        accountTicketId:
+          description: The param to be passed in the ToS link.
           type: string
       type: object
-    GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequest:
-      description: Request message for SearchChangeHistoryEvents RPC.
+    GoogleAnalyticsAdminV1betaListAccountsResponse:
+      description: Request message for ListAccounts RPC.
       properties:
-        action:
-          description: Optional. If set, only return changes that match one or more of these types of actions.
+        accounts:
+          description: Results that were accessible to the caller.
           items:
-            enum:
-            - ACTION_TYPE_UNSPECIFIED
-            - CREATED
-            - UPDATED
-            - DELETED
-            type: string
+            $ref: '#/components/schemas/GoogleAnalyticsAdminV1betaAccount'
           type: array
-        actorEmail:
-          description: Optional. If set, only return changes if they are made by a user in this list.
-          items:
-            type: string
-          type: array
-        earliestChangeTime:
-          description: Optional. If set, only return changes made after this time (inclusive).
-          format: google-datetime
-          type: string
-        latestChangeTime:
-          description: Optional. If set, only return changes made before this time (inclusive).
-          format: google-datetime
-          type: string
-        pageSize:
-          description: Optional. The maximum number of ChangeHistoryEvent items to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 items will be returned. The maximum value is 200 (higher values will be coerced to the maximum).
-          format: int32
-          type: integer
-        pageToken:
-          description: Optional. A page token, received from a previous `SearchChangeHistoryEvents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `SearchChangeHistoryEvents` must match the call that provided the page token.
-          type: string
-        property:
-          description: 'Optional. Resource name for a child property. If set, only return changes made to this property or its child resources. Format: properties/{propertyId} Example: "properties/100"'
-          type: string
-        resourceType:
-          description: Optional. If set, only return changes if they are for a resource that matches at least one of these types.
-          items:
-            enum:
-            - CHANGE_HISTORY_RESOURCE_TYPE_UNSPECIFIED
-            - ACCOUNT
-            - PROPERTY
-            - FIREBASE_LINK
-            - GOOGLE_ADS_LINK
-            - GOOGLE_SIGNALS_SETTINGS
-            - CONVERSION_EVENT
-            - MEASUREMENT_PROTOCOL_SECRET
-            - DATA_RETENTION_SETTINGS
-            - DISPLAY_VIDEO_360_ADVERTISER_LINK
-            - DISPLAY_VIDEO_360_ADVERTISER_LINK_PROPOSAL
-            - DATA_STREAM
-            - ATTRIBUTION_SETTINGS
-            type: string
-          type: array
-      type: object
-    GoogleAnalyticsAdminV1betaMeasurementProtocolSecret:
-      description: A secret value used for sending hits to Measurement Protocol.
-      properties:
-        displayName:
-          description: Required. Human-readable display name for this secret.
-          type: string
-        name:
-          description: 'Output only. Resource name of this secret. This secret may be a child of any type of stream. Format: properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets/{measurementProtocolSecret}'
-          readOnly: true
-          type: string
-        secretValue:
-          description: Output only. The measurement protocol secret value. Pass this value to the api_secret field of the Measurement Protocol API when sending hits to this secret's parent property.
-          readOnly: true
-          type: string
-      type: object
-    GoogleAnalyticsAdminV1betaProvisionAccountTicketRequest:
-      description: Request message for ProvisionAccountTicket RPC.
-      properties:
-        account:
-          $ref: '#/components/schemas/GoogleAnalyticsAdminV1betaAccount'
-          description: The account to create.
-        redirectUri:
-          description: Redirect URI where the user will be sent after accepting Terms of Service. Must be configured in Cloud Console as a Redirect URI.
+        nextPageToken:
+          description: A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.
           type: string
       type: object
     GoogleAnalyticsAdminV1betaConversionEvent:
@@ -375,34 +303,89 @@ components:
           type: string
           example: Example Name
       type: object
-    GoogleAnalyticsAdminV1betaChangeHistoryChange:
-      description: A description of a change to a single Google Analytics resource.
+    GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsResponse:
+      description: Response message for SearchAccounts RPC.
       properties:
-        action:
-          description: The type of action that changed this resource.
-          enum:
-          - ACTION_TYPE_UNSPECIFIED
-          - CREATED
-          - UPDATED
-          - DELETED
+        changeHistoryEvents:
+          description: Results that were accessible to the caller.
+          items:
+            $ref: '#/components/schemas/GoogleAnalyticsAdminV1betaChangeHistoryEvent'
+          type: array
+        nextPageToken:
+          description: A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.
           type: string
-          example: ACTION_TYPE_UNSPECIFIED
-        resource:
-          description: Resource name of the resource whose changes are described by this entry.
-          type: string
-          example: example_value
-        resourceAfterChange:
-          $ref: '#/components/schemas/GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource'
-          description: Resource contents from after the change was made. If this resource was deleted in this change, this field will be missing.
-        resourceBeforeChange:
-          $ref: '#/components/schemas/GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource'
-          description: Resource contents from before the change was made. If this resource was created in this change, this field will be missing.
       type: object
-    GoogleAnalyticsAdminV1betaProvisionAccountTicketResponse:
-      description: Response message for ProvisionAccountTicket RPC.
+    GoogleAnalyticsAdminV1betaDataStreamIosAppStreamData:
+      description: Data specific to iOS app streams.
       properties:
-        accountTicketId:
-          description: The param to be passed in the ToS link.
+        bundleId:
+          description: 'Required. Immutable. The Apple App Store Bundle ID for the app Example: "com.example.myiosapp"'
+          type: string
+        firebaseAppId:
+          description: Output only. ID of the corresponding iOS app in Firebase, if any. This ID can change if the iOS app is deleted and recreated.
+          readOnly: true
+          type: string
+      type: object
+    GoogleAnalyticsAdminV1betaFirebaseLink:
+      description: A link between a GA4 property and a Firebase project.
+      properties:
+        createTime:
+          description: Output only. Time when this FirebaseLink was originally created.
+          format: google-datetime
+          readOnly: true
+          type: string
+        name:
+          description: 'Output only. Example format: properties/1234/firebaseLinks/5678'
+          readOnly: true
+          type: string
+        project:
+          description: 'Immutable. Firebase project resource name. When creating a FirebaseLink, you may provide this resource name using either a project number or project ID. Once this resource has been created, returned FirebaseLinks will always have a project_name that contains a project number. Format: ''projects/{project number}'' Example: ''projects/1234'''
+          type: string
+      type: object
+    GoogleAnalyticsAdminV1betaProvisionAccountTicketRequest:
+      description: Request message for ProvisionAccountTicket RPC.
+      properties:
+        account:
+          $ref: '#/components/schemas/GoogleAnalyticsAdminV1betaAccount'
+          description: The account to create.
+        redirectUri:
+          description: Redirect URI where the user will be sent after accepting Terms of Service. Must be configured in Cloud Console as a Redirect URI.
+          type: string
+      type: object
+    GoogleAnalyticsAdminV1betaDataRetentionSettings:
+      description: Settings values for data retention. This is a singleton resource.
+      properties:
+        eventDataRetention:
+          description: The length of time that event-level data is retained.
+          enum:
+          - RETENTION_DURATION_UNSPECIFIED
+          - TWO_MONTHS
+          - FOURTEEN_MONTHS
+          - TWENTY_SIX_MONTHS
+          - THIRTY_EIGHT_MONTHS
+          - FIFTY_MONTHS
+          type: string
+        name:
+          description: 'Output only. Resource name for this DataRetentionSetting resource. Format: properties/{property}/dataRetentionSettings'
+          readOnly: true
+          type: string
+        resetUserDataOnNewActivity:
+          description: If true, reset the retention period for the user identifier with every event from that user.
+          type: boolean
+      type: object
+    GoogleAnalyticsAdminV1betaMeasurementProtocolSecret:
+      description: A secret value used for sending hits to Measurement Protocol.
+      properties:
+        displayName:
+          description: Required. Human-readable display name for this secret.
+          type: string
+        name:
+          description: 'Output only. Resource name of this secret. This secret may be a child of any type of stream. Format: properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets/{measurementProtocolSecret}'
+          readOnly: true
+          type: string
+        secretValue:
+          description: Output only. The measurement protocol secret value. Pass this value to the api_secret field of the Measurement Protocol API when sending hits to this secret's parent property.
+          readOnly: true
           type: string
       type: object
     GoogleAnalyticsAdminV1betaProperty:
@@ -495,81 +478,6 @@ components:
           readOnly: true
           type: string
       type: object
-    GoogleAnalyticsAdminV1betaListAccountsResponse:
-      description: Request message for ListAccounts RPC.
-      properties:
-        accounts:
-          description: Results that were accessible to the caller.
-          items:
-            $ref: '#/components/schemas/GoogleAnalyticsAdminV1betaAccount'
-          type: array
-        nextPageToken:
-          description: A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.
-          type: string
-      type: object
-    GoogleAnalyticsAdminV1betaChangeHistoryEvent:
-      description: A set of changes within a Google Analytics account or its child properties that resulted from the same cause. Common causes would be updates made in the Google Analytics UI, changes from customer support, or automatic Google Analytics system changes.
-      properties:
-        actorType:
-          description: The type of actor that made this change.
-          enum:
-          - ACTOR_TYPE_UNSPECIFIED
-          - USER
-          - SYSTEM
-          - SUPPORT
-          type: string
-          example: ACTOR_TYPE_UNSPECIFIED
-        changeTime:
-          description: Time when change was made.
-          format: google-datetime
-          type: string
-          example: '2026-04-17T12:00:00Z'
-        changes:
-          description: A list of changes made in this change history event that fit the filters specified in SearchChangeHistoryEventsRequest.
-          items:
-            $ref: '#/components/schemas/GoogleAnalyticsAdminV1betaChangeHistoryChange'
-          type: array
-        changesFiltered:
-          description: If true, then the list of changes returned was filtered, and does not represent all changes that occurred in this event.
-          type: boolean
-          example: true
-        id:
-          description: ID of this change history event. This ID is unique across Google Analytics.
-          type: string
-          example: '123456'
-        userActorEmail:
-          description: Email address of the Google account that made the change. This will be a valid email address if the actor field is set to USER, and empty otherwise. Google accounts that have been deleted will cause an error.
-          type: string
-          example: user@example.com
-      type: object
-    GoogleAnalyticsAdminV1betaFirebaseLink:
-      description: A link between a GA4 property and a Firebase project.
-      properties:
-        createTime:
-          description: Output only. Time when this FirebaseLink was originally created.
-          format: google-datetime
-          readOnly: true
-          type: string
-        name:
-          description: 'Output only. Example format: properties/1234/firebaseLinks/5678'
-          readOnly: true
-          type: string
-        project:
-          description: 'Immutable. Firebase project resource name. When creating a FirebaseLink, you may provide this resource name using either a project number or project ID. Once this resource has been created, returned FirebaseLinks will always have a project_name that contains a project number. Format: ''projects/{project number}'' Example: ''projects/1234'''
-          type: string
-      type: object
-    GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsResponse:
-      description: Response message for SearchAccounts RPC.
-      properties:
-        changeHistoryEvents:
-          description: Results that were accessible to the caller.
-          items:
-            $ref: '#/components/schemas/GoogleAnalyticsAdminV1betaChangeHistoryEvent'
-          type: array
-        nextPageToken:
-          description: A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.
-          type: string
-      type: object
     GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue:
       description: Defines a default value/currency for a conversion event. Both value and currency must be provided.
       properties:
@@ -580,72 +488,6 @@ components:
           description: This value will be used to populate the value for all conversions of the specified event_name where the event "value" parameter is unset.
           format: double
           type: number
-      type: object
-    GoogleAnalyticsAdminV1betaGoogleAdsLink:
-      description: A link between a GA4 property and a Google Ads account.
-      properties:
-        adsPersonalizationEnabled:
-          description: Enable personalized advertising features with this integration. Automatically publish my Google Analytics audience lists and Google Analytics remarketing events/parameters to the linked Google Ads account. If this field is not set on create/update, it will be defaulted to true.
-          type: boolean
-        canManageClients:
-          description: Output only. If true, this link is for a Google Ads manager account.
-          readOnly: true
-          type: boolean
-        createTime:
-          description: Output only. Time when this link was originally created.
-          format: google-datetime
-          readOnly: true
-          type: string
-        creatorEmailAddress:
-          description: Output only. Email address of the user that created the link. An empty string will be returned if the email address can't be retrieved.
-          readOnly: true
-          type: string
-        customerId:
-          description: Immutable. Google Ads customer ID.
-          type: string
-        name:
-          description: 'Output only. Format: properties/{propertyId}/googleAdsLinks/{googleAdsLinkId} Note: googleAdsLinkId is not the Google Ads customer ID.'
-          readOnly: true
-          type: string
-        updateTime:
-          description: Output only. Time when this link was last updated.
-          format: google-datetime
-          readOnly: true
-          type: string
-      type: object
-    GoogleAnalyticsAdminV1betaAccount:
-      description: A resource message representing a Google Analytics account.
-      properties:
-        createTime:
-          description: Output only. Time when this account was originally created.
-          format: google-datetime
-          readOnly: true
-          type: string
-          example: '2026-04-17T12:00:00Z'
-        deleted:
-          description: Output only. Indicates whether this Account is soft-deleted or not. Deleted accounts are excluded from List results unless specifically requested.
-          readOnly: true
-          type: boolean
-          example: true
-        displayName:
-          description: Required. Human-readable display name for this account.
-          type: string
-          example: Example Name
-        name:
-          description: 'Output only. Resource name of this account. Format: accounts/{account} Example: "accounts/100"'
-          readOnly: true
-          type: string
-          example: Example Name
-        regionCode:
-          description: Country of business. Must be a Unicode CLDR region code.
-          type: string
-          example: example_value
-        updateTime:
-          description: Output only. Time when account payload fields were last updated.
-          format: google-datetime
-          readOnly: true
-          type: string
-          example: '2026-04-17T12:00:00Z'
       type: object
     GoogleAnalyticsAdminV1betaDataStreamWebStreamData:
       description: Data specific to web streams.
@@ -660,17 +502,6 @@ components:
         measurementId:
           description: 'Output only. Analytics Measurement ID. Example: "G-1A2BCD345E"'
           readOnly: true
-          type: string
-      type: object
-    GoogleAnalyticsAdminV1betaDataStreamAndroidAppStreamData:
-      description: Data specific to Android app streams.
-      properties:
-        firebaseAppId:
-          description: Output only. ID of the corresponding Android app in Firebase, if any. This ID can change if the Android app is deleted and recreated.
-          readOnly: true
-          type: string
-        packageName:
-          description: 'Immutable. The package name for the app being measured. Example: "com.example.myandroidapp"'
           type: string
       type: object
     GoogleAnalyticsAdminV1betaDataStream:
@@ -711,26 +542,196 @@ components:
           $ref: '#/components/schemas/GoogleAnalyticsAdminV1betaDataStreamWebStreamData'
           description: Data specific to web streams. Must be populated if type is WEB_DATA_STREAM.
       type: object
-    GoogleAnalyticsAdminV1betaDataRetentionSettings:
-      description: Settings values for data retention. This is a singleton resource.
+    GoogleAnalyticsAdminV1betaDataStreamAndroidAppStreamData:
+      description: Data specific to Android app streams.
       properties:
-        eventDataRetention:
-          description: The length of time that event-level data is retained.
-          enum:
-          - RETENTION_DURATION_UNSPECIFIED
-          - TWO_MONTHS
-          - FOURTEEN_MONTHS
-          - TWENTY_SIX_MONTHS
-          - THIRTY_EIGHT_MONTHS
-          - FIFTY_MONTHS
-          type: string
-        name:
-          description: 'Output only. Resource name for this DataRetentionSetting resource. Format: properties/{property}/dataRetentionSettings'
+        firebaseAppId:
+          description: Output only. ID of the corresponding Android app in Firebase, if any. This ID can change if the Android app is deleted and recreated.
           readOnly: true
           type: string
-        resetUserDataOnNewActivity:
-          description: If true, reset the retention period for the user identifier with every event from that user.
+        packageName:
+          description: 'Immutable. The package name for the app being measured. Example: "com.example.myandroidapp"'
+          type: string
+      type: object
+    GoogleAnalyticsAdminV1betaChangeHistoryChange:
+      description: A description of a change to a single Google Analytics resource.
+      properties:
+        action:
+          description: The type of action that changed this resource.
+          enum:
+          - ACTION_TYPE_UNSPECIFIED
+          - CREATED
+          - UPDATED
+          - DELETED
+          type: string
+          example: ACTION_TYPE_UNSPECIFIED
+        resource:
+          description: Resource name of the resource whose changes are described by this entry.
+          type: string
+          example: example_value
+        resourceAfterChange:
+          $ref: '#/components/schemas/GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource'
+          description: Resource contents from after the change was made. If this resource was deleted in this change, this field will be missing.
+        resourceBeforeChange:
+          $ref: '#/components/schemas/GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource'
+          description: Resource contents from before the change was made. If this resource was created in this change, this field will be missing.
+      type: object
+    GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequest:
+      description: Request message for SearchChangeHistoryEvents RPC.
+      properties:
+        action:
+          description: Optional. If set, only return changes that match one or more of these types of actions.
+          items:
+            enum:
+            - ACTION_TYPE_UNSPECIFIED
+            - CREATED
+            - UPDATED
+            - DELETED
+            type: string
+          type: array
+        actorEmail:
+          description: Optional. If set, only return changes if they are made by a user in this list.
+          items:
+            type: string
+          type: array
+        earliestChangeTime:
+          description: Optional. If set, only return changes made after this time (inclusive).
+          format: google-datetime
+          type: string
+        latestChangeTime:
+          description: Optional. If set, only return changes made before this time (inclusive).
+          format: google-datetime
+          type: string
+        pageSize:
+          description: Optional. The maximum number of ChangeHistoryEvent items to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 items will be returned. The maximum value is 200 (higher values will be coerced to the maximum).
+          format: int32
+          type: integer
+        pageToken:
+          description: Optional. A page token, received from a previous `SearchChangeHistoryEvents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `SearchChangeHistoryEvents` must match the call that provided the page token.
+          type: string
+        property:
+          description: 'Optional. Resource name for a child property. If set, only return changes made to this property or its child resources. Format: properties/{propertyId} Example: "properties/100"'
+          type: string
+        resourceType:
+          description: Optional. If set, only return changes if they are for a resource that matches at least one of these types.
+          items:
+            enum:
+            - CHANGE_HISTORY_RESOURCE_TYPE_UNSPECIFIED
+            - ACCOUNT
+            - PROPERTY
+            - FIREBASE_LINK
+            - GOOGLE_ADS_LINK
+            - GOOGLE_SIGNALS_SETTINGS
+            - CONVERSION_EVENT
+            - MEASUREMENT_PROTOCOL_SECRET
+            - DATA_RETENTION_SETTINGS
+            - DISPLAY_VIDEO_360_ADVERTISER_LINK
+            - DISPLAY_VIDEO_360_ADVERTISER_LINK_PROPOSAL
+            - DATA_STREAM
+            - ATTRIBUTION_SETTINGS
+            type: string
+          type: array
+      type: object
+    GoogleAnalyticsAdminV1betaAccount:
+      description: A resource message representing a Google Analytics account.
+      properties:
+        createTime:
+          description: Output only. Time when this account was originally created.
+          format: google-datetime
+          readOnly: true
+          type: string
+          example: '2026-04-17T12:00:00Z'
+        deleted:
+          description: Output only. Indicates whether this Account is soft-deleted or not. Deleted accounts are excluded from List results unless specifically requested.
+          readOnly: true
           type: boolean
+          example: true
+        displayName:
+          description: Required. Human-readable display name for this account.
+          type: string
+          example: Example Name
+        name:
+          description: 'Output only. Resource name of this account. Format: accounts/{account} Example: "accounts/100"'
+          readOnly: true
+          type: string
+          example: Example Name
+        regionCode:
+          description: Country of business. Must be a Unicode CLDR region code.
+          type: string
+          example: example_value
+        updateTime:
+          description: Output only. Time when account payload fields were last updated.
+          format: google-datetime
+          readOnly: true
+          type: string
+          example: '2026-04-17T12:00:00Z'
+      type: object
+    GoogleAnalyticsAdminV1betaGoogleAdsLink:
+      description: A link between a GA4 property and a Google Ads account.
+      properties:
+        adsPersonalizationEnabled:
+          description: Enable personalized advertising features with this integration. Automatically publish my Google Analytics audience lists and Google Analytics remarketing events/parameters to the linked Google Ads account. If this field is not set on create/update, it will be defaulted to true.
+          type: boolean
+        canManageClients:
+          description: Output only. If true, this link is for a Google Ads manager account.
+          readOnly: true
+          type: boolean
+        createTime:
+          description: Output only. Time when this link was originally created.
+          format: google-datetime
+          readOnly: true
+          type: string
+        creatorEmailAddress:
+          description: Output only. Email address of the user that created the link. An empty string will be returned if the email address can't be retrieved.
+          readOnly: true
+          type: string
+        customerId:
+          description: Immutable. Google Ads customer ID.
+          type: string
+        name:
+          description: 'Output only. Format: properties/{propertyId}/googleAdsLinks/{googleAdsLinkId} Note: googleAdsLinkId is not the Google Ads customer ID.'
+          readOnly: true
+          type: string
+        updateTime:
+          description: Output only. Time when this link was last updated.
+          format: google-datetime
+          readOnly: true
+          type: string
+      type: object
+    GoogleAnalyticsAdminV1betaChangeHistoryEvent:
+      description: A set of changes within a Google Analytics account or its child properties that resulted from the same cause. Common causes would be updates made in the Google Analytics UI, changes from customer support, or automatic Google Analytics system changes.
+      properties:
+        actorType:
+          description: The type of actor that made this change.
+          enum:
+          - ACTOR_TYPE_UNSPECIFIED
+          - USER
+          - SYSTEM
+          - SUPPORT
+          type: string
+          example: ACTOR_TYPE_UNSPECIFIED
+        changeTime:
+          description: Time when change was made.
+          format: google-datetime
+          type: string
+          example: '2026-04-17T12:00:00Z'
+        changes:
+          description: A list of changes made in this change history event that fit the filters specified in SearchChangeHistoryEventsRequest.
+          items:
+            $ref: '#/components/schemas/GoogleAnalyticsAdminV1betaChangeHistoryChange'
+          type: array
+        changesFiltered:
+          description: If true, then the list of changes returned was filtered, and does not represent all changes that occurred in this event.
+          type: boolean
+          example: true
+        id:
+          description: ID of this change history event. This ID is unique across Google Analytics.
+          type: string
+          example: '123456'
+        userActorEmail:
+          description: Email address of the Google account that made the change. This will be a valid email address if the actor field is set to USER, and empty otherwise. Google accounts that have been deleted will cause an error.
+          type: string
+          example: user@example.com
       type: object
     GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource:
       description: A snapshot of a resource as before or after the result of a change in change history.

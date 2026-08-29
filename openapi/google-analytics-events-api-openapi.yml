@@ -1,29 +1,21 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
+  title: Google Analytics Measurement Protocol (GA4) Events API
+  description: The Google Analytics Measurement Protocol lets you send events directly to Google Analytics servers via HTTP requests to augment existing GA4 data with server-to-server and offline interactions.
+  version: '1.0'
   contact:
-    name: Google
-    url: https://google.com
-    x-twitter: youtube
-  description: 'Manage properties in Google Analytics. Warning: Creating multiple Customer Applications, Accounts, or Projects to simulate or act as a single Customer Application, Account, or Project (respectively) or to circumvent Service-specific usage limits or quotas is a direct violation of Google Cloud Platform Terms of Service as well as Google APIs Terms of Service. These actions can result in immediate termination of your GCP project(s) without any warning.'
+    name: Google Analytics
+    url: https://developers.google.com/analytics
   license:
-    name: Creative Commons Attribution 3.0
-    url: http://creativecommons.org/licenses/by/3.0/
-  termsOfService: https://developers.google.com/terms/
-  title: Google Analytics Admin accounts Events API
-  version: "v1"
-  x-apisguru-categories:
-  - analytics
-  - media
+    name: Google APIs Terms of Service
+    url: https://developers.google.com/analytics/terms
   x-logo:
-    url: https://upload.wikimedia.org/wikipedia/commons/e/e1/YouTube_play_buttom_icon_%282013-2017%29.svg
-  x-origin:
-  - format: google
-    url: https://analyticsadmin.googleapis.com/$discovery/rest?version=v1beta
-  x-preferred: true
-  x-providerName: googleapis.com
-  x-serviceName: analyticsadmin
+    url: https://www.google.com/analytics/images/google-analytics-logo.png
 servers:
-- url: https://analyticsadmin.googleapis.com/
+- url: https://www.google-analytics.com/mp
+  description: Global endpoint
+- url: https://region1.google-analytics.com/mp
+  description: EU endpoint
 tags:
 - name: Events
 paths:
@@ -83,6 +75,45 @@ components:
           - type: number
           - type: boolean
           description: The value of the user property.
+          example: example_value
+    Device:
+      type: object
+      properties:
+        category:
+          type: string
+          description: Device category (e.g., mobile, tablet, desktop).
+          example: example_value
+        language:
+          type: string
+          description: Device language setting.
+          example: example_value
+        screen_resolution:
+          type: string
+          description: Screen resolution (e.g., 1920x1080).
+          example: example_value
+        operating_system:
+          type: string
+          description: Operating system name.
+          example: example_value
+        operating_system_version:
+          type: string
+          description: Operating system version.
+          example: example_value
+        model:
+          type: string
+          description: Device model.
+          example: example_value
+        brand:
+          type: string
+          description: Device brand.
+          example: example_value
+        browser:
+          type: string
+          description: Browser name.
+          example: example_value
+        browser_version:
+          type: string
+          description: Browser version.
           example: example_value
     MeasurementPayload:
       type: object
@@ -167,45 +198,6 @@ components:
               type: integer
               format: int64
               description: Unix epoch time in microseconds to override event timestamp.
-    Device:
-      type: object
-      properties:
-        category:
-          type: string
-          description: Device category (e.g., mobile, tablet, desktop).
-          example: example_value
-        language:
-          type: string
-          description: Device language setting.
-          example: example_value
-        screen_resolution:
-          type: string
-          description: Screen resolution (e.g., 1920x1080).
-          example: example_value
-        operating_system:
-          type: string
-          description: Operating system name.
-          example: example_value
-        operating_system_version:
-          type: string
-          description: Operating system version.
-          example: example_value
-        model:
-          type: string
-          description: Device model.
-          example: example_value
-        brand:
-          type: string
-          description: Device brand.
-          example: example_value
-        browser:
-          type: string
-          description: Browser name.
-          example: example_value
-        browser_version:
-          type: string
-          description: Browser version.
-          example: example_value
     UserLocation:
       type: object
       properties:
@@ -246,25 +238,6 @@ components:
           - GRANTED
           - DENIED
           example: GRANTED
-  securitySchemes:
-    Oauth2:
-      description: Oauth 2.0 implicit authentication
-      flows:
-        implicit:
-          authorizationUrl: https://accounts.google.com/o/oauth2/auth
-          scopes:
-            https://www.googleapis.com/auth/analytics.edit: Edit Google Analytics management entities
-            https://www.googleapis.com/auth/analytics.readonly: See and download your Google Analytics data
-      type: oauth2
-    Oauth2c:
-      description: Oauth 2.0 authorizationCode authentication
-      flows:
-        authorizationCode:
-          authorizationUrl: https://accounts.google.com/o/oauth2/auth
-          scopes:
-            https://www.googleapis.com/auth/analytics.edit: Edit Google Analytics management entities
-            https://www.googleapis.com/auth/analytics.readonly: See and download your Google Analytics data
-          tokenUrl: https://accounts.google.com/o/oauth2/token
-      type: oauth2
 externalDocs:
-  url: http://code.google.com/apis/analytics/docs/mgmt/home.html
+  description: Measurement Protocol documentation
+  url: https://developers.google.com/analytics/devguides/collection/protocol/ga4

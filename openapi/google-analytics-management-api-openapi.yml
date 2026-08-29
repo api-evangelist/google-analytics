@@ -1,29 +1,32 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   contact:
     name: Google
     url: https://google.com
     x-twitter: youtube
-  description: 'Manage properties in Google Analytics. Warning: Creating multiple Customer Applications, Accounts, or Projects to simulate or act as a single Customer Application, Account, or Project (respectively) or to circumvent Service-specific usage limits or quotas is a direct violation of Google Cloud Platform Terms of Service as well as Google APIs Terms of Service. These actions can result in immediate termination of your GCP project(s) without any warning.'
+  description: Views and manages your Google Analytics data.
   license:
     name: Creative Commons Attribution 3.0
     url: http://creativecommons.org/licenses/by/3.0/
   termsOfService: https://developers.google.com/terms/
-  title: Google Analytics Admin accounts management API
-  version: "v1"
+  title: Google Analytics Management API
+  version: v3
+  x-apiClientRegistration:
+    url: https://console.developers.google.com
   x-apisguru-categories:
   - analytics
   - media
   x-logo:
-    url: https://upload.wikimedia.org/wikipedia/commons/e/e1/YouTube_play_buttom_icon_%282013-2017%29.svg
+    url: https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png
   x-origin:
   - format: google
-    url: https://analyticsadmin.googleapis.com/$discovery/rest?version=v1beta
+    url: https://analytics.googleapis.com/$discovery/rest?version=v3
+    version: v1
   x-preferred: true
   x-providerName: googleapis.com
-  x-serviceName: analyticsadmin
+  x-serviceName: analytics
 servers:
-- url: https://analyticsadmin.googleapis.com/
+- url: https://analytics.googleapis.com/analytics/v3
 tags:
 - name: management
 paths:
@@ -4181,17 +4184,575 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    HashClientIdResponse:
-      description: JSON template for a hash Client Id response resource.
+    ProfileRef:
+      description: JSON template for a linked view (profile).
       properties:
-        clientId:
+        accountId:
+          description: Account ID to which this view (profile) belongs.
           type: string
-        hashedClientId:
+        href:
+          description: Link for this view (profile).
+          type: string
+        id:
+          description: View (Profile) ID.
+          type: string
+        internalWebPropertyId:
+          description: Internal ID for the web property to which this view (profile) belongs.
           type: string
         kind:
-          default: analytics#hashClientIdResponse
+          default: analytics#profileRef
+          description: Analytics view (profile) reference.
+          type: string
+        name:
+          description: Name of this view (profile).
           type: string
         webPropertyId:
+          description: Web property ID of the form UA-XXXXX-YY to which this view (profile) belongs.
+          type: string
+      type: object
+    CustomDataSource:
+      description: JSON template for an Analytics custom data source.
+      properties:
+        accountId:
+          description: Account ID to which this custom data source belongs.
+          type: string
+          example: '123456'
+        childLink:
+          properties:
+            href:
+              description: Link to the list of daily uploads for this custom data source. Link to the list of uploads for this custom data source.
+              type: string
+            type:
+              description: Value is "analytics#dailyUploads". Value is "analytics#uploads".
+              type: string
+          type: object
+        created:
+          description: Time this custom data source was created.
+          format: date-time
+          type: string
+          example: '2026-04-17T12:00:00Z'
+        description:
+          description: Description of custom data source.
+          type: string
+          example: Example description
+        id:
+          description: Custom data source ID.
+          type: string
+          example: '123456'
+        importBehavior:
+          type: string
+          example: example_value
+        kind:
+          default: analytics#customDataSource
+          description: Resource type for Analytics custom data source.
+          type: string
+          example: example_value
+        name:
+          description: Name of this custom data source.
+          type: string
+          example: Example Name
+        parentLink:
+          description: Parent link for this custom data source. Points to the web property to which this custom data source belongs.
+          properties:
+            href:
+              description: Link to the web property to which this custom data source belongs.
+              type: string
+            type:
+              default: analytics#webproperty
+              description: Value is "analytics#webproperty".
+              type: string
+          type: object
+        profilesLinked:
+          description: IDs of views (profiles) linked to the custom data source.
+          items:
+            type: string
+          type: array
+        schema:
+          description: Collection of schema headers of the custom data source.
+          items:
+            type: string
+          type: array
+        selfLink:
+          description: Link for this Analytics custom data source.
+          type: string
+          example: example_value
+        type:
+          description: Type of the custom data source.
+          type: string
+          example: ACTIVE
+        updated:
+          description: Time this custom data source was last modified.
+          format: date-time
+          type: string
+          example: '2026-04-17T12:00:00Z'
+        uploadType:
+          description: Upload type of the custom data source.
+          type: string
+          example: ACTIVE
+        webPropertyId:
+          description: Web property ID of the form UA-XXXXX-YY to which this custom data source belongs.
+          type: string
+          example: '123456'
+      type: object
+    Goals:
+      description: A goal collection lists Analytics goals to which the user has access. Each view (profile) can have a set of goals. Each resource in the Goal collection corresponds to a single Analytics goal.
+      properties:
+        items:
+          description: A list of goals.
+          items:
+            $ref: '#/components/schemas/Goal'
+          type: array
+        itemsPerPage:
+          description: The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.
+          format: int32
+          type: integer
+        kind:
+          default: analytics#goals
+          description: Collection type.
+          type: string
+        nextLink:
+          description: Link to next page for this goal collection.
+          type: string
+        previousLink:
+          description: Link to previous page for this goal collection.
+          type: string
+        startIndex:
+          description: The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter.
+          format: int32
+          type: integer
+        totalResults:
+          description: The total number of results for the query, regardless of the number of resources in the result.
+          format: int32
+          type: integer
+        username:
+          description: Email ID of the authenticated user
+          type: string
+      type: object
+    FilterRef:
+      description: JSON template for a profile filter link.
+      properties:
+        accountId:
+          description: Account ID to which this filter belongs.
+          readOnly: true
+          type: string
+          example: '123456'
+        href:
+          description: Link for this filter.
+          type: string
+          example: example_value
+        id:
+          description: Filter ID.
+          type: string
+          example: '123456'
+        kind:
+          default: analytics#filterRef
+          description: Kind value for filter reference.
+          type: string
+          example: example_value
+        name:
+          description: Name of this filter.
+          readOnly: true
+          type: string
+          example: Example Name
+      type: object
+    AccountSummaries:
+      description: An AccountSummary collection lists a summary of accounts, properties and views (profiles) to which the user has access. Each resource in the collection corresponds to a single AccountSummary.
+      properties:
+        items:
+          description: A list of AccountSummaries.
+          items:
+            $ref: '#/components/schemas/AccountSummary'
+          type: array
+        itemsPerPage:
+          description: The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.
+          format: int32
+          type: integer
+          example: 42
+        kind:
+          default: analytics#accountSummaries
+          description: Collection type.
+          type: string
+          example: example_value
+        nextLink:
+          description: Link to next page for this AccountSummary collection.
+          type: string
+          example: example_value
+        previousLink:
+          description: Link to previous page for this AccountSummary collection.
+          type: string
+          example: example_value
+        startIndex:
+          description: The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter.
+          format: int32
+          type: integer
+          example: 42
+        totalResults:
+          description: The total number of results for the query, regardless of the number of results in the response.
+          format: int32
+          type: integer
+          example: 42
+        username:
+          description: Email ID of the authenticated user
+          type: string
+          example: Example Name
+      type: object
+    RemarketingAudience:
+      description: JSON template for an Analytics remarketing audience.
+      properties:
+        accountId:
+          description: Account ID to which this remarketing audience belongs.
+          type: string
+        audienceDefinition:
+          description: The simple audience definition that will cause a user to be added to an audience.
+          properties:
+            includeConditions:
+              $ref: '#/components/schemas/IncludeConditions'
+              description: Defines the conditions to include users to the audience.
+          type: object
+        audienceType:
+          description: The type of audience, either SIMPLE or STATE_BASED.
+          type: string
+        created:
+          description: Time this remarketing audience was created.
+          format: date-time
+          readOnly: true
+          type: string
+        description:
+          description: The description of this remarketing audience.
+          readOnly: true
+          type: string
+        id:
+          description: Remarketing Audience ID.
+          type: string
+        internalWebPropertyId:
+          description: Internal ID for the web property to which this remarketing audience belongs.
+          readOnly: true
+          type: string
+        kind:
+          default: analytics#remarketingAudience
+          description: Collection type.
+          type: string
+        linkedAdAccounts:
+          description: The linked ad accounts associated with this remarketing audience. A remarketing audience can have only one linkedAdAccount currently.
+          items:
+            $ref: '#/components/schemas/LinkedForeignAccount'
+          type: array
+        linkedViews:
+          description: The views (profiles) that this remarketing audience is linked to.
+          items:
+            type: string
+          type: array
+        name:
+          description: The name of this remarketing audience.
+          type: string
+        stateBasedAudienceDefinition:
+          description: A state based audience definition that will cause a user to be added or removed from an audience.
+          properties:
+            excludeConditions:
+              description: Defines the conditions to exclude users from the audience.
+              properties:
+                exclusionDuration:
+                  description: Whether to make the exclusion TEMPORARY or PERMANENT.
+                  type: string
+                segment:
+                  description: The segment condition that will cause a user to be removed from an audience.
+                  type: string
+              type: object
+            includeConditions:
+              $ref: '#/components/schemas/IncludeConditions'
+              description: Defines the conditions to include users to the audience.
+          type: object
+        updated:
+          description: Time this remarketing audience was last modified.
+          format: date-time
+          readOnly: true
+          type: string
+        webPropertyId:
+          description: Web property ID of the form UA-XXXXX-YY to which this remarketing audience belongs.
+          type: string
+      type: object
+    AdWordsAccount:
+      description: JSON template for an Google Ads account.
+      properties:
+        autoTaggingEnabled:
+          description: True if auto-tagging is enabled on the Google Ads account. Read-only after the insert operation.
+          type: boolean
+          example: true
+        customerId:
+          description: Customer ID. This field is required when creating a Google Ads link.
+          type: string
+          example: '123456'
+        kind:
+          default: analytics#adWordsAccount
+          description: Resource type for Google Ads account.
+          type: string
+          example: example_value
+      type: object
+    CustomMetric:
+      description: JSON template for Analytics Custom Metric.
+      properties:
+        accountId:
+          description: Account ID.
+          type: string
+          example: '123456'
+        active:
+          description: Boolean indicating whether the custom metric is active.
+          type: boolean
+          example: true
+        created:
+          description: Time the custom metric was created.
+          format: date-time
+          readOnly: true
+          type: string
+          example: '2026-04-17T12:00:00Z'
+        id:
+          description: Custom metric ID.
+          type: string
+          example: '123456'
+        index:
+          description: Index of the custom metric.
+          format: int32
+          readOnly: true
+          type: integer
+          example: 42
+        kind:
+          default: analytics#customMetric
+          description: Kind value for a custom metric. Set to "analytics#customMetric". It is a read-only field.
+          readOnly: true
+          type: string
+          example: example_value
+        max_value:
+          description: Max value of custom metric.
+          type: string
+          example: example_value
+        min_value:
+          description: Min value of custom metric.
+          type: string
+          example: example_value
+        name:
+          description: Name of the custom metric.
+          type: string
+          example: Example Name
+        parentLink:
+          description: Parent link for the custom metric. Points to the property to which the custom metric belongs.
+          properties:
+            href:
+              description: Link to the property to which the custom metric belongs.
+              type: string
+            type:
+              default: analytics#webproperty
+              description: Type of the parent link. Set to "analytics#webproperty".
+              type: string
+          type: object
+        scope:
+          description: 'Scope of the custom metric: HIT or PRODUCT.'
+          type: string
+          example: ACTIVE
+        selfLink:
+          description: Link for the custom metric
+          readOnly: true
+          type: string
+          example: example_value
+        type:
+          description: Data type of custom metric.
+          type: string
+          example: ACTIVE
+        updated:
+          description: Time the custom metric was last modified.
+          format: date-time
+          readOnly: true
+          type: string
+          example: '2026-04-17T12:00:00Z'
+        webPropertyId:
+          description: Property ID.
+          type: string
+          example: '123456'
+      type: object
+    ProfileFilterLinks:
+      description: A profile filter link collection lists profile filter links between profiles and filters. Each resource in the collection corresponds to a profile filter link.
+      properties:
+        items:
+          description: A list of profile filter links.
+          items:
+            $ref: '#/components/schemas/ProfileFilterLink'
+          type: array
+        itemsPerPage:
+          description: The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1,000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.
+          format: int32
+          type: integer
+        kind:
+          default: analytics#profileFilterLinks
+          description: Collection type.
+          type: string
+        nextLink:
+          description: Link to next page for this profile filter link collection.
+          type: string
+        previousLink:
+          description: Link to previous page for this profile filter link collection.
+          type: string
+        startIndex:
+          description: The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter.
+          format: int32
+          type: integer
+        totalResults:
+          description: The total number of results for the query, regardless of the number of results in the response.
+          format: int32
+          type: integer
+        username:
+          description: Email ID of the authenticated user
+          type: string
+      type: object
+    EntityUserLinks:
+      description: An entity user link collection provides a list of Analytics ACL links Each resource in this collection corresponds to a single link.
+      properties:
+        items:
+          description: A list of entity user links.
+          items:
+            $ref: '#/components/schemas/EntityUserLink'
+          type: array
+        itemsPerPage:
+          description: The maximum number of entries the response can contain, regardless of the actual number of entries returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.
+          format: int32
+          type: integer
+          example: 42
+        kind:
+          default: analytics#entityUserLinks
+          description: Collection type.
+          type: string
+          example: example_value
+        nextLink:
+          description: Next link for this account collection.
+          type: string
+          example: example_value
+        previousLink:
+          description: Previous link for this account collection.
+          type: string
+          example: example_value
+        startIndex:
+          description: The starting index of the entries, which is 1 by default or otherwise specified by the start-index query parameter.
+          format: int32
+          type: integer
+          example: 42
+        totalResults:
+          description: The total number of results for the query, regardless of the number of results in the response.
+          format: int32
+          type: integer
+          example: 42
+      type: object
+    Profile:
+      description: JSON template for an Analytics view (profile).
+      properties:
+        accountId:
+          description: Account ID to which this view (profile) belongs.
+          type: string
+        botFilteringEnabled:
+          description: Indicates whether bot filtering is enabled for this view (profile).
+          type: boolean
+        childLink:
+          description: Child link for this view (profile). Points to the list of goals for this view (profile).
+          properties:
+            href:
+              description: Link to the list of goals for this view (profile).
+              type: string
+            type:
+              default: analytics#goals
+              description: Value is "analytics#goals".
+              type: string
+          type: object
+        created:
+          description: Time this view (profile) was created.
+          format: date-time
+          readOnly: true
+          type: string
+        currency:
+          description: 'The currency type associated with this view (profile), defaults to USD. The supported values are:
+
+            USD, JPY, EUR, GBP, AUD, KRW, BRL, CNY, DKK, RUB, SEK, NOK, PLN, TRY, TWD, HKD, THB, IDR, ARS, MXN, VND, PHP, INR, CHF, CAD, CZK, NZD, HUF, BGN, LTL, ZAR, UAH, AED, BOB, CLP, COP, EGP, HRK, ILS, MAD, MYR, PEN, PKR, RON, RSD, SAR, SGD, VEF, LVL'
+          type: string
+        defaultPage:
+          description: Default page for this view (profile).
+          type: string
+        eCommerceTracking:
+          description: Indicates whether ecommerce tracking is enabled for this view (profile).
+          type: boolean
+        enhancedECommerceTracking:
+          description: Indicates whether enhanced ecommerce tracking is enabled for this view (profile). This property can only be enabled if ecommerce tracking is enabled.
+          type: boolean
+        excludeQueryParameters:
+          description: The query parameters that are excluded from this view (profile).
+          type: string
+        id:
+          description: View (Profile) ID.
+          type: string
+        internalWebPropertyId:
+          description: Internal ID for the web property to which this view (profile) belongs.
+          readOnly: true
+          type: string
+        kind:
+          default: analytics#profile
+          description: Resource type for Analytics view (profile).
+          readOnly: true
+          type: string
+        name:
+          description: Name of this view (profile).
+          type: string
+        parentLink:
+          description: Parent link for this view (profile). Points to the web property to which this view (profile) belongs.
+          properties:
+            href:
+              description: Link to the web property to which this view (profile) belongs.
+              type: string
+            type:
+              default: analytics#webproperty
+              description: Value is "analytics#webproperty".
+              type: string
+          type: object
+        permissions:
+          description: Permissions the user has for this view (profile).
+          properties:
+            effective:
+              description: All the permissions that the user has for this view (profile). These include any implied permissions (e.g., EDIT implies VIEW) or inherited permissions from the parent web property.
+              items:
+                type: string
+              readOnly: true
+              type: array
+          type: object
+        selfLink:
+          description: Link for this view (profile).
+          readOnly: true
+          type: string
+        siteSearchCategoryParameters:
+          description: Site search category parameters for this view (profile).
+          type: string
+        siteSearchQueryParameters:
+          description: The site search query parameters for this view (profile).
+          type: string
+        starred:
+          description: Indicates whether this view (profile) is starred or not.
+          type: boolean
+        stripSiteSearchCategoryParameters:
+          description: Whether or not Analytics will strip search category parameters from the URLs in your reports.
+          type: boolean
+        stripSiteSearchQueryParameters:
+          description: Whether or not Analytics will strip search query parameters from the URLs in your reports.
+          type: boolean
+        timezone:
+          description: Time zone for which this view (profile) has been configured. Time zones are identified by strings from the TZ database.
+          type: string
+        type:
+          description: 'View (Profile) type. Supported types: WEB or APP.'
+          type: string
+        updated:
+          description: Time this view (profile) was last modified.
+          format: date-time
+          readOnly: true
+          type: string
+        webPropertyId:
+          description: Web property ID of the form UA-XXXXX-YY to which this view (profile) belongs.
+          readOnly: true
+          type: string
+        websiteUrl:
+          description: Website URL for this view (profile).
           type: string
       type: object
     WebPropertySummary:
@@ -4255,26 +4816,262 @@ components:
           readOnly: true
           type: string
       type: object
-    AccountRef:
-      description: JSON template for a linked account.
+    Filter:
+      description: JSON template for an Analytics account filter.
       properties:
-        href:
-          description: Link for this account.
-          type: string
-          example: example_value
-        id:
-          description: Account ID.
+        accountId:
+          description: Account ID to which this filter belongs.
           type: string
           example: '123456'
+        advancedDetails:
+          description: Details for the filter of the type ADVANCED.
+          properties:
+            caseSensitive:
+              description: Indicates if the filter expressions are case sensitive.
+              type: boolean
+            extractA:
+              description: Expression to extract from field A.
+              type: string
+            extractB:
+              description: Expression to extract from field B.
+              type: string
+            fieldA:
+              description: Field A.
+              type: string
+            fieldAIndex:
+              description: The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
+              format: int32
+              type: integer
+            fieldARequired:
+              description: Indicates if field A is required to match.
+              type: boolean
+            fieldB:
+              description: Field B.
+              type: string
+            fieldBIndex:
+              description: The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
+              format: int32
+              type: integer
+            fieldBRequired:
+              description: Indicates if field B is required to match.
+              type: boolean
+            outputConstructor:
+              description: Expression used to construct the output value.
+              type: string
+            outputToField:
+              description: Output field.
+              type: string
+            outputToFieldIndex:
+              description: The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
+              format: int32
+              type: integer
+            overrideOutputField:
+              description: Indicates if the existing value of the output field, if any, should be overridden by the output expression.
+              type: boolean
+          type: object
+        created:
+          description: Time this filter was created.
+          format: date-time
+          readOnly: true
+          type: string
+          example: '2026-04-17T12:00:00Z'
+        excludeDetails:
+          $ref: '#/components/schemas/FilterExpression'
+          description: Details for the filter of the type EXCLUDE.
+        id:
+          description: Filter ID.
+          type: string
+          example: '123456'
+        includeDetails:
+          $ref: '#/components/schemas/FilterExpression'
+          description: Details for the filter of the type INCLUDE.
         kind:
-          default: analytics#accountRef
-          description: Analytics account reference.
+          default: analytics#filter
+          description: Resource type for Analytics filter.
+          readOnly: true
           type: string
           example: example_value
+        lowercaseDetails:
+          description: Details for the filter of the type LOWER.
+          properties:
+            field:
+              description: Field to use in the filter.
+              type: string
+            fieldIndex:
+              description: The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
+              format: int32
+              type: integer
+          type: object
         name:
-          description: Account name.
+          description: Name of this filter.
           type: string
           example: Example Name
+        parentLink:
+          description: Parent link for this filter. Points to the account to which this filter belongs.
+          properties:
+            href:
+              description: Link to the account to which this filter belongs.
+              type: string
+            type:
+              default: analytics#account
+              description: Value is "analytics#account".
+              type: string
+          type: object
+        searchAndReplaceDetails:
+          description: Details for the filter of the type SEARCH_AND_REPLACE.
+          properties:
+            caseSensitive:
+              description: Determines if the filter is case sensitive.
+              type: boolean
+            field:
+              description: Field to use in the filter.
+              type: string
+            fieldIndex:
+              description: The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
+              format: int32
+              type: integer
+            replaceString:
+              description: Term to replace the search term with.
+              type: string
+            searchString:
+              description: Term to search.
+              type: string
+          type: object
+        selfLink:
+          description: Link for this filter.
+          readOnly: true
+          type: string
+          example: example_value
+        type:
+          description: Type of this filter. Possible values are INCLUDE, EXCLUDE, LOWERCASE, UPPERCASE, SEARCH_AND_REPLACE and ADVANCED.
+          type: string
+          example: ACTIVE
+        updated:
+          description: Time this filter was last modified.
+          format: date-time
+          readOnly: true
+          type: string
+          example: '2026-04-17T12:00:00Z'
+        uppercaseDetails:
+          description: Details for the filter of the type UPPER.
+          properties:
+            field:
+              description: Field to use in the filter.
+              type: string
+            fieldIndex:
+              description: The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
+              format: int32
+              type: integer
+          type: object
+      type: object
+    RemarketingAudiences:
+      description: A remarketing audience collection lists Analytics remarketing audiences to which the user has access. Each resource in the collection corresponds to a single Analytics remarketing audience.
+      properties:
+        items:
+          description: A list of remarketing audiences.
+          items:
+            $ref: '#/components/schemas/RemarketingAudience'
+          type: array
+        itemsPerPage:
+          description: The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.
+          format: int32
+          type: integer
+        kind:
+          default: analytics#remarketingAudiences
+          description: Collection type.
+          type: string
+        nextLink:
+          description: Link to next page for this remarketing audience collection.
+          type: string
+        previousLink:
+          description: Link to previous page for this view (profile) collection.
+          type: string
+        startIndex:
+          description: The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter.
+          format: int32
+          type: integer
+        totalResults:
+          description: The total number of results for the query, regardless of the number of results in the response.
+          format: int32
+          type: integer
+        username:
+          description: Email ID of the authenticated user
+          type: string
+      type: object
+    CustomDimensions:
+      description: A custom dimension collection lists Analytics custom dimensions to which the user has access. Each resource in the collection corresponds to a single Analytics custom dimension.
+      properties:
+        items:
+          description: Collection of custom dimensions.
+          items:
+            $ref: '#/components/schemas/CustomDimension'
+          type: array
+        itemsPerPage:
+          description: The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.
+          format: int32
+          type: integer
+          example: 42
+        kind:
+          default: analytics#customDimensions
+          description: Collection type.
+          type: string
+          example: example_value
+        nextLink:
+          description: Link to next page for this custom dimension collection.
+          type: string
+          example: example_value
+        previousLink:
+          description: Link to previous page for this custom dimension collection.
+          type: string
+          example: example_value
+        startIndex:
+          description: The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter.
+          format: int32
+          type: integer
+          example: 42
+        totalResults:
+          description: The total number of results for the query, regardless of the number of results in the response.
+          format: int32
+          type: integer
+          example: 42
+        username:
+          description: Email ID of the authenticated user
+          type: string
+          example: Example Name
+      type: object
+    Profiles:
+      description: A view (profile) collection lists Analytics views (profiles) to which the user has access. Each resource in the collection corresponds to a single Analytics view (profile).
+      properties:
+        items:
+          description: A list of views (profiles).
+          items:
+            $ref: '#/components/schemas/Profile'
+          type: array
+        itemsPerPage:
+          description: The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.
+          format: int32
+          type: integer
+        kind:
+          default: analytics#profiles
+          description: Collection type.
+          type: string
+        nextLink:
+          description: Link to next page for this view (profile) collection.
+          type: string
+        previousLink:
+          description: Link to previous page for this view (profile) collection.
+          type: string
+        startIndex:
+          description: The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter.
+          format: int32
+          type: integer
+        totalResults:
+          description: The total number of results for the query, regardless of the number of results in the response.
+          format: int32
+          type: integer
+        username:
+          description: Email ID of the authenticated user
+          type: string
       type: object
     Experiment:
       description: JSON template for Analytics experiment resource.
@@ -4425,167 +5222,6 @@ components:
           type: boolean
           example: true
       type: object
-    Filter:
-      description: JSON template for an Analytics account filter.
-      properties:
-        accountId:
-          description: Account ID to which this filter belongs.
-          type: string
-          example: '123456'
-        advancedDetails:
-          description: Details for the filter of the type ADVANCED.
-          properties:
-            caseSensitive:
-              description: Indicates if the filter expressions are case sensitive.
-              type: boolean
-            extractA:
-              description: Expression to extract from field A.
-              type: string
-            extractB:
-              description: Expression to extract from field B.
-              type: string
-            fieldA:
-              description: Field A.
-              type: string
-            fieldAIndex:
-              description: The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
-              format: int32
-              type: integer
-            fieldARequired:
-              description: Indicates if field A is required to match.
-              type: boolean
-            fieldB:
-              description: Field B.
-              type: string
-            fieldBIndex:
-              description: The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
-              format: int32
-              type: integer
-            fieldBRequired:
-              description: Indicates if field B is required to match.
-              type: boolean
-            outputConstructor:
-              description: Expression used to construct the output value.
-              type: string
-            outputToField:
-              description: Output field.
-              type: string
-            outputToFieldIndex:
-              description: The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
-              format: int32
-              type: integer
-            overrideOutputField:
-              description: Indicates if the existing value of the output field, if any, should be overridden by the output expression.
-              type: boolean
-          type: object
-        created:
-          description: Time this filter was created.
-          format: date-time
-          readOnly: true
-          type: string
-          example: '2026-04-17T12:00:00Z'
-        excludeDetails:
-          $ref: '#/components/schemas/FilterExpression'
-          description: Details for the filter of the type EXCLUDE.
-        id:
-          description: Filter ID.
-          type: string
-          example: '123456'
-        includeDetails:
-          $ref: '#/components/schemas/FilterExpression'
-          description: Details for the filter of the type INCLUDE.
-        kind:
-          default: analytics#filter
-          description: Resource type for Analytics filter.
-          readOnly: true
-          type: string
-          example: example_value
-        lowercaseDetails:
-          description: Details for the filter of the type LOWER.
-          properties:
-            field:
-              description: Field to use in the filter.
-              type: string
-            fieldIndex:
-              description: The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
-              format: int32
-              type: integer
-          type: object
-        name:
-          description: Name of this filter.
-          type: string
-          example: Example Name
-        parentLink:
-          description: Parent link for this filter. Points to the account to which this filter belongs.
-          properties:
-            href:
-              description: Link to the account to which this filter belongs.
-              type: string
-            type:
-              default: analytics#account
-              description: Value is "analytics#account".
-              type: string
-          type: object
-        searchAndReplaceDetails:
-          description: Details for the filter of the type SEARCH_AND_REPLACE.
-          properties:
-            caseSensitive:
-              description: Determines if the filter is case sensitive.
-              type: boolean
-            field:
-              description: Field to use in the filter.
-              type: string
-            fieldIndex:
-              description: The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
-              format: int32
-              type: integer
-            replaceString:
-              description: Term to replace the search term with.
-              type: string
-            searchString:
-              description: Term to search.
-              type: string
-          type: object
-        selfLink:
-          description: Link for this filter.
-          readOnly: true
-          type: string
-          example: example_value
-        type:
-          description: Type of this filter. Possible values are INCLUDE, EXCLUDE, LOWERCASE, UPPERCASE, SEARCH_AND_REPLACE and ADVANCED.
-          type: string
-          example: ACTIVE
-        updated:
-          description: Time this filter was last modified.
-          format: date-time
-          readOnly: true
-          type: string
-          example: '2026-04-17T12:00:00Z'
-        uppercaseDetails:
-          description: Details for the filter of the type UPPER.
-          properties:
-            field:
-              description: Field to use in the filter.
-              type: string
-            fieldIndex:
-              description: The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
-              format: int32
-              type: integer
-          type: object
-      type: object
-    UserRef:
-      description: JSON template for a user reference.
-      properties:
-        email:
-          description: Email ID of this user.
-          type: string
-        id:
-          description: User ID.
-          type: string
-        kind:
-          default: analytics#userRef
-          type: string
-      type: object
     Experiments:
       description: An experiment collection lists Analytics experiments to which the user has access. Each view (profile) can have a set of experiments. Each resource in the Experiment collection corresponds to a single Analytics experiment.
       properties:
@@ -4627,479 +5263,167 @@ components:
           type: string
           example: Example Name
       type: object
-    Profile:
-      description: JSON template for an Analytics view (profile).
-      properties:
-        accountId:
-          description: Account ID to which this view (profile) belongs.
-          type: string
-        botFilteringEnabled:
-          description: Indicates whether bot filtering is enabled for this view (profile).
-          type: boolean
-        childLink:
-          description: Child link for this view (profile). Points to the list of goals for this view (profile).
-          properties:
-            href:
-              description: Link to the list of goals for this view (profile).
-              type: string
-            type:
-              default: analytics#goals
-              description: Value is "analytics#goals".
-              type: string
-          type: object
-        created:
-          description: Time this view (profile) was created.
-          format: date-time
-          readOnly: true
-          type: string
-        currency:
-          description: 'The currency type associated with this view (profile), defaults to USD. The supported values are:
-
-            USD, JPY, EUR, GBP, AUD, KRW, BRL, CNY, DKK, RUB, SEK, NOK, PLN, TRY, TWD, HKD, THB, IDR, ARS, MXN, VND, PHP, INR, CHF, CAD, CZK, NZD, HUF, BGN, LTL, ZAR, UAH, AED, BOB, CLP, COP, EGP, HRK, ILS, MAD, MYR, PEN, PKR, RON, RSD, SAR, SGD, VEF, LVL'
-          type: string
-        defaultPage:
-          description: Default page for this view (profile).
-          type: string
-        eCommerceTracking:
-          description: Indicates whether ecommerce tracking is enabled for this view (profile).
-          type: boolean
-        enhancedECommerceTracking:
-          description: Indicates whether enhanced ecommerce tracking is enabled for this view (profile). This property can only be enabled if ecommerce tracking is enabled.
-          type: boolean
-        excludeQueryParameters:
-          description: The query parameters that are excluded from this view (profile).
-          type: string
-        id:
-          description: View (Profile) ID.
-          type: string
-        internalWebPropertyId:
-          description: Internal ID for the web property to which this view (profile) belongs.
-          readOnly: true
-          type: string
-        kind:
-          default: analytics#profile
-          description: Resource type for Analytics view (profile).
-          readOnly: true
-          type: string
-        name:
-          description: Name of this view (profile).
-          type: string
-        parentLink:
-          description: Parent link for this view (profile). Points to the web property to which this view (profile) belongs.
-          properties:
-            href:
-              description: Link to the web property to which this view (profile) belongs.
-              type: string
-            type:
-              default: analytics#webproperty
-              description: Value is "analytics#webproperty".
-              type: string
-          type: object
-        permissions:
-          description: Permissions the user has for this view (profile).
-          properties:
-            effective:
-              description: All the permissions that the user has for this view (profile). These include any implied permissions (e.g., EDIT implies VIEW) or inherited permissions from the parent web property.
-              items:
-                type: string
-              readOnly: true
-              type: array
-          type: object
-        selfLink:
-          description: Link for this view (profile).
-          readOnly: true
-          type: string
-        siteSearchCategoryParameters:
-          description: Site search category parameters for this view (profile).
-          type: string
-        siteSearchQueryParameters:
-          description: The site search query parameters for this view (profile).
-          type: string
-        starred:
-          description: Indicates whether this view (profile) is starred or not.
-          type: boolean
-        stripSiteSearchCategoryParameters:
-          description: Whether or not Analytics will strip search category parameters from the URLs in your reports.
-          type: boolean
-        stripSiteSearchQueryParameters:
-          description: Whether or not Analytics will strip search query parameters from the URLs in your reports.
-          type: boolean
-        timezone:
-          description: Time zone for which this view (profile) has been configured. Time zones are identified by strings from the TZ database.
-          type: string
-        type:
-          description: 'View (Profile) type. Supported types: WEB or APP.'
-          type: string
-        updated:
-          description: Time this view (profile) was last modified.
-          format: date-time
-          readOnly: true
-          type: string
-        webPropertyId:
-          description: Web property ID of the form UA-XXXXX-YY to which this view (profile) belongs.
-          readOnly: true
-          type: string
-        websiteUrl:
-          description: Website URL for this view (profile).
-          type: string
-      type: object
-    EntityUserLinks:
-      description: An entity user link collection provides a list of Analytics ACL links Each resource in this collection corresponds to a single link.
+    CustomDataSources:
+      description: Lists Analytics custom data sources to which the user has access. Each resource in the collection corresponds to a single Analytics custom data source.
       properties:
         items:
-          description: A list of entity user links.
+          description: Collection of custom data sources.
           items:
-            $ref: '#/components/schemas/EntityUserLink'
-          type: array
-        itemsPerPage:
-          description: The maximum number of entries the response can contain, regardless of the actual number of entries returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.
-          format: int32
-          type: integer
-          example: 42
-        kind:
-          default: analytics#entityUserLinks
-          description: Collection type.
-          type: string
-          example: example_value
-        nextLink:
-          description: Next link for this account collection.
-          type: string
-          example: example_value
-        previousLink:
-          description: Previous link for this account collection.
-          type: string
-          example: example_value
-        startIndex:
-          description: The starting index of the entries, which is 1 by default or otherwise specified by the start-index query parameter.
-          format: int32
-          type: integer
-          example: 42
-        totalResults:
-          description: The total number of results for the query, regardless of the number of results in the response.
-          format: int32
-          type: integer
-          example: 42
-      type: object
-    EntityUserLink:
-      description: JSON template for an Analytics Entity-User Link. Returns permissions that a user has for an entity.
-      properties:
-        entity:
-          description: Entity for this link. It can be an account, a web property, or a view (profile).
-          properties:
-            accountRef:
-              $ref: '#/components/schemas/AccountRef'
-              description: Account for this link.
-            profileRef:
-              $ref: '#/components/schemas/ProfileRef'
-              description: View (Profile) for this link.
-            webPropertyRef:
-              $ref: '#/components/schemas/WebPropertyRef'
-              description: Web property for this link.
-          type: object
-        id:
-          description: Entity user link ID
-          type: string
-          example: '123456'
-        kind:
-          default: analytics#entityUserLink
-          description: Resource type for entity user link.
-          type: string
-          example: example_value
-        permissions:
-          description: Permissions the user has for this entity.
-          properties:
-            effective:
-              description: Effective permissions represent all the permissions that a user has for this entity. These include any implied permissions (e.g., EDIT implies VIEW) or inherited permissions from the parent entity. Effective permissions are read-only.
-              items:
-                type: string
-              readOnly: true
-              type: array
-            local:
-              description: Permissions that a user has been assigned at this very level. Does not include any implied or inherited permissions. Local permissions are modifiable.
-              items:
-                type: string
-              type: array
-          type: object
-        selfLink:
-          description: Self link for this resource.
-          type: string
-          example: example_value
-        userRef:
-          $ref: '#/components/schemas/UserRef'
-          description: User reference.
-      type: object
-    IncludeConditions:
-      description: JSON template for an Analytics Remarketing Include Conditions.
-      properties:
-        daysToLookBack:
-          description: The look-back window lets you specify a time frame for evaluating the behavior that qualifies users for your audience. For example, if your filters include users from Central Asia, and Transactions Greater than 2, and you set the look-back window to 14 days, then any user from Central Asia whose cumulative transactions exceed 2 during the last 14 days is added to the audience.
-          format: int32
-          type: integer
-        isSmartList:
-          description: Boolean indicating whether this segment is a smart list. https://support.google.com/analytics/answer/4628577
-          type: boolean
-        kind:
-          default: analytics#includeConditions
-          description: Resource type for include conditions.
-          type: string
-        membershipDurationDays:
-          description: Number of days (in the range 1 to 540) a user remains in the audience.
-          format: int32
-          type: integer
-        segment:
-          description: The segment condition that will cause a user to be added to an audience.
-          type: string
-      type: object
-    AccountSummary:
-      description: JSON template for an Analytics AccountSummary. An AccountSummary is a lightweight tree comprised of properties/profiles.
-      properties:
-        id:
-          description: Account ID.
-          type: string
-          example: '123456'
-        kind:
-          default: analytics#accountSummary
-          description: Resource type for Analytics AccountSummary.
-          type: string
-          example: example_value
-        name:
-          description: Account name.
-          type: string
-          example: Example Name
-        starred:
-          description: Indicates whether this account is starred or not.
-          type: boolean
-          example: true
-        webProperties:
-          description: List of web properties under this account.
-          items:
-            $ref: '#/components/schemas/WebPropertySummary'
-          type: array
-      type: object
-    RemarketingAudience:
-      description: JSON template for an Analytics remarketing audience.
-      properties:
-        accountId:
-          description: Account ID to which this remarketing audience belongs.
-          type: string
-        audienceDefinition:
-          description: The simple audience definition that will cause a user to be added to an audience.
-          properties:
-            includeConditions:
-              $ref: '#/components/schemas/IncludeConditions'
-              description: Defines the conditions to include users to the audience.
-          type: object
-        audienceType:
-          description: The type of audience, either SIMPLE or STATE_BASED.
-          type: string
-        created:
-          description: Time this remarketing audience was created.
-          format: date-time
-          readOnly: true
-          type: string
-        description:
-          description: The description of this remarketing audience.
-          readOnly: true
-          type: string
-        id:
-          description: Remarketing Audience ID.
-          type: string
-        internalWebPropertyId:
-          description: Internal ID for the web property to which this remarketing audience belongs.
-          readOnly: true
-          type: string
-        kind:
-          default: analytics#remarketingAudience
-          description: Collection type.
-          type: string
-        linkedAdAccounts:
-          description: The linked ad accounts associated with this remarketing audience. A remarketing audience can have only one linkedAdAccount currently.
-          items:
-            $ref: '#/components/schemas/LinkedForeignAccount'
-          type: array
-        linkedViews:
-          description: The views (profiles) that this remarketing audience is linked to.
-          items:
-            type: string
-          type: array
-        name:
-          description: The name of this remarketing audience.
-          type: string
-        stateBasedAudienceDefinition:
-          description: A state based audience definition that will cause a user to be added or removed from an audience.
-          properties:
-            excludeConditions:
-              description: Defines the conditions to exclude users from the audience.
-              properties:
-                exclusionDuration:
-                  description: Whether to make the exclusion TEMPORARY or PERMANENT.
-                  type: string
-                segment:
-                  description: The segment condition that will cause a user to be removed from an audience.
-                  type: string
-              type: object
-            includeConditions:
-              $ref: '#/components/schemas/IncludeConditions'
-              description: Defines the conditions to include users to the audience.
-          type: object
-        updated:
-          description: Time this remarketing audience was last modified.
-          format: date-time
-          readOnly: true
-          type: string
-        webPropertyId:
-          description: Web property ID of the form UA-XXXXX-YY to which this remarketing audience belongs.
-          type: string
-      type: object
-    AnalyticsDataimportDeleteUploadDataRequest:
-      description: Request template for the delete upload data request.
-      properties:
-        customDataImportUids:
-          description: A list of upload UIDs.
-          items:
-            type: string
-          type: array
-      type: object
-    RemarketingAudiences:
-      description: A remarketing audience collection lists Analytics remarketing audiences to which the user has access. Each resource in the collection corresponds to a single Analytics remarketing audience.
-      properties:
-        items:
-          description: A list of remarketing audiences.
-          items:
-            $ref: '#/components/schemas/RemarketingAudience'
+            $ref: '#/components/schemas/CustomDataSource'
           type: array
         itemsPerPage:
           description: The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.
           format: int32
           type: integer
+          example: 42
         kind:
-          default: analytics#remarketingAudiences
+          default: analytics#customDataSources
           description: Collection type.
           type: string
+          example: example_value
         nextLink:
-          description: Link to next page for this remarketing audience collection.
+          description: Link to next page for this custom data source collection.
           type: string
+          example: example_value
         previousLink:
-          description: Link to previous page for this view (profile) collection.
+          description: Link to previous page for this custom data source collection.
           type: string
+          example: example_value
         startIndex:
           description: The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter.
           format: int32
           type: integer
+          example: 42
         totalResults:
           description: The total number of results for the query, regardless of the number of results in the response.
           format: int32
           type: integer
+          example: 42
         username:
           description: Email ID of the authenticated user
           type: string
+          example: Example Name
       type: object
-    Account:
-      description: JSON template for Analytics account entry.
+    Filters:
+      description: A filter collection lists filters created by users in an Analytics account. Each resource in the collection corresponds to a filter.
       properties:
-        childLink:
-          description: Child link for an account entry. Points to the list of web properties for this account.
-          properties:
-            href:
-              description: Link to the list of web properties for this account.
-              type: string
-            type:
-              default: analytics#webproperties
-              description: Type of the child link. Its value is "analytics#webproperties".
-              type: string
-          type: object
-        created:
-          description: Time the account was created.
-          format: date-time
-          type: string
-          example: '2026-04-17T12:00:00Z'
-        id:
-          description: Account ID.
-          type: string
-          example: '123456'
+        items:
+          description: A list of filters.
+          items:
+            $ref: '#/components/schemas/Filter'
+          type: array
+        itemsPerPage:
+          description: The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1,000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.
+          format: int32
+          type: integer
+          example: 42
         kind:
-          default: analytics#account
-          description: Resource type for Analytics account.
+          default: analytics#filters
+          description: Collection type.
           type: string
           example: example_value
-        name:
-          description: Account name.
+        nextLink:
+          description: Link to next page for this filter collection.
+          type: string
+          example: example_value
+        previousLink:
+          description: Link to previous page for this filter collection.
+          type: string
+          example: example_value
+        startIndex:
+          description: The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter.
+          format: int32
+          type: integer
+          example: 42
+        totalResults:
+          description: The total number of results for the query, regardless of the number of results in the response.
+          format: int32
+          type: integer
+          example: 42
+        username:
+          description: Email ID of the authenticated user
           type: string
           example: Example Name
-        permissions:
-          description: Permissions the user has for this account.
-          properties:
-            effective:
-              description: All the permissions that the user has for this account. These include any implied permissions (e.g., EDIT implies VIEW).
-              items:
-                type: string
-              readOnly: true
-              type: array
-          type: object
-        selfLink:
-          description: Link for this account.
-          type: string
-          example: example_value
-        starred:
-          description: Indicates whether this account is starred or not.
-          type: boolean
-          example: true
-        updated:
-          description: Time the account was last modified.
-          format: date-time
-          type: string
-          example: '2026-04-17T12:00:00Z'
       type: object
-    CustomMetric:
-      description: JSON template for Analytics Custom Metric.
+    LinkedForeignAccount:
+      description: JSON template for an Analytics Remarketing Audience Foreign Link.
+      properties:
+        accountId:
+          description: Account ID to which this linked foreign account belongs.
+          type: string
+        eligibleForSearch:
+          description: Boolean indicating whether this is eligible for search.
+          readOnly: true
+          type: boolean
+        id:
+          description: Entity ad account link ID.
+          type: string
+        internalWebPropertyId:
+          description: Internal ID for the web property to which this linked foreign account belongs.
+          readOnly: true
+          type: string
+        kind:
+          default: analytics#linkedForeignAccount
+          description: Resource type for linked foreign account.
+          type: string
+        linkedAccountId:
+          description: The foreign account ID. For example the an Google Ads `linkedAccountId` has the following format XXX-XXX-XXXX.
+          type: string
+        remarketingAudienceId:
+          description: Remarketing audience ID to which this linked foreign account belongs.
+          type: string
+        status:
+          description: The status of this foreign account link.
+          type: string
+        type:
+          description: The type of the foreign account. For example, `ADWORDS_LINKS`, `DBM_LINKS`, `MCC_LINKS` or `OPTIMIZE`.
+          type: string
+        webPropertyId:
+          description: Web property ID of the form UA-XXXXX-YY to which this linked foreign account belongs.
+          type: string
+      type: object
+    CustomDimension:
+      description: JSON template for Analytics Custom Dimension.
       properties:
         accountId:
           description: Account ID.
           type: string
           example: '123456'
         active:
-          description: Boolean indicating whether the custom metric is active.
+          description: Boolean indicating whether the custom dimension is active.
           type: boolean
           example: true
         created:
-          description: Time the custom metric was created.
+          description: Time the custom dimension was created.
           format: date-time
           readOnly: true
           type: string
           example: '2026-04-17T12:00:00Z'
         id:
-          description: Custom metric ID.
+          description: Custom dimension ID.
           type: string
           example: '123456'
         index:
-          description: Index of the custom metric.
+          description: Index of the custom dimension.
           format: int32
           readOnly: true
           type: integer
           example: 42
         kind:
-          default: analytics#customMetric
-          description: Kind value for a custom metric. Set to "analytics#customMetric". It is a read-only field.
+          default: analytics#customDimension
+          description: Kind value for a custom dimension. Set to "analytics#customDimension". It is a read-only field.
           readOnly: true
           type: string
           example: example_value
-        max_value:
-          description: Max value of custom metric.
-          type: string
-          example: example_value
-        min_value:
-          description: Min value of custom metric.
-          type: string
-          example: example_value
         name:
-          description: Name of the custom metric.
+          description: Name of the custom dimension.
           type: string
           example: Example Name
         parentLink:
-          description: Parent link for the custom metric. Points to the property to which the custom metric belongs.
+          description: Parent link for the custom dimension. Points to the property to which the custom dimension belongs.
           properties:
             href:
-              description: Link to the property to which the custom metric belongs.
+              description: Link to the property to which the custom dimension belongs.
               type: string
             type:
               default: analytics#webproperty
@@ -5107,20 +5431,16 @@ components:
               type: string
           type: object
         scope:
-          description: 'Scope of the custom metric: HIT or PRODUCT.'
+          description: 'Scope of the custom dimension: HIT, SESSION, USER or PRODUCT.'
           type: string
           example: ACTIVE
         selfLink:
-          description: Link for the custom metric
+          description: Link for the custom dimension
           readOnly: true
           type: string
           example: example_value
-        type:
-          description: Data type of custom metric.
-          type: string
-          example: ACTIVE
         updated:
-          description: Time the custom metric was last modified.
+          description: Time the custom dimension was last modified.
           format: date-time
           readOnly: true
           type: string
@@ -5130,35 +5450,57 @@ components:
           type: string
           example: '123456'
       type: object
-    FilterExpression:
-      description: JSON template for an Analytics filter expression.
+    AccountRef:
+      description: JSON template for a linked account.
       properties:
-        caseSensitive:
-          description: Determines if the filter is case sensitive.
-          type: boolean
-          example: true
-        expressionValue:
-          description: Filter expression value
-          type: string
-          example: ga:sessions
-        field:
-          description: "Field to filter. Possible values:  \n- Content and Traffic  \n- PAGE_REQUEST_URI, \n- PAGE_HOSTNAME, \n- PAGE_TITLE, \n- REFERRAL, \n- COST_DATA_URI (Campaign target URL), \n- HIT_TYPE, \n- INTERNAL_SEARCH_TERM, \n- INTERNAL_SEARCH_TYPE, \n- SOURCE_PROPERTY_TRACKING_ID,   \n- Campaign or AdGroup  \n- CAMPAIGN_SOURCE, \n- CAMPAIGN_MEDIUM, \n- CAMPAIGN_NAME, \n- CAMPAIGN_AD_GROUP, \n- CAMPAIGN_TERM, \n- CAMPAIGN_CONTENT, \n- CAMPAIGN_CODE, \n- CAMPAIGN_REFERRAL_PATH,   \n- E-Commerce  \n- TRANSACTION_COUNTRY, \n- TRANSACTION_REGION, \n- TRANSACTION_CITY, \n- TRANSACTION_AFFILIATION (Store or order location), \n- ITEM_NAME, \n- ITEM_CODE, \n- ITEM_VARIATION, \n- TRANSACTION_ID, \n- TRANSACTION_CURRENCY_CODE, \n- PRODUCT_ACTION_TYPE,   \n- Audience/Users  \n- BROWSER, \n- BROWSER_VERSION, \n- BROWSER_SIZE, \n- PLATFORM, \n- PLATFORM_VERSION, \n- LANGUAGE, \n- SCREEN_RESOLUTION, \n- SCREEN_COLORS, \n- JAVA_ENABLED (Boolean Field), \n- FLASH_VERSION, \n- GEO_SPEED (Connection speed), \n- VISITOR_TYPE, \n- GEO_ORGANIZATION (ISP organization), \n- GEO_DOMAIN, \n- GEO_IP_ADDRESS, \n- GEO_IP_VERSION,   \n- Location  \n- GEO_COUNTRY, \n- GEO_REGION, \n- GEO_CITY,   \n- Event  \n- EVENT_CATEGORY, \n- EVENT_ACTION, \n- EVENT_LABEL,   \n- Other  \n- CUSTOM_FIELD_1, \n- CUSTOM_FIELD_2, \n- USER_DEFINED_VALUE,   \n- Application  \n- APP_ID, \n- APP_INSTALLER_ID, \n- APP_NAME, \n- APP_VERSION, \n- SCREEN, \n- IS_APP (Boolean Field), \n- IS_FATAL_EXCEPTION (Boolean Field), \n- EXCEPTION_DESCRIPTION,   \n- Mobile device  \n- IS_MOBILE (Boolean Field, Deprecated. Use DEVICE_CATEGORY=mobile), \n- IS_TABLET (Boolean Field, Deprecated. Use DEVICE_CATEGORY=tablet), \n- DEVICE_CATEGORY, \n- MOBILE_HAS_QWERTY_KEYBOARD (Boolean Field), \n- MOBILE_HAS_NFC_SUPPORT (Boolean Field), \n- MOBILE_HAS_CELLULAR_RADIO (Boolean Field), \n- MOBILE_HAS_WIFI_SUPPORT (Boolean Field), \n- MOBILE_BRAND_NAME, \n- MOBILE_MODEL_NAME, \n- MOBILE_MARKETING_NAME, \n- MOBILE_POINTING_METHOD,   \n- Social  \n- SOCIAL_NETWORK, \n- SOCIAL_ACTION, \n- SOCIAL_ACTION_TARGET,   \n- Custom dimension  \n- CUSTOM_DIMENSION (See accompanying field index),"
+        href:
+          description: Link for this account.
           type: string
           example: example_value
-        fieldIndex:
-          description: The Index of the custom dimension. Set only if the field is a is CUSTOM_DIMENSION.
+        id:
+          description: Account ID.
+          type: string
+          example: '123456'
+        kind:
+          default: analytics#accountRef
+          description: Analytics account reference.
+          type: string
+          example: example_value
+        name:
+          description: Account name.
+          type: string
+          example: Example Name
+      type: object
+    Uploads:
+      description: Upload collection lists Analytics uploads to which the user has access. Each custom data source can have a set of uploads. Each resource in the upload collection corresponds to a single Analytics data upload.
+      properties:
+        items:
+          description: A list of uploads.
+          items:
+            $ref: '#/components/schemas/Upload'
+          type: array
+        itemsPerPage:
+          description: The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.
           format: int32
           type: integer
-          example: 42
         kind:
-          default: analytics#filterExpression
-          description: Kind value for filter expression
+          default: analytics#uploads
+          description: Collection type.
           type: string
-          example: example_value
-        matchType:
-          description: Match type for this filter. Possible values are BEGINS_WITH, EQUAL, ENDS_WITH, CONTAINS, or MATCHES. GEO_DOMAIN, GEO_IP_ADDRESS, PAGE_REQUEST_URI, or PAGE_HOSTNAME filters can use any match type; all other filters must use MATCHES.
+        nextLink:
+          description: Link to next page for this upload collection.
           type: string
-          example: ACTIVE
+        previousLink:
+          description: Link to previous page for this upload collection.
+          type: string
+        startIndex:
+          description: The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter.
+          format: int32
+          type: integer
+        totalResults:
+          description: The total number of results for the query, regardless of the number of resources in the result.
+          format: int32
+          type: integer
       type: object
     UnsampledReport:
       description: JSON template for Analytics unsampled report resource.
@@ -5243,58 +5585,329 @@ components:
           description: Web property ID to which this unsampled report belongs. The web property ID is of the form UA-XXXXX-YY.
           type: string
       type: object
-    ProfileRef:
-      description: JSON template for a linked view (profile).
+    UserRef:
+      description: JSON template for a user reference.
       properties:
-        accountId:
-          description: Account ID to which this view (profile) belongs.
-          type: string
-        href:
-          description: Link for this view (profile).
+        email:
+          description: Email ID of this user.
           type: string
         id:
-          description: View (Profile) ID.
-          type: string
-        internalWebPropertyId:
-          description: Internal ID for the web property to which this view (profile) belongs.
+          description: User ID.
           type: string
         kind:
-          default: analytics#profileRef
-          description: Analytics view (profile) reference.
-          type: string
-        name:
-          description: Name of this view (profile).
-          type: string
-        webPropertyId:
-          description: Web property ID of the form UA-XXXXX-YY to which this view (profile) belongs.
+          default: analytics#userRef
           type: string
       type: object
-    FilterRef:
-      description: JSON template for a profile filter link.
+    FilterExpression:
+      description: JSON template for an Analytics filter expression.
       properties:
-        accountId:
-          description: Account ID to which this filter belongs.
-          readOnly: true
+        caseSensitive:
+          description: Determines if the filter is case sensitive.
+          type: boolean
+          example: true
+        expressionValue:
+          description: Filter expression value
           type: string
-          example: '123456'
-        href:
-          description: Link for this filter.
+          example: ga:sessions
+        field:
+          description: "Field to filter. Possible values:  \n- Content and Traffic  \n- PAGE_REQUEST_URI, \n- PAGE_HOSTNAME, \n- PAGE_TITLE, \n- REFERRAL, \n- COST_DATA_URI (Campaign target URL), \n- HIT_TYPE, \n- INTERNAL_SEARCH_TERM, \n- INTERNAL_SEARCH_TYPE, \n- SOURCE_PROPERTY_TRACKING_ID,   \n- Campaign or AdGroup  \n- CAMPAIGN_SOURCE, \n- CAMPAIGN_MEDIUM, \n- CAMPAIGN_NAME, \n- CAMPAIGN_AD_GROUP, \n- CAMPAIGN_TERM, \n- CAMPAIGN_CONTENT, \n- CAMPAIGN_CODE, \n- CAMPAIGN_REFERRAL_PATH,   \n- E-Commerce  \n- TRANSACTION_COUNTRY, \n- TRANSACTION_REGION, \n- TRANSACTION_CITY, \n- TRANSACTION_AFFILIATION (Store or order location), \n- ITEM_NAME, \n- ITEM_CODE, \n- ITEM_VARIATION, \n- TRANSACTION_ID, \n- TRANSACTION_CURRENCY_CODE, \n- PRODUCT_ACTION_TYPE,   \n- Audience/Users  \n- BROWSER, \n- BROWSER_VERSION, \n- BROWSER_SIZE, \n- PLATFORM, \n- PLATFORM_VERSION, \n- LANGUAGE, \n- SCREEN_RESOLUTION, \n- SCREEN_COLORS, \n- JAVA_ENABLED (Boolean Field), \n- FLASH_VERSION, \n- GEO_SPEED (Connection speed), \n- VISITOR_TYPE, \n- GEO_ORGANIZATION (ISP organization), \n- GEO_DOMAIN, \n- GEO_IP_ADDRESS, \n- GEO_IP_VERSION,   \n- Location  \n- GEO_COUNTRY, \n- GEO_REGION, \n- GEO_CITY,   \n- Event  \n- EVENT_CATEGORY, \n- EVENT_ACTION, \n- EVENT_LABEL,   \n- Other  \n- CUSTOM_FIELD_1, \n- CUSTOM_FIELD_2, \n- USER_DEFINED_VALUE,   \n- Application  \n- APP_ID, \n- APP_INSTALLER_ID, \n- APP_NAME, \n- APP_VERSION, \n- SCREEN, \n- IS_APP (Boolean Field), \n- IS_FATAL_EXCEPTION (Boolean Field), \n- EXCEPTION_DESCRIPTION,   \n- Mobile device  \n- IS_MOBILE (Boolean Field, Deprecated. Use DEVICE_CATEGORY=mobile), \n- IS_TABLET (Boolean Field, Deprecated. Use DEVICE_CATEGORY=tablet), \n- DEVICE_CATEGORY, \n- MOBILE_HAS_QWERTY_KEYBOARD (Boolean Field), \n- MOBILE_HAS_NFC_SUPPORT (Boolean Field), \n- MOBILE_HAS_CELLULAR_RADIO (Boolean Field), \n- MOBILE_HAS_WIFI_SUPPORT (Boolean Field), \n- MOBILE_BRAND_NAME, \n- MOBILE_MODEL_NAME, \n- MOBILE_MARKETING_NAME, \n- MOBILE_POINTING_METHOD,   \n- Social  \n- SOCIAL_NETWORK, \n- SOCIAL_ACTION, \n- SOCIAL_ACTION_TARGET,   \n- Custom dimension  \n- CUSTOM_DIMENSION (See accompanying field index),"
           type: string
           example: example_value
+        fieldIndex:
+          description: The Index of the custom dimension. Set only if the field is a is CUSTOM_DIMENSION.
+          format: int32
+          type: integer
+          example: 42
+        kind:
+          default: analytics#filterExpression
+          description: Kind value for filter expression
+          type: string
+          example: example_value
+        matchType:
+          description: Match type for this filter. Possible values are BEGINS_WITH, EQUAL, ENDS_WITH, CONTAINS, or MATCHES. GEO_DOMAIN, GEO_IP_ADDRESS, PAGE_REQUEST_URI, or PAGE_HOSTNAME filters can use any match type; all other filters must use MATCHES.
+          type: string
+          example: ACTIVE
+      type: object
+    HashClientIdRequest:
+      description: JSON template for a hash Client Id request resource.
+      properties:
+        clientId:
+          type: string
+        kind:
+          default: analytics#hashClientIdRequest
+          type: string
+        webPropertyId:
+          type: string
+      type: object
+    Upload:
+      description: Metadata returned for an upload operation.
+      properties:
+        accountId:
+          description: Account Id to which this upload belongs.
+          format: int64
+          type: string
+        customDataSourceId:
+          description: Custom data source Id to which this data import belongs.
+          type: string
+        errors:
+          description: Data import errors collection.
+          items:
+            type: string
+          type: array
         id:
-          description: Filter ID.
+          description: A unique ID for this upload.
+          type: string
+        kind:
+          default: analytics#upload
+          description: Resource type for Analytics upload.
+          type: string
+        status:
+          description: 'Upload status. Possible values: PENDING, COMPLETED, FAILED, DELETING, DELETED.'
+          type: string
+        uploadTime:
+          description: Time this file is uploaded.
+          format: date-time
+          type: string
+      type: object
+    IncludeConditions:
+      description: JSON template for an Analytics Remarketing Include Conditions.
+      properties:
+        daysToLookBack:
+          description: The look-back window lets you specify a time frame for evaluating the behavior that qualifies users for your audience. For example, if your filters include users from Central Asia, and Transactions Greater than 2, and you set the look-back window to 14 days, then any user from Central Asia whose cumulative transactions exceed 2 during the last 14 days is added to the audience.
+          format: int32
+          type: integer
+        isSmartList:
+          description: Boolean indicating whether this segment is a smart list. https://support.google.com/analytics/answer/4628577
+          type: boolean
+        kind:
+          default: analytics#includeConditions
+          description: Resource type for include conditions.
+          type: string
+        membershipDurationDays:
+          description: Number of days (in the range 1 to 540) a user remains in the audience.
+          format: int32
+          type: integer
+        segment:
+          description: The segment condition that will cause a user to be added to an audience.
+          type: string
+      type: object
+    UnsampledReports:
+      description: An unsampled report collection lists Analytics unsampled reports to which the user has access. Each view (profile) can have a set of unsampled reports. Each resource in the unsampled report collection corresponds to a single Analytics unsampled report.
+      properties:
+        items:
+          description: A list of unsampled reports.
+          items:
+            $ref: '#/components/schemas/UnsampledReport'
+          type: array
+        itemsPerPage:
+          description: The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.
+          format: int32
+          type: integer
+        kind:
+          default: analytics#unsampledReports
+          description: Collection type.
+          type: string
+        nextLink:
+          description: Link to next page for this unsampled report collection.
+          type: string
+        previousLink:
+          description: Link to previous page for this unsampled report collection.
+          type: string
+        startIndex:
+          description: The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter.
+          format: int32
+          type: integer
+        totalResults:
+          description: The total number of results for the query, regardless of the number of resources in the result.
+          format: int32
+          type: integer
+        username:
+          description: Email ID of the authenticated user
+          type: string
+      type: object
+    Segments:
+      description: An segment collection lists Analytics segments that the user has access to. Each resource in the collection corresponds to a single Analytics segment.
+      properties:
+        items:
+          description: A list of segments.
+          items:
+            $ref: '#/components/schemas/Segment'
+          type: array
+        itemsPerPage:
+          description: The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.
+          format: int32
+          type: integer
+        kind:
+          default: analytics#segments
+          description: Collection type for segments.
+          type: string
+        nextLink:
+          description: Link to next page for this segment collection.
+          type: string
+        previousLink:
+          description: Link to previous page for this segment collection.
+          type: string
+        startIndex:
+          description: The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter.
+          format: int32
+          type: integer
+        totalResults:
+          description: The total number of results for the query, regardless of the number of results in the response.
+          format: int32
+          type: integer
+        username:
+          description: Email ID of the authenticated user
+          type: string
+      type: object
+    Webproperty:
+      description: JSON template for an Analytics web property.
+      properties:
+        accountId:
+          description: Account ID to which this web property belongs.
+          type: string
+        childLink:
+          description: Child link for this web property. Points to the list of views (profiles) for this web property.
+          properties:
+            href:
+              description: Link to the list of views (profiles) for this web property.
+              type: string
+            type:
+              default: analytics#profiles
+              description: Type of the parent link. Its value is "analytics#profiles".
+              type: string
+          type: object
+        created:
+          description: Time this web property was created.
+          format: date-time
+          readOnly: true
+          type: string
+        dataRetentionResetOnNewActivity:
+          description: 'Set to true to reset the retention period of the user identifier with each new event from that user (thus setting the expiration date to current time plus retention period).
+
+            Set to false to delete data associated with the user identifier automatically after the rentention period.
+
+            This property cannot be set on insert.'
+          type: boolean
+        dataRetentionTtl:
+          description: 'The length of time for which user and event data is retained.
+
+            This property cannot be set on insert.'
+          type: string
+        defaultProfileId:
+          description: Default view (profile) ID.
+          format: int64
+          type: string
+        id:
+          description: Web property ID of the form UA-XXXXX-YY.
+          type: string
+        industryVertical:
+          description: The industry vertical/category selected for this web property.
+          type: string
+        internalWebPropertyId:
+          description: Internal ID for this web property.
+          readOnly: true
+          type: string
+        kind:
+          default: analytics#webproperty
+          description: Resource type for Analytics WebProperty.
+          readOnly: true
+          type: string
+        level:
+          description: Level for this web property. Possible values are STANDARD or PREMIUM.
+          readOnly: true
+          type: string
+        name:
+          description: Name of this web property.
+          type: string
+        parentLink:
+          description: Parent link for this web property. Points to the account to which this web property belongs.
+          properties:
+            href:
+              description: Link to the account for this web property.
+              type: string
+            type:
+              default: analytics#account
+              description: Type of the parent link. Its value is "analytics#account".
+              type: string
+          type: object
+        permissions:
+          description: Permissions the user has for this web property.
+          properties:
+            effective:
+              description: All the permissions that the user has for this web property. These include any implied permissions (e.g., EDIT implies VIEW) or inherited permissions from the parent account.
+              items:
+                type: string
+              readOnly: true
+              type: array
+          type: object
+        profileCount:
+          description: View (Profile) count for this web property.
+          format: int32
+          readOnly: true
+          type: integer
+        selfLink:
+          description: Link for this web property.
+          readOnly: true
+          type: string
+        starred:
+          description: Indicates whether this web property is starred or not.
+          type: boolean
+        updated:
+          description: Time this web property was last modified.
+          format: date-time
+          readOnly: true
+          type: string
+        websiteUrl:
+          description: Website url for this web property.
+          type: string
+      type: object
+    EntityUserLink:
+      description: JSON template for an Analytics Entity-User Link. Returns permissions that a user has for an entity.
+      properties:
+        entity:
+          description: Entity for this link. It can be an account, a web property, or a view (profile).
+          properties:
+            accountRef:
+              $ref: '#/components/schemas/AccountRef'
+              description: Account for this link.
+            profileRef:
+              $ref: '#/components/schemas/ProfileRef'
+              description: View (Profile) for this link.
+            webPropertyRef:
+              $ref: '#/components/schemas/WebPropertyRef'
+              description: Web property for this link.
+          type: object
+        id:
+          description: Entity user link ID
           type: string
           example: '123456'
         kind:
-          default: analytics#filterRef
-          description: Kind value for filter reference.
+          default: analytics#entityUserLink
+          description: Resource type for entity user link.
           type: string
           example: example_value
-        name:
-          description: Name of this filter.
-          readOnly: true
+        permissions:
+          description: Permissions the user has for this entity.
+          properties:
+            effective:
+              description: Effective permissions represent all the permissions that a user has for this entity. These include any implied permissions (e.g., EDIT implies VIEW) or inherited permissions from the parent entity. Effective permissions are read-only.
+              items:
+                type: string
+              readOnly: true
+              type: array
+            local:
+              description: Permissions that a user has been assigned at this very level. Does not include any implied or inherited permissions. Local permissions are modifiable.
+              items:
+                type: string
+              type: array
+          type: object
+        selfLink:
+          description: Self link for this resource.
           type: string
-          example: Example Name
+          example: example_value
+        userRef:
+          $ref: '#/components/schemas/UserRef'
+          description: User reference.
       type: object
     Webproperties:
       description: A web property collection lists Analytics web properties to which the user has access. Each resource in the collection corresponds to a single Analytics web property.
@@ -5330,39 +5943,342 @@ components:
           description: Email ID of the authenticated user
           type: string
       type: object
-    Goals:
-      description: A goal collection lists Analytics goals to which the user has access. Each view (profile) can have a set of goals. Each resource in the Goal collection corresponds to a single Analytics goal.
+    Accounts:
+      description: An account collection provides a list of Analytics accounts to which a user has access. The account collection is the entry point to all management information. Each resource in the collection corresponds to a single Analytics account.
       properties:
         items:
-          description: A list of goals.
+          description: A list of accounts.
           items:
-            $ref: '#/components/schemas/Goal'
+            $ref: '#/components/schemas/Account'
+          type: array
+        itemsPerPage:
+          description: The maximum number of entries the response can contain, regardless of the actual number of entries returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.
+          format: int32
+          type: integer
+          example: 42
+        kind:
+          default: analytics#accounts
+          description: Collection type.
+          type: string
+          example: example_value
+        nextLink:
+          description: Next link for this account collection.
+          type: string
+          example: example_value
+        previousLink:
+          description: Previous link for this account collection.
+          type: string
+          example: example_value
+        startIndex:
+          description: The starting index of the entries, which is 1 by default or otherwise specified by the start-index query parameter.
+          format: int32
+          type: integer
+          example: 42
+        totalResults:
+          description: The total number of results for the query, regardless of the number of results in the response.
+          format: int32
+          type: integer
+          example: 42
+        username:
+          description: Email ID of the authenticated user
+          type: string
+          example: Example Name
+      type: object
+    HashClientIdResponse:
+      description: JSON template for a hash Client Id response resource.
+      properties:
+        clientId:
+          type: string
+        hashedClientId:
+          type: string
+        kind:
+          default: analytics#hashClientIdResponse
+          type: string
+        webPropertyId:
+          type: string
+      type: object
+    Account:
+      description: JSON template for Analytics account entry.
+      properties:
+        childLink:
+          description: Child link for an account entry. Points to the list of web properties for this account.
+          properties:
+            href:
+              description: Link to the list of web properties for this account.
+              type: string
+            type:
+              default: analytics#webproperties
+              description: Type of the child link. Its value is "analytics#webproperties".
+              type: string
+          type: object
+        created:
+          description: Time the account was created.
+          format: date-time
+          type: string
+          example: '2026-04-17T12:00:00Z'
+        id:
+          description: Account ID.
+          type: string
+          example: '123456'
+        kind:
+          default: analytics#account
+          description: Resource type for Analytics account.
+          type: string
+          example: example_value
+        name:
+          description: Account name.
+          type: string
+          example: Example Name
+        permissions:
+          description: Permissions the user has for this account.
+          properties:
+            effective:
+              description: All the permissions that the user has for this account. These include any implied permissions (e.g., EDIT implies VIEW).
+              items:
+                type: string
+              readOnly: true
+              type: array
+          type: object
+        selfLink:
+          description: Link for this account.
+          type: string
+          example: example_value
+        starred:
+          description: Indicates whether this account is starred or not.
+          type: boolean
+          example: true
+        updated:
+          description: Time the account was last modified.
+          format: date-time
+          type: string
+          example: '2026-04-17T12:00:00Z'
+      type: object
+    Segment:
+      description: JSON template for an Analytics segment.
+      properties:
+        created:
+          description: Time the segment was created.
+          format: date-time
+          type: string
+        definition:
+          description: Segment definition.
+          type: string
+        id:
+          description: Segment ID.
+          type: string
+        kind:
+          default: analytics#segment
+          description: Resource type for Analytics segment.
+          type: string
+        name:
+          description: Segment name.
+          type: string
+        segmentId:
+          description: Segment ID. Can be used with the 'segment' parameter in Core Reporting API.
+          type: string
+        selfLink:
+          description: Link for this segment.
+          type: string
+        type:
+          description: Type for a segment. Possible values are "BUILT_IN" or "CUSTOM".
+          type: string
+        updated:
+          description: Time the segment was last modified.
+          format: date-time
+          type: string
+      type: object
+    AccountSummary:
+      description: JSON template for an Analytics AccountSummary. An AccountSummary is a lightweight tree comprised of properties/profiles.
+      properties:
+        id:
+          description: Account ID.
+          type: string
+          example: '123456'
+        kind:
+          default: analytics#accountSummary
+          description: Resource type for Analytics AccountSummary.
+          type: string
+          example: example_value
+        name:
+          description: Account name.
+          type: string
+          example: Example Name
+        starred:
+          description: Indicates whether this account is starred or not.
+          type: boolean
+          example: true
+        webProperties:
+          description: List of web properties under this account.
+          items:
+            $ref: '#/components/schemas/WebPropertySummary'
+          type: array
+      type: object
+    WebPropertyRef:
+      description: JSON template for a web property reference.
+      properties:
+        accountId:
+          description: Account ID to which this web property belongs.
+          type: string
+        href:
+          description: Link for this web property.
+          type: string
+        id:
+          description: Web property ID of the form UA-XXXXX-YY.
+          type: string
+        internalWebPropertyId:
+          description: Internal ID for this web property.
+          type: string
+        kind:
+          default: analytics#webPropertyRef
+          description: Analytics web property reference.
+          type: string
+        name:
+          description: Name of this web property.
+          type: string
+      type: object
+    ProfileSummary:
+      description: JSON template for an Analytics ProfileSummary. ProfileSummary returns basic information (i.e., summary) for a profile.
+      properties:
+        id:
+          description: View (profile) ID.
+          type: string
+        kind:
+          default: analytics#profileSummary
+          description: Resource type for Analytics ProfileSummary.
+          type: string
+        name:
+          description: View (profile) name.
+          type: string
+        starred:
+          description: Indicates whether this view (profile) is starred or not.
+          type: boolean
+        type:
+          description: 'View (Profile) type. Supported types: WEB or APP.'
+          type: string
+      type: object
+    AnalyticsDataimportDeleteUploadDataRequest:
+      description: Request template for the delete upload data request.
+      properties:
+        customDataImportUids:
+          description: A list of upload UIDs.
+          items:
+            type: string
+          type: array
+      type: object
+    EntityAdWordsLink:
+      description: JSON template for Analytics Entity Google Ads Link.
+      properties:
+        adWordsAccounts:
+          description: A list of Google Ads client accounts. These cannot be MCC accounts. This field is required when creating a Google Ads link. It cannot be empty.
+          items:
+            $ref: '#/components/schemas/AdWordsAccount'
+          type: array
+        entity:
+          description: Web property being linked.
+          properties:
+            webPropertyRef:
+              $ref: '#/components/schemas/WebPropertyRef'
+          type: object
+        id:
+          description: Entity Google Ads link ID
+          type: string
+          example: '123456'
+        kind:
+          default: analytics#entityAdWordsLink
+          description: Resource type for entity Google Ads link.
+          type: string
+          example: example_value
+        name:
+          description: Name of the link. This field is required when creating a Google Ads link.
+          type: string
+          example: Example Name
+        profileIds:
+          description: IDs of linked Views (Profiles) represented as strings.
+          items:
+            type: string
+          type: array
+        selfLink:
+          description: URL link for this Google Analytics - Google Ads link.
+          type: string
+          example: example_value
+      type: object
+    CustomMetrics:
+      description: A custom metric collection lists Analytics custom metrics to which the user has access. Each resource in the collection corresponds to a single Analytics custom metric.
+      properties:
+        items:
+          description: Collection of custom metrics.
+          items:
+            $ref: '#/components/schemas/CustomMetric'
           type: array
         itemsPerPage:
           description: The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.
           format: int32
           type: integer
+          example: 42
         kind:
-          default: analytics#goals
+          default: analytics#customMetrics
           description: Collection type.
           type: string
+          example: example_value
         nextLink:
-          description: Link to next page for this goal collection.
+          description: Link to next page for this custom metric collection.
           type: string
+          example: example_value
         previousLink:
-          description: Link to previous page for this goal collection.
+          description: Link to previous page for this custom metric collection.
           type: string
+          example: example_value
         startIndex:
           description: The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter.
           format: int32
           type: integer
+          example: 42
         totalResults:
-          description: The total number of results for the query, regardless of the number of resources in the result.
+          description: The total number of results for the query, regardless of the number of results in the response.
           format: int32
           type: integer
+          example: 42
         username:
           description: Email ID of the authenticated user
           type: string
+          example: Example Name
+      type: object
+    EntityAdWordsLinks:
+      description: An entity Google Ads link collection provides a list of GA-Google Ads links Each resource in this collection corresponds to a single link.
+      properties:
+        items:
+          description: A list of entity Google Ads links.
+          items:
+            $ref: '#/components/schemas/EntityAdWordsLink'
+          type: array
+        itemsPerPage:
+          description: The maximum number of entries the response can contain, regardless of the actual number of entries returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.
+          format: int32
+          type: integer
+          example: 42
+        kind:
+          default: analytics#entityAdWordsLinks
+          description: Collection type.
+          type: string
+          example: example_value
+        nextLink:
+          description: Next link for this Google Ads link collection.
+          type: string
+          example: example_value
+        previousLink:
+          description: Previous link for this Google Ads link collection.
+          type: string
+          example: example_value
+        startIndex:
+          description: The starting index of the entries, which is 1 by default or otherwise specified by the start-index query parameter.
+          format: int32
+          type: integer
+          example: 42
+        totalResults:
+          description: The total number of results for the query, regardless of the number of results in the response.
+          format: int32
+          type: integer
+          example: 42
       type: object
     Goal:
       description: JSON template for Analytics goal resource.
@@ -5518,919 +6434,6 @@ components:
           type: string
           example: '123456'
       type: object
-    EntityAdWordsLinks:
-      description: An entity Google Ads link collection provides a list of GA-Google Ads links Each resource in this collection corresponds to a single link.
-      properties:
-        items:
-          description: A list of entity Google Ads links.
-          items:
-            $ref: '#/components/schemas/EntityAdWordsLink'
-          type: array
-        itemsPerPage:
-          description: The maximum number of entries the response can contain, regardless of the actual number of entries returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.
-          format: int32
-          type: integer
-          example: 42
-        kind:
-          default: analytics#entityAdWordsLinks
-          description: Collection type.
-          type: string
-          example: example_value
-        nextLink:
-          description: Next link for this Google Ads link collection.
-          type: string
-          example: example_value
-        previousLink:
-          description: Previous link for this Google Ads link collection.
-          type: string
-          example: example_value
-        startIndex:
-          description: The starting index of the entries, which is 1 by default or otherwise specified by the start-index query parameter.
-          format: int32
-          type: integer
-          example: 42
-        totalResults:
-          description: The total number of results for the query, regardless of the number of results in the response.
-          format: int32
-          type: integer
-          example: 42
-      type: object
-    EntityAdWordsLink:
-      description: JSON template for Analytics Entity Google Ads Link.
-      properties:
-        adWordsAccounts:
-          description: A list of Google Ads client accounts. These cannot be MCC accounts. This field is required when creating a Google Ads link. It cannot be empty.
-          items:
-            $ref: '#/components/schemas/AdWordsAccount'
-          type: array
-        entity:
-          description: Web property being linked.
-          properties:
-            webPropertyRef:
-              $ref: '#/components/schemas/WebPropertyRef'
-          type: object
-        id:
-          description: Entity Google Ads link ID
-          type: string
-          example: '123456'
-        kind:
-          default: analytics#entityAdWordsLink
-          description: Resource type for entity Google Ads link.
-          type: string
-          example: example_value
-        name:
-          description: Name of the link. This field is required when creating a Google Ads link.
-          type: string
-          example: Example Name
-        profileIds:
-          description: IDs of linked Views (Profiles) represented as strings.
-          items:
-            type: string
-          type: array
-        selfLink:
-          description: URL link for this Google Analytics - Google Ads link.
-          type: string
-          example: example_value
-      type: object
-    Upload:
-      description: Metadata returned for an upload operation.
-      properties:
-        accountId:
-          description: Account Id to which this upload belongs.
-          format: int64
-          type: string
-        customDataSourceId:
-          description: Custom data source Id to which this data import belongs.
-          type: string
-        errors:
-          description: Data import errors collection.
-          items:
-            type: string
-          type: array
-        id:
-          description: A unique ID for this upload.
-          type: string
-        kind:
-          default: analytics#upload
-          description: Resource type for Analytics upload.
-          type: string
-        status:
-          description: 'Upload status. Possible values: PENDING, COMPLETED, FAILED, DELETING, DELETED.'
-          type: string
-        uploadTime:
-          description: Time this file is uploaded.
-          format: date-time
-          type: string
-      type: object
-    Profiles:
-      description: A view (profile) collection lists Analytics views (profiles) to which the user has access. Each resource in the collection corresponds to a single Analytics view (profile).
-      properties:
-        items:
-          description: A list of views (profiles).
-          items:
-            $ref: '#/components/schemas/Profile'
-          type: array
-        itemsPerPage:
-          description: The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.
-          format: int32
-          type: integer
-        kind:
-          default: analytics#profiles
-          description: Collection type.
-          type: string
-        nextLink:
-          description: Link to next page for this view (profile) collection.
-          type: string
-        previousLink:
-          description: Link to previous page for this view (profile) collection.
-          type: string
-        startIndex:
-          description: The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter.
-          format: int32
-          type: integer
-        totalResults:
-          description: The total number of results for the query, regardless of the number of results in the response.
-          format: int32
-          type: integer
-        username:
-          description: Email ID of the authenticated user
-          type: string
-      type: object
-    AccountSummaries:
-      description: An AccountSummary collection lists a summary of accounts, properties and views (profiles) to which the user has access. Each resource in the collection corresponds to a single AccountSummary.
-      properties:
-        items:
-          description: A list of AccountSummaries.
-          items:
-            $ref: '#/components/schemas/AccountSummary'
-          type: array
-        itemsPerPage:
-          description: The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.
-          format: int32
-          type: integer
-          example: 42
-        kind:
-          default: analytics#accountSummaries
-          description: Collection type.
-          type: string
-          example: example_value
-        nextLink:
-          description: Link to next page for this AccountSummary collection.
-          type: string
-          example: example_value
-        previousLink:
-          description: Link to previous page for this AccountSummary collection.
-          type: string
-          example: example_value
-        startIndex:
-          description: The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter.
-          format: int32
-          type: integer
-          example: 42
-        totalResults:
-          description: The total number of results for the query, regardless of the number of results in the response.
-          format: int32
-          type: integer
-          example: 42
-        username:
-          description: Email ID of the authenticated user
-          type: string
-          example: Example Name
-      type: object
-    CustomDimensions:
-      description: A custom dimension collection lists Analytics custom dimensions to which the user has access. Each resource in the collection corresponds to a single Analytics custom dimension.
-      properties:
-        items:
-          description: Collection of custom dimensions.
-          items:
-            $ref: '#/components/schemas/CustomDimension'
-          type: array
-        itemsPerPage:
-          description: The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.
-          format: int32
-          type: integer
-          example: 42
-        kind:
-          default: analytics#customDimensions
-          description: Collection type.
-          type: string
-          example: example_value
-        nextLink:
-          description: Link to next page for this custom dimension collection.
-          type: string
-          example: example_value
-        previousLink:
-          description: Link to previous page for this custom dimension collection.
-          type: string
-          example: example_value
-        startIndex:
-          description: The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter.
-          format: int32
-          type: integer
-          example: 42
-        totalResults:
-          description: The total number of results for the query, regardless of the number of results in the response.
-          format: int32
-          type: integer
-          example: 42
-        username:
-          description: Email ID of the authenticated user
-          type: string
-          example: Example Name
-      type: object
-    CustomDimension:
-      description: JSON template for Analytics Custom Dimension.
-      properties:
-        accountId:
-          description: Account ID.
-          type: string
-          example: '123456'
-        active:
-          description: Boolean indicating whether the custom dimension is active.
-          type: boolean
-          example: true
-        created:
-          description: Time the custom dimension was created.
-          format: date-time
-          readOnly: true
-          type: string
-          example: '2026-04-17T12:00:00Z'
-        id:
-          description: Custom dimension ID.
-          type: string
-          example: '123456'
-        index:
-          description: Index of the custom dimension.
-          format: int32
-          readOnly: true
-          type: integer
-          example: 42
-        kind:
-          default: analytics#customDimension
-          description: Kind value for a custom dimension. Set to "analytics#customDimension". It is a read-only field.
-          readOnly: true
-          type: string
-          example: example_value
-        name:
-          description: Name of the custom dimension.
-          type: string
-          example: Example Name
-        parentLink:
-          description: Parent link for the custom dimension. Points to the property to which the custom dimension belongs.
-          properties:
-            href:
-              description: Link to the property to which the custom dimension belongs.
-              type: string
-            type:
-              default: analytics#webproperty
-              description: Type of the parent link. Set to "analytics#webproperty".
-              type: string
-          type: object
-        scope:
-          description: 'Scope of the custom dimension: HIT, SESSION, USER or PRODUCT.'
-          type: string
-          example: ACTIVE
-        selfLink:
-          description: Link for the custom dimension
-          readOnly: true
-          type: string
-          example: example_value
-        updated:
-          description: Time the custom dimension was last modified.
-          format: date-time
-          readOnly: true
-          type: string
-          example: '2026-04-17T12:00:00Z'
-        webPropertyId:
-          description: Property ID.
-          type: string
-          example: '123456'
-      type: object
-    ProfileFilterLinks:
-      description: A profile filter link collection lists profile filter links between profiles and filters. Each resource in the collection corresponds to a profile filter link.
-      properties:
-        items:
-          description: A list of profile filter links.
-          items:
-            $ref: '#/components/schemas/ProfileFilterLink'
-          type: array
-        itemsPerPage:
-          description: The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1,000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.
-          format: int32
-          type: integer
-        kind:
-          default: analytics#profileFilterLinks
-          description: Collection type.
-          type: string
-        nextLink:
-          description: Link to next page for this profile filter link collection.
-          type: string
-        previousLink:
-          description: Link to previous page for this profile filter link collection.
-          type: string
-        startIndex:
-          description: The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter.
-          format: int32
-          type: integer
-        totalResults:
-          description: The total number of results for the query, regardless of the number of results in the response.
-          format: int32
-          type: integer
-        username:
-          description: Email ID of the authenticated user
-          type: string
-      type: object
-    Segments:
-      description: An segment collection lists Analytics segments that the user has access to. Each resource in the collection corresponds to a single Analytics segment.
-      properties:
-        items:
-          description: A list of segments.
-          items:
-            $ref: '#/components/schemas/Segment'
-          type: array
-        itemsPerPage:
-          description: The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.
-          format: int32
-          type: integer
-        kind:
-          default: analytics#segments
-          description: Collection type for segments.
-          type: string
-        nextLink:
-          description: Link to next page for this segment collection.
-          type: string
-        previousLink:
-          description: Link to previous page for this segment collection.
-          type: string
-        startIndex:
-          description: The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter.
-          format: int32
-          type: integer
-        totalResults:
-          description: The total number of results for the query, regardless of the number of results in the response.
-          format: int32
-          type: integer
-        username:
-          description: Email ID of the authenticated user
-          type: string
-      type: object
-    Accounts:
-      description: An account collection provides a list of Analytics accounts to which a user has access. The account collection is the entry point to all management information. Each resource in the collection corresponds to a single Analytics account.
-      properties:
-        items:
-          description: A list of accounts.
-          items:
-            $ref: '#/components/schemas/Account'
-          type: array
-        itemsPerPage:
-          description: The maximum number of entries the response can contain, regardless of the actual number of entries returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.
-          format: int32
-          type: integer
-          example: 42
-        kind:
-          default: analytics#accounts
-          description: Collection type.
-          type: string
-          example: example_value
-        nextLink:
-          description: Next link for this account collection.
-          type: string
-          example: example_value
-        previousLink:
-          description: Previous link for this account collection.
-          type: string
-          example: example_value
-        startIndex:
-          description: The starting index of the entries, which is 1 by default or otherwise specified by the start-index query parameter.
-          format: int32
-          type: integer
-          example: 42
-        totalResults:
-          description: The total number of results for the query, regardless of the number of results in the response.
-          format: int32
-          type: integer
-          example: 42
-        username:
-          description: Email ID of the authenticated user
-          type: string
-          example: Example Name
-      type: object
-    CustomDataSource:
-      description: JSON template for an Analytics custom data source.
-      properties:
-        accountId:
-          description: Account ID to which this custom data source belongs.
-          type: string
-          example: '123456'
-        childLink:
-          properties:
-            href:
-              description: Link to the list of daily uploads for this custom data source. Link to the list of uploads for this custom data source.
-              type: string
-            type:
-              description: Value is "analytics#dailyUploads". Value is "analytics#uploads".
-              type: string
-          type: object
-        created:
-          description: Time this custom data source was created.
-          format: date-time
-          type: string
-          example: '2026-04-17T12:00:00Z'
-        description:
-          description: Description of custom data source.
-          type: string
-          example: Example description
-        id:
-          description: Custom data source ID.
-          type: string
-          example: '123456'
-        importBehavior:
-          type: string
-          example: example_value
-        kind:
-          default: analytics#customDataSource
-          description: Resource type for Analytics custom data source.
-          type: string
-          example: example_value
-        name:
-          description: Name of this custom data source.
-          type: string
-          example: Example Name
-        parentLink:
-          description: Parent link for this custom data source. Points to the web property to which this custom data source belongs.
-          properties:
-            href:
-              description: Link to the web property to which this custom data source belongs.
-              type: string
-            type:
-              default: analytics#webproperty
-              description: Value is "analytics#webproperty".
-              type: string
-          type: object
-        profilesLinked:
-          description: IDs of views (profiles) linked to the custom data source.
-          items:
-            type: string
-          type: array
-        schema:
-          description: Collection of schema headers of the custom data source.
-          items:
-            type: string
-          type: array
-        selfLink:
-          description: Link for this Analytics custom data source.
-          type: string
-          example: example_value
-        type:
-          description: Type of the custom data source.
-          type: string
-          example: ACTIVE
-        updated:
-          description: Time this custom data source was last modified.
-          format: date-time
-          type: string
-          example: '2026-04-17T12:00:00Z'
-        uploadType:
-          description: Upload type of the custom data source.
-          type: string
-          example: ACTIVE
-        webPropertyId:
-          description: Web property ID of the form UA-XXXXX-YY to which this custom data source belongs.
-          type: string
-          example: '123456'
-      type: object
-    ProfileSummary:
-      description: JSON template for an Analytics ProfileSummary. ProfileSummary returns basic information (i.e., summary) for a profile.
-      properties:
-        id:
-          description: View (profile) ID.
-          type: string
-        kind:
-          default: analytics#profileSummary
-          description: Resource type for Analytics ProfileSummary.
-          type: string
-        name:
-          description: View (profile) name.
-          type: string
-        starred:
-          description: Indicates whether this view (profile) is starred or not.
-          type: boolean
-        type:
-          description: 'View (Profile) type. Supported types: WEB or APP.'
-          type: string
-      type: object
-    LinkedForeignAccount:
-      description: JSON template for an Analytics Remarketing Audience Foreign Link.
-      properties:
-        accountId:
-          description: Account ID to which this linked foreign account belongs.
-          type: string
-        eligibleForSearch:
-          description: Boolean indicating whether this is eligible for search.
-          readOnly: true
-          type: boolean
-        id:
-          description: Entity ad account link ID.
-          type: string
-        internalWebPropertyId:
-          description: Internal ID for the web property to which this linked foreign account belongs.
-          readOnly: true
-          type: string
-        kind:
-          default: analytics#linkedForeignAccount
-          description: Resource type for linked foreign account.
-          type: string
-        linkedAccountId:
-          description: The foreign account ID. For example the an Google Ads `linkedAccountId` has the following format XXX-XXX-XXXX.
-          type: string
-        remarketingAudienceId:
-          description: Remarketing audience ID to which this linked foreign account belongs.
-          type: string
-        status:
-          description: The status of this foreign account link.
-          type: string
-        type:
-          description: The type of the foreign account. For example, `ADWORDS_LINKS`, `DBM_LINKS`, `MCC_LINKS` or `OPTIMIZE`.
-          type: string
-        webPropertyId:
-          description: Web property ID of the form UA-XXXXX-YY to which this linked foreign account belongs.
-          type: string
-      type: object
-    Segment:
-      description: JSON template for an Analytics segment.
-      properties:
-        created:
-          description: Time the segment was created.
-          format: date-time
-          type: string
-        definition:
-          description: Segment definition.
-          type: string
-        id:
-          description: Segment ID.
-          type: string
-        kind:
-          default: analytics#segment
-          description: Resource type for Analytics segment.
-          type: string
-        name:
-          description: Segment name.
-          type: string
-        segmentId:
-          description: Segment ID. Can be used with the 'segment' parameter in Core Reporting API.
-          type: string
-        selfLink:
-          description: Link for this segment.
-          type: string
-        type:
-          description: Type for a segment. Possible values are "BUILT_IN" or "CUSTOM".
-          type: string
-        updated:
-          description: Time the segment was last modified.
-          format: date-time
-          type: string
-      type: object
-    Webproperty:
-      description: JSON template for an Analytics web property.
-      properties:
-        accountId:
-          description: Account ID to which this web property belongs.
-          type: string
-        childLink:
-          description: Child link for this web property. Points to the list of views (profiles) for this web property.
-          properties:
-            href:
-              description: Link to the list of views (profiles) for this web property.
-              type: string
-            type:
-              default: analytics#profiles
-              description: Type of the parent link. Its value is "analytics#profiles".
-              type: string
-          type: object
-        created:
-          description: Time this web property was created.
-          format: date-time
-          readOnly: true
-          type: string
-        dataRetentionResetOnNewActivity:
-          description: 'Set to true to reset the retention period of the user identifier with each new event from that user (thus setting the expiration date to current time plus retention period).
-
-            Set to false to delete data associated with the user identifier automatically after the rentention period.
-
-            This property cannot be set on insert.'
-          type: boolean
-        dataRetentionTtl:
-          description: 'The length of time for which user and event data is retained.
-
-            This property cannot be set on insert.'
-          type: string
-        defaultProfileId:
-          description: Default view (profile) ID.
-          format: int64
-          type: string
-        id:
-          description: Web property ID of the form UA-XXXXX-YY.
-          type: string
-        industryVertical:
-          description: The industry vertical/category selected for this web property.
-          type: string
-        internalWebPropertyId:
-          description: Internal ID for this web property.
-          readOnly: true
-          type: string
-        kind:
-          default: analytics#webproperty
-          description: Resource type for Analytics WebProperty.
-          readOnly: true
-          type: string
-        level:
-          description: Level for this web property. Possible values are STANDARD or PREMIUM.
-          readOnly: true
-          type: string
-        name:
-          description: Name of this web property.
-          type: string
-        parentLink:
-          description: Parent link for this web property. Points to the account to which this web property belongs.
-          properties:
-            href:
-              description: Link to the account for this web property.
-              type: string
-            type:
-              default: analytics#account
-              description: Type of the parent link. Its value is "analytics#account".
-              type: string
-          type: object
-        permissions:
-          description: Permissions the user has for this web property.
-          properties:
-            effective:
-              description: All the permissions that the user has for this web property. These include any implied permissions (e.g., EDIT implies VIEW) or inherited permissions from the parent account.
-              items:
-                type: string
-              readOnly: true
-              type: array
-          type: object
-        profileCount:
-          description: View (Profile) count for this web property.
-          format: int32
-          readOnly: true
-          type: integer
-        selfLink:
-          description: Link for this web property.
-          readOnly: true
-          type: string
-        starred:
-          description: Indicates whether this web property is starred or not.
-          type: boolean
-        updated:
-          description: Time this web property was last modified.
-          format: date-time
-          readOnly: true
-          type: string
-        websiteUrl:
-          description: Website url for this web property.
-          type: string
-      type: object
-    Filters:
-      description: A filter collection lists filters created by users in an Analytics account. Each resource in the collection corresponds to a filter.
-      properties:
-        items:
-          description: A list of filters.
-          items:
-            $ref: '#/components/schemas/Filter'
-          type: array
-        itemsPerPage:
-          description: The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1,000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.
-          format: int32
-          type: integer
-          example: 42
-        kind:
-          default: analytics#filters
-          description: Collection type.
-          type: string
-          example: example_value
-        nextLink:
-          description: Link to next page for this filter collection.
-          type: string
-          example: example_value
-        previousLink:
-          description: Link to previous page for this filter collection.
-          type: string
-          example: example_value
-        startIndex:
-          description: The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter.
-          format: int32
-          type: integer
-          example: 42
-        totalResults:
-          description: The total number of results for the query, regardless of the number of results in the response.
-          format: int32
-          type: integer
-          example: 42
-        username:
-          description: Email ID of the authenticated user
-          type: string
-          example: Example Name
-      type: object
-    HashClientIdRequest:
-      description: JSON template for a hash Client Id request resource.
-      properties:
-        clientId:
-          type: string
-        kind:
-          default: analytics#hashClientIdRequest
-          type: string
-        webPropertyId:
-          type: string
-      type: object
-    Uploads:
-      description: Upload collection lists Analytics uploads to which the user has access. Each custom data source can have a set of uploads. Each resource in the upload collection corresponds to a single Analytics data upload.
-      properties:
-        items:
-          description: A list of uploads.
-          items:
-            $ref: '#/components/schemas/Upload'
-          type: array
-        itemsPerPage:
-          description: The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.
-          format: int32
-          type: integer
-        kind:
-          default: analytics#uploads
-          description: Collection type.
-          type: string
-        nextLink:
-          description: Link to next page for this upload collection.
-          type: string
-        previousLink:
-          description: Link to previous page for this upload collection.
-          type: string
-        startIndex:
-          description: The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter.
-          format: int32
-          type: integer
-        totalResults:
-          description: The total number of results for the query, regardless of the number of resources in the result.
-          format: int32
-          type: integer
-      type: object
-    CustomMetrics:
-      description: A custom metric collection lists Analytics custom metrics to which the user has access. Each resource in the collection corresponds to a single Analytics custom metric.
-      properties:
-        items:
-          description: Collection of custom metrics.
-          items:
-            $ref: '#/components/schemas/CustomMetric'
-          type: array
-        itemsPerPage:
-          description: The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.
-          format: int32
-          type: integer
-          example: 42
-        kind:
-          default: analytics#customMetrics
-          description: Collection type.
-          type: string
-          example: example_value
-        nextLink:
-          description: Link to next page for this custom metric collection.
-          type: string
-          example: example_value
-        previousLink:
-          description: Link to previous page for this custom metric collection.
-          type: string
-          example: example_value
-        startIndex:
-          description: The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter.
-          format: int32
-          type: integer
-          example: 42
-        totalResults:
-          description: The total number of results for the query, regardless of the number of results in the response.
-          format: int32
-          type: integer
-          example: 42
-        username:
-          description: Email ID of the authenticated user
-          type: string
-          example: Example Name
-      type: object
-    CustomDataSources:
-      description: Lists Analytics custom data sources to which the user has access. Each resource in the collection corresponds to a single Analytics custom data source.
-      properties:
-        items:
-          description: Collection of custom data sources.
-          items:
-            $ref: '#/components/schemas/CustomDataSource'
-          type: array
-        itemsPerPage:
-          description: The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.
-          format: int32
-          type: integer
-          example: 42
-        kind:
-          default: analytics#customDataSources
-          description: Collection type.
-          type: string
-          example: example_value
-        nextLink:
-          description: Link to next page for this custom data source collection.
-          type: string
-          example: example_value
-        previousLink:
-          description: Link to previous page for this custom data source collection.
-          type: string
-          example: example_value
-        startIndex:
-          description: The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter.
-          format: int32
-          type: integer
-          example: 42
-        totalResults:
-          description: The total number of results for the query, regardless of the number of results in the response.
-          format: int32
-          type: integer
-          example: 42
-        username:
-          description: Email ID of the authenticated user
-          type: string
-          example: Example Name
-      type: object
-    WebPropertyRef:
-      description: JSON template for a web property reference.
-      properties:
-        accountId:
-          description: Account ID to which this web property belongs.
-          type: string
-        href:
-          description: Link for this web property.
-          type: string
-        id:
-          description: Web property ID of the form UA-XXXXX-YY.
-          type: string
-        internalWebPropertyId:
-          description: Internal ID for this web property.
-          type: string
-        kind:
-          default: analytics#webPropertyRef
-          description: Analytics web property reference.
-          type: string
-        name:
-          description: Name of this web property.
-          type: string
-      type: object
-    AdWordsAccount:
-      description: JSON template for an Google Ads account.
-      properties:
-        autoTaggingEnabled:
-          description: True if auto-tagging is enabled on the Google Ads account. Read-only after the insert operation.
-          type: boolean
-          example: true
-        customerId:
-          description: Customer ID. This field is required when creating a Google Ads link.
-          type: string
-          example: '123456'
-        kind:
-          default: analytics#adWordsAccount
-          description: Resource type for Google Ads account.
-          type: string
-          example: example_value
-      type: object
-    UnsampledReports:
-      description: An unsampled report collection lists Analytics unsampled reports to which the user has access. Each view (profile) can have a set of unsampled reports. Each resource in the unsampled report collection corresponds to a single Analytics unsampled report.
-      properties:
-        items:
-          description: A list of unsampled reports.
-          items:
-            $ref: '#/components/schemas/UnsampledReport'
-          type: array
-        itemsPerPage:
-          description: The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.
-          format: int32
-          type: integer
-        kind:
-          default: analytics#unsampledReports
-          description: Collection type.
-          type: string
-        nextLink:
-          description: Link to next page for this unsampled report collection.
-          type: string
-        previousLink:
-          description: Link to previous page for this unsampled report collection.
-          type: string
-        startIndex:
-          description: The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter.
-          format: int32
-          type: integer
-        totalResults:
-          description: The total number of results for the query, regardless of the number of resources in the result.
-          format: int32
-          type: integer
-        username:
-          description: Email ID of the authenticated user
-          type: string
-      type: object
   parameters:
     alt:
       description: Data format for the response.
@@ -6440,10 +6443,10 @@ components:
         enum:
         - json
         type: string
-    userIp:
-      description: Deprecated. Please use quotaUser instead.
+    key:
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
       in: query
-      name: userIp
+      name: key
       schema:
         type: string
     oauth_token:
@@ -6452,22 +6455,22 @@ components:
       name: oauth_token
       schema:
         type: string
-    quotaUser:
-      description: An opaque string that represents a user for quota purposes. Must not exceed 40 characters.
-      in: query
-      name: quotaUser
-      schema:
-        type: string
     fields:
       description: Selector specifying which fields to include in a partial response.
       in: query
       name: fields
       schema:
         type: string
-    key:
-      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    userIp:
+      description: Deprecated. Please use quotaUser instead.
       in: query
-      name: key
+      name: userIp
+      schema:
+        type: string
+    quotaUser:
+      description: An opaque string that represents a user for quota purposes. Must not exceed 40 characters.
+      in: query
+      name: quotaUser
       schema:
         type: string
     prettyPrint:
@@ -6483,8 +6486,13 @@ components:
         implicit:
           authorizationUrl: https://accounts.google.com/o/oauth2/auth
           scopes:
+            https://www.googleapis.com/auth/analytics: View and manage your Google Analytics data
             https://www.googleapis.com/auth/analytics.edit: Edit Google Analytics management entities
-            https://www.googleapis.com/auth/analytics.readonly: See and download your Google Analytics data
+            https://www.googleapis.com/auth/analytics.manage.users: Manage Google Analytics Account users by email address
+            https://www.googleapis.com/auth/analytics.manage.users.readonly: View Google Analytics user permissions
+            https://www.googleapis.com/auth/analytics.provision: Create a new Google Analytics account along with its default property and view
+            https://www.googleapis.com/auth/analytics.readonly: View your Google Analytics data
+            https://www.googleapis.com/auth/analytics.user.deletion: Manage Google Analytics user deletion requests
       type: oauth2
     Oauth2c:
       description: Oauth 2.0 authorizationCode authentication
@@ -6492,9 +6500,14 @@ components:
         authorizationCode:
           authorizationUrl: https://accounts.google.com/o/oauth2/auth
           scopes:
+            https://www.googleapis.com/auth/analytics: View and manage your Google Analytics data
             https://www.googleapis.com/auth/analytics.edit: Edit Google Analytics management entities
-            https://www.googleapis.com/auth/analytics.readonly: See and download your Google Analytics data
+            https://www.googleapis.com/auth/analytics.manage.users: Manage Google Analytics Account users by email address
+            https://www.googleapis.com/auth/analytics.manage.users.readonly: View Google Analytics user permissions
+            https://www.googleapis.com/auth/analytics.provision: Create a new Google Analytics account along with its default property and view
+            https://www.googleapis.com/auth/analytics.readonly: View your Google Analytics data
+            https://www.googleapis.com/auth/analytics.user.deletion: Manage Google Analytics user deletion requests
           tokenUrl: https://accounts.google.com/o/oauth2/token
       type: oauth2
 externalDocs:
-  url: http://code.google.com/apis/analytics/docs/mgmt/home.html
+  url: https://developers.google.com/analytics/

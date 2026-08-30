@@ -975,8 +975,7 @@ apis:
   description: The userActivity API from Google Analytics — 1 operation(s) for useractivity.
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
   baseURL: https://analyticsreporting.googleapis.com
-  tags:
-  - User Activity
+  tags: []
   tags_raw:
   - userActivity
   properties:
@@ -1067,8 +1066,7 @@ apis:
   description: The userDeletion API from Google Analytics — 1 operation(s) for userdeletion.
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
   baseURL: https://www.googleapis.com/analytics/v3
-  tags:
-  - User Deletion
+  tags: []
   tags_raw:
   - userDeletion
   properties:

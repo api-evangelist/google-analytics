@@ -1245,6 +1245,8 @@ apis:
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
 common:
+  - type: Website
+    url: https://www.google.com/
   - type: CapabilityMap
     url: capabilities/google-analytics-capability-edges.yml
     name: Google Analytics Business Capability Map
@@ -1605,3 +1607,5 @@ x-enrichment:
   status: enriched
   artifacts_added: 39
   pass: local-v1
+x-parent: google
+x-relationship: product

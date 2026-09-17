@@ -880,98 +880,6 @@ apis:
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
-- aid: google-analytics:google-analytics-useractivity-api
-  name: Google Analytics userActivity API
-  description: The userActivity API from Google Analytics — 1 operation(s) for useractivity.
-  humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
-  baseURL: https://analyticsreporting.googleapis.com
-  tags:
-  - User Activity
-  tags_raw:
-  - userActivity
-  properties:
-  - type: OpenAPI
-    url: openapi/google-analytics-useractivity-api-openapi.yml
-  - type: Documentation
-    url: https://developers.google.com/analytics/devguides/reporting/data/v1
-  - type: APIReference
-    url: https://developers.google.com/analytics/devguides/reporting/data/v1/rest
-  - type: GettingStarted
-    url: https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart
-  - type: Authentication
-    url: >-
-      https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries
-  - type: RateLimits
-    url: https://developers.google.com/analytics/devguides/reporting/data/v1/quotas
-  - type: SDKs
-    url: https://pypi.org/project/google-analytics-data/
-  - type: SDKs
-    url: https://www.npmjs.com/package/@google-analytics/data
-  - type: SDKs
-    url: https://central.sonatype.com/artifact/com.google.analytics/google-analytics-data
-  - type: SDKs
-    url: https://www.nuget.org/packages/Google.Analytics.Data.V1Beta
-  - type: SDKs
-    url: https://packagist.org/packages/google/analytics-data
-  - type: CodeExamples
-    url: https://github.com/googleanalytics/python-docs-samples
-  - type: CodeExamples
-    url: https://github.com/googleanalytics/java-docs-samples
-  - type: CodeExamples
-    url: https://github.com/googleanalytics/nodejs-docs-samples
-  - type: CodeExamples
-    url: https://github.com/googleanalytics/dotnet-docs-samples
-  - type: CodeExamples
-    url: https://github.com/googleanalytics/php-docs-samples
-  - type: CodeExamples
-    url: https://github.com/googleanalytics/analytics-data-curl-examples
-  - type: CodeExamples
-    url: https://github.com/googleanalytics/analytics-data-javascript-examples
-  - type: GraphQL
-    url: graphql/google-analytics-graphql.md
-  - type: Documentation
-    url: https://developers.google.com/analytics/devguides/config/admin/v1
-  - type: APIReference
-    url: https://developers.google.com/analytics/devguides/config/admin/v1/rest
-  - type: GettingStarted
-    url: https://developers.google.com/analytics/devguides/config/admin/v1/quickstart
-  - type: SDKs
-    url: https://developers.google.com/analytics/devguides/config/admin/v1/client-libraries
-  - type: SDKs
-    url: https://pypi.org/project/google-analytics-admin/
-  - type: SDKs
-    url: https://www.npmjs.com/package/@google-analytics/admin
-  - type: SDKs
-    url: https://central.sonatype.com/artifact/com.google.analytics/google-analytics-admin
-  - type: SDKs
-    url: https://www.nuget.org/packages/Google.Analytics.Admin.V1Beta
-  - type: SDKs
-    url: https://packagist.org/packages/google/analytics-admin
-  - type: CodeExamples
-    url: https://github.com/googleanalytics/analytics-samples-config
-  - type: Documentation
-    url: https://developers.google.com/analytics/devguides/collection/protocol/ga4
-  - type: APIReference
-    url: https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference
-  - type: GettingStarted
-    url: https://developers.google.com/analytics/devguides/collection/protocol/ga4/sending-events
-  - type: Troubleshooting
-    url: >-
-      https://developers.google.com/analytics/devguides/collection/protocol/ga4/troubleshooting
-  - type: Documentation
-    url: https://developers.google.com/analytics/devguides/config/userdeletion/v3
-  - type: APIReference
-    url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/reference
-  - type: Authentication
-    url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/authorization
-  - type: Documentation
-    url: https://developers.google.com/analytics/devguides/reporting/core/v4
-  - type: GettingStarted
-    url: https://developers.google.com/analytics/devguides/migration/api/reporting-ua-to-ga4
-  - type: Documentation
-    url: https://developers.google.com/analytics/devguides/config/mgmt/v3
-  - type: APIReference
-    url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
 - aid: google-analytics:google-analytics-userdeletion-api
   name: Google Analytics userDeletion API
   description: The userDeletion API from Google Analytics — 1 operation(s) for userdeletion.
@@ -1074,6 +982,96 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/google-analytics-validation-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1
+  - type: APIReference
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/rest
+  - type: GettingStarted
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart
+  - type: Authentication
+    url: >-
+      https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries
+  - type: RateLimits
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/quotas
+  - type: SDKs
+    url: https://pypi.org/project/google-analytics-data/
+  - type: SDKs
+    url: https://www.npmjs.com/package/@google-analytics/data
+  - type: SDKs
+    url: https://central.sonatype.com/artifact/com.google.analytics/google-analytics-data
+  - type: SDKs
+    url: https://www.nuget.org/packages/Google.Analytics.Data.V1Beta
+  - type: SDKs
+    url: https://packagist.org/packages/google/analytics-data
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/python-docs-samples
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/java-docs-samples
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/nodejs-docs-samples
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/dotnet-docs-samples
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/php-docs-samples
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/analytics-data-curl-examples
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/analytics-data-javascript-examples
+  - type: GraphQL
+    url: graphql/google-analytics-graphql.md
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/config/admin/v1
+  - type: APIReference
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/rest
+  - type: GettingStarted
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/quickstart
+  - type: SDKs
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/client-libraries
+  - type: SDKs
+    url: https://pypi.org/project/google-analytics-admin/
+  - type: SDKs
+    url: https://www.npmjs.com/package/@google-analytics/admin
+  - type: SDKs
+    url: https://central.sonatype.com/artifact/com.google.analytics/google-analytics-admin
+  - type: SDKs
+    url: https://www.nuget.org/packages/Google.Analytics.Admin.V1Beta
+  - type: SDKs
+    url: https://packagist.org/packages/google/analytics-admin
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/analytics-samples-config
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/collection/protocol/ga4
+  - type: APIReference
+    url: https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference
+  - type: GettingStarted
+    url: https://developers.google.com/analytics/devguides/collection/protocol/ga4/sending-events
+  - type: Troubleshooting
+    url: >-
+      https://developers.google.com/analytics/devguides/collection/protocol/ga4/troubleshooting
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/config/userdeletion/v3
+  - type: APIReference
+    url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/reference
+  - type: Authentication
+    url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/authorization
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/reporting/core/v4
+  - type: GettingStarted
+    url: https://developers.google.com/analytics/devguides/migration/api/reporting-ua-to-ga4
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/config/mgmt/v3
+  - type: APIReference
+    url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
+- aid: google-analytics:google-analytics-user-activity-api
+  name: Google Analytics User Activity API
+  description: The User Activity API from Google Analytics — 1 operation(s) for user activity.
+  humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
+  baseURL: https://analyticsadmin.googleapis.com
+  tags:
+  - User Activity
+  properties:
+  - type: OpenAPI
+    url: openapi/google-analytics-user-activity-api-openapi.yml
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/reporting/data/v1
   - type: APIReference

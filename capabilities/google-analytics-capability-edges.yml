@@ -15,7 +15,8 @@ capability_model:
 edge_count: 3
 edges:
 - tag: User Deletion
-  spec_file: google-analytics-user-deletion-api-openapi.yml
+  spec_file: google-analytics-userdeletion-api-openapi.yml
+  reanchored_from: google-analytics-user-deletion-api-openapi.yml
   capability_id: BC-130.50
   capability_id_l1: BC-130
   capability_name: Privacy & Data Protection Management

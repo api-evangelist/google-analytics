@@ -66,16 +66,52 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    UserPropertyValue:
+    ValidationMessage:
       type: object
       properties:
-        value:
-          oneOf:
-          - type: string
-          - type: number
-          - type: boolean
-          description: The value of the user property.
+        fieldPath:
+          type: string
+          description: Path to the field that caused the validation error.
+          example: /example/path
+        description:
+          type: string
+          description: Description of the validation error.
+          example: Example description
+        validationCode:
+          type: string
+          description: A code identifying the type of validation error.
+          enum:
+          - VALUE_INVALID
+          - VALUE_REQUIRED
+          - NAME_INVALID
+          - NAME_RESERVED
+          - VALUE_OUT_OF_BOUNDS
+          - EXCEEDED_MAX_ENTITIES
+          - NAME_DUPLICATED
+          example: VALUE_INVALID
+    UserLocation:
+      type: object
+      properties:
+        city:
+          type: string
+          description: City name.
           example: example_value
+        region_id:
+          type: string
+          description: Region identifier.
+          example: '123456'
+        country_id:
+          type: string
+          description: Country identifier.
+          example: '123456'
+        subcontinent_id:
+          type: string
+          description: Subcontinent identifier.
+          example: '123456'
+        continent_id:
+          type: string
+          description: Continent identifier.
+          example: '123456'
     Device:
       type: object
       properties:
@@ -122,6 +158,23 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ValidationMessage'
+    Consent:
+      type: object
+      properties:
+        ad_user_data:
+          type: string
+          description: Consent for using user data in advertising.
+          enum:
+          - GRANTED
+          - DENIED
+          example: GRANTED
+        ad_personalization:
+          type: string
+          description: Consent for ad personalization.
+          enum:
+          - GRANTED
+          - DENIED
+          example: GRANTED
     MeasurementPayload:
       type: object
       required:
@@ -181,6 +234,16 @@ components:
           maxItems: 25
           items:
             $ref: '#/components/schemas/Event'
+    UserPropertyValue:
+      type: object
+      properties:
+        value:
+          oneOf:
+          - type: string
+          - type: number
+          - type: boolean
+          description: The value of the user property.
+          example: example_value
     Event:
       type: object
       required:
@@ -205,69 +268,6 @@ components:
               type: integer
               format: int64
               description: Unix epoch time in microseconds to override event timestamp.
-    ValidationMessage:
-      type: object
-      properties:
-        fieldPath:
-          type: string
-          description: Path to the field that caused the validation error.
-          example: /example/path
-        description:
-          type: string
-          description: Description of the validation error.
-          example: Example description
-        validationCode:
-          type: string
-          description: A code identifying the type of validation error.
-          enum:
-          - VALUE_INVALID
-          - VALUE_REQUIRED
-          - NAME_INVALID
-          - NAME_RESERVED
-          - VALUE_OUT_OF_BOUNDS
-          - EXCEEDED_MAX_ENTITIES
-          - NAME_DUPLICATED
-          example: VALUE_INVALID
-    UserLocation:
-      type: object
-      properties:
-        city:
-          type: string
-          description: City name.
-          example: example_value
-        region_id:
-          type: string
-          description: Region identifier.
-          example: '123456'
-        country_id:
-          type: string
-          description: Country identifier.
-          example: '123456'
-        subcontinent_id:
-          type: string
-          description: Subcontinent identifier.
-          example: '123456'
-        continent_id:
-          type: string
-          description: Continent identifier.
-          example: '123456'
-    Consent:
-      type: object
-      properties:
-        ad_user_data:
-          type: string
-          description: Consent for using user data in advertising.
-          enum:
-          - GRANTED
-          - DENIED
-          example: GRANTED
-        ad_personalization:
-          type: string
-          description: Consent for ad personalization.
-          enum:
-          - GRANTED
-          - DENIED
-          example: GRANTED
 externalDocs:
   description: Measurement Protocol documentation
   url: https://developers.google.com/analytics/devguides/collection/protocol/ga4

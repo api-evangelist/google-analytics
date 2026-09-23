@@ -5,8 +5,7 @@
     "_original/google-analytics-data-api.yaml",
     "_original/google-analytics-management-api-v3.yaml",
     "_original/google-analytics-measurement-protocol.yaml",
-    "_original/google-analytics-reporting-api-v4.yaml",
-    "_original/google-analytics-user-deletion-api.yaml"
+    "_original/google-analytics-reporting-api-v4.yaml"
   ],
   "outputs": [
     "google-analytics-accountsummaries-api-openapi.yml",
@@ -20,14 +19,16 @@
     "google-analytics-events-api-openapi.yml",
     "google-analytics-validation-api-openapi.yml",
     "google-analytics-reports-api-openapi.yml",
-    "google-analytics-useractivity-api-openapi.yml",
-    "google-analytics-user-deletion-api-openapi.yml"
+    "google-analytics-useractivity-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
-    "sourced from openapi/_original/ (6 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "1 archived document(s) dropped as subsets of other archived documents",
+    "sourced from openapi/_original/ (5 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "google-analytics-admin-api.yaml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
     "google-analytics-data-api.yaml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
     "google-analytics-management-api-v3.yaml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
@@ -35,11 +36,12 @@
     "google-analytics-measurement-protocol.yaml: declared missing tag: Events",
     "google-analytics-measurement-protocol.yaml: declared missing tag: Validation",
     "google-analytics-reporting-api-v4.yaml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
-    "google-analytics-user-deletion-api.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "google-analytics-user-deletion-api.yaml: declared missing tag: User Deletion",
-    "tag 'properties' spans 2 source specs (google-analytics-admin-api.yaml, google-analytics-data-api.yaml): per-path servers applied"
+    "tag 'properties' spans 2 source specs (google-analytics-admin-api.yaml, google-analytics-data-api.yaml): per-path servers applied",
+    "superseded outputs removed: google-analytics-user-activity-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 12 total)"
   ],
   "skipped": [
+    "_original/google-analytics-user-deletion-api.yaml: archived document superseded by a larger archived document",
     "google-analytics-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "google-analytics-accountsummaries-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "google-analytics-data-api-openapi.yml: previously refined output, superseded by openapi/_original/",
@@ -49,8 +51,7 @@
     "google-analytics-properties-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "google-analytics-provisioning-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "google-analytics-reports-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "google-analytics-user-deletion-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "google-analytics-useractivity-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-analytics-user-activity-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "google-analytics-userdeletion-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "google-analytics-validation-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]

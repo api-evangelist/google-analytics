@@ -28,7 +28,7 @@ info:
 servers:
 - url: https://analytics.googleapis.com/analytics/v3
 tags:
-- name: metadata
+- name: Metadata
 paths:
   /metadata/{reportType}/columns:
     parameters:
@@ -71,31 +71,59 @@ paths:
         Oauth2c:
         - https://www.googleapis.com/auth/analytics.readonly
       tags:
-      - metadata
+      - Metadata
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      summary: Analytics metadata columns list
+      x-summary-source: derived
 components:
+  parameters:
+    oauth_token:
+      description: OAuth 2.0 token for the current user.
+      in: query
+      name: oauth_token
+      schema:
+        type: string
+    userIp:
+      description: Deprecated. Please use quotaUser instead.
+      in: query
+      name: userIp
+      schema:
+        type: string
+    alt:
+      description: Data format for the response.
+      in: query
+      name: alt
+      schema:
+        enum:
+        - json
+        type: string
+    fields:
+      description: Selector specifying which fields to include in a partial response.
+      in: query
+      name: fields
+      schema:
+        type: string
+    prettyPrint:
+      description: Returns response with indentations and line breaks.
+      in: query
+      name: prettyPrint
+      schema:
+        type: boolean
+    key:
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+      in: query
+      name: key
+      schema:
+        type: string
+    quotaUser:
+      description: An opaque string that represents a user for quota purposes. Must not exceed 40 characters.
+      in: query
+      name: quotaUser
+      schema:
+        type: string
   schemas:
-    Column:
-      description: JSON template for a metadata column.
-      properties:
-        attributes:
-          additionalProperties:
-            description: The name of the attribute.
-            type: string
-          description: Map of attribute name and value for this column.
-          type: object
-        id:
-          description: Column id.
-          type: string
-          example: '123456'
-        kind:
-          default: analytics#column
-          description: Resource type for Analytics column.
-          type: string
-          example: example_value
-      type: object
     Columns:
       description: Lists columns (dimensions and metrics) for a particular report type.
       properties:
@@ -124,51 +152,25 @@ components:
           type: integer
           example: 42
       type: object
-  parameters:
-    prettyPrint:
-      description: Returns response with indentations and line breaks.
-      in: query
-      name: prettyPrint
-      schema:
-        type: boolean
-    userIp:
-      description: Deprecated. Please use quotaUser instead.
-      in: query
-      name: userIp
-      schema:
-        type: string
-    quotaUser:
-      description: An opaque string that represents a user for quota purposes. Must not exceed 40 characters.
-      in: query
-      name: quotaUser
-      schema:
-        type: string
-    alt:
-      description: Data format for the response.
-      in: query
-      name: alt
-      schema:
-        enum:
-        - json
-        type: string
-    oauth_token:
-      description: OAuth 2.0 token for the current user.
-      in: query
-      name: oauth_token
-      schema:
-        type: string
-    fields:
-      description: Selector specifying which fields to include in a partial response.
-      in: query
-      name: fields
-      schema:
-        type: string
-    key:
-      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
-      in: query
-      name: key
-      schema:
-        type: string
+    Column:
+      description: JSON template for a metadata column.
+      properties:
+        attributes:
+          additionalProperties:
+            description: The name of the attribute.
+            type: string
+          description: Map of attribute name and value for this column.
+          type: object
+        id:
+          description: Column id.
+          type: string
+          example: '123456'
+        kind:
+          default: analytics#column
+          description: Resource type for Analytics column.
+          type: string
+          example: example_value
+      type: object
   securitySchemes:
     Oauth2:
       description: Oauth 2.0 implicit authentication

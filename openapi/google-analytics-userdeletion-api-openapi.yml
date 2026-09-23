@@ -64,24 +64,20 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      summary: Analytics user deletion user deletion request upsert
+      x-summary-source: derived
 components:
   parameters:
-    prettyPrint:
-      description: Returns response with indentations and line breaks.
+    oauth_token:
+      description: OAuth 2.0 token for the current user.
       in: query
-      name: prettyPrint
+      name: oauth_token
       schema:
-        type: boolean
+        type: string
     userIp:
       description: Deprecated. Please use quotaUser instead.
       in: query
       name: userIp
-      schema:
-        type: string
-    quotaUser:
-      description: An opaque string that represents a user for quota purposes. Must not exceed 40 characters.
-      in: query
-      name: quotaUser
       schema:
         type: string
     alt:
@@ -92,22 +88,28 @@ components:
         enum:
         - json
         type: string
-    oauth_token:
-      description: OAuth 2.0 token for the current user.
-      in: query
-      name: oauth_token
-      schema:
-        type: string
     fields:
       description: Selector specifying which fields to include in a partial response.
       in: query
       name: fields
       schema:
         type: string
+    prettyPrint:
+      description: Returns response with indentations and line breaks.
+      in: query
+      name: prettyPrint
+      schema:
+        type: boolean
     key:
       description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
       in: query
       name: key
+      schema:
+        type: string
+    quotaUser:
+      description: An opaque string that represents a user for quota purposes. Must not exceed 40 characters.
+      in: query
+      name: quotaUser
       schema:
         type: string
   schemas:

@@ -41,7 +41,7 @@ tags:
 - Metrics
 - Reporting
 - Web Analytics
-- Machine-Learning
+- Machine Learning
 - Attribution
 tags_raw:
 - Analytics
@@ -52,9 +52,10 @@ tags_raw:
 - Web Analytics
 - Machine Learning
 - Attribution
+- Machine-Learning
 apis:
 - aid: google-analytics:google-analytics-accounts-api
-  name: Google Analytics accounts API
+  name: Google Analytics Accounts API
   description: The accounts API from Google Analytics — 3 operation(s) for accounts.
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
   baseURL: https://analyticsadmin.googleapis.com
@@ -100,8 +101,6 @@ apis:
     url: https://github.com/googleanalytics/analytics-data-curl-examples
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-data-javascript-examples
-  - type: GraphQL
-    url: graphql/google-analytics-graphql.md
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/admin/v1
   - type: APIReference
@@ -146,7 +145,7 @@ apis:
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
 - aid: google-analytics:google-analytics-accountsummaries-api
-  name: Google Analytics accountSummaries API
+  name: Google Analytics Account Summaries API
   description: The accountSummaries API from Google Analytics — 1 operation(s) for accountsummaries.
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
   baseURL: https://analyticsadmin.googleapis.com
@@ -191,8 +190,6 @@ apis:
     url: https://github.com/googleanalytics/analytics-data-curl-examples
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-data-javascript-examples
-  - type: GraphQL
-    url: graphql/google-analytics-graphql.md
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/admin/v1
   - type: APIReference
@@ -237,7 +234,7 @@ apis:
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
 - aid: google-analytics:google-analytics-data-api
-  name: Google Analytics data API
+  name: Google Analytics Data API
   description: The data API from Google Analytics — 3 operation(s) for data.
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
   baseURL: https://analytics.googleapis.com/analytics/v3
@@ -283,8 +280,6 @@ apis:
     url: https://github.com/googleanalytics/analytics-data-curl-examples
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-data-javascript-examples
-  - type: GraphQL
-    url: graphql/google-analytics-graphql.md
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/admin/v1
   - type: APIReference
@@ -375,8 +370,6 @@ apis:
     url: https://github.com/googleanalytics/analytics-data-curl-examples
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-data-javascript-examples
-  - type: GraphQL
-    url: graphql/google-analytics-graphql.md
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/admin/v1
   - type: APIReference
@@ -421,7 +414,7 @@ apis:
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
 - aid: google-analytics:google-analytics-management-api
-  name: Google Analytics management API
+  name: Google Analytics Management API
   description: The management API from Google Analytics — 36 operation(s) for management.
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
   baseURL: https://analytics.googleapis.com/analytics/v3
@@ -467,8 +460,6 @@ apis:
     url: https://github.com/googleanalytics/analytics-data-curl-examples
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-data-javascript-examples
-  - type: GraphQL
-    url: graphql/google-analytics-graphql.md
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/admin/v1
   - type: APIReference
@@ -513,7 +504,7 @@ apis:
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
 - aid: google-analytics:google-analytics-metadata-api
-  name: Google Analytics metadata API
+  name: Google Analytics Metadata API
   description: The metadata API from Google Analytics — 1 operation(s) for metadata.
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
   baseURL: https://analytics.googleapis.com/analytics/v3
@@ -559,8 +550,6 @@ apis:
     url: https://github.com/googleanalytics/analytics-data-curl-examples
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-data-javascript-examples
-  - type: GraphQL
-    url: graphql/google-analytics-graphql.md
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/admin/v1
   - type: APIReference
@@ -605,7 +594,7 @@ apis:
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
 - aid: google-analytics:google-analytics-properties-api
-  name: Google Analytics properties API
+  name: Google Analytics Properties API
   description: The properties API from Google Analytics — 20 operation(s) for properties.
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
   baseURL: https://analyticsadmin.googleapis.com
@@ -651,8 +640,6 @@ apis:
     url: https://github.com/googleanalytics/analytics-data-curl-examples
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-data-javascript-examples
-  - type: GraphQL
-    url: graphql/google-analytics-graphql.md
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/admin/v1
   - type: APIReference
@@ -697,7 +684,7 @@ apis:
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
 - aid: google-analytics:google-analytics-provisioning-api
-  name: Google Analytics provisioning API
+  name: Google Analytics Provisioning API
   description: The provisioning API from Google Analytics — 2 operation(s) for provisioning.
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
   baseURL: https://analytics.googleapis.com/analytics/v3
@@ -743,8 +730,6 @@ apis:
     url: https://github.com/googleanalytics/analytics-data-curl-examples
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-data-javascript-examples
-  - type: GraphQL
-    url: graphql/google-analytics-graphql.md
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/admin/v1
   - type: APIReference
@@ -789,7 +774,7 @@ apis:
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
 - aid: google-analytics:google-analytics-reports-api
-  name: Google Analytics reports API
+  name: Google Analytics Reports API
   description: The reports API from Google Analytics — 1 operation(s) for reports.
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
   baseURL: https://analyticsreporting.googleapis.com
@@ -835,8 +820,6 @@ apis:
     url: https://github.com/googleanalytics/analytics-data-curl-examples
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-data-javascript-examples
-  - type: GraphQL
-    url: graphql/google-analytics-graphql.md
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/admin/v1
   - type: APIReference
@@ -881,7 +864,7 @@ apis:
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
 - aid: google-analytics:google-analytics-userdeletion-api
-  name: Google Analytics userDeletion API
+  name: Google Analytics User Deletion API
   description: The userDeletion API from Google Analytics — 1 operation(s) for userdeletion.
   humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1
   baseURL: https://www.googleapis.com/analytics/v3
@@ -927,8 +910,6 @@ apis:
     url: https://github.com/googleanalytics/analytics-data-curl-examples
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-data-javascript-examples
-  - type: GraphQL
-    url: graphql/google-analytics-graphql.md
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/admin/v1
   - type: APIReference
@@ -1017,8 +998,6 @@ apis:
     url: https://github.com/googleanalytics/analytics-data-curl-examples
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-data-javascript-examples
-  - type: GraphQL
-    url: graphql/google-analytics-graphql.md
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/admin/v1
   - type: APIReference
@@ -1107,8 +1086,6 @@ apis:
     url: https://github.com/googleanalytics/analytics-data-curl-examples
   - type: CodeExamples
     url: https://github.com/googleanalytics/analytics-data-javascript-examples
-  - type: GraphQL
-    url: graphql/google-analytics-graphql.md
   - type: Documentation
     url: https://developers.google.com/analytics/devguides/config/admin/v1
   - type: APIReference
@@ -1152,6 +1129,137 @@ apis:
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
+- aid: google-analytics:google-analytics-4-accounts-api
+  name: Google Analytics 4 Accounts API
+  description: The accounts API from Google Analytics 4 — 18 operation(s) for accounts.
+  humanURL: https://developers.google.com/analytics/devguides/config/admin/v1
+  baseURL: https://analyticsadmin.googleapis.com
+  tags:
+  - Account
+  tags_raw:
+  - accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/google-analytics-4-accounts-api-openapi.yml
+  - type: Protobuf
+    url: grpc/google-analytics-4-data-v1beta-analytics_data_api.proto
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1
+  - type: APIReference
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/rest
+  - type: Authentication
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/basics#authentication
+  - type: GettingStarted
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries
+  - type: RateLimits
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/changelog
+  - type: ErrorCatalog
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/errors
+  - type: Webhooks
+    url: asyncapi/google-analytics-4-webhooks.yml
+  - type: Protobuf
+    url: grpc/google-analytics-4-admin-v1beta-analytics_admin.proto
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/config/admin/v1
+  - type: APIReference
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/rest
+  - type: Authentication
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/rest
+  - type: GettingStarted
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/quickstart-client-libraries
+  - type: RateLimits
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/changelog
+- aid: google-analytics:google-analytics-4-accountsummaries-api
+  name: Google Analytics 4 Account Summaries API
+  description: The accountSummaries API from Google Analytics 4 — 2 operation(s) for accountsummaries.
+  humanURL: https://developers.google.com/analytics/devguides/config/admin/v1
+  baseURL: https://analyticsadmin.googleapis.com
+  tags: []
+  tags_raw:
+  - accountSummaries
+  properties:
+  - type: OpenAPI
+    url: openapi/google-analytics-4-accountsummaries-api-openapi.yml
+  - type: Protobuf
+    url: grpc/google-analytics-4-data-v1beta-analytics_data_api.proto
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1
+  - type: APIReference
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/rest
+  - type: Authentication
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/basics#authentication
+  - type: GettingStarted
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries
+  - type: RateLimits
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/changelog
+  - type: ErrorCatalog
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/errors
+  - type: Webhooks
+    url: asyncapi/google-analytics-4-webhooks.yml
+  - type: Protobuf
+    url: grpc/google-analytics-4-admin-v1beta-analytics_admin.proto
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/config/admin/v1
+  - type: APIReference
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/rest
+  - type: Authentication
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/rest
+  - type: GettingStarted
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/quickstart-client-libraries
+  - type: RateLimits
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/changelog
+- aid: google-analytics:google-analytics-4-properties-api
+  name: Google Analytics 4 Properties API
+  description: The properties API from Google Analytics 4 — 120 operation(s) for properties.
+  humanURL: https://developers.google.com/analytics/devguides/config/admin/v1
+  baseURL: https://analyticsadmin.googleapis.com
+  tags:
+  - Properties
+  tags_raw:
+  - properties
+  properties:
+  - type: OpenAPI
+    url: openapi/google-analytics-4-properties-api-openapi.yml
+  - type: Protobuf
+    url: grpc/google-analytics-4-data-v1beta-analytics_data_api.proto
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1
+  - type: APIReference
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/rest
+  - type: Authentication
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/basics#authentication
+  - type: GettingStarted
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries
+  - type: RateLimits
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/changelog
+  - type: ErrorCatalog
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/errors
+  - type: Webhooks
+    url: asyncapi/google-analytics-4-webhooks.yml
+  - type: Protobuf
+    url: grpc/google-analytics-4-admin-v1beta-analytics_admin.proto
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/config/admin/v1
+  - type: APIReference
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/rest
+  - type: Authentication
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/rest
+  - type: GettingStarted
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/quickstart-client-libraries
+  - type: RateLimits
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/changelog
 common:
   - type: Website
     url: https://www.google.com/

@@ -103,52 +103,25 @@ paths:
       summary: Analytics provisioning create account tree
       x-summary-source: derived
 components:
-  parameters:
-    oauth_token:
-      description: OAuth 2.0 token for the current user.
-      in: query
-      name: oauth_token
-      schema:
-        type: string
-    userIp:
-      description: Deprecated. Please use quotaUser instead.
-      in: query
-      name: userIp
-      schema:
-        type: string
-    alt:
-      description: Data format for the response.
-      in: query
-      name: alt
-      schema:
-        enum:
-        - json
-        type: string
-    fields:
-      description: Selector specifying which fields to include in a partial response.
-      in: query
-      name: fields
-      schema:
-        type: string
-    prettyPrint:
-      description: Returns response with indentations and line breaks.
-      in: query
-      name: prettyPrint
-      schema:
-        type: boolean
-    key:
-      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
-      in: query
-      name: key
-      schema:
-        type: string
-    quotaUser:
-      description: An opaque string that represents a user for quota purposes. Must not exceed 40 characters.
-      in: query
-      name: quotaUser
-      schema:
-        type: string
   schemas:
+    AccountTreeResponse:
+      description: JSON template for an Analytics account tree response. The account tree response is used in the provisioning api to return the result of creating an account, property, and view (profile).
+      properties:
+        account:
+          $ref: '#/components/schemas/Account'
+          description: The account created.
+        kind:
+          default: analytics#accountTreeResponse
+          description: Resource type for account ticket.
+          type: string
+          example: example_value
+        profile:
+          $ref: '#/components/schemas/Profile'
+          description: View (Profile) for the account.
+        webproperty:
+          $ref: '#/components/schemas/Webproperty'
+          description: Web property for the account.
+      type: object
     AccountTicket:
       description: JSON template for an Analytics account ticket. The account ticket consists of the ticket ID and the basic information for the account, property and profile.
       properties:
@@ -174,6 +147,30 @@ components:
         webproperty:
           $ref: '#/components/schemas/Webproperty'
           description: Web property for the account.
+      type: object
+    AccountTreeRequest:
+      description: JSON template for an Analytics account tree requests. The account tree request is used in the provisioning api to create an account, property, and view (profile). It contains the basic information required to make these fields.
+      properties:
+        accountName:
+          type: string
+          example: Example Name
+        kind:
+          default: analytics#accountTreeRequest
+          description: Resource type for account ticket.
+          type: string
+          example: example_value
+        profileName:
+          type: string
+          example: Example Name
+        timezone:
+          type: string
+          example: '2026-04-17T12:00:00Z'
+        webpropertyName:
+          type: string
+          example: Example Name
+        websiteUrl:
+          type: string
+          example: https://example.com/resource
       type: object
     Profile:
       description: JSON template for an Analytics view (profile).
@@ -449,48 +446,51 @@ components:
           description: Website url for this web property.
           type: string
       type: object
-    AccountTreeResponse:
-      description: JSON template for an Analytics account tree response. The account tree response is used in the provisioning api to return the result of creating an account, property, and view (profile).
-      properties:
-        account:
-          $ref: '#/components/schemas/Account'
-          description: The account created.
-        kind:
-          default: analytics#accountTreeResponse
-          description: Resource type for account ticket.
-          type: string
-          example: example_value
-        profile:
-          $ref: '#/components/schemas/Profile'
-          description: View (Profile) for the account.
-        webproperty:
-          $ref: '#/components/schemas/Webproperty'
-          description: Web property for the account.
-      type: object
-    AccountTreeRequest:
-      description: JSON template for an Analytics account tree requests. The account tree request is used in the provisioning api to create an account, property, and view (profile). It contains the basic information required to make these fields.
-      properties:
-        accountName:
-          type: string
-          example: Example Name
-        kind:
-          default: analytics#accountTreeRequest
-          description: Resource type for account ticket.
-          type: string
-          example: example_value
-        profileName:
-          type: string
-          example: Example Name
-        timezone:
-          type: string
-          example: '2026-04-17T12:00:00Z'
-        webpropertyName:
-          type: string
-          example: Example Name
-        websiteUrl:
-          type: string
-          example: https://example.com/resource
-      type: object
+  parameters:
+    quotaUser:
+      description: An opaque string that represents a user for quota purposes. Must not exceed 40 characters.
+      in: query
+      name: quotaUser
+      schema:
+        type: string
+    prettyPrint:
+      description: Returns response with indentations and line breaks.
+      in: query
+      name: prettyPrint
+      schema:
+        type: boolean
+    fields:
+      description: Selector specifying which fields to include in a partial response.
+      in: query
+      name: fields
+      schema:
+        type: string
+    oauth_token:
+      description: OAuth 2.0 token for the current user.
+      in: query
+      name: oauth_token
+      schema:
+        type: string
+    key:
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+      in: query
+      name: key
+      schema:
+        type: string
+    alt:
+      description: Data format for the response.
+      in: query
+      name: alt
+      schema:
+        enum:
+        - json
+        type: string
+    userIp:
+      description: Deprecated. Please use quotaUser instead.
+      in: query
+      name: userIp
+      schema:
+        type: string
   securitySchemes:
     Oauth2:
       description: Oauth 2.0 implicit authentication

@@ -66,29 +66,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    UserLocation:
-      type: object
-      properties:
-        city:
-          type: string
-          description: City name.
-          example: example_value
-        region_id:
-          type: string
-          description: Region identifier.
-          example: '123456'
-        country_id:
-          type: string
-          description: Country identifier.
-          example: '123456'
-        subcontinent_id:
-          type: string
-          description: Subcontinent identifier.
-          example: '123456'
-        continent_id:
-          type: string
-          description: Continent identifier.
-          example: '123456'
     Device:
       type: object
       properties:
@@ -128,23 +105,30 @@ components:
           type: string
           description: Browser version.
           example: example_value
-    Consent:
+    Event:
       type: object
+      required:
+      - name
       properties:
-        ad_user_data:
+        name:
           type: string
-          description: Consent for using user data in advertising.
-          enum:
-          - GRANTED
-          - DENIED
-          example: GRANTED
-        ad_personalization:
-          type: string
-          description: Consent for ad personalization.
-          enum:
-          - GRANTED
-          - DENIED
-          example: GRANTED
+          description: The name of the event. Must not use reserved names (ad_click, app_exception, error, session_start, etc.) or reserved prefixes (_, firebase_, ga_, google_, gtag.).
+          example: Example Name
+        params:
+          type: object
+          description: Event parameters as key-value pairs. Common parameters include session_id, engagement_time_msec, and timestamp_micros.
+          additionalProperties: true
+          properties:
+            session_id:
+              type: string
+              description: Session identifier for accurate session metrics.
+            engagement_time_msec:
+              type: integer
+              description: User engagement duration in milliseconds.
+            timestamp_micros:
+              type: integer
+              format: int64
+              description: Unix epoch time in microseconds to override event timestamp.
     MeasurementPayload:
       type: object
       required:
@@ -204,6 +188,29 @@ components:
           maxItems: 25
           items:
             $ref: '#/components/schemas/Event'
+    UserLocation:
+      type: object
+      properties:
+        city:
+          type: string
+          description: City name.
+          example: example_value
+        region_id:
+          type: string
+          description: Region identifier.
+          example: '123456'
+        country_id:
+          type: string
+          description: Country identifier.
+          example: '123456'
+        subcontinent_id:
+          type: string
+          description: Subcontinent identifier.
+          example: '123456'
+        continent_id:
+          type: string
+          description: Continent identifier.
+          example: '123456'
     UserPropertyValue:
       type: object
       properties:
@@ -214,30 +221,23 @@ components:
           - type: boolean
           description: The value of the user property.
           example: example_value
-    Event:
+    Consent:
       type: object
-      required:
-      - name
       properties:
-        name:
+        ad_user_data:
           type: string
-          description: The name of the event. Must not use reserved names (ad_click, app_exception, error, session_start, etc.) or reserved prefixes (_, firebase_, ga_, google_, gtag.).
-          example: Example Name
-        params:
-          type: object
-          description: Event parameters as key-value pairs. Common parameters include session_id, engagement_time_msec, and timestamp_micros.
-          additionalProperties: true
-          properties:
-            session_id:
-              type: string
-              description: Session identifier for accurate session metrics.
-            engagement_time_msec:
-              type: integer
-              description: User engagement duration in milliseconds.
-            timestamp_micros:
-              type: integer
-              format: int64
-              description: Unix epoch time in microseconds to override event timestamp.
+          description: Consent for using user data in advertising.
+          enum:
+          - GRANTED
+          - DENIED
+          example: GRANTED
+        ad_personalization:
+          type: string
+          description: Consent for ad personalization.
+          enum:
+          - GRANTED
+          - DENIED
+          example: GRANTED
 externalDocs:
   description: Measurement Protocol documentation
   url: https://developers.google.com/analytics/devguides/collection/protocol/ga4

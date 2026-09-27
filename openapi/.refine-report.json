@@ -5,7 +5,10 @@
     "_original/google-analytics-data-api.yaml",
     "_original/google-analytics-management-api-v3.yaml",
     "_original/google-analytics-measurement-protocol.yaml",
-    "_original/google-analytics-reporting-api-v4.yaml"
+    "_original/google-analytics-reporting-api-v4.yaml",
+    "google-analytics-4-accounts-api-openapi.yml",
+    "google-analytics-4-accountsummaries-api-openapi.yml",
+    "google-analytics-4-properties-api-openapi.yml"
   ],
   "outputs": [
     "google-analytics-accountsummaries-api-openapi.yml",
@@ -22,10 +25,14 @@
     "google-analytics-useractivity-api-openapi.yml"
   ],
   "archived": [
-    "deleted 1 superseded output(s) from the previous generation"
+    "deleted 4 superseded output(s) from the previous generation"
   ],
   "errors": [],
-  "warnings": [],
+  "warnings": [
+    "google-analytics-4-accounts-api-openapi.yml: previously refined output kept for 23 operation(s) no archived document covers (e.g. /v1alpha/accounts get, /v1alpha/accounts/{accountsId} delete, /v1alpha/accounts/{accountsId} get); its other 2 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "google-analytics-4-accountsummaries-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /v1alpha/accountSummaries get); its other 1 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "google-analytics-4-properties-api-openapi.yml: previously refined output kept for 218 operation(s) no archived document covers (e.g. /v1alpha/properties get, /v1alpha/properties post, /v1alpha/properties/{propertiesId} delete); its other 2 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth."
+  ],
   "notes": [
     "1 archived document(s) dropped as subsets of other archived documents",
     "sourced from openapi/_original/ (5 archived document(s)); previously refined output at the top level was skipped rather than re-split",
@@ -36,8 +43,10 @@
     "google-analytics-measurement-protocol.yaml: declared missing tag: Events",
     "google-analytics-measurement-protocol.yaml: declared missing tag: Validation",
     "google-analytics-reporting-api-v4.yaml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
-    "tag 'properties' spans 2 source specs (google-analytics-admin-api.yaml, google-analytics-data-api.yaml): per-path servers applied",
-    "superseded outputs removed: google-analytics-user-activity-api-openapi.yml",
+    "tag 'accountSummaries' spans 2 source specs (google-analytics-admin-api.yaml, google-analytics-4-accountsummaries-api-openapi.yml): per-path servers applied",
+    "tag 'accounts' spans 2 source specs (google-analytics-admin-api.yaml, google-analytics-4-accounts-api-openapi.yml): per-path servers applied",
+    "tag 'properties' spans 3 source specs (google-analytics-admin-api.yaml, google-analytics-data-api.yaml, google-analytics-4-properties-api-openapi.yml): per-path servers applied",
+    "superseded outputs removed: google-analytics-4-accounts-api-openapi.yml, google-analytics-4-accountsummaries-api-openapi.yml, google-analytics-4-properties-api-openapi.yml, google-analytics-user-activity-api-openapi.yml",
     "apis.yml register: written (+1 apis, 12 total)"
   ],
   "skipped": [

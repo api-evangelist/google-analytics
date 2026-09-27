@@ -1129,30 +1129,14 @@ apis:
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3
   - type: APIReference
     url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
-- aid: google-analytics:google-analytics-4-accounts-api
-  name: Google Analytics 4 Accounts API
-  description: The accounts API from Google Analytics 4 — 18 operation(s) for accounts.
-  humanURL: https://developers.google.com/analytics/devguides/config/admin/v1
-  baseURL: https://analyticsadmin.googleapis.com
-  tags:
-  - Account
-  tags_raw:
-  - accounts
-  properties:
-  - type: OpenAPI
-    url: openapi/google-analytics-4-accounts-api-openapi.yml
   - type: Protobuf
     url: grpc/google-analytics-4-data-v1beta-analytics_data_api.proto
-  - type: Documentation
-    url: https://developers.google.com/analytics/devguides/reporting/data/v1
-  - type: APIReference
-    url: https://developers.google.com/analytics/devguides/reporting/data/v1/rest
   - type: Authentication
-    url: https://developers.google.com/analytics/devguides/reporting/data/v1/basics#authentication
+    url: >-
+      https://developers.google.com/analytics/devguides/reporting/data/v1/basics#authentication
   - type: GettingStarted
-    url: https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries
-  - type: RateLimits
-    url: https://developers.google.com/analytics/devguides/reporting/data/v1/quotas
+    url: >-
+      https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries
   - type: ChangeLog
     url: https://developers.google.com/analytics/devguides/reporting/data/v1/changelog
   - type: ErrorCatalog
@@ -1161,101 +1145,11 @@ apis:
     url: asyncapi/google-analytics-4-webhooks.yml
   - type: Protobuf
     url: grpc/google-analytics-4-admin-v1beta-analytics_admin.proto
-  - type: Documentation
-    url: https://developers.google.com/analytics/devguides/config/admin/v1
-  - type: APIReference
-    url: https://developers.google.com/analytics/devguides/config/admin/v1/rest
   - type: Authentication
     url: https://developers.google.com/analytics/devguides/config/admin/v1/rest
   - type: GettingStarted
-    url: https://developers.google.com/analytics/devguides/config/admin/v1/quickstart-client-libraries
-  - type: RateLimits
-    url: https://developers.google.com/analytics/devguides/config/admin/v1/quotas
-  - type: ChangeLog
-    url: https://developers.google.com/analytics/devguides/config/admin/v1/changelog
-- aid: google-analytics:google-analytics-4-accountsummaries-api
-  name: Google Analytics 4 Account Summaries API
-  description: The accountSummaries API from Google Analytics 4 — 2 operation(s) for accountsummaries.
-  humanURL: https://developers.google.com/analytics/devguides/config/admin/v1
-  baseURL: https://analyticsadmin.googleapis.com
-  tags: []
-  tags_raw:
-  - accountSummaries
-  properties:
-  - type: OpenAPI
-    url: openapi/google-analytics-4-accountsummaries-api-openapi.yml
-  - type: Protobuf
-    url: grpc/google-analytics-4-data-v1beta-analytics_data_api.proto
-  - type: Documentation
-    url: https://developers.google.com/analytics/devguides/reporting/data/v1
-  - type: APIReference
-    url: https://developers.google.com/analytics/devguides/reporting/data/v1/rest
-  - type: Authentication
-    url: https://developers.google.com/analytics/devguides/reporting/data/v1/basics#authentication
-  - type: GettingStarted
-    url: https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries
-  - type: RateLimits
-    url: https://developers.google.com/analytics/devguides/reporting/data/v1/quotas
-  - type: ChangeLog
-    url: https://developers.google.com/analytics/devguides/reporting/data/v1/changelog
-  - type: ErrorCatalog
-    url: https://developers.google.com/analytics/devguides/reporting/data/v1/errors
-  - type: Webhooks
-    url: asyncapi/google-analytics-4-webhooks.yml
-  - type: Protobuf
-    url: grpc/google-analytics-4-admin-v1beta-analytics_admin.proto
-  - type: Documentation
-    url: https://developers.google.com/analytics/devguides/config/admin/v1
-  - type: APIReference
-    url: https://developers.google.com/analytics/devguides/config/admin/v1/rest
-  - type: Authentication
-    url: https://developers.google.com/analytics/devguides/config/admin/v1/rest
-  - type: GettingStarted
-    url: https://developers.google.com/analytics/devguides/config/admin/v1/quickstart-client-libraries
-  - type: RateLimits
-    url: https://developers.google.com/analytics/devguides/config/admin/v1/quotas
-  - type: ChangeLog
-    url: https://developers.google.com/analytics/devguides/config/admin/v1/changelog
-- aid: google-analytics:google-analytics-4-properties-api
-  name: Google Analytics 4 Properties API
-  description: The properties API from Google Analytics 4 — 120 operation(s) for properties.
-  humanURL: https://developers.google.com/analytics/devguides/config/admin/v1
-  baseURL: https://analyticsadmin.googleapis.com
-  tags:
-  - Properties
-  tags_raw:
-  - properties
-  properties:
-  - type: OpenAPI
-    url: openapi/google-analytics-4-properties-api-openapi.yml
-  - type: Protobuf
-    url: grpc/google-analytics-4-data-v1beta-analytics_data_api.proto
-  - type: Documentation
-    url: https://developers.google.com/analytics/devguides/reporting/data/v1
-  - type: APIReference
-    url: https://developers.google.com/analytics/devguides/reporting/data/v1/rest
-  - type: Authentication
-    url: https://developers.google.com/analytics/devguides/reporting/data/v1/basics#authentication
-  - type: GettingStarted
-    url: https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries
-  - type: RateLimits
-    url: https://developers.google.com/analytics/devguides/reporting/data/v1/quotas
-  - type: ChangeLog
-    url: https://developers.google.com/analytics/devguides/reporting/data/v1/changelog
-  - type: ErrorCatalog
-    url: https://developers.google.com/analytics/devguides/reporting/data/v1/errors
-  - type: Webhooks
-    url: asyncapi/google-analytics-4-webhooks.yml
-  - type: Protobuf
-    url: grpc/google-analytics-4-admin-v1beta-analytics_admin.proto
-  - type: Documentation
-    url: https://developers.google.com/analytics/devguides/config/admin/v1
-  - type: APIReference
-    url: https://developers.google.com/analytics/devguides/config/admin/v1/rest
-  - type: Authentication
-    url: https://developers.google.com/analytics/devguides/config/admin/v1/rest
-  - type: GettingStarted
-    url: https://developers.google.com/analytics/devguides/config/admin/v1/quickstart-client-libraries
+    url: >-
+      https://developers.google.com/analytics/devguides/config/admin/v1/quickstart-client-libraries
   - type: RateLimits
     url: https://developers.google.com/analytics/devguides/config/admin/v1/quotas
   - type: ChangeLog

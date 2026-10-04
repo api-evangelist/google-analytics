@@ -103,6 +103,51 @@ paths:
       summary: Analytics provisioning create account tree
       x-summary-source: derived
 components:
+  parameters:
+    quotaUser:
+      description: An opaque string that represents a user for quota purposes. Must not exceed 40 characters.
+      in: query
+      name: quotaUser
+      schema:
+        type: string
+    prettyPrint:
+      description: Returns response with indentations and line breaks.
+      in: query
+      name: prettyPrint
+      schema:
+        type: boolean
+    key:
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+      in: query
+      name: key
+      schema:
+        type: string
+    fields:
+      description: Selector specifying which fields to include in a partial response.
+      in: query
+      name: fields
+      schema:
+        type: string
+    userIp:
+      description: Deprecated. Please use quotaUser instead.
+      in: query
+      name: userIp
+      schema:
+        type: string
+    oauth_token:
+      description: OAuth 2.0 token for the current user.
+      in: query
+      name: oauth_token
+      schema:
+        type: string
+    alt:
+      description: Data format for the response.
+      in: query
+      name: alt
+      schema:
+        enum:
+        - json
+        type: string
   schemas:
     AccountTreeRequest:
       description: JSON template for an Analytics account tree requests. The account tree request is used in the provisioning api to create an account, property, and view (profile). It contains the basic information required to make these fields.
@@ -127,24 +172,6 @@ components:
         websiteUrl:
           type: string
           example: https://example.com/resource
-      type: object
-    AccountTreeResponse:
-      description: JSON template for an Analytics account tree response. The account tree response is used in the provisioning api to return the result of creating an account, property, and view (profile).
-      properties:
-        account:
-          $ref: '#/components/schemas/Account'
-          description: The account created.
-        kind:
-          default: analytics#accountTreeResponse
-          description: Resource type for account ticket.
-          type: string
-          example: example_value
-        profile:
-          $ref: '#/components/schemas/Profile'
-          description: View (Profile) for the account.
-        webproperty:
-          $ref: '#/components/schemas/Webproperty'
-          description: Web property for the account.
       type: object
     AccountTicket:
       description: JSON template for an Analytics account ticket. The account ticket consists of the ticket ID and the basic information for the account, property and profile.
@@ -171,108 +198,6 @@ components:
         webproperty:
           $ref: '#/components/schemas/Webproperty'
           description: Web property for the account.
-      type: object
-    Webproperty:
-      description: JSON template for an Analytics web property.
-      properties:
-        accountId:
-          description: Account ID to which this web property belongs.
-          type: string
-        childLink:
-          description: Child link for this web property. Points to the list of views (profiles) for this web property.
-          properties:
-            href:
-              description: Link to the list of views (profiles) for this web property.
-              type: string
-            type:
-              default: analytics#profiles
-              description: Type of the parent link. Its value is "analytics#profiles".
-              type: string
-          type: object
-        created:
-          description: Time this web property was created.
-          format: date-time
-          readOnly: true
-          type: string
-        dataRetentionResetOnNewActivity:
-          description: 'Set to true to reset the retention period of the user identifier with each new event from that user (thus setting the expiration date to current time plus retention period).
-
-            Set to false to delete data associated with the user identifier automatically after the rentention period.
-
-            This property cannot be set on insert.'
-          type: boolean
-        dataRetentionTtl:
-          description: 'The length of time for which user and event data is retained.
-
-            This property cannot be set on insert.'
-          type: string
-        defaultProfileId:
-          description: Default view (profile) ID.
-          format: int64
-          type: string
-        id:
-          description: Web property ID of the form UA-XXXXX-YY.
-          type: string
-        industryVertical:
-          description: The industry vertical/category selected for this web property.
-          type: string
-        internalWebPropertyId:
-          description: Internal ID for this web property.
-          readOnly: true
-          type: string
-        kind:
-          default: analytics#webproperty
-          description: Resource type for Analytics WebProperty.
-          readOnly: true
-          type: string
-        level:
-          description: Level for this web property. Possible values are STANDARD or PREMIUM.
-          readOnly: true
-          type: string
-        name:
-          description: Name of this web property.
-          type: string
-        parentLink:
-          description: Parent link for this web property. Points to the account to which this web property belongs.
-          properties:
-            href:
-              description: Link to the account for this web property.
-              type: string
-            type:
-              default: analytics#account
-              description: Type of the parent link. Its value is "analytics#account".
-              type: string
-          type: object
-        permissions:
-          description: Permissions the user has for this web property.
-          properties:
-            effective:
-              description: All the permissions that the user has for this web property. These include any implied permissions (e.g., EDIT implies VIEW) or inherited permissions from the parent account.
-              items:
-                type: string
-              readOnly: true
-              type: array
-          type: object
-        profileCount:
-          description: View (Profile) count for this web property.
-          format: int32
-          readOnly: true
-          type: integer
-        selfLink:
-          description: Link for this web property.
-          readOnly: true
-          type: string
-        starred:
-          description: Indicates whether this web property is starred or not.
-          type: boolean
-        updated:
-          description: Time this web property was last modified.
-          format: date-time
-          readOnly: true
-          type: string
-        websiteUrl:
-          description: Website url for this web property.
-          type: string
       type: object
     Profile:
       description: JSON template for an Analytics view (profile).
@@ -390,6 +315,126 @@ components:
           description: Website URL for this view (profile).
           type: string
       type: object
+    Webproperty:
+      description: JSON template for an Analytics web property.
+      properties:
+        accountId:
+          description: Account ID to which this web property belongs.
+          type: string
+        childLink:
+          description: Child link for this web property. Points to the list of views (profiles) for this web property.
+          properties:
+            href:
+              description: Link to the list of views (profiles) for this web property.
+              type: string
+            type:
+              default: analytics#profiles
+              description: Type of the parent link. Its value is "analytics#profiles".
+              type: string
+          type: object
+        created:
+          description: Time this web property was created.
+          format: date-time
+          readOnly: true
+          type: string
+        dataRetentionResetOnNewActivity:
+          description: 'Set to true to reset the retention period of the user identifier with each new event from that user (thus setting the expiration date to current time plus retention period).
+
+            Set to false to delete data associated with the user identifier automatically after the rentention period.
+
+            This property cannot be set on insert.'
+          type: boolean
+        dataRetentionTtl:
+          description: 'The length of time for which user and event data is retained.
+
+            This property cannot be set on insert.'
+          type: string
+        defaultProfileId:
+          description: Default view (profile) ID.
+          format: int64
+          type: string
+        id:
+          description: Web property ID of the form UA-XXXXX-YY.
+          type: string
+        industryVertical:
+          description: The industry vertical/category selected for this web property.
+          type: string
+        internalWebPropertyId:
+          description: Internal ID for this web property.
+          readOnly: true
+          type: string
+        kind:
+          default: analytics#webproperty
+          description: Resource type for Analytics WebProperty.
+          readOnly: true
+          type: string
+        level:
+          description: Level for this web property. Possible values are STANDARD or PREMIUM.
+          readOnly: true
+          type: string
+        name:
+          description: Name of this web property.
+          type: string
+        parentLink:
+          description: Parent link for this web property. Points to the account to which this web property belongs.
+          properties:
+            href:
+              description: Link to the account for this web property.
+              type: string
+            type:
+              default: analytics#account
+              description: Type of the parent link. Its value is "analytics#account".
+              type: string
+          type: object
+        permissions:
+          description: Permissions the user has for this web property.
+          properties:
+            effective:
+              description: All the permissions that the user has for this web property. These include any implied permissions (e.g., EDIT implies VIEW) or inherited permissions from the parent account.
+              items:
+                type: string
+              readOnly: true
+              type: array
+          type: object
+        profileCount:
+          description: View (Profile) count for this web property.
+          format: int32
+          readOnly: true
+          type: integer
+        selfLink:
+          description: Link for this web property.
+          readOnly: true
+          type: string
+        starred:
+          description: Indicates whether this web property is starred or not.
+          type: boolean
+        updated:
+          description: Time this web property was last modified.
+          format: date-time
+          readOnly: true
+          type: string
+        websiteUrl:
+          description: Website url for this web property.
+          type: string
+      type: object
+    AccountTreeResponse:
+      description: JSON template for an Analytics account tree response. The account tree response is used in the provisioning api to return the result of creating an account, property, and view (profile).
+      properties:
+        account:
+          $ref: '#/components/schemas/Account'
+          description: The account created.
+        kind:
+          default: analytics#accountTreeResponse
+          description: Resource type for account ticket.
+          type: string
+          example: example_value
+        profile:
+          $ref: '#/components/schemas/Profile'
+          description: View (Profile) for the account.
+        webproperty:
+          $ref: '#/components/schemas/Webproperty'
+          description: Web property for the account.
+      type: object
     Account:
       description: JSON template for Analytics account entry.
       properties:
@@ -446,51 +491,6 @@ components:
           type: string
           example: '2026-04-17T12:00:00Z'
       type: object
-  parameters:
-    oauth_token:
-      description: OAuth 2.0 token for the current user.
-      in: query
-      name: oauth_token
-      schema:
-        type: string
-    alt:
-      description: Data format for the response.
-      in: query
-      name: alt
-      schema:
-        enum:
-        - json
-        type: string
-    key:
-      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
-      in: query
-      name: key
-      schema:
-        type: string
-    prettyPrint:
-      description: Returns response with indentations and line breaks.
-      in: query
-      name: prettyPrint
-      schema:
-        type: boolean
-    quotaUser:
-      description: An opaque string that represents a user for quota purposes. Must not exceed 40 characters.
-      in: query
-      name: quotaUser
-      schema:
-        type: string
-    userIp:
-      description: Deprecated. Please use quotaUser instead.
-      in: query
-      name: userIp
-      schema:
-        type: string
-    fields:
-      description: Selector specifying which fields to include in a partial response.
-      in: query
-      name: fields
-      schema:
-        type: string
   securitySchemes:
     Oauth2:
       description: Oauth 2.0 implicit authentication

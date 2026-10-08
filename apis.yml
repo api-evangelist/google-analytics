@@ -1155,6 +1155,8 @@ apis:
   - type: ChangeLog
     url: https://developers.google.com/analytics/devguides/config/admin/v1/changelog
 common:
+  - type: FinOps
+    url: finops/google-analytics-finops.yml
   - type: Website
     url: https://www.google.com/
   - type: CapabilityMap

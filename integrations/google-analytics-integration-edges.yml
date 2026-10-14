@@ -1,0 +1,134 @@
+generated: '2026-10-14'
+edges:
+- partner_name: Twilio Segment
+  partner: segment
+  partner_match: aggregator
+  marketplace: coverage
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: connector-coverage
+  evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-google-analytics-4
+  coverage_role:
+  - destination
+  cdp_signals:
+    destination:
+      catalog_entries:
+      - actions-google-analytics-4
+      - actions-google-analytics-4-web
+      status: PUBLIC
+      partner_owned: false
+      connection_modes:
+      - cloud:server
+      - cloud:web
+      accepted_methods:
+      - Alias
+      - Group
+      - Identify
+      - Page
+      - Track
+  detected_by: sweep-cdp.py
+  first_seen: '2026-10-14'
+- partner_name: RudderStack
+  partner: rudderstack
+  partner_match: aggregator
+  marketplace: coverage
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: connector-coverage
+  evidence: https://github.com/rudderlabs/rudder-integrations-config/tree/main/src/configurations/destinations/ga4
+  coverage_role:
+  - destination
+  cdp_signals:
+    destination:
+      catalog_entries:
+      - ga4
+      connection_modes:
+      - cloud
+      - device
+      - hybrid
+      cloud_event_types:
+      - group
+      - page
+      - track
+      device_mode: true
+      source_types: 13
+  detected_by: sweep-cdp.py
+  first_seen: '2026-10-14'
+- partner_name: mParticle
+  partner: mparticle
+  partner_match: aggregator
+  marketplace: coverage
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: connector-coverage
+  evidence: https://docs.mparticle.com/integrations/google-analytics-4/event/
+  coverage_role:
+  - destination
+  cdp_signals:
+    destination:
+      catalog_entries:
+      - google-analytics-4
+      - google-analytics
+      integration_types:
+      - event
+  detected_by: sweep-cdp.py
+  first_seen: '2026-10-14'
+- partner_name: Hightouch
+  partner: hightouch
+  partner_match: aggregator
+  marketplace: coverage
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: connector-coverage
+  evidence: https://hightouch.com/docs/destinations/google-analytics
+  coverage_role:
+  - destination
+  cdp_signals:
+    destination:
+      catalog_entries:
+      - google-analytics
+      status: released
+      sync_types:
+      - Anonymous Audiences
+      - Events
+      sync_modes:
+      - insert
+      - upsert
+  detected_by: sweep-cdp.py
+  first_seen: '2026-10-14'
+- partner_name: Census
+  partner: getcensus
+  partner_match: aggregator
+  marketplace: coverage
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: connector-coverage
+  evidence: https://fivetran.com/docs/activations/destinations/available-destinations/google-analytics-four
+  coverage_role:
+  - destination
+  cdp_signals:
+    destination:
+      catalog_entries:
+      - google-analytics-four
+      sync_behaviours:
+      - update only
+  detected_by: sweep-cdp.py
+  first_seen: '2026-10-14'
+method: searched
+checked:
+- https://docs.mparticle.com/integrations/google-analytics-4/event/
+- https://fivetran.com/docs/activations/destinations/available-destinations/google-analytics-four
+- https://github.com/rudderlabs/rudder-integrations-config/tree/main/src/configurations/destinations/ga4
+- https://hightouch.com/docs/destinations/google-analytics
+- https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-google-analytics-4
+source:
+- https://docs.mparticle.com/integrations/google-analytics-4/event/
+- https://fivetran.com/docs/activations/destinations/available-destinations/google-analytics-four
+- https://github.com/rudderlabs/rudder-integrations-config/tree/main/src/configurations/destinations/ga4
+- https://hightouch.com/docs/destinations/google-analytics
+- https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-google-analytics-4

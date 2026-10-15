@@ -86,7 +86,7 @@
     app_slug: google-analytics-4
     beta: false
     builder: unknown (not in the directory record)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: google-analytics-n8n
   label: n8n
@@ -113,7 +113,7 @@
     builder: n8n (built-in node)
     other_nodes:
     - Google/Analytics/v1
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: google-analytics-pipedream
   label: Pipedream
@@ -139,5 +139,5 @@
     actions: true
     sources: true
     builder: Pipedream repo (component)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null

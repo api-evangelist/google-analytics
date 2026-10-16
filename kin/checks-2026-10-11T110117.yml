@@ -2,16 +2,16 @@
 kin_checks:
   slug: google-analytics
   schema_version: 0.23.0
-  scored_at: '2026-10-03'
-  run_ts: 2026-10-03T024842
+  scored_at: '2026-10-11'
+  run_ts: 2026-10-11T110117
   note: Actionable checks (missed + partial) in `checks`, plus the ids that did not
     apply in `na`. Everything else in rubric/scoring-0.23.0.yml was earned; counts
     below let you verify that.
   counts:
     total: 153
-    earned: 47
+    earned: 46
     partial: 37
-    missed: 45
+    missed: 46
     na: 24
   checks:
   - id: newsroom_present
@@ -35,6 +35,8 @@ kin_checks:
     detail: 0 of 12 openapi documents pass; credited at 90% because of their provenance
       (unknown)
   - id: inbound_contract_published
+    status: missed
+  - id: asyncapi_present
     status: missed
   - id: json_schema_present
     status: missed

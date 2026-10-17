@@ -116,22 +116,10 @@ paths:
       - BearerAuth: []
 components:
   parameters:
-    quotaUser:
-      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    oauth_token:
+      description: OAuth 2.0 token for the current user.
       in: query
-      name: quotaUser
-      schema:
-        type: string
-    prettyPrint:
-      description: Returns response with indentations and line breaks.
-      in: query
-      name: prettyPrint
-      schema:
-        type: boolean
-    access_token:
-      description: OAuth access token.
-      in: query
-      name: access_token
+      name: oauth_token
       schema:
         type: string
     key:
@@ -140,6 +128,24 @@ components:
       name: key
       schema:
         type: string
+    fields:
+      description: Selector specifying which fields to include in a partial response.
+      in: query
+      name: fields
+      schema:
+        type: string
+    callback:
+      description: JSONP
+      in: query
+      name: callback
+      schema:
+        type: string
+    prettyPrint:
+      description: Returns response with indentations and line breaks.
+      in: query
+      name: prettyPrint
+      schema:
+        type: boolean
     _.xgafv:
       description: V1 error format.
       in: query
@@ -149,28 +155,10 @@ components:
         - '1'
         - '2'
         type: string
-    upload_protocol:
-      description: Upload protocol for media (e.g. "raw", "multipart").
+    access_token:
+      description: OAuth access token.
       in: query
-      name: upload_protocol
-      schema:
-        type: string
-    fields:
-      description: Selector specifying which fields to include in a partial response.
-      in: query
-      name: fields
-      schema:
-        type: string
-    uploadType:
-      description: Legacy upload protocol for media (e.g. "media", "multipart").
-      in: query
-      name: uploadType
-      schema:
-        type: string
-    oauth_token:
-      description: OAuth 2.0 token for the current user.
-      in: query
-      name: oauth_token
+      name: access_token
       schema:
         type: string
     alt:
@@ -183,10 +171,22 @@ components:
         - media
         - proto
         type: string
-    callback:
-      description: JSONP
+    uploadType:
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
       in: query
-      name: callback
+      name: uploadType
+      schema:
+        type: string
+    upload_protocol:
+      description: Upload protocol for media (e.g. "raw", "multipart").
+      in: query
+      name: upload_protocol
+      schema:
+        type: string
+    quotaUser:
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+      in: query
+      name: quotaUser
       schema:
         type: string
   schemas:
@@ -211,6 +211,18 @@ components:
             $ref: '#/components/schemas/GoogleAnalyticsAdminV1betaPropertySummary'
           type: array
       type: object
+    GoogleAnalyticsAdminV1betaListAccountSummariesResponse:
+      description: Response message for ListAccountSummaries RPC.
+      properties:
+        accountSummaries:
+          description: Account summaries of all accounts the caller has access to.
+          items:
+            $ref: '#/components/schemas/GoogleAnalyticsAdminV1betaAccountSummary'
+          type: array
+        nextPageToken:
+          description: A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.
+          type: string
+      type: object
     GoogleAnalyticsAdminV1betaPropertySummary:
       description: A virtual resource representing metadata for a GA4 property.
       properties:
@@ -232,14 +244,14 @@ components:
           - PROPERTY_TYPE_ROLLUP
           type: string
       type: object
-    GoogleAnalyticsAdminV1betaListAccountSummariesResponse:
+    GoogleAnalyticsAdminV1alphaListAccountSummariesResponse:
       description: Response message for ListAccountSummaries RPC.
       properties:
         accountSummaries:
           description: Account summaries of all accounts the caller has access to.
-          items:
-            $ref: '#/components/schemas/GoogleAnalyticsAdminV1betaAccountSummary'
           type: array
+          items:
+            $ref: '#/components/schemas/GoogleAnalyticsAdminV1alphaAccountSummary'
         nextPageToken:
           description: A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.
           type: string
@@ -261,18 +273,6 @@ components:
           items:
             $ref: '#/components/schemas/GoogleAnalyticsAdminV1alphaPropertySummary'
           description: List of summaries for child accounts of this account.
-      type: object
-    GoogleAnalyticsAdminV1alphaListAccountSummariesResponse:
-      description: Response message for ListAccountSummaries RPC.
-      properties:
-        accountSummaries:
-          description: Account summaries of all accounts the caller has access to.
-          type: array
-          items:
-            $ref: '#/components/schemas/GoogleAnalyticsAdminV1alphaAccountSummary'
-        nextPageToken:
-          description: A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.
-          type: string
       type: object
     GoogleRpcStatus:
       type: object

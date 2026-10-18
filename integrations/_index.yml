@@ -141,3 +141,108 @@
     builder: Pipedream repo (component)
   status: not-a-workflow
   arazzo: null
+- slug: google-analytics-airbyte
+  label: Airbyte
+  partner: airbyte
+  partner_name: Airbyte
+  type: marketplace
+  marketplace: airbyte-registry
+  channel: elt-connector
+  evidence: https://docs.airbyte.com/integrations/sources/google-analytics-data-api
+  source: edge
+  relationship: ipaas-bridge
+  contract_reference:
+    register: Airbyte connector registry (connectors.airbyte.com cloud_registry.json + oss_registry.json)
+    spec_file: null
+    role: elt-connector:airbyte-certified
+    registered_name: Google Analytics 4 (GA4)
+    matched_domain: google.com
+    matched_by: domain+name-among-holders
+    detected_by: sweep-data-integration.py
+    detected: '2026-10-18'
+    signal_note: one edge per (provider, platform); connectors, streams, packages and usage are context, never read
+    connectors:
+    - airbyte/source-google-analytics-data-api
+    support_level:
+    - certified
+    release_stage:
+    - generally_available
+    in_cloud: true
+    builder: Airbyte (certified)
+    standard: Airbyte certified connector
+    certified_products:
+    - product: Airbyte certified source
+      type: source
+      lapsed: false
+      cloud: true
+  status: pending-generation
+  arazzo: null
+- slug: google-analytics-fivetran
+  label: Fivetran
+  partner: fivetran
+  partner_name: Fivetran
+  type: marketplace
+  marketplace: fivetran-connectors
+  channel: elt-connector
+  evidence: https://fivetran.com/docs/connectors/applications/google-analytics-4
+  source: edge
+  relationship: ipaas-bridge
+  contract_reference:
+    register: Fivetran connectors (fivetran.com/docs/connectors, docs-sitemap.xml + Partner-Built program)
+    spec_file: null
+    role: elt-connector:fivetran
+    registered_name: Google Analytics 4
+    matched_domain: google.com
+    matched_by: domain+name-among-holders
+    detected_by: sweep-data-integration.py
+    detected: '2026-10-18'
+    signal_note: one edge per (provider, platform); connectors, streams, packages and usage are context, never read
+    connector_paths:
+    - connectors/applications/google-analytics-4
+    - connectors/applications/google-analytics-4-export
+    vendor_link: https://www.google.com/analytics/analytics/#?modal_active=none
+    builder: Fivetran
+  status: pending-generation
+  arazzo: null
+- slug: google-analytics-meltano
+  label: Meltano
+  partner: meltano
+  partner_name: Meltano
+  type: marketplace
+  marketplace: meltano-hub
+  channel: elt-connector
+  evidence: https://hub.meltano.com/extractors/tap-ga4--connorflyn
+  source: edge
+  relationship: ipaas-bridge
+  contract_reference:
+    register: Meltano Hub (github.com/meltano/hub _data/meltano extractors + loaders)
+    spec_file: null
+    role: elt-connector:meltano-hub
+    registered_name: Google Analytics (GA4)
+    matched_domain: google.com
+    matched_by: domain+name-among-holders
+    detected_by: sweep-data-integration.py
+    detected: '2026-10-18'
+    signal_note: one edge per (provider, platform); connectors, streams, packages and usage are context, never read
+    plugins:
+    - tap-ga4--connorflyn
+    - tap-ga4--meltanolabs
+    - tap-ga4--sehnem
+    - tap-ga4--singer-io
+    - tap-google-analytics--meltano
+    - tap-google-analytics--meltanolabs
+    - tap-google-analytics--saidtezel
+    - tap-google-analytics--transferwise
+    - tap-google-analytics--zenkay
+    maintenance_status:
+    - active
+    - inactive
+    - unknown
+    quality:
+    - bronze
+    - gold
+    - silver
+    - unknown
+    builder: 'community (Meltano Hub variant maintainers: connorflyn, meltano, meltanolabs, saidtezel, sehnem)'
+  status: pending-partner-spec
+  arazzo: null

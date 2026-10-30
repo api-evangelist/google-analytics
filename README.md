@@ -1,4 +1,4 @@
-# Google Analytics (google-analytics)
+# Google Analytics
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,292 +66,349 @@
 
 Google Analytics provides data and insights about website and app usage, enabling businesses to understand their audience and optimize their digital properties through customer-centric measurement, machine learning insights, and cross-platform attribution.
 
-**URL:** [Visit APIs.json URL](https://developers.google.com/analytics)
+**Areas:** Analytics · Data · Google · Metrics · Reporting · Web Analytics · Machine Learning · Attribution
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Google Analytics on APIs.io
 
-## Tags:
+Everything profiled for Google Analytics is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/google-analytics/](https://apis.io/providers/google-analytics/)** — or go straight to one of the APIs or properties below.
 
- - Analytics, Data, Google, Metrics, Reporting, Web Analytics, Machine Learning, Attribution
+### APIs (12)
 
-## Timestamps
+- [Google Analytics Accounts API](https://apis.io/apis/google-analytics/google-analytics-accounts-api/) — The accounts API from Google Analytics — 3 operation(s) for accounts.
+- [Google Analytics Account Summaries API](https://apis.io/apis/google-analytics/google-analytics-accountsummaries-api/) — The accountSummaries API from Google Analytics — 1 operation(s) for accountsummaries.
+- [Google Analytics Data API](https://apis.io/apis/google-analytics/google-analytics-data-api/) — The data API from Google Analytics — 3 operation(s) for data.
+- [Google Analytics Events API](https://apis.io/apis/google-analytics/google-analytics-events-api/) — The Events API from Google Analytics — 1 operation(s) for events.
+- [Google Analytics Management API](https://apis.io/apis/google-analytics/google-analytics-management-api/) — The management API from Google Analytics — 36 operation(s) for management.
+- [Google Analytics Metadata API](https://apis.io/apis/google-analytics/google-analytics-metadata-api/) — The metadata API from Google Analytics — 1 operation(s) for metadata.
+- [Google Analytics Properties API](https://apis.io/apis/google-analytics/google-analytics-properties-api/) — The properties API from Google Analytics — 20 operation(s) for properties.
+- [Google Analytics Provisioning API](https://apis.io/apis/google-analytics/google-analytics-provisioning-api/) — The provisioning API from Google Analytics — 2 operation(s) for provisioning.
+- [Google Analytics Reports API](https://apis.io/apis/google-analytics/google-analytics-reports-api/) — The reports API from Google Analytics — 1 operation(s) for reports.
+- [Google Analytics User Deletion API](https://apis.io/apis/google-analytics/google-analytics-userdeletion-api/) — The userDeletion API from Google Analytics — 1 operation(s) for userdeletion.
+- [Google Analytics Validation API](https://apis.io/apis/google-analytics/google-analytics-validation-api/) — The Validation API from Google Analytics — 1 operation(s) for validation.
+- [Google Analytics User Activity API](https://apis.io/apis/google-analytics/google-analytics-user-activity-api/) — The User Activity API from Google Analytics — 1 operation(s) for user activity.
 
-- **Created:** 2024-01-01 
-- **Modified:** 2026-04-17 
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### Google Analytics Data API (GA4)
-The Google Analytics Data API provides programmatic access to Google Analytics 4 (GA4) report data including standard reports, pivot reports, real-time reports, funnel reports, and audience exports.
+#### Arazzo workflows (12)
 
-**Human URL:** [https://developers.google.com/analytics/devguides/reporting/data/v1](https://developers.google.com/analytics/devguides/reporting/data/v1)
+Multi-step workflows that chain operations into a business task.
 
-#### Tags:
+- [Google Analytics Account Change History Audit](https://apis.io/arazzos/google-analytics/google-analytics-account-change-history-audit-workflow/)
+- [Google Analytics Reuse or Create an Audience Export](https://apis.io/arazzos/google-analytics/google-analytics-audience-export-create-or-reuse-workflow/)
+- [Google Analytics Audit a Property's Custom Definitions](https://apis.io/arazzos/google-analytics/google-analytics-audit-custom-definitions-workflow/)
+- [Google Analytics Batch Run Reports](https://apis.io/arazzos/google-analytics/google-analytics-batch-run-reports-workflow/)
+- [Google Analytics Check Compatibility then Run Report](https://apis.io/arazzos/google-analytics/google-analytics-check-compatibility-run-report-workflow/)
+- [Google Analytics Create Custom Dimension then Run Report](https://apis.io/arazzos/google-analytics/google-analytics-create-custom-dimension-run-report-workflow/)
+- [Google Analytics Create Custom Metric then Run Report](https://apis.io/arazzos/google-analytics/google-analytics-create-custom-metric-run-report-workflow/)
+- [Google Analytics Create Property and Web Data Stream](https://apis.io/arazzos/google-analytics/google-analytics-create-property-data-stream-workflow/)
+- [Google Analytics Discover Property and Run Report](https://apis.io/arazzos/google-analytics/google-analytics-discover-and-run-report-workflow/)
+- [Google Analytics Inventory a Property's Data Streams](https://apis.io/arazzos/google-analytics/google-analytics-inventory-property-data-streams-workflow/)
+- [Google Analytics List Properties and Run Realtime Report](https://apis.io/arazzos/google-analytics/google-analytics-list-properties-run-realtime-workflow/)
+- [Google Analytics Query Audience Export Users](https://apis.io/arazzos/google-analytics/google-analytics-query-audience-export-users-workflow/)
 
- - Analytics, Data API, GA4, Reporting, Real-Time, Funnels
+#### AsyncAPI (1)
 
-#### Properties
+Event-driven and webhook contracts.
 
+- [Google Analytics 4 Webhooks](https://apis.io/asyncapis/google-analytics/google-analytics-4-webhooks/)
+
+#### GraphQL (1)
+
+GraphQL schemas.
+
+- [Moved to /providers/google-analytics/](https://apis.io/graphqls/google-analytics/google-analytics-graphql/)
+
+#### MCP servers (2)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [MCP Server](https://apis.io/servers/google-analytics/mcp-server/)
+- [MCP Server (artifact)](https://apis.io/servers/google-analytics/mcp-server-artifact/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Google Analytics Agentic Access](https://apis.io/agentic-access/google-analytics/google-analytics-agentic-access/)
+
+#### JSON Schema (260)
+
+The data models the API reads and writes.
+
+- [Account](https://apis.io/schemas/google-analytics/admin-api-account/)
+- [ChangeHistoryEvent](https://apis.io/schemas/google-analytics/admin-api-change-history-event/)
+- [ConversionEvent](https://apis.io/schemas/google-analytics/admin-api-conversion-event/)
+- [CustomDimension](https://apis.io/schemas/google-analytics/admin-api-custom-dimension/)
+- [CustomMetric](https://apis.io/schemas/google-analytics/admin-api-custom-metric/)
+- [DataStream](https://apis.io/schemas/google-analytics/admin-api-data-stream/)
+- [FirebaseLink](https://apis.io/schemas/google-analytics/admin-api-firebase-link/)
+- [GoogleAdsLink](https://apis.io/schemas/google-analytics/admin-api-google-ads-link/)
+- [MeasurementProtocolSecret](https://apis.io/schemas/google-analytics/admin-api-measurement-protocol-secret/)
+- [Property](https://apis.io/schemas/google-analytics/admin-api-property/)
+- [AudienceExport](https://apis.io/schemas/google-analytics/data-api-audience-export/)
+- [DateRange](https://apis.io/schemas/google-analytics/data-api-date-range/)
+- [Dimension](https://apis.io/schemas/google-analytics/data-api-dimension/)
+- [FilterExpression](https://apis.io/schemas/google-analytics/data-api-filter-expression/)
+- [Metric](https://apis.io/schemas/google-analytics/data-api-metric/)
+- [OrderBy](https://apis.io/schemas/google-analytics/data-api-order-by/)
+- [Pivot](https://apis.io/schemas/google-analytics/data-api-pivot/)
+- [Row](https://apis.io/schemas/google-analytics/data-api-row/)
+- [RunReportRequest](https://apis.io/schemas/google-analytics/data-api-run-report-request/)
+- [RunReportResponse](https://apis.io/schemas/google-analytics/data-api-run-report-response/)
+- [Account](https://apis.io/schemas/google-analytics/google-analytics-account/)
+- [AccountRef](https://apis.io/schemas/google-analytics/google-analytics-accountref/)
+- [Accounts](https://apis.io/schemas/google-analytics/google-analytics-accounts/)
+- [AccountSummaries](https://apis.io/schemas/google-analytics/google-analytics-accountsummaries/)
+- [AccountSummary](https://apis.io/schemas/google-analytics/google-analytics-accountsummary/)
+- …and 235 more published on APIs.io
+
+#### JSON Structure (30)
+
+Data models expressed in JSON Structure.
+
+- [Admin Api Account Structure](https://apis.io/json-structure/google-analytics/admin-api-account-structure/)
+- [Admin Api Change History Event Structure](https://apis.io/json-structure/google-analytics/admin-api-change-history-event-structure/)
+- [Admin Api Conversion Event Structure](https://apis.io/json-structure/google-analytics/admin-api-conversion-event-structure/)
+- [Admin Api Custom Dimension Structure](https://apis.io/json-structure/google-analytics/admin-api-custom-dimension-structure/)
+- [Admin Api Custom Metric Structure](https://apis.io/json-structure/google-analytics/admin-api-custom-metric-structure/)
+- [Admin Api Data Stream Structure](https://apis.io/json-structure/google-analytics/admin-api-data-stream-structure/)
+- [Admin Api Firebase Link Structure](https://apis.io/json-structure/google-analytics/admin-api-firebase-link-structure/)
+- [Admin Api Google Ads Link Structure](https://apis.io/json-structure/google-analytics/admin-api-google-ads-link-structure/)
+- [Admin Api Measurement Protocol Secret Structure](https://apis.io/json-structure/google-analytics/admin-api-measurement-protocol-secret-structure/)
+- [Admin Api Property Structure](https://apis.io/json-structure/google-analytics/admin-api-property-structure/)
+- [Data Api Audience Export Structure](https://apis.io/json-structure/google-analytics/data-api-audience-export-structure/)
+- [Data Api Date Range Structure](https://apis.io/json-structure/google-analytics/data-api-date-range-structure/)
+- [Data Api Dimension Structure](https://apis.io/json-structure/google-analytics/data-api-dimension-structure/)
+- [Data Api Filter Expression Structure](https://apis.io/json-structure/google-analytics/data-api-filter-expression-structure/)
+- [Data Api Metric Structure](https://apis.io/json-structure/google-analytics/data-api-metric-structure/)
+- [Data Api Order By Structure](https://apis.io/json-structure/google-analytics/data-api-order-by-structure/)
+- [Data Api Pivot Structure](https://apis.io/json-structure/google-analytics/data-api-pivot-structure/)
+- [Data Api Row Structure](https://apis.io/json-structure/google-analytics/data-api-row-structure/)
+- [Data Api Run Report Request Structure](https://apis.io/json-structure/google-analytics/data-api-run-report-request-structure/)
+- [Data Api Run Report Response Structure](https://apis.io/json-structure/google-analytics/data-api-run-report-response-structure/)
+- [Google Analytics Structure](https://apis.io/json-structure/google-analytics/google-analytics-structure/)
+- [Measurement Protocol Consent Structure](https://apis.io/json-structure/google-analytics/measurement-protocol-consent-structure/)
+- [Measurement Protocol Device Structure](https://apis.io/json-structure/google-analytics/measurement-protocol-device-structure/)
+- [Measurement Protocol Event Structure](https://apis.io/json-structure/google-analytics/measurement-protocol-event-structure/)
+- [Measurement Protocol Measurement Payload Structure](https://apis.io/json-structure/google-analytics/measurement-protocol-measurement-payload-structure/)
+- …and 5 more published on APIs.io
+
+#### JSON-LD (4)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Google Analytics Admin Api Context](https://apis.io/jsonld/google-analytics/google-analytics-admin-api-context/)
+- [Google Analytics Data Api Context](https://apis.io/jsonld/google-analytics/google-analytics-data-api-context/)
+- [Google Analytics Measurement Protocol Context](https://apis.io/jsonld/google-analytics/google-analytics-measurement-protocol-context/)
+- [Google Analytics User Deletion Api Context](https://apis.io/jsonld/google-analytics/google-analytics-user-deletion-api-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Google Analytics Vocabulary](https://apis.io/vocabularies/google-analytics/google-analytics-vocabulary/)
+
+#### Examples (29)
+
+Example requests and responses.
+
+- [Admin Api Account Example](https://apis.io/examples/google-analytics/admin-api-account-example/)
+- [Admin Api Change History Event Example](https://apis.io/examples/google-analytics/admin-api-change-history-event-example/)
+- [Admin Api Conversion Event Example](https://apis.io/examples/google-analytics/admin-api-conversion-event-example/)
+- [Admin Api Custom Dimension Example](https://apis.io/examples/google-analytics/admin-api-custom-dimension-example/)
+- [Admin Api Custom Metric Example](https://apis.io/examples/google-analytics/admin-api-custom-metric-example/)
+- [Admin Api Data Stream Example](https://apis.io/examples/google-analytics/admin-api-data-stream-example/)
+- [Admin Api Firebase Link Example](https://apis.io/examples/google-analytics/admin-api-firebase-link-example/)
+- [Admin Api Google Ads Link Example](https://apis.io/examples/google-analytics/admin-api-google-ads-link-example/)
+- [Admin Api Measurement Protocol Secret Example](https://apis.io/examples/google-analytics/admin-api-measurement-protocol-secret-example/)
+- [Admin Api Property Example](https://apis.io/examples/google-analytics/admin-api-property-example/)
+- [Data Api Audience Export Example](https://apis.io/examples/google-analytics/data-api-audience-export-example/)
+- [Data Api Date Range Example](https://apis.io/examples/google-analytics/data-api-date-range-example/)
+- [Data Api Dimension Example](https://apis.io/examples/google-analytics/data-api-dimension-example/)
+- [Data Api Filter Expression Example](https://apis.io/examples/google-analytics/data-api-filter-expression-example/)
+- [Data Api Metric Example](https://apis.io/examples/google-analytics/data-api-metric-example/)
+- [Data Api Order By Example](https://apis.io/examples/google-analytics/data-api-order-by-example/)
+- [Data Api Pivot Example](https://apis.io/examples/google-analytics/data-api-pivot-example/)
+- [Data Api Row Example](https://apis.io/examples/google-analytics/data-api-row-example/)
+- [Data Api Run Report Request Example](https://apis.io/examples/google-analytics/data-api-run-report-request-example/)
+- [Data Api Run Report Response Example](https://apis.io/examples/google-analytics/data-api-run-report-response-example/)
+- [Measurement Protocol Consent Example](https://apis.io/examples/google-analytics/measurement-protocol-consent-example/)
+- [Measurement Protocol Device Example](https://apis.io/examples/google-analytics/measurement-protocol-device-example/)
+- [Measurement Protocol Event Example](https://apis.io/examples/google-analytics/measurement-protocol-event-example/)
+- [Measurement Protocol Measurement Payload Example](https://apis.io/examples/google-analytics/measurement-protocol-measurement-payload-example/)
+- [Measurement Protocol User Location Example](https://apis.io/examples/google-analytics/measurement-protocol-user-location-example/)
+- …and 4 more published on APIs.io
+
+#### Collections (30)
+
+Postman and Open Collection request collections.
+
+- [Google Analytics Admin accounts API](https://apis.io/collections/google-analytics/open-google-analytics-accounts-api/)
+- [Google Analytics Admin accounts accountSummaries API](https://apis.io/collections/google-analytics/open-google-analytics-accountsummaries-api/)
+- [Google Analytics Admin accounts data API](https://apis.io/collections/google-analytics/open-google-analytics-data-api/)
+- [Google Analytics Admin accounts Events API](https://apis.io/collections/google-analytics/open-google-analytics-events-api/)
+- [Google Analytics Admin accounts management API](https://apis.io/collections/google-analytics/open-google-analytics-management-api/)
+- [Google Analytics Admin accounts metadata API](https://apis.io/collections/google-analytics/open-google-analytics-metadata-api/)
+- [Google Analytics Admin accounts properties API](https://apis.io/collections/google-analytics/open-google-analytics-properties-api/)
+- [Google Analytics Admin accounts provisioning API](https://apis.io/collections/google-analytics/open-google-analytics-provisioning-api/)
+- [Google Analytics Admin accounts reports API](https://apis.io/collections/google-analytics/open-google-analytics-reports-api/)
+- [Google Analytics Admin accounts User Deletion API](https://apis.io/collections/google-analytics/open-google-analytics-user-deletion-api/)
+- [Google Analytics Admin accounts userActivity API](https://apis.io/collections/google-analytics/open-google-analytics-useractivity-api/)
+- [Google Analytics Admin accounts userDeletion API](https://apis.io/collections/google-analytics/open-google-analytics-userdeletion-api/)
+- [Google Analytics Admin accounts Validation API](https://apis.io/collections/google-analytics/open-google-analytics-validation-api/)
+- [Google Analytics Admin accounts API](https://apis.io/collections/google-analytics/postman-google-analytics-accounts-api/)
+- [Google Analytics Admin accounts accountSummaries API](https://apis.io/collections/google-analytics/postman-google-analytics-accountsummaries-api/)
+- [Google Analytics Admin API](https://apis.io/collections/google-analytics/postman-google-analytics-admin-api/)
+- [Google Analytics Admin accounts data API](https://apis.io/collections/google-analytics/postman-google-analytics-data-api/)
+- [Google Analytics Admin accounts Events API](https://apis.io/collections/google-analytics/postman-google-analytics-events-api/)
+- [Google Analytics Admin accounts management API](https://apis.io/collections/google-analytics/postman-google-analytics-management-api/)
+- [Google Analytics API](https://apis.io/collections/google-analytics/postman-google-analytics-management-api-v3/)
+- [Google Analytics Measurement Protocol (GA4)](https://apis.io/collections/google-analytics/postman-google-analytics-measurement-protocol/)
+- [Google Analytics Admin accounts metadata API](https://apis.io/collections/google-analytics/postman-google-analytics-metadata-api/)
+- [Google Analytics Admin accounts properties API](https://apis.io/collections/google-analytics/postman-google-analytics-properties-api/)
+- [Google Analytics Admin accounts provisioning API](https://apis.io/collections/google-analytics/postman-google-analytics-provisioning-api/)
+- [Analytics Reporting API](https://apis.io/collections/google-analytics/postman-google-analytics-reporting-api-v4/)
+- …and 5 more published on APIs.io
+
+#### Overlays (25)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Google Analytics Accounts Api Overlay](https://apis.io/overlays/google-analytics/google-analytics-accounts-api-overlay/)
+- [Google Analytics Accounts Api Phrasing Overlay](https://apis.io/overlays/google-analytics/google-analytics-accounts-api-phrasing-overlay/)
+- [Google Analytics Accountsummaries Api Overlay](https://apis.io/overlays/google-analytics/google-analytics-accountsummaries-api-overlay/)
+- [Google Analytics Accountsummaries Api Phrasing Overlay](https://apis.io/overlays/google-analytics/google-analytics-accountsummaries-api-phrasing-overlay/)
+- [Google Analytics Data Api Overlay](https://apis.io/overlays/google-analytics/google-analytics-data-api-overlay/)
+- [Google Analytics Data Api Phrasing Overlay](https://apis.io/overlays/google-analytics/google-analytics-data-api-phrasing-overlay/)
+- [Google Analytics Events Api Overlay](https://apis.io/overlays/google-analytics/google-analytics-events-api-overlay/)
+- [Google Analytics Events Api Phrasing Overlay](https://apis.io/overlays/google-analytics/google-analytics-events-api-phrasing-overlay/)
+- [Google Analytics Management Api Overlay](https://apis.io/overlays/google-analytics/google-analytics-management-api-overlay/)
+- [Google Analytics Management Api Phrasing Overlay](https://apis.io/overlays/google-analytics/google-analytics-management-api-phrasing-overlay/)
+- [Google Analytics Metadata Api Overlay](https://apis.io/overlays/google-analytics/google-analytics-metadata-api-overlay/)
+- [Google Analytics Metadata Api Phrasing Overlay](https://apis.io/overlays/google-analytics/google-analytics-metadata-api-phrasing-overlay/)
+- [Google Analytics Properties Api Overlay](https://apis.io/overlays/google-analytics/google-analytics-properties-api-overlay/)
+- [Google Analytics Properties Api Phrasing Overlay](https://apis.io/overlays/google-analytics/google-analytics-properties-api-phrasing-overlay/)
+- [Google Analytics Provisioning Api Overlay](https://apis.io/overlays/google-analytics/google-analytics-provisioning-api-overlay/)
+- [Google Analytics Provisioning Api Phrasing Overlay](https://apis.io/overlays/google-analytics/google-analytics-provisioning-api-phrasing-overlay/)
+- [Google Analytics Reports Api Overlay](https://apis.io/overlays/google-analytics/google-analytics-reports-api-overlay/)
+- [Google Analytics Reports Api Phrasing Overlay](https://apis.io/overlays/google-analytics/google-analytics-reports-api-phrasing-overlay/)
+- [Google Analytics User Activity Api Phrasing Overlay](https://apis.io/overlays/google-analytics/google-analytics-user-activity-api-phrasing-overlay/)
+- [Google Analytics User Deletion Api Overlay](https://apis.io/overlays/google-analytics/google-analytics-user-deletion-api-overlay/)
+- [Google Analytics Useractivity Api Overlay](https://apis.io/overlays/google-analytics/google-analytics-useractivity-api-overlay/)
+- [Google Analytics Userdeletion Api Overlay](https://apis.io/overlays/google-analytics/google-analytics-userdeletion-api-overlay/)
+- [Google Analytics Userdeletion Api Phrasing Overlay](https://apis.io/overlays/google-analytics/google-analytics-userdeletion-api-phrasing-overlay/)
+- [Google Analytics Validation Api Overlay](https://apis.io/overlays/google-analytics/google-analytics-validation-api-overlay/)
+- [Google Analytics Validation Api Phrasing Overlay](https://apis.io/overlays/google-analytics/google-analytics-validation-api-phrasing-overlay/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Google Analytics — jsonschema rules](https://apis.io/rules/google-analytics/google-analytics-jsonschema-spectral-rules/)
+- [Google Analytics API Rules](https://apis.io/rules/google-analytics/google-analytics-spectral-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Google Analytics Authentication](https://apis.io/security/google-analytics/google-analytics-authentication/)
+- [Google Analytics Domain Security](https://apis.io/security/google-analytics/google-analytics-domain-security/)
+- [Google Analytics Vulnerability Disclosure](https://apis.io/security/google-analytics/google-analytics-vulnerability-disclosure/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Google Analytics Scopes](https://apis.io/scopes/google-analytics/google-analytics-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Google Analytics Plans Pricing](https://apis.io/plans/google-analytics/google-analytics-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Google Analytics Rate Limits](https://apis.io/rate-limits/google-analytics/google-analytics-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Google Analytics Finops](https://apis.io/finops/google-analytics/google-analytics-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.google.com/)
 - [Documentation](https://developers.google.com/analytics/devguides/reporting/data/v1)
-- [OpenAPI](openapi/google-analytics-data-api.yaml)
-- [API Reference](https://developers.google.com/analytics/devguides/reporting/data/v1/rest)
-- [Quickstart](https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart)
-- [Authentication](https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries)
-- [Rate Limits](https://developers.google.com/analytics/devguides/reporting/data/v1/quotas)
-- [Python SDK](https://pypi.org/project/google-analytics-data/)
-- [Node.js SDK](https://www.npmjs.com/package/@google-analytics/data)
-- [Java SDK](https://central.sonatype.com/artifact/com.google.analytics/google-analytics-data)
-- [.NET SDK](https://www.nuget.org/packages/Google.Analytics.Data.V1Beta)
-- [PHP SDK](https://packagist.org/packages/google/analytics-data)
-- [Python Samples](https://github.com/googleanalytics/python-docs-samples)
-- [Java Samples](https://github.com/googleanalytics/java-docs-samples)
-- [Node.js Samples](https://github.com/googleanalytics/nodejs-docs-samples)
-- [.NET Samples](https://github.com/googleanalytics/dotnet-docs-samples)
-- [PHP Samples](https://github.com/googleanalytics/php-docs-samples)
-- [Curl Examples](https://github.com/googleanalytics/analytics-data-curl-examples)
-- [JavaScript Examples](https://github.com/googleanalytics/analytics-data-javascript-examples)
-
-### Google Analytics Admin API
-The Analytics Admin API allows programmatic access to configuration data for Google Analytics 4 properties including account management, data streams, custom dimensions, key events, user permissions, and integration linking.
-
-**Human URL:** [https://developers.google.com/analytics/devguides/config/admin/v1](https://developers.google.com/analytics/devguides/config/admin/v1)
-
-#### Tags:
-
- - Admin, Configuration, GA4, Management, Permissions
-
-#### Properties
-
-- [Documentation](https://developers.google.com/analytics/devguides/config/admin/v1)
-- [OpenAPI](openapi/google-analytics-admin-api.yaml)
-- [API Reference](https://developers.google.com/analytics/devguides/config/admin/v1/rest)
-- [Quickstart](https://developers.google.com/analytics/devguides/config/admin/v1/quickstart)
-- [SDK](https://developers.google.com/analytics/devguides/config/admin/v1/client-libraries)
-- [Python SDK](https://pypi.org/project/google-analytics-admin/)
-- [Node.js SDK](https://www.npmjs.com/package/@google-analytics/admin)
-- [Java SDK](https://central.sonatype.com/artifact/com.google.analytics/google-analytics-admin)
-- [.NET SDK](https://www.nuget.org/packages/Google.Analytics.Admin.V1Beta)
-- [PHP SDK](https://packagist.org/packages/google/analytics-admin)
-- [Python Samples](https://github.com/googleanalytics/python-docs-samples)
-- [Java Samples](https://github.com/googleanalytics/java-docs-samples)
-- [Node.js Samples](https://github.com/googleanalytics/nodejs-docs-samples)
-- [.NET Samples](https://github.com/googleanalytics/dotnet-docs-samples)
-- [PHP Samples](https://github.com/googleanalytics/php-docs-samples)
-- [Configuration Samples](https://github.com/googleanalytics/analytics-samples-config)
-
-### Google Analytics Measurement Protocol (GA4)
-The Measurement Protocol lets you send events directly to Google Analytics servers via HTTP requests to augment existing GA4 data with server-to-server and offline interactions.
-
-**Human URL:** [https://developers.google.com/analytics/devguides/collection/protocol/ga4](https://developers.google.com/analytics/devguides/collection/protocol/ga4)
-
-#### Tags:
-
- - Events, Measurement, Server-Side, Tracking
-
-#### Properties
-
-- [Documentation](https://developers.google.com/analytics/devguides/collection/protocol/ga4)
-- [API Reference](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference)
-- [Quickstart](https://developers.google.com/analytics/devguides/collection/protocol/ga4/sending-events)
-- [Troubleshooting](https://developers.google.com/analytics/devguides/collection/protocol/ga4/troubleshooting)
-
-### Google Analytics User Deletion API
-The User Deletion API enables removal of data linked to specific user identifiers in Google Analytics, supporting compliance with data protection and privacy requirements.
-
-**Human URL:** [https://developers.google.com/analytics/devguides/config/userdeletion/v3](https://developers.google.com/analytics/devguides/config/userdeletion/v3)
-
-#### Tags:
-
- - Compliance, Data Privacy, GDPR, User Deletion
-
-#### Properties
-
-- [Documentation](https://developers.google.com/analytics/devguides/config/userdeletion/v3)
-- [API Reference](https://developers.google.com/analytics/devguides/config/userdeletion/v3/reference)
-- [Authentication](https://developers.google.com/analytics/devguides/config/userdeletion/v3/authorization)
-
-### Google Analytics Reporting API v4 (Universal Analytics)
-The Analytics Reporting API v4 provides programmatic access to Universal Analytics report data. Universal Analytics was sunset on July 1, 2023 and users should migrate to GA4.
-
-**Human URL:** [https://developers.google.com/analytics/devguides/reporting/core/v4](https://developers.google.com/analytics/devguides/reporting/core/v4)
-
-#### Tags:
-
- - Analytics, Deprecated, Legacy, Reporting, Universal Analytics
-
-#### Properties
-
-- [Documentation](https://developers.google.com/analytics/devguides/reporting/core/v4)
-- [OpenAPI](openapi/google-analytics-reporting-api-v4.yaml)
-- [Getting Started](https://developers.google.com/analytics/devguides/migration/api/reporting-ua-to-ga4)
-
-### Google Analytics Management API v3
-The Analytics Management API allows access to configuration data for Universal Analytics accounts, properties, and views. Deprecated with Universal Analytics sunset.
-
-**Human URL:** [https://developers.google.com/analytics/devguides/config/mgmt/v3](https://developers.google.com/analytics/devguides/config/mgmt/v3)
-
-#### Tags:
-
- - Configuration, Deprecated, Legacy, Management, Universal Analytics
-
-#### Properties
-
-- [Documentation](https://developers.google.com/analytics/devguides/config/mgmt/v3)
-- [API Reference](https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference)
-
-## Common Properties
-
-- [Getting Started](https://developers.google.com/analytics/get-started)
-- [Portal](https://developers.google.com/analytics)
-- [Console](https://console.cloud.google.com/apis/library/analytics.googleapis.com)
-- [Sign Up](https://analytics.google.com/analytics/)
-- [Authentication](https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries)
-- [SDK](https://developers.google.com/analytics/devguides/config/admin/v1/client-libraries)
-- [MCP Server](https://github.com/googleanalytics/google-analytics-mcp)
-- [GA Dev Tools](https://ga-dev-tools.google/ga4/)
-- [E-commerce Migration Helper](https://github.com/googleanalytics/ecommerce-migration-helper)
-- [GA4 Tutorials](https://github.com/googleanalytics/ga4-tutorials)
-- [Consent Mode Examples](https://github.com/googleanalytics/gtm-consent-mode-examples)
+- [Getting started](https://developers.google.com/analytics/get-started)
+- [API reference](https://developers.google.com/analytics/devguides/reporting/data/v1/rest)
 - [Pricing](https://marketingplatform.google.com/about/analytics/)
-- [Terms of Service](https://developers.google.com/analytics/terms)
-- [Privacy Policy](https://developers.google.com/analytics/devguides/collection/protocol/ga4/policy)
-- [Blog](https://analytics.googleblog.com/)
-- [Status Page](https://status.cloud.google.com/)
 - [Support](https://developers.google.com/analytics/support)
-- [FAQ](https://support.google.com/analytics)
-- [Release Notes](https://support.google.com/analytics/answer/9164320)
-- [Change Log](https://groups.google.com/forum/#!forum/google-analytics-api-notify)
-- [GitHub Organization](https://github.com/googleanalytics/)
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/google-analytics)
-- [YouTube](https://www.youtube.com/user/googleanalytics)
-- [Training](https://goo.gle/ga-courses)
-- [Academy](https://marketingplatformacademy.withgoogle.com/google-analytics-360)
+- [Changelog](https://groups.google.com/forum/#!forum/google-analytics-api-notify)
+- [Blog](https://analytics.googleblog.com/)
+- [Terms of service](https://developers.google.com/analytics/terms)
+- [Privacy policy](https://developers.google.com/analytics/devguides/collection/protocol/ga4/policy)
+- [GitHub](https://github.com/googleanalytics/)
+- [Status](https://status.cloud.google.com/)
 
-## Features
+## API Evangelist rating
 
-| Name | Description |
-|------|-------------|
-| Predictive Capabilities | Machine learning models that predict future actions users may take, like purchasing or churning. |
-| Proactive Insights | Automatically detects and surfaces actionable insights from your data. |
-| Real-Time Reporting | Monitor user activity on your site or app as it happens. |
-| Data-Driven Attribution | Machine learning to understand how each touchpoint contributes to conversions. |
-| Free-Form Exploration | Drag-and-drop analysis with instant visualizations for custom reporting. |
-| Funnel Exploration | Visualize user steps through conversion funnels and identify optimization opportunities. |
-| Path Exploration | Visualize user navigation paths to understand how users reach conversions. |
-| Cohort Exploration | Analyze behavior of users grouped by common attributes over time. |
-| BigQuery Export | Export raw event data to BigQuery for advanced analysis and data warehousing. |
-| Cross-Platform Measurement | Customer-centric measurement across websites and apps throughout the entire customer lifecycle. |
-| Privacy-Safe Modeling | Machine learning models that provide a complete picture of the customer journey while respecting privacy. |
-| Custom Dimensions and Metrics | Define custom dimensions and metrics to capture data specific to your business needs. |
+**Kin Score 72.1** — exemplar · rubric 0.25.0 · scored 2026-10-23
 
-## Use Cases
+| Facet | Score |
+|---|---|
+| Discoverability | 76.7 |
+| Contract quality | 64.7 |
+| Contract governance | 18.2 |
+| Operational transparency | 92.1 |
+| Developer ergonomics | 80.4 |
+| Access clarity | 65.8 |
 
-| Name | Description |
-|------|-------------|
-| Website Traffic Analysis | Understand where visitors come from, what pages they view, and how they interact with your website. |
-| Conversion Optimization | Track conversion events, analyze funnels, and identify drop-off points to improve conversion rates. |
-| Audience Segmentation | Segment users by demographics, behavior, technology, and custom attributes for targeted analysis. |
-| Marketing Campaign Measurement | Measure the effectiveness of advertising campaigns across channels with attribution modeling. |
-| E-commerce Analytics | Track purchase activity, revenue, product performance, and shopping behavior. |
-| App Analytics | Measure user engagement, retention, and in-app actions for mobile and web applications. |
-| Server-Side Event Tracking | Send events from your server using the Measurement Protocol for offline and backend interactions. |
-| Compliance and Data Privacy | Manage user data deletion requests and privacy compliance using the User Deletion API. |
-| Custom Reporting and Dashboards | Build custom reports and dashboards programmatically using the Data API. |
-| Real-Time Monitoring | Monitor live user activity for time-sensitive campaigns, launches, and events. |
+**Agent readiness 41.8** — agent-ready (gated down from agent-native)
 
-## Integrations
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | paginated |
+| Operation Distinctiveness | — |
 
-| Name | Description |
-|------|-------------|
-| Google Ads | Link Google Ads accounts to analyze campaign performance and optimize ad spend with Analytics data. |
-| Google BigQuery | Export raw Analytics data to BigQuery for advanced SQL-based analysis and data warehousing. |
-| Google Search Console | Connect Search Console to see organic search queries, impressions, and click data alongside Analytics. |
-| Firebase | Integrate with Firebase for comprehensive mobile and web app analytics and event tracking. |
-| Display & Video 360 | Link DV360 for programmatic advertising measurement and attribution. |
-| Search Ads 360 | Connect SA360 for unified search advertising measurement across engines. |
-| Google Tag Manager | Use Tag Manager to deploy and manage Analytics tags without modifying website code. |
-| Google Ad Manager | Integrate publisher ad serving data with Analytics for holistic content and ad performance analysis. |
-| Google Cloud | Leverage Google Cloud services for advanced data processing, ML models, and storage with Analytics data. |
-| Salesforce Marketing Cloud | Connect Salesforce Marketing Cloud for cross-platform marketing measurement and audience activation. |
+**Regulatory alignment 37.3** — Horizontal (data, software, accessibility, platform)
 
-## Solutions
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/google-analytics/](https://apis.io/providers/google-analytics/).
 
-| Name | Description |
-|------|-------------|
-| Google Analytics Free | Full-featured web and app analytics solution available at no charge for businesses of all sizes. |
-| Analytics 360 | Enterprise-grade analytics with advanced features including intraday data, sub-properties, roll-up reporting, and higher limits. |
-| Google Marketing Platform | Integrated advertising and analytics platform combining Analytics 360 with advertising products for enterprise marketing. |
+## How this profile is made
 
-## Artifacts
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-Machine-readable API specifications organized by format.
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Google Analytics: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-### OpenAPI
+## Open an issue
 
-- [Google Analytics Data API (GA4)](openapi/google-analytics-data-api.yaml)
-- [Google Analytics Admin API](openapi/google-analytics-admin-api.yaml)
-- [Google Analytics Measurement Protocol (GA4)](openapi/google-analytics-measurement-protocol.yaml)
-- [Google Analytics User Deletion API](openapi/google-analytics-user-deletion-api.yaml)
-- [Google Analytics Reporting API v4](openapi/google-analytics-reporting-api-v4.yaml)
-- [Google Analytics Management API v3](openapi/google-analytics-management-api-v3.yaml)
-
-### Discovery
-
-- [Google Analytics Data API](discovery/google-analytics-data-api.json)
-- [Google Analytics Admin API](discovery/google-analytics-admin-api.json)
-- [Google Analytics Management API v3](discovery/google-analytics-management-api-v3.json)
-
-### JSON Schema
-
-29 standalone JSON Schema files extracted from OpenAPI specs in [json-schema/](json-schema/).
-
-### JSON Structure
-
-29 JSON Structure files converted from JSON Schema in [json-structure/](json-structure/).
-
-### JSON-LD
-
-- [Data API Context](json-ld/google-analytics-data-api-context.jsonld) — 10 types, 92 properties
-- [Admin API Context](json-ld/google-analytics-admin-api-context.jsonld) — 10 types, 48 properties
-- [Measurement Protocol Context](json-ld/google-analytics-measurement-protocol-context.jsonld) — 7 types, 37 properties
-- [User Deletion API Context](json-ld/google-analytics-user-deletion-api-context.jsonld) — 2 types, 8 properties
-
-### Examples
-
-29 realistic example JSON files generated from JSON Schema in [examples/](examples/).
-
-## Capabilities
-
-Naftiko capabilities organized as shared per-API definitions composed into customer-facing workflows.
-
-### Shared Per-API Definitions
-
-- [Data API](capabilities/shared/data-api.yaml) — 10 operations for GA4 reporting
-- [Admin API](capabilities/shared/admin-api.yaml) — 26 operations for GA4 configuration
-- [Measurement Protocol](capabilities/shared/measurement-protocol.yaml) — 2 operations for event collection
-- [User Deletion API](capabilities/shared/user-deletion-api.yaml) — 1 operation for privacy compliance
-
-### Workflow Capabilities
-
-| Workflow | APIs Combined | Tools | Persona |
-|----------|--------------|-------|---------|
-| [Reporting and Insights](capabilities/reporting-and-insights.yaml) | Data API + Admin API | 7 | Data Analyst / BI Engineer |
-| [Configuration Management](capabilities/configuration-management.yaml) | Admin API | 16 | Analytics Administrator |
-| [Integrations and Linking](capabilities/integrations-and-linking.yaml) | Admin API | 9 | Platform Engineer / Marketing Ops |
-| [Event Collection](capabilities/event-collection.yaml) | Measurement Protocol + Admin API | 7 | Backend Engineer |
-| [Audience Management](capabilities/audience-management.yaml) | Data API + Admin API | 5 | Marketing Team |
-| [Compliance](capabilities/compliance.yaml) | User Deletion API + Admin API | 4 | Privacy Officer / Compliance Team |
-
-## Vocabulary
-
-- [Google Analytics Vocabulary](vocabulary/google-analytics-vocabulary.yaml) — Unified taxonomy mapping 14 resources, 16 actions, 6 workflows, and 10 personas across operational (OpenAPI) and capability (Naftiko) dimensions
-
-## Rules
-
-- [Google Analytics Spectral Rules](rules/google-analytics-spectral-rules.yml) — 62 rules across 13 categories enforcing Google Analytics API conventions
-
-## Maintainers
-
-**FN:** Kin Lane
-
-**Email:** kin@apievangelist.com
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/google-analytics/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).

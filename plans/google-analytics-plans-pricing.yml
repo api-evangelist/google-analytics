@@ -1,0 +1,212 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Google Analytics
+providerId: google-analytics
+created: '2026-05-04'
+generated: '2026-08-13'
+method: searched
+modified: '2026-08-13'
+source: >-
+  https://marketingplatform.google.com/about/analytics-360/ and
+  https://marketingplatform.google.com/about/analytics/ (both fetched 2026-08-13,
+  HTTP 200) plus
+  https://developers.google.com/analytics/devguides/reporting/data/v1/quotas.
+  Upgraded from the 2026-05-04 bulk-sweep version (method: generated): the two-SKU
+  structure and every quota figure below were re-verified against the live pages.
+plan_count: 2
+published_price: false
+pricing_note: >-
+  Google publishes NO list price for Google Analytics. The Standard SKU is free and
+  says so; the Analytics 360 page carries no price at all — the only calls to action
+  are "Talk to Sales" and "Sign in to Analytics 360". The enterprise SKU's cost,
+  contract term and minimum commitment are all sales-gated. What the page does state
+  publicly is that 360 includes "service level agreements across many product
+  functionalities – from data collection to attribution – and even for BigQuery daily
+  export", though the SLA text itself is not published.
+reconciled: true
+tags:
+  - Analytics
+  - Data
+  - Google
+  - Web Analytics
+  - Reporting
+description: Google Analytics is offered in two SKUs. Standard GA4 is free with published per-property
+  token quotas. Analytics 360 is a custom-priced enterprise SKU (no public list price; quotas are 10x
+  the standard limits). The APIs themselves are not metered separately from the property SKU.
+sources:
+  - https://marketingplatform.google.com/about/analytics-360/
+  - https://developers.google.com/analytics/devguides/reporting/data/v1/quotas
+  - https://support.google.com/analytics/answer/11202874
+plans:
+  - id: google-analytics-standard
+    name: Google Analytics 4 (Standard)
+    type: freemium
+    description: Free tier of Google Analytics with the GA4 Data, Admin, Measurement Protocol, and User
+      Deletion APIs. No license fee. Quotas applied per-property.
+    entries:
+      - label: Property license
+        description: GA4 standard property; no license fee
+        name: ga4_property
+        type: subscription
+        metric: property
+        limit: -1
+        timeFrame: month
+        geo: global
+        domains:
+          - https://analyticsdata.googleapis.com
+          - https://analyticsadmin.googleapis.com
+          - https://www.google-analytics.com
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Core API tokens (daily)
+        description: Daily token quota for runReport, runPivotReport, batch, getMetadata on standard properties
+        name: core_tokens_day
+        type: quota
+        metric: tokens
+        limit: 200000
+        timeFrame: day
+        geo: global
+        domains:
+          - https://analyticsdata.googleapis.com
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Core API tokens (hourly)
+        description: Hourly token ceiling per property on standard
+        name: core_tokens_hour
+        type: quota
+        metric: tokens
+        limit: 40000
+        timeFrame: hour
+        geo: global
+        domains:
+          - https://analyticsdata.googleapis.com
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Concurrent requests
+        description: Concurrent requests per property on standard
+        name: concurrent_requests
+        type: quota
+        metric: concurrent_requests
+        limit: 10
+        timeFrame: usage
+        geo: global
+        domains:
+          - https://analyticsdata.googleapis.com
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: Google Analytics Data API (GA4)
+      - name: Google Analytics Admin API
+      - name: Google Analytics Measurement Protocol (GA4)
+      - name: Google Analytics User Deletion API
+      - name: Standard data retention
+  - id: google-analytics-360
+    name: Google Analytics 360
+    type: enterprise
+    description: Enterprise SKU sold by Google Marketing Platform sales. No public list price. Provides
+      higher quotas (10x standard), advanced sub-properties, BigQuery export, and SLAs.
+    entries:
+      - label: 360 license
+        description: Annual contracted license; pricing not publicly disclosed
+        name: ga360_license
+        type: subscription
+        metric: contract
+        limit: -1
+        timeFrame: year
+        geo: global
+        domains:
+          - https://analyticsdata.googleapis.com
+          - https://analyticsadmin.googleapis.com
+        unit: 1
+        price: contact sales
+        userMultiplied: false
+      - label: Core API tokens (daily)
+        description: Daily token quota per 360 property
+        name: core_tokens_day
+        type: quota
+        metric: tokens
+        limit: 2000000
+        timeFrame: day
+        geo: global
+        domains:
+          - https://analyticsdata.googleapis.com
+        unit: 1
+        price: included
+        userMultiplied: false
+      - label: Core API tokens (hourly)
+        description: Hourly token ceiling per 360 property
+        name: core_tokens_hour
+        type: quota
+        metric: tokens
+        limit: 400000
+        timeFrame: hour
+        geo: global
+        domains:
+          - https://analyticsdata.googleapis.com
+        unit: 1
+        price: included
+        userMultiplied: false
+      - label: Concurrent requests
+        description: Concurrent requests per 360 property
+        name: concurrent_requests
+        type: quota
+        metric: concurrent_requests
+        limit: 50
+        timeFrame: usage
+        geo: global
+        domains:
+          - https://analyticsdata.googleapis.com
+        unit: 1
+        price: included
+        userMultiplied: false
+    elements:
+      - name: Google Analytics Data API (GA4) — 360 quotas
+      - name: Google Analytics Admin API
+      - name: Sub-properties and roll-up properties
+      - name: BigQuery export (no row caps)
+      - name: SLA-backed processing latency
+      - name: Dedicated support
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - subscription
+  units:
+  - negotiated
+  - object
+  - token
+  plans:
+  - name: Google Analytics 4 (Standard)
+    access: freemium
+    model: subscription
+    model_how: derived
+    units:
+    - object
+    - other
+    - token
+    periods:
+    - day
+    - hour
+    - month
+    - per-use
+  - name: Google Analytics 360
+    access: enterprise
+    model: subscription
+    model_how: derived
+    units:
+    - negotiated
+    - object
+    - token
+    periods:
+    - day
+    - hour
+    - per-use
+    - year

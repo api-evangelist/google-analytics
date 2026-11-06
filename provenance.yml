@@ -269,13 +269,22 @@ artifacts:
   heartbeat/2026-11-02.yml:
     method: unknown
     evidence: no authorship recorded
+  heartbeat/2026-11-06.yml:
+    method: unknown
+    evidence: no authorship recorded
+  hosts/google-analytics-hosts.yml:
+    method: derived
+    evidence: declared in the artifact
   integrations/_index.yml:
     method: generated
     evidence: carries an API Evangelist house phrase
   integrations/google-analytics-integration-edges.yml:
+    method: searched
+    evidence: declared in the artifact
+  json-ld/google-analytics-admin-api-context.jsonld:
     method: unknown
     evidence: no authorship recorded
-  json-ld/google-analytics-admin-api-context.jsonld:
+  json-ld/google-analytics-context.jsonld:
     method: unknown
     evidence: no authorship recorded
   json-ld/google-analytics-data-api-context.jsonld:
@@ -348,6 +357,15 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   json-schema/google-analytics-account-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-analytics-account-ticket-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-analytics-account-tree-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-analytics-account-tree-response-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/google-analytics-accountref-schema.json:
@@ -542,7 +560,16 @@ artifacts:
   json-schema/google-analytics-filters-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/google-analytics-ga-data-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/google-analytics-gadata-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-analytics-get-reports-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-analytics-get-reports-response-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/google-analytics-getreportsrequest-schema.json:
@@ -561,6 +588,33 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   json-schema/google-analytics-goalsetdata-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-analytics-google-analytics-admin-v1alpha-data-sharing-settings-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-analytics-google-analytics-admin-v1alpha-list-account-summaries-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-analytics-google-analytics-admin-v1alpha-property-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-analytics-google-analytics-admin-v1alpha-run-access-report-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-analytics-google-analytics-admin-v1alpha-search-change-history-events-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-analytics-google-analytics-admin-v1beta-list-account-summaries-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-analytics-google-analytics-admin-v1beta-run-access-report-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-analytics-google-analytics-admin-v1beta-search-change-history-events-request-2-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-analytics-google-analytics-admin-v1beta-search-change-history-events-request-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/google-analytics-googleanalyticsadminv1betaaccessbetweenfilter-schema.json:
@@ -767,7 +821,13 @@ artifacts:
   json-schema/google-analytics-listaudienceexportsresponse-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/google-analytics-mcf-data-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/google-analytics-mcfdata-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-analytics-measurement-payload-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/google-analytics-measurementpayload-schema.json:
@@ -878,6 +938,9 @@ artifacts:
   json-schema/google-analytics-quotastatus-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/google-analytics-realtime-data-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/google-analytics-realtimedata-schema.json:
     method: unknown
     evidence: no authorship recorded
@@ -908,6 +971,15 @@ artifacts:
   json-schema/google-analytics-row-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/google-analytics-run-report-request-2-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-analytics-run-report-request-3-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-analytics-run-report-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/google-analytics-runpivotreportrequest-schema.json:
     method: unknown
     evidence: no authorship recorded
@@ -933,6 +1005,12 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   json-schema/google-analytics-screenviewdata-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-analytics-search-user-activity-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-analytics-search-user-activity-response-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/google-analytics-searchuseractivityrequest-schema.json:
@@ -980,6 +1058,9 @@ artifacts:
   json-schema/google-analytics-transactiondata-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/google-analytics-unsampled-report-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/google-analytics-unsampledreport-schema.json:
     method: unknown
     evidence: no authorship recorded
@@ -990,6 +1071,9 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   json-schema/google-analytics-uploads-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-analytics-user-deletion-request-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/google-analytics-user-schema.json:
@@ -1020,6 +1104,9 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   json-schema/google-analytics-v1betaaudiencerow-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-analytics-validation-response-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/google-analytics-validationmessage-schema.json:
@@ -1229,12 +1316,18 @@ artifacts:
   lifecycle/google-analytics-lifecycle.yml:
     method: searched
     evidence: declared in the artifact
+  llms/google-analytics-llms-provenance.yml:
+    method: searched
+    evidence: 'derive-llms-provenance.py: harvested'
   llms/google-analytics-llms.txt:
     method: searched
     evidence: 'derive-llms-provenance.py: harvested'
   mcp/google-analytics-mcp.yml:
     method: searched
     evidence: declared in the artifact
+  mcp/google-analytics-remote-tools-list.json:
+    method: unknown
+    evidence: no authorship recorded
   mcp/google-analytics-tool-crosswalk.yml:
     method: derived
     evidence: declared in the artifact
@@ -1352,6 +1445,9 @@ artifacts:
   overlays/google-analytics-reports-api-phrasing-overlay.yaml:
     method: generated
     evidence: declared in the artifact
+  overlays/google-analytics-user-activity-api-overlay.yaml:
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/google-analytics-user-activity-api-phrasing-overlay.yaml:
     method: generated
     evidence: declared in the artifact
@@ -1375,6 +1471,9 @@ artifacts:
     evidence: declared in the artifact
   packages/google-analytics-packages.yml:
     method: searched
+    evidence: declared in the artifact
+  patterns/google-analytics-patterns.yml:
+    method: derived
     evidence: declared in the artifact
   plans/google-analytics-plans-pricing.yml:
     method: searched
@@ -1436,6 +1535,9 @@ artifacts:
   rules/google-analytics-jsonschema-spectral-rules.yml:
     method: generated
     evidence: declared in the artifact
+  rules/google-analytics-rules.yml:
+    method: generated
+    evidence: declared in the artifact
   rules/google-analytics-spectral-rules.yml:
     method: generated
     evidence: declared in the artifact
@@ -1472,12 +1574,15 @@ artifacts:
   sla/google-analytics-sla.yml:
     method: generated
     evidence: declared in the artifact
+  vendors/google-analytics-vendors.yml:
+    method: unknown
+    evidence: no authorship recorded
   vocabulary/google-analytics-vocabulary.yaml:
     method: unknown
     evidence: no authorship recorded
   vocabulary/google-analytics-vocabulary.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: declared in the artifact
   well-known/google-analytics-oauth-authorization-server.json:
     method: unknown
     evidence: no authorship recorded

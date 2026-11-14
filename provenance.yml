@@ -44,10 +44,22 @@ artifacts:
   asyncapi/google-analytics-4-webhooks.yml:
     method: derived
     evidence: declared in the artifact
+  asyncapi/google-analytics-webhooks.yml:
+    method: derived
+    evidence: declared in the artifact
   authentication/google-analytics-authentication.yml:
     method: searched
     evidence: declared in the artifact
   capabilities/google-analytics-capability-edges.yml:
+    method: unknown
+    evidence: no authorship recorded
+  certification/observations-2026-11-11-own-account.jsonl:
+    method: unknown
+    evidence: no authorship recorded
+  certification/observations-2026-11-11.jsonl:
+    method: unknown
+    evidence: no authorship recorded
+  certification/status.yml:
     method: unknown
     evidence: no authorship recorded
   changelog/google-analytics-changelog.yml:
@@ -66,29 +78,29 @@ artifacts:
     method: derived
     evidence: openapi/google-analytics-accountsummaries-api
   collections/google-analytics-data-api.opencollection.json:
-    method: derived
-    evidence: openapi/google-analytics-data-api
+    method: unknown
+    evidence: no authorship recorded
   collections/google-analytics-data-api.postman_collection.json:
-    method: derived
-    evidence: openapi/google-analytics-data-api
+    method: unknown
+    evidence: no authorship recorded
   collections/google-analytics-events-api.opencollection.json:
-    method: derived
-    evidence: openapi/google-analytics-events-api
+    method: unknown
+    evidence: no authorship recorded
   collections/google-analytics-events-api.postman_collection.json:
-    method: derived
-    evidence: openapi/google-analytics-events-api
+    method: unknown
+    evidence: no authorship recorded
   collections/google-analytics-management-api.opencollection.json:
-    method: derived
-    evidence: openapi/google-analytics-management-api
+    method: unknown
+    evidence: no authorship recorded
   collections/google-analytics-management-api.postman_collection.json:
-    method: derived
-    evidence: openapi/google-analytics-management-api
+    method: unknown
+    evidence: no authorship recorded
   collections/google-analytics-metadata-api.opencollection.json:
-    method: derived
-    evidence: openapi/google-analytics-metadata-api
+    method: unknown
+    evidence: no authorship recorded
   collections/google-analytics-metadata-api.postman_collection.json:
-    method: derived
-    evidence: openapi/google-analytics-metadata-api
+    method: unknown
+    evidence: no authorship recorded
   collections/google-analytics-properties-api.opencollection.json:
     method: derived
     evidence: openapi/google-analytics-properties-api
@@ -96,17 +108,17 @@ artifacts:
     method: derived
     evidence: openapi/google-analytics-properties-api
   collections/google-analytics-provisioning-api.opencollection.json:
-    method: derived
-    evidence: openapi/google-analytics-provisioning-api
+    method: unknown
+    evidence: no authorship recorded
   collections/google-analytics-provisioning-api.postman_collection.json:
-    method: derived
-    evidence: openapi/google-analytics-provisioning-api
+    method: unknown
+    evidence: no authorship recorded
   collections/google-analytics-reports-api.opencollection.json:
-    method: derived
-    evidence: openapi/google-analytics-reports-api
+    method: unknown
+    evidence: no authorship recorded
   collections/google-analytics-reports-api.postman_collection.json:
-    method: derived
-    evidence: openapi/google-analytics-reports-api
+    method: unknown
+    evidence: no authorship recorded
   collections/google-analytics-user-deletion-api.opencollection.json:
     method: unknown
     evidence: no authorship recorded
@@ -120,17 +132,20 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   collections/google-analytics-userdeletion-api.opencollection.json:
-    method: derived
-    evidence: openapi/google-analytics-userdeletion-api
+    method: unknown
+    evidence: no authorship recorded
   collections/google-analytics-userdeletion-api.postman_collection.json:
-    method: derived
-    evidence: openapi/google-analytics-userdeletion-api
+    method: unknown
+    evidence: no authorship recorded
   collections/google-analytics-validation-api.opencollection.json:
-    method: derived
-    evidence: openapi/google-analytics-validation-api
+    method: unknown
+    evidence: no authorship recorded
   collections/google-analytics-validation-api.postman_collection.json:
-    method: derived
-    evidence: openapi/google-analytics-validation-api
+    method: unknown
+    evidence: no authorship recorded
+  compliance/google-analytics-compliance.yml:
+    method: harvested
+    evidence: declared in the artifact
   components/google-analytics-components.yml:
     method: searched
     evidence: declared in the artifact
@@ -143,6 +158,14 @@ artifacts:
   data-model/google-analytics-data-model.yml:
     method: derived
     evidence: declared in the artifact
+  discovery/analyticsadmin-v1beta.json:
+    method: harvested
+    evidence: byte-identical to https://analyticsadmin.googleapis.com/$discovery/rest?version=v1beta (sha256
+      8ffd36439460, fetched 2026-11-12T01:31:51+00:00)
+  discovery/analyticsdata-v1beta.json:
+    method: harvested
+    evidence: byte-identical to https://analyticsdata.googleapis.com/$discovery/rest?version=v1beta (sha256
+      07779e9a81cf, fetched 2026-11-12T01:31:51+00:00)
   discovery/google-analytics-admin-api.json:
     method: unknown
     evidence: no authorship recorded
@@ -152,6 +175,9 @@ artifacts:
   discovery/google-analytics-management-api-v3.json:
     method: unknown
     evidence: no authorship recorded
+  eligibility/google-analytics-eligibility.yml:
+    method: harvested
+    evidence: declared in the artifact
   errors/google-analytics-problem-types.yml:
     method: searched
     evidence: declared in the artifact
@@ -272,6 +298,9 @@ artifacts:
   heartbeat/2026-11-06.yml:
     method: unknown
     evidence: no authorship recorded
+  heartbeat/2026-11-13.yml:
+    method: unknown
+    evidence: no authorship recorded
   hosts/google-analytics-hosts.yml:
     method: derived
     evidence: declared in the artifact
@@ -280,6 +309,9 @@ artifacts:
     evidence: carries an API Evangelist house phrase
   integrations/google-analytics-integration-edges.yml:
     method: searched
+    evidence: declared in the artifact
+  integrations/google-analytics-jotform-key-event-from-submissions.yml:
+    method: generated
     evidence: declared in the artifact
   json-ld/google-analytics-admin-api-context.jsonld:
     method: unknown
@@ -1247,7 +1279,7 @@ artifacts:
   kin/checks-2026-10-23T222754.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
-  kin/checks-2026-11-02T082323.yml:
+  kin/checks-2026-11-06T143934.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-23T000603.yml:
@@ -1313,6 +1345,9 @@ artifacts:
   kin/score-2026-11-02T082323.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-11-06T143934.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
   lifecycle/google-analytics-lifecycle.yml:
     method: searched
     evidence: declared in the artifact
@@ -1331,64 +1366,29 @@ artifacts:
   mcp/google-analytics-tool-crosswalk.yml:
     method: derived
     evidence: declared in the artifact
-  openapi/_original/google-analytics-admin-api.yaml:
+  openapi/_original/google-analytics-analyticsadmin-account-summaries-api-openapi.yml:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/_original/google-analytics-data-api.yaml:
+  openapi/_original/google-analytics-analyticsadmin-accounts-api-openapi.yml:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/_original/google-analytics-management-api-v3.yaml:
+  openapi/_original/google-analytics-analyticsadmin-properties-api-openapi.yml:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/_original/google-analytics-measurement-protocol.yaml:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/google-analytics-reporting-api-v4.yaml:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/google-analytics-user-deletion-api.yaml:
+  openapi/_original/google-analytics-analyticsdata-properties-api-openapi.yml:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
   openapi/google-analytics-accounts-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/google-analytics-accountsummaries-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/google-analytics-data-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-analytics-events-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-analytics-management-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-analytics-metadata-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/google-analytics-properties-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/google-analytics-provisioning-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-analytics-reports-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-analytics-user-activity-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-analytics-userdeletion-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-analytics-validation-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   overlays/google-analytics-accounts-api-overlay.yaml:
@@ -1488,35 +1488,35 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   postman/google-analytics-data-api.postman_collection.json:
-    method: derived
-    evidence: openapi/google-analytics-data-api
+    method: unknown
+    evidence: no authorship recorded
   postman/google-analytics-events-api.postman_collection.json:
-    method: derived
-    evidence: openapi/google-analytics-events-api
+    method: unknown
+    evidence: no authorship recorded
   postman/google-analytics-management-api-v3.postman_collection.json:
     method: unknown
     evidence: no authorship recorded
   postman/google-analytics-management-api.postman_collection.json:
-    method: derived
-    evidence: openapi/google-analytics-management-api
+    method: unknown
+    evidence: no authorship recorded
   postman/google-analytics-measurement-protocol.postman_collection.json:
     method: unknown
     evidence: no authorship recorded
   postman/google-analytics-metadata-api.postman_collection.json:
-    method: derived
-    evidence: openapi/google-analytics-metadata-api
+    method: unknown
+    evidence: no authorship recorded
   postman/google-analytics-properties-api.postman_collection.json:
     method: derived
     evidence: openapi/google-analytics-properties-api
   postman/google-analytics-provisioning-api.postman_collection.json:
-    method: derived
-    evidence: openapi/google-analytics-provisioning-api
+    method: unknown
+    evidence: no authorship recorded
   postman/google-analytics-reporting-api-v4.postman_collection.json:
     method: unknown
     evidence: no authorship recorded
   postman/google-analytics-reports-api.postman_collection.json:
-    method: derived
-    evidence: openapi/google-analytics-reports-api
+    method: unknown
+    evidence: no authorship recorded
   postman/google-analytics-user-deletion-api.postman_collection.json:
     method: unknown
     evidence: no authorship recorded
@@ -1524,11 +1524,14 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   postman/google-analytics-userdeletion-api.postman_collection.json:
-    method: derived
-    evidence: openapi/google-analytics-userdeletion-api
+    method: unknown
+    evidence: no authorship recorded
   postman/google-analytics-validation-api.postman_collection.json:
-    method: derived
-    evidence: openapi/google-analytics-validation-api
+    method: unknown
+    evidence: no authorship recorded
+  privacy/google-analytics-privacy-policy.yml:
+    method: harvested
+    evidence: declared in the artifact
   rate-limits/google-analytics-rate-limits.yml:
     method: searched
     evidence: declared in the artifact
@@ -1550,6 +1553,9 @@ artifacts:
   security/google-analytics-domain-security.yml:
     method: unknown
     evidence: no authorship recorded
+  security/google-analytics-trust-center.yml:
+    method: searched
+    evidence: declared in the artifact
   security/google-analytics-vulnerability-disclosure.yml:
     method: searched
     evidence: declared in the artifact
@@ -1573,6 +1579,9 @@ artifacts:
     evidence: declared in the artifact
   sla/google-analytics-sla.yml:
     method: generated
+    evidence: declared in the artifact
+  terms/google-analytics-terms-of-service.yml:
+    method: harvested
     evidence: declared in the artifact
   vendors/google-analytics-vendors.yml:
     method: unknown

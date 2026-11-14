@@ -1,0 +1,855 @@
+aid: google-analytics
+
+name: Google Analytics
+
+description: Google Analytics provides data and insights about website and app usage, enabling businesses to understand their audience and optimize
+  their digital properties through customer-centric measurement, machine learning insights, and cross-platform attribution.
+
+type: Index
+
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
+
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  gated: none
+  gated_source:
+  - onboarding
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  - scopes
+  - rate-limits
+  - security
+  - sandbox
+  generated: '2026-11-13'
+  method: derived
+image: https://www.google.com/analytics/images/google-analytics-logo.png
+
+url: https://raw.githubusercontent.com/api-evangelist/google-analytics/refs/heads/main/apis.yml
+
+created: '2024-01-01'
+
+modified: '2026-08-13'
+
+specificationVersion: '0.23'
+
+tags:
+- Analytics
+- Data
+- Google
+- Metrics
+- Reporting
+- Web Analytics
+- Machine Learning
+- Attribution
+
+tags_raw:
+- Analytics
+- Data
+- Google
+- Metrics
+- Reporting
+- Web Analytics
+- Machine Learning
+- Attribution
+- Machine-Learning
+
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+
+common:
+- type: TrustCenter
+  url: security/google-analytics-trust-center.yml
+- type: Compliance
+  url: https://support.google.com/analytics/answer/6004245
+- type: Webhooks
+  url: asyncapi/google-analytics-webhooks.yml
+- type: GettingStarted
+  url: https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries
+- type: SignUp
+  url: https://analytics.google.com/analytics/web/provision/
+- type: Community
+  url: https://developers.google.com/analytics/community
+- type: DataProcessing
+  url: privacy/google-analytics-privacy-policy.yml
+- type: Attestations
+  url: compliance/google-analytics-compliance.yml
+- type: Spectral
+  url: rules/google-analytics-spectral-rules.yml
+- type: Spectral
+  url: rules/google-analytics-rules.yml
+- type: Spectral
+  url: rules/google-analytics-jsonschema-spectral-rules.yml
+- type: JSONLD
+  url: json-ld/google-analytics-user-deletion-api-context.jsonld
+- type: JSONLD
+  url: json-ld/google-analytics-measurement-protocol-context.jsonld
+- type: JSONLD
+  url: json-ld/google-analytics-data-api-context.jsonld
+- type: JSONLD
+  url: json-ld/google-analytics-context.jsonld
+- type: JSONLD
+  url: json-ld/google-analytics-admin-api-context.jsonld
+- type: Vocabulary
+  url: vocabulary/google-analytics-vocabulary.yml
+- type: Hosts
+  url: hosts/google-analytics-hosts.yml
+- type: IntegrationEdges
+  url: integrations/google-analytics-integration-edges.yml
+- type: Login
+  url: https://accounts.google.com/v3/signin/identifier?continue=https://docs.google.com/&emr=1&followup=https://docs.google.com/&osid=1&passive=1209600&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-433773610:1793808272210516
+- type: FinOps
+  url: finops/google-analytics-finops.yml
+- type: Website
+  url: https://www.google.com/
+- type: CapabilityMap
+  url: capabilities/google-analytics-capability-edges.yml
+  name: Google Analytics Business Capability Map
+- type: AgenticAccess
+  url: agentic-access/google-analytics-agentic-access.yml
+- type: VulnerabilityDisclosure
+  url: security/google-analytics-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/google-analytics-domain-security.yml
+- type: Authentication
+  url: authentication/google-analytics-authentication.yml
+- type: OAuthScopes
+  url: scopes/google-analytics-scopes.yml
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/google-analytics/overview
+- type: Arazzo
+  url: arazzo/google-analytics-account-change-history-audit-workflow.yml
+  name: Google Analytics Account Change History Audit
+- type: Arazzo
+  url: arazzo/google-analytics-audience-export-create-or-reuse-workflow.yml
+  name: Google Analytics Reuse or Create an Audience Export
+- type: Arazzo
+  url: arazzo/google-analytics-audit-custom-definitions-workflow.yml
+  name: Google Analytics Audit a Property's Custom Definitions
+- type: Arazzo
+  url: arazzo/google-analytics-batch-run-reports-workflow.yml
+  name: Google Analytics Batch Run Reports
+- type: Arazzo
+  url: arazzo/google-analytics-check-compatibility-run-report-workflow.yml
+  name: Google Analytics Check Compatibility then Run Report
+- type: Arazzo
+  url: arazzo/google-analytics-create-custom-dimension-run-report-workflow.yml
+  name: Google Analytics Create Custom Dimension then Run Report
+- type: Arazzo
+  url: arazzo/google-analytics-create-custom-metric-run-report-workflow.yml
+  name: Google Analytics Create Custom Metric then Run Report
+- type: Arazzo
+  url: arazzo/google-analytics-create-property-data-stream-workflow.yml
+  name: Google Analytics Create Property and Web Data Stream
+- type: Arazzo
+  url: arazzo/google-analytics-discover-and-run-report-workflow.yml
+  name: Google Analytics Discover Property and Run Report
+- type: Arazzo
+  url: arazzo/google-analytics-inventory-property-data-streams-workflow.yml
+  name: Google Analytics Inventory a Property's Data Streams
+- type: Arazzo
+  url: arazzo/google-analytics-list-properties-run-realtime-workflow.yml
+  name: Google Analytics List Properties and Run Realtime Report
+- type: Arazzo
+  url: arazzo/google-analytics-query-audience-export-users-workflow.yml
+  name: Google Analytics Query Audience Export Users
+- type: LinkedIn
+  url: https://www.linkedin.com/showcase/google-analytics
+- type: Portal
+  url: https://developers.google.com/analytics
+- type: Console
+  url: https://console.cloud.google.com/apis/library/analytics.googleapis.com
+- type: Signup
+  url: https://analytics.google.com/analytics/
+- type: Authentication
+  url: https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries
+- type: SDKs
+  url: https://developers.google.com/analytics/devguides/config/admin/v1/client-libraries
+- type: Tools
+  url: https://github.com/googleanalytics/google-analytics-mcp
+  title: MCP Server
+- type: Tools
+  url: https://ga-dev-tools.google/ga4/
+  title: GA Dev Tools
+- type: Tools
+  url: https://github.com/googleanalytics/ecommerce-migration-helper
+  title: E-commerce Migration Helper
+- type: Tutorials
+  url: https://github.com/googleanalytics/ga4-tutorials
+  title: GA4 Tutorials
+- type: CodeExamples
+  url: https://github.com/googleanalytics/gtm-consent-mode-examples
+  title: Consent Mode Examples
+- type: Pricing
+  url: https://marketingplatform.google.com/about/analytics/
+- type: TermsOfService
+  url: https://developers.google.com/analytics/terms
+- type: PrivacyPolicy
+  url: https://developers.google.com/analytics/devguides/collection/protocol/ga4/policy
+- type: Blog
+  url: https://analytics.googleblog.com/
+- type: StatusPage
+  url: https://status.cloud.google.com/
+- type: Support
+  url: https://developers.google.com/analytics/support
+- type: FAQ
+  url: https://support.google.com/analytics
+- type: ReleaseNotes
+  url: https://support.google.com/analytics/answer/9164320
+- type: ChangeLog
+  url: https://groups.google.com/forum/#!forum/google-analytics-api-notify
+- type: Skills
+  data:
+  - name: Run Report
+    url: skills/run-report/SKILL.md
+  - name: Run Realtime Report
+    url: skills/run-realtime-report/SKILL.md
+  - name: Run Pivot Report
+    url: skills/run-pivot-report/SKILL.md
+  - name: Batch Run Reports
+    url: skills/batch-run-reports/SKILL.md
+  - name: Batch Run Pivot Reports
+    url: skills/batch-run-pivot-reports/SKILL.md
+  - name: Check Compatibility
+    url: skills/check-compatibility/SKILL.md
+  - name: Create Audience Export
+    url: skills/create-audience-export/SKILL.md
+  - name: Get Audience Export
+    url: skills/get-audience-export/SKILL.md
+  - name: List Audience Exports
+    url: skills/list-audience-exports/SKILL.md
+  - name: Query Audience Export
+    url: skills/query-audience-export/SKILL.md
+  - name: List Account Summaries
+    url: skills/list-account-summaries/SKILL.md
+  - name: List Accounts
+    url: skills/list-accounts/SKILL.md
+  - name: Provision Account Ticket
+    url: skills/provision-account-ticket/SKILL.md
+  - name: List Properties
+    url: skills/list-properties/SKILL.md
+  - name: Create Property
+    url: skills/create-property/SKILL.md
+  - name: Search Change History Events
+    url: skills/search-change-history-events/SKILL.md
+  - name: Run Access Report
+    url: skills/run-access-report/SKILL.md
+  - name: Delete Google Ads Link
+    url: skills/delete-google-ads-link/SKILL.md
+  - name: Get Measurement Protocol Secret
+    url: skills/get-measurement-protocol-secret/SKILL.md
+  - name: Update Google Ads Link
+    url: skills/update-google-ads-link/SKILL.md
+  - name: Archive Custom Metric
+    url: skills/archive-custom-metric/SKILL.md
+  - name: List Conversion Events
+    url: skills/list-conversion-events/SKILL.md
+  - name: Create Conversion Event
+    url: skills/create-conversion-event/SKILL.md
+  - name: List Custom Dimensions
+    url: skills/list-custom-dimensions/SKILL.md
+  - name: Create Custom Dimension
+    url: skills/create-custom-dimension/SKILL.md
+  - name: List Custom Metrics
+    url: skills/list-custom-metrics/SKILL.md
+  - name: Create Custom Metric
+    url: skills/create-custom-metric/SKILL.md
+  - name: List Data Streams
+    url: skills/list-data-streams/SKILL.md
+  - name: Create Data Stream
+    url: skills/create-data-stream/SKILL.md
+  - name: List Firebase Links
+    url: skills/list-firebase-links/SKILL.md
+  - name: Create Firebase Link
+    url: skills/create-firebase-link/SKILL.md
+  - name: List Google Ads Links
+    url: skills/list-google-ads-links/SKILL.md
+  - name: Create Google Ads Link
+    url: skills/create-google-ads-link/SKILL.md
+  - name: List Measurement Protocol Secrets
+    url: skills/list-measurement-protocol-secrets/SKILL.md
+  - name: Create Measurement Protocol Secret
+    url: skills/create-measurement-protocol-secret/SKILL.md
+  - name: Acknowledge User Data Collection
+    url: skills/acknowledge-user-data-collection/SKILL.md
+  - name: Send Events
+    url: skills/send-events/SKILL.md
+  - name: Validate Events
+    url: skills/validate-events/SKILL.md
+  - name: Upsert User Deletion Request
+    url: skills/upsert-user-deletion-request/SKILL.md
+- type: GitHubOrganization
+  url: https://github.com/googleanalytics/
+- type: StackOverflow
+  url: https://stackoverflow.com/questions/tagged/google-analytics
+- type: YouTube
+  url: https://www.youtube.com/user/googleanalytics
+- type: Training
+  url: https://goo.gle/ga-courses
+- type: Academy
+  url: https://marketingplatformacademy.withgoogle.com/google-analytics-360
+- type: Features
+  data:
+  - name: Predictive Capabilities
+    description: Machine learning models that predict future actions users may take, like purchasing or churning.
+  - name: Proactive Insights
+    description: Automatically detects and surfaces actionable insights from your data.
+  - name: Real-Time Reporting
+    description: Monitor user activity on your site or app as it happens.
+  - name: Data-Driven Attribution
+    description: Machine learning to understand how each touchpoint contributes to conversions.
+  - name: Free-Form Exploration
+    description: Drag-and-drop analysis with instant visualizations for custom reporting.
+  - name: Funnel Exploration
+    description: Visualize user steps through conversion funnels and identify optimization opportunities.
+  - name: Path Exploration
+    description: Visualize user navigation paths to understand how users reach conversions.
+  - name: Cohort Exploration
+    description: Analyze behavior of users grouped by common attributes over time.
+  - name: BigQuery Export
+    description: Export raw event data to BigQuery for advanced analysis and data warehousing.
+  - name: Cross-Platform Measurement
+    description: Customer-centric measurement across websites and apps throughout the entire customer lifecycle.
+  - name: Privacy-Safe Modeling
+    description: Machine learning models that provide a complete picture of the customer journey while respecting privacy.
+  - name: Custom Dimensions and Metrics
+    description: Define custom dimensions and metrics to capture data specific to your business needs.
+- type: UseCases
+  data:
+  - name: Website Traffic Analysis
+    description: Understand where visitors come from, what pages they view, and how they interact with your website.
+  - name: Conversion Optimization
+    description: Track conversion events, analyze funnels, and identify drop-off points to improve conversion rates.
+  - name: Audience Segmentation
+    description: Segment users by demographics, behavior, technology, and custom attributes for targeted analysis.
+  - name: Marketing Campaign Measurement
+    description: Measure the effectiveness of advertising campaigns across channels with attribution modeling.
+  - name: E-commerce Analytics
+    description: Track purchase activity, revenue, product performance, and shopping behavior.
+  - name: App Analytics
+    description: Measure user engagement, retention, and in-app actions for mobile and web applications.
+  - name: Server-Side Event Tracking
+    description: Send events from your server using the Measurement Protocol for offline and backend interactions.
+  - name: Compliance and Data Privacy
+    description: Manage user data deletion requests and privacy compliance using the User Deletion API.
+  - name: Custom Reporting and Dashboards
+    description: Build custom reports and dashboards programmatically using the Data API.
+  - name: Real-Time Monitoring
+    description: Monitor live user activity for time-sensitive campaigns, launches, and events.
+- type: Integrations
+  data:
+  - name: Google Ads
+    description: Link Google Ads accounts to analyze campaign performance and optimize ad spend with Analytics data.
+  - name: Google BigQuery
+    description: Export raw Analytics data to BigQuery for advanced SQL-based analysis and data warehousing.
+  - name: Google Search Console
+    description: Connect Search Console to see organic search queries, impressions, and click data alongside Analytics.
+  - name: Firebase
+    description: Integrate with Firebase for comprehensive mobile and web app analytics and event tracking.
+  - name: Display & Video 360
+    description: Link DV360 for programmatic advertising measurement and attribution.
+  - name: Search Ads 360
+    description: Connect SA360 for unified search advertising measurement across engines.
+  - name: Google Tag Manager
+    description: Use Tag Manager to deploy and manage Analytics tags without modifying website code.
+  - name: Google Ad Manager
+    description: Integrate publisher ad serving data with Analytics for holistic content and ad performance analysis.
+  - name: Google Cloud
+    description: Leverage Google Cloud services for advanced data processing, ML models, and storage with Analytics data.
+  - name: Salesforce Marketing Cloud
+    description: Connect Salesforce Marketing Cloud for cross-platform marketing measurement and audience activation.
+- type: Solutions
+  data:
+  - name: Google Analytics Free
+    description: Full-featured web and app analytics solution available at no charge for businesses of all sizes.
+  - name: Analytics 360
+    description: Enterprise-grade analytics with advanced features including intraday data, sub-properties, roll-up reporting, and higher limits.
+  - name: Google Marketing Platform
+    description: Integrated advertising and analytics platform combining Analytics 360 with advertising products for enterprise marketing.
+- name: MCP Server
+  url: https://github.com/googleanalytics/google-analytics-mcp
+  type: MCPServer
+- name: MCP Server (artifact)
+  url: mcp/google-analytics-mcp.yml
+  type: MCPServer
+- type: ToolCrosswalk
+  url: mcp/google-analytics-tool-crosswalk.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Packages
+  url: packages/google-analytics-packages.yml
+- type: SDKs
+  url: packages/google-analytics-packages.yml
+- type: WellKnown
+  url: well-known/google-analytics-well-known.yml
+- type: SecurityTxt
+  url: well-known/google-analytics-security.txt
+- type: Security
+  url: security/google-analytics-vulnerability-disclosure.yml
+- type: LLMsTxt
+  url: llms/google-analytics-llms.txt
+- type: Conformance
+  url: conformance/google-analytics-conformance.yml
+- type: ErrorCatalog
+  url: errors/google-analytics-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/google-analytics-lifecycle.yml
+- type: Deprecation
+  url: lifecycle/google-analytics-lifecycle.yml
+- type: ChangeLog
+  url: changelog/google-analytics-changelog.yml
+- type: Conventions
+  url: conventions/google-analytics-conventions.yml
+- type: DataModel
+  url: data-model/google-analytics-data-model.yml
+- type: Components
+  url: components/google-analytics-components.yml
+- type: Sandbox
+  url: sandbox/google-analytics-sandbox.yml
+- type: Plans
+  url: plans/google-analytics-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/google-analytics-rate-limits.yml
+- type: Documentation
+  url: https://developers.google.com/analytics/devguides/reporting/data/v1
+- type: APIReference
+  url: https://developers.google.com/analytics/devguides/reporting/data/v1/rest
+- type: DeveloperPortal
+  url: https://developers.google.com/analytics
+- type: Protobuf
+  url: grpc/google-analytics-data-v1beta-analytics_data_api.proto
+- type: Protobuf
+  url: grpc/google-analytics-data-v1beta-data.proto
+- type: Protobuf
+  url: grpc/google-analytics-admin-v1beta-analytics_admin.proto
+- type: Protobuf
+  url: grpc/google-analytics-admin-v1beta-resources.proto
+- type: Overlay
+  url: overlays/google-analytics-accounts-api-overlay.yaml
+- type: Overlay
+  url: overlays/google-analytics-accountsummaries-api-overlay.yaml
+- type: Overlay
+  url: overlays/google-analytics-data-api-overlay.yaml
+- type: Overlay
+  url: overlays/google-analytics-events-api-overlay.yaml
+- type: Overlay
+  url: overlays/google-analytics-management-api-overlay.yaml
+- type: Overlay
+  url: overlays/google-analytics-metadata-api-overlay.yaml
+- type: Overlay
+  url: overlays/google-analytics-properties-api-overlay.yaml
+- type: Overlay
+  url: overlays/google-analytics-provisioning-api-overlay.yaml
+- type: Overlay
+  url: overlays/google-analytics-reports-api-overlay.yaml
+- type: Overlay
+  url: overlays/google-analytics-user-deletion-api-overlay.yaml
+- type: Overlay
+  url: overlays/google-analytics-user-activity-api-overlay.yaml
+- type: Overlay
+  url: overlays/google-analytics-userdeletion-api-overlay.yaml
+- type: Overlay
+  url: overlays/google-analytics-validation-api-overlay.yaml
+- type: UsageTerms
+  url: terms/google-analytics-terms-of-service.yml
+- type: Eligibility
+  url: eligibility/google-analytics-eligibility.yml
+
+apis:
+- aid: google-analytics:google-analytics-data-mcp-server
+  name: Google Analytics Data API MCP Server
+  description: >-
+    Google's remote MCP server for the Google Analytics Data API, exposing run_report, get_metadata, run_realtime_report
+    and check_compatibility tools over JSON-RPC; tool calls require Google OAuth.
+  humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1/mcp
+  baseURL: https://analyticsdata.googleapis.com/mcp/v1
+  tags:
+  - MCP
+  - Analytics
+  properties:
+  - type: MCPServer
+    url: mcp/google-analytics-mcp.yml
+- aid: google-analytics:google-analytics-accounts-api
+  name: Google Analytics Accounts API
+  description: The Accounts API from Google Analytics — 6 operation(s) for accounts.
+  humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1/mcp
+  baseURL: https://analyticsadmin.googleapis.com
+  tags:
+  - Account
+  tags_raw:
+  - Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/google-analytics-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1
+  - type: APIReference
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/rest
+  - type: GettingStarted
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart
+  - type: Authentication
+    url: >-
+      https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries
+  - type: RateLimits
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/quotas
+  - type: SDKs
+    url: https://pypi.org/project/google-analytics-data/
+  - type: SDKs
+    url: https://www.npmjs.com/package/@google-analytics/data
+  - type: SDKs
+    url: https://central.sonatype.com/artifact/com.google.analytics/google-analytics-data
+  - type: SDKs
+    url: https://www.nuget.org/packages/Google.Analytics.Data.V1Beta
+  - type: SDKs
+    url: https://packagist.org/packages/google/analytics-data
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/python-docs-samples
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/java-docs-samples
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/nodejs-docs-samples
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/dotnet-docs-samples
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/php-docs-samples
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/analytics-data-curl-examples
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/analytics-data-javascript-examples
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/config/admin/v1
+  - type: APIReference
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/rest
+  - type: GettingStarted
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/quickstart
+  - type: SDKs
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/client-libraries
+  - type: SDKs
+    url: https://pypi.org/project/google-analytics-admin/
+  - type: SDKs
+    url: https://www.npmjs.com/package/@google-analytics/admin
+  - type: SDKs
+    url: https://central.sonatype.com/artifact/com.google.analytics/google-analytics-admin
+  - type: SDKs
+    url: https://www.nuget.org/packages/Google.Analytics.Admin.V1Beta
+  - type: SDKs
+    url: https://packagist.org/packages/google/analytics-admin
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/analytics-samples-config
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/collection/protocol/ga4
+  - type: APIReference
+    url: https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference
+  - type: GettingStarted
+    url: https://developers.google.com/analytics/devguides/collection/protocol/ga4/sending-events
+  - type: Troubleshooting
+    url: >-
+      https://developers.google.com/analytics/devguides/collection/protocol/ga4/troubleshooting
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/config/userdeletion/v3
+  - type: APIReference
+    url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/reference
+  - type: Authentication
+    url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/authorization
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/reporting/core/v4
+  - type: GettingStarted
+    url: https://developers.google.com/analytics/devguides/migration/api/reporting-ua-to-ga4
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/config/mgmt/v3
+  - type: APIReference
+    url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
+  - type: Protobuf
+    url: grpc/google-analytics-4-data-v1beta-analytics_data_api.proto
+  - type: Authentication
+    url: >-
+      https://developers.google.com/analytics/devguides/reporting/data/v1/basics#authentication
+  - type: GettingStarted
+    url: >-
+      https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries
+  - type: ChangeLog
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/changelog
+  - type: ErrorCatalog
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/errors
+  - type: Webhooks
+    url: asyncapi/google-analytics-4-webhooks.yml
+  - type: Protobuf
+    url: grpc/google-analytics-4-admin-v1beta-analytics_admin.proto
+  - type: Authentication
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/rest
+  - type: GettingStarted
+    url: >-
+      https://developers.google.com/analytics/devguides/config/admin/v1/quickstart-client-libraries
+  - type: RateLimits
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/changelog
+  - type: JSONSchema
+    url: >-
+      json-schema/google-analytics-google-analytics-admin-v1beta-run-access-report-request-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/google-analytics-google-analytics-admin-v1beta-search-change-history-events-request-schema.json
+- aid: google-analytics:google-analytics-accountsummaries-api
+  name: Google Analytics Account Summaries API
+  description: The AccountSummaries API from Google Analytics — 1 operation(s) for accountsummaries.
+  humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1/mcp
+  baseURL: https://analyticsadmin.googleapis.com
+  tags:
+  - AccountSummaries
+  properties:
+  - type: OpenAPI
+    url: openapi/google-analytics-accountsummaries-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1
+  - type: APIReference
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/rest
+  - type: GettingStarted
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart
+  - type: Authentication
+    url: >-
+      https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries
+  - type: RateLimits
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/quotas
+  - type: SDKs
+    url: https://pypi.org/project/google-analytics-data/
+  - type: SDKs
+    url: https://www.npmjs.com/package/@google-analytics/data
+  - type: SDKs
+    url: https://central.sonatype.com/artifact/com.google.analytics/google-analytics-data
+  - type: SDKs
+    url: https://www.nuget.org/packages/Google.Analytics.Data.V1Beta
+  - type: SDKs
+    url: https://packagist.org/packages/google/analytics-data
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/python-docs-samples
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/java-docs-samples
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/nodejs-docs-samples
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/dotnet-docs-samples
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/php-docs-samples
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/analytics-data-curl-examples
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/analytics-data-javascript-examples
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/config/admin/v1
+  - type: APIReference
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/rest
+  - type: GettingStarted
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/quickstart
+  - type: SDKs
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/client-libraries
+  - type: SDKs
+    url: https://pypi.org/project/google-analytics-admin/
+  - type: SDKs
+    url: https://www.npmjs.com/package/@google-analytics/admin
+  - type: SDKs
+    url: https://central.sonatype.com/artifact/com.google.analytics/google-analytics-admin
+  - type: SDKs
+    url: https://www.nuget.org/packages/Google.Analytics.Admin.V1Beta
+  - type: SDKs
+    url: https://packagist.org/packages/google/analytics-admin
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/analytics-samples-config
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/collection/protocol/ga4
+  - type: APIReference
+    url: https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference
+  - type: GettingStarted
+    url: https://developers.google.com/analytics/devguides/collection/protocol/ga4/sending-events
+  - type: Troubleshooting
+    url: >-
+      https://developers.google.com/analytics/devguides/collection/protocol/ga4/troubleshooting
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/config/userdeletion/v3
+  - type: APIReference
+    url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/reference
+  - type: Authentication
+    url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/authorization
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/reporting/core/v4
+  - type: GettingStarted
+    url: https://developers.google.com/analytics/devguides/migration/api/reporting-ua-to-ga4
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/config/mgmt/v3
+  - type: APIReference
+    url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
+  - type: Protobuf
+    url: grpc/google-analytics-4-data-v1beta-analytics_data_api.proto
+  - type: Authentication
+    url: >-
+      https://developers.google.com/analytics/devguides/reporting/data/v1/basics#authentication
+  - type: GettingStarted
+    url: >-
+      https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries
+  - type: ChangeLog
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/changelog
+  - type: ErrorCatalog
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/errors
+  - type: Webhooks
+    url: asyncapi/google-analytics-4-webhooks.yml
+  - type: Protobuf
+    url: grpc/google-analytics-4-admin-v1beta-analytics_admin.proto
+  - type: Authentication
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/rest
+  - type: GettingStarted
+    url: >-
+      https://developers.google.com/analytics/devguides/config/admin/v1/quickstart-client-libraries
+  - type: RateLimits
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/changelog
+  - type: JSONSchema
+    url: >-
+      json-schema/google-analytics-google-analytics-admin-v1beta-list-account-summaries-response-schema.json
+- aid: google-analytics:google-analytics-properties-api
+  name: Google Analytics Properties API
+  description: The Properties API from Google Analytics — 33 operation(s) for properties.
+  humanURL: https://developers.google.com/analytics/devguides/reporting/data/v1/mcp
+  baseURL: https://analyticsadmin.googleapis.com
+  tags:
+  - Properties
+  properties:
+  - type: OpenAPI
+    url: openapi/google-analytics-properties-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1
+  - type: APIReference
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/rest
+  - type: GettingStarted
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart
+  - type: Authentication
+    url: >-
+      https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries
+  - type: RateLimits
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/quotas
+  - type: SDKs
+    url: https://pypi.org/project/google-analytics-data/
+  - type: SDKs
+    url: https://www.npmjs.com/package/@google-analytics/data
+  - type: SDKs
+    url: https://central.sonatype.com/artifact/com.google.analytics/google-analytics-data
+  - type: SDKs
+    url: https://www.nuget.org/packages/Google.Analytics.Data.V1Beta
+  - type: SDKs
+    url: https://packagist.org/packages/google/analytics-data
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/python-docs-samples
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/java-docs-samples
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/nodejs-docs-samples
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/dotnet-docs-samples
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/php-docs-samples
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/analytics-data-curl-examples
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/analytics-data-javascript-examples
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/config/admin/v1
+  - type: APIReference
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/rest
+  - type: GettingStarted
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/quickstart
+  - type: SDKs
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/client-libraries
+  - type: SDKs
+    url: https://pypi.org/project/google-analytics-admin/
+  - type: SDKs
+    url: https://www.npmjs.com/package/@google-analytics/admin
+  - type: SDKs
+    url: https://central.sonatype.com/artifact/com.google.analytics/google-analytics-admin
+  - type: SDKs
+    url: https://www.nuget.org/packages/Google.Analytics.Admin.V1Beta
+  - type: SDKs
+    url: https://packagist.org/packages/google/analytics-admin
+  - type: CodeExamples
+    url: https://github.com/googleanalytics/analytics-samples-config
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/collection/protocol/ga4
+  - type: APIReference
+    url: https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference
+  - type: GettingStarted
+    url: https://developers.google.com/analytics/devguides/collection/protocol/ga4/sending-events
+  - type: Troubleshooting
+    url: >-
+      https://developers.google.com/analytics/devguides/collection/protocol/ga4/troubleshooting
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/config/userdeletion/v3
+  - type: APIReference
+    url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/reference
+  - type: Authentication
+    url: https://developers.google.com/analytics/devguides/config/userdeletion/v3/authorization
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/reporting/core/v4
+  - type: GettingStarted
+    url: https://developers.google.com/analytics/devguides/migration/api/reporting-ua-to-ga4
+  - type: Documentation
+    url: https://developers.google.com/analytics/devguides/config/mgmt/v3
+  - type: APIReference
+    url: https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference
+  - type: Protobuf
+    url: grpc/google-analytics-4-data-v1beta-analytics_data_api.proto
+  - type: Authentication
+    url: >-
+      https://developers.google.com/analytics/devguides/reporting/data/v1/basics#authentication
+  - type: GettingStarted
+    url: >-
+      https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries
+  - type: ChangeLog
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/changelog
+  - type: ErrorCatalog
+    url: https://developers.google.com/analytics/devguides/reporting/data/v1/errors
+  - type: Webhooks
+    url: asyncapi/google-analytics-4-webhooks.yml
+  - type: Protobuf
+    url: grpc/google-analytics-4-admin-v1beta-analytics_admin.proto
+  - type: Authentication
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/rest
+  - type: GettingStarted
+    url: >-
+      https://developers.google.com/analytics/devguides/config/admin/v1/quickstart-client-libraries
+  - type: RateLimits
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/analytics/devguides/config/admin/v1/changelog
+  - type: JSONSchema
+    url: >-
+      json-schema/google-analytics-google-analytics-admin-v1beta-run-access-report-request-schema.json
+  - type: JSONSchema
+    url: json-schema/google-analytics-filter-schema.json
+  - type: JSONSchema
+    url: json-schema/google-analytics-run-report-request-schema.json
+x-enrichment:
+  date: '2026-11-12'
+  status: enriched
+  artifacts_added: 1
+  pass: local-v6
+
+x-parent: google
+
+x-relationship: product

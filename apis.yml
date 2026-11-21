@@ -38,7 +38,7 @@ accessModel:
   - rate-limits
   - security
   - sandbox
-  generated: '2026-11-13'
+  generated: '2026-11-20'
   method: derived
 image: https://www.google.com/analytics/images/google-analytics-logo.png
 
